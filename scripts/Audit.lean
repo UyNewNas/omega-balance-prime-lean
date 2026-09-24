@@ -121,11 +121,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3Int_negative_five_example
 #print axioms OmegaBalance.f3_square_five_example
 #print axioms OmegaBalance.f3_cube_five_example
-#print axioms OmegaBalance.f3_cube_seven_example
 #print axioms OmegaBalance.f3_reflection_nine_example
 #print axioms OmegaBalance.f3_multiply_unequal_example
 #print axioms OmegaBalance.f3_iterated_cube_five_example
 #print axioms OmegaBalance.f3_reflection_strict_boundary_example
+#print axioms OmegaBalance.f3_cube_seven_example
 
 -- FactorSum.lean
 #print axioms OmegaBalance.primeFactorSum_zero
@@ -320,3 +320,14 @@ import OmegaBalance.F3DeeperExamples
 -- FactorSumSmallCertificates.lean
 #print axioms OmegaBalance.smallSumCertificates_cover
 #print axioms OmegaBalance.smallSumCertificates_valid
+
+-- Cofactor necessity and reversible recovery.
+#print axioms OmegaBalance.sumCofactor_coprime
+#print axioms OmegaBalance.sumCofactor_ne
+#print axioms OmegaBalance.sumCofactor_divisibility
+#print axioms OmegaBalance.sumCofactor_inverse_iff
+#print axioms OmegaBalance.sumCofactor_sign
+#print axioms OmegaBalance.sumCofactor_opposite_parity
+#print axioms OmegaBalance.sumCofactor_even_sum_difference
+#print axioms OmegaBalance.sumCofactor_recover_balanced
+#print axioms OmegaBalance.doubleFactorPair_recover

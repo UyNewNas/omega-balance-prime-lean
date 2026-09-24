@@ -16,3 +16,4 @@ import OmegaBalance.FactorSumFamily
 import OmegaBalance.FactorSumStructure
 import OmegaBalance.FactorSumFive
 import OmegaBalance.FactorSumLowCount
+import OmegaBalance.FactorSumCofactor
