@@ -97,3 +97,20 @@ import OmegaBalance.Examples
 #print axioms OmegaBalance.f3_cube_of_mod_three_one
 #print axioms OmegaBalance.f3_cube_of_mod_three_two
 #print axioms OmegaBalance.f3_cube
+
+#print axioms OmegaBalance.f3Side_values
+#print axioms OmegaBalance.f3_eq_side_mul_natAbs
+#print axioms OmegaBalance.f3_center_pos
+#print axioms OmegaBalance.f3_center_valuation
+#print axioms OmegaBalance.v3Int_eq_padicValRat
+#print axioms OmegaBalance.v3Int_add_ge_min
+#print axioms OmegaBalance.v3Int_add_eq_min
+#print axioms OmegaBalance.v3Int_sub_eq_min
+#print axioms OmegaBalance.f3_adjusted_gap_valuation
+#print axioms OmegaBalance.f3_reflection
+#print axioms OmegaBalance.f3Side_mul
+#print axioms OmegaBalance.f3_iterated_cube_pos
+#print axioms OmegaBalance.f3_iterated_cube_neg
+#print axioms OmegaBalance.v3_add_ge_min
+#print axioms OmegaBalance.v3_add_eq_min
+#print axioms OmegaBalance.f3_mul_depth

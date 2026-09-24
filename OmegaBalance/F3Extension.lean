@@ -162,7 +162,7 @@ theorem v3_quad_minus_one {n : ℕ} (hn : 1 < n) (hm : n % 3 = 2) :
 /-- Cubing a residue-1 integer lowers the signed statistic by one. -/
 theorem f3_cube_of_mod_three_one {n : ℕ} (hn : 1 < n) (hm : n % 3 = 1) :
     f3 (n ^ 3) = f3 n - 1 := by
-  have hn3 : 1 < n ^ 3 := by nlinarith
+  have hn3 : 1 < n ^ 3 := Nat.one_lt_pow (by decide) hn
   have hm3 : n ^ 3 % 3 = 1 := by norm_num [Nat.pow_mod, hm]
   have hsub : n - 1 + 1 = n := Nat.sub_add_cancel (by omega)
   have hsub3 : n ^ 3 - 1 + 1 = n ^ 3 := Nat.sub_add_cancel (by omega)
@@ -177,7 +177,7 @@ theorem f3_cube_of_mod_three_one {n : ℕ} (hn : 1 < n) (hm : n % 3 = 1) :
 /-- Cubing a residue-2 integer raises the signed statistic by one. -/
 theorem f3_cube_of_mod_three_two {n : ℕ} (hn : 1 < n) (hm : n % 3 = 2) :
     f3 (n ^ 3) = f3 n + 1 := by
-  have hn3 : 1 < n ^ 3 := by nlinarith
+  have hn3 : 1 < n ^ 3 := Nat.one_lt_pow (by decide) hn
   have hm3 : n ^ 3 % 3 = 2 := by norm_num [Nat.pow_mod, hm]
   have hsub : n ^ 2 - n + n = n ^ 2 := Nat.sub_add_cancel (by nlinarith)
   have hh := congrArg (fun x : ℕ => (n + 1) * x) hsub
@@ -193,9 +193,9 @@ theorem f3_cube {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
   have hm : n % 3 ≠ 0 := fun h => h3 (Nat.dvd_iff_mod_eq_zero.mpr h)
   have cases : n % 3 = 1 ∨ n % 3 = 2 := by omega
   rcases cases with h | h
-  · rw [if_neg (by have := (f3_of_mod_three_one hn h).2; omega)]
+  · rw [ite_eq_right (by have := (f3_of_mod_three_one hn h).2; omega)]
     exact f3_cube_of_mod_three_one hn h
-  · rw [if_pos (f3_of_mod_three_two hn h).2]
+  · rw [ite_eq_left (f3_of_mod_three_two hn h).2]
     exact f3_cube_of_mod_three_two hn h
 
 end OmegaBalance
