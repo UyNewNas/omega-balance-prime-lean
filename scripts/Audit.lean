@@ -1,6 +1,7 @@
 import OmegaBalance
 import OmegaBalance.Examples
 import OmegaBalance.F3Examples
+import OmegaBalance.F3DeeperExamples
 
 #print axioms OmegaBalance.bigOmega_zero
 #print axioms OmegaBalance.bigOmega_one
@@ -80,7 +81,6 @@ import OmegaBalance.F3Examples
 #print axioms OmegaBalance.v3_pos_iff_dvd
 #print axioms OmegaBalance.v3_mul
 #print axioms OmegaBalance.v3_pow_three
-
 #print axioms OmegaBalance.v3Int_nat
 #print axioms OmegaBalance.v3Int_neg
 #print axioms OmegaBalance.f3Int_nat
@@ -98,7 +98,6 @@ import OmegaBalance.F3Examples
 #print axioms OmegaBalance.f3_cube_of_mod_three_one
 #print axioms OmegaBalance.f3_cube_of_mod_three_two
 #print axioms OmegaBalance.f3_cube
-
 #print axioms OmegaBalance.f3Side_values
 #print axioms OmegaBalance.f3_eq_side_mul_natAbs
 #print axioms OmegaBalance.f3_center_pos
@@ -115,7 +114,6 @@ import OmegaBalance.F3Examples
 #print axioms OmegaBalance.v3_add_ge_min
 #print axioms OmegaBalance.v3_add_eq_min
 #print axioms OmegaBalance.f3_mul_depth
-
 #print axioms OmegaBalance.f3Int_negative_five_example
 #print axioms OmegaBalance.f3_square_five_example
 #print axioms OmegaBalance.f3_cube_five_example
@@ -124,3 +122,88 @@ import OmegaBalance.F3Examples
 #print axioms OmegaBalance.f3_multiply_unequal_example
 #print axioms OmegaBalance.f3_iterated_cube_five_example
 #print axioms OmegaBalance.f3_reflection_strict_boundary_example
+
+-- Arbitrary powers.
+#print axioms OmegaBalance.v3_eq_padic
+#print axioms OmegaBalance.three_not_dvd_pow
+#print axioms OmegaBalance.v3_pow_sub_one
+#print axioms OmegaBalance.f3_pow_depth
+#print axioms OmegaBalance.f3Side_pow
+#print axioms OmegaBalance.f3_pow
+
+-- Rational extension and its genuine conjugate operation.
+#print axioms OmegaBalance.f3Rat_int
+#print axioms OmegaBalance.f3Rat_nat
+#print axioms OmegaBalance.f3Rat_neg
+#print axioms OmegaBalance.f3Rat_eq_cayley_valuation
+#print axioms OmegaBalance.f3Star_comm
+#print axioms OmegaBalance.f3Star_gt_one
+#print axioms OmegaBalance.f3Star_add_one
+#print axioms OmegaBalance.f3Star_sub_one
+#print axioms OmegaBalance.f3Rat_star
+#print axioms OmegaBalance.f3Rat_star_of_gt_one
+#print axioms OmegaBalance.f3Cayley_gt_one
+#print axioms OmegaBalance.f3Cayley_involution
+#print axioms OmegaBalance.f3Cayley_injective
+#print axioms OmegaBalance.f3Cayley_star
+#print axioms OmegaBalance.f3Star_assoc
+
+-- Sum/product dichotomy and conditional refined gap.
+#print axioms OmegaBalance.f3_positive_level
+#print axioms OmegaBalance.f3_negative_level
+#print axioms OmegaBalance.pow_three_dvd_of_le_v3
+#print axioms OmegaBalance.v3_exact_factor
+#print axioms OmegaBalance.f3_opposite_sum_product
+#print axioms OmegaBalance.f3_opposite_sum_product_min
+#print axioms OmegaBalance.f3_twin_product_of_mod
+#print axioms OmegaBalance.f3_twin_product
+#print axioms OmegaBalance.f3_product_refined_gap
+#print axioms OmegaBalance.f3_product_gap_dichotomy
+
+-- Actual ZMod multiplicative orders.
+#print axioms OmegaBalance.nat_pow_zmod_eq_one_iff
+#print axioms OmegaBalance.f3_pow_zmod_neg_iff
+#print axioms OmegaBalance.v3_power_sub_one_from_depth
+#print axioms OmegaBalance.f3_pow_zmod_pos_iff
+#print axioms OmegaBalance.f3_orderOf_neg
+#print axioms OmegaBalance.f3_orderOf_pos
+#print axioms OmegaBalance.f3_orderOf
+#print axioms OmegaBalance.f3_twin_orderOf
+
+-- Full algebraic coordinate and cancellation.
+#print axioms OmegaBalance.f3Unit_mul
+#print axioms OmegaBalance.f3Unit_sub_one_ne_zero
+#print axioms OmegaBalance.f3Unit_depth
+#print axioms OmegaBalance.v3Int_mul
+#print axioms OmegaBalance.v3Int_three_pow
+#print axioms OmegaBalance.f3_same_level_cancellation
+#print axioms OmegaBalance.f3_same_level_rises_iff
+#print axioms OmegaBalance.f3_eq_one_iff_order_nine
+#print axioms OmegaBalance.f3_eq_one_iff_maximal_order_tower
+
+-- Exact finite foundations, not an infinite correlation assertion.
+#print axioms OmegaBalance.sum_initial_indicator
+#print axioms OmegaBalance.v3Trunc_eq_min
+#print axioms OmegaBalance.v3Trunc_zero
+#print axioms OmegaBalance.v3Trunc_translate
+#print axioms OmegaBalance.f3Trunc_periodic
+#print axioms OmegaBalance.f3Trunc_eq_clipped
+#print axioms OmegaBalance.f3Trunc_eq_f3
+#print axioms OmegaBalance.f3_sum_range
+
+-- Kernel regressions and a universal impossibility theorem.
+#print axioms OmegaBalance.f3_eleven
+#print axioms OmegaBalance.f3_thirty_five
+#print axioms OmegaBalance.f3_seventy_seven
+#print axioms OmegaBalance.f3_no_scalar_mul_rule
+#print axioms OmegaBalance.f3_general_power_example
+#print axioms OmegaBalance.f3_order_five_example
+#print axioms OmegaBalance.f3_twin_order_example
+#print axioms OmegaBalance.f3_primitive_five_example
+#print axioms OmegaBalance.f3_one_eighty_one
+#print axioms OmegaBalance.f3_refined_gap_boundary_example
+#print axioms OmegaBalance.f3_sum_product_branch_example
+#print axioms OmegaBalance.f3_star_rational_example
+#print axioms OmegaBalance.f3_star_integer_example
+#print axioms OmegaBalance.f3_cutoff_zero_boundary
+#print axioms OmegaBalance.f3_telescoping_example

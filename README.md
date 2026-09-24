@@ -98,3 +98,21 @@ python3 scripts/verify.py
 关系为 **OBG-3 ⇒ OBG-2 ⇒ OBG-1**。一亿以内共发现 **3,088** 个不可表示偶数，最大为 **518,596**；这不是对一亿以外无例外的证明。原始“覆盖全体偶数”版本已被 $100$ 等反例否定，不列为开放猜想。
 
 [猜想档案、反例与验算范围](docs/conjectures/omega_balanced_goldbach.md)收录完整量词、计算证据及复现方法；这些内容均与 Lean 定理地图分开维护。
+
+## F₃ 深层推论：形式化代码地图
+
+完整前提、依赖与尚未形式化的分析结论见 [深层推论覆盖说明](docs/f3_deeper_formalization.md)。保持原有 API，并新增以下模块：
+
+| 模块 | 内容 |
+|---|---|
+| [F3Powers](OmegaBalance/F3Powers.lean) | 任意正指数的完整幂公式，复用 mathlib 提升指数定理 |
+| [F3Order](OmegaBalance/F3Order.lean)、[F3Primitive](OmegaBalance/F3Primitive.lean) | 实际 `ZMod` 乘法阶塔、孪生阶比、F₃=1 的最大阶／原根判据 |
+| [F3SumProduct](OmegaBalance/F3SumProduct.lean) | 和积层级二分、孪生乘积加倍、附加乘积条件下的加强间距 |
+| [F3Coordinates](OmegaBalance/F3Coordinates.lean) | 正规化单位坐标、同层抵消的精确多项式、首次升层判据 |
+| [F3Rational](OmegaBalance/F3Rational.lean) | 有理数延拓、Cayley 共轭、星运算严格可加及结合律 |
+| [F3Finite](OmegaBalance/F3Finite.lean) | 有限整除层展开、精确周期与望远镜求和 |
+| [F3DeeperExamples](OmegaBalance/F3DeeperExamples.lean) | 新的内核回归证明及标量乘法规则不可能性定理 |
+
+`python3 scripts/verify.py` 现在也检查第三组 Lean 回归模块和 [公理审计覆盖](scripts/check_audit_coverage.py)：每条项目 theorem/lemma 必须登记一次。
+
+**尚未完成 Lean 证明：** 三进对数坐标的分析性质、限制素数乘子的渐近升层密度、完整无限相关核及均方近似周期。相关核目前仅有有限截断基础，不把纸面或 Python 结论当成内核已证定理。
