@@ -195,6 +195,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.card_filter_range_modEq_pow_three
 #print axioms OmegaBalance.modPairCount_eq_of_le
 #print axioms OmegaBalance.modPairCount_eq
+#print axioms OmegaBalance.shiftResidue_add
+#print axioms OmegaBalance.shiftResidue_add_modEq
+#print axioms OmegaBalance.modEq_shiftResidue_iff_of_dvd
+#print axioms OmegaBalance.modShiftPairCount_eq_modPairCount
+#print axioms OmegaBalance.modShiftPairCount_eq
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
