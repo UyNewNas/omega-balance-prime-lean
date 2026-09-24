@@ -12,6 +12,7 @@ import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.FactorSum
 import OmegaBalance.FactorSumArithmetic
+import OmegaBalance.FactorSumParity
 import OmegaBalance.FactorSumFamily
 import OmegaBalance.FactorSumStructure
 import OmegaBalance.FactorSumFive
