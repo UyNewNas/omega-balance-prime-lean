@@ -27,7 +27,10 @@ theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
   have hcount' :
       (((Finset.Ioc 0 N).filter fun m => m ≡ 0 [MOD 3 ^ a]).card : ℤ) =
         ((N / 3 ^ a : ℕ) : ℤ) := by
-    simpa [Rat.floor_natCast_div_natCast] using hcount
+    rw [Rat.floor_natCast_div_natCast] at hcount
+    have hnonneg : (0 : ℤ) ≤ ((N / 3 ^ a : ℕ) : ℤ) := by positivity
+    rw [max_eq_left hnonneg] at hcount
+    exact hcount
   exact_mod_cast hcount'
 
 /-- The `t`-th excess layer occurs exactly at the positive multiples of
@@ -98,7 +101,6 @@ theorem odd_weighted_floor_sum_le (R N T : ℕ) :
         norm_cast
       rw [hcast, show R + t + 1 = R + (t + 1) by omega, pow_add]
       field_simp
-      ring
     _ ≤ ((N : ℝ) / (3 : ℝ) ^ R) * 1 :=
       mul_le_mul_of_nonneg_left (odd_geometric_partial_sum_le_one T) (by positivity)
     _ = (N : ℝ) / (3 : ℝ) ^ R := by ring
