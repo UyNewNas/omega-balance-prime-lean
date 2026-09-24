@@ -27,10 +27,10 @@ theorem prime_672626441909 : Nat.Prime 672626441909 := by
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
     rcases hq with rfl | rfl | rfl | rfl <;> norm_num
-  · norm_num
+  · reduce_mod_char
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
-    rcases hq with rfl | rfl | rfl | rfl <;> norm_num
+    rcases hq with rfl | rfl | rfl | rfl <;> reduce_mod_char
 
 theorem prime_672625902031 : Nat.Prime 672625902031 := by
   apply lucasPrime_of_factorList 672625902031 6 [2, 3, 5, 83059, 269939]
