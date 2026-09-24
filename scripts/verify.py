@@ -34,13 +34,15 @@ def main() -> int:
     try:
         run([sys.executable, "scripts/check_sources.py"])
         run(["lake", "build"], "build.log")
-        run(["lake", "build", "OmegaBalance.Examples"], "examples.log")
+        run(["lake", "build", "OmegaBalance.Examples", "OmegaBalance.F3Examples"], "examples.log")
         run(["lake", "env", "lean", "scripts/Audit.lean"], "axioms.log")
         run([sys.executable, "scripts/check_axioms.py", "axioms.log"])
+        run([sys.executable, "scripts/f3_corollaries_verify.py", "--limit", "10000000"], "f3.log")
+        run([sys.executable, "scripts/test_f3_corollaries.py"], "f3-boundaries.log")
     except (OSError, subprocess.CalledProcessError) as exc:
         print(f"Verification FAILED: {exc}", file=sys.stderr)
         return 1
-    print("Verification PASS: library, regression proofs, source guard, and axiom audit.")
+    print("Verification PASS: library, regression proofs, source guard, axiom audit, and finite F3 checks.")
     return 0
 
 

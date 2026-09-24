@@ -1,5 +1,6 @@
 import OmegaBalance
 import OmegaBalance.Examples
+import OmegaBalance.F3Examples
 
 #print axioms OmegaBalance.bigOmega_zero
 #print axioms OmegaBalance.bigOmega_one
@@ -79,3 +80,47 @@ import OmegaBalance.Examples
 #print axioms OmegaBalance.v3_pos_iff_dvd
 #print axioms OmegaBalance.v3_mul
 #print axioms OmegaBalance.v3_pow_three
+
+#print axioms OmegaBalance.v3Int_nat
+#print axioms OmegaBalance.v3Int_neg
+#print axioms OmegaBalance.f3Int_nat
+#print axioms OmegaBalance.f3Int_neg
+#print axioms OmegaBalance.f3Int_neg_nat
+#print axioms OmegaBalance.f3_of_mod_three_zero
+#print axioms OmegaBalance.f3_eq_zero_iff_three_dvd
+#print axioms OmegaBalance.f3_ne_zero_of_not_dvd
+#print axioms OmegaBalance.f3_abs_eq_neighbor_sum
+#print axioms OmegaBalance.f3_abs_eq_v3_sq_sub_one
+#print axioms OmegaBalance.f3_sq
+#print axioms OmegaBalance.v3_eq_one_of_mod_nine
+#print axioms OmegaBalance.v3_quad_plus_one
+#print axioms OmegaBalance.v3_quad_minus_one
+#print axioms OmegaBalance.f3_cube_of_mod_three_one
+#print axioms OmegaBalance.f3_cube_of_mod_three_two
+#print axioms OmegaBalance.f3_cube
+
+#print axioms OmegaBalance.f3Side_values
+#print axioms OmegaBalance.f3_eq_side_mul_natAbs
+#print axioms OmegaBalance.f3_center_pos
+#print axioms OmegaBalance.f3_center_valuation
+#print axioms OmegaBalance.v3Int_eq_padicValRat
+#print axioms OmegaBalance.v3Int_add_ge_min
+#print axioms OmegaBalance.v3Int_add_eq_min
+#print axioms OmegaBalance.v3Int_sub_eq_min
+#print axioms OmegaBalance.f3_adjusted_gap_valuation
+#print axioms OmegaBalance.f3_reflection
+#print axioms OmegaBalance.f3Side_mul
+#print axioms OmegaBalance.f3_iterated_cube_pos
+#print axioms OmegaBalance.f3_iterated_cube_neg
+#print axioms OmegaBalance.v3_add_ge_min
+#print axioms OmegaBalance.v3_add_eq_min
+#print axioms OmegaBalance.f3_mul_depth
+
+#print axioms OmegaBalance.f3Int_negative_five_example
+#print axioms OmegaBalance.f3_square_five_example
+#print axioms OmegaBalance.f3_cube_five_example
+#print axioms OmegaBalance.f3_cube_seven_example
+#print axioms OmegaBalance.f3_reflection_nine_example
+#print axioms OmegaBalance.f3_multiply_unequal_example
+#print axioms OmegaBalance.f3_iterated_cube_five_example
+#print axioms OmegaBalance.f3_reflection_strict_boundary_example

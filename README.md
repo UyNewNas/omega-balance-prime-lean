@@ -60,3 +60,25 @@ $$
 | 例外孪生对 $(3,5)$ | $F_3(3)=0$，$F_3(5)=1$，不满足精确反号；主定理的 $p>3$ 前提不能删除 | [`f3_three`](OmegaBalance/Examples.lean)、[`f3_five`](OmegaBalance/Examples.lean)、[`exceptional_twin_three`](OmegaBalance/Examples.lean) |
 | 精确反号不是孪生的充分条件 | 素数 $5,13$ 的 $F_3$ 值为非零相反数，但两者不构成孪生对 | [`opposite_f3_not_sufficient_for_twins`](OmegaBalance/Examples.lean) |
 | $F_3$ 对称性不能移植到完整 Ω 差分 | 孪生对 $(5,7)$ 满足 $F_\Omega(5)=0$、$F_\Omega(7)=1$ | [`omegaDiff_twin_five_seven`](OmegaBalance/Examples.lean) |
+
+## F₃ 的整数延拓与运算定理
+
+新增 `f3Int : ℤ → ℤ`，保留原 `f3 : ℕ → ℤ`。以下结果不需要素数身份；具体非零及互素条件显式写在源码中。完整数学推导见 [F₃ 整数延拓说明](docs/f3_extension.md)。
+
+| 内容 | 数学结论与范围 | Lean 接口 |
+|---|---|---|
+| 整数兼容与奇函数 | $n\ge1$ 时 `f3Int n = f3 n`；所有整数满足 `f3Int (-z) = -f3Int z` | [`f3Int_nat`、`f3Int_neg`](OmegaBalance/F3Extension.lean) |
+| 零点分类 | $n>1$ 时，$F_3(n)=0\iff3\mid n$ | [`f3_eq_zero_iff_three_dvd`](OmegaBalance/F3Extension.lean) |
+| 平方 | $n>1,3\nmid n$ 时，$F_3(n^2)=-\lvert F_3(n)\rvert$ | [`f3_sq`](OmegaBalance/F3Extension.lean) |
+| 立方与迭代立方 | 符号不变，每次立方使层级增加 1；前提 $n>1,3\nmid n$ | [`f3_cube`](OmegaBalance/F3Extension.lean)、[`f3_iterated_cube_pos`、`f3_iterated_cube_neg`](OmegaBalance/F3Arithmetic.lean) |
+| 乘法 | $m,n>1,3\nmid mn$ 时，层级至少是两输入的较小者；异层时恰取较小者，符号也有精确规则 | [`f3_mul_depth`、`f3Side_mul`](OmegaBalance/F3Arithmetic.lean) |
+| 修正间距 | 输入层级不同时，修正间距的赋值恰为较小层级；在整数中计算，不截断负差 | [`f3_adjusted_gap_valuation`](OmegaBalance/F3Arithmetic.lean) |
+| 固定和反射 | $a,b>1,3\nmid a,3\mid a+b$ 且 $\lvert F_3(a)\rvert<v_3(a+b)$ 时，$F_3(b)=-F_3(a)$；总和可为奇数 | [`f3_reflection`](OmegaBalance/F3Arithmetic.lean) |
+
+本轮另有 [8 条内核回归证明](OmegaBalance/F3Examples.lean)，以及 [千万以内计算报告](reports/f3_corollaries_1e7.txt)：144,240 项有限检查与 11 组边界测试。有限检查不代替 Lean 证明；等差数列素数密度与连续素数同值段只在文档中引用外部定理，没有添加为 Lean 公理。
+
+复现完整检查（先安装固定工具链并获取依赖）：
+
+```sh
+python3 scripts/verify.py
+```
