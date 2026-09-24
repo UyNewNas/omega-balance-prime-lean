@@ -63,6 +63,7 @@ theorem sumBalancedPrime_half_mem {X p : ℕ}
     subst p
     exact two_not_sumBalancedPrime hpb
   rcases hpb with ⟨hpp, hbal⟩
+  have hp2 : 2 ≤ p := hpp.two_le
   have hpgt2 : 2 < p := by omega
   have hodd : p % 2 = 1 := prime_mod_two_eq_one hpp hpgt2
   have hhalf := (primeFactorSumBalanced_iff_half (by omega) hodd).mp hbal
@@ -88,13 +89,18 @@ theorem sumBalancedPrime_half_injOn (X : ℕ) :
     intro hq2
     subst q
     exact two_not_sumBalancedPrime hq'.2
+  have hp2 : 2 ≤ p := hp'.2.1.two_le
+  have hq2 : 2 ≤ q := hq'.2.1.two_le
   have hpgt2 : 2 < p := by omega
   have hqgt2 : 2 < q := by omega
   have hpodd : p % 2 = 1 := prime_mod_two_eq_one hp'.2.1 hpgt2
   have hqodd : q % 2 = 1 := prime_mod_two_eq_one hq'.2.1 hqgt2
   have hpform : 2 * ((p - 1) / 2) + 1 = p := by omega
   have hqform : 2 * ((q - 1) / 2) + 1 = q := by omega
-  omega
+  calc
+    p = 2 * ((p - 1) / 2) + 1 := hpform.symm
+    _ = 2 * ((q - 1) / 2) + 1 := by rw [heq]
+    _ = q := hqform
 
 /-- Elementary finite transfer: balanced prime centres inject into Ruth--Aaron
 indices by `p ↦ (p-1)/2`. -/
