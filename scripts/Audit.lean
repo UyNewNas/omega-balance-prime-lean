@@ -208,6 +208,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.modShiftPairCount_pos_neg_eq
 #print axioms OmegaBalance.modShiftPairCount_neg_pos_eq
 #print axioms OmegaBalance.modShiftPairCount_neg_neg_eq
+#print axioms OmegaBalance.f3LayerCorrelation_eq
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
