@@ -1,6 +1,7 @@
 import OmegaBalance.FactorSumFamily
 import Mathlib.Data.List.Prime
 import Mathlib.NumberTheory.LucasPrimality
+import Mathlib.Tactic.ReduceModChar
 
 namespace OmegaBalance
 
