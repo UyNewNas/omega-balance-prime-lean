@@ -26,6 +26,12 @@ theorem sumFamily_B_eq_A_add_one (t : ℕ) :
   simp only [sumFamilyA, sumFamilyB, sumFamilyU, sumFamilyV]
   ring
 
+/-- The inverse-construction denominator is exactly one, in signed arithmetic. -/
+theorem sumFamily_B_sub_A_eq_one (t : ℕ) :
+    (sumFamilyB t : ℤ) - sumFamilyA t = 1 := by
+  have h := sumFamily_B_eq_A_add_one t
+  omega
+
 theorem sumFamily_Q_inverse (t : ℕ) :
     sumFamilyQ t = 1 + sumFamilyB t * sumFamilyD t := by
   simp only [sumFamilyQ, sumFamilyB, sumFamilyV, sumFamilyD]

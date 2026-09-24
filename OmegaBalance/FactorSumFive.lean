@@ -127,6 +127,36 @@ theorem doubleBalanced_five_shape_iff {p : ℕ} (hp : p.Prime) :
     IsDoubleBalancedPrime p 5 ↔ HasDoubleFiveShape p :=
   ⟨doubleBalanced_five_has_shape, doubleBalanced_five_of_shape hp⟩
 
+/-- The oriented level-five shape gives the signed gap `±1`. -/
+theorem doubleBalanced_five_signed_gap {p : ℕ} (h : IsDoubleBalancedPrime p 5) :
+    ∃ b c d r s : ℕ,
+      (∀ z ∈ [b, c, d, r, s], z.Prime ∧ z % 2 = 1) ∧
+      r + s + 1 = b + c + d ∧
+      (4 * (r : ℤ) * s - 3 * (b : ℤ) * c * d = 1 ∨
+       4 * (r : ℤ) * s - 3 * (b : ℤ) * c * d = -1) := by
+  obtain ⟨b, c, d, r, s, hz, he, hsum⟩ := doubleBalanced_five_has_shape h
+  refine ⟨b, c, d, r, s, hz, hsum, ?_⟩
+  have hp2 := h.1.two_le
+  rcases he with ⟨hl, hr⟩ | ⟨hr, hl⟩
+  · left
+    have hnat : 8 * r * s = 6 * b * c * d + 2 := by omega
+    have hint : (8 : ℤ) * r * s = 6 * b * c * d + 2 := by exact_mod_cast hnat
+    nlinarith
+  · right
+    have hnat : 6 * b * c * d = 8 * r * s + 2 := by omega
+    have hint : (6 : ℤ) * b * c * d = 8 * r * s + 2 := by exact_mod_cast hnat
+    nlinarith
+
+/-- Absolute-value form of the exact level-five neighbor gap. -/
+theorem doubleBalanced_five_gap_natAbs {p : ℕ} (h : IsDoubleBalancedPrime p 5) :
+    ∃ b c d r s : ℕ,
+      (∀ z ∈ [b, c, d, r, s], z.Prime ∧ z % 2 = 1) ∧
+      r + s + 1 = b + c + d ∧
+      Int.natAbs (4 * (r : ℤ) * s - 3 * (b : ℤ) * c * d) = 1 := by
+  obtain ⟨b, c, d, r, s, hz, hsum, hgap⟩ := doubleBalanced_five_signed_gap h
+  refine ⟨b, c, d, r, s, hz, hsum, ?_⟩
+  rcases hgap with hgap | hgap <;> rw [hgap] <;> norm_num
+
 theorem doubleBalanced_five_mod_forty_eight {p : ℕ}
     (h : IsDoubleBalancedPrime p 5) : p % 48 = 7 ∨ p % 48 = 41 :=
   doubleFiveShape_mod_forty_eight h.1.one_lt (doubleBalanced_five_has_shape h)

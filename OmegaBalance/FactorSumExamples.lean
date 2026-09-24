@@ -28,6 +28,29 @@ theorem doubleBalanced_870404071 : IsDoubleBalancedPrime 870404071 5 := by
   simp only [List.mem_cons, List.not_mem_nil, or_false] at hz
   rcases hz with rfl | rfl | rfl | rfl | rfl <;> norm_num
 
+/-- Exact kernel-checked factor-sum and Ω profile of the level-five witness. -/
+theorem doubleBalanced_870404071_profile :
+    primeFactorSum (870404071 - 1) = 20936 ∧
+    primeFactorSum (870404071 + 1) = 20936 ∧
+    bigOmega (870404071 - 1) = 5 ∧
+    bigOmega (870404071 + 1) = 5 := by
+  have hLpr : ∀ z ∈ [2, 3, 5, 1493, 19433], z.Prime := by
+    intro z hz
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hz
+    rcases hz with rfl | rfl | rfl | rfl | rfl <;> norm_num
+  have hRpr : ∀ z ∈ [2, 2, 2, 9619, 11311], z.Prime := by
+    intro z hz
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hz
+    rcases hz with rfl | rfl | rfl | rfl | rfl <;> norm_num
+  have hLe : [2, 3, 5, 1493, 19433].prod = 870404071 - 1 := by norm_num
+  have hRe : [2, 2, 2, 9619, 11311].prod = 870404071 + 1 := by norm_num
+  have hLS := primeFactorSum_of_factors hLe hLpr
+  have hRS := primeFactorSum_of_factors hRe hRpr
+  have hLO := bigOmega_of_factors hLe hLpr
+  have hRO := bigOmega_of_factors hRe hRpr
+  norm_num at hLS hRS hLO hRO
+  exact ⟨hLS, hRS, hLO, hRO⟩
+
 theorem doubleBalanced_748465063 : IsDoubleBalancedPrime 748465063 5 := by
   apply doubleBalanced_five_of_shape (by norm_num)
   refine ⟨19, 269, 24407, 4673, 20021, ?_, Or.inl ⟨by norm_num, by norm_num⟩, by norm_num⟩
