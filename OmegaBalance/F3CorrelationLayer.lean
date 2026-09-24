@@ -32,20 +32,6 @@ theorem f3LayerCorrelation_eq {R j k h : ℕ} (hjR : j ≤ R) (hkR : k ≤ R) :
     modShiftPairCount_pos_neg_eq hjR hkR,
     modShiftPairCount_neg_pos_eq hjR hkR,
     modShiftPairCount_neg_neg_eq hjR hkR]
-  by_cases h0 : h ≡ 0 [MOD 3 ^ min j k]
-  · by_cases hm : h ≡ 2 [MOD 3 ^ min j k]
-    · by_cases hp : h + 2 ≡ 0 [MOD 3 ^ min j k]
-      · simp [h0, hm, hp]
-      · simp [h0, hm, hp]
-    · by_cases hp : h + 2 ≡ 0 [MOD 3 ^ min j k]
-      · simp [h0, hm, hp]
-      · simp [h0, hm, hp]
-  · by_cases hm : h ≡ 2 [MOD 3 ^ min j k]
-    · by_cases hp : h + 2 ≡ 0 [MOD 3 ^ min j k]
-      · simp [h0, hm, hp]
-      · simp [h0, hm, hp]
-    · by_cases hp : h + 2 ≡ 0 [MOD 3 ^ min j k]
-      · simp [h0, hm, hp]
-      · simp [h0, hm, hp]
+  split_ifs <;> ring
 
 end OmegaBalance
