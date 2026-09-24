@@ -95,6 +95,7 @@ theorem sumBalancedPrime_half_injOn (X : ℕ) :
   have hqgt2 : 2 < q := by omega
   have hpodd : p % 2 = 1 := prime_mod_two_eq_one hp'.2.1 hpgt2
   have hqodd : q % 2 = 1 := prime_mod_two_eq_one hq'.2.1 hqgt2
+  change (p - 1) / 2 = (q - 1) / 2 at heq
   have hpform : 2 * ((p - 1) / 2) + 1 = p := by omega
   have hqform : 2 * ((q - 1) / 2) + 1 = q := by omega
   calc
