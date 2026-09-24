@@ -191,6 +191,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3Trunc_eq_f3
 #print axioms OmegaBalance.f3_sum_range
 
+-- Exact complete-period residue overlap counts for the correlation calculation.
+#print axioms OmegaBalance.card_filter_range_modEq_pow_three
+#print axioms OmegaBalance.modPairCount_eq_of_le
+#print axioms OmegaBalance.modPairCount_eq
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
