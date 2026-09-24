@@ -5,13 +5,13 @@ import OmegaBalance.F3CorrelationPeriod
 
 The explicit complete-period formula depends on a double sum whose summand only
 sees `min (j+1) (k+1)` through a depth cutoff and `max (j+1) (k+1)` through a
-power of three.  This module isolates that finite combinatorics.  It does not
+power of three. This module isolates that finite combinatorics. It does not
 assert an infinite limit.
 -/
 
 namespace OmegaBalance
 
-/-- Generic depth-cutoff weight for the complete-period correlation.  The
+/-- Generic depth-cutoff weight for the complete-period correlation. The
 layers are numbered `1,...,R`; `d` is the number of compatible retained
 layers. -/
 def f3CorrelationWeight (R d : ℕ) : ℤ :=
@@ -29,8 +29,10 @@ private theorem f3CorrelationWeight_old_term {R d j k : ℕ}
   have hs : (R + 1) - max (j + 1) (k + 1) =
       (R - max (j + 1) (k + 1)) + 1 := by omega
   by_cases h : min (j + 1) (k + 1) ≤ d
-  · simp [h, hs, pow_succ, mul_comm]
-  · simp [h]
+  · rw [if_pos h, if_pos h, hs, pow_succ]
+    ring
+  · rw [if_neg h, if_neg h]
+    ring
 
 private theorem f3CorrelationWeight_boundary_sum (R d : ℕ) :
     (∑ j ∈ Finset.range R,
@@ -80,7 +82,12 @@ theorem f3CorrelationWeight_succ (R d : ℕ) :
     f3CorrelationWeight (R + 1) d =
       3 * f3CorrelationWeight R d + 2 * (min R d : ℕ) +
         (if R + 1 ≤ d then 1 else 0) := by
-  unfold f3CorrelationWeight
+  change
+    (∑ j ∈ Finset.range (R + 1), ∑ k ∈ Finset.range (R + 1),
+      if min (j + 1) (k + 1) ≤ d then
+        (3 : ℤ) ^ ((R + 1) - max (j + 1) (k + 1)) else 0) =
+      3 * f3CorrelationWeight R d + 2 * (min R d : ℕ) +
+        (if R + 1 ≤ d then 1 else 0)
   rw [Finset.sum_range_succ]
   have hleft :
       (∑ j ∈ Finset.range R, ∑ k ∈ Finset.range (R + 1),
@@ -119,7 +126,7 @@ theorem f3CorrelationWeight_succ (R d : ℕ) :
   rw [hcorner]
   ring
 
-/-- Closed finite geometric formula for the depth-cutoff weight.  The final
+/-- Closed finite geometric formula for the depth-cutoff weight. The final
 `- min R d` is the finite-period boundary correction; after division by
 `3^R` it disappears as `R → ∞` for fixed depth. -/
 theorem f3CorrelationWeight_eq (R d : ℕ) :
@@ -128,7 +135,7 @@ theorem f3CorrelationWeight_eq (R d : ℕ) :
   induction R with
   | zero => simp [f3CorrelationWeight]
   | succ R ih =>
-      rw [show Nat.succ R = R + 1 by omega, f3CorrelationWeight_succ, ih]
+      rw [f3CorrelationWeight_succ, ih]
       by_cases hd : d ≤ R
       · have hminR : min R d = d := min_eq_right hd
         have hminS : min (R + 1) d = d := min_eq_right (by omega)
