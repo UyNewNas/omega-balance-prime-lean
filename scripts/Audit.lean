@@ -207,3 +207,24 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_star_integer_example
 #print axioms OmegaBalance.f3_cutoff_zero_boundary
 #print axioms OmegaBalance.f3_telescoping_example
+
+-- Exact-level infinitude from the pinned, proved Dirichlet theorem.
+#print axioms OmegaBalance.f3_pos_residue_coprime
+#print axioms OmegaBalance.f3_neg_residue_coprime
+#print axioms OmegaBalance.f3_pos_of_modEq_level
+#print axioms OmegaBalance.f3_neg_of_modEq_level
+#print axioms OmegaBalance.exists_prime_gt_f3_pos
+#print axioms OmegaBalance.exists_prime_gt_f3_neg
+#print axioms OmegaBalance.f3_prime_level_pos_infinite
+#print axioms OmegaBalance.f3_prime_level_neg_infinite
+#print axioms OmegaBalance.f3_prime_level_infinite
+#print axioms OmegaBalance.f3_prime_zero_level_empty
+#print axioms OmegaBalance.exists_ordered_prime_opposite_levels
+
+-- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
+#print axioms OmegaBalance.f3_crossing_after_prime
+#print axioms OmegaBalance.exists_consecutive_primes_f3_pos_neg
+#print axioms OmegaBalance.exists_consecutive_primes_f3_neg_pos
+#print axioms OmegaBalance.f3_consecutive_pos_neg_infinite
+#print axioms OmegaBalance.f3_consecutive_neg_pos_infinite
+#print axioms OmegaBalance.f3_consecutive_sign_changes_infinite
