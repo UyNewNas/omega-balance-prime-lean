@@ -90,13 +90,34 @@ theorem three_dvd_adjacent_prime_sum {u v p : ℕ} (hp : p.Prime) (h3 : 3 < p)
   by_contra! hn
   have hu : u % 3 ≠ 0 := fun hh => hn.1 (Nat.dvd_iff_mod_eq_zero.mpr hh)
   have hv : v % 3 ≠ 0 := fun hh => hn.2 (Nat.dvd_iff_mod_eq_zero.mpr hh)
+  have hu_lt : u % 3 < 3 := Nat.mod_lt _ (by norm_num)
+  have hv_lt : v % 3 < 3 := Nat.mod_lt _ (by norm_num)
+  have hu_cases : u % 3 = 1 ∨ u % 3 = 2 := by omega
+  have hv_cases : v % 3 = 1 ∨ v % 3 = 2 := by omega
   have huv : u % 3 + v % 3 = 3 := by
-    rcases hadj with hadd | hadd
-    all_goals
-      have heq := congrArg (fun z : ℕ => z % 3) hadd
-      simp only [Nat.add_mod] at heq
-      omega
-  have hm : p % 3 = 0 := by rw [hep, Nat.add_mod, huv]; norm_num
+    rcases hu_cases with hu1 | hu2 <;> rcases hv_cases with hv1 | hv2
+    · exfalso
+      rcases hadj with hadd | hadd
+      · have heq := congrArg (fun z : ℕ => z % 3) hadd
+        rw [Nat.add_mod] at heq
+        norm_num [hu1, hv1] at heq
+      · have heq := congrArg (fun z : ℕ => z % 3) hadd
+        rw [Nat.add_mod] at heq
+        norm_num [hu1, hv1] at heq
+    · omega
+    · omega
+    · exfalso
+      rcases hadj with hadd | hadd
+      · have heq := congrArg (fun z : ℕ => z % 3) hadd
+        rw [Nat.add_mod] at heq
+        norm_num [hu2, hv2] at heq
+      · have heq := congrArg (fun z : ℕ => z % 3) hadd
+        rw [Nat.add_mod] at heq
+        norm_num [hu2, hv2] at heq
+  have hm : p % 3 = 0 := by
+    calc
+      p % 3 = (u % 3 + v % 3) % 3 := by rw [hep, Nat.add_mod]
+      _ = 0 := by rw [huv]; norm_num
   exact not_three_dvd_prime hp h3 (Nat.dvd_iff_mod_eq_zero.mpr hm)
 
 theorem adjacent_not_common_dvd {u v q : ℕ} (hq : 1 < q)
