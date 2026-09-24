@@ -158,9 +158,9 @@ theorem sumFamily_prime_admissible {ell : ℕ} (hell : ell.Prime) :
   by_cases hsmall : ell = 2 ∨ ell = 3 ∨ ell = 5 ∨ ell = 7
   · exact sumFamily_small_prime_admissible hsmall
   · have hell11 : 11 ≤ ell := by
-      by_contra hlt
-      have hell_lt : ell < 11 := by omega
-      interval_cases ell <;> norm_num at hell hsmall
+      have h2 := hell.two_le
+      have hcases : ell = 2 ∨ ell = 3 ∨ ell = 5 ∨ ell = 7 ∨ 11 ≤ ell := by omega
+      exact hcases.resolve_left hsmall
     exact sumFamily_large_prime_admissible hell hell11
 
 end OmegaBalance
