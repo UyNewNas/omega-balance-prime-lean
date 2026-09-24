@@ -29,26 +29,40 @@ theorem f3PeriodicCorrelationCesaroAverage_eq (R h N : ℕ) (hN : 0 < N) :
       f3PeriodicCorrelationAverage R h *
           (1 - ((N % 3 ^ R : ℕ) : ℝ) / (N : ℝ)) +
         (f3PeriodicCorrelationPartialSum R h (N % 3 ^ R) : ℝ) / (N : ℝ) := by
-  rw [f3PeriodicCorrelationCesaroAverage,
-    f3PeriodicCorrelationPartialSum_eq_div_mod,
-    f3PeriodicCorrelationAverage]
-  push_cast
-  have hP : (0 : ℝ) < ((3 : ℕ) ^ R : ℝ) := by positivity
-  have hNr : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
-  have hdecompNat :
-      N / 3 ^ R * 3 ^ R + N % 3 ^ R = N := by
+  let P : ℕ := 3 ^ R
+  let q : ℕ := N / P
+  let r : ℕ := N % P
+  have hsumZ := f3PeriodicCorrelationPartialSum_eq_div_mod R h N
+  have hsumR :
+      (f3PeriodicCorrelationPartialSum R h N : ℝ) =
+        (q : ℝ) * (f3PeriodicCorrelationSum R h : ℝ) +
+          (f3PeriodicCorrelationPartialSum R h r : ℝ) := by
+    exact_mod_cast hsumZ
+  have hPnat : 0 < P := by simp [P]
+  have hPreal : (0 : ℝ) < (P : ℝ) := by exact_mod_cast hPnat
+  have hNreal : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
+  have hdecompNat : q * P + r = N := by
+    simp only [q, r]
     rw [Nat.mul_comm]
-    exact Nat.div_add_mod N (3 ^ R)
-  have hdecomp :
-      (N : ℝ) = ((N / 3 ^ R : ℕ) : ℝ) * ((3 : ℕ) ^ R : ℝ) +
-        ((N % 3 ^ R : ℕ) : ℝ) := by
+    exact Nat.div_add_mod N P
+  have hdecomp : (N : ℝ) = (q : ℝ) * (P : ℝ) + (r : ℝ) := by
     exact_mod_cast hdecompNat.symm
-  have hminus :
-      (N : ℝ) - ((N % 3 ^ R : ℕ) : ℝ) =
-        ((N / 3 ^ R : ℕ) : ℝ) * ((3 : ℕ) ^ R : ℝ) := by
+  have hminus : (N : ℝ) - (r : ℝ) = (q : ℝ) * (P : ℝ) := by
     linarith [hdecomp]
-  field_simp [ne_of_gt hP, ne_of_gt hNr]
-  rw [hminus]
+  have hq :
+      (q : ℝ) / (N : ℝ) = (1 - (r : ℝ) / (N : ℝ)) / (P : ℝ) := by
+    field_simp [ne_of_gt hPreal, ne_of_gt hNreal]
+    rw [hminus]
+    ring
+  rw [f3PeriodicCorrelationCesaroAverage, hsumR, add_div]
+  change
+    (q : ℝ) * (f3PeriodicCorrelationSum R h : ℝ) / (N : ℝ) +
+        (f3PeriodicCorrelationPartialSum R h r : ℝ) / (N : ℝ) =
+      ((f3PeriodicCorrelationSum R h : ℝ) / (P : ℝ)) *
+          (1 - (r : ℝ) / (N : ℝ)) +
+        (f3PeriodicCorrelationPartialSum R h r : ℝ) / (N : ℝ)
+  rw [show (q : ℝ) * (f3PeriodicCorrelationSum R h : ℝ) / (N : ℝ) =
+      (f3PeriodicCorrelationSum R h : ℝ) * ((q : ℝ) / (N : ℝ)) by ring, hq]
   ring
 
 /-- The bounded terminal block divided by the total length tends to zero. -/
