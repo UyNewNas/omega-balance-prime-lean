@@ -21,9 +21,14 @@ theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
     simp only [Finset.mem_filter, Finset.mem_Icc, Finset.mem_Ioc,
       Nat.modEq_zero_iff_dvd]
     omega
-  rw [hset, Nat.Ioc_filter_modEq_card (a := 0) (b := N) (r := 3 ^ a)
-    (pow_pos (by decide) a) 0]
-  simp [Rat.floor_natCast_div_natCast]
+  rw [hset]
+  have hcount := Nat.Ioc_filter_modEq_card (a := 0) (b := N) (r := 3 ^ a)
+    (pow_pos (by decide) a) 0
+  have hcount' :
+      (((Finset.Ioc 0 N).filter fun m => m ≡ 0 [MOD 3 ^ a]).card : ℤ) =
+        ((N / 3 ^ a : ℕ) : ℤ) := by
+    simpa [Rat.floor_natCast_div_natCast] using hcount
+  exact_mod_cast hcount'
 
 /-- The `t`-th excess layer occurs exactly at the positive multiples of
 `3^(R+t+1)`, hence exactly `N / 3^(R+t+1)` times in `1, ..., N`. -/
