@@ -200,6 +200,14 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.modEq_shiftResidue_iff_of_dvd
 #print axioms OmegaBalance.modShiftPairCount_eq_modPairCount
 #print axioms OmegaBalance.modShiftPairCount_eq
+#print axioms OmegaBalance.modEq_sub_one_add_iff_zero
+#print axioms OmegaBalance.modEq_sub_one_add_iff_two
+#print axioms OmegaBalance.modEq_one_add_sub_one_iff_add_two_zero
+#print axioms OmegaBalance.modEq_one_add_one_iff_zero
+#print axioms OmegaBalance.modShiftPairCount_pos_pos_eq
+#print axioms OmegaBalance.modShiftPairCount_pos_neg_eq
+#print axioms OmegaBalance.modShiftPairCount_neg_pos_eq
+#print axioms OmegaBalance.modShiftPairCount_neg_neg_eq
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
