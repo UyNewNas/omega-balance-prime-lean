@@ -396,3 +396,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumFamilyCenter_scaled_no_root_mod_nineteen
 #print axioms OmegaBalance.sumFamilyPolyCenter_irreducible_rat
 #print axioms OmegaBalance.sumFamily_five_irreducible_rat
+
+-- FactorSumSchinzel.lean: explicit conditional Schinzel-H boundary.
+#print axioms OmegaBalance.sumFamily_infinite_of_schinzelH
+#print axioms OmegaBalance.sumFamily_level_nine_infinite_of_schinzelH
+#print axioms OmegaBalance.sumBalanced_minimum_infinite_level_of_schinzelH
