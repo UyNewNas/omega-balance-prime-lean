@@ -1,132 +1,62 @@
-# Ω-balanced primes in Lean
+# Ω 平衡素数：形式化定理地图
 
-按重数计数的 Ω 平衡素数，以及素数相邻整数的三进赋值差分。
+本仓库形式化了 Ω 平衡判据、素数邻数的赋值差分，以及孪生素数的三进赋值精确反号定理及其推论。
 
-**Ω 不是不计重数的 ω；`omegaDiff` 不是 `f3`。所有差分先转为整数再相减。**
+## 记号
 
-## 定义
+$\Omega(n)$ 表示质因数总个数，**按重数计**；$v_q(n)$ 表示正整数 $n$ 中素因子 $q$ 的指数。对 $n>1$，记
 
-令 Ω(n) 为 `n.primeFactorsList.length`，即质因数总个数（按重数计）。
+$$
+F_\Omega(n)=\Omega(n+1)-\Omega(n-1),\qquad
+T_\Omega(n)=\Omega(n-1)+\Omega(n+1),\qquad
+F_3(n)=v_3(n+1)-v_3(n-1).
+$$
 
-- `IsOmegaBalancedPrime p`：`p` 是素数，且 Ω(p−1) = Ω(p+1)。
-- `omegaDiff p : ℤ`：Ω(p+1) − Ω(p−1)。
-- `omegaSum p : ℕ`：Ω(p−1) + Ω(p+1)。
-- `v3 n : ℕ`：`n.factorization 3`。
-- `f3 p : ℤ`：v₃(p+1) − v₃(p−1)。
+对应 Lean 定义为 `omegaDiff`、`omegaSum`、`f3`；差分均在整数中计算。$T_\Omega$ 是左右质因数**个数**之和，不是质因数本身的求和。Ω 平衡素数指满足 $\Omega(p-1)=\Omega(p+1)$ 的素数 $p$。
 
-`valuation q n` 和 `valuationDiff q n` 提供一般素数 q 的接口。
-`neighborDiff f n` 统一表达各种右减左统计量。
+下表中的定理均位于 `OmegaBalance` 命名空间，链接指向其形式化源码。
 
-## 主定理：孪生素数的精确反号
+## 主定理地图
 
-```lean
-import OmegaBalance
-open OmegaBalance
+| 主定理 | 前提 | 数学结论 | Lean 定理 |
+|---|---|---|---|
+| **孪生素数的精确反号** | $p,p+2$ 均为素数，$p>3$ | $F_3(p+2)=-F_3(p)$，且两者均非零 | [`f3_twin`](OmegaBalance/F3.lean) |
+| **精确反号的同余推广** | $n>1$，$n\equiv2\pmod3$，不要求素数性 | $F_3(n+2)=-F_3(n)$，且两者均非零 | [`f3_opposite_of_mod_three`](OmegaBalance/F3.lean) |
+| **Ω 平衡的零点刻画** | $p\ge2$ | $p$ 为 Ω 平衡素数，当且仅当 $p$ 为素数且 $F_\Omega(p)=0$ | [`isOmegaBalancedPrime_iff`](OmegaBalance/Basic.lean) |
+| **奇数邻项的半整数归约** | $n>1$ 为奇数 | $F_\Omega(n)=\Omega((n+1)/2)-\Omega((n-1)/2)$；左右平衡等价于这两个相邻整数的 Ω 相等 | [`omegaDiff_eq_half_diff`](OmegaBalance/Basic.lean)、[`isOmegaBalanced_iff_half`](OmegaBalance/Basic.lean) |
+| **邻项总计数的乘积公式** | $n>1$ | $T_\Omega(n)=\Omega((n-1)(n+1))=\Omega(n^2-1)$ | [`omegaSum_eq_bigOmega_product`](OmegaBalance/Basic.lean)、[`omegaSum_eq_bigOmega_sq_sub_one`](OmegaBalance/Basic.lean) |
 
-example {p : ℕ} (hp : p.Prime) (hq : (p + 2).Prime) (h3 : 3 < p) :
-    f3 (p + 2) = -f3 p ∧ f3 p ≠ 0 ∧ f3 (p + 2) ≠ 0 :=
-  f3_twin hp hq h3
-```
+## 孪生素数及三进赋值的推论
 
-不只是变号，还有：
+下表前五行均假设 $p,p+2$ 为素数且 $p>3$；最后两行只要求 $p>3$ 为素数。
 
-```math
-F_3(p)=v_3(p+1)>0,\qquad F_3(p+2)=-v_3(p+1)<0.
-```
+| 推论 | 数学结论 | Lean 定理 |
+|---|---|---|
+| 共享邻数给出精确幅度 | $F_3(p)=v_3(p+1)>0$，$F_3(p+2)=-v_3(p+1)$ | [`f3_twin_values`](OmegaBalance/F3.lean) |
+| 符号方向固定 | $F_3(p)>0$，$F_3(p+2)<0$ | [`f3_twin_signs`](OmegaBalance/F3.lean) |
+| 绝对值相等 | $\lvert F_3(p+2)\rvert=\lvert F_3(p)\rvert$ | [`f3_twin_abs_eq`](OmegaBalance/F3.lean)、[`f3_twin_natAbs_eq`](OmegaBalance/F3.lean) |
+| 乘积严格为负 | $F_3(p)F_3(p+2)<0$ | [`f3_twin_mul_neg`](OmegaBalance/F3.lean) |
+| 孪生对的模六结构 | $p\equiv5\pmod6$，$6\mid p+1$；存在 $k>0$ 使 $p=6k-1$、$p+2=6k+1$ | [`twin_mod_six`](OmegaBalance/F3.lean)、[`six_dvd_twin_center`](OmegaBalance/F3.lean)、[`twin_six_mul_form`](OmegaBalance/F3.lean) |
+| 所有大于三的素数均非零 | $F_3(p)\ne0$ | [`f3_ne_zero_of_prime`](OmegaBalance/F3.lean) |
+| 符号由模三余数刻画 | $F_3(p)>0\iff p\equiv2\pmod3$；$F_3(p)<0\iff p\equiv1\pmod3$ | [`f3_pos_iff_mod_three`](OmegaBalance/F3.lean)、[`f3_neg_iff_mod_three`](OmegaBalance/F3.lean) |
 
-因此绝对值相等，乘积严格小于零。接口分别是
-`f3_twin_values`、`f3_twin_signs`、`f3_twin_abs_eq` 和 `f3_twin_mul_neg`。
+## Ω 平衡与赋值的相关结论
 
-证明先用素数性得到 p ≡ 2 (mod 3)，再证明两个外侧邻数不被 3 整除、
-共享的中间邻数被 3 整除。更强的算术核心 `f3_opposite_of_mod_three`
-只需 n > 1 且 n ≡ 2 (mod 3)，不需要素数性。
+| 结论 | 前提与数学内容 | Lean 定理 |
+|---|---|---|
+| 非素数中心的零点判据 | $n>1$ 时，$F_\Omega(n)=0\iff\Omega(n-1)=\Omega(n+1)$，不要求 $n$ 为素数 | [`omegaDiff_eq_zero_iff`](OmegaBalance/Basic.lean) |
+| 素数中心的半整数归约 | 素数 $p>2$ 满足 $F_\Omega(p)=\Omega((p+1)/2)-\Omega((p-1)/2)$ | [`omegaDiff_prime_eq_half_diff`](OmegaBalance/Basic.lean) |
+| 和差恢复左右计数 | $n>1$ 时，$T_\Omega(n)+F_\Omega(n)=2\Omega(n+1)$，$T_\Omega(n)-F_\Omega(n)=2\Omega(n-1)$；等式在整数中理解 | [`omegaSum_add_omegaDiff`](OmegaBalance/Basic.lean)、[`omegaSum_sub_omegaDiff`](OmegaBalance/Basic.lean) |
+| Ω 的完全可加性与素数幂计数 | $a,b>0$ 时 $\Omega(ab)=\Omega(a)+\Omega(b)$；素数 $q$、$k\ge0$ 满足 $\Omega(q^k)=k$ | [`bigOmega_mul`](OmegaBalance/Basic.lean)、[`bigOmega_prime_pow`](OmegaBalance/Basic.lean) |
+| 赋值与整除的等价 | 素数 $q$、$n>0$ 满足 $v_q(n)>0\iff q\mid n$ | [`valuation_pos_iff_dvd`](OmegaBalance/Valuation.lean) |
+| 赋值的乘法与幂公式 | 素数 $q$、$a,b>0$ 满足 $v_q(ab)=v_q(a)+v_q(b)$；$k\ge0$ 时 $v_q(q^k)=k$ | [`valuation_mul`](OmegaBalance/Valuation.lean)、[`valuation_prime_pow`](OmegaBalance/Valuation.lean) |
 
-## 其他基本接口
+## 已形式化的实例与反例
 
-| 接口 | 内容 |
-|---|---|
-| `omegaDiff_eq_zero_iff` | Ω 差分为零当且仅当邻数 Ω 平衡 |
-| `isOmegaBalancedPrime_iff` | 平衡素数等价于素数且 Ω 差分为零 |
-| `neighborDiff_pos_iff`, `neighborDiff_neg_iff` | 差分符号与左右计数大小关系 |
-| `bigOmega_mul` | 非零 a,b 满足 Ω(ab) = Ω(a)+Ω(b) |
-| `bigOmega_prime_pow` | 素数幂满足 Ω(qᵏ) = k |
-| `omegaDiff_prime_eq_half_diff` | 奇素数两侧的公共因子 2 可以约去 |
-| `isOmegaBalanced_iff_half` | 约去公共因子 2 后的平衡判据 |
-| `omegaSum_eq_bigOmega_sq_sub_one` | n > 1 时 S(n) = Ω(n²−1) |
-| `omegaSum_add_omegaDiff`, `omegaSum_sub_omegaDiff` | S±F 分别是右、左计数的两倍 |
-| `valuation_eq_padicValNat` | 素数底数时与 mathlib 的 `padicValNat` 对接 |
-| `f3_ne_zero_of_prime` | p > 3 的素数均满足 F₃(p) ≠ 0 |
-| `f3_pos_iff_mod_three`, `f3_neg_iff_mod_three` | 正、负分别对应模 3 余 2、余 1 |
-| `twin_mod_six`, `twin_six_mul_form` | 非例外孪生素数的模 6 与 6k±1 形式 |
-
-完整定义与证明在 `OmegaBalance/Basic.lean`、`Valuation.lean` 和 `F3.lean`。
-`Examples.lean` 包含具体数值与反例回归证明；它不作为主库的默认 import。
-
-## 必须保留的边界
-
-`bigOmega 0 = 0`、`v3 0 = 0` 是 mathlib 的全函数约定，**不是说零具有有限的通常赋值**。
-非零假设不能从乘法性、赋值正性等定理中删除。`n - 1` 在自然数中是截断减法；
-使用邻数作为正整数的定理均明确限制 n > 1 或相应素数范围。
-
-`p > 3` 不能删除：孪生对 (3,5) 满足 F₃(3)=0、F₃(5)=1。
-
-反号也不是孪生的充分条件：F₃(5)=1、F₃(13)=−1，但 13−5=8。
-同样，F₃ 的定理不能移植成完整 Ω 差分的定理：Ω 差分在 (5,7) 上分别是 0、1。
-这些都在 `Examples.lean` 中作为回归目标。
-
-本仓库不把“无穷多平衡素数”“无穷多孪生素数”或任何有界间距断言作为前提或已证结果。
-
-## 构建与核验
-
-Lean **4.34.0**；mathlib **v4.34.0**，固定到提交
-`5ed2965256430c3649e86755f9576b54eca72435`。安装 elan 后：
-
-```sh
-lake update
-lake exe cache get
-lake build
-lake build OmegaBalance.Examples
-python3 scripts/verify.py
-```
-
-`verify.py` 重跑库构建、回归证明、公理审计与源码检查，并保存日志。
-Windows 可使用 `python scripts/verify.py`。
-
-GitHub Actions 的 `Lean` 工作流执行相同的四层检查并保存日志。
-`#print axioms` 覆盖当前全部 **78** 条 theorem 声明（包括回归证明），
-仅允许 `propext`、`Classical.choice`、`Quot.sound`。
-源码检查禁止证明占位、自定义公理、unsafe 证明路径和原生决定过程逃逸。
-
-**源码扫描通过不等于 Lean 编译通过。是否完成内核核验，以对应提交的 CI 和公理日志为准。**
-
-## 质因数和相加平衡：研究证明与精确计算
-
-新增 [第二轮完整研究笔记](docs/sum_balance/research_round2.md)。这里
-`S(n)` 是质因数计重求和，研究 `S(p-1)=S(p+1)`；它**不是**上面的 `omegaSum`。
-
-笔记收录参数族的平衡证明、所有素数模数的局部相容性、不可约性、
-**Schinzel 假设 H 下**的条件性无穷结论、Pomerance 已有定理给出的稀疏性推论，
-以及允许二次表达式为合数时的缺陷恒等式 `F(P)=D(q)-D(r)`。
-已有构造公式的来源明确归于 Pomerance 式（3），不宣称首创。
-
-本次完整复现 `1 <= t <= 50000`：48 个四项素数候选、3 个有素性证书的中心，
-参数为 `5, 41529, 48465`。范围只针对该参数族，不是全体相加平衡素数。
-
-| 文件 | 用途 |
-|---|---|
-| [研究笔记](docs/sum_balance/research_round2.md) | 完整数学证明、前提、来源和形式化状态 |
-| [验证脚本](scripts/verify_sum_balance_family.py) | 标准库扫描、完整试除、Pocklington 证书与回归比较 |
-| [精确结果](data/sum_balance/family_1_50000.json) | 三个中心的分解、质因数和及证书 |
-| [独立工作流](.github/workflows/sum-balance.yml) | 每次 push/PR 重算并比对已提交报告 |
-
-从仓库根目录执行：
-
-```sh
-python3 scripts/verify_sum_balance_family.py --limit 50000 --output sum_balance_family_actual.json --check-against data/sum_balance/family_1_50000.json
-```
-
-Windows 可使用 `python`。不要使用 `-O`，避免禁用审计断言。
-
-**这次新增内容尚未转为 Lean 定理。** 现有 Lean 文件、78 条 theorem 的审计、
-工具链和原 CI 均保持不变；这里的假设 H 不进入 Lean 公理。
-Python 数值/素性验证通过，不等于完成了新结论的 Lean 内核核验。
+| 实例或反例 | 已证明的结论 | Lean 定理 |
+|---|---|---|
+| 最小实例 $p=5$ | $5$ 是 Ω 平衡素数 | [`five_isOmegaBalancedPrime`](OmegaBalance/Examples.lean) |
+| 孪生对 $(17,19)$ | $F_3(17)=2$，$F_3(19)=-2$ | [`twin_seventeen_nineteen_example`](OmegaBalance/Examples.lean) |
+| 例外孪生对 $(3,5)$ | $F_3(3)=0$，$F_3(5)=1$，不满足精确反号；主定理的 $p>3$ 前提不能删除 | [`f3_three`](OmegaBalance/Examples.lean)、[`f3_five`](OmegaBalance/Examples.lean)、[`exceptional_twin_three`](OmegaBalance/Examples.lean) |
+| 精确反号不是孪生的充分条件 | 素数 $5,13$ 的 $F_3$ 值为非零相反数，但两者不构成孪生对 | [`opposite_f3_not_sufficient_for_twins`](OmegaBalance/Examples.lean) |
+| $F_3$ 对称性不能移植到完整 Ω 差分 | 孪生对 $(5,7)$ 满足 $F_\Omega(5)=0$、$F_\Omega(7)=1$ | [`omegaDiff_twin_five_seven`](OmegaBalance/Examples.lean) |
