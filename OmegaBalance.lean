@@ -4,3 +4,5 @@ import OmegaBalance.F3
 import OmegaBalance.F3Extension
 import OmegaBalance.F3Arithmetic
 import OmegaBalance.FactorSum
+import OmegaBalance.FactorSumArithmetic
+import OmegaBalance.FactorSumFamily
