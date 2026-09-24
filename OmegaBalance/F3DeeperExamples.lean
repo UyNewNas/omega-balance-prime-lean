@@ -70,7 +70,7 @@ theorem f3_refined_gap_boundary_example :
   have hm : f3 (17 * 181) = 4 := by
     rw [(f3_of_mod_three_two (n := 17 * 181) (by norm_num) (by norm_num)).1]
     norm_num [hv]
-  exact ⟨by decide, by decide, hp, f3_one_eighty_one, hm, by decide⟩
+  exact ⟨by norm_num, by norm_num, hp, f3_one_eighty_one, hm, by norm_num⟩
 
 theorem f3_sum_product_branch_example :
     v3 (17 + 19) = 2 ∧ 2 < v3 (17 * 19 + 1) := by
