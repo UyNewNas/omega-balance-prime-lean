@@ -105,4 +105,84 @@ theorem odd_weighted_floor_sum_le (R N T : ℕ) :
       mul_le_mul_of_nonneg_left (odd_geometric_partial_sum_le_one T) (by positivity)
     _ = (N : ℝ) / (3 : ℝ) ^ R := by ring
 
+/-- The excess depth never exceeds its positive integer argument. -/
+theorem v3Excess_le_self (R n : ℕ) : v3Excess R n ≤ n := by
+  unfold v3Excess
+  exact (Nat.sub_le _ _).trans <| by
+    rw [v3_eq_padic]
+    exact padicValNat_le_self n
+
+/-- Real-valued version of the odd-number expansion of an excess square. -/
+theorem v3Excess_sq_eq_odd_sum_real (R n : ℕ) :
+    (v3Excess R n : ℝ) ^ 2 =
+      ∑ t ∈ Finset.range (v3Excess R n), (2 * (t : ℝ) + 1) := by
+  exact_mod_cast v3Excess_sq_eq_odd_sum R n
+
+/-- On `1 ≤ m ≤ N`, the odd-number expansion can be extended to the fixed range
+`0 ≤ t < N` by inserting zero outside the active excess layers. -/
+theorem v3Excess_sq_eq_indicator_sum (R N m : ℕ)
+    (hm : m ∈ Finset.Icc 1 N) :
+    (v3Excess R m : ℝ) ^ 2 =
+      ∑ t ∈ Finset.range N,
+        if t < v3Excess R m then (2 * (t : ℝ) + 1) else 0 := by
+  rw [v3Excess_sq_eq_odd_sum_real]
+  have hexle : v3Excess R m ≤ N := (v3Excess_le_self R m).trans hm.2
+  have hfilter :
+      (Finset.range N).filter (fun t => t < v3Excess R m) =
+        Finset.range (v3Excess R m) := by
+    ext t
+    simp only [Finset.mem_filter, Finset.mem_range]
+    omega
+  rw [← hfilter, Finset.sum_filter]
+
+/-- Exact finite double-counting identity for the excess-square mass on `1, ..., N`. -/
+theorem sum_Icc_v3Excess_sq_eq_weighted_floor (R N : ℕ) :
+    (∑ m ∈ Finset.Icc 1 N, (v3Excess R m : ℝ) ^ 2) =
+      ∑ t ∈ Finset.range N,
+        (2 * (t : ℝ) + 1) * ((N / 3 ^ (R + t + 1) : ℕ) : ℝ) := by
+  calc
+    _ = ∑ m ∈ Finset.Icc 1 N,
+        ∑ t ∈ Finset.range N,
+          if t < v3Excess R m then (2 * (t : ℝ) + 1) else 0 := by
+      apply Finset.sum_congr rfl
+      intro m hm
+      exact v3Excess_sq_eq_indicator_sum R N m hm
+    _ = ∑ t ∈ Finset.range N,
+        ∑ m ∈ Finset.Icc 1 N,
+          if t < v3Excess R m then (2 * (t : ℝ) + 1) else 0 := by
+      rw [Finset.sum_comm]
+    _ = ∑ t ∈ Finset.range N,
+        (2 * (t : ℝ) + 1) *
+          (((Finset.Icc 1 N).filter fun m => t < v3Excess R m).card : ℝ) := by
+      apply Finset.sum_congr rfl
+      intro t ht
+      calc
+        (∑ m ∈ Finset.Icc 1 N,
+            if t < v3Excess R m then (2 * (t : ℝ) + 1) else 0) =
+            ∑ m ∈ Finset.Icc 1 N,
+              (2 * (t : ℝ) + 1) *
+                (if t < v3Excess R m then (1 : ℝ) else 0) := by
+          apply Finset.sum_congr rfl
+          intro m hm
+          by_cases h : t < v3Excess R m <;> simp [h]
+        _ = (2 * (t : ℝ) + 1) *
+            ∑ m ∈ Finset.Icc 1 N,
+              (if t < v3Excess R m then (1 : ℝ) else 0) := by
+          rw [Finset.mul_sum]
+        _ = (2 * (t : ℝ) + 1) *
+            (((Finset.Icc 1 N).filter fun m => t < v3Excess R m).card : ℝ) := by
+          rw [Finset.sum_boole]
+    _ = ∑ t ∈ Finset.range N,
+        (2 * (t : ℝ) + 1) * ((N / 3 ^ (R + t + 1) : ℕ) : ℝ) := by
+      apply Finset.sum_congr rfl
+      intro t ht
+      rw [card_filter_Icc_lt_v3Excess]
+
+/-- Uniform finite L² bound for a single excess coordinate. -/
+theorem sum_Icc_v3Excess_sq_le (R N : ℕ) :
+    (∑ m ∈ Finset.Icc 1 N, (v3Excess R m : ℝ) ^ 2) ≤
+      (N : ℝ) / (3 : ℝ) ^ R := by
+  rw [sum_Icc_v3Excess_sq_eq_weighted_floor]
+  exact odd_weighted_floor_sum_le R N N
+
 end OmegaBalance
