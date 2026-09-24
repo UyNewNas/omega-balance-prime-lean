@@ -42,8 +42,9 @@ theorem f3Tail_of_mod_three_two {R n : ℕ} (hn : 1 < n) (hm : n % 3 = 2) :
     intro hd
     have hz := Nat.mod_eq_zero_of_dvd hd
     omega
-  rw [f3Tail, (f3_of_mod_three_two hn hm).1, f3Trunc_eq_clipped hn R, hl]
-  simp only [min_eq_zero, Nat.cast_zero, sub_zero, v3Excess]
+  have hmin0 : min R (v3 (n - 1)) = 0 := by simp [hl]
+  rw [f3Tail, (f3_of_mod_three_two hn hm).1, f3Trunc_eq_clipped hn R, hmin0]
+  simp only [Nat.cast_zero, sub_zero, v3Excess]
   by_cases hR : R ≤ v3 (n + 1)
   · rw [min_eq_left hR, Nat.cast_sub hR]
   · have hdR : v3 (n + 1) ≤ R := by omega
@@ -61,8 +62,9 @@ theorem f3Tail_of_mod_three_one {R n : ℕ} (hn : 1 < n) (hm : n % 3 = 1) :
     intro hd
     have hz := Nat.mod_eq_zero_of_dvd hd
     omega
-  rw [f3Tail, (f3_of_mod_three_one hn hm).1, f3Trunc_eq_clipped hn R, hr]
-  simp only [min_eq_zero, Nat.cast_zero, zero_sub, v3Excess]
+  have hmin0 : min R (v3 (n + 1)) = 0 := by simp [hr]
+  rw [f3Tail, (f3_of_mod_three_one hn hm).1, f3Trunc_eq_clipped hn R, hmin0]
+  simp only [Nat.cast_zero, zero_sub, v3Excess]
   by_cases hR : R ≤ v3 (n - 1)
   · rw [min_eq_left hR, Nat.cast_sub hR]
     ring
@@ -89,22 +91,26 @@ theorem f3Tail_sq_eq_neighbor_excess (R : ℕ) {n : ℕ} (hn : 1 < n) :
       intro hd
       have hz := Nat.mod_eq_zero_of_dvd hd
       omega
-    rw [f3Tail_of_mod_three_zero hn h0, hl, hr]
-    simp [v3Excess]
+    have hexl : v3Excess R (n - 1) = 0 := by simp [v3Excess, hl]
+    have hexr : v3Excess R (n + 1) = 0 := by simp [v3Excess, hr]
+    rw [f3Tail_of_mod_three_zero hn h0, hexl, hexr]
+    simp
   · have hr : v3 (n + 1) = 0 := by
       apply v3_eq_zero_of_not_dvd
       intro hd
       have hz := Nat.mod_eq_zero_of_dvd hd
       omega
-    rw [f3Tail_of_mod_three_one hn h1, hr]
-    simp [v3Excess]
+    have hexr : v3Excess R (n + 1) = 0 := by simp [v3Excess, hr]
+    rw [f3Tail_of_mod_three_one hn h1, hexr]
+    ring
   · have hl : v3 (n - 1) = 0 := by
       apply v3_eq_zero_of_not_dvd
       intro hd
       have hz := Nat.mod_eq_zero_of_dvd hd
       omega
-    rw [f3Tail_of_mod_three_two hn h2, hl]
-    simp [v3Excess]
+    have hexl : v3Excess R (n - 1) = 0 := by simp [v3Excess, hl]
+    rw [f3Tail_of_mod_three_two hn h2, hexl]
+    ring
 
 /-- Sum of the first `m` odd positive integers, in the integer coefficient ring. -/
 theorem sum_odd_eq_sq_int (m : ℕ) :
