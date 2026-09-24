@@ -226,6 +226,17 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3CorrelationWeight_succ
 #print axioms OmegaBalance.f3CorrelationWeight_eq
 
+-- Capped depths and the finite correlation-to-weight bridge.
+#print axioms OmegaBalance.f3CappedDepth_zero
+#print axioms OmegaBalance.f3CappedDepth_eq_min
+#print axioms OmegaBalance.v3Trunc_eq_cappedDepth
+#print axioms OmegaBalance.pow_three_dvd_iff_le_f3CappedDepth
+#print axioms OmegaBalance.modEq_zero_pow_three_iff_le_f3CappedDepth
+#print axioms OmegaBalance.modEq_two_iff_dvd_dist
+#print axioms OmegaBalance.modEq_two_pow_three_iff_le_f3CappedDepth
+#print axioms OmegaBalance.f3CorrelationThreeWeightSum
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_weights
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
