@@ -14,9 +14,12 @@ indices `m` with `S(m) = S(m+1)`.  The map is injective because `p` is odd.
 
 namespace OmegaBalance
 
-/-- S-balanced prime centres up to `X`. -/
+/-- S-balanced prime centres up to `X`.  The predicate is written out so the
+finite set has a constructive decidability instance; the public membership
+lemma below packages it back as `IsPrimeFactorSumBalancedPrime`. -/
 def sumBalancedPrimesUpTo (X : ℕ) : Finset ℕ :=
-  (Finset.range (X + 1)).filter IsPrimeFactorSumBalancedPrime
+  (Finset.range (X + 1)).filter fun p =>
+    p.Prime ∧ primeFactorSum (p - 1) = primeFactorSum (p + 1)
 
 /-- Positive Ruth--Aaron indices up to `X`, for the same factor sum `S`. -/
 def ruthAaronIndicesUpTo (X : ℕ) : Finset ℕ :=
@@ -31,7 +34,8 @@ def ruthAaronCount (X : ℕ) : ℕ := (ruthAaronIndicesUpTo X).card
 
 @[simp] theorem mem_sumBalancedPrimesUpTo {X p : ℕ} :
     p ∈ sumBalancedPrimesUpTo X ↔ p ≤ X ∧ IsPrimeFactorSumBalancedPrime p := by
-  simp [sumBalancedPrimesUpTo]
+  simp [sumBalancedPrimesUpTo, IsPrimeFactorSumBalancedPrime,
+    IsPrimeFactorSumBalanced]
 
 @[simp] theorem mem_ruthAaronIndicesUpTo {X m : ℕ} :
     m ∈ ruthAaronIndicesUpTo X ↔
@@ -65,7 +69,7 @@ theorem sumBalancedPrime_half_mem {X p : ℕ}
   have hsucc : (p + 1) / 2 = (p - 1) / 2 + 1 := by omega
   rw [mem_ruthAaronIndicesUpTo]
   refine ⟨?_, ?_, ?_⟩
-  · omega
+  · exact Nat.div_le_div_right (c := 2) (Nat.sub_le_sub_right hpX 1)
   · omega
   · simpa [hsucc] using hhalf
 
@@ -88,6 +92,8 @@ theorem sumBalancedPrime_half_injOn (X : ℕ) :
   have hqgt2 : 2 < q := by omega
   have hpodd : p % 2 = 1 := prime_mod_two_eq_one hp'.2.1 hpgt2
   have hqodd : q % 2 = 1 := prime_mod_two_eq_one hq'.2.1 hqgt2
+  have hpform : 2 * ((p - 1) / 2) + 1 = p := by omega
+  have hqform : 2 * ((q - 1) / 2) + 1 = q := by omega
   omega
 
 /-- Elementary finite transfer: balanced prime centres inject into Ruth--Aaron
