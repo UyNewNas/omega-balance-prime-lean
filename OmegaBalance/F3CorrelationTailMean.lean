@@ -1,5 +1,6 @@
 import OmegaBalance.F3CorrelationTail
 import Mathlib.Data.Int.CardIntervalMod
+import Mathlib.Data.Nat.PadicValNat
 
 /-!
 # Finite counting lemmas for the F₃ L² tail
@@ -27,6 +28,7 @@ theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
   have hcount' :
       (((Finset.Ioc 0 N).filter fun m => m ≡ 0 [MOD 3 ^ a]).card : ℤ) =
         ((N / 3 ^ a : ℕ) : ℤ) := by
+    norm_num at hcount
     rw [Rat.floor_natCast_div_natCast] at hcount
     have hnonneg : (0 : ℤ) ≤ ((N / 3 ^ a : ℕ) : ℤ) := by positivity
     rw [max_eq_left hnonneg] at hcount
@@ -126,7 +128,8 @@ theorem v3Excess_sq_eq_indicator_sum (R N m : ℕ)
       ∑ t ∈ Finset.range N,
         if t < v3Excess R m then (2 * (t : ℝ) + 1) else 0 := by
   rw [v3Excess_sq_eq_odd_sum_real]
-  have hexle : v3Excess R m ≤ N := (v3Excess_le_self R m).trans hm.2
+  have hm' := Finset.mem_Icc.mp hm
+  have hexle : v3Excess R m ≤ N := (v3Excess_le_self R m).trans hm'.2
   have hfilter :
       (Finset.range N).filter (fun t => t < v3Excess R m) =
         Finset.range (v3Excess R m) := by
