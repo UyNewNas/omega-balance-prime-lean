@@ -79,3 +79,21 @@ import OmegaBalance.Examples
 #print axioms OmegaBalance.v3_pos_iff_dvd
 #print axioms OmegaBalance.v3_mul
 #print axioms OmegaBalance.v3_pow_three
+
+#print axioms OmegaBalance.v3Int_nat
+#print axioms OmegaBalance.v3Int_neg
+#print axioms OmegaBalance.f3Int_nat
+#print axioms OmegaBalance.f3Int_neg
+#print axioms OmegaBalance.f3Int_neg_nat
+#print axioms OmegaBalance.f3_of_mod_three_zero
+#print axioms OmegaBalance.f3_eq_zero_iff_three_dvd
+#print axioms OmegaBalance.f3_ne_zero_of_not_dvd
+#print axioms OmegaBalance.f3_abs_eq_neighbor_sum
+#print axioms OmegaBalance.f3_abs_eq_v3_sq_sub_one
+#print axioms OmegaBalance.f3_sq
+#print axioms OmegaBalance.v3_eq_one_of_mod_nine
+#print axioms OmegaBalance.v3_quad_plus_one
+#print axioms OmegaBalance.v3_quad_minus_one
+#print axioms OmegaBalance.f3_cube_of_mod_three_one
+#print axioms OmegaBalance.f3_cube_of_mod_three_two
+#print axioms OmegaBalance.f3_cube
