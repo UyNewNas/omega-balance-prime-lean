@@ -160,8 +160,7 @@ theorem sumFamily_prime_admissible {ell : ℕ} (hell : ell.Prime) :
   · have hell11 : 11 ≤ ell := by
       by_contra hlt
       have hell_lt : ell < 11 := by omega
-      interval_cases ell
-      all_goals simp_all
+      interval_cases ell <;> norm_num at hell hsmall
     exact sumFamily_large_prime_admissible hell hell11
 
 end OmegaBalance
