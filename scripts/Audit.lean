@@ -210,6 +210,15 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.modShiftPairCount_neg_neg_eq
 #print axioms OmegaBalance.f3LayerCorrelation_eq
 
+-- Complete-period expansion of the periodic retained layers.
+#print axioms OmegaBalance.modEq_pow_three_sub_one_iff_dvd_add_one
+#print axioms OmegaBalance.modEq_one_iff_dvd_sub_one
+#print axioms OmegaBalance.f3PeriodicTrunc_eq_f3Trunc
+#print axioms OmegaBalance.sum_f3ModIndicator_mul_shift
+#print axioms OmegaBalance.sum_f3ResidueLayer_mul_shift
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_layer_sum
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_explicit
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
