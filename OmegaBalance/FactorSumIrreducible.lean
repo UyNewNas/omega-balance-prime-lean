@@ -89,7 +89,10 @@ theorem sumFamilyPolyQ_irreducible_rat :
     have hzi : z ^ 2 + 238 * z + 6630 = 0 := by
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 7)) hzi
-    norm_num at hzmod
+    change (z : ZMod 7) ^ 2 + (238 : ZMod 7) * (z : ZMod 7) + (6630 : ZMod 7) = 0 at hzmod
+    have h238 : (238 : ZMod 7) = 0 := by decide
+    have h6630 : (6630 : ZMod 7) = 1 := by decide
+    rw [h238, h6630, zero_mul, zero_add] at hzmod
     have hno : ∀ w : ZMod 7, w ^ 2 + 1 ≠ 0 := by decide
     exact hno (z : ZMod 7) hzmod
 
@@ -127,7 +130,10 @@ theorem sumFamilyPolyR_irreducible_rat :
     have hzi : z ^ 2 + 225 * z + 6240 = 0 := by
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 7)) hzi
-    norm_num at hzmod
+    change (z : ZMod 7) ^ 2 + (225 : ZMod 7) * (z : ZMod 7) + (6240 : ZMod 7) = 0 at hzmod
+    have h225 : (225 : ZMod 7) = 1 := by decide
+    have h6240 : (6240 : ZMod 7) = 3 := by decide
+    rw [h225, h6240, one_mul] at hzmod
     have hno : ∀ w : ZMod 7, w ^ 2 + w + 3 ≠ 0 := by decide
     exact hno (z : ZMod 7) hzmod
 
@@ -181,7 +187,11 @@ theorem sumFamilyPolyCenter_irreducible_rat :
         z ^ 3 + 25980 * z ^ 2 + 190944000 * z + 279803160000 = 0 := by
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 19)) hzi
-    norm_num at hzmod
+    change (z : ZMod 19) ^ 3 + (25980 : ZMod 19) * (z : ZMod 19) ^ 2 + (190944000 : ZMod 19) * (z : ZMod 19) + (279803160000 : ZMod 19) = 0 at hzmod
+    have h25980 : (25980 : ZMod 19) = 7 := by decide
+    have h190944000 : (190944000 : ZMod 19) = 4 := by decide
+    have h279803160000 : (279803160000 : ZMod 19) = 5 := by decide
+    rw [h25980, h190944000, h279803160000] at hzmod
     exact sumFamilyCenter_scaled_no_root_mod_nineteen (z : ZMod 19) hzmod
 
 /-- All five family members are irreducible over `ℚ`. -/
