@@ -1,5 +1,7 @@
 import OmegaBalance.FactorSum
 import Mathlib.Data.Finset.Card
+import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Topology.MetricSpace.Pseudo.Lemmas
 
 /-!
 # Finite counting transfer for prime-factor-sum balance
@@ -113,6 +115,27 @@ theorem sumBalancedPrimeCount_le_ruthAaronCount (X : ℕ) :
     exact sumBalancedPrime_half_mem (by simpa using hp)
   · exact sumBalancedPrime_half_injOn X
 
+/-- Finite counting function for all primes up to `X`. -/
+def primeCountUpTo (X : ℕ) : ℕ :=
+  ((Finset.range (X + 1)).filter Nat.Prime).card
+
+/-- Relative density of S-balanced primes among all primes up to `X`.
+The value is totalized to zero when the denominator vanishes. -/
+def sumBalancedPrimeRelativeDensity (X : ℕ) : ℝ :=
+  (sumBalancedPrimeCount X : ℝ) / (primeCountUpTo X : ℝ)
+
+/-- An indicator-weighted reciprocal sequence for positive Ruth--Aaron indices.
+This lets external convergence results be supplied without asserting them as
+axioms of this repository. -/
+def ruthAaronReciprocal (m : ℕ) : ℝ :=
+  if 0 < m ∧ primeFactorSum m = primeFactorSum (m + 1) then
+    1 / (m : ℝ)
+  else
+    0
+
+/-- The type of S-balanced prime centres, used for reciprocal-series transfer. -/
+abbrev SumBalancedPrime := {p : ℕ // IsPrimeFactorSumBalancedPrime p}
+
 /-- Pointwise external counting bounds transfer without becoming axioms of this
 repository.  A Pomerance-style estimate can be supplied as `hB`; this theorem
 only proves the elementary reduction. -/
@@ -120,5 +143,89 @@ theorem sumBalancedPrimeCount_le_of_ruthAaronBound
     (B : ℕ → ℕ) (hB : ∀ Y, ruthAaronCount Y ≤ B Y) (X : ℕ) :
     sumBalancedPrimeCount X ≤ B ((X - 1) / 2) :=
   (sumBalancedPrimeCount_le_ruthAaronCount X).trans (hB _)
+
+/-- Any explicit majorant whose ratio to the prime counting function tends to
+zero transfers that relative-density-zero conclusion to S-balanced primes.
+The asymptotic input remains a theorem hypothesis. -/
+theorem sumBalancedPrime_relativeDensity_zero_of_majorant
+    (B : ℕ → ℕ)
+    (hB : ∀ X, sumBalancedPrimeCount X ≤ B X)
+    (hzero : Filter.Tendsto
+      (fun X : ℕ => (B X : ℝ) / (primeCountUpTo X : ℝ))
+      Filter.atTop (nhds 0)) :
+    Filter.Tendsto sumBalancedPrimeRelativeDensity Filter.atTop (nhds 0) := by
+  apply squeeze_zero
+  · intro X
+    unfold sumBalancedPrimeRelativeDensity
+    positivity
+  · intro X
+    unfold sumBalancedPrimeRelativeDensity
+    exact div_le_div_of_nonneg_right (by exact_mod_cast hB X) (by positivity)
+  · exact hzero
+
+/-- Pomerance-style Ruth--Aaron counting bounds transfer to zero relative
+prime density once the corresponding analytic majorant limit (for example,
+from that bound together with the prime number theorem) is supplied. -/
+theorem sumBalancedPrime_relativeDensity_zero_of_ruthAaronBound
+    (B : ℕ → ℕ)
+    (hB : ∀ Y, ruthAaronCount Y ≤ B Y)
+    (hzero : Filter.Tendsto
+      (fun X : ℕ => (B ((X - 1) / 2) : ℝ) / (primeCountUpTo X : ℝ))
+      Filter.atTop (nhds 0)) :
+    Filter.Tendsto sumBalancedPrimeRelativeDensity Filter.atTop (nhds 0) := by
+  apply sumBalancedPrime_relativeDensity_zero_of_majorant
+      (B := fun X => B ((X - 1) / 2))
+  · intro X
+    exact sumBalancedPrimeCount_le_of_ruthAaronBound B hB X
+  · exact hzero
+
+/-- The half-centre map is globally injective on the subtype of S-balanced
+prime centres. -/
+theorem sumBalancedPrime_half_injective :
+    Function.Injective (fun p : SumBalancedPrime => (p.1 - 1) / 2) := by
+  intro p q hhalf
+  let X := max p.1 q.1
+  have hp_mem : p.1 ∈ sumBalancedPrimesUpTo X := by
+    rw [mem_sumBalancedPrimesUpTo]
+    exact ⟨Nat.le_max_left _ _, p.property⟩
+  have hq_mem : q.1 ∈ sumBalancedPrimesUpTo X := by
+    rw [mem_sumBalancedPrimesUpTo]
+    exact ⟨Nat.le_max_right _ _, q.property⟩
+  apply Subtype.ext
+  exact (sumBalancedPrime_half_injOn X) (by simpa using hp_mem)
+    (by simpa using hq_mem) hhalf
+
+/-- Each reciprocal of an S-balanced prime is bounded by the reciprocal of
+its positive Ruth--Aaron half-index. -/
+theorem sumBalancedPrime_reciprocal_le_ruthAaron (p : SumBalancedPrime) :
+    (1 : ℝ) / (p.1 : ℝ) ≤ ruthAaronReciprocal ((p.1 - 1) / 2) := by
+  have hp_mem : p.1 ∈ sumBalancedPrimesUpTo p.1 := by
+    rw [mem_sumBalancedPrimesUpTo]
+    exact ⟨le_rfl, p.property⟩
+  have hm_mem := sumBalancedPrime_half_mem hp_mem
+  rw [mem_ruthAaronIndicesUpTo] at hm_mem
+  have hcond :
+      0 < (p.1 - 1) / 2 ∧
+        primeFactorSum ((p.1 - 1) / 2) =
+          primeFactorSum ((p.1 - 1) / 2 + 1) :=
+    ⟨hm_mem.2.1, hm_mem.2.2⟩
+  rw [ruthAaronReciprocal, if_pos hcond]
+  apply one_div_le_one_div_of_le
+  · exact_mod_cast hm_mem.2.1
+  · exact_mod_cast (show (p.1 - 1) / 2 ≤ p.1 by omega)
+
+/-- Convergence of the reciprocal series over positive Ruth--Aaron indices
+transfers to convergence of the reciprocal series over S-balanced primes.
+Pomerance's analytic convergence theorem can be supplied as `hRA`; it is not
+reintroduced here as an axiom. -/
+theorem summable_sumBalancedPrime_reciprocals_of_ruthAaron
+    (hRA : Summable ruthAaronReciprocal) :
+    Summable (fun p : SumBalancedPrime => (1 : ℝ) / (p.1 : ℝ)) := by
+  have hmajor : Summable (fun p : SumBalancedPrime =>
+      ruthAaronReciprocal ((p.1 - 1) / 2)) :=
+    hRA.comp_injective sumBalancedPrime_half_injective
+  refine Summable.of_nonneg_of_le (fun p => by positivity) ?_ hmajor
+  intro p
+  exact sumBalancedPrime_reciprocal_le_ruthAaron p
 
 end OmegaBalance
