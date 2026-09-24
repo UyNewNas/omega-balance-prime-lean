@@ -1,5 +1,6 @@
 import OmegaBalance
 import OmegaBalance.Examples
+import OmegaBalance.F3Examples
 
 #print axioms OmegaBalance.bigOmega_zero
 #print axioms OmegaBalance.bigOmega_one
@@ -114,3 +115,12 @@ import OmegaBalance.Examples
 #print axioms OmegaBalance.v3_add_ge_min
 #print axioms OmegaBalance.v3_add_eq_min
 #print axioms OmegaBalance.f3_mul_depth
+
+#print axioms OmegaBalance.f3Int_negative_five_example
+#print axioms OmegaBalance.f3_square_five_example
+#print axioms OmegaBalance.f3_cube_five_example
+#print axioms OmegaBalance.f3_cube_seven_example
+#print axioms OmegaBalance.f3_reflection_nine_example
+#print axioms OmegaBalance.f3_multiply_unequal_example
+#print axioms OmegaBalance.f3_iterated_cube_five_example
+#print axioms OmegaBalance.f3_reflection_strict_boundary_example

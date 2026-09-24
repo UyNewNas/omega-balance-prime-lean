@@ -39,11 +39,13 @@ theorem f3_center_valuation {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
   have cases : n % 3 = 1 ∨ n % 3 = 2 := by omega
   rcases cases with h | h
   · have he : (n : ℤ) + (-1) = ((n - 1 : ℕ) : ℤ) := by omega
-    rw [(f3_of_mod_three_one hn h).1]
-    simp [f3Side, h, he]
+    have hs : f3Side n = -1 := by simp [f3Side, h]
+    rw [hs, he, v3Int_nat, (f3_of_mod_three_one hn h).1]
+    simp
   · have he : (n : ℤ) + 1 = ((n + 1 : ℕ) : ℤ) := by simp
-    rw [(f3_of_mod_three_two hn h).1]
-    simp [f3Side, h, he]
+    have hs : f3Side n = 1 := by simp [f3Side, h]
+    rw [hs, he, v3Int_nat, (f3_of_mod_three_two hn h).1]
+    simp
 
 /-- Bridge to the rational valuation API used for its ultrametric laws. -/
 theorem v3Int_eq_padicValRat (z : ℤ) :
@@ -61,7 +63,8 @@ theorem v3Int_add_eq_min {a b : ℤ} (ha : a ≠ 0) (hb : b ≠ 0)
     (hab : a + b ≠ 0) (hv : v3Int a ≠ v3Int b) :
     v3Int (a + b) = min (v3Int a) (v3Int b) := by
   have hv' : padicValRat 3 (a : ℚ) ≠ padicValRat 3 (b : ℚ) := by
-    simpa only [← v3Int_eq_padicValRat, Nat.cast_inj] using hv
+    simp only [← v3Int_eq_padicValRat]
+    exact_mod_cast hv
   have h := padicValRat.add_eq_min (p := 3) (q := (a : ℚ)) (r := (b : ℚ))
     (by exact_mod_cast hab) (by exact_mod_cast ha) (by exact_mod_cast hb) hv'
   simp only [← Int.cast_add, ← v3Int_eq_padicValRat] at h
@@ -203,8 +206,10 @@ theorem f3_mul_depth {m n : ℕ} (hm : 1 < m) (hn : 1 < n)
     intro h
     have hh := Nat.mod_eq_zero_of_dvd h
     omega
-  have hx : m ^ 2 - 1 ≠ 0 := by nlinarith
-  have hy : n ^ 2 - 1 ≠ 0 := by nlinarith
+  have hm2 : 1 < m ^ 2 := Nat.one_lt_pow (by decide) hm
+  have hn2gt : 1 < n ^ 2 := Nat.one_lt_pow (by decide) hn
+  have hx : m ^ 2 - 1 ≠ 0 := by omega
+  have hy : n ^ 2 - 1 ≠ 0 := by omega
   have hn2 : n ^ 2 ≠ 0 := by nlinarith
   have hmul : v3 ((m ^ 2 - 1) * n ^ 2) = v3 (m ^ 2 - 1) := by
     rw [v3_mul hx hn2, hz, add_zero]
