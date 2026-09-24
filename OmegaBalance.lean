@@ -5,3 +5,4 @@ import OmegaBalance.F3Extension
 import OmegaBalance.F3Arithmetic
 import OmegaBalance.F3Powers
 import OmegaBalance.F3Rational
+import OmegaBalance.F3SumProduct
