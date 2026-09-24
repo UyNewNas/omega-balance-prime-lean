@@ -268,6 +268,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.abs_f3PeriodicCorrelationPartialSum_le
 #print axioms OmegaBalance.abs_f3PeriodicCorrelationRemainder_le
 
+-- Fixed-cutoff arbitrary-length Cesaro limit.
+#print axioms OmegaBalance.f3PeriodicCorrelationCesaroAverage_eq
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationRemainder_div
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationCesaroAverage
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
