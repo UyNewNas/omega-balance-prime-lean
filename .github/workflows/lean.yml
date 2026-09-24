@@ -39,7 +39,10 @@ jobs:
           set -o pipefail
           lake build 2>&1 | tee build.log
       - name: Kernel regression tests
-        run: lake build OmegaBalance.Examples
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build OmegaBalance.Examples 2>&1 | tee examples.log
       - name: Audit axioms
         shell: bash
         run: |
@@ -55,6 +58,7 @@ jobs:
           name: lean-verification
           path: |
             build.log
+            examples.log
             axioms.log
             lake-manifest.json
           if-no-files-found: ignore

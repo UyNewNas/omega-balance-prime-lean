@@ -44,16 +44,17 @@ namespace OmegaBalance
 
 theorem twin_five_seven_example :
     f3 7 = -f3 5 ∧ f3 5 ≠ 0 ∧ f3 7 ≠ 0 := by
-  simpa using f3_twin (p := 5) (by norm_num) (by norm_num) (by norm_num)
+  exact f3_twin (p := 5) (by decide) (by decide) (by decide)
 
 theorem twin_seventeen_nineteen_example : f3 17 = 2 ∧ f3 19 = -2 := by
-  have h := f3_twin_values (p := 17) (by norm_num) (by norm_num) (by norm_num)
+  have h := f3_twin_values (p := 17) (by decide) (by decide) (by decide)
   norm_num at h
   exact ⟨h.1, h.2⟩
 
 /-- The `p > 3` hypothesis cannot be dropped: `(3,5)` is a twin pair. -/
 theorem exceptional_twin_three : IsTwinPrime 3 ∧ f3 5 ≠ -f3 3 := by
-  norm_num [IsTwinPrime]
+  refine ⟨by decide, ?_⟩
+  norm_num
 
 @[simp] theorem bigOmega_four : bigOmega 4 = 2 := by
   simpa using bigOmega_prime_pow Nat.prime_two 2
@@ -67,7 +68,8 @@ theorem exceptional_twin_three : IsTwinPrime 3 ∧ f3 5 ≠ -f3 3 := by
   simpa using bigOmega_prime_pow Nat.prime_two 3
 
 theorem five_isOmegaBalancedPrime : IsOmegaBalancedPrime 5 := by
-  norm_num [IsOmegaBalancedPrime, IsOmegaBalanced]
+  refine ⟨by decide, ?_⟩
+  norm_num [IsOmegaBalanced]
 
 /-- F₃ symmetry is NOT a symmetry theorem for the full Ω difference. -/
 theorem omegaDiff_twin_five_seven : omegaDiff 5 = 0 ∧ omegaDiff 7 = 1 := by
@@ -77,7 +79,7 @@ theorem omegaDiff_twin_five_seven : omegaDiff 5 = 0 ∧ omegaDiff 7 = 1 := by
 theorem opposite_f3_not_sufficient_for_twins :
     ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ 3 < p ∧ p < q ∧
       f3 q = -f3 p ∧ f3 p ≠ 0 ∧ q ≠ p + 2 := by
-  refine ⟨5, 13, ?_⟩
+  refine ⟨5, 13, by decide, by decide, ?_⟩
   norm_num
 
 end OmegaBalance
