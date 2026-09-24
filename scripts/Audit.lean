@@ -383,3 +383,16 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumBalancedPrime_half_injective
 #print axioms OmegaBalance.sumBalancedPrime_reciprocal_le_ruthAaron
 #print axioms OmegaBalance.summable_sumBalancedPrime_reciprocals_of_ruthAaron
+
+-- FactorSumIrreducible.lean: five-polynomial irreducibility certificates.
+#print axioms OmegaBalance.sumFamilyQ_discriminant
+#print axioms OmegaBalance.sumFamilyR_discriminant
+#print axioms OmegaBalance.sumFamilyQ_discriminant_not_square_mod_seven
+#print axioms OmegaBalance.sumFamilyR_discriminant_not_square_mod_seven
+#print axioms OmegaBalance.sumFamilyPolyU_irreducible_rat
+#print axioms OmegaBalance.sumFamilyPolyV_irreducible_rat
+#print axioms OmegaBalance.sumFamilyPolyQ_irreducible_rat
+#print axioms OmegaBalance.sumFamilyPolyR_irreducible_rat
+#print axioms OmegaBalance.sumFamilyCenter_scaled_no_root_mod_nineteen
+#print axioms OmegaBalance.sumFamilyPolyCenter_irreducible_rat
+#print axioms OmegaBalance.sumFamily_five_irreducible_rat
