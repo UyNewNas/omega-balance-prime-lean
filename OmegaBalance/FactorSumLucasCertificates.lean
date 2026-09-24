@@ -30,7 +30,7 @@ theorem prime_672626441909 : Nat.Prime 672626441909 := by
   · reduce_mod_char
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
-    rcases hq with rfl | rfl | rfl | rfl <;> reduce_mod_char <;> norm_num
+    rcases hq with rfl | rfl | rfl | rfl <;> reduce_mod_char <;> decide
 
 theorem prime_672625902031 : Nat.Prime 672625902031 := by
   apply lucasPrime_of_factorList 672625902031 6 [2, 3, 5, 83059, 269939]
@@ -41,7 +41,7 @@ theorem prime_672625902031 : Nat.Prime 672625902031 := by
   · reduce_mod_char
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
-    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> norm_num
+    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> decide
 
 theorem prime_916065462437 : Nat.Prime 916065462437 := by
   apply lucasPrime_of_factorList 916065462437 2 [2, 2, 211, 1493, 726983]
@@ -52,7 +52,7 @@ theorem prime_916065462437 : Nat.Prime 916065462437 := by
   · reduce_mod_char
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
-    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> norm_num
+    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> decide
 
 theorem prime_916064832391 : Nat.Prime 916064832391 := by
   apply lucasPrime_of_factorList 916064832391 6 [2, 3, 5, 211, 1493, 96931]
@@ -63,7 +63,7 @@ theorem prime_916064832391 : Nat.Prime 916064832391 := by
   · reduce_mod_char
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
-    rcases hq with rfl | rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> norm_num
+    rcases hq with rfl | rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> decide
 
 
 theorem prime_1676030389155588931 : Nat.Prime 1676030389155588931 := by
@@ -81,7 +81,7 @@ theorem prime_1676030389155588931 : Nat.Prime 1676030389155588931 := by
   · reduce_mod_char
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
-    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> norm_num
+    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> decide
 
 theorem prime_2663854240184425411 : Nat.Prime 2663854240184425411 := by
   apply lucasPrime_of_factorList 2663854240184425411 3
@@ -98,6 +98,6 @@ theorem prime_2663854240184425411 : Nat.Prime 2663854240184425411 := by
   · reduce_mod_char
   · intro q hq
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
-    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> norm_num
+    rcases hq with rfl | rfl | rfl | rfl | rfl <;> reduce_mod_char <;> decide
 
 end OmegaBalance
