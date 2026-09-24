@@ -121,13 +121,13 @@ def primeCountUpTo (X : ℕ) : ℕ :=
 
 /-- Relative density of S-balanced primes among all primes up to `X`.
 The value is totalized to zero when the denominator vanishes. -/
-def sumBalancedPrimeRelativeDensity (X : ℕ) : ℝ :=
+noncomputable def sumBalancedPrimeRelativeDensity (X : ℕ) : ℝ :=
   (sumBalancedPrimeCount X : ℝ) / (primeCountUpTo X : ℝ)
 
 /-- An indicator-weighted reciprocal sequence for positive Ruth--Aaron indices.
 This lets external convergence results be supplied without asserting them as
 axioms of this repository. -/
-def ruthAaronReciprocal (m : ℕ) : ℝ :=
+noncomputable def ruthAaronReciprocal (m : ℕ) : ℝ :=
   if 0 < m ∧ primeFactorSum m = primeFactorSum (m + 1) then
     1 / (m : ℝ)
   else
@@ -160,7 +160,9 @@ theorem sumBalancedPrime_relativeDensity_zero_of_majorant
     positivity
   · intro X
     unfold sumBalancedPrimeRelativeDensity
-    exact div_le_div_of_nonneg_right (by exact_mod_cast hB X) (by positivity)
+    have hcast : (sumBalancedPrimeCount X : ℝ) ≤ (B X : ℝ) := by
+      exact_mod_cast hB X
+    exact div_le_div_of_nonneg_right hcast (by positivity)
   · exact hzero
 
 /-- Pomerance-style Ruth--Aaron counting bounds transfer to zero relative
