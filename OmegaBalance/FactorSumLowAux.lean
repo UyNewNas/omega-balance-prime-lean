@@ -59,6 +59,37 @@ theorem prime_consecutive_sum_bound {q e : ℕ} (hq : q.Prime) (he : 0 < e)
   rw [primeFactorSum_prime hq] at hs
   omega
 
+/-- The only consecutive equal-S pair containing a prime is {5,6}, with the prime equal to 5. -/
+theorem prime_consecutive_sum_eq_five_six {q e : ℕ} (hq : q.Prime) (he : 0 < e)
+    (hadj : q + 1 = e ∨ e + 1 = q)
+    (hs : primeFactorSum q = primeFactorSum e) : q = 5 ∧ e = 6 := by
+  have hq2 := hq.two_le
+  have hq5 := prime_consecutive_sum_bound hq he hadj hs
+  have he6 : e ≤ 6 := by omega
+  interval_cases q <;> interval_cases e <;>
+    norm_num [primeFactorSum] at hq hs ⊢
+
+/-- Apart from center 11, neither half-neighbor of an S-balanced prime is prime. -/
+theorem sumBalanced_halves_nonprime_of_ne_eleven {p : ℕ}
+    (h : IsPrimeFactorSumBalancedPrime p) (h11 : p ≠ 11) :
+    ¬ ((p - 1) / 2).Prime ∧ ¬ ((p + 1) / 2).Prime := by
+  have hp2 : 2 < p := by
+    have hp := h.1.two_le
+    by_contra! hn
+    have heq : p = 2 := by omega
+    have hs := h.2
+    simp [IsPrimeFactorSumBalanced, heq, primeFactorSum_prime Nat.prime_three] at hs
+  have hodd := prime_mod_two_eq_one h.1 hp2
+  have hsum := (primeFactorSumBalanced_iff_half (by omega) hodd).mp h.2
+  have hadj : (p - 1) / 2 + 1 = (p + 1) / 2 := by omega
+  constructor
+  · intro hleft
+    have hh := prime_consecutive_sum_eq_five_six hleft (by omega) (Or.inl hadj) hsum
+    exact h11 (by omega)
+  · intro hright
+    have hh := prime_consecutive_sum_eq_five_six hright (by omega) (Or.inr hadj) hsum.symm
+    exact h11 (by omega)
+
 theorem even_omega_two_shape {v : ℕ} (hv : 0 < v) (he : v % 2 = 0)
     (hO : bigOmega v = 2) : ∃ r : ℕ, r.Prime ∧ v = 2 * r := by
   obtain ⟨w, hw, hew, how, _⟩ := even_factor_sum_split hv he
