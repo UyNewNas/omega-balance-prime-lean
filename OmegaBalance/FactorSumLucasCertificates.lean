@@ -64,4 +64,39 @@ theorem prime_916064832391 : Nat.Prime 916064832391 := by
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
     rcases hq with rfl | rfl | rfl | rfl | rfl | rfl <;> norm_num
 
+
+theorem prime_1676030389155588931 : Nat.Prime 1676030389155588931 := by
+  apply lucasPrime_of_factorList 1676030389155588931 2
+    [2, 3, 5, 83059, 672626441909]
+  · norm_num
+  · intro q hq
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
+    rcases hq with rfl | rfl | rfl | rfl | rfl
+    · norm_num
+    · norm_num
+    · norm_num
+    · norm_num
+    · exact prime_672626441909
+  · norm_num
+  · intro q hq
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
+    rcases hq with rfl | rfl | rfl | rfl | rfl <;> norm_num
+
+theorem prime_2663854240184425411 : Nat.Prime 2663854240184425411 := by
+  apply lucasPrime_of_factorList 2663854240184425411 3
+    [2, 3, 5, 96931, 916065462437]
+  · norm_num
+  · intro q hq
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
+    rcases hq with rfl | rfl | rfl | rfl | rfl
+    · norm_num
+    · norm_num
+    · norm_num
+    · norm_num
+    · exact prime_916065462437
+  · norm_num
+  · intro q hq
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hq
+    rcases hq with rfl | rfl | rfl | rfl | rfl <;> norm_num
+
 end OmegaBalance
