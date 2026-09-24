@@ -237,6 +237,14 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3CorrelationThreeWeightSum
 #print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_weights
 
+-- Closed complete-period formula and the two zero-distance boundary shifts.
+#print axioms OmegaBalance.f3CappedDepth_le
+#print axioms OmegaBalance.f3CappedDepth_two
+#print axioms OmegaBalance.f3CappedDepth_four
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_closed
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_zero_shift
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_two_shift
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
