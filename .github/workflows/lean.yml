@@ -32,7 +32,7 @@ jobs:
       - name: Fetch pinned dependencies and cache
         run: |
           lake update
-          lake exe cache get Mathlib/Data/Nat/Factorization/Basic.lean Mathlib/Tactic/NormNum.lean Mathlib/Tactic/Linarith.lean Mathlib/Tactic/Ring.lean
+          lake exe cache get
       - name: Build library
         shell: bash
         run: |
