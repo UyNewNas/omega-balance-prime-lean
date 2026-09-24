@@ -19,4 +19,5 @@ import OmegaBalance.FactorSumFive
 import OmegaBalance.FactorSumLowCount
 import OmegaBalance.FactorSumCofactor
 import OmegaBalance.FactorSumAdmissibility
+import OmegaBalance.FactorSumIrreducible
 import OmegaBalance.FactorSumAnalyticTransfer
