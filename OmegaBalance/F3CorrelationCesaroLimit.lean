@@ -35,10 +35,14 @@ theorem f3PeriodicCorrelationCesaroAverage_eq (R h N : ℕ) (hN : 0 < N) :
   push_cast
   have hP : (0 : ℝ) < ((3 : ℕ) ^ R : ℝ) := by positivity
   have hNr : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
+  have hdecompNat :
+      N / 3 ^ R * 3 ^ R + N % 3 ^ R = N := by
+    rw [Nat.mul_comm]
+    exact Nat.div_add_mod N (3 ^ R)
   have hdecomp :
       (N : ℝ) = ((N / 3 ^ R : ℕ) : ℝ) * ((3 : ℕ) ^ R : ℝ) +
         ((N % 3 ^ R : ℕ) : ℝ) := by
-    exact_mod_cast (Nat.div_add_mod N (3 ^ R)).symm
+    exact_mod_cast hdecompNat.symm
   field_simp [ne_of_gt hP, ne_of_gt hNr]
   nlinarith
 
