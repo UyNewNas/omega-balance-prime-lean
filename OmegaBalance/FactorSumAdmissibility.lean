@@ -1,6 +1,7 @@
 import OmegaBalance.FactorSumFamily
 import Mathlib.Algebra.Polynomial.Roots
 import Mathlib.Tactic.ComputeDegree
+import Mathlib.Tactic.IntervalCases
 
 /-!
 # Local admissibility of the five-polynomial factor-sum family
@@ -10,6 +11,8 @@ conditional Schinzel-H interface. The small primes 2,3,5,7 are handled by the
 explicit residue tables in `FactorSumFamily`; primes at least 11 are handled by
 the degree-nine root bound for the product polynomial.
 -/
+
+noncomputable section
 
 namespace OmegaBalance
 
@@ -94,6 +97,8 @@ theorem sumFamilyProductPoly_ne_zero_of_prime {ell : ℕ} (hell : ell.Prime) :
   have h5d : ell ∣ 393945295832825341 := (ZMod.natCast_eq_zero_iff _ _).mp h5z
   have hg : ell ∣ Nat.gcd 1111936 393945295832825341 := Nat.dvd_gcd h0d h5d
   norm_num at hg
+  have hell1 := hell.one_lt
+  omega
 
 /-- Every prime `ell ≥ 11` has a residue avoiding all five family factors. -/
 theorem sumFamily_large_prime_admissible {ell : ℕ} (hell : ell.Prime) (hell11 : 11 ≤ ell) :
@@ -111,34 +116,13 @@ theorem sumFamily_large_prime_admissible {ell : ℕ} (hell : ell.Prime) (hell11 
     intro hall
     exact hf0 (Polynomial.eq_zero_of_natDegree_lt_card_of_eval_eq_zero
       f Function.injective_id hall hdeg)
-  push_neg at hnotall
+  push Not at hnotall
   obtain ⟨x, hx⟩ := hnotall
   refine ⟨x.val, x.val_lt, ?_⟩
-  have hx' :
-      (sumFamilyU x.val : ZMod ell) * sumFamilyV x.val * sumFamilyQ x.val *
-        sumFamilyR x.val * sumFamilyCenter x.val ≠ 0 := by
-    rw [← ZMod.natCast_zmod_val x] at hx
-    simpa [f] using hx
-  have hu : (sumFamilyU x.val : ZMod ell) ≠ 0 := by
-    intro h
-    apply hx'
-    simp [h]
-  have hv : (sumFamilyV x.val : ZMod ell) ≠ 0 := by
-    intro h
-    apply hx'
-    simp [h]
-  have hq : (sumFamilyQ x.val : ZMod ell) ≠ 0 := by
-    intro h
-    apply hx'
-    simp [h]
-  have hr : (sumFamilyR x.val : ZMod ell) ≠ 0 := by
-    intro h
-    apply hx'
-    simp [h]
-  have hp : (sumFamilyCenter x.val : ZMod ell) ≠ 0 := by
-    intro h
-    apply hx'
-    simp [h]
+  change (sumFamilyProductPoly (ZMod ell)).eval x ≠ 0 at hx
+  rw [← ZMod.natCast_zmod_val x] at hx
+  simp only [sumFamilyProductPoly_eval_natCast, mul_ne_zero] at hx
+  rcases hx with ⟨⟨⟨⟨hu, hv⟩, hq⟩, hr⟩, hp⟩
   exact ⟨
     fun hd => hu ((ZMod.natCast_eq_zero_iff _ _).2 hd),
     fun hd => hv ((ZMod.natCast_eq_zero_iff _ _).2 hd),
@@ -152,9 +136,9 @@ theorem sumFamily_prime_admissible {ell : ℕ} (hell : ell.Prime) :
   by_cases hsmall : ell = 2 ∨ ell = 3 ∨ ell = 5 ∨ ell = 7
   · exact sumFamily_small_prime_admissible hsmall
   · have hell11 : 11 ≤ ell := by
-      have h2 := hell.two_le
-      have hcases : ell = 2 ∨ ell = 3 ∨ ell = 5 ∨ ell = 7 ∨ 11 ≤ ell := by omega
-      exact hcases.resolve_left hsmall
+      by_contra hlt
+      have hell_lt : ell < 11 := by omega
+      interval_cases ell <;> norm_num at hell hsmall
     exact sumFamily_large_prime_admissible hell hell11
 
 end OmegaBalance
