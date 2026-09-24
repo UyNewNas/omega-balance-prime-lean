@@ -16,14 +16,14 @@ open Filter Topology
 
 /-- Real-valued three-adic kernel on natural numbers.  The zero convention is the
 usual absolute-value convention `|0|₃ = 0`, unlike the finite capped depth. -/
-def f3PadicKernel (n : ℕ) : ℝ :=
+noncomputable def f3PadicKernel (n : ℕ) : ℝ :=
   if n = 0 then 0 else 1 / (3 : ℝ) ^ v3 n
 
 @[simp] theorem f3PadicKernel_zero : f3PadicKernel 0 = 0 := by
   simp [f3PadicKernel]
 
 /-- The normalized geometric term attached to one capped depth. -/
-def f3NormalizedCappedKernel (R n : ℕ) : ℝ :=
+noncomputable def f3NormalizedCappedKernel (R n : ℕ) : ℝ :=
   (3 : ℝ) ^ (R - f3CappedDepth R n) / (3 : ℝ) ^ R
 
 /-- Away from zero, once the cutoff exceeds the true valuation depth, the normalized
@@ -43,7 +43,7 @@ theorem f3NormalizedCappedKernel_eq_padicKernel_of_le {R n : ℕ}
 `(1/3)^R`. -/
 theorem f3NormalizedCappedKernel_zero (R : ℕ) :
     f3NormalizedCappedKernel R 0 = (1 / 3 : ℝ) ^ R := by
-  simp [f3NormalizedCappedKernel, div_pow]
+  simp [f3NormalizedCappedKernel]
 
 /-- Each normalized capped geometric term converges to the genuine three-adic
 kernel, including the special zero case. -/
@@ -61,7 +61,7 @@ theorem tendsto_f3NormalizedCappedKernel (n : ℕ) :
     exact f3NormalizedCappedKernel_eq_padicKernel_of_le hn hR
 
 /-- The normalized retained depth is the finite-period boundary correction scale. -/
-def f3CappedDepthRatio (R n : ℕ) : ℝ :=
+noncomputable def f3CappedDepthRatio (R n : ℕ) : ℝ :=
   (f3CappedDepth R n : ℝ) / (3 : ℝ) ^ R
 
 /-- Every normalized retained depth vanishes exponentially, uniformly under the
@@ -75,12 +75,13 @@ theorem tendsto_f3CappedDepthRatio_zero (n : ℕ) :
   · filter_upwards with R
     exact div_nonneg (by positivity) (by positivity)
   · filter_upwards with R
-    exact div_le_div_of_nonneg_right
-      (by exact_mod_cast f3CappedDepth_le R n) (by positivity)
+    have hd : (f3CappedDepth R n : ℝ) ≤ (R : ℝ) := by
+      exact_mod_cast f3CappedDepth_le R n
+    exact div_le_div_of_nonneg_right hd (by positivity)
   · exact hmajor
 
 /-- Complete-period correlation normalized by its period length. -/
-def f3PeriodicCorrelationAverage (R h : ℕ) : ℝ :=
+noncomputable def f3PeriodicCorrelationAverage (R h : ℕ) : ℝ :=
   (f3PeriodicCorrelationSum R h : ℝ) / (3 : ℝ) ^ R
 
 /-- Exact normalized closed form: three geometric kernels plus the three finite-depth
@@ -114,11 +115,11 @@ theorem tendsto_f3PeriodicCorrelationAverage (h : ℕ) :
         2 * f3CappedDepthRatio R h) by
       funext R
       exact f3PeriodicCorrelationAverage_eq R h]
-  exact (((((tendsto_f3NormalizedCappedKernel (Nat.dist h 2)).add
+  simpa using (((((tendsto_f3NormalizedCappedKernel (Nat.dist h 2)).add
       (tendsto_f3NormalizedCappedKernel (h + 2))).sub
-      ((tendsto_const_nhds.mul (tendsto_f3NormalizedCappedKernel h)))).add
+      ((tendsto_f3NormalizedCappedKernel h).const_mul 2)).add
       (tendsto_f3CappedDepthRatio_zero (Nat.dist h 2))).add
       (tendsto_f3CappedDepthRatio_zero (h + 2))).sub
-      (tendsto_const_nhds.mul (tendsto_f3CappedDepthRatio_zero h))
+      ((tendsto_f3CappedDepthRatio_zero h).const_mul 2)
 
 end OmegaBalance
