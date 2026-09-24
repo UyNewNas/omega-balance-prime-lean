@@ -1,8 +1,10 @@
 import OmegaBalance.FactorSumStructure
 
-/-! Necessity of the level-five factor shape, and its twin-prime consequences. -/
+/-! Necessity of the level-five factor shape and twin-prime consequences. -/
 
 namespace OmegaBalance
+
+set_option maxHeartbeats 2000000
 
 /-- Every level-five double-balanced prime has the prescribed factor shape. -/
 theorem doubleBalanced_five_has_shape {p : ℕ} (h : IsDoubleBalancedPrime p 5) :
@@ -40,7 +42,13 @@ theorem doubleBalanced_five_has_shape {p : ℕ} (h : IsDoubleBalancedPrime p 5) 
     by_contra! hn
     have hmu : u % 3 ≠ 0 := fun hh => hn.1 (Nat.dvd_iff_mod_eq_zero.mpr hh)
     have hmv : v % 3 ≠ 0 := fun hh => hn.2 (Nat.dvd_iff_mod_eq_zero.mpr hh)
-    have hmp : p % 3 = 0 := by omega
+    have hmp : p % 3 = 0 := by
+      rcases hadj with hadd | hadd
+      all_goals
+        have heq := congrArg (fun z : ℕ => z % 3) hadd
+        have hpq := congrArg (fun z : ℕ => z % 3) hcenter
+        norm_num [Nat.add_mod, Nat.mul_mod] at heq hpq
+        omega
     exact not_three_dvd_prime h.1 (by omega) (Nat.dvd_iff_mod_eq_zero.mpr hmp)
   have hnv : ¬ 3 ∣ v := by
     intro hv3
@@ -63,10 +71,10 @@ theorem doubleBalanced_five_has_shape {p : ℕ} (h : IsDoubleBalancedPrime p 5) 
     rcases Nat.prime_three.dvd_mul.mp hdiv with hrd | hsd
     · have hr3 : r = 3 := ((hr.eq_one_or_self_of_dvd 3 hrd).resolve_left (by norm_num)).symm
       subst r
-      rcases hadj with hadj | hadj <;> nlinarith
+      omega
     · have hs3 : s = 3 := ((hs.eq_one_or_self_of_dvd 3 hsd).resolve_left (by norm_num)).symm
       subst s
-      rcases hadj with hadj | hadj <;> nlinarith
+      omega
   have hdu : 3 ∣ u := h3.resolve_right hnv
   obtain ⟨w, hew⟩ := hdu
   have hw : w ≠ 0 := by intro hz; simp [hz] at hew; omega
@@ -93,6 +101,8 @@ theorem doubleBalanced_five_has_shape {p : ℕ} (h : IsDoubleBalancedPrime p 5) 
   have hsumU := primeFactorSum_of_factors hfp hfprime
   norm_num at hsumU
   have hpred : p - 1 + 1 = p := Nat.sub_add_cancel (by have := h.1.two_le; omega)
+  have h2u : 2 * u = 6 * x * y * z := by rw [hux]; ring
+  have h8v : 8 * v = 8 * r * s := by rw [heV]; ring
   refine ⟨x, y, z, r, s, ?_, ?_, ?_⟩
   · intro n hn
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hn
@@ -103,8 +113,14 @@ theorem doubleBalanced_five_has_shape {p : ℕ} (h : IsDoubleBalancedPrime p 5) 
     · exact ⟨hr, hrs.1⟩
     · exact ⟨hs, hrs.2⟩
   · rcases hadj with hadj | hadj
-    · left; constructor <;> nlinarith
-    · right; constructor <;> nlinarith
+    · left
+      constructor
+      · rw [← h2u]; omega
+      · rw [← h8v]; omega
+    · right
+      constructor
+      · rw [← h2u]; omega
+      · rw [← h8v]; omega
   · omega
 
 theorem doubleBalanced_five_shape_iff {p : ℕ} (hp : p.Prime) :

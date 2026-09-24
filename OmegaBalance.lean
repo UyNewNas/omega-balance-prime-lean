@@ -8,3 +8,4 @@ import OmegaBalance.FactorSumArithmetic
 import OmegaBalance.FactorSumFamily
 import OmegaBalance.FactorSumStructure
 import OmegaBalance.FactorSumFive
+import OmegaBalance.FactorSumLowCount
