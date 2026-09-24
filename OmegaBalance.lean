@@ -7,3 +7,4 @@ import OmegaBalance.FactorSum
 import OmegaBalance.FactorSumArithmetic
 import OmegaBalance.FactorSumFamily
 import OmegaBalance.FactorSumStructure
+import OmegaBalance.FactorSumFive
