@@ -45,36 +45,29 @@ PR #6 合入主分支 `007da90defc99dcf9fb92aad43a9d684ff99cb0b`。核心接口�
 5. **capped depth 与零边界**：`F3CorrelationDepth.lean`，保留 `v₃,R(0)=R`，并用 `Nat.dist h 2` 统一处理 `h<2,h=2,h>2`。
 6. **完整周期闭式**：`F3CorrelationClosed.lean`，得到三个几何项加三个深度边界项的精确公式；含 `h=0`、`h=2` 两个独立边界。
 7. **归一化完整周期 cutoff 极限**：`F3CorrelationLimit.lean`，证明 `S_R(h)/3^R → |h-2|₃+|h+2|₃-2|h|₃`，其中零点三进核显式取 0。
-8. **任意长度 quotient/remainder 分解**：`F3CorrelationCesaro.lean`，PR #13 已合入主分支 `f2a4f7595e5ee9d355d2d621438032121fc27dfe`。证明固定 `R` 时相关 summand 的周期性、任意部分和的完整块+终端块精确分解，以及终端块统一界 `≤3^R R²`。
+8. **任意长度 quotient/remainder 分解**：`F3CorrelationCesaro.lean`，PR #13 合入主分支 `f2a4f7595e5ee9d355d2d621438032121fc27dfe`。证明固定 `R` 时相关 summand 的周期性、任意部分和的完整块+终端块精确分解，以及终端块统一界 `≤3^R R²`。
+9. **固定 cutoff 的任意长度 Cesàro 极限**：`F3CorrelationCesaroLimit.lean`，PR #14 经精确 head `3d27d52af8f1418036780514c9a6d9d66b2808a5` 的完整门禁通过后，合入主分支 `1dc54d0941d2ef1848b8bc794d82c6624b140398`。证明任意长度归一化截断相关平均收敛到完整 `3^R` 周期平均；不会把固定 cutoff 极限冒充原始 `F₃` 的无限相关核。
 
-PR #13 的最终验证确认 library build、三组 kernel regressions、公理审计、源码审计、声明一对一覆盖、144,240 项既有有限检查及 11 组边界测试全部通过。
+PR #14 的成功门禁确认 275 条 theorem/lemma 只依赖标准 Lean 公理，28 个 Lean 文件无 proof escape，声明审计覆盖一对一完整，既有 144,240 项有限检查和 11 组边界测试全部通过。
 
-## COR-1 当前推进：固定 cutoff 的任意长度 Cesàro 极限（PR #14）
+## COR-1 当前推进：`L²` 截断尾部
 
-分支 `feat/f3-correlation-cesaro-limit` 新增 `OmegaBalance/F3CorrelationCesaroLimit.lean`。目标是对每个固定 `R,h` 证明
+PR #15 分支 `feat/f3-correlation-tail-pointwise` 新增 `OmegaBalance/F3CorrelationTail.lean`，先把原始 `F₃` 与 `f3Trunc R` 的误差化成可计数的高赋值层。当前已写入并经中间 head `df49dd453f4aa66955d99a6f4e45df9d8fcc4479` 完整门禁验证的核心接口：
 
-```text
-(1/N) * sum_{n<N} F_{3,R}^{per}(n) F_{3,R}^{per}(n+h)
-    → f3PeriodicCorrelationAverage R h.
-```
+- `v3Excess R n = v3 n - R` 与 `f3Tail R n = f3 n - f3Trunc R n`；
+- `f3Tail_of_mod_three_zero/two/one`：按 `n mod 3` 给出零、正 excess、负 excess 的精确点态公式；
+- `f3Tail_sq_eq_neighbor_excess`：
+  `(f3Tail R n)^2 = (v3Excess R (n+1))^2 + (v3Excess R (n-1))^2`，适用域 `n>1`；
+- `sum_odd_eq_sq_int` / `v3Excess_sq_eq_odd_sum`：用前 `m` 个奇数和展开 excess 平方；
+- `pow_three_dvd_iff_lt_v3Excess`：在 `n≠0` 时，`3^(R+t+1) ∣ n ↔ t < v3Excess R n`。
 
-当前写入的证明结构：
-
-- `f3PeriodicCorrelationCesaroAverage`：任意长度的实值归一化平均；
-- `f3PeriodicCorrelationCesaroAverage_eq`：把平均精确改写为“完整周期平均 × (1 - (N mod 3^R)/N) + 终端块/N”；
-- `tendsto_f3PeriodicCorrelationRemainder_div`：由 PR #13 的统一终端块界和 `tendsto_bdd_div_atTop_nhds_zero` 得到终端块/N→0；
-- `tendsto_f3PeriodicCorrelationCesaroAverage`：复用 mathlib 的 `tendsto_mod_div_atTop_nhds_zero_nat` 收掉 `(N mod 3^R)/N→0`，得到固定 cutoff 的任意长度 Cesàro 极限。
-
-这些声明已经加入 `scripts/Audit.lean`，但 **只有 PR #14 最终精确 head 的完整 CI 成功后才把本阶段改成“完成”**。不得把固定 cutoff 极限冒充原始 `F₃` 的无限相关核。
+这一步只建立点态 `L²` 尾部的严格算术基础。尚未把它登记成 Cesàro 尾部界，也没有进行 cutoff/Cesàro 极限交换。PR #15 最终是否合入，以最终 head 再次通过完整门禁为准。
 
 ## COR-1 剩余链条
 
-PR #14 完成后仍需：
-
-1. 证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界，目标量级 `O(3^(1-R))`，并明确自然减法边界与周期版本的连接。
+1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
 2. 用 Cauchy–Schwarz 控制原始相关平均与固定 cutoff 相关平均之间的误差。
-3. 完成 cutoff 极限与 Cesàro 极限交换，得到原始 `F₃` 的无限相关核
-   `|h-2|₃+|h+2|₃-2|h|₃`。
+3. 完成 cutoff 极限与 Cesàro 极限交换，得到原始 `F₃` 的无限相关核 `|h-2|₃+|h+2|₃-2|h|₃`。
 4. 从 COR-1 推导 COR-2：固定 `r≥1` 的均方近似周期 `4/3^r`；`r=0` 必须单独处理，不能套该简式。
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。

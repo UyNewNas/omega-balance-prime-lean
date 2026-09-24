@@ -273,6 +273,15 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.tendsto_f3PeriodicCorrelationRemainder_div
 #print axioms OmegaBalance.tendsto_f3PeriodicCorrelationCesaroAverage
 
+-- Pointwise tail identities for the L2 truncation stage.
+#print axioms OmegaBalance.f3Tail_of_mod_three_zero
+#print axioms OmegaBalance.f3Tail_of_mod_three_two
+#print axioms OmegaBalance.f3Tail_of_mod_three_one
+#print axioms OmegaBalance.f3Tail_sq_eq_neighbor_excess
+#print axioms OmegaBalance.sum_odd_eq_sq_int
+#print axioms OmegaBalance.v3Excess_sq_eq_odd_sum
+#print axioms OmegaBalance.pow_three_dvd_iff_lt_v3Excess
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
