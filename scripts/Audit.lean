@@ -212,6 +212,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumCofactor_inverse_identity
 #print axioms OmegaBalance.doubleFactorPair_identity
 #print axioms OmegaBalance.doubleFactorPair_iff
+#print axioms OmegaBalance.sumFamily_mod_two_table
+#print axioms OmegaBalance.sumFamily_mod_three_table
+#print axioms OmegaBalance.sumFamily_mod_five_table
+#print axioms OmegaBalance.sumFamily_mod_seven_table
+#print axioms OmegaBalance.sumFamily_small_prime_admissible
 
 -- FactorSumFive.lean
 #print axioms OmegaBalance.doubleBalanced_five_has_shape
