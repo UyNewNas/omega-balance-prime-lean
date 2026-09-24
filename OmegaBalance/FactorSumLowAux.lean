@@ -1,4 +1,5 @@
 import OmegaBalance.FactorSumStructure
+import OmegaBalance.FactorSumSmallCertificates
 
 /-! Preparatory lemmas for the unrestricted low-count classification. -/
 
@@ -162,14 +163,30 @@ theorem low_pair_twelve_bound {a b : ℕ} (ha : 5 ≤ a) (hb : 5 ≤ b)
     omega
   omega
 
-set_option maxRecDepth 100000 in
-set_option maxHeartbeats 8000000 in
-/-- Finite kernel computation, used only after a universal size bound is proved. -/
+/-- Finite classification derived from verified factorization certificates. -/
 theorem small_sum_balanced_low_count :
     ∀ p : Fin 2000,
       (p.val.Prime ∧ primeFactorSum (p.val - 1) = primeFactorSum (p.val + 1) ∧
         bigOmega (p.val - 1) + bigOmega (p.val + 1) ≤ 8) ↔
       p.val = 11 ∨ p.val = 17 ∨ p.val = 31 := by
-  decide +kernel
+  intro p
+  have hclass (hp : p.val.Prime) :
+      (primeFactorSum (p.val - 1) = primeFactorSum (p.val + 1) ∧
+        bigOmega (p.val - 1) + bigOmega (p.val + 1) ≤ 8) ↔
+      p.val = 11 ∨ p.val = 17 ∨ p.val = 31 := by
+    obtain ⟨row, hm, he⟩ := List.mem_map.mp (smallSumCertificates_cover p hp)
+    obtain ⟨hL, hR, hPL, hPR, ht⟩ := smallSumCertificates_valid row hm
+    have hl : row.2.1.prod = p.val - 1 := by simpa only [he] using hL
+    have hr : row.2.2.prod = p.val + 1 := by simpa only [he] using hR
+    rw [primeFactorSum_of_factors hl hPL, primeFactorSum_of_factors hr hPR,
+      bigOmega_of_factors hl hPL, bigOmega_of_factors hr hPR]
+    simpa only [he] using ht
+  constructor
+  · rintro ⟨hp, hs, ho⟩
+    exact (hclass hp).mp ⟨hs, ho⟩
+  · intro h
+    have hp : p.val.Prime := by
+      rcases h with he | he | he <;> rw [he] <;> norm_num
+    exact ⟨hp, (hclass hp).mpr h⟩
 
 end OmegaBalance
