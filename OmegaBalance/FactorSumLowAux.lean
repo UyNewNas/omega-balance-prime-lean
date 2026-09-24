@@ -66,8 +66,8 @@ theorem prime_consecutive_sum_eq_five_six {q e : ℕ} (hq : q.Prime) (he : 0 < e
   have hq2 := hq.two_le
   have hq5 := prime_consecutive_sum_bound hq he hadj hs
   have he6 : e ≤ 6 := by omega
-  interval_cases q <;> interval_cases e <;>
-    norm_num [primeFactorSum] at hq hs ⊢
+  interval_cases q <;> interval_cases e <;> norm_num [primeFactorSum] at hq hs
+  all_goals norm_num
 
 /-- Apart from center 11, neither half-neighbor of an S-balanced prime is prime. -/
 theorem sumBalanced_halves_nonprime_of_ne_eleven {p : ℕ}
