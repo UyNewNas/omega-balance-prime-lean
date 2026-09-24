@@ -1,0 +1,21 @@
+{
+  "limit": 100000000,
+  "definition": "prime(p) and p>2 and Omega(p-1)=Omega(p+1); multiplicities counted",
+  "allow_equal": true,
+  "balanced_prime_count": 717650,
+  "missing_count": 3088,
+  "largest_missing": 518596,
+  "largest_minimal_summand": 740603,
+  "largest_minimal_summand_target": 73888816,
+  "membership_probes": 5005884643,
+  "checkpoints": [
+    {"limit":100,"balanced_primes":6,"missing":39,"largest_missing":100},
+    {"limit":1000,"balanced_primes":29,"missing":310,"largest_missing":1000},
+    {"limit":10000,"balanced_primes":169,"missing":1733,"largest_missing":10000},
+    {"limit":100000,"balanced_primes":1335,"missing":3003,"largest_missing":99824},
+    {"limit":1000000,"balanced_primes":10300,"missing":3088,"largest_missing":518596},
+    {"limit":10000000,"balanced_primes":84283,"missing":3088,"largest_missing":518596},
+    {"limit":100000000,"balanced_primes":717650,"missing":3088,"largest_missing":518596}
+  ],
+  "extra_missing_if_distinct_required": [10,38,58,134,394,542,566,698,922,982,1138,1402,1718,1838,2026,2194,3334,3494,3946,5062,5366,5458,5606,10102]
+}
