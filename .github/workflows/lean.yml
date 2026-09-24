@@ -51,8 +51,10 @@ jobs:
           set -o pipefail
           lake env lean scripts/Audit.lean 2>&1 | tee axioms.log
           python3 scripts/check_axioms.py axioms.log
-      - name: Audit source
-        run: python3 scripts/check_sources.py
+      - name: Audit source and registry coverage
+        run: |
+          python3 scripts/check_sources.py
+          python3 scripts/check_audit_coverage.py
       - name: Finite F3 checks and distribution
         shell: bash
         run: |

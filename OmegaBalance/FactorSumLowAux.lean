@@ -89,13 +89,15 @@ theorem three_dvd_adjacent_prime_sum {u v p : ℕ} (hp : p.Prime) (h3 : 3 < p)
   by_contra! hn
   have hu : u % 3 ≠ 0 := fun hh => hn.1 (Nat.dvd_iff_mod_eq_zero.mpr hh)
   have hv : v % 3 ≠ 0 := fun hh => hn.2 (Nat.dvd_iff_mod_eq_zero.mpr hh)
-  have hm : p % 3 = 0 := by
+  have huCases : u % 3 = 1 ∨ u % 3 = 2 := by omega
+  have hvCases : v % 3 = 1 ∨ v % 3 = 2 := by omega
+  have huv : u % 3 + v % 3 = 3 := by
     rcases hadj with hadd | hadd
     all_goals
       have heq := congrArg (fun z : ℕ => z % 3) hadd
-      have hpq := congrArg (fun z : ℕ => z % 3) hep
-      norm_num [Nat.add_mod] at heq hpq
-      omega
+      rcases huCases with hru | hru <;> rcases hvCases with hrv | hrv <;>
+        norm_num [Nat.add_mod, hru, hrv] at heq ⊢
+  have hm : p % 3 = 0 := by rw [hep, Nat.add_mod, huv]; norm_num
   exact not_three_dvd_prime hp h3 (Nat.dvd_iff_mod_eq_zero.mpr hm)
 
 theorem adjacent_not_common_dvd {u v q : ℕ} (hq : 1 < q)
@@ -103,8 +105,14 @@ theorem adjacent_not_common_dvd {u v q : ℕ} (hq : 1 < q)
   intro hv
   have hd1 : q ∣ 1 := by
     rcases hadj with hadj | hadj
-    · exact (Nat.dvd_add_iff_right hu).mp (by rw [hadj]; exact hv)
-    · exact (Nat.dvd_add_iff_right hv).mp (by rw [hadj]; exact hu)
+    · have hsum : q ∣ u + 1 := by rw [hadj]; exact hv
+      first
+      | exact (Nat.dvd_add_iff_right hu).mp hsum
+      | exact (Nat.dvd_add_iff_left hu).mp hsum
+    · have hsum : q ∣ v + 1 := by rw [hadj]; exact hu
+      first
+      | exact (Nat.dvd_add_iff_right hv).mp hsum
+      | exact (Nat.dvd_add_iff_left hv).mp hsum
   have hle := Nat.le_of_dvd (by norm_num : 0 < 1) hd1
   omega
 
@@ -162,6 +170,6 @@ theorem small_sum_balanced_low_count :
       (p.val.Prime ∧ primeFactorSum (p.val - 1) = primeFactorSum (p.val + 1) ∧
         bigOmega (p.val - 1) + bigOmega (p.val + 1) ≤ 8) ↔
       p.val = 11 ∨ p.val = 17 ∨ p.val = 31 := by
-  decide
+  decide +kernel
 
 end OmegaBalance

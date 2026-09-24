@@ -1,6 +1,7 @@
 import OmegaBalance
 import OmegaBalance.Examples
 import OmegaBalance.F3Examples
+import OmegaBalance.FactorSumExamples
 
 #print axioms OmegaBalance.bigOmega_zero
 #print axioms OmegaBalance.bigOmega_one
@@ -124,3 +125,120 @@ import OmegaBalance.F3Examples
 #print axioms OmegaBalance.f3_multiply_unequal_example
 #print axioms OmegaBalance.f3_iterated_cube_five_example
 #print axioms OmegaBalance.f3_reflection_strict_boundary_example
+
+-- FactorSum.lean
+#print axioms OmegaBalance.primeFactorSum_zero
+#print axioms OmegaBalance.primeFactorSum_one
+#print axioms OmegaBalance.primeFactorSum_prime
+#print axioms OmegaBalance.primeFactorSum_mul
+#print axioms OmegaBalance.primeFactorSum_prime_pow
+#print axioms OmegaBalance.primeFactorSum_of_factors
+#print axioms OmegaBalance.bigOmega_of_factors
+#print axioms OmegaBalance.primeFactorSumDiff_eq_zero_iff
+#print axioms OmegaBalance.isPrimeFactorSumBalancedPrime_iff
+#print axioms OmegaBalance.primeFactorSum_double_diff
+#print axioms OmegaBalance.primeFactorSumDiff_eq_half_diff
+#print axioms OmegaBalance.primeFactorSumDiff_prime_eq_half_diff
+#print axioms OmegaBalance.primeFactorSumBalanced_iff_half
+#print axioms OmegaBalance.primeFactorSum_center_iff
+#print axioms OmegaBalance.primeFactorSum_cofactor_construction
+#print axioms OmegaBalance.primeFactorSum_cofactor_defect
+#print axioms OmegaBalance.doubleBalanced_sumBalanced
+#print axioms OmegaBalance.doubleBalanced_omegaBalanced
+#print axioms OmegaBalance.doubleBalanced_omegaSum
+#print axioms OmegaBalance.doubleBalanced_twin_same_level
+
+-- FactorSumArithmetic.lean
+#print axioms OmegaBalance.factorList_prod_pos
+#print axioms OmegaBalance.factorList_two_le_prod
+#print axioms OmegaBalance.factorList_sum_le_prod
+#print axioms OmegaBalance.primeFactorSum_le
+#print axioms OmegaBalance.primeFactorSum_eq_self_iff
+#print axioms OmegaBalance.primeFactorDefect_nonneg
+#print axioms OmegaBalance.primeFactorDefect_eq_zero_iff
+#print axioms OmegaBalance.primeFactorSum_odd_composite_bound
+#print axioms OmegaBalance.bigOmega_eq_zero_iff
+#print axioms OmegaBalance.bigOmega_eq_one_iff
+#print axioms OmegaBalance.bigOmega_eq_two_factors
+#print axioms OmegaBalance.bigOmega_eq_three_factors
+#print axioms OmegaBalance.bigOmega_eq_four_factors
+#print axioms OmegaBalance.factorList_sum_twos_parity
+#print axioms OmegaBalance.primeFactorSum_parity
+#print axioms OmegaBalance.primeFactorSum_odd_parity
+#print axioms OmegaBalance.sumBalanced_count_valuation_parity
+#print axioms OmegaBalance.valuation_eq_of_pow_dvd
+#print axioms OmegaBalance.doubleBalanced_mod_eight
+
+-- FactorSumExamples.lean
+#print axioms OmegaBalance.sumFamily_prime_values_five
+#print axioms OmegaBalance.sumBalanced_3615811
+#print axioms OmegaBalance.sumBalanced_3615811_profile
+#print axioms OmegaBalance.doubleBalanced_870404071
+#print axioms OmegaBalance.doubleBalanced_748465063
+#print axioms OmegaBalance.doubleBalanced_minimum_level
+#print axioms OmegaBalance.sumBalanced_11
+#print axioms OmegaBalance.sumBalanced_17
+#print axioms OmegaBalance.sumBalanced_31
+
+-- FactorSumFamily.lean
+#print axioms OmegaBalance.sumFamily_adjacent
+#print axioms OmegaBalance.sumFamily_center_eq
+#print axioms OmegaBalance.sumFamily_pred
+#print axioms OmegaBalance.sumFamily_succ
+#print axioms OmegaBalance.sumFamily_factor_sum_identity
+#print axioms OmegaBalance.sumFamily_left_profile
+#print axioms OmegaBalance.sumFamily_right_profile
+#print axioms OmegaBalance.sumFamily_balanced
+#print axioms OmegaBalance.sumFamily_five_primes
+#print axioms OmegaBalance.sumFamily_omegaSum_eq_nine
+#print axioms OmegaBalance.sumFamily_omegaDiff_eq_neg_one
+#print axioms OmegaBalance.sumFamily_not_omegaBalanced
+#print axioms OmegaBalance.sumFamily_defect_identity
+#print axioms OmegaBalance.sumFamily_balanced_iff_defect
+#print axioms OmegaBalance.sumCofactor_inverse_identity
+#print axioms OmegaBalance.doubleFactorPair_identity
+#print axioms OmegaBalance.doubleFactorPair_iff
+
+-- FactorSumFive.lean
+#print axioms OmegaBalance.doubleBalanced_five_has_shape
+#print axioms OmegaBalance.doubleBalanced_five_shape_iff
+#print axioms OmegaBalance.doubleBalanced_five_mod_forty_eight
+#print axioms OmegaBalance.doubleBalanced_five_not_twins
+#print axioms OmegaBalance.doubleBalanced_twins_level_ge_six
+
+-- FactorSumLowAux.lean
+#print axioms OmegaBalance.sumBalanced_prime_halves
+#print axioms OmegaBalance.even_factor_sum_split
+#print axioms OmegaBalance.prime_consecutive_sum_bound
+#print axioms OmegaBalance.even_omega_two_shape
+#print axioms OmegaBalance.even_omega_three_shape
+#print axioms OmegaBalance.even_omega_four_even_sum_shape
+#print axioms OmegaBalance.three_dvd_adjacent_prime_sum
+#print axioms OmegaBalance.adjacent_not_common_dvd
+#print axioms OmegaBalance.two_odd_factor_gap
+#print axioms OmegaBalance.four_odd_factor_gap
+#print axioms OmegaBalance.low_pair_six_bound
+#print axioms OmegaBalance.low_pair_twelve_bound
+#print axioms OmegaBalance.small_sum_balanced_low_count
+
+-- FactorSumLowCount.lean
+#print axioms OmegaBalance.sumPair_two_three_bound
+#print axioms OmegaBalance.sumPair_two_four_bound
+#print axioms OmegaBalance.sumPair_three_three_impossible
+#print axioms OmegaBalance.sumBalanced_low_count_bound
+#print axioms OmegaBalance.sumBalanced_total_le_eight_iff
+#print axioms OmegaBalance.sumBalanced_total_ge_nine
+#print axioms OmegaBalance.infinite_sumBalanced_level_ge_nine
+#print axioms OmegaBalance.sumFamilyCenter_strictMono
+#print axioms OmegaBalance.infinite_sumFamily_implies_level_nine
+
+-- FactorSumStructure.lean
+#print axioms OmegaBalance.prime_three_le_of_dvd_odd
+#print axioms OmegaBalance.prime_five_le_of_dvd_odd
+#print axioms OmegaBalance.doubleBalanced_split
+#print axioms OmegaBalance.triple_factor_gap_bound
+#print axioms OmegaBalance.doubleBalanced_level_ge_five
+#print axioms OmegaBalance.doubleBalanced_five_of_shape
+#print axioms OmegaBalance.doubleFiveShape_mod_forty_eight
+#print axioms OmegaBalance.doubleFiveShape_not_twins
+#print axioms OmegaBalance.quadruple_factor_gap_bound
