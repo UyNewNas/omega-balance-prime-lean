@@ -75,12 +75,13 @@ theorem sumFamilyPolyQ_irreducible_rat :
       simp only [add_assoc]
       apply monic_X_pow_add
       compute_degree!
-    have hgy : aeval ((390 : ℚ) * x) g = 0 := by
-      change ((390 : ℚ) * x) ^ 2 + 238 * ((390 : ℚ) * x) + 6630 = 0
+    have hgy0 : ((390 : ℚ) * x) ^ 2 + 238 * ((390 : ℚ) * x) + 6630 = 0 := by
       calc
         ((390 : ℚ) * x) ^ 2 + 238 * ((390 : ℚ) * x) + 6630 =
             390 * ((390 : ℚ) * x ^ 2 + 238 * x + 17) := by ring
         _ = 0 := by rw [hx0]; norm_num
+    have hgy : aeval ((390 : ℚ) * x) g = 0 := by
+      simpa [g, aeval_def] using hgy0
     obtain ⟨z, hz, _⟩ := exists_integer_of_is_root_of_monic hgmonic hgy
     have hzq : (z : ℚ) ^ 2 + 238 * (z : ℚ) + 6630 = 0 := by
       rw [hz] at hgy
@@ -88,7 +89,9 @@ theorem sumFamilyPolyQ_irreducible_rat :
     have hzi : z ^ 2 + 238 * z + 6630 = 0 := by
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 7)) hzi
-    norm_num at hzmod
+    have h238 : (238 : ZMod 7) = 0 := by decide
+    have h6630 : (6630 : ZMod 7) = 1 := by decide
+    rw [map_add, map_add, map_pow, map_mul, h238, h6630, zero_mul, zero_add] at hzmod
     have hno : ∀ w : ZMod 7, w ^ 2 + 1 ≠ 0 := by decide
     exact hno (z : ZMod 7) hzmod
 
@@ -112,12 +115,13 @@ theorem sumFamilyPolyR_irreducible_rat :
       simp only [add_assoc]
       apply monic_X_pow_add
       compute_degree!
-    have hgy : aeval ((390 : ℚ) * x) g = 0 := by
-      change ((390 : ℚ) * x) ^ 2 + 225 * ((390 : ℚ) * x) + 6240 = 0
+    have hgy0 : ((390 : ℚ) * x) ^ 2 + 225 * ((390 : ℚ) * x) + 6240 = 0 := by
       calc
         ((390 : ℚ) * x) ^ 2 + 225 * ((390 : ℚ) * x) + 6240 =
             390 * ((390 : ℚ) * x ^ 2 + 225 * x + 16) := by ring
         _ = 0 := by rw [hx0]; norm_num
+    have hgy : aeval ((390 : ℚ) * x) g = 0 := by
+      simpa [g, aeval_def] using hgy0
     obtain ⟨z, hz, _⟩ := exists_integer_of_is_root_of_monic hgmonic hgy
     have hzq : (z : ℚ) ^ 2 + 225 * (z : ℚ) + 6240 = 0 := by
       rw [hz] at hgy
@@ -125,7 +129,9 @@ theorem sumFamilyPolyR_irreducible_rat :
     have hzi : z ^ 2 + 225 * z + 6240 = 0 := by
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 7)) hzi
-    norm_num at hzmod
+    have h225 : (225 : ZMod 7) = 1 := by decide
+    have h6240 : (6240 : ZMod 7) = 3 := by decide
+    rw [map_add, map_add, map_pow, map_mul, h225, h6240, one_mul] at hzmod
     have hno : ∀ w : ZMod 7, w ^ 2 + w + 3 ≠ 0 := by decide
     exact hno (z : ZMod 7) hzmod
 
@@ -158,26 +164,32 @@ theorem sumFamilyPolyCenter_irreducible_rat :
       simp only [add_assoc]
       apply monic_X_pow_add
       compute_degree!
-    have hgy : aeval ((23400 : ℚ) * x) g = 0 := by
-      change ((23400 : ℚ) * x) ^ 3 + 25980 * ((23400 : ℚ) * x) ^ 2 +
-        (23400 * 8160) * ((23400 : ℚ) * x) + (23400 ^ 2 * 511) = 0
+    have hgy0 :
+        ((23400 : ℚ) * x) ^ 3 + 25980 * ((23400 : ℚ) * x) ^ 2 +
+          190944000 * ((23400 : ℚ) * x) + 279803160000 = 0 := by
       calc
         ((23400 : ℚ) * x) ^ 3 + 25980 * ((23400 : ℚ) * x) ^ 2 +
-            (23400 * 8160) * ((23400 : ℚ) * x) + (23400 ^ 2 * 511) =
+            190944000 * ((23400 : ℚ) * x) + 279803160000 =
           (23400 : ℚ) ^ 2 *
             ((23400 : ℚ) * x ^ 3 + 25980 * x ^ 2 + 8160 * x + 511) := by ring
         _ = 0 := by rw [hx0]; ring
+    have hgy : aeval ((23400 : ℚ) * x) g = 0 := by
+      simpa [g, aeval_def] using hgy0
     obtain ⟨z, hz, _⟩ := exists_integer_of_is_root_of_monic hgmonic hgy
     have hzq :
-        (z : ℚ) ^ 3 + 25980 * (z : ℚ) ^ 2 + (23400 * 8160) * (z : ℚ) +
-          (23400 ^ 2 * 511) = 0 := by
+        (z : ℚ) ^ 3 + 25980 * (z : ℚ) ^ 2 + 190944000 * (z : ℚ) +
+          279803160000 = 0 := by
       rw [hz] at hgy
       simpa [g, aeval_def] using hgy
     have hzi :
-        z ^ 3 + 25980 * z ^ 2 + (23400 * 8160) * z + (23400 ^ 2 * 511) = 0 := by
+        z ^ 3 + 25980 * z ^ 2 + 190944000 * z + 279803160000 = 0 := by
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 19)) hzi
-    norm_num at hzmod
+    have h25980 : (25980 : ZMod 19) = 7 := by decide
+    have h190944000 : (190944000 : ZMod 19) = 4 := by decide
+    have h279803160000 : (279803160000 : ZMod 19) = 5 := by decide
+    rw [map_add, map_add, map_add, map_pow, map_mul, map_pow, map_mul,
+      h25980, h190944000, h279803160000] at hzmod
     exact sumFamilyCenter_scaled_no_root_mod_nineteen (z : ZMod 19) hzmod
 
 /-- All five family members are irreducible over `ℚ`. -/
