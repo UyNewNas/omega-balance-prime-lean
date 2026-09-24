@@ -192,6 +192,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumFamily_Q_inverse
 #print axioms OmegaBalance.sumFamily_R_inverse
 #print axioms OmegaBalance.sumFamily_Q_sub_R
+#print axioms OmegaBalance.nppFamily_mod_three_obstruction
+#print axioms OmegaBalance.nppFamily_three_dvd_center_of_linear_primes
+#print axioms OmegaBalance.nppFamily_no_prime_center
 #print axioms OmegaBalance.sumFamily_adjacent
 #print axioms OmegaBalance.sumFamily_center_eq
 #print axioms OmegaBalance.sumFamily_pred
