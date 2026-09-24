@@ -20,5 +20,6 @@ import OmegaBalance.FactorSumLowCount
 import OmegaBalance.FactorSumCofactor
 import OmegaBalance.FactorSumAdmissibility
 import OmegaBalance.FactorSumIrreducible
+import OmegaBalance.FactorSumLucasCertificates
 import OmegaBalance.FactorSumAnalyticTransfer
 import OmegaBalance.FactorSumSchinzel

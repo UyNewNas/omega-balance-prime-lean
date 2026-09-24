@@ -1,5 +1,6 @@
 import OmegaBalance.FactorSumStructure
 import OmegaBalance.FactorSumFamily
+import OmegaBalance.FactorSumLucasCertificates
 
 /-! Kernel-checked examples. No external probable-prime results are assumed. -/
 
@@ -93,5 +94,44 @@ theorem sumBalanced_31 : IsPrimeFactorSumBalancedPrime 31 := by
     (by norm_num) (by norm_num) (by norm_num) (by norm_num)
     (by norm_num) (by omega) (by norm_num)
   exact h
+
+
+/-- All five family values at `t=41529` are kernel-certified prime. -/
+theorem sumFamily_prime_values_41529 : SumFamilyPrimeValues 41529 := by
+  refine ⟨by norm_num [sumFamilyU], by norm_num [sumFamilyV], ?_, ?_, ?_⟩
+  · simpa [sumFamilyQ] using prime_672626441909
+  · simpa [sumFamilyR] using prime_672625902031
+  · simpa [sumFamilyCenter] using prime_1676030389155588931
+
+theorem sumBalanced_1676030389155588931 :
+    IsPrimeFactorSumBalancedPrime 1676030389155588931 := by
+  simpa [sumFamilyCenter] using sumFamily_five_primes sumFamily_prime_values_41529
+
+theorem sumBalanced_1676030389155588931_profile :
+    omegaSum 1676030389155588931 = 9 ∧ omegaDiff 1676030389155588931 = -1 := by
+  constructor
+  · simpa [sumFamilyCenter] using
+      sumFamily_omegaSum_eq_nine sumFamily_prime_values_41529
+  · simpa [sumFamilyCenter] using
+      sumFamily_omegaDiff_eq_neg_one sumFamily_prime_values_41529
+
+/-- All five family values at `t=48465` are kernel-certified prime. -/
+theorem sumFamily_prime_values_48465 : SumFamilyPrimeValues 48465 := by
+  refine ⟨by norm_num [sumFamilyU], by norm_num [sumFamilyV], ?_, ?_, ?_⟩
+  · simpa [sumFamilyQ] using prime_916065462437
+  · simpa [sumFamilyR] using prime_916064832391
+  · simpa [sumFamilyCenter] using prime_2663854240184425411
+
+theorem sumBalanced_2663854240184425411 :
+    IsPrimeFactorSumBalancedPrime 2663854240184425411 := by
+  simpa [sumFamilyCenter] using sumFamily_five_primes sumFamily_prime_values_48465
+
+theorem sumBalanced_2663854240184425411_profile :
+    omegaSum 2663854240184425411 = 9 ∧ omegaDiff 2663854240184425411 = -1 := by
+  constructor
+  · simpa [sumFamilyCenter] using
+      sumFamily_omegaSum_eq_nine sumFamily_prime_values_48465
+  · simpa [sumFamilyCenter] using
+      sumFamily_omegaDiff_eq_neg_one sumFamily_prime_values_48465
 
 end OmegaBalance

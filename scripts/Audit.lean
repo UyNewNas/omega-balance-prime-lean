@@ -401,3 +401,19 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumFamily_infinite_of_schinzelH
 #print axioms OmegaBalance.sumFamily_level_nine_infinite_of_schinzelH
 #print axioms OmegaBalance.sumBalanced_minimum_infinite_level_of_schinzelH
+
+-- FactorSumLucasCertificates.lean: compact kernel-checkable Lucas certificates.
+#print axioms OmegaBalance.lucasPrime_of_factorList
+#print axioms OmegaBalance.prime_672626441909
+#print axioms OmegaBalance.prime_672625902031
+#print axioms OmegaBalance.prime_916065462437
+#print axioms OmegaBalance.prime_916064832391
+#print axioms OmegaBalance.prime_1676030389155588931
+#print axioms OmegaBalance.prime_2663854240184425411
+#print axioms OmegaBalance.sumFamily_prime_values_41529
+#print axioms OmegaBalance.sumBalanced_1676030389155588931
+#print axioms OmegaBalance.sumBalanced_1676030389155588931_profile
+#print axioms OmegaBalance.sumFamily_prime_values_48465
+#print axioms OmegaBalance.sumBalanced_2663854240184425411
+#print axioms OmegaBalance.sumBalanced_2663854240184425411_profile
+
