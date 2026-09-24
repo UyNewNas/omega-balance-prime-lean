@@ -5,7 +5,7 @@ import Mathlib.Algebra.BigOperators.Ring.Finset
 # Complete-period expansion for the truncated F₃ correlation
 
 `f3Trunc` uses natural subtraction, so its value at the small boundary points
-is not literally a cyclic residue-class function.  This module introduces the
+is not literally a cyclic residue-class function. This module introduces the
 corresponding periodic residue-layer truncation, proves that it agrees with
 `f3Trunc` on the intended domain `n > 1`, and expands one complete `3^R`
 period of its correlation into the exact signed layer kernel.
@@ -24,9 +24,9 @@ def f3ModIndicator (j a n : ℕ) : ℤ :=
 def f3ResidueLayer (j n : ℕ) : ℤ :=
   f3ModIndicator j (3 ^ j - 1) n - f3ModIndicator j 1 n
 
-/-- Periodic version of the retained F₃ layers.  The exponents are `1,…,R`. -/
+/-- Periodic version of the retained F₃ layers. The exponents are `1,…,R`. -/
 def f3PeriodicTrunc (R n : ℕ) : ℤ :=
-  ∑ j in Finset.range R, f3ResidueLayer (j + 1) n
+  ∑ j ∈ Finset.range R, f3ResidueLayer (j + 1) n
 
 /-- The `-1` residue class modulo a power of three is exactly divisibility of
 `n+1` by that power. -/
@@ -64,7 +64,7 @@ theorem f3PeriodicTrunc_eq_f3Trunc {R n : ℕ} (hn : 1 < n) :
     f3PeriodicTrunc R n = f3Trunc R n := by
   unfold f3PeriodicTrunc f3ResidueLayer f3ModIndicator f3Trunc v3Trunc
   rw [Finset.sum_sub_distrib]
-  congr 1
+  apply sub_congr
   · apply Finset.sum_congr rfl
     intro j _
     rw [modEq_pow_three_sub_one_iff_dvd_add_one]
@@ -75,13 +75,13 @@ theorem f3PeriodicTrunc_eq_f3Trunc {R n : ℕ} (hn : 1 < n) :
 /-- Summing a product of two residue indicators over a complete period is the
 translated overlap count from `F3CorrelationFinite`. -/
 theorem sum_f3ModIndicator_mul_shift (R j k a b h : ℕ) :
-    (∑ n in Finset.range (3 ^ R),
+    (∑ n ∈ Finset.range (3 ^ R),
         f3ModIndicator j a n * f3ModIndicator k b (n + h)) =
       (modShiftPairCount R j k a b h : ℤ) := by
   classical
   unfold f3ModIndicator modShiftPairCount
   calc
-    _ = ∑ n in Finset.range (3 ^ R),
+    _ = ∑ n ∈ Finset.range (3 ^ R),
         if (n ≡ a [MOD 3 ^ j] ∧ n + h ≡ b [MOD 3 ^ k]) then (1 : ℤ) else 0 := by
           apply Finset.sum_congr rfl
           intro n _
@@ -99,7 +99,7 @@ theorem sum_f3ModIndicator_mul_shift (R j k a b h : ℕ) :
 /-- One pair of signed residue layers sums to the exact four-term layer
 correlation count. -/
 theorem sum_f3ResidueLayer_mul_shift (R j k h : ℕ) :
-    (∑ n in Finset.range (3 ^ R),
+    (∑ n ∈ Finset.range (3 ^ R),
         f3ResidueLayer j n * f3ResidueLayer k (n + h)) =
       f3LayerCorrelation R j k h := by
   unfold f3ResidueLayer
@@ -114,17 +114,17 @@ theorem sum_f3ResidueLayer_mul_shift (R j k h : ℕ) :
 
 /-- Complete-period correlation of the periodic retained layers. -/
 def f3PeriodicCorrelationSum (R h : ℕ) : ℤ :=
-  ∑ n in Finset.range (3 ^ R), f3PeriodicTrunc R n * f3PeriodicTrunc R (n + h)
+  ∑ n ∈ Finset.range (3 ^ R), f3PeriodicTrunc R n * f3PeriodicTrunc R (n + h)
 
 /-- Exact finite double-sum expansion of one complete `3^R` period. -/
 theorem f3PeriodicCorrelationSum_eq_layer_sum (R h : ℕ) :
     f3PeriodicCorrelationSum R h =
-      ∑ j in Finset.range R, ∑ k in Finset.range R,
+      ∑ j ∈ Finset.range R, ∑ k ∈ Finset.range R,
         f3LayerCorrelation R (j + 1) (k + 1) h := by
   unfold f3PeriodicCorrelationSum f3PeriodicTrunc
   calc
-    _ = ∑ n in Finset.range (3 ^ R),
-        ∑ j in Finset.range R, ∑ k in Finset.range R,
+    _ = ∑ n ∈ Finset.range (3 ^ R),
+        ∑ j ∈ Finset.range R, ∑ k ∈ Finset.range R,
           f3ResidueLayer (j + 1) n * f3ResidueLayer (k + 1) (n + h) := by
           apply Finset.sum_congr rfl
           intro n _
@@ -132,12 +132,12 @@ theorem f3PeriodicCorrelationSum_eq_layer_sum (R h : ℕ) :
           apply Finset.sum_congr rfl
           intro j _
           rw [Finset.mul_sum]
-    _ = ∑ j in Finset.range R, ∑ n in Finset.range (3 ^ R),
-        ∑ k in Finset.range R,
+    _ = ∑ j ∈ Finset.range R, ∑ n ∈ Finset.range (3 ^ R),
+        ∑ k ∈ Finset.range R,
           f3ResidueLayer (j + 1) n * f3ResidueLayer (k + 1) (n + h) := by
           rw [Finset.sum_comm]
-    _ = ∑ j in Finset.range R, ∑ k in Finset.range R,
-        ∑ n in Finset.range (3 ^ R),
+    _ = ∑ j ∈ Finset.range R, ∑ k ∈ Finset.range R,
+        ∑ n ∈ Finset.range (3 ^ R),
           f3ResidueLayer (j + 1) n * f3ResidueLayer (k + 1) (n + h) := by
           apply Finset.sum_congr rfl
           intro j _
@@ -150,11 +150,11 @@ theorem f3PeriodicCorrelationSum_eq_layer_sum (R h : ℕ) :
           exact sum_f3ResidueLayer_mul_shift R (j + 1) (k + 1) h
 
 /-- The same complete-period correlation with every layer count replaced by
-its explicit power-of-three compatibility formula.  This is the finite formula
+its explicit power-of-three compatibility formula. This is the finite formula
 that the subsequent geometric-sum step will simplify. -/
 theorem f3PeriodicCorrelationSum_eq_explicit (R h : ℕ) :
     f3PeriodicCorrelationSum R h =
-      ∑ j in Finset.range R, ∑ k in Finset.range R,
+      ∑ j ∈ Finset.range R, ∑ k ∈ Finset.range R,
         ((if h ≡ 0 [MOD 3 ^ min (j + 1) (k + 1)] then
             2 * ((3 ^ (R - max (j + 1) (k + 1)) : ℕ) : ℤ) else 0) -
           (if h ≡ 2 [MOD 3 ^ min (j + 1) (k + 1)] then
