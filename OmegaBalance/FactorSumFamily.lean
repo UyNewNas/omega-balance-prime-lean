@@ -63,8 +63,23 @@ theorem nppFamily_mod_three_obstruction (k : ℕ) :
   have hcases : k % 3 = 0 ∨ k % 3 = 1 ∨ k % 3 = 2 := by omega
   rcases hcases with hk | hk | hk
   · left
-    rw [Nat.dvd_iff_mod_eq_zero]
-    norm_num [nppFamilyCenter, Nat.sub_mod, Nat.add_mod, Nat.mul_mod, Nat.pow_mod, hk]
+    have hkdiv : 3 ∣ k := Nat.dvd_iff_mod_eq_zero.mpr hk
+    rcases hkdiv with ⟨j, rfl⟩
+    by_cases hj : j = 0
+    · subst j
+      norm_num [nppFamilyCenter]
+    · have hjpos : 0 < j := Nat.pos_of_ne_zero hj
+      let X : ℕ := 6912 * j ^ 3 + 2592 * j ^ 2 + 224 * j
+      have hpre :
+          768 * (3 * j) ^ 3 + 864 * (3 * j) ^ 2 + 224 * (3 * j) = 3 * X := by
+        simp only [X]
+        ring
+      have hX : 3 ≤ X := by
+        simp only [X]
+        nlinarith
+      rw [nppFamilyCenter, hpre]
+      refine ⟨X - 3, ?_⟩
+      omega
   · right; left
     rw [Nat.dvd_iff_mod_eq_zero]
     norm_num [nppFamilyS, Nat.add_mod, Nat.mul_mod, hk]
