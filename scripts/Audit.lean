@@ -316,3 +316,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_star_integer_example
 #print axioms OmegaBalance.f3_cutoff_zero_boundary
 #print axioms OmegaBalance.f3_telescoping_example
+
+-- FactorSumSmallCertificates.lean
+#print axioms OmegaBalance.smallSumCertificates_cover
+#print axioms OmegaBalance.smallSumCertificates_valid

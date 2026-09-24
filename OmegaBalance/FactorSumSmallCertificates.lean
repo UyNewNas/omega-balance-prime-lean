@@ -11,7 +11,7 @@ No external primality answer or scan is a logical assumption.
 namespace OmegaBalance
 
 set_option maxRecDepth 10000
-set_option maxHeartbeats 4000000
+set_option maxHeartbeats 8000000
 
 def smallSumCertificates : List (ℕ × List ℕ × List ℕ) := [
 (2,[],[3]),(3,[2],[2,2]),(5,[2,2],[2,3]),(7,[2,3],[2,2,2]),
@@ -126,6 +126,7 @@ theorem smallSumCertificates_valid :
       (∀ q ∈ row.2.1, q.Prime) ∧ (∀ q ∈ row.2.2, q.Prime) ∧
       ((row.2.1.sum = row.2.2.sum ∧ row.2.1.length + row.2.2.length ≤ 8) ↔
         row.1 = 11 ∨ row.1 = 17 ∨ row.1 = 31) := by
-  norm_num [smallSumCertificates]
+  simp only [smallSumCertificates, List.forall_mem_cons, List.forall_mem_nil]
+  norm_num (config := { maxSteps := 1000000 })
 
 end OmegaBalance
