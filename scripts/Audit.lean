@@ -245,6 +245,15 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PeriodicCorrelationSum_zero_shift
 #print axioms OmegaBalance.f3PeriodicCorrelationSum_two_shift
 
+-- Normalized complete-period kernel and cutoff limit.
+#print axioms OmegaBalance.f3PadicKernel_zero
+#print axioms OmegaBalance.f3NormalizedCappedKernel_eq_padicKernel_of_le
+#print axioms OmegaBalance.f3NormalizedCappedKernel_zero
+#print axioms OmegaBalance.tendsto_f3NormalizedCappedKernel
+#print axioms OmegaBalance.tendsto_f3CappedDepthRatio_zero
+#print axioms OmegaBalance.f3PeriodicCorrelationAverage_eq
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationAverage
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
