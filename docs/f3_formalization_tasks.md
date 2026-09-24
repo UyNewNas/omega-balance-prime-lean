@@ -17,7 +17,7 @@
 |---|---|---|---|
 | INF-1 | 每个固定 `k≥1`，`F₃=±k` 的素数各有无穷多个 | `F3Infinitude.lean`；固定 mathlib 的 Dirichlet 定理 | **已完成并合入，PR #6** |
 | INF-2 | 全体素数数列中连续两项的正→负、负→正转移各无穷次 | `F3SignChanges.lean`；显式 `ConsecutivePrimes` | **已完成并合入，PR #6** |
-| COR-1 | 固定 `h≥0` 的完整整数相关核 | `F3Finite` + `F3CorrelationFinite/Layer/Period/Weight/Depth/Closed/Limit`；完整周期归一化极限已由 PR #12 精确验证，仍缺任意长度、尾部与极限交换 | **进行中** |
+| COR-1 | 固定 `h≥0` 的完整整数相关核 | `F3Finite` + `F3CorrelationFinite/Layer/Period/Weight/Depth/Closed/Limit/Cesaro`；完整周期极限已合入，任意长度 quotient/remainder 层正在 PR #13 | **进行中** |
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | 依赖 COR-1；`r=0` 不能套该简式 | 未完成 |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | 需核验 ANT `WeakPNT_AP` 与加权→素数计数桥梁 | 未完成 |
 | DEN-2 | 固定乘子升层密度；含乘数17的 `1/2,1/3,1/9,…` 条件分布 | DEN-1 + 有限余数类计算 | 未完成 |
@@ -79,37 +79,39 @@ PR #11 已合入主分支 `69c4fff87efa056d1abb2cf0e6383262cf5eb2aa`。`F3Correl
 
 以及 `h=0` 时 `2·(3^R-1-R)`、`h=2` 时 `-(3^R-1-R)` 两个特殊边界。来源 head `5699e4b8753f369d1098387575c816ce338983e0` 的 Lean CI #183、Factor-sum #171 均成功；253 条声明公理/覆盖审计和既有回归全部通过。
 
-## 已验证、待合入：归一化完整周期极限（PR #12）
+### F. 归一化完整周期极限
 
-工作分支 `feat/f3-correlation-period-limit`，PR #12。新增 `OmegaBalance/F3CorrelationLimit.lean`，只推进 cutoff 的完整周期极限，不提前声称任意长度 Cesàro 或原始 `F₃` 极限已经完成。
-
-已证明：
+原 PR #12 已合入当前主分支提交 `32ff09bd5927a0f4a1a1f85019d554a31a86cf77`，新增 `OmegaBalance/F3CorrelationLimit.lean`。主要证明：
 
 - `f3PadicKernel`：自然数上的实值三进核，`0` 处取 `0`，非零时为 `3^{-v₃(n)}`；
-- `f3NormalizedCappedKernel_eq_padicKernel_of_le`：非零输入在 cutoff 超过真实深度后已经精确稳定；
 - `tendsto_f3NormalizedCappedKernel`：对所有输入（包括零）收敛到三进核；
-- `tendsto_f3CappedDepthRatio_zero`：用 mathlib 的 `tendsto_pow_const_div_const_pow_of_one_lt` 证明 `depth_R(n)/3^R → 0`；
-- `f3PeriodicCorrelationAverage_eq`：完整周期闭式除以 `3^R` 后的精确分解；
+- `tendsto_f3CappedDepthRatio_zero`：`depth_R(n)/3^R → 0`；
+- `f3PeriodicCorrelationAverage_eq`：完整周期闭式除以 `3^R` 的精确分解；
 - `tendsto_f3PeriodicCorrelationAverage`：固定 `h` 时
-  `S_R(h)/3^R → kernel(dist h 2)+kernel(h+2)-2*kernel(h)`，并保留零点核为 `0`。
+  `S_R(h)/3^R → kernel(dist h 2)+kernel(h+2)-2*kernel(h)`。
 
-首次 CI head `07dc2c44c7a657d618d759d8ba1a342cd6a76982` 在编译阶段暴露四个 `ℝ` 除法定义的 `noncomputable`、显式 cast 类型以及 `Tendsto.const_mul` 三类 Lean 接口问题；均已修复，数学陈述未削弱。
+合并提交记录的验证来源为 head `f21ce187...`：Lean CI #204 与 Factor-sum #192 成功，260 条声明公理/覆盖审计、26 个 Lean 文件源码审计及既有回归全部通过。这里仅陈述已经合入的历史验证，不用它替代后续 PR 的精确 head 门禁。
 
-代码与审计 head 后续通过最终门禁；含任务记录的 PR head `863903cb130e3915a1de28437d75a6868adc6337` 的 Lean CI #201 与 Factor-sum #189 均 **SUCCESS**：
+## COR-1 当前推进：任意长度固定 cutoff 块（PR #13）
 
-- library build：3780 jobs 成功；三组回归模块成功；
-- `Axiom audit PASS: 260 declarations; only standard Lean axioms.`；
-- `Source audit PASS: 26 Lean files, no proof escapes.`；
-- `Audit coverage PASS: all 260 project theorem declarations covered exactly once.`；
-- 原有 144,240 项有限检查与 11 组边界测试全部通过。
+分支 `feat/f3-correlation-cesaro-blocks` 新增 `OmegaBalance/F3CorrelationCesaro.lean`，目标是完成“完整周期平均 → 任意初始长度”的有限余项层。目前已经写入并通过该分支代码 head 的 **library build** 的非空洞证明包括：
 
-本段文档状态更新之后仍要求当前 PR head 再走同一门禁后才合入；不把前一 head 的成功冒充新 head 验证。
+- `f3ModIndicator_periodic_pow_three`、`f3ResidueLayer_periodic_pow_three`、`f3PeriodicTrunc_periodic`：从每层模 `3^j` 指标逐层得到完整 `3^R` 周期；
+- `f3PeriodicCorrelationTerm_periodic`：固定 cutoff 的相关 summand 本身同样 `3^R` 周期；
+- `sum_range_periodic_mul_add_int`、`sum_range_periodic_div_mod_int`：对任意整数值周期函数证明精确的完整块 + 末尾余块分解；
+- `f3PeriodicCorrelationPartialSum_eq_div_mod`：任意长度 `N` 的截断相关和精确分解为 `⌊N/3^R⌋` 个完整周期和长度 `N mod 3^R` 的终端块；
+- `abs_f3ResidueLayer_le_one`、`abs_f3PeriodicTrunc_le`、`abs_f3PeriodicCorrelationTerm_le`：分别给出 `1`、`R`、`R²` 的统一界；
+- `abs_f3PeriodicCorrelationPartialSum_le`、`abs_f3PeriodicCorrelationRemainder_le`：终端块绝对值最多 `3^R R²`，与总长度 `N` 无关。
+
+前两次编译探针暴露并已修复：dependent `Decidable` 下直接 rewrite `Nat.ModEq`、非线性乘法交给 `omega`、以及 `(N / P : ℤ)` 被 Lean 解释为整数除法而非“自然数商再 cast”。最终陈述显式使用 `((N / P : ℕ) : ℤ)`，保住 Euclidean quotient/remainder 的数学含义。
+
+代码 head `2b6872b634fe159763b39f2c8112668763e0dc7f` 的 Lean CI #215 已确认 library build 与三组 kernel regressions 成功；其覆盖检查因当时尚未加入本段 12 条新声明而失败，因此 **不能把 #215 记作最终门禁成功**。当前后续提交已补 `scripts/Audit.lean`，需以包含本文档的最终 PR head CI 为准后才可合入。
 
 ## COR-1 剩余链条
 
-归一化完整周期极限完成后，仍需按以下顺序推进：
+任意长度固定-cutoff 块层完成后，仍需按以下顺序推进：
 
-1. 对固定 cutoff `R`，把完整周期平均推广到任意 Cesàro 长度，控制不足一个周期的末尾余项。
+1. 用 quotient/remainder 精确式和统一终端块界，收掉固定 `R` 的任意 Cesàro 长度极限，使其等于完整周期平均。
 2. 证明 `F₃-F₃,R` 的 `L²` 尾部界（目标量级 `3^(1-R)`），再用 Cauchy–Schwarz 控制相关误差。
 3. 完成 cutoff 极限与 Cesàro 极限交换，得到原始 `F₃` 的无限相关核
    `|h-2|₃+|h+2|₃-2|h|₃`；零点三进绝对值必须为 `0`。
