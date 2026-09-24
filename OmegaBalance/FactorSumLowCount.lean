@@ -237,7 +237,9 @@ theorem infinite_sumBalanced_level_ge_nine {k : ℕ}
   apply hf.subset
   intro p hp
   change IsPrimeFactorSumBalancedPrime p ∧ omegaSum p = k at hp
-  have hh := (sumBalanced_total_le_eight_iff p).mp ⟨hp.1, by omega⟩
+  have hpk : omegaSum p = k := hp.2
+  have hle : omegaSum p ≤ 8 := by omega
+  have hh := (sumBalanced_total_le_eight_iff p).mp ⟨hp.1, hle⟩
   simpa only [Set.mem_insert_iff, Set.mem_singleton_iff] using hh
 
 /-- The explicit center polynomial is strictly increasing on natural parameters. -/
@@ -247,6 +249,8 @@ theorem sumFamilyCenter_strictMono : StrictMono sumFamilyCenter := by
   have h2 : a ^ 2 ≤ b ^ 2 := Nat.pow_le_pow_left hab' 2
   have h3 : a ^ 3 ≤ b ^ 3 := Nat.pow_le_pow_left hab' 3
   have h1 : 8160 * a < 8160 * b := Nat.mul_lt_mul_of_pos_left hab (by norm_num)
+  have h2' : 25980 * a ^ 2 ≤ 25980 * b ^ 2 := Nat.mul_le_mul_left 25980 h2
+  have h3' : 23400 * a ^ 3 ≤ 23400 * b ^ 3 := Nat.mul_le_mul_left 23400 h3
   simp only [sumFamilyCenter]
   omega
 
