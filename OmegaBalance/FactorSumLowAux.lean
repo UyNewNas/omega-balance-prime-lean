@@ -117,7 +117,7 @@ theorem three_dvd_adjacent_prime_sum {u v p : ℕ} (hp : p.Prime) (h3 : 3 < p)
   have hm : p % 3 = 0 := by
     calc
       p % 3 = (u % 3 + v % 3) % 3 := by rw [hep, Nat.add_mod]
-      _ = 0 := by rw [huv]; norm_num
+      _ = 0 := by norm_num [huv]
   exact not_three_dvd_prime hp h3 (Nat.dvd_iff_mod_eq_zero.mpr hm)
 
 theorem adjacent_not_common_dvd {u v q : ℕ} (hq : 1 < q)
