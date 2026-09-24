@@ -233,7 +233,7 @@ theorem modEq_one_add_sub_one_iff_add_two_zero {m q h : ℕ}
 shift vanishes modulo the modulus. -/
 theorem modEq_one_add_one_iff_zero {m h : ℕ} :
     1 + h ≡ 1 [MOD m] ↔ h ≡ 0 [MOD m] := by
-  have h1 : 1 ≡ 1 [MOD m] := Nat.ModEq.refl
+  have h1 : 1 ≡ 1 [MOD m] := Nat.ModEq.refl 1
   constructor
   · intro hh
     have hsum : 1 + h ≡ 1 + 0 [MOD m] := by simpa using hh
