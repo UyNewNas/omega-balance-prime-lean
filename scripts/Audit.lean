@@ -378,3 +378,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumBalancedPrime_half_injOn
 #print axioms OmegaBalance.sumBalancedPrimeCount_le_ruthAaronCount
 #print axioms OmegaBalance.sumBalancedPrimeCount_le_of_ruthAaronBound
+#print axioms OmegaBalance.sumBalancedPrime_relativeDensity_zero_of_majorant
+#print axioms OmegaBalance.sumBalancedPrime_relativeDensity_zero_of_ruthAaronBound
+#print axioms OmegaBalance.sumBalancedPrime_half_injective
+#print axioms OmegaBalance.sumBalancedPrime_reciprocal_le_ruthAaron
+#print axioms OmegaBalance.summable_sumBalancedPrime_reciprocals_of_ruthAaron
