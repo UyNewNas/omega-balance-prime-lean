@@ -50,7 +50,10 @@ theorem sumCofactor_inverse_iff {A B q r d : ℤ} (hne : A ≠ B) :
     have hd : q - r = d := by
       have hz := (mul_eq_zero.mp hzero).resolve_left hden
       omega
-    exact ⟨by nlinarith, hd⟩
+    have hadj : B * r - A * q = 1 := by
+      rw [← hd] at hr
+      nlinarith only [hr]
+    exact ⟨hadj, hd⟩
 
 /-- Positive prime-sized factors make the cofactor and sum differences agree in sign. -/
 theorem sumCofactor_sign {A B q r d : ℤ}
