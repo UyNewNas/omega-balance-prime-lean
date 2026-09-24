@@ -215,6 +215,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumBalanced_prime_halves
 #print axioms OmegaBalance.even_factor_sum_split
 #print axioms OmegaBalance.prime_consecutive_sum_bound
+#print axioms OmegaBalance.prime_consecutive_sum_eq_five_six
+#print axioms OmegaBalance.sumBalanced_halves_nonprime_of_ne_eleven
 #print axioms OmegaBalance.even_omega_two_shape
 #print axioms OmegaBalance.even_omega_three_shape
 #print axioms OmegaBalance.even_omega_four_even_sum_shape
