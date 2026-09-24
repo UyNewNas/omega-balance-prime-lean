@@ -72,6 +72,7 @@ theorem sumFamilyPolyQ_irreducible_rat :
     let g : ℤ[X] := X ^ 2 + C 238 * X + C 6630
     have hgmonic : g.Monic := by
       dsimp [g]
+      simp only [add_assoc]
       apply monic_X_pow_add
       compute_degree!
     have hgy : aeval ((390 : ℚ) * x) g = 0 := by
@@ -108,6 +109,7 @@ theorem sumFamilyPolyR_irreducible_rat :
     let g : ℤ[X] := X ^ 2 + C 225 * X + C 6240
     have hgmonic : g.Monic := by
       dsimp [g]
+      simp only [add_assoc]
       apply monic_X_pow_add
       compute_degree!
     have hgy : aeval ((390 : ℚ) * x) g = 0 := by
@@ -153,6 +155,7 @@ theorem sumFamilyPolyCenter_irreducible_rat :
       X ^ 3 + C 25980 * X ^ 2 + C (23400 * 8160) * X + C (23400 ^ 2 * 511)
     have hgmonic : g.Monic := by
       dsimp [g]
+      simp only [add_assoc]
       apply monic_X_pow_add
       compute_degree!
     have hgy : aeval ((23400 : ℚ) * x) g = 0 := by
