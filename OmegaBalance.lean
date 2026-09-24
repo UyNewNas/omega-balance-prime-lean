@@ -10,3 +10,4 @@ import OmegaBalance.F3Order
 import OmegaBalance.F3Coordinates
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
+import OmegaBalance.F3Infinitude
