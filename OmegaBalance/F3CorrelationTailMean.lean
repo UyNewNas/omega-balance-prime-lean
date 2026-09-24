@@ -25,6 +25,25 @@ theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
     (pow_pos (by decide) a) 0]
   simp [Rat.floor_natCast_div_natCast]
 
+/-- The `t`-th excess layer occurs exactly at the positive multiples of
+`3^(R+t+1)`, hence exactly `N / 3^(R+t+1)` times in `1, ..., N`. -/
+theorem card_filter_Icc_lt_v3Excess (R N t : ℕ) :
+    ((Finset.Icc 1 N).filter fun m => t < v3Excess R m).card =
+      N / 3 ^ (R + t + 1) := by
+  have hfilter :
+      ((Finset.Icc 1 N).filter fun m => t < v3Excess R m) =
+        ((Finset.Icc 1 N).filter fun m => 3 ^ (R + t + 1) ∣ m) := by
+    ext m
+    simp only [Finset.mem_filter, Finset.mem_Icc]
+    constructor
+    · rintro ⟨hm, ht⟩
+      refine ⟨hm, (pow_three_dvd_iff_lt_v3Excess (R := R) (t := t)
+        (n := m) (by omega)).2 ht⟩
+    · rintro ⟨hm, hd⟩
+      refine ⟨hm, (pow_three_dvd_iff_lt_v3Excess (R := R) (t := t)
+        (n := m) (by omega)).1 hd⟩
+  rw [hfilter, card_filter_Icc_dvd_pow_three]
+
 /-- The first `T` odd geometric weights have the exact closed form
 `1 - (T+1)/3^T`.  Their infinite sum is therefore `1`. -/
 theorem odd_geometric_partial_sum_real (T : ℕ) :
