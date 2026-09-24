@@ -32,8 +32,7 @@ def f3PeriodicTrunc (R n : ℕ) : ℤ :=
 `n+1` by that power. -/
 theorem modEq_pow_three_sub_one_iff_dvd_add_one {j n : ℕ} :
     n ≡ 3 ^ j - 1 [MOD 3 ^ j] ↔ 3 ^ j ∣ n + 1 := by
-  have hp : 0 < (3 : ℕ) ^ j := pow_pos (by decide) j
-  have hsub : 3 ^ j - 1 + 1 = (3 : ℕ) ^ j := Nat.sub_add_cancel (by omega)
+  have hsub : 3 ^ j - 1 + 1 = (3 : ℕ) ^ j := Nat.sub_add_cancel (by positivity)
   have hzero : (3 : ℕ) ^ j ≡ 0 [MOD 3 ^ j] :=
     (dvd_rfl : (3 : ℕ) ^ j ∣ 3 ^ j).modEq_zero_nat
   constructor
@@ -67,10 +66,10 @@ theorem f3PeriodicTrunc_eq_f3Trunc {R n : ℕ} (hn : 1 < n) :
   congr 1
   · apply Finset.sum_congr rfl
     intro j _
-    rw [modEq_pow_three_sub_one_iff_dvd_add_one]
+    simp only [modEq_pow_three_sub_one_iff_dvd_add_one]
   · apply Finset.sum_congr rfl
     intro j _
-    rw [modEq_one_iff_dvd_sub_one (j := j + 1) (n := n) (by omega)]
+    simp only [modEq_one_iff_dvd_sub_one (j := j + 1) (n := n) (by omega)]
 
 /-- Summing a product of two residue indicators over a complete period is the
 translated overlap count from `F3CorrelationFinite`. -/
