@@ -90,7 +90,13 @@ theorem three_dvd_adjacent_prime_sum {u v p : ℕ} (hp : p.Prime) (h3 : 3 < p)
   by_contra! hn
   have hu : u % 3 ≠ 0 := fun hh => hn.1 (Nat.dvd_iff_mod_eq_zero.mpr hh)
   have hv : v % 3 ≠ 0 := fun hh => hn.2 (Nat.dvd_iff_mod_eq_zero.mpr hh)
-  have hm : p % 3 = 0 := by omega
+  have huv : u % 3 + v % 3 = 3 := by
+    rcases hadj with hadd | hadd
+    all_goals
+      have heq := congrArg (fun z : ℕ => z % 3) hadd
+      simp only [Nat.add_mod] at heq
+      omega
+  have hm : p % 3 = 0 := by rw [hep, Nat.add_mod, huv]; norm_num
   exact not_three_dvd_prime hp h3 (Nat.dvd_iff_mod_eq_zero.mpr hm)
 
 theorem adjacent_not_common_dvd {u v q : ℕ} (hq : 1 < q)
