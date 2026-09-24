@@ -19,7 +19,9 @@ def f3CorrelationWeight (R d : ℕ) : ℤ :=
     if min (j + 1) (k + 1) ≤ d then
       (3 : ℤ) ^ (R - max (j + 1) (k + 1)) else 0
 
-private theorem f3CorrelationWeight_old_term {R d j k : ℕ}
+/-- Every old cell receives one extra factor of three when the ambient period
+depth increases from `R` to `R+1`. -/
+theorem f3CorrelationWeight_old_term {R d j k : ℕ}
     (hj : j < R) (hk : k < R) :
     (if min (j + 1) (k + 1) ≤ d then
         (3 : ℤ) ^ ((R + 1) - max (j + 1) (k + 1)) else 0) =
@@ -34,7 +36,8 @@ private theorem f3CorrelationWeight_old_term {R d j k : ℕ}
   · rw [if_neg h, if_neg h]
     ring
 
-private theorem f3CorrelationWeight_boundary_sum (R d : ℕ) :
+/-- A new boundary row contributes once for each retained old layer. -/
+theorem f3CorrelationWeight_boundary_sum (R d : ℕ) :
     (∑ j ∈ Finset.range R,
       if min (j + 1) (R + 1) ≤ d then
         (3 : ℤ) ^ ((R + 1) - max (j + 1) (R + 1)) else 0) =
@@ -51,7 +54,8 @@ private theorem f3CorrelationWeight_boundary_sum (R d : ℕ) :
       simp [hiff]
     _ = (min R d : ℕ) := sum_initial_indicator R d
 
-private theorem f3CorrelationWeight_old_block (R d : ℕ) :
+/-- The old `R×R` block triples when embedded into the next ambient period. -/
+theorem f3CorrelationWeight_old_block (R d : ℕ) :
     (∑ j ∈ Finset.range R, ∑ k ∈ Finset.range R,
       if min (j + 1) (k + 1) ≤ d then
         (3 : ℤ) ^ ((R + 1) - max (j + 1) (k + 1)) else 0) =
