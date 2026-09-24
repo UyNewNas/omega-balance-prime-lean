@@ -263,4 +263,50 @@ theorem doubleFactorPair_iff {K L r s d e : ℤ} (hd : d = r + s - L) :
   rw [doubleFactorPair_identity, hd]
   constructor <;> intro h <;> nlinarith
 
+/-! ### Local admissibility at the four small primes -/
+
+/-- None of the five family values vanishes modulo `ell` at parameter `t`. -/
+def SumFamilyAvoidsPrime (ell t : ℕ) : Prop :=
+  ¬ ell ∣ sumFamilyU t ∧ ¬ ell ∣ sumFamilyV t ∧
+  ¬ ell ∣ sumFamilyQ t ∧ ¬ ell ∣ sumFamilyR t ∧
+  ¬ ell ∣ sumFamilyCenter t
+
+/-- Exact allowed residue modulo 2. -/
+theorem sumFamily_mod_two_table {t : ℕ} (ht : t < 2) :
+    SumFamilyAvoidsPrime 2 t ↔ t = 1 := by
+  interval_cases t <;>
+    norm_num [SumFamilyAvoidsPrime, sumFamilyU, sumFamilyV, sumFamilyQ, sumFamilyR,
+      sumFamilyCenter]
+
+/-- Exact allowed residues modulo 3. -/
+theorem sumFamily_mod_three_table {t : ℕ} (ht : t < 3) :
+    SumFamilyAvoidsPrime 3 t ↔ t = 0 ∨ t = 2 := by
+  interval_cases t <;>
+    norm_num [SumFamilyAvoidsPrime, sumFamilyU, sumFamilyV, sumFamilyQ, sumFamilyR,
+      sumFamilyCenter]
+
+/-- Exact allowed residues modulo 5. -/
+theorem sumFamily_mod_five_table {t : ℕ} (ht : t < 5) :
+    SumFamilyAvoidsPrime 5 t ↔ t = 0 ∨ t = 3 ∨ t = 4 := by
+  interval_cases t <;>
+    norm_num [SumFamilyAvoidsPrime, sumFamilyU, sumFamilyV, sumFamilyQ, sumFamilyR,
+      sumFamilyCenter]
+
+/-- Exact allowed residues modulo 7. -/
+theorem sumFamily_mod_seven_table {t : ℕ} (ht : t < 7) :
+    SumFamilyAvoidsPrime 7 t ↔ t = 4 ∨ t = 5 := by
+  interval_cases t <;>
+    norm_num [SumFamilyAvoidsPrime, sumFamilyU, sumFamilyV, sumFamilyQ, sumFamilyR,
+      sumFamilyCenter]
+
+/-- The explicit small-prime part of the Schinzel admissibility check. -/
+theorem sumFamily_small_prime_admissible {ell : ℕ}
+    (h : ell = 2 ∨ ell = 3 ∨ ell = 5 ∨ ell = 7) :
+    ∃ t < ell, SumFamilyAvoidsPrime ell t := by
+  rcases h with rfl | rfl | rfl | rfl
+  · exact ⟨1, by norm_num, (sumFamily_mod_two_table (by norm_num)).2 rfl⟩
+  · exact ⟨0, by norm_num, (sumFamily_mod_three_table (by norm_num)).2 (Or.inl rfl)⟩
+  · exact ⟨0, by norm_num, (sumFamily_mod_five_table (by norm_num)).2 (Or.inl rfl)⟩
+  · exact ⟨4, by norm_num, (sumFamily_mod_seven_table (by norm_num)).2 (Or.inl rfl)⟩
+
 end OmegaBalance
