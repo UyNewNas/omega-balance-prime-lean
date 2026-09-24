@@ -228,3 +228,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_consecutive_pos_neg_infinite
 #print axioms OmegaBalance.f3_consecutive_neg_pos_infinite
 #print axioms OmegaBalance.f3_consecutive_sign_changes_infinite
+
+-- Regression guards for the scope of the infinitude statements.
+#print axioms OmegaBalance.f3_infinitude_residue_not_necessary_example
+#print axioms OmegaBalance.f3_consecutive_crossing_not_twin_example
