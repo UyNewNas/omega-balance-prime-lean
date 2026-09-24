@@ -53,8 +53,7 @@ theorem f3PeriodicCorrelationCesaroAverage_eq (R h N : ℕ) (hN : 0 < N) :
       (q : ℝ) / (N : ℝ) = (1 - (r : ℝ) / (N : ℝ)) / (P : ℝ) := by
     field_simp [ne_of_gt hPreal, ne_of_gt hNreal]
     rw [hminus]
-    ring
-  rw [f3PeriodicCorrelationCesaroAverage, hsumR, add_div]
+  rw [f3PeriodicCorrelationCesaroAverage, hsumR, add_div, f3PeriodicCorrelationAverage]
   change
     (q : ℝ) * (f3PeriodicCorrelationSum R h : ℝ) / (N : ℝ) +
         (f3PeriodicCorrelationPartialSum R h r : ℝ) / (N : ℝ) =
