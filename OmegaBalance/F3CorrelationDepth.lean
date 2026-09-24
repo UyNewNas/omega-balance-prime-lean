@@ -93,7 +93,7 @@ theorem f3CorrelationThreeWeightSum (R d0 d1 d2 : ℕ) :
         intro j _
         apply Finset.sum_congr rfl
         intro k _
-        by_cases h : min (j + 1) (k + 1) ≤ d0 <;> simp [h]
+        by_cases h : min (j + 1) (k + 1) ≤ d0 <;> simp
       _ = ∑ j ∈ Finset.range R,
           2 * (∑ k ∈ Finset.range R,
             if min (j + 1) (k + 1) ≤ d0 then
@@ -134,9 +134,8 @@ theorem f3PeriodicCorrelationSum_eq_weights (R h : ℕ) :
         have := Finset.mem_range.mp hk
         omega
       have hmR : min (j + 1) (k + 1) ≤ R := by omega
-      rw [modEq_zero_pow_three_iff_le_f3CappedDepth hmR,
-        modEq_two_pow_three_iff_le_f3CappedDepth hmR,
-        modEq_zero_pow_three_iff_le_f3CappedDepth hmR]
+      simp only [modEq_zero_pow_three_iff_le_f3CappedDepth hmR,
+        modEq_two_pow_three_iff_le_f3CappedDepth hmR]
       norm_cast
     _ = _ := f3CorrelationThreeWeightSum R (f3CappedDepth R h)
       (f3CappedDepth R (Nat.dist h 2)) (f3CappedDepth R (h + 2))
