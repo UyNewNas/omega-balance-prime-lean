@@ -58,7 +58,7 @@ theorem modPairCount_eq_of_le {R j k a b : ℕ} (hjk : j ≤ k) (hkR : k ≤ R) 
         (Finset.range (3 ^ R)).filter (fun n =>
             n ≡ a [MOD 3 ^ j] ∧ n ≡ b [MOD 3 ^ k]) = ∅ := by
       ext n
-      simp only [Finset.mem_filter, Finset.mem_range, Finset.not_mem_empty, iff_false]
+      simp only [Finset.mem_filter, Finset.mem_range, Finset.notMem_empty, iff_false]
       rintro ⟨_, hnj, hnk⟩
       apply hab
       exact hnj.symm.trans (hnk.of_dvd hjk_dvd)
