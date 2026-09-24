@@ -1,0 +1,60 @@
+name: Lean
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Restore Lean dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.elan
+            .lake
+          key: lean-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}
+      - name: Fetch pinned dependencies and cache
+        run: |
+          lake update
+          lake exe cache get Mathlib/Data/Nat/Factorization/Basic.lean Mathlib/Tactic/NormNum.lean Mathlib/Tactic/Linarith.lean Mathlib/Tactic/Ring.lean
+      - name: Build library
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee build.log
+      - name: Kernel regression tests
+        run: lake build OmegaBalance.Examples
+      - name: Audit axioms
+        shell: bash
+        run: |
+          set -o pipefail
+          lake env lean scripts/Audit.lean 2>&1 | tee axioms.log
+          python3 scripts/check_axioms.py axioms.log
+      - name: Audit source
+        run: python3 scripts/check_sources.py
+      - name: Preserve verification logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-verification
+          path: |
+            build.log
+            axioms.log
+            lake-manifest.json
+          if-no-files-found: ignore
