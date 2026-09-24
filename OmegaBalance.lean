@@ -21,3 +21,4 @@ import OmegaBalance.FactorSumCofactor
 import OmegaBalance.FactorSumAdmissibility
 import OmegaBalance.FactorSumIrreducible
 import OmegaBalance.FactorSumAnalyticTransfer
+import OmegaBalance.FactorSumSchinzel
