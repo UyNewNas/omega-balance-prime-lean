@@ -220,6 +220,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_explicit
 
 -- Generic finite geometric weight underlying the complete-period correlation.
+#print axioms OmegaBalance.f3CorrelationWeight_old_term
+#print axioms OmegaBalance.f3CorrelationWeight_boundary_sum
+#print axioms OmegaBalance.f3CorrelationWeight_old_block
 #print axioms OmegaBalance.f3CorrelationWeight_succ
 #print axioms OmegaBalance.f3CorrelationWeight_eq
 
