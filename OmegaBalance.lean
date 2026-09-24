@@ -3,3 +3,5 @@ import OmegaBalance.Valuation
 import OmegaBalance.F3
 import OmegaBalance.F3Extension
 import OmegaBalance.F3Arithmetic
+import OmegaBalance.F3Powers
+import OmegaBalance.F3Rational
