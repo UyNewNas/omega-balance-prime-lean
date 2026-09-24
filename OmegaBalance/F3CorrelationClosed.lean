@@ -19,11 +19,13 @@ theorem f3CappedDepth_le (R n : ℕ) : f3CappedDepth R n ≤ R := by
     exact min_le_left _ _
 
 @[simp] theorem f3CappedDepth_two (R : ℕ) : f3CappedDepth R 2 = 0 := by
-  rw [f3CappedDepth_eq_min (by decide) R, v3_two]
+  rw [f3CappedDepth_eq_min (by decide) R,
+    v3_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 2)]
   simp
 
 @[simp] theorem f3CappedDepth_four (R : ℕ) : f3CappedDepth R 4 = 0 := by
-  rw [f3CappedDepth_eq_min (by decide) R, v3_four]
+  rw [f3CappedDepth_eq_min (by decide) R,
+    v3_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 4)]
   simp
 
 /-- Exact closed form for one complete `3^R` period of the retained-layer
