@@ -18,5 +18,6 @@ import OmegaBalance.F3CorrelationDepth
 import OmegaBalance.F3CorrelationClosed
 import OmegaBalance.F3CorrelationLimit
 import OmegaBalance.F3CorrelationCesaro
+import OmegaBalance.F3CorrelationCesaroLimit
 import OmegaBalance.F3Infinitude
 import OmegaBalance.F3SignChanges
