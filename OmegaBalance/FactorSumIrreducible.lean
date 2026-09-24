@@ -1,6 +1,7 @@
 import OmegaBalance.FactorSumAdmissibility
 import Mathlib.Algebra.Polynomial.SpecificDegree
 import Mathlib.RingTheory.Polynomial.RationalRoot
+import Mathlib.Tactic.ReduceModChar
 
 /-!
 # Irreducibility of the five-polynomial factor-sum family
@@ -90,6 +91,7 @@ theorem sumFamilyPolyQ_irreducible_rat :
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 7)) hzi
     norm_num [map_add, map_mul, map_pow] at hzmod
+    reduce_mod_char at hzmod
     have hno : ∀ w : ZMod 7, w ^ 2 + 1 ≠ 0 := by decide
     exact hno (z : ZMod 7) hzmod
 
@@ -128,6 +130,7 @@ theorem sumFamilyPolyR_irreducible_rat :
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 7)) hzi
     norm_num [map_add, map_mul, map_pow] at hzmod
+    reduce_mod_char at hzmod
     have hno : ∀ w : ZMod 7, w ^ 2 + w + 3 ≠ 0 := by decide
     exact hno (z : ZMod 7) hzmod
 
@@ -182,6 +185,7 @@ theorem sumFamilyPolyCenter_irreducible_rat :
       exact_mod_cast hzq
     have hzmod := congrArg (Int.castRingHom (ZMod 19)) hzi
     norm_num [map_add, map_mul, map_pow] at hzmod
+    reduce_mod_char at hzmod
     exact sumFamilyCenter_scaled_no_root_mod_nineteen (z : ZMod 19) hzmod
 
 /-- All five family members are irreducible over `ℚ`. -/
