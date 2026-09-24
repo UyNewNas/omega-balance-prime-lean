@@ -3,15 +3,14 @@ import OmegaBalance.F3Powers
 /-!
 # Opposite levels: sum/product dichotomy and a refined gap lattice
 
-The statements are universal arithmetic lemmas, not prime-pair existence
-claims. The refined gap requires the extra product-depth hypothesis.
+These are arithmetic implications, not prime-pair existence statements.
+The refined gap requires the additional product-depth hypothesis.
 -/
 
 namespace OmegaBalance
 
 local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
 
-/-- Recover the divisible neighbor and its valuation from a positive F₃ value. -/
 theorem f3_positive_level {n k : ℕ} (hn : 1 < n) (hk : 0 < k)
     (hf : f3 n = (k : ℤ)) : n % 3 = 2 ∧ v3 (n + 1) = k := by
   have hpos : 0 < f3 n := by rw [hf]; exact_mod_cast hk
@@ -28,10 +27,10 @@ theorem f3_positive_level {n k : ℕ} (hn : 1 < n) (hk : 0 < k)
   rw [hf] at hv
   exact_mod_cast hv.symm
 
-/-- Recover the divisible neighbor from a negative F₃ value. -/
 theorem f3_negative_level {n k : ℕ} (hn : 1 < n) (hk : 0 < k)
     (hf : f3 n = -(k : ℤ)) : n % 3 = 1 ∧ v3 (n - 1) = k := by
-  have hneg : f3 n < 0 := by rw [hf]; have : (0 : ℤ) < k := by exact_mod_cast hk; omega
+  have hkz : (0 : ℤ) < k := by exact_mod_cast hk
+  have hneg : f3 n < 0 := by rw [hf]; omega
   have hm : n % 3 = 1 := by
     by_contra h
     have cases : n % 3 = 0 ∨ n % 3 = 2 := by omega
@@ -51,7 +50,7 @@ theorem pow_three_dvd_of_le_v3 {n k : ℕ} (hn : n ≠ 0) (hk : k ≤ v3 n) :
   apply (padicValNat_dvd_iff_le hn).mpr
   simpa only [v3_eq_padic] using hk
 
-/-- Exact valuation gives a positive factor not divisible by three. -/
+/-- An exact valuation has a positive unit cofactor. -/
 theorem v3_exact_factor {n k : ℕ} (hn : n ≠ 0) (hv : v3 n = k) :
     ∃ a : ℕ, 0 < a ∧ ¬ 3 ∣ a ∧ n = 3 ^ k * a := by
   obtain ⟨a, ha⟩ := pow_three_dvd_of_le_v3 hn (by omega : k ≤ v3 n)
@@ -64,7 +63,7 @@ theorem v3_exact_factor {n k : ℕ} (hn : n ≠ 0) (hv : v3 n = k) :
   have := v3_pos_of_dvd ha0 hd
   omega
 
-/-- Precisely one of the sum and product-plus-one stays at the original level. -/
+/-- Exactly one of the sum and product-plus-one remains at the input level. -/
 theorem f3_opposite_sum_product {p q k : ℕ} (hp : 1 < p) (hq : 1 < q)
     (hk : 0 < k) (hfp : f3 p = (k : ℤ)) (hfq : f3 q = -(k : ℤ)) :
     (v3 (p + q) = k ∧ k < v3 (p * q + 1)) ∨
@@ -104,7 +103,6 @@ theorem f3_opposite_sum_product_min {p q k : ℕ} (hp : 1 < p) (hq : 1 < q)
       v3 (p + q) ≠ v3 (p * q + 1) := by
   rcases f3_opposite_sum_product hp hq hk hfp hfq with h | h <;> omega
 
-/-- Arithmetic twin product identity; primality is unnecessary. -/
 theorem f3_twin_product_of_mod {n : ℕ} (hn : 1 < n) (hm : n % 3 = 2) :
     f3 (n * (n + 2)) = 2 * f3 n := by
   have hprod : 1 < n * (n + 2) := by nlinarith
@@ -119,7 +117,7 @@ theorem f3_twin_product {p : ℕ} (hp : p.Prime) (hq : (p + 2).Prime) (h3 : 3 < 
     f3 (p * (p + 2)) = 2 * f3 p :=
   f3_twin_product_of_mod (by omega) (twin_mod_three hp hq h3).1
 
-/-- Extra product information refines the gap lattice from 3^k to 3^(2k). -/
+/-- Additional product information refines the gap lattice to 3^(2k). -/
 theorem f3_product_refined_gap {p q k : ℕ} (hp : 1 < p) (hq : p < q)
     (hpo : p % 2 = 1) (hqo : q % 2 = 1) (hk : 0 < k)
     (hfp : f3 p = (k : ℤ)) (hfq : f3 q = -(k : ℤ))
@@ -146,7 +144,7 @@ theorem f3_product_refined_gap {p q k : ℕ} (hp : 1 < p) (hq : p < q)
     omega
   have hd : 3 ^ (2 * k) ∣ q - p - 2 := by
     rw [← hid]
-    exact Nat.dvd_sub' hmul hprd
+    exact Nat.dvd_sub hmul hprd
   obtain ⟨t, ht⟩ := hd
   have hmodpow : 3 ^ (2 * k) % 2 = 1 := by norm_num [Nat.pow_mod]
   have hmodt : t % 2 = 0 := by
