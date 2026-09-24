@@ -55,6 +55,9 @@ theorem f3PeriodicCorrelationCesaroAverage_eq (R h N : ℕ) (hN : 0 < N) :
     rw [hminus]
   rw [f3PeriodicCorrelationCesaroAverage, hsumR, add_div, f3PeriodicCorrelationAverage]
   simp only [P, r] at hq ⊢
+  have hcastP : (((3 : ℕ) ^ R : ℕ) : ℝ) = (3 : ℝ) ^ R := by
+    norm_cast
+  rw [hcastP] at hq
   rw [show (q : ℝ) * (f3PeriodicCorrelationSum R h : ℝ) / (N : ℝ) =
       (f3PeriodicCorrelationSum R h : ℝ) * ((q : ℝ) / (N : ℝ)) by ring, hq]
   ring
