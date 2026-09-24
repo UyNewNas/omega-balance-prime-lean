@@ -164,4 +164,145 @@ theorem modShiftPairCount_eq {R j k a b h : ℕ} (hjR : j ≤ R) (hkR : k ≤ R)
     intro ha
     exact hab (hcompat.mp ha)
 
+/-- Two `-1` residue targets differ after translation exactly when the shift
+itself is nonzero modulo the common smaller modulus. -/
+theorem modEq_sub_one_add_iff_zero {m q r h : ℕ}
+    (hmq : m ∣ q) (hmr : m ∣ r) (hq : 0 < q) (hr : 0 < r) :
+    q - 1 + h ≡ r - 1 [MOD m] ↔ h ≡ 0 [MOD m] := by
+  have hq0 : q ≡ 0 [MOD m] := hmq.modEq_zero_nat
+  have hr0 : r ≡ 0 [MOD m] := hmr.modEq_zero_nat
+  have heq : q - 1 + h + 1 = q + h := by omega
+  have her : r - 1 + 1 = r := by omega
+  constructor
+  · intro hab
+    have hadd := hab.add_right 1
+    rw [heq, her] at hadd
+    have hzero : q + h ≡ 0 [MOD m] := hadd.trans hr0
+    have hzero' : q + h ≡ 0 + 0 [MOD m] := by simpa using hzero
+    exact hq0.add_left_cancel hzero'
+  · intro hh
+    have hsum : q + h ≡ 0 + 0 [MOD m] := hq0.add hh
+    have hqr : q + h ≡ r [MOD m] := hsum.trans (by simpa using hr0.symm)
+    have hadd : q - 1 + h + 1 ≡ r - 1 + 1 [MOD m] := by
+      rw [heq, her]
+      exact hqr
+    exact hadd.add_right_cancel' 1
+
+/-- A `-1` target followed by a `+1` target is compatible exactly for shifts
+congruent to `2`. -/
+theorem modEq_sub_one_add_iff_two {m q h : ℕ} (hmq : m ∣ q) (hq : 0 < q) :
+    q - 1 + h ≡ 1 [MOD m] ↔ h ≡ 2 [MOD m] := by
+  have hq0 : q ≡ 0 [MOD m] := hmq.modEq_zero_nat
+  have heq : q - 1 + h + 1 = q + h := by omega
+  constructor
+  · intro hab
+    have hadd := hab.add_right 1
+    rw [heq] at hadd
+    norm_num at hadd
+    have htarget : q + h ≡ 0 + 2 [MOD m] := by simpa using hadd
+    exact hq0.add_left_cancel htarget
+  · intro hh
+    have hsum : q + h ≡ 0 + 2 [MOD m] := hq0.add hh
+    have hadd : q - 1 + h + 1 ≡ 1 + 1 [MOD m] := by
+      rw [heq]
+      norm_num
+      simpa using hsum
+    exact hadd.add_right_cancel' 1
+
+/-- A `+1` target followed by a `-1` target is compatible exactly when
+`h + 2` vanishes modulo the common modulus. -/
+theorem modEq_one_add_sub_one_iff_add_two_zero {m q h : ℕ}
+    (hmq : m ∣ q) (hq : 0 < q) :
+    1 + h ≡ q - 1 [MOD m] ↔ h + 2 ≡ 0 [MOD m] := by
+  have hq0 : q ≡ 0 [MOD m] := hmq.modEq_zero_nat
+  have hel : 1 + h + 1 = h + 2 := by omega
+  have her : q - 1 + 1 = q := by omega
+  constructor
+  · intro hab
+    have hadd := hab.add_right 1
+    rw [hel, her] at hadd
+    exact hadd.trans hq0
+  · intro hh
+    have htoq : h + 2 ≡ q [MOD m] := hh.trans hq0.symm
+    have hadd : 1 + h + 1 ≡ q - 1 + 1 [MOD m] := by
+      rw [hel, her]
+      exact htoq
+    exact hadd.add_right_cancel' 1
+
+/-- Translating the residue `1` against itself is compatible exactly when the
+shift vanishes modulo the modulus. -/
+theorem modEq_one_add_one_iff_zero {m h : ℕ} :
+    1 + h ≡ 1 [MOD m] ↔ h ≡ 0 [MOD m] := by
+  have h1 : 1 ≡ 1 [MOD m] := Nat.ModEq.refl
+  constructor
+  · intro hh
+    have hsum : 1 + h ≡ 1 + 0 [MOD m] := by simpa using hh
+    exact h1.add_left_cancel hsum
+  · intro hh
+    simpa using h1.add hh
+
+/-- Positive-layer/positive-layer overlap: only `h ≡ 0` survives. -/
+theorem modShiftPairCount_pos_pos_eq {R j k h : ℕ} (hjR : j ≤ R) (hkR : k ≤ R) :
+    modShiftPairCount R j k (3 ^ j - 1) (3 ^ k - 1) h =
+      if h ≡ 0 [MOD 3 ^ min j k] then 3 ^ (R - max j k) else 0 := by
+  rw [modShiftPairCount_eq hjR hkR]
+  have hcompat :
+      3 ^ j - 1 + h ≡ 3 ^ k - 1 [MOD 3 ^ min j k] ↔
+        h ≡ 0 [MOD 3 ^ min j k] :=
+    modEq_sub_one_add_iff_zero
+      (pow_dvd_pow 3 (min_le_left j k)) (pow_dvd_pow 3 (min_le_right j k))
+      (pow_pos (by decide) j) (pow_pos (by decide) k)
+  by_cases hh : h ≡ 0 [MOD 3 ^ min j k]
+  · rw [if_pos hh, if_pos (hcompat.mpr hh)]
+  · rw [if_neg hh, if_neg]
+    intro hc
+    exact hh (hcompat.mp hc)
+
+/-- Positive-layer/negative-layer overlap: the shift must be `2` modulo the
+smaller power. -/
+theorem modShiftPairCount_pos_neg_eq {R j k h : ℕ} (hjR : j ≤ R) (hkR : k ≤ R) :
+    modShiftPairCount R j k (3 ^ j - 1) 1 h =
+      if h ≡ 2 [MOD 3 ^ min j k] then 3 ^ (R - max j k) else 0 := by
+  rw [modShiftPairCount_eq hjR hkR]
+  have hcompat :
+      3 ^ j - 1 + h ≡ 1 [MOD 3 ^ min j k] ↔
+        h ≡ 2 [MOD 3 ^ min j k] :=
+    modEq_sub_one_add_iff_two (pow_dvd_pow 3 (min_le_left j k)) (pow_pos (by decide) j)
+  by_cases hh : h ≡ 2 [MOD 3 ^ min j k]
+  · rw [if_pos hh, if_pos (hcompat.mpr hh)]
+  · rw [if_neg hh, if_neg]
+    intro hc
+    exact hh (hcompat.mp hc)
+
+/-- Negative-layer/positive-layer overlap: the shift plus two must vanish
+modulo the smaller power. -/
+theorem modShiftPairCount_neg_pos_eq {R j k h : ℕ} (hjR : j ≤ R) (hkR : k ≤ R) :
+    modShiftPairCount R j k 1 (3 ^ k - 1) h =
+      if h + 2 ≡ 0 [MOD 3 ^ min j k] then 3 ^ (R - max j k) else 0 := by
+  rw [modShiftPairCount_eq hjR hkR]
+  have hcompat :
+      1 + h ≡ 3 ^ k - 1 [MOD 3 ^ min j k] ↔
+        h + 2 ≡ 0 [MOD 3 ^ min j k] :=
+    modEq_one_add_sub_one_iff_add_two_zero
+      (pow_dvd_pow 3 (min_le_right j k)) (pow_pos (by decide) k)
+  by_cases hh : h + 2 ≡ 0 [MOD 3 ^ min j k]
+  · rw [if_pos hh, if_pos (hcompat.mpr hh)]
+  · rw [if_neg hh, if_neg]
+    intro hc
+    exact hh (hcompat.mp hc)
+
+/-- Negative-layer/negative-layer overlap: only `h ≡ 0` survives. -/
+theorem modShiftPairCount_neg_neg_eq {R j k h : ℕ} (hjR : j ≤ R) (hkR : k ≤ R) :
+    modShiftPairCount R j k 1 1 h =
+      if h ≡ 0 [MOD 3 ^ min j k] then 3 ^ (R - max j k) else 0 := by
+  rw [modShiftPairCount_eq hjR hkR]
+  have hcompat :
+      1 + h ≡ 1 [MOD 3 ^ min j k] ↔ h ≡ 0 [MOD 3 ^ min j k] :=
+    modEq_one_add_one_iff_zero
+  by_cases hh : h ≡ 0 [MOD 3 ^ min j k]
+  · rw [if_pos hh, if_pos (hcompat.mpr hh)]
+  · rw [if_neg hh, if_neg]
+    intro hc
+    exact hh (hcompat.mp hc)
+
 end OmegaBalance
