@@ -170,6 +170,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.valuation_eq_of_pow_dvd
 #print axioms OmegaBalance.doubleBalanced_mod_eight
 
+-- FactorSumParity.lean
+#print axioms OmegaBalance.doubleBalanced_two_adic_profile
+#print axioms OmegaBalance.doubleBalanced_common_sum_parity
+
 -- FactorSumExamples.lean
 #print axioms OmegaBalance.sumFamily_prime_values_five
 #print axioms OmegaBalance.sumBalanced_3615811
