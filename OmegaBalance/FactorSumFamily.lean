@@ -16,6 +16,32 @@ def sumFamilyQ (t : ℕ) : ℕ := 390 * t ^ 2 + 238 * t + 17
 def sumFamilyR (t : ℕ) : ℕ := 390 * t ^ 2 + 225 * t + 16
 def sumFamilyCenter (t : ℕ) : ℕ := 23400 * t ^ 3 + 25980 * t ^ 2 + 8160 * t + 511
 
+/-- The two fixed cofactors in the Pomerance-style inverse construction. -/
+def sumFamilyA (t : ℕ) : ℕ := 15 * sumFamilyU t
+def sumFamilyB (t : ℕ) : ℕ := 2 * sumFamilyV t
+def sumFamilyD (t : ℕ) : ℕ := 13 * t + 1
+
+theorem sumFamily_B_eq_A_add_one (t : ℕ) :
+    sumFamilyB t = sumFamilyA t + 1 := by
+  simp only [sumFamilyA, sumFamilyB, sumFamilyU, sumFamilyV]
+  ring
+
+theorem sumFamily_Q_inverse (t : ℕ) :
+    sumFamilyQ t = 1 + sumFamilyB t * sumFamilyD t := by
+  simp only [sumFamilyQ, sumFamilyB, sumFamilyV, sumFamilyD]
+  ring
+
+theorem sumFamily_R_inverse (t : ℕ) :
+    sumFamilyR t = 1 + sumFamilyA t * sumFamilyD t := by
+  simp only [sumFamilyR, sumFamilyA, sumFamilyU, sumFamilyD]
+  ring
+
+theorem sumFamily_Q_sub_R (t : ℕ) :
+    (sumFamilyQ t : ℤ) - sumFamilyR t = sumFamilyD t := by
+  simp only [sumFamilyQ, sumFamilyR, sumFamilyD]
+  push_cast
+  ring
+
 /-- Records five primality hypotheses, without asserting their existence. -/
 def SumFamilyPrimeValues (t : ℕ) : Prop :=
   (sumFamilyU t).Prime ∧ (sumFamilyV t).Prime ∧
