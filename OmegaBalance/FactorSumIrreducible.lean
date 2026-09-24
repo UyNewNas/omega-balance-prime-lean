@@ -1,7 +1,6 @@
 import OmegaBalance.FactorSumAdmissibility
 import Mathlib.Algebra.Polynomial.SpecificDegree
 import Mathlib.RingTheory.Polynomial.RationalRoot
-import Mathlib.Tactic.Monicity
 
 /-!
 # Irreducibility of the five-polynomial factor-sum family
@@ -73,7 +72,8 @@ theorem sumFamilyPolyQ_irreducible_rat :
     let g : ℤ[X] := X ^ 2 + C 238 * X + C 6630
     have hgmonic : g.Monic := by
       dsimp [g]
-      monicity!
+      apply monic_X_pow_add
+      compute_degree!
     have hgy : aeval ((390 : ℚ) * x) g = 0 := by
       change ((390 : ℚ) * x) ^ 2 + 238 * ((390 : ℚ) * x) + 6630 = 0
       calc
@@ -108,7 +108,8 @@ theorem sumFamilyPolyR_irreducible_rat :
     let g : ℤ[X] := X ^ 2 + C 225 * X + C 6240
     have hgmonic : g.Monic := by
       dsimp [g]
-      monicity!
+      apply monic_X_pow_add
+      compute_degree!
     have hgy : aeval ((390 : ℚ) * x) g = 0 := by
       change ((390 : ℚ) * x) ^ 2 + 225 * ((390 : ℚ) * x) + 6240 = 0
       calc
@@ -152,7 +153,8 @@ theorem sumFamilyPolyCenter_irreducible_rat :
       X ^ 3 + C 25980 * X ^ 2 + C (23400 * 8160) * X + C (23400 ^ 2 * 511)
     have hgmonic : g.Monic := by
       dsimp [g]
-      monicity!
+      apply monic_X_pow_add
+      compute_degree!
     have hgy : aeval ((23400 : ℚ) * x) g = 0 := by
       change ((23400 : ℚ) * x) ^ 3 + 25980 * ((23400 : ℚ) * x) ^ 2 +
         (23400 * 8160) * ((23400 : ℚ) * x) + (23400 ^ 2 * 511) = 0
