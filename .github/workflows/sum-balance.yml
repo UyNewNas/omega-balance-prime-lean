@@ -1,0 +1,32 @@
+name: Factor-sum verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reproduce exact parameter scan and certificates
+        run: |
+          python3 -m py_compile scripts/verify_sum_balance_family.py
+          python3 scripts/verify_sum_balance_family.py --limit 50000 \
+            --output "$RUNNER_TEMP/sum_balance_family_actual.json" \
+            --check-against data/sum_balance/family_1_50000.json
+      - name: Preserve computed report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sum-balance-verification
+          path: ${{ runner.temp }}/sum_balance_family_actual.json
+          if-no-files-found: ignore

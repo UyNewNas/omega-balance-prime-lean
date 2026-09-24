@@ -1,0 +1,89 @@
+{
+  "parameter_range": {
+    "min_t": 1,
+    "max_t": 50000
+  },
+  "scope": "This polynomial family only; not all S-balanced primes",
+  "four_prime_hits": 48,
+  "prime_center_hits": 3,
+  "trial_division_sieve_limit": 987426,
+  "audit": {
+    "allowed_residues": {
+      "2": [1],
+      "3": [0, 2],
+      "5": [0, 3, 4],
+      "7": [4, 5]
+    },
+    "quadratic_discriminants": [30124, 25665],
+    "cubic_modulus": 19,
+    "cubic_residues": [17, 6, 18, 5, 14, 16, 1, 16, 13, 1, 8, 5, 1, 5, 7, 16, 3, 15, 4]
+  },
+  "rows": [
+    {
+      "t": 5,
+      "u": 11,
+      "v": 83,
+      "q": 10957,
+      "r": 10891,
+      "p": 3615811,
+      "S_neighbor": 10978,
+      "Omega_left": 5,
+      "Omega_right": 4,
+      "left_prime_factors": [2, 3, 5, 11, 10957],
+      "right_prime_factors": [2, 2, 83, 10891],
+      "center_certificate": {
+        "method": "Pocklington",
+        "prime_divisor_q": 10957,
+        "witness_a": 2,
+        "cofactor": 330,
+        "q_squared_greater_than_p": true,
+        "fermat_residue": 1,
+        "gcd": 1
+      }
+    },
+    {
+      "t": 41529,
+      "u": 83059,
+      "v": 622943,
+      "q": 672626441909,
+      "r": 672625902031,
+      "p": 1676030389155588931,
+      "S_neighbor": 672626524978,
+      "Omega_left": 5,
+      "Omega_right": 4,
+      "left_prime_factors": [2, 3, 5, 83059, 672626441909],
+      "right_prime_factors": [2, 2, 622943, 672625902031],
+      "center_certificate": {
+        "method": "Pocklington",
+        "prime_divisor_q": 672626441909,
+        "witness_a": 2,
+        "cofactor": 2491770,
+        "q_squared_greater_than_p": true,
+        "fermat_residue": 1,
+        "gcd": 1
+      }
+    },
+    {
+      "t": 48465,
+      "u": 96931,
+      "v": 726983,
+      "q": 916065462437,
+      "r": 916064832391,
+      "p": 2663854240184425411,
+      "S_neighbor": 916065559378,
+      "Omega_left": 5,
+      "Omega_right": 4,
+      "left_prime_factors": [2, 3, 5, 96931, 916065462437],
+      "right_prime_factors": [2, 2, 726983, 916064832391],
+      "center_certificate": {
+        "method": "Pocklington",
+        "prime_divisor_q": 916065462437,
+        "witness_a": 2,
+        "cofactor": 2907930,
+        "q_squared_greater_than_p": true,
+        "fermat_residue": 1,
+        "gcd": 1
+      }
+    }
+  ]
+}
