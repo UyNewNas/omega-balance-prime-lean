@@ -179,6 +179,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumBalanced_3615811
 #print axioms OmegaBalance.sumBalanced_3615811_profile
 #print axioms OmegaBalance.doubleBalanced_870404071
+#print axioms OmegaBalance.doubleBalanced_870404071_profile
 #print axioms OmegaBalance.doubleBalanced_748465063
 #print axioms OmegaBalance.doubleBalanced_minimum_level
 #print axioms OmegaBalance.sumBalanced_11
@@ -187,6 +188,7 @@ import OmegaBalance.F3DeeperExamples
 
 -- FactorSumFamily.lean
 #print axioms OmegaBalance.sumFamily_B_eq_A_add_one
+#print axioms OmegaBalance.sumFamily_B_sub_A_eq_one
 #print axioms OmegaBalance.sumFamily_Q_inverse
 #print axioms OmegaBalance.sumFamily_R_inverse
 #print axioms OmegaBalance.sumFamily_Q_sub_R
@@ -211,6 +213,8 @@ import OmegaBalance.F3DeeperExamples
 -- FactorSumFive.lean
 #print axioms OmegaBalance.doubleBalanced_five_has_shape
 #print axioms OmegaBalance.doubleBalanced_five_shape_iff
+#print axioms OmegaBalance.doubleBalanced_five_signed_gap
+#print axioms OmegaBalance.doubleBalanced_five_gap_natAbs
 #print axioms OmegaBalance.doubleBalanced_five_mod_forty_eight
 #print axioms OmegaBalance.doubleBalanced_five_not_twins
 #print axioms OmegaBalance.doubleBalanced_twins_level_ge_six
