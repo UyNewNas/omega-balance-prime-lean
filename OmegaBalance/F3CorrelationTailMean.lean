@@ -72,4 +72,35 @@ theorem odd_geometric_partial_sum_le_one (T : ℕ) :
       0 ≤ ((T : ℝ) + 1) / (3 : ℝ) ^ T := by positivity
   linarith
 
+/-- After counting each retained excess layer, every finite weighted floor sum is
+bounded by `N / 3^R`.  This is the quantitative estimate used for the L² tail. -/
+theorem odd_weighted_floor_sum_le (R N T : ℕ) :
+    (∑ t ∈ Finset.range T,
+      (2 * (t : ℝ) + 1) * ((N / 3 ^ (R + t + 1) : ℕ) : ℝ)) ≤
+      (N : ℝ) / (3 : ℝ) ^ R := by
+  calc
+    _ ≤ ∑ t ∈ Finset.range T,
+        (2 * (t : ℝ) + 1) *
+          ((N : ℝ) / (((3 ^ (R + t + 1) : ℕ) : ℝ))) := by
+      apply Finset.sum_le_sum
+      intro t ht
+      apply mul_le_mul_of_nonneg_left
+      · exact Nat.cast_div_le
+      · positivity
+    _ = ((N : ℝ) / (3 : ℝ) ^ R) *
+        ∑ t ∈ Finset.range T,
+          (2 * (t : ℝ) + 1) / (3 : ℝ) ^ (t + 1) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro t ht
+      have hcast :
+          (((3 ^ (R + t + 1) : ℕ) : ℝ)) = (3 : ℝ) ^ (R + t + 1) := by
+        norm_cast
+      rw [hcast, show R + t + 1 = R + (t + 1) by omega, pow_add]
+      field_simp
+      ring
+    _ ≤ ((N : ℝ) / (3 : ℝ) ^ R) * 1 :=
+      mul_le_mul_of_nonneg_left (odd_geometric_partial_sum_le_one T) (by positivity)
+    _ = (N : ℝ) / (3 : ℝ) ^ R := by ring
+
 end OmegaBalance
