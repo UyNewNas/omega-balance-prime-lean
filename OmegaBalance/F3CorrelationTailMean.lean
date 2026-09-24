@@ -1,5 +1,5 @@
 import OmegaBalance.F3CorrelationTail
-import Mathlib.Data.Int.CardIntervalMod
+import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Nat.PadicValNat
 
 /-!
@@ -17,24 +17,12 @@ theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
     ((Finset.Icc 1 N).filter fun m => 3 ^ a ∣ m).card = N / 3 ^ a := by
   have hset :
       ((Finset.Icc 1 N).filter fun m => 3 ^ a ∣ m) =
-        ((Finset.Ioc 0 N).filter fun m => m ≡ 0 [MOD 3 ^ a]) := by
+        ((Finset.Ioc 0 N).filter fun m => 3 ^ a ∣ m) := by
     ext m
-    simp only [Finset.mem_filter, Finset.mem_Icc, Finset.mem_Ioc,
-      Nat.modEq_zero_iff_dvd]
+    simp only [Finset.mem_filter, Finset.mem_Icc, Finset.mem_Ioc]
     omega
   rw [hset]
-  have hcount := Nat.Ioc_filter_modEq_card (a := 0) (b := N) (r := 3 ^ a)
-    (pow_pos (by decide) a) 0
-  have hcount' :
-      (((Finset.Ioc 0 N).filter fun m => m ≡ 0 [MOD 3 ^ a]).card : ℤ) =
-        ((N / 3 ^ a : ℕ) : ℤ) := by
-    norm_num at hcount
-    have hpow : (3 : ℚ) ^ a = (((3 : ℕ) ^ a : ℕ) : ℚ) := by norm_cast
-    rw [hpow, Rat.floor_natCast_div_natCast] at hcount
-    have hnonneg : (0 : ℤ) ≤ ((N / 3 ^ a : ℕ) : ℤ) := by positivity
-    rw [max_eq_left hnonneg] at hcount
-    exact hcount
-  exact_mod_cast hcount'
+  exact Nat.Ioc_filter_dvd_card_eq_div N (3 ^ a)
 
 /-- The `t`-th excess layer occurs exactly at the positive multiples of
 `3^(R+t+1)`, hence exactly `N / 3^(R+t+1)` times in `1, ..., N`. -/
