@@ -3,9 +3,9 @@ import OmegaBalance.FactorSum
 /-!
 # Certified constructions of prime-factor-sum balanced centers
 
-The five-prime theorem is an implication with explicit prime hypotheses.
-It is not an infinitude theorem and does not assume Schinzel's hypothesis.
-The cofactor construction is the one attributed to Pomerance in the notes.
+The five-prime theorem has explicit prime hypotheses. It does not assert
+infinitude and does not assume Schinzel's hypothesis. The underlying
+cofactor construction is attributed to Pomerance in the research notes.
 -/
 
 namespace OmegaBalance
@@ -16,7 +16,7 @@ def sumFamilyQ (t : ℕ) : ℕ := 390 * t ^ 2 + 238 * t + 17
 def sumFamilyR (t : ℕ) : ℕ := 390 * t ^ 2 + 225 * t + 16
 def sumFamilyCenter (t : ℕ) : ℕ := 23400 * t ^ 3 + 25980 * t ^ 2 + 8160 * t + 511
 
-/-- This predicate only RECORDS hypotheses; it asserts no existence. -/
+/-- Records five primality hypotheses, without asserting their existence. -/
 def SumFamilyPrimeValues (t : ℕ) : Prop :=
   (sumFamilyU t).Prime ∧ (sumFamilyV t).Prime ∧
   (sumFamilyQ t).Prime ∧ (sumFamilyR t).Prime ∧ (sumFamilyCenter t).Prime
@@ -53,7 +53,7 @@ theorem sumFamily_left_profile {t : ℕ}
     bigOmega (sumFamilyCenter t - 1) = 5 := by
   have hp : ∀ z ∈ [2, 3, 5, sumFamilyU t, sumFamilyQ t], z.Prime := by
     intro z hz
-    simp only [List.mem_cons, List.mem_singleton] at hz
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hz
     rcases hz with rfl | rfl | rfl | rfl | rfl <;>
       first | exact hu | exact hq | norm_num
   have he : [2, 3, 5, sumFamilyU t, sumFamilyQ t].prod = sumFamilyCenter t - 1 := by
@@ -71,7 +71,7 @@ theorem sumFamily_right_profile {t : ℕ}
     bigOmega (sumFamilyCenter t + 1) = 4 := by
   have hp : ∀ z ∈ [2, 2, sumFamilyV t, sumFamilyR t], z.Prime := by
     intro z hz
-    simp only [List.mem_cons, List.mem_singleton] at hz
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hz
     rcases hz with rfl | rfl | rfl | rfl <;>
       first | exact hv | exact hr | norm_num
   have he : [2, 2, sumFamilyV t, sumFamilyR t].prod = sumFamilyCenter t + 1 := by
@@ -91,7 +91,7 @@ theorem sumFamily_balanced {t : ℕ}
   exact (sumFamily_left_profile hu hq).1.trans
     ((sumFamily_factor_sum_identity t).trans (sumFamily_right_profile hv hr).1.symm)
 
-/-- Main construction: five simultaneous primes imply a sum-balanced prime. -/
+/-- Five simultaneous prime values give a sum-balanced prime. -/
 theorem sumFamily_five_primes {t : ℕ} (h : SumFamilyPrimeValues t) :
     IsPrimeFactorSumBalancedPrime (sumFamilyCenter t) :=
   ⟨h.2.2.2.2, sumFamily_balanced h.1 h.2.1 h.2.2.1 h.2.2.2.1⟩
@@ -111,17 +111,16 @@ theorem sumFamily_not_omegaBalanced {t : ℕ} (h : SumFamilyPrimeValues t) :
   rw [← omegaDiff_eq_zero_iff, sumFamily_omegaDiff_eq_neg_one h]
   norm_num
 
-/-- The same family also admits a precise criterion for composite q,r. -/
+/-- Exact criterion even when the two quadratic values are composite. -/
 theorem sumFamily_defect_identity {t : ℕ}
     (hu : (sumFamilyU t).Prime) (hv : (sumFamilyV t).Prime) :
     primeFactorSumDiff (sumFamilyCenter t) =
       primeFactorDefect (sumFamilyQ t) - primeFactorDefect (sumFamilyR t) := by
   have h15 : primeFactorSum 15 = 8 := by
-    have h := primeFactorSum_of_factors (n := 15) (l := [3, 5])
-      (by norm_num) (by intro z hz; simp only [List.mem_cons, List.mem_singleton] at hz
-                       rcases hz with rfl | rfl <;> norm_num)
-    norm_num at h
-    exact h
+    change primeFactorSum (3 * 5) = 8
+    rw [primeFactorSum_mul (by norm_num) (by norm_num),
+      primeFactorSum_prime Nat.prime_three,
+      primeFactorSum_prime (by norm_num : Nat.Prime 5)]
   have hA : 15 * sumFamilyU t ≠ 0 := mul_ne_zero (by norm_num) hu.ne_zero
   have hB : 2 * sumFamilyV t ≠ 0 := mul_ne_zero (by norm_num) hv.ne_zero
   have hq : sumFamilyQ t ≠ 0 := by unfold sumFamilyQ; omega
@@ -142,12 +141,12 @@ theorem sumFamily_balanced_iff_defect {t : ℕ}
       primeFactorDefect (sumFamilyQ t) = primeFactorDefect (sumFamilyR t) := by
   rw [← primeFactorSumDiff_eq_zero_iff, sumFamily_defect_identity hu hv, sub_eq_zero]
 
-/-- Division-free form of the general cofactor inversion formula. -/
+/-- Division-free cofactor inversion, with signed arithmetic. -/
 theorem sumCofactor_inverse_identity {A B q r d : ℤ}
     (hadj : B * r - A * q = 1) (hd : q - r = d) :
     (B - A) * r = 1 + A * d ∧ (B - A) * q = 1 + B * d := by
-  constructor <;> nlinarith [mul_eq_mul_left_iff.mp (congrArg (fun x => A * x) hd),
-    congrArg (fun x => B * x) hd]
+  subst d
+  constructor <;> nlinarith
 
 /-- Exact algebra behind the level-five divisor-pair construction. -/
 theorem doubleFactorPair_identity (K L r s : ℤ) :
@@ -159,6 +158,6 @@ theorem doubleFactorPair_iff {K L r s d e : ℤ} (hd : d = r + s - L) :
     (4 * r - K) * (4 * s - K) = K * (K - 4 * L) + 4 * e ↔
       4 * r * s - K * d = e := by
   rw [doubleFactorPair_identity, hd]
-  omega
+  constructor <;> intro h <;> nlinarith
 
 end OmegaBalance

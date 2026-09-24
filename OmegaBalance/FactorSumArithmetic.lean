@@ -4,7 +4,6 @@ import OmegaBalance.FactorSum
 
 namespace OmegaBalance
 
-/-- All factors are at least two, so their product is positive. -/
 theorem factorList_prod_pos {l : List ℕ} (h : ∀ a ∈ l, 2 ≤ a) : 0 < l.prod := by
   induction l with
   | nil => simp
@@ -45,7 +44,7 @@ theorem primeFactorSum_le (n : ℕ) : primeFactorSum n ≤ n := by
     (fun a ha => (Nat.prime_of_mem_primeFactorsList ha).two_le)
   simpa [primeFactorSum, Nat.prod_primeFactorsList hn] using h
 
-/-- Equality at positive n characterizes primes, with the single exception 4. -/
+/-- At positive n equality characterizes primes, with the single exception 4. -/
 theorem primeFactorSum_eq_self_iff {n : ℕ} (hn : 0 < n) :
     primeFactorSum n = n ↔ n.Prime ∨ n = 4 := by
   constructor
@@ -101,10 +100,14 @@ theorem primeFactorSum_odd_composite_bound {n : ℕ}
     by_contra! h
     interval_cases b <;> simp_all
   have hao : a % 2 = 1 := by
-    rw [← hab, Nat.mul_mod] at hodd
+    by_contra hne
+    have hz : a % 2 = 0 := by omega
+    have hz' : n % 2 = 0 := by rw [← hab, Nat.mul_mod, hz]; simp
     omega
   have hbo : b % 2 = 1 := by
-    rw [← hab, Nat.mul_mod] at hodd
+    by_contra hne
+    have hz : b % 2 = 0 := by omega
+    have hz' : n % 2 = 0 := by rw [← hab, Nat.mul_mod, hz]; simp
     omega
   have ha3 : 3 ≤ a := by omega
   have hb3 : 3 ≤ b := by omega
@@ -132,7 +135,7 @@ theorem bigOmega_eq_one_iff {n : ℕ} (hn : n ≠ 0) : bigOmega n = 1 ↔ n.Prim
         simp only [bigOmega, hl, List.length_cons] at h
         omega
       subst l
-      have hp : a.Prime := Nat.prime_of_mem_primeFactorsList (by simp [hl])
+      have hp : a.Prime := Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl])
       simp only [hl, List.prod_cons, List.prod_nil, mul_one] at he
       simpa [he] using hp
   · exact bigOmega_prime
@@ -151,8 +154,8 @@ theorem bigOmega_eq_two_factors {n : ℕ} (hn : n ≠ 0) (h : bigOmega n = 2) :
         simp only [bigOmega, hl, List.length_cons] at h
         omega
       subst l
-      refine ⟨a, b, Nat.prime_of_mem_primeFactorsList (by simp [hl]),
-        Nat.prime_of_mem_primeFactorsList (by simp [hl]), ?_⟩
+      refine ⟨a, b, Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]),
+        Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]), ?_⟩
       simpa [hl] using he.symm
 
 theorem bigOmega_eq_three_factors {n : ℕ} (hn : n ≠ 0) (h : bigOmega n = 3) :
@@ -172,9 +175,9 @@ theorem bigOmega_eq_three_factors {n : ℕ} (hn : n ≠ 0) (h : bigOmega n = 3) 
           simp only [bigOmega, hl, List.length_cons] at h
           omega
         subst l
-        refine ⟨a, b, c, Nat.prime_of_mem_primeFactorsList (by simp [hl]),
-          Nat.prime_of_mem_primeFactorsList (by simp [hl]),
-          Nat.prime_of_mem_primeFactorsList (by simp [hl]), ?_⟩
+        refine ⟨a, b, c, Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]),
+          Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]),
+          Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]), ?_⟩
         simpa [hl, mul_assoc] using he.symm
 
 theorem bigOmega_eq_four_factors {n : ℕ} (hn : n ≠ 0) (h : bigOmega n = 4) :
@@ -197,10 +200,10 @@ theorem bigOmega_eq_four_factors {n : ℕ} (hn : n ≠ 0) (h : bigOmega n = 4) :
             simp only [bigOmega, hl, List.length_cons] at h
             omega
           subst l
-          refine ⟨a, b, c, d, Nat.prime_of_mem_primeFactorsList (by simp [hl]),
-            Nat.prime_of_mem_primeFactorsList (by simp [hl]),
-            Nat.prime_of_mem_primeFactorsList (by simp [hl]),
-            Nat.prime_of_mem_primeFactorsList (by simp [hl]), ?_⟩
+          refine ⟨a, b, c, d, Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]),
+            Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]),
+            Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]),
+            Nat.prime_of_mem_primeFactorsList (n := n) (by simp [hl]), ?_⟩
           simpa [hl, mul_assoc] using he.symm
 
 /-- Parity counts the odd prime factors. -/
@@ -216,7 +219,7 @@ theorem factorList_sum_twos_parity {l : List ℕ} (h : ∀ a ∈ l, a.Prime) :
     · subst a
       simp only [List.sum_cons, List.length_cons, List.count_cons_self]
       omega
-    · have hc : (a :: l).count 2 = l.count 2 := by simp [List.count_cons, ha, Ne.symm ha]
+    · have hc : (a :: l).count 2 = l.count 2 := by simp [ha]
       have ho := hp.mod_two_eq_one_iff_ne_two.mpr ha
       simp only [List.sum_cons, List.length_cons, hc]
       omega
@@ -243,7 +246,6 @@ theorem sumBalanced_count_valuation_parity {n : ℕ} (h : IsPrimeFactorSumBalanc
   unfold omegaDiff valuationDiff neighborDiff
   omega
 
-/-- Exact valuations from two consecutive divisibility tests. -/
 theorem valuation_eq_of_pow_dvd {q n k : ℕ} (hq : q.Prime) (hn : n ≠ 0)
     (hl : q ^ k ∣ n) (hr : ¬ q ^ (k + 1) ∣ n) : valuation q n = k := by
   have hlo := (hq.pow_dvd_iff_le_factorization hn).mp hl
@@ -253,7 +255,7 @@ theorem valuation_eq_of_pow_dvd {q n k : ℕ} (hq : q.Prime) (hn : n ≠ 0)
   unfold valuation
   omega
 
-/-- Simultaneous balance forces p to be +/-1 modulo 8. -/
+/-- Simultaneous balance forces residue one or seven modulo eight. -/
 theorem doubleBalanced_mod_eight {p k : ℕ} (h : IsDoubleBalancedPrime p k) :
     p % 8 = 1 ∨ p % 8 = 7 := by
   have h2 : 2 < p := by
