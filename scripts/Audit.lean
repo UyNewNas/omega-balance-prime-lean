@@ -218,6 +218,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.doubleBalanced_five_shape_iff
 #print axioms OmegaBalance.doubleBalanced_five_signed_gap
 #print axioms OmegaBalance.doubleBalanced_five_gap_natAbs
+#print axioms OmegaBalance.doubleBalanced_five_of_factor_pair_pos
+#print axioms OmegaBalance.doubleBalanced_five_of_factor_pair_neg
 #print axioms OmegaBalance.doubleBalanced_five_mod_forty_eight
 #print axioms OmegaBalance.doubleBalanced_five_not_twins
 #print axioms OmegaBalance.doubleBalanced_twins_level_ge_six
