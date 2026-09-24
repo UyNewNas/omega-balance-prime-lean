@@ -254,6 +254,20 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PeriodicCorrelationAverage_eq
 #print axioms OmegaBalance.tendsto_f3PeriodicCorrelationAverage
 
+-- Arbitrary-length blocks for each fixed correlation cutoff.
+#print axioms OmegaBalance.f3ModIndicator_periodic_pow_three
+#print axioms OmegaBalance.f3ResidueLayer_periodic_pow_three
+#print axioms OmegaBalance.f3PeriodicTrunc_periodic
+#print axioms OmegaBalance.f3PeriodicCorrelationTerm_periodic
+#print axioms OmegaBalance.sum_range_periodic_mul_add_int
+#print axioms OmegaBalance.sum_range_periodic_div_mod_int
+#print axioms OmegaBalance.f3PeriodicCorrelationPartialSum_eq_div_mod
+#print axioms OmegaBalance.abs_f3ResidueLayer_le_one
+#print axioms OmegaBalance.abs_f3PeriodicTrunc_le
+#print axioms OmegaBalance.abs_f3PeriodicCorrelationTerm_le
+#print axioms OmegaBalance.abs_f3PeriodicCorrelationPartialSum_le
+#print axioms OmegaBalance.abs_f3PeriodicCorrelationRemainder_le
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
