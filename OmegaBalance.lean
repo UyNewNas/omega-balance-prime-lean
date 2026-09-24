@@ -11,5 +11,6 @@ import OmegaBalance.F3Coordinates
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite
+import OmegaBalance.F3CorrelationLayer
 import OmegaBalance.F3Infinitude
 import OmegaBalance.F3SignChanges
