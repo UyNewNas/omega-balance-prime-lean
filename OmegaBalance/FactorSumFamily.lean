@@ -48,6 +48,62 @@ theorem sumFamily_Q_sub_R (t : ℕ) :
   push_cast
   ring
 
+/-! ### Nelson–Penney–Pomerance family: the prime-center obstruction -/
+
+def nppFamilyS (k : ℕ) : ℕ := 2 * k + 1
+def nppFamilyB (k : ℕ) : ℕ := 8 * k + 5
+def nppFamilyQ (k : ℕ) : ℕ := 48 * k ^ 2 + 24 * k - 1
+def nppFamilyR (k : ℕ) : ℕ := 48 * k ^ 2 + 30 * k - 1
+def nppFamilyCenter (k : ℕ) : ℕ :=
+  768 * k ^ 3 + 864 * k ^ 2 + 224 * k - 9
+
+/-- Modulo three, one of the center, `s`, or `b` is always obstructed. -/
+theorem nppFamily_mod_three_obstruction (k : ℕ) :
+    3 ∣ nppFamilyCenter k ∨ 3 ∣ nppFamilyS k ∨ 3 ∣ nppFamilyB k := by
+  have hcases : k % 3 = 0 ∨ k % 3 = 1 ∨ k % 3 = 2 := by omega
+  rcases hcases with hk | hk | hk
+  · left
+    rw [Nat.dvd_iff_mod_eq_zero]
+    norm_num [nppFamilyCenter, Nat.sub_mod, Nat.add_mod, Nat.mul_mod, Nat.pow_mod, hk]
+  · right; left
+    rw [Nat.dvd_iff_mod_eq_zero]
+    norm_num [nppFamilyS, Nat.add_mod, Nat.mul_mod, hk]
+  · right; right
+    rw [Nat.dvd_iff_mod_eq_zero]
+    norm_num [nppFamilyB, Nat.add_mod, Nat.mul_mod, hk]
+
+/-- If the two linear inputs are prime for `k ≥ 2`, modulo three is forced onto the center. -/
+theorem nppFamily_three_dvd_center_of_linear_primes {k : ℕ} (hk : 2 ≤ k)
+    (hs : (nppFamilyS k).Prime) (hb : (nppFamilyB k).Prime) :
+    3 ∣ nppFamilyCenter k := by
+  rcases nppFamily_mod_three_obstruction k with hc | hs3 | hb3
+  · exact hc
+  · have hh := hs.eq_one_or_self_of_dvd 3 hs3
+    rcases hh with hh | hh
+    · norm_num at hh
+    · simp only [nppFamilyS] at hh
+      omega
+  · have hh := hb.eq_one_or_self_of_dvd 3 hb3
+    rcases hh with hh | hh
+    · norm_num at hh
+    · simp only [nppFamilyB] at hh
+      omega
+
+/-- The classical four-prime construction cannot simultaneously have a prime center for `k ≥ 2`. -/
+theorem nppFamily_no_prime_center {k : ℕ} (hk : 2 ≤ k)
+    (hs : (nppFamilyS k).Prime) (hb : (nppFamilyB k).Prime)
+    (_hq : (nppFamilyQ k).Prime) (_hr : (nppFamilyR k).Prime) :
+    ¬ (nppFamilyCenter k).Prime := by
+  intro hp
+  have hd := nppFamily_three_dvd_center_of_linear_primes hk hs hb
+  have hh := hp.eq_one_or_self_of_dvd 3 hd
+  rcases hh with hh | hh
+  · norm_num at hh
+  · have hkpos : 0 < k := by omega
+    have hkpow : 0 < k ^ 3 := pow_pos hkpos 3
+    simp only [nppFamilyCenter] at hh
+    omega
+
 /-- Records five primality hypotheses, without asserting their existence. -/
 def SumFamilyPrimeValues (t : ℕ) : Prop :=
   (sumFamilyU t).Prime ∧ (sumFamilyV t).Prime ∧
