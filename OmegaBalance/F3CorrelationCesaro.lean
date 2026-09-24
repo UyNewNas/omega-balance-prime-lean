@@ -68,7 +68,7 @@ theorem sum_range_periodic_mul_add_int {f : ℕ → ℤ} {P : ℕ}
   | zero => simp
   | succ q ih =>
       have hlen : Nat.succ q * P + r = P + (q * P + r) := by
-        simp [Nat.succ_mul, add_assoc, add_comm, add_left_comm]
+        simp [Nat.succ_mul, add_comm, add_left_comm]
       rw [hlen, Finset.sum_range_add]
       have hshift (i : ℕ) : f (P + i) = f i := by
         simpa [Nat.add_comm] using hf i
@@ -81,10 +81,13 @@ theorem sum_range_periodic_mul_add_int {f : ℕ → ℤ} {P : ℕ}
 theorem sum_range_periodic_div_mod_int {f : ℕ → ℤ} {P : ℕ}
     (hf : Periodic f P) (N : ℕ) :
     (∑ n ∈ Finset.range N, f n) =
-      (N / P : ℤ) * (∑ n ∈ Finset.range P, f n) +
+      ((N / P : ℕ) : ℤ) * (∑ n ∈ Finset.range P, f n) +
         ∑ n ∈ Finset.range (N % P), f n := by
   have h := sum_range_periodic_mul_add_int hf (N / P) (N % P)
-  rw [Nat.div_add_mod N P] at h
+  have hN : N / P * P + N % P = N := by
+    rw [Nat.mul_comm]
+    exact Nat.div_add_mod N P
+  rw [hN] at h
   exact h
 
 /-- Arbitrary initial partial sum of the fixed-cutoff periodic correlation. -/
@@ -94,7 +97,7 @@ def f3PeriodicCorrelationPartialSum (R h N : ℕ) : ℤ :=
 /-- Any arbitrary length consists of full `3^R` periods plus one terminal block. -/
 theorem f3PeriodicCorrelationPartialSum_eq_div_mod (R h N : ℕ) :
     f3PeriodicCorrelationPartialSum R h N =
-      (N / 3 ^ R : ℤ) * f3PeriodicCorrelationSum R h +
+      ((N / 3 ^ R : ℕ) : ℤ) * f3PeriodicCorrelationSum R h +
         f3PeriodicCorrelationPartialSum R h (N % 3 ^ R) := by
   simpa [f3PeriodicCorrelationPartialSum, f3PeriodicCorrelationTerm,
     f3PeriodicCorrelationSum] using
