@@ -1,4 +1,5 @@
 import OmegaBalance.FactorSumStructure
+import OmegaBalance.FactorSumCofactor
 
 /-! Necessity of the level-five factor shape and twin-prime consequences. -/
 
@@ -156,6 +157,54 @@ theorem doubleBalanced_five_gap_natAbs {p : ℕ} (h : IsDoubleBalancedPrime p 5)
   obtain ⟨b, c, d, r, s, hz, hsum, hgap⟩ := doubleBalanced_five_signed_gap h
   refine ⟨b, c, d, r, s, hz, hsum, ?_⟩
   rcases hgap with hgap | hgap <;> rw [hgap] <;> norm_num
+
+/-- A positive divisor-pair factorization recovers a level-five double-balanced prime.
+The equations `x + K = 4r`, `y + K = 4s` are the division-free forms of
+`r=(x+K)/4`, `s=(y+K)/4`; primality and the prime center remain explicit. -/
+theorem doubleBalanced_five_of_factor_pair_pos {b c d r s : ℕ} {x y : ℤ}
+    (hz : ∀ z ∈ [b, c, d, r, s], z.Prime ∧ z % 2 = 1)
+    (hsum : r + s + 1 = b + c + d)
+    (hx : x + 3 * (b : ℤ) * c = 4 * r)
+    (hy : y + 3 * (b : ℤ) * c = 4 * s)
+    (hxy : x * y =
+      (3 * (b : ℤ) * c) * ((3 * (b : ℤ) * c) - 4 * ((b : ℤ) + c - 1)) +
+        4 * (1 : ℤ))
+    (hp : (6 * b * c * d + 1).Prime) :
+    IsDoubleBalancedPrime (6 * b * c * d + 1) 5 := by
+  have hsumZ : (r : ℤ) + s + 1 = b + c + d := by exact_mod_cast hsum
+  have hdZ : (d : ℤ) = (r : ℤ) + s - ((b : ℤ) + c - 1) := by linarith
+  have hgap := doubleFactorPair_recover
+    (K := 3 * (b : ℤ) * c) (L := (b : ℤ) + c - 1)
+    (r := (r : ℤ)) (s := (s : ℤ)) (d := (d : ℤ)) (e := 1)
+    hx hy hxy hdZ
+  have hgap2 : (8 : ℤ) * r * s = 6 * b * c * d + 2 := by nlinarith [hgap]
+  have hnat : 8 * r * s = 6 * b * c * d + 2 := by exact_mod_cast hgap2
+  apply doubleBalanced_five_of_shape hp
+  refine ⟨b, c, d, r, s, hz, Or.inl ⟨?_, ?_⟩, hsum⟩ <;> omega
+
+/-- The negative divisor-pair branch recovers the opposite orientation.
+Negative integer factors `x,y` are permitted; only the recovered primes and center
+are required positive through their primality hypotheses. -/
+theorem doubleBalanced_five_of_factor_pair_neg {b c d r s : ℕ} {x y : ℤ}
+    (hz : ∀ z ∈ [b, c, d, r, s], z.Prime ∧ z % 2 = 1)
+    (hsum : r + s + 1 = b + c + d)
+    (hx : x + 3 * (b : ℤ) * c = 4 * r)
+    (hy : y + 3 * (b : ℤ) * c = 4 * s)
+    (hxy : x * y =
+      (3 * (b : ℤ) * c) * ((3 * (b : ℤ) * c) - 4 * ((b : ℤ) + c - 1)) +
+        4 * (-1 : ℤ))
+    (hp : (8 * r * s + 1).Prime) :
+    IsDoubleBalancedPrime (8 * r * s + 1) 5 := by
+  have hsumZ : (r : ℤ) + s + 1 = b + c + d := by exact_mod_cast hsum
+  have hdZ : (d : ℤ) = (r : ℤ) + s - ((b : ℤ) + c - 1) := by linarith
+  have hgap := doubleFactorPair_recover
+    (K := 3 * (b : ℤ) * c) (L := (b : ℤ) + c - 1)
+    (r := (r : ℤ)) (s := (s : ℤ)) (d := (d : ℤ)) (e := -1)
+    hx hy hxy hdZ
+  have hgap2 : (6 : ℤ) * b * c * d = 8 * r * s + 2 := by nlinarith [hgap]
+  have hnat : 6 * b * c * d = 8 * r * s + 2 := by exact_mod_cast hgap2
+  apply doubleBalanced_five_of_shape hp
+  refine ⟨b, c, d, r, s, hz, Or.inr ⟨?_, ?_⟩, hsum⟩ <;> omega
 
 theorem doubleBalanced_five_mod_forty_eight {p : ℕ}
     (h : IsDoubleBalancedPrime p 5) : p % 48 = 7 ∨ p % 48 = 41 :=
