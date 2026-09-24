@@ -64,7 +64,7 @@ theorem f3PeriodicTrunc_eq_f3Trunc {R n : ℕ} (hn : 1 < n) :
     f3PeriodicTrunc R n = f3Trunc R n := by
   unfold f3PeriodicTrunc f3ResidueLayer f3ModIndicator f3Trunc v3Trunc
   rw [Finset.sum_sub_distrib]
-  apply sub_congr
+  congr 1
   · apply Finset.sum_congr rfl
     intro j _
     rw [modEq_pow_three_sub_one_iff_dvd_add_one]
