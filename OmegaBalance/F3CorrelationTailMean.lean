@@ -29,7 +29,8 @@ theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
       (((Finset.Ioc 0 N).filter fun m => m ≡ 0 [MOD 3 ^ a]).card : ℤ) =
         ((N / 3 ^ a : ℕ) : ℤ) := by
     norm_num at hcount
-    rw [Rat.floor_natCast_div_natCast] at hcount
+    have hpow : (3 : ℚ) ^ a = (((3 : ℕ) ^ a : ℕ) : ℚ) := by norm_cast
+    rw [hpow, Rat.floor_natCast_div_natCast] at hcount
     have hnonneg : (0 : ℤ) ≤ ((N / 3 ^ a : ℕ) : ℤ) := by positivity
     rw [max_eq_left hnonneg] at hcount
     exact hcount
@@ -112,7 +113,7 @@ theorem v3Excess_le_self (R n : ℕ) : v3Excess R n ≤ n := by
   unfold v3Excess
   exact (Nat.sub_le _ _).trans <| by
     rw [v3_eq_padic]
-    exact padicValNat_le_self n
+    exact Nat.padicValNat_le_self n
 
 /-- Real-valued version of the odd-number expansion of an excess square. -/
 theorem v3Excess_sq_eq_odd_sum_real (R n : ℕ) :
