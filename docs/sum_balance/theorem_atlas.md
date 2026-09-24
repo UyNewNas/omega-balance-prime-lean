@@ -12,7 +12,7 @@
 
 所有 Ω 均按重数计；`omegaSum p = Ω(p-1)+Ω(p+1)`，绝不表示质因数求和。`primeFactorSum n = n.primeFactorsList.sum`；所有有符号差先转 `ℤ`。
 
-当前内核基线：`131b8718f8eaff2e2b9c4059810be12feea0a1fc`。该精确提交的 `Lean` 与 `Factor-sum verification` 两个工作流均成功；完整构建、回归、公理审计和声明覆盖审计通过。下列 VERIFIED 条目均至少由该基线核验。
+当前内核基线：`900e206d19aa320f5ac1161605c7ea9488aee39e`。该精确提交的 `Lean` 与 `Factor-sum verification` 两个工作流均成功；完整构建、回归、公理审计和声明覆盖审计通过。下列 VERIFIED 条目均至少由该基线核验。
 
 | # | 数学目标 | Lean 声明 / 模块 | 当前状态 | 证明或来源边界 |
 |---|---|---|---|---|
@@ -27,12 +27,12 @@
 | 3.2 | 五项素数 ⇒ S 平衡素数、左右 Ω=5/4、`TΩ=9` | `SumFamilyPrimeValues`, `sumFamily_five_primes`, `sumFamily_left_profile`, `sumFamily_right_profile`, `sumFamily_omegaSum_eq_nine` | VERIFIED | 素性全部为显式前提 |
 | 3.3 | 仅 U,V 素数时 `FΣ(P)=D(Q)-D(R)`，以及缺陷相等 iff 平衡 | `sumFamily_defect_identity`, `sumFamily_balanced_iff_defect` | VERIFIED | Q,R 可合数 |
 | 3.4 | 显式 `A=15U,B=2V,d=13t+1,q=1+Bd,r=1+Ad,B-A=1` 接口 | `sumFamilyA/B/D`, `sumFamily_B_eq_A_add_one`, `sumFamily_B_sub_A_eq_one`, `sumFamily_Q_inverse`, `sumFamily_R_inverse`, `sumFamily_Q_sub_R` | VERIFIED | 除法自由的反解公式 |
-| 4.1 | 无固定素因子：模 2,3,5,7 表 + `ℓ≥11` 总次数 9 根数界 | 尚无完整 Lean 模块 | OPEN | 第二轮笔记已有数学论证；下一优先级之一 |
+| 4.1 | 无固定素因子：模 2,3,5,7 表 + `ℓ≥11` 总次数 9 根数界 | `sumFamily_mod_two_table`, `sumFamily_mod_three_table`, `sumFamily_mod_five_table`, `sumFamily_mod_seven_table`, `sumFamily_small_prime_admissible`, `sumFamilyProductPoly_natDegree_le_nine`, `sumFamilyProductPoly_ne_zero_of_prime`, `sumFamily_large_prime_admissible`, `sumFamily_prime_admissible` | VERIFIED | `FactorSumAdmissibility`; 小素数有限表 + 域上非零多项式根数界；精确提交 `900e206d...` 完整 CI 成功 |
 | 4.2 | 五项不可约：两二次判别式 `30124,25665` 非平方；三次中心模 19 无根 | 尚无 Lean 模块 | OPEN | 第二轮笔记；一次式部分当然不可约，但整组接口未完成 |
 | 4.3 | `P(t)` 严格增长 | `sumFamilyCenter_strictMono` | VERIFIED | 自然参数 |
 | 4.4 | Schinzel H 作为显式命题前提，推出本族无穷参数 | `infinite_sumFamily_implies_level_nine` 目前输入已经是“参数集合无限” | PARTIAL | 不把 H 加为公理；仍缺 H→参数无限的局部相容/不可约桥接 |
 | 4.5 | 经典 Nelson–Penney–Pomerance 族加入中心素性后的模 3 障碍 | `nppFamily_mod_three_obstruction`, `nppFamily_three_dvd_center_of_linear_primes`, `nppFamily_no_prime_center` | VERIFIED | 纯模 3 论证；不把经典四素数构造错误提升为五素数族 |
-| 5.1 | Pomerance Ruth–Aaron 计数上界 ⇒ 本问题计数上界 | 尚无 Lean 传递接口 | EXTERNAL-INPUT | 外部解析定理本身不要求本仓库重证；需形式化有限计数/注入传递 |
+| 5.1 | Pomerance Ruth–Aaron 计数上界 ⇒ 本问题计数上界 | `FactorSumAnalyticTransfer` 中的有限注入/计数传递源码正在验证 | SOURCE | 外部解析定理本身不要求本仓库重证；`p ↦ (p-1)/2` 的有限计数传递保持为内核证明，外部上界保持显式前提 |
 | 5.2 | 计数上界 ⇒ 相对素数密度趋零、倒数和收敛 | 尚无 Lean 传递接口 | EXTERNAL-INPUT | 必须把解析输入边界写在定理类型中 |
 | 6.1 | `S(n)≡Ω(n)-v₂(n) (mod 2)` | `primeFactorSum_parity`（等价写成 `S+v₂≡Ω`） | VERIFIED | `FactorSumArithmetic` |
 | 6.2 | S 平衡 ⇒ Ω 差与 `v₂` 差同奇偶 | `sumBalanced_count_valuation_parity` | VERIFIED | 有符号差在 `ℤ` |
@@ -57,7 +57,7 @@
 
 ## 当前覆盖
 
-固定清单共 **38** 条：截至内核基线 `131b8718...`，其中 **31 条 VERIFIED**；尚余 **7 条**未完成：4.1、4.2、4.4、5.1、5.2、8.4、10.3。`EXTERNAL-INPUT` 并不要求重新证明 Pomerance 的解析定理，但必须把输入边界做成公开 Lean 定理类型。
+固定清单共 **38** 条：截至内核基线 `900e206d...`，其中 **32 条 VERIFIED**；尚余 **6 条**未完成：4.2、4.4、5.1、5.2、8.4、10.3。`EXTERNAL-INPUT` 并不要求重新证明 Pomerance 的解析定理，但必须把输入边界做成公开 Lean 定理类型。
 
 ## 当前停止条件
 
