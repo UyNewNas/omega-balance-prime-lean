@@ -219,6 +219,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_layer_sum
 #print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_explicit
 
+-- Generic finite geometric weight underlying the complete-period correlation.
+#print axioms OmegaBalance.f3CorrelationWeight_succ
+#print axioms OmegaBalance.f3CorrelationWeight_eq
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
@@ -239,8 +243,6 @@ import OmegaBalance.F3DeeperExamples
 -- Exact-level infinitude from the pinned, proved Dirichlet theorem.
 #print axioms OmegaBalance.f3_pos_residue_coprime
 #print axioms OmegaBalance.f3_neg_residue_coprime
-#print axioms OmegaBalance.f3_pos_of_modEq_level
-#print axioms OmegaBalance.f3_neg_of_modEq_level
 #print axioms OmegaBalance.exists_prime_gt_f3_pos
 #print axioms OmegaBalance.exists_prime_gt_f3_neg
 #print axioms OmegaBalance.f3_prime_level_pos_infinite
