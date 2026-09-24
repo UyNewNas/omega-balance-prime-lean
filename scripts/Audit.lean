@@ -369,3 +369,12 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumFamilyProductPoly_ne_zero_of_prime
 #print axioms OmegaBalance.sumFamily_large_prime_admissible
 #print axioms OmegaBalance.sumFamily_prime_admissible
+
+-- FactorSumAnalyticTransfer.lean: finite counting injection with external bound input.
+#print axioms OmegaBalance.mem_sumBalancedPrimesUpTo
+#print axioms OmegaBalance.mem_ruthAaronIndicesUpTo
+#print axioms OmegaBalance.two_not_sumBalancedPrime
+#print axioms OmegaBalance.sumBalancedPrime_half_mem
+#print axioms OmegaBalance.sumBalancedPrime_half_injOn
+#print axioms OmegaBalance.sumBalancedPrimeCount_le_ruthAaronCount
+#print axioms OmegaBalance.sumBalancedPrimeCount_le_of_ruthAaronBound
