@@ -55,10 +55,11 @@ theorem f3_pos_of_modEq_level {n k : ℕ} (hn : 1 < n) (hk : 0 < k)
   rw [hr, pow_succ] at he
   have hsub : 3 ^ k - 1 + 1 = (3 : ℕ) ^ k := by omega
   have hf : n + 1 = 3 ^ k * (1 + 3 * (n / 3 ^ (k + 1))) := by
+    rw [pow_succ]
     nlinarith [he, hsub]
   have hv0 : v3 (1 + 3 * (n / 3 ^ (k + 1))) = 0 := by
     apply v3_eq_zero_of_not_dvd
-    simp [Nat.dvd_iff_mod_eq_zero, Nat.add_mod, Nat.mul_mod]
+    simp [Nat.dvd_iff_mod_eq_zero, Nat.add_mod]
   have hv : v3 (n + 1) = k := by
     rw [hf, v3_mul (by positivity) (by omega), v3_pow_three, hv0, add_zero]
   have hd : 3 ∣ n + 1 :=
@@ -82,10 +83,11 @@ theorem f3_neg_of_modEq_level {n k : ℕ} (hn : 1 < n) (hk : 0 < k)
   rw [hr, pow_succ] at he
   have hsub : n - 1 + 1 = n := by omega
   have hf : n - 1 = 3 ^ k * (1 + 3 * (n / 3 ^ (k + 1))) := by
+    rw [pow_succ]
     nlinarith [he, hsub]
   have hv0 : v3 (1 + 3 * (n / 3 ^ (k + 1))) = 0 := by
     apply v3_eq_zero_of_not_dvd
-    simp [Nat.dvd_iff_mod_eq_zero, Nat.add_mod, Nat.mul_mod]
+    simp [Nat.dvd_iff_mod_eq_zero, Nat.add_mod]
   have hv : v3 (n - 1) = k := by
     rw [hf, v3_mul (by positivity) (by omega), v3_pow_three, hv0, add_zero]
   have hd : 3 ∣ n - 1 :=
@@ -144,7 +146,7 @@ theorem f3_prime_level_infinite {c : ℤ} (hc : c ≠ 0) :
 theorem f3_prime_zero_level_empty :
     {p : ℕ | p.Prime ∧ 3 < p ∧ f3 p = 0} = ∅ := by
   ext p
-  simp only [Set.mem_setOf_eq, Set.mem_empty_iff_false, iff_false]
+  simp only [Set.mem_ofPred_eq, Set.mem_empty_iff_false, iff_false]
   rintro ⟨hp, h3, hf⟩
   exact f3_ne_zero_of_prime hp h3 hf
 
