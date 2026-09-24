@@ -13,5 +13,6 @@ import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite
 import OmegaBalance.F3CorrelationLayer
 import OmegaBalance.F3CorrelationPeriod
+import OmegaBalance.F3CorrelationWeight
 import OmegaBalance.F3Infinitude
 import OmegaBalance.F3SignChanges
