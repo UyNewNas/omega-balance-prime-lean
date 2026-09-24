@@ -1,5 +1,6 @@
 import OmegaBalance
 import OmegaBalance.Examples
+import Mathlib.Tactic.NormNum.Prime
 
 /-! Kernel regression proofs for deeper results and failed converses. -/
 namespace OmegaBalance
