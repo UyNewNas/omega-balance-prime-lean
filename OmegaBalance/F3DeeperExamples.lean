@@ -108,4 +108,19 @@ theorem f3_telescoping_example : (∑ i ∈ Finset.range 8, f3 (i + 2)) = 2 := b
   have h10 : v3 10 = 0 := v3_eq_zero_of_not_dvd (by decide)
   norm_num [h9, h10]
 
+/-- The sufficient class used for infinitude does not exhaust the exact level. -/
+theorem f3_infinitude_residue_not_necessary_example :
+    f3 17 = 2 ∧ ¬ (17 ≡ 3 ^ 2 - 1 [MOD 3 ^ (2 + 1)]) := by
+  exact ⟨twin_seventeen_nineteen_example.1, by decide⟩
+
+/-- Consecutive primes with a sign change can have gap four, not two. -/
+theorem f3_consecutive_crossing_not_twin_example :
+    ConsecutivePrimes 7 11 ∧ f3 7 < 0 ∧ 0 < f3 11 ∧ 11 ≠ 7 + 2 := by
+  refine ⟨?_, (f3_of_mod_three_one (n := 7) (by decide) (by decide)).2,
+    (f3_of_mod_three_two (n := 11) (by decide) (by decide)).2, by decide⟩
+  refine ⟨by norm_num, by norm_num, by decide, ?_⟩
+  intro r hpr hrq hrp
+  have hc : r = 8 ∨ r = 9 ∨ r = 10 := by omega
+  rcases hc with h | h | h <;> subst r <;> norm_num at hrp
+
 end OmegaBalance
