@@ -43,8 +43,13 @@ theorem f3PeriodicCorrelationCesaroAverage_eq (R h N : ℕ) (hN : 0 < N) :
       (N : ℝ) = ((N / 3 ^ R : ℕ) : ℝ) * ((3 : ℕ) ^ R : ℝ) +
         ((N % 3 ^ R : ℕ) : ℝ) := by
     exact_mod_cast hdecompNat.symm
+  have hminus :
+      (N : ℝ) - ((N % 3 ^ R : ℕ) : ℝ) =
+        ((N / 3 ^ R : ℕ) : ℝ) * ((3 : ℕ) ^ R : ℝ) := by
+    linarith [hdecomp]
   field_simp [ne_of_gt hP, ne_of_gt hNr]
-  nlinarith
+  rw [hminus]
+  ring
 
 /-- The bounded terminal block divided by the total length tends to zero. -/
 theorem tendsto_f3PeriodicCorrelationRemainder_div (R h : ℕ) :
@@ -52,7 +57,10 @@ theorem tendsto_f3PeriodicCorrelationRemainder_div (R h : ℕ) :
       (fun N : ℕ ↦
         (f3PeriodicCorrelationPartialSum R h (N % 3 ^ R) : ℝ) / (N : ℝ))
       atTop (𝓝 0) := by
-  apply tendsto_bdd_div_atTop_nhds_zero
+  refine tendsto_bdd_div_atTop_nhds_zero
+    (b := -((((3 : ℕ) ^ R : ℕ) : ℝ) * (R : ℝ) ^ 2))
+    (B := ((((3 : ℕ) ^ R : ℕ) : ℝ) * (R : ℝ) ^ 2)) ?_ ?_
+    tendsto_natCast_atTop_atTop
   · filter_upwards with N
     have hb := abs_f3PeriodicCorrelationRemainder_le R h N
     have hz :
@@ -67,7 +75,6 @@ theorem tendsto_f3PeriodicCorrelationRemainder_div (R h : ℕ) :
           ((3 : ℕ) ^ R : ℤ) * (R : ℤ) ^ 2 :=
       le_of_abs_le hb
     exact_mod_cast hz
-  · exact tendsto_natCast_atTop_atTop
 
 /-- For fixed cutoff `R`, arbitrary-length Cesàro correlation averages converge to
 exactly the average over one complete `3^R` period. -/
@@ -78,15 +85,32 @@ theorem tendsto_f3PeriodicCorrelationCesaroAverage (R h : ℕ) :
   have hmod :
       Tendsto (fun N : ℕ ↦ ((N % 3 ^ R : ℕ) : ℝ) / (N : ℝ)) atTop (𝓝 0) :=
     tendsto_mod_div_atTop_nhds_zero_nat hP
+  have hone :
+      Tendsto (fun N : ℕ ↦ 1 - ((N % 3 ^ R : ℕ) : ℝ) / (N : ℝ))
+        atTop (𝓝 1) := by
+    simpa using (tendsto_const_nhds.sub hmod :
+      Tendsto (fun N : ℕ ↦ 1 - ((N % 3 ^ R : ℕ) : ℝ) / (N : ℝ)) atTop (𝓝 (1 - 0)))
   have hmain :
       Tendsto
         (fun N : ℕ ↦
           f3PeriodicCorrelationAverage R h *
             (1 - ((N % 3 ^ R : ℕ) : ℝ) / (N : ℝ)))
         atTop (𝓝 (f3PeriodicCorrelationAverage R h)) := by
-    simpa using tendsto_const_nhds.mul (tendsto_const_nhds.sub hmod)
-  have hsum := hmain.add (tendsto_f3PeriodicCorrelationRemainder_div R h)
-  apply hsum.congr'
+    simpa using (tendsto_const_nhds.mul hone :
+      Tendsto
+        (fun N : ℕ ↦
+          f3PeriodicCorrelationAverage R h *
+            (1 - ((N % 3 ^ R : ℕ) : ℝ) / (N : ℝ)))
+        atTop (𝓝 (f3PeriodicCorrelationAverage R h * 1)))
+  have hsum :
+      Tendsto
+        (fun N : ℕ ↦
+          f3PeriodicCorrelationAverage R h *
+              (1 - ((N % 3 ^ R : ℕ) : ℝ) / (N : ℝ)) +
+            (f3PeriodicCorrelationPartialSum R h (N % 3 ^ R) : ℝ) / (N : ℝ))
+        atTop (𝓝 (f3PeriodicCorrelationAverage R h)) := by
+    simpa using hmain.add (tendsto_f3PeriodicCorrelationRemainder_div R h)
+  refine hsum.congr' ?_
   filter_upwards [eventually_gt_atTop 0] with N hN
   exact (f3PeriodicCorrelationCesaroAverage_eq R h N hN).symm
 
