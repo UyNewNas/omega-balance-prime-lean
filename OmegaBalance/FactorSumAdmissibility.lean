@@ -121,8 +121,30 @@ theorem sumFamily_large_prime_admissible {ell : ℕ} (hell : ell.Prime) (hell11 
   refine ⟨x.val, x.val_lt, ?_⟩
   change (sumFamilyProductPoly (ZMod ell)).eval x ≠ 0 at hx
   rw [← ZMod.natCast_zmod_val x] at hx
-  simp only [sumFamilyProductPoly_eval_natCast, mul_ne_zero] at hx
-  rcases hx with ⟨⟨⟨⟨hu, hv⟩, hq⟩, hr⟩, hp⟩
+  have hprod :
+      (sumFamilyU x.val : ZMod ell) * sumFamilyV x.val * sumFamilyQ x.val *
+        sumFamilyR x.val * sumFamilyCenter x.val ≠ 0 := by
+    simpa only [sumFamilyProductPoly_eval_natCast] using hx
+  have hu : (sumFamilyU x.val : ZMod ell) ≠ 0 := by
+    intro hz
+    apply hprod
+    simp [hz]
+  have hv : (sumFamilyV x.val : ZMod ell) ≠ 0 := by
+    intro hz
+    apply hprod
+    simp [hz]
+  have hq : (sumFamilyQ x.val : ZMod ell) ≠ 0 := by
+    intro hz
+    apply hprod
+    simp [hz]
+  have hr : (sumFamilyR x.val : ZMod ell) ≠ 0 := by
+    intro hz
+    apply hprod
+    simp [hz]
+  have hp : (sumFamilyCenter x.val : ZMod ell) ≠ 0 := by
+    intro hz
+    apply hprod
+    simp [hz]
   exact ⟨
     fun hd => hu ((ZMod.natCast_eq_zero_iff _ _).2 hd),
     fun hd => hv ((ZMod.natCast_eq_zero_iff _ _).2 hd),
@@ -138,7 +160,8 @@ theorem sumFamily_prime_admissible {ell : ℕ} (hell : ell.Prime) :
   · have hell11 : 11 ≤ ell := by
       by_contra hlt
       have hell_lt : ell < 11 := by omega
-      interval_cases ell <;> norm_num at hell hsmall
+      interval_cases ell
+      all_goals simp_all
     exact sumFamily_large_prime_admissible hell hell11
 
 end OmegaBalance
