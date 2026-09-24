@@ -24,9 +24,12 @@ at `h ≡ 0`; the two cross-sign overlaps subtract the `h ≡ 2` and `h+2 ≡ 0`
 classes.  No infinite limit is used here. -/
 theorem f3LayerCorrelation_eq {R j k h : ℕ} (hjR : j ≤ R) (hkR : k ≤ R) :
     f3LayerCorrelation R j k h =
-      (if h ≡ 0 [MOD 3 ^ min j k] then 2 * (3 ^ (R - max j k) : ℤ) else 0) -
-      (if h ≡ 2 [MOD 3 ^ min j k] then (3 ^ (R - max j k) : ℤ) else 0) -
-      (if h + 2 ≡ 0 [MOD 3 ^ min j k] then (3 ^ (R - max j k) : ℤ) else 0) := by
+      (if h ≡ 0 [MOD 3 ^ min j k] then
+        2 * ((3 ^ (R - max j k) : ℕ) : ℤ) else 0) -
+      (if h ≡ 2 [MOD 3 ^ min j k] then
+        ((3 ^ (R - max j k) : ℕ) : ℤ) else 0) -
+      (if h + 2 ≡ 0 [MOD 3 ^ min j k] then
+        ((3 ^ (R - max j k) : ℕ) : ℤ) else 0) := by
   unfold f3LayerCorrelation
   rw [modShiftPairCount_pos_pos_eq hjR hkR,
     modShiftPairCount_pos_neg_eq hjR hkR,
