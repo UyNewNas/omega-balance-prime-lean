@@ -22,9 +22,11 @@ theorem f3ModIndicator_periodic_pow_three {R j a : ℕ} (hj : j ≤ R) :
   intro n
   have hdiv : 3 ^ j ∣ (3 : ℕ) ^ R := pow_dvd_pow 3 hj
   have hz : (3 : ℕ) ^ R % 3 ^ j = 0 := Nat.mod_eq_zero_of_dvd hdiv
-  simp only [f3ModIndicator, Nat.ModEq]
-  rw [Nat.add_mod, hz]
-  simp
+  have heq : (n + 3 ^ R ≡ a [MOD 3 ^ j]) ↔ (n ≡ a [MOD 3 ^ j]) := by
+    change (n + 3 ^ R) % 3 ^ j = a % 3 ^ j ↔ n % 3 ^ j = a % 3 ^ j
+    rw [Nat.add_mod, hz]
+    simp
+  simp [f3ModIndicator, heq]
 
 /-- Each signed residue layer inherits the complete `3^R` period. -/
 theorem f3ResidueLayer_periodic_pow_three {R j : ℕ} (hj : j ≤ R) :
@@ -65,7 +67,8 @@ theorem sum_range_periodic_mul_add_int {f : ℕ → ℤ} {P : ℕ}
   induction q with
   | zero => simp
   | succ q ih =>
-      have hlen : Nat.succ q * P + r = P + (q * P + r) := by omega
+      have hlen : Nat.succ q * P + r = P + (q * P + r) := by
+        simp [Nat.succ_mul, add_assoc, add_comm, add_left_comm]
       rw [hlen, Finset.sum_range_add]
       have hshift (i : ℕ) : f (P + i) = f i := by
         simpa [Nat.add_comm] using hf i
@@ -81,7 +84,8 @@ theorem sum_range_periodic_div_mod_int {f : ℕ → ℤ} {P : ℕ}
       (N / P : ℤ) * (∑ n ∈ Finset.range P, f n) +
         ∑ n ∈ Finset.range (N % P), f n := by
   have h := sum_range_periodic_mul_add_int hf (N / P) (N % P)
-  simpa [Nat.div_add_mod] using h
+  rw [Nat.div_add_mod N P] at h
+  exact h
 
 /-- Arbitrary initial partial sum of the fixed-cutoff periodic correlation. -/
 def f3PeriodicCorrelationPartialSum (R h N : ℕ) : ℤ :=
