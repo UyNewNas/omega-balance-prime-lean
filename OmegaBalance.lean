@@ -3,6 +3,13 @@ import OmegaBalance.Valuation
 import OmegaBalance.F3
 import OmegaBalance.F3Extension
 import OmegaBalance.F3Arithmetic
+import OmegaBalance.F3Powers
+import OmegaBalance.F3Rational
+import OmegaBalance.F3SumProduct
+import OmegaBalance.F3Order
+import OmegaBalance.F3Coordinates
+import OmegaBalance.F3Primitive
+import OmegaBalance.F3Finite
 import OmegaBalance.FactorSum
 import OmegaBalance.FactorSumArithmetic
 import OmegaBalance.FactorSumFamily

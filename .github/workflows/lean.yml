@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          lake build OmegaBalance.Examples OmegaBalance.F3Examples OmegaBalance.FactorSumExamples 2>&1 | tee examples.log
+          lake build OmegaBalance.Examples OmegaBalance.F3Examples OmegaBalance.F3DeeperExamples OmegaBalance.FactorSumExamples 2>&1 | tee examples.log
       - name: Audit axioms
         shell: bash
         run: |
@@ -74,7 +74,14 @@ jobs:
             f3-boundaries.log
             verified-head.txt
             lake-manifest.json
+            lakefile.toml
+            lean-toolchain
+            README.md
+            AGENTS.md
             OmegaBalance.lean
             OmegaBalance/*.lean
-            scripts/Audit.lean
+            scripts/*.lean
+            scripts/*.py
+            .github/workflows/*.yml
+            docs/sum_balance/*.md
           if-no-files-found: ignore

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Require one axiom-registry entry for every project theorem declaration.
+"""Require one axiom-registry entry for every project theorem or lemma.
 
-The project namespace is OmegaBalance (AGENTS.md). This registry check is
-not a substitute for compiling the declarations or evaluating their axioms.
+The project namespace is OmegaBalance (AGENTS.md). Registry completeness is
+not a substitute for compiling declarations and checking their actual axioms.
 """
 from collections import Counter
 from pathlib import Path
@@ -11,8 +11,8 @@ import sys
 from check_sources import erase_comments_and_strings
 
 ROOT = Path(__file__).resolve().parents[1]
-DECL = re.compile(r"\btheorem\s+([\w'.]+)", re.UNICODE)
-AUDIT = re.compile(r"#print\s+axioms\s+([\w'.]+)", re.UNICODE)
+DECL = re.compile(r"\b(?:theorem|lemma)\s+([^\s:({]+)", re.UNICODE)
+AUDIT = re.compile(r"^#print\s+axioms\s+(\S+)\s*$", re.M)
 
 
 def main() -> int:
@@ -39,7 +39,7 @@ def main() -> int:
     if failures:
         print("\n".join(failures), file=sys.stderr)
         return 1
-    print(f"Audit coverage PASS: {len(expected)} theorem declarations, each listed once.")
+    print(f"Audit coverage PASS: {len(expected)} declarations, each listed once.")
     return 0
 
 
