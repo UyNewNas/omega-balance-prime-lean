@@ -182,6 +182,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumBalanced_31
 
 -- FactorSumFamily.lean
+#print axioms OmegaBalance.sumFamily_B_eq_A_add_one
+#print axioms OmegaBalance.sumFamily_Q_inverse
+#print axioms OmegaBalance.sumFamily_R_inverse
+#print axioms OmegaBalance.sumFamily_Q_sub_R
 #print axioms OmegaBalance.sumFamily_adjacent
 #print axioms OmegaBalance.sumFamily_center_eq
 #print axioms OmegaBalance.sumFamily_pred
