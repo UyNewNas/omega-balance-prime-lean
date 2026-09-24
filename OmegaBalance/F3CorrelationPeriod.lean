@@ -32,7 +32,8 @@ def f3PeriodicTrunc (R n : ℕ) : ℤ :=
 `n+1` by that power. -/
 theorem modEq_pow_three_sub_one_iff_dvd_add_one {j n : ℕ} :
     n ≡ 3 ^ j - 1 [MOD 3 ^ j] ↔ 3 ^ j ∣ n + 1 := by
-  have hsub : 3 ^ j - 1 + 1 = (3 : ℕ) ^ j := Nat.sub_add_cancel (by positivity)
+  have hp : 0 < (3 : ℕ) ^ j := pow_pos (by decide) j
+  have hsub : 3 ^ j - 1 + 1 = (3 : ℕ) ^ j := Nat.sub_add_cancel (by omega)
   have hzero : (3 : ℕ) ^ j ≡ 0 [MOD 3 ^ j] :=
     (dvd_rfl : (3 : ℕ) ^ j ∣ 3 ^ j).modEq_zero_nat
   constructor
