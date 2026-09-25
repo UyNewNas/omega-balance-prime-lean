@@ -11,11 +11,11 @@ claimed here.
 namespace OmegaBalance
 
 /-- Convenient upper bound for the unshifted tail square-mass. -/
-def f3TailMassUpper (R N : ℕ) : ℝ :=
+noncomputable def f3TailMassUpper (R N : ℕ) : ℝ :=
   ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R + (N : ℝ) / (3 : ℝ) ^ R
 
 /-- Convenient upper bound for the tail square-mass after a fixed shift. -/
-def f3TailShiftMassUpper (R h N : ℕ) : ℝ :=
+noncomputable def f3TailShiftMassUpper (R h N : ℕ) : ℝ :=
   ((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
     ((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R
 
@@ -24,7 +24,7 @@ def f3RawShiftMassUpper (h N : ℕ) : ℝ :=
   ((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)
 
 /-- Combined square-error upper bound obtained from the three tail terms. -/
-def f3CorrelationErrorSqUpper (R h N : ℕ) : ℝ :=
+noncomputable def f3CorrelationErrorSqUpper (R h N : ℕ) : ℝ :=
   3 * (f3TailMassUpper R N * f3RawShiftMassUpper h N +
     f3TailShiftMassUpper R h N * f3RawShiftMassUpper 0 N +
     f3TailShiftMassUpper R h N * f3TailMassUpper R N)
