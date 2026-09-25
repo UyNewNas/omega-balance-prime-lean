@@ -14,6 +14,8 @@ the resulting layer series.  It does not yet assert the full Cesàro L² tail li
 
 namespace OmegaBalance
 
+open Filter Topology
+
 /-- Among `1, ..., N`, exactly `N / 3^a` integers are divisible by `3^a`. -/
 theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
     ((Finset.Icc 1 N).filter fun m => 3 ^ a ∣ m).card = N / 3 ^ a := by
