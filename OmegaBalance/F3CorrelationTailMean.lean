@@ -2,6 +2,7 @@ import OmegaBalance.F3CorrelationTail
 import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Nat.PadicValNat
 import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Algebra.Order.BigOperators.Ring.Finset
 
 /-!
 # Finite counting lemmas for the F₃ L² tail
@@ -315,5 +316,23 @@ theorem tendsto_f3Tail_sq_cesaro_majorant :
       Filter.Tendsto (fun R : ℕ => ((1 : ℝ) / 3) ^ R) Filter.atTop (𝓝 0) :=
     tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
   simpa [div_pow, div_eq_mul_inv] using hpow.const_mul 3
+
+/-- Finite Cauchy-Schwarz control with the established L² tail bound inserted. -/
+theorem sum_Icc_f3Tail_mul_sq_le (R N : ℕ) (g : ℕ → ℝ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) * g n) ^ 2 ≤
+      (((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+        (N : ℝ) / (3 : ℝ) ^ R) *
+        ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+  calc
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) * g n) ^ 2 ≤
+        (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 :=
+      Finset.sum_mul_sq_le_sq_mul_sq (Finset.Icc 2 N)
+        (fun n => (f3Tail R n : ℝ)) g
+    _ ≤ (((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+          (N : ℝ) / (3 : ℝ) ^ R) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+      exact mul_le_mul_of_nonneg_right (sum_Icc_f3Tail_sq_le R N)
+        (Finset.sum_nonneg (fun _ _ => sq_nonneg _))
 
 end OmegaBalance
