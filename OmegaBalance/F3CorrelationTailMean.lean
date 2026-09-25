@@ -421,4 +421,24 @@ theorem sum_Icc_f3Tail_shift_mul_sq_le (R h N : ℕ) (g : ℕ → ℝ) :
       exact mul_le_mul_of_nonneg_right (sum_Icc_f3Tail_sq_shift_le R h N)
         (Finset.sum_nonneg (fun _ _ => sq_nonneg _))
 
+/-- Exact finite-sum decomposition of the raw-minus-truncated correlation error. -/
+theorem sum_Icc_f3_correlation_sub_trunc_eq_tails (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      ((f3 n : ℝ) * (f3 (n + h) : ℝ) -
+        (f3Trunc R n : ℝ) * (f3Trunc R (n + h) : ℝ))) =
+      (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) * (f3 (n + h) : ℝ)) +
+      (∑ n ∈ Finset.Icc 2 N, (f3 n : ℝ) * (f3Tail R (n + h) : ℝ)) -
+      (∑ n ∈ Finset.Icc 2 N,
+        (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) := by
+  calc
+    _ = ∑ n ∈ Finset.Icc 2 N,
+        ((f3Tail R n : ℝ) * (f3 (n + h) : ℝ) +
+          (f3 n : ℝ) * (f3Tail R (n + h) : ℝ) -
+          (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) := by
+      apply Finset.sum_congr rfl
+      intro n hn
+      exact f3_correlation_sub_trunc_eq_tails R h n
+    _ = _ := by
+      rw [Finset.sum_sub_distrib, Finset.sum_add_distrib]
+
 end OmegaBalance
