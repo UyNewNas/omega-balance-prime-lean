@@ -188,7 +188,7 @@ theorem sum_Icc_v3Excess_sq_add_one (R N : ℕ) :
     simp only [Finset.mem_Icc] at hn ⊢
     omega
   · intro a ha b hb hab
-    omega
+    exact Nat.add_right_cancel hab
   · intro m hm
     refine ⟨m - 1, ?_, ?_⟩
     · simp only [Finset.mem_Icc] at hm ⊢
