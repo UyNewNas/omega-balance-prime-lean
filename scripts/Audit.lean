@@ -318,6 +318,14 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3CorrelationErrorSqUpper_div_sq_le_majorant
 #print axioms OmegaBalance.f3_correlation_cesaro_error_sq_le_majorant
 
+-- Bridge from the natural Icc correlation window to the periodic cutoff average.
+#print axioms OmegaBalance.sum_Icc_two_eq_sum_range_sub_one
+#print axioms OmegaBalance.f3PeriodicCorrelationTerm_eq_trunc
+#print axioms OmegaBalance.f3TruncCorrelationIccSum_eq_periodic_sub_boundary
+#print axioms OmegaBalance.f3TruncCorrelationIccAverage_eq
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationPartialSum_succ_div
+#print axioms OmegaBalance.tendsto_f3TruncCorrelationIccAverage
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
