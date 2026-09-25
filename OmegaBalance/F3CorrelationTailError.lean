@@ -94,4 +94,85 @@ theorem f3_correlation_cesaro_error_sq_le (R h N : ℕ) (hN : 0 < N) :
   exact div_le_div_of_nonneg_right
     (sum_Icc_f3_correlation_error_sq_le R h N) hN2.le
 
+
+/-- An averaging-length independent square-error majorant. For fixed shift `h`,
+this decays geometrically with the truncation cutoff `R`. -/
+noncomputable def f3CorrelationErrorSqMajorant (R h : ℕ) : ℝ :=
+  9 * ((2 * h + 3 : ℕ) : ℝ) *
+    (2 / (3 : ℝ) ^ R + 1 / ((3 : ℝ) ^ R) ^ 2)
+
+/-- After normalization by `N²`, the finite correlation-error upper bound is
+controlled uniformly in every genuine averaging length `N > 0`. -/
+theorem f3CorrelationErrorSqUpper_div_sq_le_majorant
+    (R h N : ℕ) (hN : 0 < N) :
+    f3CorrelationErrorSqUpper R h N / (N : ℝ) ^ 2 ≤
+      f3CorrelationErrorSqMajorant R h := by
+  let A : ℝ := 2 * (N : ℝ) + 1
+  let B : ℝ := 2 * (N : ℝ) + 2 * (h : ℝ) + 1
+  let C : ℝ := 2 * (h : ℝ) + 3
+  have hNr : (0 : ℝ) < (N : ℝ) := by
+    exact_mod_cast hN
+  have hN1 : (1 : ℝ) ≤ (N : ℝ) := by
+    exact_mod_cast (show 1 ≤ N by omega)
+  have hpow : (0 : ℝ) < (3 : ℝ) ^ R := by
+    positivity
+  have hA : A ≤ 3 * (N : ℝ) := by
+    dsimp [A]
+    nlinarith
+  have hNm1 : 0 ≤ (N : ℝ) - 1 := sub_nonneg.mpr hN1
+  have hh1 : 0 ≤ 2 * (h : ℝ) + 1 := by
+    positivity
+  have hprod : 0 ≤ (2 * (h : ℝ) + 1) * ((N : ℝ) - 1) :=
+    mul_nonneg hh1 hNm1
+  have hB : B ≤ C * (N : ℝ) := by
+    dsimp [B, C]
+    nlinarith
+  have hAB : A * B ≤ 3 * C * (N : ℝ) ^ 2 := by
+    calc
+      A * B ≤ (3 * (N : ℝ)) * B := by
+        exact mul_le_mul_of_nonneg_right hA (by dsimp [B]; positivity)
+      _ ≤ (3 * (N : ℝ)) * (C * (N : ℝ)) := by
+        exact mul_le_mul_of_nonneg_left hB (by positivity)
+      _ = 3 * C * (N : ℝ) ^ 2 := by ring
+  have hN2 : 0 < (N : ℝ) ^ 2 := pow_pos hNr 2
+  have hABdiv : A * B / (N : ℝ) ^ 2 ≤ 3 * C := by
+    rw [div_le_iff₀ hN2]
+    simpa [mul_assoc] using hAB
+  have hfactor :
+      0 ≤ 2 / (3 : ℝ) ^ R + 1 / ((3 : ℝ) ^ R) ^ 2 := by
+    positivity
+  have hexp :
+      f3CorrelationErrorSqUpper R h N / (N : ℝ) ^ 2 =
+        3 * (A * B / (N : ℝ) ^ 2) *
+          (2 / (3 : ℝ) ^ R + 1 / ((3 : ℝ) ^ R) ^ 2) := by
+    dsimp [A, B]
+    unfold f3CorrelationErrorSqUpper f3TailMassUpper
+      f3TailShiftMassUpper f3RawShiftMassUpper
+    push_cast
+    field_simp [ne_of_gt hNr, ne_of_gt hpow]
+    ring
+  calc
+    f3CorrelationErrorSqUpper R h N / (N : ℝ) ^ 2 =
+        3 * (A * B / (N : ℝ) ^ 2) *
+          (2 / (3 : ℝ) ^ R + 1 / ((3 : ℝ) ^ R) ^ 2) := hexp
+    _ ≤ 3 * (3 * C) *
+          (2 / (3 : ℝ) ^ R + 1 / ((3 : ℝ) ^ R) ^ 2) := by
+      exact mul_le_mul_of_nonneg_right
+        (mul_le_mul_of_nonneg_left hABdiv (by norm_num)) hfactor
+    _ = f3CorrelationErrorSqMajorant R h := by
+      dsimp [C, f3CorrelationErrorSqMajorant]
+      push_cast
+      ring
+
+/-- Uniform-in-`N` finite square bound for the normalized raw/truncated
+correlation error. -/
+theorem f3_correlation_cesaro_error_sq_le_majorant
+    (R h N : ℕ) (hN : 0 < N) :
+    (((∑ n ∈ Finset.Icc 2 N,
+      ((f3 n : ℝ) * (f3 (n + h) : ℝ) -
+        (f3Trunc R n : ℝ) * (f3Trunc R (n + h) : ℝ))) / (N : ℝ)) ^ 2) ≤
+      f3CorrelationErrorSqMajorant R h := by
+  exact (f3_correlation_cesaro_error_sq_le R h N hN).trans
+    (f3CorrelationErrorSqUpper_div_sq_le_majorant R h N hN)
+
 end OmegaBalance

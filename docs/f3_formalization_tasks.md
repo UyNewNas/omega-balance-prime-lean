@@ -127,6 +127,17 @@ PR #17 head `8e52a2f558b0b251e5c180ffa877add19fbed837` 的 Lean #348 精确失�
 
 分支 `feat/f3-correlation-tail-cesaro-error-sq` 在上述可计算性修复之上新增 `f3_correlation_cesaro_error_sq_le`。对 `N>0`，它把完整 raw/truncated 相关误差平方界严格除以 `N²`，作为后续构造与 `N` 无关且随 `R→∞` 消失的统一 majorant 的接口。本层不声称极限交换；exact-head CI 全绿前保持候选状态。
 
+
+### COR-1：与平均长度无关的相关误差 majorant 候选
+
+分支 `feat/f3-correlation-error-uniform-majorant` 定义
+`f3CorrelationErrorSqMajorant R h = 9(2h+3)(2/3^R+1/3^(2R))`，并加入
+`f3CorrelationErrorSqUpper_div_sq_le_majorant` 与
+`f3_correlation_cesaro_error_sq_le_majorant`。二者只使用 `N>0`
+导出的 `2N+1≤3N` 与 `2N+2h+1≤(2h+3)N`，目标是给出与平均长度
+`N` 无关、固定 `h` 时随 cutoff `R` 几何衰减的平方误差界。
+exact-head CI 完整通过前保持候选状态，不登记 cutoff/Cesàro 极限交换。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
