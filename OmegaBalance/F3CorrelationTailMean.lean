@@ -441,4 +441,83 @@ theorem sum_Icc_f3_correlation_sub_trunc_eq_tails (R h N : ℕ) :
     _ = _ := by
       rw [Finset.sum_sub_distrib, Finset.sum_add_distrib]
 
+/-- First Cauchy–Schwarz cross term: tail at n against raw F₃ at n+h. -/
+theorem sum_Icc_f3Tail_mul_f3_shift_sq_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3Tail R n : ℝ) * (f3 (n + h) : ℝ)) ^ 2 ≤
+      ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        ((N : ℝ) / (3 : ℝ) ^ R)) *
+        (((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)) := by
+  have hcs := sum_Icc_f3Tail_mul_sq_le R N (fun n => (f3 (n + h) : ℝ))
+  calc
+    _ ≤ ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          ((N : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (f3 (n + h) : ℝ) ^ 2 := hcs
+    _ ≤ ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          ((N : ℝ) / (3 : ℝ) ^ R)) *
+          (((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)) := by
+      apply mul_le_mul_of_nonneg_left (sum_Icc_f3_sq_shift_le h N)
+      positivity
+
+/-- Second Cauchy–Schwarz cross term: raw F₃ at n against shifted tail at n+h. -/
+theorem sum_Icc_f3_mul_f3Tail_shift_sq_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3 n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 ≤
+      ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+        (((N + 1 : ℕ) : ℝ) + (N : ℝ)) := by
+  have hcs := sum_Icc_f3Tail_shift_mul_sq_le R h N (fun n => (f3 n : ℝ))
+  have hraw := sum_Icc_f3_sq_shift_le 0 N
+  have hraw' :
+      (∑ n ∈ Finset.Icc 2 N, (f3 n : ℝ) ^ 2) ≤
+        (((N + 1 : ℕ) : ℝ) + (N : ℝ)) := by
+    simpa using hraw
+  calc
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3 n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 =
+        (∑ n ∈ Finset.Icc 2 N,
+          (f3Tail R (n + h) : ℝ) * (f3 n : ℝ)) ^ 2 := by
+      apply congrArg (fun x : ℝ => x ^ 2)
+      apply Finset.sum_congr rfl
+      intro n hn
+      ring
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (f3 n : ℝ) ^ 2 := hcs
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          (((N + 1 : ℕ) : ℝ) + (N : ℝ)) := by
+      apply mul_le_mul_of_nonneg_left hraw'
+      positivity
+
+/-- Third Cauchy–Schwarz term: the overlap of the unshifted and shifted tails. -/
+theorem sum_Icc_f3Tail_mul_f3Tail_shift_sq_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 ≤
+      ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+      ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        ((N : ℝ) / (3 : ℝ) ^ R)) := by
+  have hcs := sum_Icc_f3Tail_shift_mul_sq_le R h N
+    (fun n => (f3Tail R n : ℝ))
+  have htail := sum_Icc_f3Tail_sq_le R N
+  calc
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 =
+        (∑ n ∈ Finset.Icc 2 N,
+          (f3Tail R (n + h) : ℝ) * (f3Tail R n : ℝ)) ^ 2 := by
+      apply congrArg (fun x : ℝ => x ^ 2)
+      apply Finset.sum_congr rfl
+      intro n hn
+      ring
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2 := hcs
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+        ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          ((N : ℝ) / (3 : ℝ) ^ R)) := by
+      apply mul_le_mul_of_nonneg_left htail
+      positivity
+
 end OmegaBalance

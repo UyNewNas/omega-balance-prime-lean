@@ -309,6 +309,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_correlation_sub_trunc_eq_tails
 #print axioms OmegaBalance.sum_Icc_f3Tail_shift_mul_sq_le
 #print axioms OmegaBalance.sum_Icc_f3_correlation_sub_trunc_eq_tails
+#print axioms OmegaBalance.sum_Icc_f3Tail_mul_f3_shift_sq_le
+#print axioms OmegaBalance.sum_Icc_f3_mul_f3Tail_shift_sq_le
+#print axioms OmegaBalance.sum_Icc_f3Tail_mul_f3Tail_shift_sq_le
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
