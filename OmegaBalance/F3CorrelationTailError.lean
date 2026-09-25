@@ -79,4 +79,19 @@ theorem sum_Icc_f3_correlation_error_sq_le (R h N : ℕ) :
     _ = f3CorrelationErrorSqUpper R h N := by
       rfl
 
+/-- The complete finite correlation-error estimate after dividing by the square of
+the averaging length.  The positivity hypothesis keeps this interface restricted
+to genuine Cesàro averages rather than totalized division by zero. -/
+theorem f3_correlation_cesaro_error_sq_le (R h N : ℕ) (hN : 0 < N) :
+    (((∑ n ∈ Finset.Icc 2 N,
+      ((f3 n : ℝ) * (f3 (n + h) : ℝ) -
+        (f3Trunc R n : ℝ) * (f3Trunc R (n + h) : ℝ))) / (N : ℝ)) ^ 2) ≤
+      f3CorrelationErrorSqUpper R h N / (N : ℝ) ^ 2 := by
+  have hNr : (0 : ℝ) < (N : ℝ) := by
+    exact_mod_cast hN
+  have hN2 : (0 : ℝ) < (N : ℝ) ^ 2 := pow_pos hNr 2
+  rw [div_pow]
+  exact div_le_div_of_nonneg_right
+    (sum_Icc_f3_correlation_error_sq_le R h N) hN2.le
+
 end OmegaBalance
