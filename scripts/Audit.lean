@@ -294,6 +294,12 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sum_Icc_v3Excess_sq_eq_weighted_floor
 #print axioms OmegaBalance.sum_Icc_v3Excess_sq_le
 
+-- Finite L2 bound for the full F3 truncation tail.
+#print axioms OmegaBalance.sum_Icc_v3Excess_sq_add_one
+#print axioms OmegaBalance.sum_Icc_v3Excess_sq_sub_one
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_eq_neighbor_excess
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_le
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
