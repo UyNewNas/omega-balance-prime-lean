@@ -417,3 +417,120 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sumBalanced_2663854240184425411
 #print axioms OmegaBalance.sumBalanced_2663854240184425411_profile
 
+-- Integrated from master: F3 correlation / infinitude / sign-change audit coverage.
+-- Exact complete-period residue overlap counts for the correlation calculation.
+#print axioms OmegaBalance.card_filter_range_modEq_pow_three
+#print axioms OmegaBalance.modPairCount_eq_of_le
+#print axioms OmegaBalance.modPairCount_eq
+#print axioms OmegaBalance.shiftResidue_add
+#print axioms OmegaBalance.shiftResidue_add_modEq
+#print axioms OmegaBalance.modEq_shiftResidue_iff_of_dvd
+#print axioms OmegaBalance.modShiftPairCount_eq_modPairCount
+#print axioms OmegaBalance.modShiftPairCount_eq
+#print axioms OmegaBalance.modEq_sub_one_add_iff_zero
+#print axioms OmegaBalance.modEq_sub_one_add_iff_two
+#print axioms OmegaBalance.modEq_one_add_sub_one_iff_add_two_zero
+#print axioms OmegaBalance.modEq_one_add_one_iff_zero
+#print axioms OmegaBalance.modShiftPairCount_pos_pos_eq
+#print axioms OmegaBalance.modShiftPairCount_pos_neg_eq
+#print axioms OmegaBalance.modShiftPairCount_neg_pos_eq
+#print axioms OmegaBalance.modShiftPairCount_neg_neg_eq
+#print axioms OmegaBalance.f3LayerCorrelation_eq
+
+-- Complete-period expansion of the periodic retained layers.
+#print axioms OmegaBalance.modEq_pow_three_sub_one_iff_dvd_add_one
+#print axioms OmegaBalance.modEq_one_iff_dvd_sub_one
+#print axioms OmegaBalance.f3PeriodicTrunc_eq_f3Trunc
+#print axioms OmegaBalance.sum_f3ModIndicator_mul_shift
+#print axioms OmegaBalance.sum_f3ResidueLayer_mul_shift
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_layer_sum
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_explicit
+
+-- Generic finite geometric weight underlying the complete-period correlation.
+#print axioms OmegaBalance.f3CorrelationWeight_old_term
+#print axioms OmegaBalance.f3CorrelationWeight_boundary_sum
+#print axioms OmegaBalance.f3CorrelationWeight_old_block
+#print axioms OmegaBalance.f3CorrelationWeight_succ
+#print axioms OmegaBalance.f3CorrelationWeight_eq
+
+-- Capped depths and the finite correlation-to-weight bridge.
+#print axioms OmegaBalance.f3CappedDepth_zero
+#print axioms OmegaBalance.f3CappedDepth_eq_min
+#print axioms OmegaBalance.v3Trunc_eq_cappedDepth
+#print axioms OmegaBalance.pow_three_dvd_iff_le_f3CappedDepth
+#print axioms OmegaBalance.modEq_zero_pow_three_iff_le_f3CappedDepth
+#print axioms OmegaBalance.modEq_two_iff_dvd_dist
+#print axioms OmegaBalance.modEq_two_pow_three_iff_le_f3CappedDepth
+#print axioms OmegaBalance.f3CorrelationThreeWeightSum
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_weights
+
+-- Closed complete-period formula and the two zero-distance boundary shifts.
+#print axioms OmegaBalance.f3CappedDepth_le
+#print axioms OmegaBalance.f3CappedDepth_two
+#print axioms OmegaBalance.f3CappedDepth_four
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_eq_closed
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_zero_shift
+#print axioms OmegaBalance.f3PeriodicCorrelationSum_two_shift
+
+-- Normalized complete-period kernel and cutoff limit.
+#print axioms OmegaBalance.f3PadicKernel_zero
+#print axioms OmegaBalance.f3NormalizedCappedKernel_eq_padicKernel_of_le
+#print axioms OmegaBalance.f3NormalizedCappedKernel_zero
+#print axioms OmegaBalance.tendsto_f3NormalizedCappedKernel
+#print axioms OmegaBalance.tendsto_f3CappedDepthRatio_zero
+#print axioms OmegaBalance.f3PeriodicCorrelationAverage_eq
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationAverage
+
+-- Arbitrary-length blocks for each fixed correlation cutoff.
+#print axioms OmegaBalance.f3ModIndicator_periodic_pow_three
+#print axioms OmegaBalance.f3ResidueLayer_periodic_pow_three
+#print axioms OmegaBalance.f3PeriodicTrunc_periodic
+#print axioms OmegaBalance.f3PeriodicCorrelationTerm_periodic
+#print axioms OmegaBalance.sum_range_periodic_mul_add_int
+#print axioms OmegaBalance.sum_range_periodic_div_mod_int
+#print axioms OmegaBalance.f3PeriodicCorrelationPartialSum_eq_div_mod
+#print axioms OmegaBalance.abs_f3ResidueLayer_le_one
+#print axioms OmegaBalance.abs_f3PeriodicTrunc_le
+#print axioms OmegaBalance.abs_f3PeriodicCorrelationTerm_le
+#print axioms OmegaBalance.abs_f3PeriodicCorrelationPartialSum_le
+#print axioms OmegaBalance.abs_f3PeriodicCorrelationRemainder_le
+
+-- Fixed-cutoff arbitrary-length Cesaro limit.
+#print axioms OmegaBalance.f3PeriodicCorrelationCesaroAverage_eq
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationRemainder_div
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationCesaroAverage
+
+-- Pointwise tail identities for the L2 truncation stage.
+#print axioms OmegaBalance.f3Tail_of_mod_three_zero
+#print axioms OmegaBalance.f3Tail_of_mod_three_two
+#print axioms OmegaBalance.f3Tail_of_mod_three_one
+#print axioms OmegaBalance.f3Tail_sq_eq_neighbor_excess
+#print axioms OmegaBalance.sum_odd_eq_sq_int
+#print axioms OmegaBalance.v3Excess_sq_eq_odd_sum
+#print axioms OmegaBalance.pow_three_dvd_iff_lt_v3Excess
+
+-- Exact-level infinitude from the pinned, proved Dirichlet theorem.
+#print axioms OmegaBalance.f3_pos_residue_coprime
+#print axioms OmegaBalance.f3_neg_residue_coprime
+#print axioms OmegaBalance.f3_pos_of_modEq_level
+#print axioms OmegaBalance.f3_neg_of_modEq_level
+#print axioms OmegaBalance.exists_prime_gt_f3_pos
+#print axioms OmegaBalance.exists_prime_gt_f3_neg
+#print axioms OmegaBalance.f3_prime_level_pos_infinite
+#print axioms OmegaBalance.f3_prime_level_neg_infinite
+#print axioms OmegaBalance.f3_prime_level_infinite
+#print axioms OmegaBalance.f3_prime_zero_level_empty
+#print axioms OmegaBalance.exists_ordered_prime_opposite_levels
+
+-- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
+#print axioms OmegaBalance.f3_crossing_after_prime
+#print axioms OmegaBalance.exists_consecutive_primes_f3_pos_neg
+#print axioms OmegaBalance.exists_consecutive_primes_f3_neg_pos
+#print axioms OmegaBalance.f3_consecutive_pos_neg_infinite
+#print axioms OmegaBalance.f3_consecutive_neg_pos_infinite
+#print axioms OmegaBalance.f3_consecutive_sign_changes_infinite
+
+-- Regression guards for the scope of the infinitude statements.
+#print axioms OmegaBalance.f3_infinitude_residue_not_necessary_example
+#print axioms OmegaBalance.f3_consecutive_crossing_not_twin_example
+

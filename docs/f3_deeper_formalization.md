@@ -1,6 +1,6 @@
 # F₃ 深层推论：形式化覆盖与边界
 
-日期：2026-09-24。本轮将此前 `deeper_corollaries.md` 的局部算术推论整理为 Lean 证明，并补上相关计算的有限基础。**不是全部分析结论均已形式化。** 是否通过内核检查，以对应提交的 Lean CI、公理日志及覆盖检查为准。
+日期：2026-09-24。本轮将此前 `deeper_corollaries.md` 的局部算术推论整理为 Lean 证明，并逐步补上相关计算的有限基础。**不是全部分析结论均已形式化。** 是否通过内核检查，以对应提交的 Lean CI、公理日志及覆盖检查为准。
 
 ## 1. 已有代码的覆盖地图
 
@@ -24,6 +24,7 @@
 | 大于 1 的有理数上星运算闭合、交换、结合 | `f3Star_gt_one`, `f3Star_comm`, `f3Star_assoc` | [F3Rational.lean](../OmegaBalance/F3Rational.lean) |
 | 有限整除层展开等于截断赋值 | `v3Trunc_eq_min`, `f3Trunc_eq_clipped`, `f3Trunc_eq_f3` | [F3Finite.lean](../OmegaBalance/F3Finite.lean) |
 | 截断函数的精确周期与原函数的有限和 | `f3Trunc_periodic`, `f3_sum_range` | [F3Finite.lean](../OmegaBalance/F3Finite.lean) |
+| 完整 `3^R` 周期内幂三余数类的精确重叠计数 | `card_filter_range_modEq_pow_three`, `modPairCount_eq_of_le`, `modPairCount_eq` | [F3CorrelationFinite.lean](../OmegaBalance/F3CorrelationFinite.lean) |
 
 ## 2. 主要公式和实际前提
 
@@ -101,6 +102,19 @@ F_{3,R}(n)=v_{3,R}(n+1)-v_{3,R}(n-1).
 
 **v₃,R(0)=R，而 mathlib 的 v₃(0)=0。** 这两个全函数约定不能混用；相应边界已加回归证明。
 
+进一步，若 j,k≤R，则完整周期 `0≤n<3^R` 中两个余数条件的交集已精确形式化为
+
+```math
+\#\{n:n\equiv a\pmod{3^j},\ n\equiv b\pmod{3^k}\}
+=
+\begin{cases}
+3^{R-\max(j,k)},&a\equiv b\pmod{3^{\min(j,k)}},\\
+0,&\text{否则}.
+\end{cases}
+```
+
+这正是展开截断相关时所需的有限重叠输入，但**仍不是**截断相关的闭式、尾部控制或无限极限。
+
 此前纸面推导的相关极限
 
 ```math
@@ -108,13 +122,13 @@ F_{3,R}(n)=v_{3,R}(n+1)-v_{3,R}(n-1).
 =|h-2|_3+|h+2|_3-2|h|_3
 ```
 
-本轮**尚未完成 Lean 证明**。目前形式化的是它的有限截断基础，不是该极限，也不是任何素数子集上的相关结论。仍需完成有限周期重叠计数、均方尾部界及极限交换。
+仍**尚未完成 Lean 证明**。当前已完成有限截断与完整周期余数重叠；下一步是把四类指标函数乘积展开成有限双重和并作几何化简，随后证明均方尾部界及极限交换。没有把这些整数平均结论替换成任何素数子集上的相关结论。
 
 其他尚未完成的分析层内容：
 
-- 三进对数 L(n)=log₃-ad U(n) 的收敛、同态性与等距性。此轮只形式化其前置的整数坐标 U。
+- 三进对数 L(n)=log₃-ad U(n) 的收敛、同态性与等距性。当前只形式化其前置的整数坐标 U。
 - 限制素数乘子的精确升层密度。需要素数在固定等差数列中的渐近计数；有限余数计算不代替它。
-- 前一轮文献层的素数单点分布和连续素数同值段，形式化状态保持不变。
+- 文献层的素数单点分布和连续素数同值段仍需相应渐近/连续素数理论的可审计形式化。
 
 这些未完成项没有放进默认 import 中成为公理，也没有用假设同名结论来制造“已证明”的表象。
 
@@ -128,6 +142,4 @@ python3 scripts/verify.py
 
 包括库构建、三组 Lean 回归模块、全部 `#print axioms`、源码禁用项检查、新增的审计覆盖检查及原有 Python 检查。`check_audit_coverage.py` 要求每条项目 theorem/lemma 在审计表中恰好出现一次；它不取代实际内核公理审计。
 
-原始深层有限计算脚本在本次会话另行重跑：30,550 项精确检查通过。这是计算证据，不计为 Lean 定理。
-
-本轮复用的底层定理：固定 mathlib 的 `Mathlib/NumberTheory/Multiplicity.lean`（提升指数）、`Mathlib/NumberTheory/Padics/PadicVal/Basic.lean`（有理赋值）、`Mathlib/Data/ZMod/Basic.lean` 与 `Mathlib/GroupTheory/OrderOfElement.lean`（实际阶）。
+`F3CorrelationFinite.lean` 复用固定 mathlib 的 `Mathlib/Data/Int/CardIntervalMod.lean`（完整区间中的模类计数）和 `Nat.ModEq.of_dvd`。截至本轮已验证代码 head `e9563d557e3e95603b3aad5b264b52dea7329698`：Lean CI #80 构建、回归、公理、源码、覆盖、有限检查均通过；212 条项目 theorem/lemma 全部审计，只使用标准 Lean 公理。文档更新后的最终 head 仍以其后续 CI 为准。
