@@ -210,7 +210,10 @@ theorem sum_Icc_v3Excess_sq_sub_one (R N : ℕ) :
     omega
   · intro a ha b hb hab
     simp only [Finset.mem_Icc] at ha hb
-    omega
+    calc
+      a = (a - 1) + 1 := (Nat.sub_add_cancel (by omega)).symm
+      _ = (b - 1) + 1 := by rw [hab]
+      _ = b := Nat.sub_add_cancel (by omega)
   · intro m hm
     refine ⟨m + 1, ?_, ?_⟩
     · simp only [Finset.mem_Icc] at hm ⊢
