@@ -177,4 +177,24 @@ theorem sum_Icc_v3Excess_sq_le (R N : ℕ) :
   rw [sum_Icc_v3Excess_sq_eq_weighted_floor]
   exact odd_weighted_floor_sum_le R N N
 
+
+/-- Reindex the right-neighbor excess square from centers `2 ≤ n ≤ N` to
+the interval `3 ≤ m ≤ N+1`. -/
+theorem sum_Icc_v3Excess_sq_add_one (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n + 1) : ℝ) ^ 2) =
+      ∑ m ∈ Finset.Icc 3 (N + 1), (v3Excess R m : ℝ) ^ 2 := by
+  refine Finset.sum_bij (fun n _ => n + 1) ?_ ?_ ?_ ?_
+  · intro n hn
+    simp only [Finset.mem_Icc] at hn ⊢
+    omega
+  · intro a ha b hb hab
+    omega
+  · intro m hm
+    refine ⟨m - 1, ?_, ?_⟩
+    · simp only [Finset.mem_Icc] at hm ⊢
+      omega
+    · omega
+  · intro n hn
+    rfl
+
 end OmegaBalance
