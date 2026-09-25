@@ -197,4 +197,75 @@ theorem sum_Icc_v3Excess_sq_add_one (R N : ℕ) :
   · intro n hn
     rfl
 
+
+/-- Reindex the left-neighbor excess square from centers `2 ≤ n ≤ N` to
+the interval `1 ≤ m ≤ N-1`. -/
+theorem sum_Icc_v3Excess_sq_sub_one (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n - 1) : ℝ) ^ 2) =
+      ∑ m ∈ Finset.Icc 1 (N - 1), (v3Excess R m : ℝ) ^ 2 := by
+  refine Finset.sum_bij (fun n _ => n - 1) ?_ ?_ ?_ ?_
+  · intro n hn
+    simp only [Finset.mem_Icc] at hn ⊢
+    omega
+  · intro a ha b hb hab
+    simp only [Finset.mem_Icc] at ha hb
+    omega
+  · intro m hm
+    refine ⟨m + 1, ?_, ?_⟩
+    · simp only [Finset.mem_Icc] at hm ⊢
+      omega
+    · omega
+  · intro n hn
+    rfl
+
+/-- Finite squared-tail mass is exactly the sum of the two shifted excess-square
+masses. -/
+theorem sum_Icc_f3Tail_sq_eq_neighbor_excess (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) =
+      (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n + 1) : ℝ) ^ 2) +
+      (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n - 1) : ℝ) ^ 2) := by
+  calc
+    _ = ∑ n ∈ Finset.Icc 2 N,
+        ((v3Excess R (n + 1) : ℝ) ^ 2 +
+          (v3Excess R (n - 1) : ℝ) ^ 2) := by
+      apply Finset.sum_congr rfl
+      intro n hn
+      have hn' : 1 < n := by
+        simp only [Finset.mem_Icc] at hn
+        omega
+      exact_mod_cast f3Tail_sq_eq_neighbor_excess R hn'
+    _ = _ := by
+      rw [Finset.sum_add_distrib]
+
+/-- Uniform finite L² bound for the full `F₃ - F₃,R` tail. -/
+theorem sum_Icc_f3Tail_sq_le (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) ≤
+      ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+      (N : ℝ) / (3 : ℝ) ^ R := by
+  rw [sum_Icc_f3Tail_sq_eq_neighbor_excess,
+    sum_Icc_v3Excess_sq_add_one, sum_Icc_v3Excess_sq_sub_one]
+  apply add_le_add
+  · calc
+      (∑ m ∈ Finset.Icc 3 (N + 1), (v3Excess R m : ℝ) ^ 2) ≤
+          ∑ m ∈ Finset.Icc 1 (N + 1), (v3Excess R m : ℝ) ^ 2 := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg ?_ ?_
+        · intro m hm
+          simp only [Finset.mem_Icc] at hm ⊢
+          omega
+        · intro m hm hnot
+          positivity
+      _ ≤ ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R :=
+        sum_Icc_v3Excess_sq_le R (N + 1)
+  · calc
+      (∑ m ∈ Finset.Icc 1 (N - 1), (v3Excess R m : ℝ) ^ 2) ≤
+          ∑ m ∈ Finset.Icc 1 N, (v3Excess R m : ℝ) ^ 2 := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg ?_ ?_
+        · intro m hm
+          simp only [Finset.mem_Icc] at hm ⊢
+          omega
+        · intro m hm hnot
+          positivity
+      _ ≤ (N : ℝ) / (3 : ℝ) ^ R :=
+        sum_Icc_v3Excess_sq_le R N
+
 end OmegaBalance
