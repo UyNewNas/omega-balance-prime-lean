@@ -386,4 +386,39 @@ theorem sum_Icc_f3_sq_shift_le (h N : ℕ) :
       (((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)) := by
   simpa [f3Tail_zero] using (sum_Icc_f3Tail_sq_shift_le 0 h N)
 
+/-- Exact pointwise decomposition of the raw-minus-truncated correlation error
+into two first-order tail terms and their overlap. -/
+theorem f3_correlation_sub_trunc_eq_tails (R h n : ℕ) :
+    (f3 n : ℝ) * (f3 (n + h) : ℝ) -
+        (f3Trunc R n : ℝ) * (f3Trunc R (n + h) : ℝ) =
+      (f3Tail R n : ℝ) * (f3 (n + h) : ℝ) +
+        (f3 n : ℝ) * (f3Tail R (n + h) : ℝ) -
+        (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ) := by
+  have hz :
+      f3 n * f3 (n + h) - f3Trunc R n * f3Trunc R (n + h) =
+        f3Tail R n * f3 (n + h) +
+          f3 n * f3Tail R (n + h) -
+          f3Tail R n * f3Tail R (n + h) := by
+    simp only [f3Tail]
+    ring
+  exact_mod_cast hz
+
+/-- Shifted version of the finite Cauchy–Schwarz tail estimate. -/
+theorem sum_Icc_f3Tail_shift_mul_sq_le (R h N : ℕ) (g : ℕ → ℝ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) * g n) ^ 2 ≤
+      ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+        ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+  calc
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) * g n) ^ 2 ≤
+        (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) ^ 2) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 :=
+      Finset.sum_mul_sq_le_sq_mul_sq (Finset.Icc 2 N)
+        (fun n => (f3Tail R (n + h) : ℝ)) g
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+      exact mul_le_mul_of_nonneg_right (sum_Icc_f3Tail_sq_shift_le R h N)
+        (Finset.sum_nonneg (fun _ _ => sq_nonneg _))
+
 end OmegaBalance
