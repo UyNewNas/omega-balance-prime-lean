@@ -337,4 +337,53 @@ theorem sum_Icc_f3Tail_mul_sq_le (R N : ℕ) (g : ℕ → ℝ) :
       exact mul_le_mul_of_nonneg_right (sum_Icc_f3Tail_sq_le R N)
         (Finset.sum_nonneg (fun _ _ => sq_nonneg _))
 
+/-- Reindex a shifted tail square over the natural correlation interval. -/
+theorem sum_Icc_f3Tail_sq_add_shift (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) ^ 2) =
+      ∑ m ∈ Finset.Icc (2 + h) (N + h), (f3Tail R m : ℝ) ^ 2 := by
+  refine Finset.sum_bij (fun n _ => n + h) ?_ ?_ ?_ ?_
+  · intro n hn
+    simp only [Finset.mem_Icc] at hn ⊢
+    omega
+  · intro a ha b hb hab
+    exact Nat.add_right_cancel hab
+  · intro m hm
+    have hmBounds := Finset.mem_Icc.mp hm
+    refine ⟨m - h, ?_, ?_⟩
+    · simp only [Finset.mem_Icc]
+      omega
+    · exact Nat.sub_add_cancel (by omega)
+  · intro n hn
+    rfl
+
+/-- The finite L² tail estimate remains valid after any fixed nonnegative shift,
+at the cost of enlarging the terminal interval to N+h. -/
+theorem sum_Icc_f3Tail_sq_shift_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) ^ 2) ≤
+      (((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+      (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R) := by
+  rw [sum_Icc_f3Tail_sq_add_shift]
+  calc
+    (∑ m ∈ Finset.Icc (2 + h) (N + h), (f3Tail R m : ℝ) ^ 2) ≤
+        ∑ m ∈ Finset.Icc 2 (N + h), (f3Tail R m : ℝ) ^ 2 := by
+      refine Finset.sum_le_sum_of_subset_of_nonneg ?_ ?_
+      · intro m hm
+        simp only [Finset.mem_Icc] at hm ⊢
+        omega
+      · intro m hm hnot
+        positivity
+    _ ≤ (((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R) :=
+      sum_Icc_f3Tail_sq_le R (N + h)
+
+/-- At cutoff zero the truncation vanishes, so the tail is the full statistic. -/
+theorem f3Tail_zero (n : ℕ) : f3Tail 0 n = f3 n := by
+  simp [f3Tail, f3Trunc, v3Trunc]
+
+/-- Uniform finite second-moment bound for the shifted raw F₃ statistic. -/
+theorem sum_Icc_f3_sq_shift_le (h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3 (n + h) : ℝ) ^ 2) ≤
+      (((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)) := by
+  simpa [f3Tail_zero] using (sum_Icc_f3Tail_sq_shift_le 0 h N)
+
 end OmegaBalance

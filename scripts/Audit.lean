@@ -302,6 +302,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3Tail_sq_cesaro_le
 #print axioms OmegaBalance.tendsto_f3Tail_sq_cesaro_majorant
 #print axioms OmegaBalance.sum_Icc_f3Tail_mul_sq_le
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_add_shift
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_shift_le
+#print axioms OmegaBalance.f3Tail_zero
+#print axioms OmegaBalance.sum_Icc_f3_sq_shift_le
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
