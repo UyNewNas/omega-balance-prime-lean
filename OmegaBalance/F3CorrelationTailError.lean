@@ -175,4 +175,35 @@ theorem f3_correlation_cesaro_error_sq_le_majorant
   exact (f3_correlation_cesaro_error_sq_le R h N hN).trans
     (f3CorrelationErrorSqUpper_div_sq_le_majorant R h N hN)
 
+
+/-- For every fixed shift, the uniform square-error majorant vanishes with the
+truncation cutoff. -/
+theorem tendsto_f3CorrelationErrorSqMajorant (h : ℕ) :
+    Filter.Tendsto (fun R : ℕ => f3CorrelationErrorSqMajorant R h)
+      Filter.atTop (𝓝 0) := by
+  have hpow :
+      Filter.Tendsto (fun R : ℕ => (1 / (3 : ℝ) ^ R))
+        Filter.atTop (𝓝 0) := by
+    have hbase :
+        Filter.Tendsto (fun R : ℕ => ((1 : ℝ) / 3) ^ R)
+          Filter.atTop (𝓝 0) :=
+      tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+    simpa [div_pow] using hbase
+  have htwo :
+      Filter.Tendsto (fun R : ℕ => 2 * (1 / (3 : ℝ) ^ R))
+        Filter.atTop (𝓝 0) := by
+    simpa using hpow.const_mul 2
+  have hsq :
+      Filter.Tendsto (fun R : ℕ => (1 / (3 : ℝ) ^ R) ^ 2)
+        Filter.atTop (𝓝 0) := by
+    simpa [pow_two] using hpow.mul hpow
+  have hsum :
+      Filter.Tendsto
+        (fun R : ℕ => 2 * (1 / (3 : ℝ) ^ R) +
+          (1 / (3 : ℝ) ^ R) ^ 2)
+        Filter.atTop (𝓝 0) := by
+    simpa using htwo.add hsq
+  have hscaled := hsum.const_mul (9 * ((2 * h + 3 : ℕ) : ℝ))
+  simpa [f3CorrelationErrorSqMajorant, one_div, pow_two, mul_assoc] using hscaled
+
 end OmegaBalance

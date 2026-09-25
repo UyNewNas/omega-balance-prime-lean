@@ -128,15 +128,28 @@ PR #17 head `8e52a2f558b0b251e5c180ffa877add19fbed837` 的 Lean #348 精确失�
 分支 `feat/f3-correlation-tail-cesaro-error-sq` 在上述可计算性修复之上新增 `f3_correlation_cesaro_error_sq_le`。对 `N>0`，它把完整 raw/truncated 相关误差平方界严格除以 `N²`，作为后续构造与 `N` 无关且随 `R→∞` 消失的统一 majorant 的接口。本层不声称极限交换；exact-head CI 全绿前保持候选状态。
 
 
-### COR-1：与平均长度无关的相关误差 majorant 候选
+### COR-1：与平均长度无关的相关误差 majorant
 
-分支 `feat/f3-correlation-error-uniform-majorant` 定义
-`f3CorrelationErrorSqMajorant R h = 9(2h+3)(2/3^R+1/3^(2R))`，并加入
+exact head `e4c9f8f61645ff90186ec9db0b935ccc9fa11810` 已通过 Lean #358
+与 Factor-sum #346。定义
+`f3CorrelationErrorSqMajorant R h = 9(2h+3)(2/3^R+1/3^(2R))`，并验证
 `f3CorrelationErrorSqUpper_div_sq_le_majorant` 与
 `f3_correlation_cesaro_error_sq_le_majorant`。二者只使用 `N>0`
-导出的 `2N+1≤3N` 与 `2N+2h+1≤(2h+3)N`，目标是给出与平均长度
-`N` 无关、固定 `h` 时随 cutoff `R` 几何衰减的平方误差界。
-exact-head CI 完整通过前保持候选状态，不登记 cutoff/Cesàro 极限交换。
+导出的 `2N+1≤3N` 与 `2N+2h+1≤(2h+3)N`，给出与平均长度 `N`
+无关的 raw/truncated 相关平方误差界。该 exact head 的 axiom audit 为
+314 declarations、source audit 为 31 Lean files 无 proof escape、Audit
+coverage 314/314、有限回归 144240 PASS。
+
+### COR-1：统一相关误差 majorant 的 cutoff 衰减候选
+
+后续候选 `tendsto_f3CorrelationErrorSqMajorant` 对每个固定 `h` 证明
+
+```math
+9(2h+3)\left(\frac{2}{3^R}+\frac1{3^{2R}}\right)\to0.
+```
+
+它只关闭 uniform majorant 的 cutoff 衰减，不把此结论本身冒充
+raw correlation 的双极限交换；exact-head CI 完整通过后才登记完成。
 
 ## COR-1 剩余链条
 

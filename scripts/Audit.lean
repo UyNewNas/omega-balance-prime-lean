@@ -317,6 +317,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_correlation_cesaro_error_sq_le
 #print axioms OmegaBalance.f3CorrelationErrorSqUpper_div_sq_le_majorant
 #print axioms OmegaBalance.f3_correlation_cesaro_error_sq_le_majorant
+#print axioms OmegaBalance.tendsto_f3CorrelationErrorSqMajorant
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
