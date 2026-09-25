@@ -190,10 +190,11 @@ theorem sum_Icc_v3Excess_sq_add_one (R N : ℕ) :
   · intro a ha b hb hab
     exact Nat.add_right_cancel hab
   · intro m hm
+    have hm3 : 3 ≤ m := (Finset.mem_Icc.mp hm).1
     refine ⟨m - 1, ?_, ?_⟩
-    · simp only [Finset.mem_Icc] at hm ⊢
+    · simp only [Finset.mem_Icc]
       omega
-    · omega
+    · exact Nat.sub_add_cancel (by omega)
   · intro n hn
     rfl
 
