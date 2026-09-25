@@ -206,6 +206,6 @@ theorem tendsto_f3CorrelationErrorSqMajorant (h : ℕ) :
         Filter.atTop (𝓝 0) := by
     simpa using htwo.add hsq
   have hscaled := hsum.const_mul (9 * ((2 * h + 3 : ℕ) : ℝ))
-  simpa [f3CorrelationErrorSqMajorant, one_div, pow_two, mul_assoc] using hscaled
+  simpa [f3CorrelationErrorSqMajorant, one_div, div_eq_mul_inv, pow_two, mul_assoc] using hscaled
 
 end OmegaBalance

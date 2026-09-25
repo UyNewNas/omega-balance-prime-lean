@@ -153,6 +153,8 @@ raw correlation 的双极限交换；exact-head CI 完整通过后才登记完�
 
 候选 head `24f1a0207149a28c59873890464dd19088d0ec5d` 的 Factor-sum #349 成功，但 Lean #361 在 `F3CorrelationTailError.lean` build 阶段失败：新增极限定理使用 `𝓝` 邻域记号，而本模块未打开 `Topology`。后续修复只加入 `open Filter Topology`，不改变定理陈述与证明结构；修复 head 仍需重新通过完整门禁。
 
+修复 head `68539658e1a136102da5620fb7cd7fa05b1b3414` 的 Factor-sum #350 成功；Lean #362 进一步通过到该极限定理最后的 `simpa`，仅剩 `/` 与乘逆元表示未归一化的 type mismatch。后续修复在最终 simplifier 中加入 `div_eq_mul_inv`，不改变数学陈述。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
