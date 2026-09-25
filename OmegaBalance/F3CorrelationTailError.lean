@@ -10,6 +10,8 @@ claimed here.
 
 namespace OmegaBalance
 
+open Filter Topology
+
 /-- Convenient upper bound for the unshifted tail square-mass. -/
 noncomputable def f3TailMassUpper (R N : ℕ) : ℝ :=
   ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R + (N : ℝ) / (3 : ℝ) ^ R

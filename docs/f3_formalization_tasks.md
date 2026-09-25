@@ -151,6 +151,8 @@ coverage 314/314、有限回归 144240 PASS。
 它只关闭 uniform majorant 的 cutoff 衰减，不把此结论本身冒充
 raw correlation 的双极限交换；exact-head CI 完整通过后才登记完成。
 
+候选 head `24f1a0207149a28c59873890464dd19088d0ec5d` 的 Factor-sum #349 成功，但 Lean #361 在 `F3CorrelationTailError.lean` build 阶段失败：新增极限定理使用 `𝓝` 邻域记号，而本模块未打开 `Topology`。后续修复只加入 `open Filter Topology`，不改变定理陈述与证明结构；修复 head 仍需重新通过完整门禁。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
