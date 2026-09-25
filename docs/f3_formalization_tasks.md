@@ -63,6 +63,16 @@ PR #15 分支 `feat/f3-correlation-tail-pointwise` 新增 `OmegaBalance/F3Correl
 
 这一步只建立点态 `L²` 尾部的严格算术基础。尚未把它登记成 Cesàro 尾部界，也没有进行 cutoff/Cesàro 极限交换。PR #15 最终是否合入，以最终 head 再次通过完整门禁为准。
 
+### COR-1：完整 tail 有限均方界
+
+分支 `feat/f3-correlation-tail-bound-fix4` 的 exact head
+`e3e117c0de02265475492f8de13291194947c8e5` 已通过 Lean #316 与
+Factor-sum #304：library build、kernel regressions、axiom audit、source audit、
+declaration coverage 与有限 F₃ 回归全部成功。新增并验证
+`sum_Icc_v3Excess_sq_add_one`、`sum_Icc_v3Excess_sq_sub_one`、
+`sum_Icc_f3Tail_sq_eq_neighbor_excess`、`sum_Icc_f3Tail_sq_le`。
+下一层证明归一化的统一 Cesàro tail 界，只有 exact-head CI 再次通过后才登记完成。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。

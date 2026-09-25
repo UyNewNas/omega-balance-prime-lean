@@ -274,4 +274,37 @@ theorem sum_Icc_f3Tail_sq_le (R N : ℕ) :
       _ ≤ (N : ℝ) / (3 : ℝ) ^ R :=
         sum_Icc_v3Excess_sq_le R N
 
+
+/-- Uniform normalized finite L² bound for the full truncation tail.
+The bound is intentionally coarse but decays geometrically in the cutoff. -/
+theorem f3Tail_sq_cesaro_le (R N : ℕ) (hN : 0 < N) :
+    ((∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) / (N : ℝ)) ≤
+      3 / (3 : ℝ) ^ R := by
+  have hs := sum_Icc_f3Tail_sq_le R N
+  have hNr : (0 : ℝ) < (N : ℝ) := by
+    exact_mod_cast hN
+  have hp : (0 : ℝ) < (3 : ℝ) ^ R := by
+    positivity
+  have hN1 : (1 : ℝ) ≤ (N : ℝ) := by
+    exact_mod_cast (show 1 ≤ N by omega)
+  have hnum :
+      (((N + 1 : ℕ) : ℝ) + (N : ℝ)) ≤ 3 * (N : ℝ) := by
+    push_cast
+    nlinarith
+  have hsum :
+      ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+          (N : ℝ) / (3 : ℝ) ^ R ≤
+        (3 * (N : ℝ)) / (3 : ℝ) ^ R := by
+    rw [← add_div]
+    exact div_le_div_of_nonneg_right hnum hp.le
+  calc
+    ((∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) / (N : ℝ)) ≤
+        ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+          (N : ℝ) / (3 : ℝ) ^ R) / (N : ℝ)) :=
+      div_le_div_of_nonneg_right hs hNr.le
+    _ ≤ (((3 * (N : ℝ)) / (3 : ℝ) ^ R) / (N : ℝ)) :=
+      div_le_div_of_nonneg_right hsum hNr.le
+    _ = 3 / (3 : ℝ) ^ R := by
+      field_simp [ne_of_gt hNr, ne_of_gt hp]
+
 end OmegaBalance
