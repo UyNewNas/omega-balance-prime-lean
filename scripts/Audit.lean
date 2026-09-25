@@ -300,6 +300,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sum_Icc_f3Tail_sq_eq_neighbor_excess
 #print axioms OmegaBalance.sum_Icc_f3Tail_sq_le
 #print axioms OmegaBalance.f3Tail_sq_cesaro_le
+#print axioms OmegaBalance.tendsto_f3Tail_sq_cesaro_majorant
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven

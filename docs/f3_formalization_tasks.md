@@ -73,6 +73,19 @@ declaration coverage 与有限 F₃ 回归全部成功。新增并验证
 `sum_Icc_f3Tail_sq_eq_neighbor_excess`、`sum_Icc_f3Tail_sq_le`。
 下一层证明归一化的统一 Cesàro tail 界，只有 exact-head CI 再次通过后才登记完成。
 
+### COR-1：cutoff majorant 衰减候选
+
+分支 `feat/f3-correlation-tail-decay` 从归一化 tail 界候选 head
+`e37f13baeac523e099cb9baeced98abb6823468c` 分出，新增
+`tendsto_f3Tail_sq_cesaro_majorant`，目标为
+
+```math
+\lim_{R\to\infty}\frac{3}{3^R}=0.
+```
+
+该 theorem 只证明统一 majorant 随 cutoff 消失；不执行 cutoff/Cesàro 极限交换。
+只有本分支 exact head 的完整 Lean/审计门禁通过后才登记为完成。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。

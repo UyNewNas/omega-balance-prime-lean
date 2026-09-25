@@ -1,6 +1,7 @@
 import OmegaBalance.F3CorrelationTail
 import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Nat.PadicValNat
+import Mathlib.Analysis.SpecificLimits.Basic
 
 /-!
 # Finite counting lemmas for the F₃ L² tail
@@ -306,5 +307,13 @@ theorem f3Tail_sq_cesaro_le (R N : ℕ) (hN : 0 < N) :
       div_le_div_of_nonneg_right hsum hNr.le
     _ = 3 / (3 : ℝ) ^ R := by
       field_simp [ne_of_gt hNr, ne_of_gt hp]
+
+/-- The uniform normalized L² tail majorant vanishes as the cutoff tends to infinity. -/
+theorem tendsto_f3Tail_sq_cesaro_majorant :
+    Filter.Tendsto (fun R : ℕ => 3 / (3 : ℝ) ^ R) Filter.atTop (𝓝 0) := by
+  have hpow :
+      Filter.Tendsto (fun R : ℕ => ((1 : ℝ) / 3) ^ R) Filter.atTop (𝓝 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+  simpa [div_pow, div_eq_mul_inv] using hpow.const_mul 3
 
 end OmegaBalance
