@@ -121,6 +121,8 @@ declaration coverage 与有限 F₃ 回归全部成功。新增并验证
 
 `feat/f3-correlation-tail-error-combined` 新增 `F3CorrelationTailError.lean`，定义有限 tail/raw 二阶矩上界并证明 `sum_Icc_f3_correlation_error_sq_le`：原始相关与截断相关的有限求和差平方，由三个已分解交叉项的 Cauchy–Schwarz 上界统一控制。该层仍不执行 Cesàro/cutoff 极限交换；exact-head CI 全绿前保持候选状态。
 
+PR #17 head `8e52a2f558b0b251e5c180ffa877add19fbed837` 的 Lean #348 精确失败于三个实值辅助定义的可计算性：`f3TailMassUpper`、`f3TailShiftMassUpper`、`f3CorrelationErrorSqUpper` 使用实数除法而需 `noncomputable`。修复提交 `0b9745132492fc902bc0041bebaf5c4804454c6f` 仅把这三个定义改为 `noncomputable def`，不改变 theorem 陈述或证明项；当前位于 `feat/f3-correlation-tail-noncomputable-fix`，等待 exact-head PR CI 验证后才登记完成。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
