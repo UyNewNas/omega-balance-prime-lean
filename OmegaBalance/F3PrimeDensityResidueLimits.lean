@@ -51,8 +51,12 @@ lemma inv_totient_pow_three_sub_succ (k : ℕ) (hk : 0 < k) :
   rw [totient_pow_three k hk, totient_pow_three (k + 1) (by omega)]
   norm_num only [Nat.add_sub_cancel]
   push_cast
+  have hk_eq : k = k - 1 + 1 := by omega
   have hpow : (3 : ℝ) ^ k = (3 : ℝ) ^ (k - 1) * 3 := by
-    rw [show k = k - 1 + 1 by omega, pow_succ]
+    calc
+      (3 : ℝ) ^ k = (3 : ℝ) ^ (k - 1 + 1) :=
+        congrArg (fun n : ℕ => (3 : ℝ) ^ n) hk_eq
+      _ = (3 : ℝ) ^ (k - 1) * 3 := by rw [pow_succ]
   rw [hpow]
   field_simp <;> ring
 
