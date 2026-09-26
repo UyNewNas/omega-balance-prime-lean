@@ -404,6 +404,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PrimeNegLevelAPDifference_normalized_tendsto_totient
 #print axioms OmegaBalance.f3_totient_three_pow_inv_sub_succ
 #print axioms OmegaBalance.f3PrimeNegLevelAPDifference_normalized_tendsto
+#print axioms OmegaBalance.f3_mod_pow_three_eq_one_iff_dvd_sub_one
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff_nested_residue
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
