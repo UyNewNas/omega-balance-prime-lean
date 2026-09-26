@@ -36,7 +36,7 @@ theorem f3PadicDelta_eq_intCast (n : ℕ) :
 theorem f3PadicDelta_valuation {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
     (f3PadicDelta n).valuation = (f3 n).natAbs := by
   rw [f3PadicDelta_eq_intCast, Padic.valuation_intCast]
-  simpa [v3Int] using f3Unit_depth hn h3
+  exact_mod_cast f3Unit_depth hn h3
 
 /-- On the nontrivial domain the displacement from one is nonzero. -/
 theorem f3PadicDelta_ne_zero {n : ℕ} (hn : 1 < n) :
@@ -50,6 +50,7 @@ theorem f3PadicDelta_norm {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
     ‖f3PadicDelta n‖ = (3 : ℝ) ^ (-(f3 n).natAbs : ℤ) := by
   rw [Padic.norm_eq_zpow_neg_valuation (f3PadicDelta_ne_zero hn),
     f3PadicDelta_valuation hn h3]
+  norm_num
 
 /-- Every admissible `F₃` input lands in the open principal-unit ball
 `‖U(n)-1‖ < 1`, the actual convergence domain required by the 3-adic
