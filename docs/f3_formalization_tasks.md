@@ -138,6 +138,22 @@ PR #17 head `8e52a2f558b0b251e5c180ffa877add19fbed837` 的 Lean #348 精确失�
 `N` 无关、固定 `h` 时随 cutoff `R` 几何衰减的平方误差界。
 exact-head CI 完整通过前保持候选状态，不登记 cutoff/Cesàro 极限交换。
 
+### COR-1：自然 Icc 截断相关 Cesàro 桥接候选
+
+分支 `feat/f3-correlation-trunc-icc-cesaro-v1` 新增
+`F3CorrelationTruncCesaro.lean`，把自然窗口 `2≤n≤N` 上的
+`f3Trunc R n * f3Trunc R (n+h)` 与从 0 开始的周期模型精确桥接。
+候选接口包括 `f3TruncCorrelationIccSum_eq_periodic_sub_boundary` 与
+`tendsto_f3TruncCorrelationIccAverage`；这里只处理固定 cutoff，不进行
+raw/cutoff 双极限交换。
+
+候选 head `ab593381236e8b9fc77397142ae40d8c28d85834` 的 Factor-sum #354
+成功，但 Lean #366 在 `F3CorrelationTruncCesaro.lean:116` 精确失败：
+前一行 `field_simp` 已关闭目标，残留的 `ring` 报
+`No goals to be solved`。修复 commit
+`af06287ea22288188b2df4d8bd6a044029404ed7` 仅删除该冗余 tactic，
+不改变 theorem 陈述；需以新的 exact-head CI 结果为准。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
