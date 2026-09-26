@@ -473,3 +473,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3Unit_eq_chi_mul
 #print axioms OmegaBalance.f3_eq_neg_chi_mul_natAbs
 #print axioms OmegaBalance.f3PadicDelta_pow_tendsto_zero
+#print axioms OmegaBalance.f3Padic_norm_inv_natCast_le
+#print axioms OmegaBalance.norm_f3PadicLogTerm_le
+#print axioms OmegaBalance.tendsto_succ_mul_pow_zero
+#print axioms OmegaBalance.tendsto_f3PadicLogTerm_zero
+#print axioms OmegaBalance.summable_f3PadicLogTerm
+#print axioms OmegaBalance.summable_f3PadicLog
+#print axioms OmegaBalance.hasSum_f3PadicLog
