@@ -29,7 +29,8 @@ theorem f3Unit_eq_chi_mul (n : ℕ) :
 theorem f3_eq_neg_chi_mul_natAbs {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
     f3 n = -f3Chi n * ((f3 n).natAbs : ℤ) := by
   rw [f3_eq_side_mul_natAbs hn h3]
-  simp [f3Chi]
+  unfold f3Chi
+  ring
 
 /-- The existing normalized integer unit coordinate, embedded in the 3-adic field. -/
 noncomputable def f3PadicUnit (n : ℕ) : ℚ_[3] :=
@@ -83,9 +84,9 @@ theorem f3PadicDelta_norm_lt_one {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
 
 /-- The displacement is topologically nilpotent, i.e. its powers tend to zero.
 This is the convergence-domain input for the actual logarithm series. -/
-theorem f3PadicDelta_isTopologicallyNilpotent {n : ℕ}
+theorem f3PadicDelta_pow_tendsto_zero {n : ℕ}
     (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
-    IsTopologicallyNilpotent (f3PadicDelta n) :=
+    Filter.Tendsto (fun k : ℕ => f3PadicDelta n ^ k) Filter.atTop (𝓝 0) :=
   tendsto_pow_atTop_nhds_zero_of_norm_lt_one (f3PadicDelta_norm_lt_one hn h3)
 
 end OmegaBalance
