@@ -18,7 +18,7 @@ def f3PadicLogCompositionOutputFiberEquiv (n : ℕ) :
     {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n} ≃
       {d : ℕ // n < 2 * d + 1} where
   toFun p := ⟨p.1.1, by
-    exact p.2 ▸ p.1.2.2⟩
+    simpa [p.2] using p.1.2.2⟩
   invFun d := ⟨⟨d.1, ⟨n, d.2⟩⟩, rfl⟩
   left_inv p := by
     rcases p with ⟨⟨d, ⟨v, hv⟩⟩, h⟩
@@ -68,6 +68,7 @@ theorem f3PadicLogComposition_output_fiber_tsum_eq_full
                   (f3PadicLogMulPolynomial x y ^ d).coeff n)
               (s := {d : ℕ | n < 2 * d + 1}) ?_
             intro d hd
+            change n < 2 * d + 1
             by_contra hdn
             have htwo : 2 * d < n := by omega
             have hz :=
