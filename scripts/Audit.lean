@@ -331,6 +331,13 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3CorrelationIccAverage_sub_trunc
 #print axioms OmegaBalance.f3CorrelationIccAverage_sub_trunc_sq_le_majorant
 #print axioms OmegaBalance.tendsto_f3CorrelationIccAverage
+#print axioms OmegaBalance.f3PadicKernel_two
+#print axioms OmegaBalance.f3PadicKernel_pow_three
+#print axioms OmegaBalance.f3PadicKernel_pow_three_add_two
+#print axioms OmegaBalance.f3PadicKernel_dist_pow_three_two
+#print axioms OmegaBalance.f3CorrelationKernel_pow_three
+#print axioms OmegaBalance.f3CorrelationKernel_zero
+#print axioms OmegaBalance.f3CorrelationKernel_meanSquare_pow_three
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
