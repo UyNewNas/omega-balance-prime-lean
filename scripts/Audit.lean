@@ -409,6 +409,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3APPrimes_succ_subset
 #print axioms OmegaBalance.f3APPrimes_sdiff_eq_neg_level
 #print axioms OmegaBalance.f3PrimeNegLevelCountingReal_eq_APDifference
+#print axioms OmegaBalance.f3PrimeNegLevelCountingReal_normalized_tendsto
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
