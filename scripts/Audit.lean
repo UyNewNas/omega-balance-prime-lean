@@ -498,3 +498,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicExp_eq_tsum_powerSeries_coeff
 #print axioms OmegaBalance.f3PadicFormal_exp_subst_log
 #print axioms OmegaBalance.f3PadicFormal_log_subst_exp_sub_one
+#print axioms OmegaBalance.f3_three_not_dvd_mul
+#print axioms OmegaBalance.f3PadicDelta_mul
+#print axioms OmegaBalance.one_add_f3PadicDelta_mul
+#print axioms OmegaBalance.f3PadicDelta_mul_norm_lt_one
+#print axioms OmegaBalance.f3PadicLog_mul_reduction
+#print axioms OmegaBalance.hasSum_f3PadicLog_mul_delta

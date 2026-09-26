@@ -21,7 +21,7 @@
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | **证明完成；consumer exact head `0946893…` 已全绿，待 stacked 主线集成** |
 | DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | **证明完成；一般 `j≥1` 的 `3^{-j}` 已在 exact head `8029c306…` 全绿，待 stacked 主线集成** |
-| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | **进行中；收敛与高阶项主导层 exact-head 已验证，等距/赋值连接层候选，乘法同态仍未完成** |
+| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | **进行中；收敛、主导项、等距/赋值连接及 formal coefficient bridge 已 exact-head 验证，乘法同态仍未完成** |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
 | RUN-2 | 上述长串的跨度有界版本 | 未完成；依赖定量上游版本 |
 
@@ -378,6 +378,37 @@ nonconstant coefficients, and `NormedSpace.exp` is the HasSum of the formal
 exp/log substitution identities.  This repair remains candidate until its
 exact head passes build, axiom/source, declaration-coverage and regression
 gates.  Multiplicativity `L(mn)=L(m)+L(n)` remains the next LOG-1 target.
+
+
+### LOG-1 formal coefficient bridge：exact-head verified
+
+修复 head `77d25f892e8204a2b363036006b3d3efdbee798c` 已通过 Lean run
+`36248316381` 与 Factor-sum run `36248316358`。因此
+`f3PadicLogTerm_eq_powerSeries_coeff`、
+`hasSum_f3PadicLog_powerSeries_coeff`、
+`f3PadicExp_eq_tsum_powerSeries_coeff` 以及固定 mathlib 的两条 formal
+exp/log substitution identity 正式登记为 verified。这里没有伪造
+`IsLinearTopology ℚ_[3] ℚ_[3]`，也没有把 totalized `NormedSpace.exp`
+冒充全局收敛的 p-adic exponential。
+
+### LOG-1 multiplication domain reduction（candidate）
+
+分支 `feat/f3-padic-log-mul-domain-v1` 在上述 exact-green head 上新增
+`F3PadicLogMulDomain.lean`。它候选证明 admissible 输入乘积的精确
+principal-unit displacement
+
+```math
+\Delta(mn)=\Delta(m)+\Delta(n)+\Delta(m)\Delta(n),
+```
+
+同时证明该 nonlinear displacement 仍位于 log 的开单位球、其实际 log
+级数以 `f3PadicLog (m*n)` 为和，并把最终乘法同态严格归约到真正的分析恒等式
+
+```math
+\log(1+x+y+xy)=\log(1+x)+\log(1+y).
+```
+
+本层不把这个 reduction 冒充乘法同态；只有 exact-head CI 全绿后才登记完成。
 
 ## 停止规则
 
