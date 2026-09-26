@@ -535,3 +535,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.tendsto_f3PadicLogTrunc_eval
 #print axioms OmegaBalance.f3PadicLogTrunc_comp_eval_one
 #print axioms OmegaBalance.tendsto_f3PadicLogTrunc_product_eval
+
+-- Nonarchimedean coefficient control for the final composition regrouping.
+#print axioms OmegaBalance.f3PadicNormAbsoluteValue_apply
+#print axioms OmegaBalance.f3PadicNormAbsoluteValue_nonarchimedean
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_gaussNorm_le_one_third
+#print axioms OmegaBalance.norm_f3PadicLogMulPolynomial_pow_coeff_le

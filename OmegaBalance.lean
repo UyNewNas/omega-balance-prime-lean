@@ -21,6 +21,7 @@ import OmegaBalance.F3PadicLogFormalMul
 import OmegaBalance.F3PadicLogFormalEval
 import OmegaBalance.F3PadicLogCompositionFinite
 import OmegaBalance.F3PadicLogCompositionTrunc
+import OmegaBalance.F3PadicLogCompositionGauss
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite
