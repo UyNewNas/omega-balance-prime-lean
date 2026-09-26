@@ -5,7 +5,7 @@ defaultTargets = ["OmegaBalance"]
 [[require]]
 name = "analytic_number_theory"
 git = "https://github.com/UyNewNas/analytic-number-theory-lean.git"
-rev = "3c6e70c6db239e0d3d80ddcd5d650bebf5f6602c"
+rev = "14fb745b5edcc803f71044d3f22ccdf9d5985754"
 
 [[require]]
 name = "mathlib"
