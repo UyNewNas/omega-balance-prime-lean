@@ -546,3 +546,10 @@ import OmegaBalance.F3DeeperExamples
 -- Scalar majorants for the outer-log / product-polynomial double series.
 #print axioms OmegaBalance.norm_f3PadicFormalLog_coeff_le
 #print axioms OmegaBalance.norm_f3PadicFormalLog_coeff_mul_pow_coeff_le
+
+
+-- Explicit finite support of powers of the quadratic product increment.
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_natDegree_le_two
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_natDegree_le
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_coeff_eq_zero_of_two_mul_lt
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_subset_range
