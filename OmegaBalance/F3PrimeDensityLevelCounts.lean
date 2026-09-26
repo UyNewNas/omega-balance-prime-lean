@@ -40,6 +40,7 @@ theorem f3_prime_eq_pos_level_iff_mod_exact
       have hv2 : v3 2 = 0 := v3_eq_zero_of_not_dvd (by norm_num)
       unfold f3 neighborDiff
       simp [hv4, hv2]
+      omega
 
 /-- Exact negative F₃ level as a nested power-of-three residue condition,
 including the two small primes. -/
@@ -74,5 +75,6 @@ theorem f3_prime_eq_neg_level_iff_mod_exact
       have hv2 : v3 2 = 0 := v3_eq_zero_of_not_dvd (by norm_num)
       unfold f3 neighborDiff
       simp [hv4, hv2]
+      omega
 
 end OmegaBalance

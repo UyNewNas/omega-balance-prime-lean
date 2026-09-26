@@ -245,6 +245,15 @@ PR #22 exact head `6922dad91bf4301d3bbbf6b78f4233b5f6677635` 已通过 Lean #460
 后续仍需把有限集合的 exact-residue cardinal 精确化为两个嵌套 AP count 的差，
 再处理 `p=2,3` 后导出全体素数的语义计数极限。
 
+### DEN-1：PR #24 small-prime 等价式 CI 修复
+
+PR #24 exact head `b8f02879b665c67a99f32ae46cc226b0975f7ae5` 的 Factor-sum #519 成功，Lean #531 在 `F3PrimeDensityLevelCounts.lean` 的两个 `p=3` 小素数分支失败。两处均已化简到纯 Presburger 等价式：
+
+- 正层：`0 = (k : ℤ) ↔ 0 = k`；
+- 负层：`k = 0 ↔ 0 = k`。
+
+在既有前提 `hk : 0 < k` 下分别补 `omega` 关闭，不改变 theorem 陈述、有限集合定义或渐近论证。修复 head 必须重新通过完整 Lean / regression / axiom / source / audit coverage 门禁后才能把 DEN-1 登记为完成。
+
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
 ## 停止规则
