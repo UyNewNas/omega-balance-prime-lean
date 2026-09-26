@@ -440,6 +440,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3Mul17Residue_lt
 #print axioms OmegaBalance.f3Mul17Residue_coprime
 #print axioms OmegaBalance.pow_three_dvd_seventeen_mul_residue_add_one
+#print axioms OmegaBalance.pow_three_dvd_seventeen_mul_add_one_iff_mod_eq_residue
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime

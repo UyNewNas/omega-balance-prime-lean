@@ -141,4 +141,35 @@ lemma pow_three_dvd_seventeen_mul_residue_add_one (m : ℕ) :
   rw [f3Mul17ResidueUnit_spec]
   simp
 
+/-- Divisibility of `17q+1` by a power of three is exactly membership in the
+distinguished multiplier-17 residue class. -/
+theorem pow_three_dvd_seventeen_mul_add_one_iff_mod_eq_residue
+    (m q : ℕ) :
+    3 ^ m ∣ 17 * q + 1 ↔ q % (3 ^ m) = f3Mul17Residue m := by
+  constructor
+  · intro hqdiv
+    have hq : 17 * q + 1 ≡ 0 [MOD 3 ^ m] :=
+      Nat.modEq_zero_iff_dvd.mpr hqdiv
+    have hr : 17 * f3Mul17Residue m + 1 ≡ 0 [MOD 3 ^ m] :=
+      Nat.modEq_zero_iff_dvd.mpr
+        (pow_three_dvd_seventeen_mul_residue_add_one m)
+    have hmul : 17 * q ≡ 17 * f3Mul17Residue m [MOD 3 ^ m] :=
+      Nat.ModEq.add_right_cancel' 1 (hq.trans hr.symm)
+    have hgcd : Nat.gcd (3 ^ m) 17 = 1 := by
+      rw [Nat.gcd_comm]
+      exact (f3_seventeen_coprime_three_pow m).gcd_eq_one
+    have hmod :=
+      Nat.ModEq.cancel_left_of_coprime hgcd hmul
+    simpa [Nat.ModEq, Nat.mod_eq_of_lt (f3Mul17Residue_lt m)] using hmod
+  · intro hmod
+    have hq : q ≡ f3Mul17Residue m [MOD 3 ^ m] := by
+      show q % (3 ^ m) = f3Mul17Residue m % (3 ^ m)
+      simpa [Nat.mod_eq_of_lt (f3Mul17Residue_lt m)] using hmod
+    have hsum :
+        17 * q + 1 ≡ 17 * f3Mul17Residue m + 1 [MOD 3 ^ m] :=
+      (hq.mul_left 17).add_right 1
+    exact Nat.modEq_zero_iff_dvd.mp <|
+      hsum.trans <| Nat.modEq_zero_iff_dvd.mpr
+        (pow_three_dvd_seventeen_mul_residue_add_one m)
+
 end OmegaBalance
