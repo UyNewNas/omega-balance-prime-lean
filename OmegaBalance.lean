@@ -29,4 +29,5 @@ import OmegaBalance.F3CorrelationShiftSquare
 import OmegaBalance.F3Infinitude
 import OmegaBalance.F3PrimeDensityResidues
 import OmegaBalance.F3PrimeDensityAP
+import OmegaBalance.F3PrimeDensityAPBasic
 import OmegaBalance.F3SignChanges
