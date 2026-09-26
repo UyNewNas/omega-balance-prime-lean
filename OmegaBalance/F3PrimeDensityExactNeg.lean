@@ -134,6 +134,7 @@ theorem f3PrimeNegLevelCountingReal_normalized_tendsto
       atTop (𝓝 (1 / (3 : ℝ) ^ k)) := by
   exact (f3PrimeNegLevelAPDifference_normalized_tendsto hk).congr' <|
     Filter.Eventually.of_forall fun x => by
-      rw [f3PrimeNegLevelCountingReal_eq_APDifference k x hk]
+      exact congrArg (fun y : ℝ => y / (x / Real.log x))
+        (f3PrimeNegLevelCountingReal_eq_APDifference k x hk).symm
 
 end OmegaBalance
