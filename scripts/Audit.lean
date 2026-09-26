@@ -577,3 +577,9 @@ import OmegaBalance.F3DeeperExamples
 -- Analytic composition identity and F3 p-adic logarithm multiplicativity.
 #print axioms OmegaBalance.f3PadicLogOnePlus_product
 #print axioms OmegaBalance.f3PadicLog_mul
+
+-- Signed residue-class interface for consecutive F3 runs.
+#print axioms OmegaBalance.f3RunModulus_ge_three
+#print axioms OmegaBalance.f3RunResidue_lt_modulus
+#print axioms OmegaBalance.f3RunResidue_coprime
+#print axioms OmegaBalance.f3_of_modEq_runResidue
