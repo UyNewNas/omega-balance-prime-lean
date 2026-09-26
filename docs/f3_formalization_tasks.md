@@ -63,6 +63,113 @@ PR #15 分支 `feat/f3-correlation-tail-pointwise` 新增 `OmegaBalance/F3Correl
 
 这一步只建立点态 `L²` 尾部的严格算术基础。尚未把它登记成 Cesàro 尾部界，也没有进行 cutoff/Cesàro 极限交换。PR #15 最终是否合入，以最终 head 再次通过完整门禁为准。
 
+### COR-1：完整 tail 有限均方界
+
+分支 `feat/f3-correlation-tail-bound-fix4` 的 exact head
+`e3e117c0de02265475492f8de13291194947c8e5` 已通过 Lean #316 与
+Factor-sum #304：library build、kernel regressions、axiom audit、source audit、
+declaration coverage 与有限 F₃ 回归全部成功。新增并验证
+`sum_Icc_v3Excess_sq_add_one`、`sum_Icc_v3Excess_sq_sub_one`、
+`sum_Icc_f3Tail_sq_eq_neighbor_excess`、`sum_Icc_f3Tail_sq_le`。
+下一层证明归一化的统一 Cesàro tail 界，只有 exact-head CI 再次通过后才登记完成。
+
+### COR-1：cutoff majorant 衰减候选
+
+分支 `feat/f3-correlation-tail-decay` 从归一化 tail 界候选 head
+`e37f13baeac523e099cb9baeced98abb6823468c` 分出，新增
+`tendsto_f3Tail_sq_cesaro_majorant`，目标为
+
+```math
+\lim_{R\to\infty}\frac{3}{3^R}=0.
+```
+
+该 theorem 只证明统一 majorant 随 cutoff 消失；不执行 cutoff/Cesàro 极限交换。
+只有本分支 exact head 的完整 Lean/审计门禁通过后才登记为完成。
+
+### COR-1：Cauchy–Schwarz 有限误差原语候选
+
+分支 `feat/f3-correlation-tail-cauchy` 在 tail majorant 衰减候选之上新增 `sum_Icc_f3Tail_mul_sq_le`，把固定 mathlib 的 `Finset.sum_mul_sq_le_sq_mul_sq` 与完整 tail 有限均方界组合为有限相关误差原语：
+
+```math
+(\sum_{2\le n\le N} E_R(n)g(n))^2
+\le\left(\frac{N+1}{3^R}+\frac N{3^R}\right)\sum_{2\le n\le N}g(n)^2.
+```
+
+其中 `E_R(n)=F_3(n)-F_{3,R}(n)`。只有 exact-head CI 全绿后才登记完成。
+
+### COR-1：平移 tail 与原始二阶矩候选
+
+分支 `feat/f3-correlation-tail-shift` 继续补相关误差所需的平移控制：
+`sum_Icc_f3Tail_sq_add_shift`、`sum_Icc_f3Tail_sq_shift_le`、
+`f3Tail_zero`、`sum_Icc_f3_sq_shift_le`。这使固定移位 `h` 的 tail 二阶矩
+和原始 `F₃(n+h)` 二阶矩都可直接喂给 Cauchy–Schwarz。只有 exact-head CI
+全绿后才登记为完成。
+
+### COR-1：相关误差分解候选
+
+`feat/f3-correlation-tail-error` 新增 `f3_correlation_sub_trunc_eq_tails` 和 `sum_Icc_f3Tail_shift_mul_sq_le`，分别记录原始/截断相关误差的精确 tail 分解与平移 tail 的有限 Cauchy–Schwarz 控制。exact-head CI 全绿前保持候选状态。
+
+### COR-1：有限相关误差求和恒等式候选
+
+分支 `feat/f3-correlation-tail-error-sum` 新增求和版 raw/truncated 相关误差恒等式；只有 exact-head CI 全绿后才登记完成。
+
+### COR-1：三个相关误差交叉项平方界候选
+
+`feat/f3-correlation-tail-error-bound` 新增三个专用 Cauchy–Schwarz 界，分别控制 `tail·raw_shift`、`raw·tail_shift` 与 `tail·tail_shift` 的有限求和平方；它们只使用已登记的 tail/raw 二阶矩界。exact-head CI 全绿前保持候选状态。
+
+### COR-1：完整有限相关误差平方界候选
+
+`feat/f3-correlation-tail-error-combined` 新增 `F3CorrelationTailError.lean`，定义有限 tail/raw 二阶矩上界并证明 `sum_Icc_f3_correlation_error_sq_le`：原始相关与截断相关的有限求和差平方，由三个已分解交叉项的 Cauchy–Schwarz 上界统一控制。该层仍不执行 Cesàro/cutoff 极限交换；exact-head CI 全绿前保持候选状态。
+
+PR #17 head `8e52a2f558b0b251e5c180ffa877add19fbed837` 的 Lean #348 精确失败于三个实值辅助定义的可计算性：`f3TailMassUpper`、`f3TailShiftMassUpper`、`f3CorrelationErrorSqUpper` 使用实数除法而需 `noncomputable`。修复提交 `0b9745132492fc902bc0041bebaf5c4804454c6f` 仅把这三个定义改为 `noncomputable def`，不改变 theorem 陈述或证明项；当前位于 `feat/f3-correlation-tail-noncomputable-fix`，等待 exact-head PR CI 验证后才登记完成。
+
+### COR-1：归一化有限相关误差平方界候选
+
+分支 `feat/f3-correlation-tail-cesaro-error-sq` 在上述可计算性修复之上新增 `f3_correlation_cesaro_error_sq_le`。对 `N>0`，它把完整 raw/truncated 相关误差平方界严格除以 `N²`，作为后续构造与 `N` 无关且随 `R→∞` 消失的统一 majorant 的接口。本层不声称极限交换；exact-head CI 全绿前保持候选状态。
+
+
+### COR-1：与平均长度无关的相关误差 majorant
+
+exact head `e4c9f8f61645ff90186ec9db0b935ccc9fa11810` 已通过 Lean #358
+与 Factor-sum #346。定义
+`f3CorrelationErrorSqMajorant R h = 9(2h+3)(2/3^R+1/3^(2R))`，并验证
+`f3CorrelationErrorSqUpper_div_sq_le_majorant` 与
+`f3_correlation_cesaro_error_sq_le_majorant`。二者只使用 `N>0`
+导出的 `2N+1≤3N` 与 `2N+2h+1≤(2h+3)N`，给出与平均长度 `N`
+无关的 raw/truncated 相关平方误差界。该 exact head 的 axiom audit 为
+314 declarations、source audit 为 31 Lean files 无 proof escape、Audit
+coverage 314/314、有限回归 144240 PASS。
+
+### COR-1：统一相关误差 majorant 的 cutoff 衰减候选
+
+后续候选 `tendsto_f3CorrelationErrorSqMajorant` 对每个固定 `h` 证明
+
+```math
+9(2h+3)\left(\frac{2}{3^R}+\frac1{3^{2R}}\right)\to0.
+```
+
+它只关闭 uniform majorant 的 cutoff 衰减，不把此结论本身冒充
+raw correlation 的双极限交换；exact-head CI 完整通过后才登记完成。
+
+候选 head `24f1a0207149a28c59873890464dd19088d0ec5d` 的 Factor-sum #349 成功，但 Lean #361 在 `F3CorrelationTailError.lean` build 阶段失败：新增极限定理使用 `𝓝` 邻域记号，而本模块未打开 `Topology`。后续修复只加入 `open Filter Topology`，不改变定理陈述与证明结构；修复 head 仍需重新通过完整门禁。
+
+修复 head `68539658e1a136102da5620fb7cd7fa05b1b3414` 的 Factor-sum #350 成功；Lean #362 进一步通过到该极限定理最后的 `simpa`，仅剩 `/` 与乘逆元表示未归一化的 type mismatch。后续修复在最终 simplifier 中加入 `div_eq_mul_inv`，不改变数学陈述。
+
+最终修复 head `5c47684ca9fd579da817ddbf35e74ae34dd53f06` 已通过 Lean #363 与 Factor-sum #351：library build、kernel regressions、axiom/source audit、declaration coverage 与有限 F₃ 回归全部成功。Axiom audit 为 315 declarations，source audit 为 31 Lean files 无 proof escape，Audit coverage 315/315，有限回归 144240 PASS。因此 `tendsto_f3CorrelationErrorSqMajorant` 正式登记完成；它只证明固定 `h` 的 uniform square-error majorant 随 cutoff 消失，尚不单独构成 raw correlation 的双极限交换。
+
+### COR-1：自然 Icc 截断相关 Cesàro 桥接
+
+分支 `feat/f3-correlation-trunc-icc-cesaro-v1` 已把自然窗口 `2≤n≤N`
+上的截断相关平均与从 0 开始的周期模型严格桥接。修复 head
+`26ee1d6902fdb6927e1a1d06caa269c434b9e5ab` 已通过 Lean #368 与
+Factor-sum #356：library build、kernel regressions、axiom/source audit、
+declaration coverage 与有限 F₃ 回归全部成功。Axiom audit 为 320 declarations，
+source audit 为 32 Lean files 无 proof escape，Audit coverage 320/320，有限回归
+144240 PASS。核心接口为 `f3TruncCorrelationIccSum_eq_periodic_sub_boundary`、
+`f3TruncCorrelationIccAverage_eq` 与 `tendsto_f3TruncCorrelationIccAverage`。
+本分支将它与已验证的 uniform majorant cutoff 衰减合流，为最终 raw/cutoff
+双极限交换准备同一文件树；尚不宣告双极限已经完成。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。

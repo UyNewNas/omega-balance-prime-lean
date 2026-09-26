@@ -294,6 +294,44 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.sum_Icc_v3Excess_sq_eq_weighted_floor
 #print axioms OmegaBalance.sum_Icc_v3Excess_sq_le
 
+-- Finite L2 bound for the full F3 truncation tail.
+#print axioms OmegaBalance.sum_Icc_v3Excess_sq_add_one
+#print axioms OmegaBalance.sum_Icc_v3Excess_sq_sub_one
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_eq_neighbor_excess
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_le
+#print axioms OmegaBalance.f3Tail_sq_cesaro_le
+#print axioms OmegaBalance.tendsto_f3Tail_sq_cesaro_majorant
+#print axioms OmegaBalance.sum_Icc_f3Tail_mul_sq_le
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_add_shift
+#print axioms OmegaBalance.sum_Icc_f3Tail_sq_shift_le
+#print axioms OmegaBalance.f3Tail_zero
+#print axioms OmegaBalance.sum_Icc_f3_sq_shift_le
+#print axioms OmegaBalance.f3_correlation_sub_trunc_eq_tails
+#print axioms OmegaBalance.sum_Icc_f3Tail_shift_mul_sq_le
+#print axioms OmegaBalance.sum_Icc_f3_correlation_sub_trunc_eq_tails
+#print axioms OmegaBalance.sum_Icc_f3Tail_mul_f3_shift_sq_le
+#print axioms OmegaBalance.sum_Icc_f3_mul_f3Tail_shift_sq_le
+#print axioms OmegaBalance.sum_Icc_f3Tail_mul_f3Tail_shift_sq_le
+#print axioms OmegaBalance.sq_add_sub_le_three_sq
+#print axioms OmegaBalance.sum_Icc_f3_correlation_error_sq_le
+#print axioms OmegaBalance.f3_correlation_cesaro_error_sq_le
+#print axioms OmegaBalance.f3CorrelationErrorSqUpper_div_sq_le_majorant
+#print axioms OmegaBalance.f3_correlation_cesaro_error_sq_le_majorant
+#print axioms OmegaBalance.tendsto_f3CorrelationErrorSqMajorant
+
+-- Bridge from the natural Icc correlation window to the periodic cutoff average.
+#print axioms OmegaBalance.sum_Icc_two_eq_sum_range_sub_one
+#print axioms OmegaBalance.f3PeriodicCorrelationTerm_eq_trunc
+#print axioms OmegaBalance.f3TruncCorrelationIccSum_eq_periodic_sub_boundary
+#print axioms OmegaBalance.f3TruncCorrelationIccAverage_eq
+#print axioms OmegaBalance.tendsto_f3PeriodicCorrelationPartialSum_succ_div
+#print axioms OmegaBalance.tendsto_f3TruncCorrelationIccAverage
+
+-- Full raw F3 correlation limit after the explicit cutoff/Cesaro exchange.
+#print axioms OmegaBalance.f3CorrelationIccAverage_sub_trunc
+#print axioms OmegaBalance.f3CorrelationIccAverage_sub_trunc_sq_le_majorant
+#print axioms OmegaBalance.tendsto_f3CorrelationIccAverage
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five

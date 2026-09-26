@@ -1,6 +1,8 @@
 import OmegaBalance.F3CorrelationTail
 import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Nat.PadicValNat
+import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Algebra.Order.BigOperators.Ring.Finset
 
 /-!
 # Finite counting lemmas for the F₃ L² tail
@@ -11,6 +13,8 @@ the resulting layer series.  It does not yet assert the full Cesàro L² tail li
 -/
 
 namespace OmegaBalance
+
+open Filter Topology
 
 /-- Among `1, ..., N`, exactly `N / 3^a` integers are divisible by `3^a`. -/
 theorem card_filter_Icc_dvd_pow_three (N a : ℕ) :
@@ -176,5 +180,344 @@ theorem sum_Icc_v3Excess_sq_le (R N : ℕ) :
       (N : ℝ) / (3 : ℝ) ^ R := by
   rw [sum_Icc_v3Excess_sq_eq_weighted_floor]
   exact odd_weighted_floor_sum_le R N N
+
+
+/-- Reindex the right-neighbor excess square from centers `2 ≤ n ≤ N` to
+the interval `3 ≤ m ≤ N+1`. -/
+theorem sum_Icc_v3Excess_sq_add_one (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n + 1) : ℝ) ^ 2) =
+      ∑ m ∈ Finset.Icc 3 (N + 1), (v3Excess R m : ℝ) ^ 2 := by
+  refine Finset.sum_bij (fun n _ => n + 1) ?_ ?_ ?_ ?_
+  · intro n hn
+    simp only [Finset.mem_Icc] at hn ⊢
+    omega
+  · intro a ha b hb hab
+    exact Nat.add_right_cancel hab
+  · intro m hm
+    have hmBounds := Finset.mem_Icc.mp hm
+    have hm3 : 3 ≤ m := hmBounds.1
+    have hmN : m ≤ N + 1 := hmBounds.2
+    refine ⟨m - 1, ?_, ?_⟩
+    · simp only [Finset.mem_Icc]
+      omega
+    · exact Nat.sub_add_cancel (by omega)
+  · intro n hn
+    rfl
+
+
+/-- Reindex the left-neighbor excess square from centers `2 ≤ n ≤ N` to
+the interval `1 ≤ m ≤ N-1`. -/
+theorem sum_Icc_v3Excess_sq_sub_one (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n - 1) : ℝ) ^ 2) =
+      ∑ m ∈ Finset.Icc 1 (N - 1), (v3Excess R m : ℝ) ^ 2 := by
+  refine Finset.sum_bij (fun n _ => n - 1) ?_ ?_ ?_ ?_
+  · intro n hn
+    simp only [Finset.mem_Icc] at hn ⊢
+    omega
+  · intro a ha b hb hab
+    simp only [Finset.mem_Icc] at ha hb
+    calc
+      a = (a - 1) + 1 := (Nat.sub_add_cancel (by omega)).symm
+      _ = (b - 1) + 1 := by rw [hab]
+      _ = b := Nat.sub_add_cancel (by omega)
+  · intro m hm
+    refine ⟨m + 1, ?_, ?_⟩
+    · simp only [Finset.mem_Icc] at hm ⊢
+      omega
+    · omega
+  · intro n hn
+    rfl
+
+/-- Finite squared-tail mass is exactly the sum of the two shifted excess-square
+masses. -/
+theorem sum_Icc_f3Tail_sq_eq_neighbor_excess (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) =
+      (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n + 1) : ℝ) ^ 2) +
+      (∑ n ∈ Finset.Icc 2 N, (v3Excess R (n - 1) : ℝ) ^ 2) := by
+  calc
+    _ = ∑ n ∈ Finset.Icc 2 N,
+        ((v3Excess R (n + 1) : ℝ) ^ 2 +
+          (v3Excess R (n - 1) : ℝ) ^ 2) := by
+      apply Finset.sum_congr rfl
+      intro n hn
+      have hn' : 1 < n := by
+        simp only [Finset.mem_Icc] at hn
+        omega
+      exact_mod_cast f3Tail_sq_eq_neighbor_excess R hn'
+    _ = _ := by
+      rw [Finset.sum_add_distrib]
+
+/-- Uniform finite L² bound for the full `F₃ - F₃,R` tail. -/
+theorem sum_Icc_f3Tail_sq_le (R N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) ≤
+      ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+      (N : ℝ) / (3 : ℝ) ^ R := by
+  rw [sum_Icc_f3Tail_sq_eq_neighbor_excess,
+    sum_Icc_v3Excess_sq_add_one, sum_Icc_v3Excess_sq_sub_one]
+  apply add_le_add
+  · calc
+      (∑ m ∈ Finset.Icc 3 (N + 1), (v3Excess R m : ℝ) ^ 2) ≤
+          ∑ m ∈ Finset.Icc 1 (N + 1), (v3Excess R m : ℝ) ^ 2 := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg ?_ ?_
+        · intro m hm
+          simp only [Finset.mem_Icc] at hm ⊢
+          omega
+        · intro m hm hnot
+          positivity
+      _ ≤ ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R :=
+        sum_Icc_v3Excess_sq_le R (N + 1)
+  · calc
+      (∑ m ∈ Finset.Icc 1 (N - 1), (v3Excess R m : ℝ) ^ 2) ≤
+          ∑ m ∈ Finset.Icc 1 N, (v3Excess R m : ℝ) ^ 2 := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg ?_ ?_
+        · intro m hm
+          simp only [Finset.mem_Icc] at hm ⊢
+          omega
+        · intro m hm hnot
+          positivity
+      _ ≤ (N : ℝ) / (3 : ℝ) ^ R :=
+        sum_Icc_v3Excess_sq_le R N
+
+
+/-- Uniform normalized finite L² bound for the full truncation tail.
+The bound is intentionally coarse but decays geometrically in the cutoff. -/
+theorem f3Tail_sq_cesaro_le (R N : ℕ) (hN : 0 < N) :
+    ((∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) / (N : ℝ)) ≤
+      3 / (3 : ℝ) ^ R := by
+  have hs := sum_Icc_f3Tail_sq_le R N
+  have hNr : (0 : ℝ) < (N : ℝ) := by
+    exact_mod_cast hN
+  have hp : (0 : ℝ) < (3 : ℝ) ^ R := by
+    positivity
+  have hN1 : (1 : ℝ) ≤ (N : ℝ) := by
+    exact_mod_cast (show 1 ≤ N by omega)
+  have hnum :
+      (((N + 1 : ℕ) : ℝ) + (N : ℝ)) ≤ 3 * (N : ℝ) := by
+    push_cast
+    nlinarith
+  have hsum :
+      ((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+          (N : ℝ) / (3 : ℝ) ^ R ≤
+        (3 * (N : ℝ)) / (3 : ℝ) ^ R := by
+    rw [← add_div]
+    exact div_le_div_of_nonneg_right hnum hp.le
+  calc
+    ((∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) / (N : ℝ)) ≤
+        ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+          (N : ℝ) / (3 : ℝ) ^ R) / (N : ℝ)) :=
+      div_le_div_of_nonneg_right hs hNr.le
+    _ ≤ (((3 * (N : ℝ)) / (3 : ℝ) ^ R) / (N : ℝ)) :=
+      div_le_div_of_nonneg_right hsum hNr.le
+    _ = 3 / (3 : ℝ) ^ R := by
+      field_simp [ne_of_gt hNr, ne_of_gt hp]
+
+/-- The uniform normalized L² tail majorant vanishes as the cutoff tends to infinity. -/
+theorem tendsto_f3Tail_sq_cesaro_majorant :
+    Filter.Tendsto (fun R : ℕ => 3 / (3 : ℝ) ^ R) Filter.atTop (𝓝 0) := by
+  have hpow :
+      Filter.Tendsto (fun R : ℕ => ((1 : ℝ) / 3) ^ R) Filter.atTop (𝓝 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+  simpa [div_pow, div_eq_mul_inv] using hpow.const_mul 3
+
+/-- Finite Cauchy-Schwarz control with the established L² tail bound inserted. -/
+theorem sum_Icc_f3Tail_mul_sq_le (R N : ℕ) (g : ℕ → ℝ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) * g n) ^ 2 ≤
+      (((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+        (N : ℝ) / (3 : ℝ) ^ R) *
+        ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+  calc
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) * g n) ^ 2 ≤
+        (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 :=
+      Finset.sum_mul_sq_le_sq_mul_sq (Finset.Icc 2 N)
+        (fun n => (f3Tail R n : ℝ)) g
+    _ ≤ (((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R +
+          (N : ℝ) / (3 : ℝ) ^ R) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+      exact mul_le_mul_of_nonneg_right (sum_Icc_f3Tail_sq_le R N)
+        (Finset.sum_nonneg (fun _ _ => sq_nonneg _))
+
+/-- Reindex a shifted tail square over the natural correlation interval. -/
+theorem sum_Icc_f3Tail_sq_add_shift (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) ^ 2) =
+      ∑ m ∈ Finset.Icc (2 + h) (N + h), (f3Tail R m : ℝ) ^ 2 := by
+  refine Finset.sum_bij (fun n _ => n + h) ?_ ?_ ?_ ?_
+  · intro n hn
+    simp only [Finset.mem_Icc] at hn ⊢
+    omega
+  · intro a ha b hb hab
+    exact Nat.add_right_cancel hab
+  · intro m hm
+    have hmBounds := Finset.mem_Icc.mp hm
+    refine ⟨m - h, ?_, ?_⟩
+    · simp only [Finset.mem_Icc]
+      omega
+    · exact Nat.sub_add_cancel (by omega)
+  · intro n hn
+    rfl
+
+/-- The finite L² tail estimate remains valid after any fixed nonnegative shift,
+at the cost of enlarging the terminal interval to N+h. -/
+theorem sum_Icc_f3Tail_sq_shift_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) ^ 2) ≤
+      (((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+      (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R) := by
+  rw [sum_Icc_f3Tail_sq_add_shift]
+  calc
+    (∑ m ∈ Finset.Icc (2 + h) (N + h), (f3Tail R m : ℝ) ^ 2) ≤
+        ∑ m ∈ Finset.Icc 2 (N + h), (f3Tail R m : ℝ) ^ 2 := by
+      refine Finset.sum_le_sum_of_subset_of_nonneg ?_ ?_
+      · intro m hm
+        simp only [Finset.mem_Icc] at hm ⊢
+        omega
+      · intro m hm hnot
+        positivity
+    _ ≤ (((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R) :=
+      sum_Icc_f3Tail_sq_le R (N + h)
+
+/-- At cutoff zero the truncation vanishes, so the tail is the full statistic. -/
+theorem f3Tail_zero (n : ℕ) : f3Tail 0 n = f3 n := by
+  simp [f3Tail, f3Trunc, v3Trunc]
+
+/-- Uniform finite second-moment bound for the shifted raw F₃ statistic. -/
+theorem sum_Icc_f3_sq_shift_le (h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3 (n + h) : ℝ) ^ 2) ≤
+      (((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)) := by
+  simpa [f3Tail_zero] using (sum_Icc_f3Tail_sq_shift_le 0 h N)
+
+/-- Exact pointwise decomposition of the raw-minus-truncated correlation error
+into two first-order tail terms and their overlap. -/
+theorem f3_correlation_sub_trunc_eq_tails (R h n : ℕ) :
+    (f3 n : ℝ) * (f3 (n + h) : ℝ) -
+        (f3Trunc R n : ℝ) * (f3Trunc R (n + h) : ℝ) =
+      (f3Tail R n : ℝ) * (f3 (n + h) : ℝ) +
+        (f3 n : ℝ) * (f3Tail R (n + h) : ℝ) -
+        (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ) := by
+  have hz :
+      f3 n * f3 (n + h) - f3Trunc R n * f3Trunc R (n + h) =
+        f3Tail R n * f3 (n + h) +
+          f3 n * f3Tail R (n + h) -
+          f3Tail R n * f3Tail R (n + h) := by
+    simp only [f3Tail]
+    ring
+  exact_mod_cast hz
+
+/-- Shifted version of the finite Cauchy–Schwarz tail estimate. -/
+theorem sum_Icc_f3Tail_shift_mul_sq_le (R h N : ℕ) (g : ℕ → ℝ) :
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) * g n) ^ 2 ≤
+      ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+        ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+  calc
+    (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) * g n) ^ 2 ≤
+        (∑ n ∈ Finset.Icc 2 N, (f3Tail R (n + h) : ℝ) ^ 2) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 :=
+      Finset.sum_mul_sq_le_sq_mul_sq (Finset.Icc 2 N)
+        (fun n => (f3Tail R (n + h) : ℝ)) g
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (g n) ^ 2 := by
+      exact mul_le_mul_of_nonneg_right (sum_Icc_f3Tail_sq_shift_le R h N)
+        (Finset.sum_nonneg (fun _ _ => sq_nonneg _))
+
+/-- Exact finite-sum decomposition of the raw-minus-truncated correlation error. -/
+theorem sum_Icc_f3_correlation_sub_trunc_eq_tails (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      ((f3 n : ℝ) * (f3 (n + h) : ℝ) -
+        (f3Trunc R n : ℝ) * (f3Trunc R (n + h) : ℝ))) =
+      (∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) * (f3 (n + h) : ℝ)) +
+      (∑ n ∈ Finset.Icc 2 N, (f3 n : ℝ) * (f3Tail R (n + h) : ℝ)) -
+      (∑ n ∈ Finset.Icc 2 N,
+        (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) := by
+  calc
+    _ = ∑ n ∈ Finset.Icc 2 N,
+        ((f3Tail R n : ℝ) * (f3 (n + h) : ℝ) +
+          (f3 n : ℝ) * (f3Tail R (n + h) : ℝ) -
+          (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) := by
+      apply Finset.sum_congr rfl
+      intro n hn
+      exact f3_correlation_sub_trunc_eq_tails R h n
+    _ = _ := by
+      rw [Finset.sum_sub_distrib, Finset.sum_add_distrib]
+
+/-- First Cauchy–Schwarz cross term: tail at n against raw F₃ at n+h. -/
+theorem sum_Icc_f3Tail_mul_f3_shift_sq_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3Tail R n : ℝ) * (f3 (n + h) : ℝ)) ^ 2 ≤
+      ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        ((N : ℝ) / (3 : ℝ) ^ R)) *
+        (((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)) := by
+  have hcs := sum_Icc_f3Tail_mul_sq_le R N (fun n => (f3 (n + h) : ℝ))
+  calc
+    _ ≤ ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          ((N : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (f3 (n + h) : ℝ) ^ 2 := hcs
+    _ ≤ ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          ((N : ℝ) / (3 : ℝ) ^ R)) *
+          (((N + h + 1 : ℕ) : ℝ) + ((N + h : ℕ) : ℝ)) := by
+      apply mul_le_mul_of_nonneg_left (sum_Icc_f3_sq_shift_le h N)
+      positivity
+
+/-- Second Cauchy–Schwarz cross term: raw F₃ at n against shifted tail at n+h. -/
+theorem sum_Icc_f3_mul_f3Tail_shift_sq_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3 n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 ≤
+      ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+        (((N + 1 : ℕ) : ℝ) + (N : ℝ)) := by
+  have hcs := sum_Icc_f3Tail_shift_mul_sq_le R h N (fun n => (f3 n : ℝ))
+  have hraw := sum_Icc_f3_sq_shift_le 0 N
+  have hraw' :
+      (∑ n ∈ Finset.Icc 2 N, (f3 n : ℝ) ^ 2) ≤
+        (((N + 1 : ℕ) : ℝ) + (N : ℝ)) := by
+    simpa using hraw
+  calc
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3 n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 =
+        (∑ n ∈ Finset.Icc 2 N,
+          (f3Tail R (n + h) : ℝ) * (f3 n : ℝ)) ^ 2 := by
+      apply congrArg (fun x : ℝ => x ^ 2)
+      apply Finset.sum_congr rfl
+      intro n hn
+      ring
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (f3 n : ℝ) ^ 2 := hcs
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          (((N + 1 : ℕ) : ℝ) + (N : ℝ)) := by
+      apply mul_le_mul_of_nonneg_left hraw'
+      positivity
+
+/-- Third Cauchy–Schwarz term: the overlap of the unshifted and shifted tails. -/
+theorem sum_Icc_f3Tail_mul_f3Tail_shift_sq_le (R h N : ℕ) :
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 ≤
+      ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+      ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+        ((N : ℝ) / (3 : ℝ) ^ R)) := by
+  have hcs := sum_Icc_f3Tail_shift_mul_sq_le R h N
+    (fun n => (f3Tail R n : ℝ))
+  have htail := sum_Icc_f3Tail_sq_le R N
+  calc
+    (∑ n ∈ Finset.Icc 2 N,
+      (f3Tail R n : ℝ) * (f3Tail R (n + h) : ℝ)) ^ 2 =
+        (∑ n ∈ Finset.Icc 2 N,
+          (f3Tail R (n + h) : ℝ) * (f3Tail R n : ℝ)) ^ 2 := by
+      apply congrArg (fun x : ℝ => x ^ 2)
+      apply Finset.sum_congr rfl
+      intro n hn
+      ring
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+          ∑ n ∈ Finset.Icc 2 N, (f3Tail R n : ℝ) ^ 2 := hcs
+    _ ≤ ((((N + h + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          (((N + h : ℕ) : ℝ) / (3 : ℝ) ^ R)) *
+        ((((N + 1 : ℕ) : ℝ) / (3 : ℝ) ^ R) +
+          ((N : ℝ) / (3 : ℝ) ^ R)) := by
+      apply mul_le_mul_of_nonneg_left htail
+      positivity
 
 end OmegaBalance
