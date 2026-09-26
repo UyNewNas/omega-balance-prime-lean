@@ -59,8 +59,7 @@ theorem sum_Icc_f3_sq_shift_eq_full_sub_prefix
         ∑ i ∈ Finset.range (N - 1), (f3 (i + 2 + h) : ℝ) ^ 2 := by
     apply Finset.sum_congr rfl
     intro i hi
-    congr 2
-    omega
+    simp [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
   rw [htail]
   ring
 
@@ -92,7 +91,6 @@ theorem f3ShiftSquareIccAverage_eq
   rw [sum_Icc_f3_sq_shift_eq_full_sub_prefix h N hN,
     f3CorrelationIccAverage_zero_eq_square]
   field_simp [hN0, hNh0]
-  ring
 
 /-- A fixed shift does not change the limiting raw F₃ square mean. -/
 theorem tendsto_f3ShiftSquareIccAverage (h : ℕ) :
@@ -152,7 +150,7 @@ theorem f3MeanSquareShiftIccAverage_eq (h N : ℕ) :
   unfold f3MeanSquareShiftIccAverage f3ShiftSquareIccAverage
     f3CorrelationIccAverage
   rw [hsum]
-  simp only [Nat.add_zero]
+  simp only [Nat.add_zero, Nat.add_comm h]
   ring
 
 /-- The required mean-square approximate period theorem. The hypothesis
