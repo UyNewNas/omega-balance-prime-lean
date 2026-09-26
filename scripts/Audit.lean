@@ -427,6 +427,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_two_inv_totient_pow_three
 #print axioms OmegaBalance.f3PrimeTailAPSum_normalized_tendsto
 #print axioms OmegaBalance.f3PrimeTailCountingReal_normalized_tendsto
+#print axioms OmegaBalance.prime_gt_three_of_f3_eq_neg_two
+#print axioms OmegaBalance.f3_prime_eq_neg_two_mod_twentyseven
+#print axioms OmegaBalance.f3_seventeen_mul_eq_two_iff_mod_twentyseven_ten
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
