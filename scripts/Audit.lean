@@ -418,6 +418,15 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PrimePosLevelAPDifference_normalized_tendsto
 #print axioms OmegaBalance.f3PrimePosLevelCountingReal_eq_APDifference
 #print axioms OmegaBalance.f3PrimePosLevelCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3_prime_natAbs_ge_iff_residue
+#print axioms OmegaBalance.f3APPrimes_tail_disjoint
+#print axioms OmegaBalance.f3APPrimes_tail_union_eq
+#print axioms OmegaBalance.f3PrimeTailCountingReal_eq_APSum
+#print axioms OmegaBalance.f3_pow_three_minus_one_coprime
+#print axioms OmegaBalance.f3_totient_pow_three
+#print axioms OmegaBalance.f3_two_inv_totient_pow_three
+#print axioms OmegaBalance.f3PrimeTailAPSum_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeTailCountingReal_normalized_tendsto
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
