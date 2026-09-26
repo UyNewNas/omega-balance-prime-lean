@@ -24,7 +24,7 @@ theorem f3_prime_eq_pos_level_iff_mod_exact
       rw [hlow, hhigh_ne]
       norm_num
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 3) (k := k) (by norm_num),
-          f3_two, v3_three]
+          v3_three]
       norm_cast
     · have hlow := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k) (n := 3)
       have hhigh := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k + 1) (n := 3)
@@ -34,9 +34,9 @@ theorem f3_prime_eq_pos_level_iff_mod_exact
         not_congr hhigh
       rw [hlow, hhigh_ne]
       norm_num
-      rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 4) (k := k) (by norm_num),
-          f3_three, v3_four]
-      norm_cast
+      rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 4) (k := k) (by norm_num)]
+      unfold f3 neighborDiff
+      simp [v3_four, v3_two]
 
 /-- Exact negative F₃ level as a nested power-of-three residue condition,
 including the two small primes. -/
@@ -58,8 +58,6 @@ theorem f3_prime_eq_neg_level_iff_mod_exact
         not_congr hhigh
       rw [hlow, hhigh_ne]
       norm_num
-      rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 1) (k := k) (by norm_num),
-          f3_two, v3_one]
       omega
     · have hlow := mod_pow_three_eq_one_iff_dvd_sub_one k 3 hk (by norm_num)
       have hhigh := mod_pow_three_eq_one_iff_dvd_sub_one (k + 1) 3 (by omega) (by norm_num)
@@ -68,8 +66,8 @@ theorem f3_prime_eq_neg_level_iff_mod_exact
         not_congr hhigh
       rw [hlow, hhigh_ne]
       norm_num
-      rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 2) (k := k) (by norm_num),
-          f3_three, v3_two]
-      omega
+      rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 2) (k := k) (by norm_num)]
+      unfold f3 neighborDiff
+      simp [v3_four, v3_two]
 
 end OmegaBalance
