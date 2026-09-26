@@ -48,8 +48,8 @@ theorem f3PadicLogComposition_fin_fiber_sum
         (f3PadicLogMulPolynomial x y ^ d).coeff n) =
       PowerSeries.coeff d (PowerSeries.log ℚ_[3]) *
         (x + y + x * y) ^ d := by
-  rw [Fin.sum_univ_eq_sum_range]
-  exact f3PadicLogComposition_range_fiber_sum x y d
+  simpa only [← Fin.sum_univ_eq_sum_range] using
+    (f3PadicLogComposition_range_fiber_sum x y d)
 
 /-- The sequence of exact finite fibers has the direct analytic logarithm as
 its sum whenever the nonlinear product increment lies in the open unit ball. -/
