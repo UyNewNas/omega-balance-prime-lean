@@ -95,9 +95,11 @@ theorem norm_f3PadicLogMulPolynomial_pow_coeff_le
     intro m
     induction m with
     | zero =>
+        simp only [pow_zero]
         change (Polynomial.C (1 : ℚ_[3])).gaussNorm
             f3PadicNormAbsoluteValue 1 = 1
-        simp
+        rw [Polynomial.gaussNorm_C]
+        simp [f3PadicNormAbsoluteValue]
     | succ m ih =>
         rw [pow_succ,
           Polynomial.gaussNorm_mul
