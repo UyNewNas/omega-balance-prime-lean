@@ -10,6 +10,8 @@ mean-square Cesàro algebra.
 
 namespace OmegaBalance
 
+open Filter Topology
+
 @[simp] theorem f3PadicKernel_two : f3PadicKernel 2 = 1 := by
   rw [f3PadicKernel, if_neg (by norm_num)]
   rw [v3_eq_zero_of_not_dvd (by norm_num)]
