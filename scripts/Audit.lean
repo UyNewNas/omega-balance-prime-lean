@@ -523,3 +523,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.hasSum_f3PadicLog_rescale_coeff
 #print axioms OmegaBalance.hasSum_f3PadicFormal_log_mul_rhs_coeff
 #print axioms OmegaBalance.hasSum_f3PadicFormal_log_mul_lhs_coeff
+
+-- Finite polynomial layer for the final p-adic log composition bridge.
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_eval_one
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_toPowerSeries
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_coeff_sum
