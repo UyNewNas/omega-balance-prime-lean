@@ -20,7 +20,7 @@
 | COR-1 | 固定 `h≥0` 的完整整数相关核 | **证明完成；PR #19 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | **证明完成；consumer exact head `0946893…` 已全绿，待 stacked 主线集成** |
-| DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | **进行中：`1/2` 已完成；高输出层输入桥 exact head `aa193c3…` 已全绿；`j≥1` 的 `3^{-j}` 仍待完成** |
+| DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | **证明完成；一般 `j≥1` 的 `3^{-j}` 已在 exact head `8029c306…` 全绿，待 stacked 主线集成** |
 | LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
 | RUN-2 | 上述长串的跨度有界版本 | 未完成；依赖定量上游版本 |
@@ -276,9 +276,9 @@ exact head `ffe62a3331f38f9b0312e4c16da723e2f60d9e61` 已通过 Lean
 有限检查 144240 PASS。因此乘数 17 的首分支 `1/2` 正式登记完成。后续仍需一般
 `F₃(17q)=2+j`（`j≥1`）的 `3^{-j}` 条件分布。
 
-### DEN-2：乘数 17 高层条件分布候选
+### DEN-2：乘数 17 高层条件分布（exact-head 已验证）
 
-分支 `feat/f3-prime-density-mul17-high-count-v1` 从 exact-green 的 PR #22 head `faa696ed655e18a20bc3eb80d4905d72cb640f32` 分出。新增候选层把 `F₃(17q)=k`（`k≥3`）精确识别为唯一 primitive residue `f3Mul17Residue k mod 3^k` 去掉其模 `3^(k+1)` 的唯一 lift，并复用未加权 AP-PNT 与已验证的 `F₃(q)=-2` 输入密度，目标为每个 `j≥1` 的真实条件计数比例趋于 `3^(-j)`。本层不以 AP 无穷性代替渐近密度；只有 exact-head build、回归、公理、源码和 Audit coverage 全绿后才登记完成。
+分支 `feat/f3-prime-density-mul17-high-count-v1` 从 exact-green 的 PR #22 head `faa696ed655e18a20bc3eb80d4905d72cb640f32` 分出。新增候选层把 `F₃(17q)=k`（`k≥3`）精确识别为唯一 primitive residue `f3Mul17Residue k mod 3^k` 去掉其模 `3^(k+1)` 的唯一 lift，并复用未加权 AP-PNT 与已验证的 `F₃(q)=-2` 输入密度，目标为每个 `j≥1` 的真实条件计数比例趋于 `3^(-j)`。exact head `8029c30612830f20ee4ce77e5afbf045bc2af30f` 已通过 Lean #577 与 Factor-sum #565；Axiom audit 409 declarations、Source audit 51 Lean files、Audit coverage 409/409、有限检查 144240 PASS。因此一般 `j≥1` 的 `3^(-j)` 条件分布证明层正式登记完成，仍待 stacked 主线集成。
 
 ## 停止规则
 
