@@ -235,6 +235,16 @@ PR #22 exact head `6922dad91bf4301d3bbbf6b78f4233b5f6677635` 已通过 Lean #460
 
 分支 `feat/f3-prime-density-residue-limits-v1` 在该 exact head 上继续：对模 `3^k` 的 `-1` 与 `+1` 原始剩余类应用 AP 计数极限，候选证明精确层的两个嵌套剩余类之差趋于 `1/3^k`，以及两侧深度至少 `K` 的剩余类和趋于 `1/3^(K-1)`。这一层在新 exact-head CI 全绿前不登记完成；下一步还必须利用 `f3_prime_eq_pos_level_iff`、`f3_prime_eq_neg_level_iff` 与 `f3_prime_natAbs_ge_iff` 把有限计数函数精确接回 F₃ 素数事件。
 
+
+### DEN-1：F₃ 精确层到模剩余类桥候选
+
+分支 `feat/f3-prime-density-exact-v1` 从已验证的 residue-model head 继续，新建
+`F3PrimeDensityExact.lean`。候选先证明 `p>3` 时
+`F₃(p)=+k` / `F₃(p)=-k` 分别等价于模 `3^k` 命中 `-1` / `+1`
+且模 `3^(k+1)` 不再命中的精确剩余条件，并补 `f3 2 = 1` 作为小素数边界。
+后续仍需把有限集合的 exact-residue cardinal 精确化为两个嵌套 AP count 的差，
+再处理 `p=2,3` 后导出全体素数的语义计数极限。
+
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
 ## 停止规则

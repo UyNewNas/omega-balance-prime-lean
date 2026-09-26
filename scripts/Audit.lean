@@ -413,6 +413,13 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PrimeNegExactResidueCountingReal_normalized_tendsto
 #print axioms OmegaBalance.f3PrimeTailResidueCountingReal_normalized_tendsto
 
+-- Exact F₃ level-to-residue bridge above the small-prime boundary.
+#print axioms OmegaBalance.f3_two
+#print axioms OmegaBalance.mod_pow_three_eq_sub_one_iff_dvd_add_one
+#print axioms OmegaBalance.mod_pow_three_eq_one_iff_dvd_sub_one
+#print axioms OmegaBalance.f3_prime_eq_pos_level_iff_mod_exact_above_three
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff_mod_exact_above_three
+
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
 #print axioms OmegaBalance.exists_consecutive_primes_f3_pos_neg
