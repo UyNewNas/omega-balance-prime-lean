@@ -19,14 +19,19 @@ lemma f3_mod_pow_three_eq_sub_one_iff_dvd_add_one
       show n % (3 ^ k) = (3 ^ k - 1) % (3 ^ k)
       simpa [Nat.mod_eq_of_lt hmlt] using hmod
     have hadd := hmeq.add_right 1
+    have hmzero : 3 ^ k ≡ 0 [MOD 3 ^ k] :=
+      Nat.modEq_zero_iff_dvd.mpr (dvd_refl _)
     have hz : n + 1 ≡ 0 [MOD 3 ^ k] := by
-      simpa [Nat.sub_add_cancel hmone] using hadd
+      have : n + 1 ≡ 3 ^ k [MOD 3 ^ k] := by
+        simpa [Nat.sub_add_cancel hmone] using hadd
+      exact this.trans hmzero
     exact Nat.modEq_zero_iff_dvd.mp hz
   · intro hdiv
     have hz : n + 1 ≡ 0 [MOD 3 ^ k] :=
       Nat.modEq_zero_iff_dvd.mpr hdiv
     have hbase : (3 ^ k - 1) + 1 ≡ 0 [MOD 3 ^ k] := by
-      simp [Nat.sub_add_cancel hmone]
+      rw [Nat.sub_add_cancel hmone]
+      exact Nat.modEq_zero_iff_dvd.mpr (dvd_refl _)
     have heq : n + 1 ≡ (3 ^ k - 1) + 1 [MOD 3 ^ k] :=
       hz.trans hbase.symm
     have hmeq : n ≡ 3 ^ k - 1 [MOD 3 ^ k] :=
@@ -51,9 +56,16 @@ theorem f3_prime_eq_pos_level_iff_nested_residue
         norm_num
       · have h3p : 3 < p := by
           by_contra hnot
+          have hpge : 2 ≤ p := hp.two_le
           have hp3 : p = 3 := by omega
           subst p
-          rw [f3_three] at hf
+          have hv4 : v3 4 = 0 :=
+            v3_eq_zero_of_not_dvd (by norm_num)
+          have hv2 : v3 2 = 0 :=
+            v3_eq_zero_of_not_dvd (by norm_num)
+          have hf3 : f3 3 = 0 := by
+            simp [f3, neighborDiff, hv4, hv2]
+          rw [hf3] at hf
           omega
         exact (f3_pos_iff_mod_three hp h3p).mp hpos
     have he := (f3_of_mod_three_two hp.one_lt hm).1
