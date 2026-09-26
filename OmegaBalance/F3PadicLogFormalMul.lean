@@ -15,7 +15,7 @@ local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
 /-- Chain-rule form of the formal identity
 `(log(1+f))' * (1+f) = f'` for a zero-constant-term series `f`. -/
 theorem f3PadicFormal_log_derivative_mul_one_add
-    (f : (ℚ_[3])⟦X⟧) (hf : PowerSeries.constantCoeff f = 0) :
+    (f : PowerSeries ℚ_[3]) (hf : PowerSeries.constantCoeff f = 0) :
     d⁄dX ((PowerSeries.log ℚ_[3]).subst f) * (1 + f) = d⁄dX f := by
   have hs : PowerSeries.HasSubst f :=
     PowerSeries.HasSubst.of_constantCoeff_zero' hf
@@ -30,7 +30,7 @@ theorem f3PadicFormal_log_derivative_mul_one_add
               rw [PowerSeries.subst_mul hs, PowerSeries.subst_add hs,
                 PowerSeries.subst_X hs]
               simp
-      _ = (1 : (ℚ_[3])⟦X⟧).subst f := by
+      _ = (1 : PowerSeries ℚ_[3]).subst f := by
             rw [PowerSeries.derivative_log_mul_one_add_X]
       _ = 1 := by simp
   calc
@@ -45,13 +45,13 @@ theorem f3PadicFormal_log_derivative_mul_one_add
 This is the exact algebraic identity needed before the analytic evaluation
 step in LOG-1. -/
 theorem f3PadicFormal_log_mul
-    (f g : (ℚ_[3])⟦X⟧)
+    (f g : PowerSeries ℚ_[3])
     (hf : PowerSeries.constantCoeff f = 0)
     (hg : PowerSeries.constantCoeff g = 0) :
     (PowerSeries.log ℚ_[3]).subst (f + g + f * g) =
       (PowerSeries.log ℚ_[3]).subst f +
         (PowerSeries.log ℚ_[3]).subst g := by
-  let h : (ℚ_[3])⟦X⟧ := f + g + f * g
+  let h : PowerSeries ℚ_[3] := f + g + f * g
   have hh : PowerSeries.constantCoeff h = 0 := by
     dsimp [h]
     simp [hf, hg]
