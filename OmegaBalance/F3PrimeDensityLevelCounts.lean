@@ -15,14 +15,16 @@ theorem f3_prime_eq_pos_level_iff_mod_exact
     have hp3 : p ≤ 3 := by omega
     have hp23 : p = 2 ∨ p = 3 := by omega
     rcases hp23 with rfl | rfl
-    · rw [mod_pow_three_eq_sub_one_iff_dvd_add_one,
-          mod_pow_three_eq_sub_one_iff_dvd_add_one]
+    · have hlow := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k) (n := 2)
+      have hhigh := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k + 1) (n := 2)
+      rw [hlow, not_congr hhigh]
       norm_num
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 3) (k := k) (by norm_num),
           f3_two, v3_three]
       norm_cast
-    · rw [mod_pow_three_eq_sub_one_iff_dvd_add_one,
-          mod_pow_three_eq_sub_one_iff_dvd_add_one]
+    · have hlow := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k) (n := 3)
+      have hhigh := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k + 1) (n := 3)
+      rw [hlow, not_congr hhigh]
       norm_num
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 4) (k := k) (by norm_num),
           f3_three, v3_four]
@@ -41,14 +43,16 @@ theorem f3_prime_eq_neg_level_iff_mod_exact
     have hp3 : p ≤ 3 := by omega
     have hp23 : p = 2 ∨ p = 3 := by omega
     rcases hp23 with rfl | rfl
-    · rw [mod_pow_three_eq_one_iff_dvd_sub_one k 2 hk (by norm_num),
-          mod_pow_three_eq_one_iff_dvd_sub_one (k + 1) 2 (by omega) (by norm_num)]
+    · have hlow := mod_pow_three_eq_one_iff_dvd_sub_one k 2 hk (by norm_num)
+      have hhigh := mod_pow_three_eq_one_iff_dvd_sub_one (k + 1) 2 (by omega) (by norm_num)
+      rw [hlow, not_congr hhigh]
       norm_num
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 1) (k := k) (by norm_num),
           f3_two, v3_one]
       omega
-    · rw [mod_pow_three_eq_one_iff_dvd_sub_one k 3 hk (by norm_num),
-          mod_pow_three_eq_one_iff_dvd_sub_one (k + 1) 3 (by omega) (by norm_num)]
+    · have hlow := mod_pow_three_eq_one_iff_dvd_sub_one k 3 hk (by norm_num)
+      have hhigh := mod_pow_three_eq_one_iff_dvd_sub_one (k + 1) 3 (by omega) (by norm_num)
+      rw [hlow, not_congr hhigh]
       norm_num
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 2) (k := k) (by norm_num),
           f3_three, v3_two]
