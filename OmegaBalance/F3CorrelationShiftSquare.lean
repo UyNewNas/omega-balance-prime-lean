@@ -150,7 +150,7 @@ theorem f3MeanSquareShiftIccAverage_eq (h N : ℕ) :
   unfold f3MeanSquareShiftIccAverage f3ShiftSquareIccAverage
     f3CorrelationIccAverage
   rw [hsum]
-  simp only [Nat.add_zero, Nat.add_comm h]
+  simp only [Nat.add_zero]
   ring
 
 /-- The required mean-square approximate period theorem. The hypothesis
