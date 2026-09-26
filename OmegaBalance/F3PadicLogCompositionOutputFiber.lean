@@ -37,7 +37,30 @@ theorem hasSum_f3PadicLogComposition_by_output
       HasSum F (f3PadicLogOnePlus (x + y + x * y)) := by
     rw [← f3PadicLogComposition_supported_tsum_eq hx hy hxy]
     exact hs.hasSum
-  with_reducible_and_instances
-    simpa [F] using htotal.tsum_fiberwise (fun p => p.2.1)
+  have hfib := htotal.tsum_fiberwise (fun p => p.2.1)
+  refine hfib.congr fun n => ?_
+  let e :
+      ↑((fun p : (Σ d : ℕ, Fin (2 * d + 1)) => p.2.1) ⁻¹'
+        ({n} : Set ℕ)) ≃
+        {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n} where
+    toFun p := ⟨p.1, by simpa using p.2⟩
+    invFun p := ⟨p.1, by simpa using p.2⟩
+    left_inv p := by rfl
+    right_inv p := by rfl
+  calc
+    (∑' b : ↑((fun p : (Σ d : ℕ, Fin (2 * d + 1)) => p.2.1) ⁻¹'
+        ({n} : Set ℕ)), F b) =
+        ∑' p : {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n},
+          F p := by
+            rw [← e.tsum_eq]
+            apply tsum_congr
+            intro p
+            rfl
+    _ = ∑' p : {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n},
+        PowerSeries.coeff p.1.1 (PowerSeries.log ℚ_[3]) *
+          (f3PadicLogMulPolynomial x y ^ p.1.1).coeff p.1.2 := by
+            apply tsum_congr
+            intro p
+            rfl
 
 end OmegaBalance
