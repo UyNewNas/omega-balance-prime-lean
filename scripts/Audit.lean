@@ -462,3 +462,11 @@ import OmegaBalance.F3DeeperExamples
 -- Regression guards for the scope of the infinitude statements.
 #print axioms OmegaBalance.f3_infinitude_residue_not_necessary_example
 #print axioms OmegaBalance.f3_consecutive_crossing_not_twin_example
+
+-- Principal-unit p-adic domain for the genuine logarithmic coordinate.
+#print axioms OmegaBalance.f3PadicUnit_mul
+#print axioms OmegaBalance.f3PadicDelta_eq_intCast
+#print axioms OmegaBalance.f3PadicDelta_valuation
+#print axioms OmegaBalance.f3PadicDelta_ne_zero
+#print axioms OmegaBalance.f3PadicDelta_norm
+#print axioms OmegaBalance.f3PadicDelta_norm_lt_one
