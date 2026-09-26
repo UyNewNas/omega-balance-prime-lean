@@ -77,4 +77,27 @@ theorem f3PrimeNegLevelAPDifference_normalized_tendsto_totient
       (by positivity) (by simp) hkslt
   simpa [f3PrimeNegLevelAPDifference, sub_div] using h0.sub h1
 
+
+/-- Euler's totient constants for two successive powers of three differ by
+exactly the density constant `3⁻ᵏ`. -/
+lemma f3_totient_three_pow_inv_sub_succ
+    {k : ℕ} (hk : 0 < k) :
+    ((Nat.totient (3 ^ k) : ℝ)⁻¹) -
+        ((Nat.totient (3 ^ (k + 1)) : ℝ)⁻¹) =
+      1 / (3 : ℝ) ^ k := by
+  obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero hk.ne'
+  simp [Nat.totient_prime_pow, Nat.prime_three, pow_succ]
+  field_simp
+  ring
+
+/-- The exact negative-level AP proxy therefore has normalized density `3⁻ᵏ`. -/
+theorem f3PrimeNegLevelAPDifference_normalized_tendsto
+    {k : ℕ} (hk : 0 < k) :
+    Tendsto
+      (fun x : ℝ =>
+        f3PrimeNegLevelAPDifference k x / (x / Real.log x))
+      atTop (𝓝 (1 / (3 : ℝ) ^ k)) := by
+  simpa [f3_totient_three_pow_inv_sub_succ hk] using
+    f3PrimeNegLevelAPDifference_normalized_tendsto_totient hk
+
 end OmegaBalance
