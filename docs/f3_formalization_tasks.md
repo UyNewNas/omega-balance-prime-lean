@@ -280,6 +280,22 @@ exact head `ffe62a3331f38f9b0312e4c16da723e2f60d9e61` 已通过 Lean
 
 分支 `feat/f3-prime-density-mul17-high-count-v1` 从 exact-green 的 PR #22 head `faa696ed655e18a20bc3eb80d4905d72cb640f32` 分出。新增候选层把 `F₃(17q)=k`（`k≥3`）精确识别为唯一 primitive residue `f3Mul17Residue k mod 3^k` 去掉其模 `3^(k+1)` 的唯一 lift，并复用未加权 AP-PNT 与已验证的 `F₃(q)=-2` 输入密度，目标为每个 `j≥1` 的真实条件计数比例趋于 `3^(-j)`。exact head `8029c30612830f20ee4ce77e5afbf045bc2af30f` 已通过 Lean #577 与 Factor-sum #565；Axiom audit 409 declarations、Source audit 51 Lean files、Audit coverage 409/409、有限检查 144240 PASS。因此一般 `j≥1` 的 `3^(-j)` 条件分布证明层正式登记完成，仍待 stacked 主线集成。
 
+
+### LOG-1 convergence layer: exact-head verified
+
+Commit e48150f668cc5d8321877fa1a541f59077166057 adds
+OmegaBalance/F3PadicLog.lean. It defines the genuine Q_3 logarithm series,
+proves the natural-denominator inverse norm bound, a geometric norm majorant,
+term decay, absolute summability on the open unit ball, and the resulting
+HasSum for every admissible F3 input n > 1 with 3 not dividing n. All seven
+new theorem declarations are registered in scripts/Audit.lean.
+
+Exact-head gates: Lean run 607 (36241672820) SUCCESS and Factor-sum run 595
+(36241672808) SUCCESS. Build, kernel regressions, axiom audit,
+source/declaration coverage, and finite regressions all passed at the same
+commit. This closes only the convergence/existence sublayer of LOG-1;
+multiplicativity and valuation/isometry remain open.
+
 ## 停止规则
 
 只有 INF、COR、DEN、LOG、RUN 全部目标得到非空洞 Lean 证明并集成主分支，上游依赖经过信任审计，且精确版本的构建、回归、公理、源码、覆盖全部通过后，才结束全量任务。当前尚未满足停止条件。
