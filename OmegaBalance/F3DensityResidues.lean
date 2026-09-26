@@ -21,8 +21,10 @@ theorem f3_pos_residue_two_coprime {k : ℕ} (hk : 0 < k) :
     apply Nat.Coprime.symm
     apply Nat.prime_three.coprime_iff_not_dvd.mpr
     intro h
-    have hm := Nat.mod_eq_zero_of_dvd hd
+    have hd2 : 3 ∣ 2 * (3 : ℕ) ^ k := dvd_mul_of_dvd_right hd 2
+    have hm := Nat.mod_eq_zero_of_dvd hd2
     have hm' := Nat.mod_eq_zero_of_dvd h
+    have hp2 : 0 < 2 * (3 : ℕ) ^ k := by positivity
     omega
   exact hc.pow_right (k + 1)
 
@@ -34,7 +36,8 @@ theorem f3_neg_residue_two_coprime {k : ℕ} (hk : 0 < k) :
     apply Nat.Coprime.symm
     apply Nat.prime_three.coprime_iff_not_dvd.mpr
     intro h
-    have hm := Nat.mod_eq_zero_of_dvd hd
+    have hd2 : 3 ∣ 2 * (3 : ℕ) ^ k := dvd_mul_of_dvd_right hd 2
+    have hm := Nat.mod_eq_zero_of_dvd hd2
     have hm' := Nat.mod_eq_zero_of_dvd h
     omega
   exact hc.pow_right (k + 1)
@@ -76,7 +79,8 @@ theorem f3_neg_of_modEq_level_two {n k : ℕ} (hn : 1 < n) (hk : 0 < k)
     rw [pow_succ]
     have hk3 : 3 ≤ (3 : ℕ) ^ k := by
       obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hk)
-      simp [pow_succ]
+      simp only [pow_succ]
+      positivity
     omega
   have hr : n % 3 ^ (k + 1) = 2 * 3 ^ k + 1 := by
     simpa only [Nat.ModEq, Nat.mod_eq_of_lt hsmall] using hmod
@@ -84,7 +88,9 @@ theorem f3_neg_of_modEq_level_two {n k : ℕ} (hn : 1 < n) (hk : 0 < k)
   rw [hr, pow_succ] at he
   have hf : n - 1 = 3 ^ k * (2 + 3 * (n / 3 ^ (k + 1))) := by
     rw [pow_succ]
-    nlinarith
+    have heq : n = 3 ^ k * (2 + 3 * (n / (3 ^ k * 3))) + 1 := by
+      nlinarith [he]
+    omega
   have hv0 : v3 (2 + 3 * (n / 3 ^ (k + 1))) = 0 := by
     apply v3_eq_zero_of_not_dvd
     simp [Nat.dvd_iff_mod_eq_zero, Nat.add_mod]
