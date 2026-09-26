@@ -16,16 +16,16 @@ local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
 `(log(1+f))' * (1+f) = f'` for a zero-constant-term series `f`. -/
 theorem f3PadicFormal_log_derivative_mul_one_add
     (f : PowerSeries ℚ_[3]) (hf : PowerSeries.constantCoeff f = 0) :
-    d⁄dX ((PowerSeries.log ℚ_[3]).subst f) * (1 + f) = d⁄dX f := by
+    PowerSeries.derivative ((PowerSeries.log ℚ_[3]).subst f) * (1 + f) = PowerSeries.derivative f := by
   have hs : PowerSeries.HasSubst f :=
     PowerSeries.HasSubst.of_constantCoeff_zero' hf
   rw [PowerSeries.derivative_subst hs]
   have hlog :
-      (d⁄dX (PowerSeries.log ℚ_[3])).subst f * (1 + f) = 1 := by
+      (PowerSeries.derivative (PowerSeries.log ℚ_[3])).subst f * (1 + f) = 1 := by
     calc
-      (d⁄dX (PowerSeries.log ℚ_[3])).subst f * (1 + f)
+      (PowerSeries.derivative (PowerSeries.log ℚ_[3])).subst f * (1 + f)
           =
-          ((d⁄dX (PowerSeries.log ℚ_[3])) *
+          ((PowerSeries.derivative (PowerSeries.log ℚ_[3])) *
             (1 + PowerSeries.X)).subst f := by
               rw [PowerSeries.subst_mul hs, PowerSeries.subst_add hs,
                 PowerSeries.subst_X hs]
@@ -34,11 +34,11 @@ theorem f3PadicFormal_log_derivative_mul_one_add
             rw [PowerSeries.derivative_log_mul_one_add_X]
       _ = 1 := by simp
   calc
-    ((d⁄dX (PowerSeries.log ℚ_[3])).subst f * d⁄dX f) * (1 + f)
+    ((PowerSeries.derivative (PowerSeries.log ℚ_[3])).subst f * PowerSeries.derivative f) * (1 + f)
         =
-        ((d⁄dX (PowerSeries.log ℚ_[3])).subst f * (1 + f)) *
-          d⁄dX f := by ring
-    _ = d⁄dX f := by rw [hlog, one_mul]
+        ((PowerSeries.derivative (PowerSeries.log ℚ_[3])).subst f * (1 + f)) *
+          PowerSeries.derivative f := by ring
+    _ = PowerSeries.derivative f := by rw [hlog, one_mul]
 
 /-- Purely formal logarithm group law:
 `log(1 + f + g + fg) = log(1+f) + log(1+g)`.
@@ -68,27 +68,27 @@ theorem f3PadicFormal_log_mul
     dsimp [h]
     ring
   have hderiv :
-      d⁄dX h = (d⁄dX f) * (1 + g) + (d⁄dX g) * (1 + f) := by
+      PowerSeries.derivative h = (PowerSeries.derivative f) * (1 + g) + (PowerSeries.derivative g) * (1 + f) := by
     dsimp [h]
     simp only [map_add, Derivation.leibniz]
     ring
   have hrhs :
-      d⁄dX ((PowerSeries.log ℚ_[3]).subst f +
+      PowerSeries.derivative ((PowerSeries.log ℚ_[3]).subst f +
           (PowerSeries.log ℚ_[3]).subst g) * (1 + h) =
-        d⁄dX h := by
+        PowerSeries.derivative h := by
     rw [map_add, hfactor]
     calc
-      (d⁄dX ((PowerSeries.log ℚ_[3]).subst f) +
-          d⁄dX ((PowerSeries.log ℚ_[3]).subst g)) *
+      (PowerSeries.derivative ((PowerSeries.log ℚ_[3]).subst f) +
+          PowerSeries.derivative ((PowerSeries.log ℚ_[3]).subst g)) *
             ((1 + f) * (1 + g))
           =
-          (d⁄dX ((PowerSeries.log ℚ_[3]).subst f) * (1 + f)) *
+          (PowerSeries.derivative ((PowerSeries.log ℚ_[3]).subst f) * (1 + f)) *
               (1 + g) +
-            (d⁄dX ((PowerSeries.log ℚ_[3]).subst g) * (1 + g)) *
+            (PowerSeries.derivative ((PowerSeries.log ℚ_[3]).subst g) * (1 + g)) *
               (1 + f) := by ring
-      _ = (d⁄dX f) * (1 + g) + (d⁄dX g) * (1 + f) := by
+      _ = (PowerSeries.derivative f) * (1 + g) + (PowerSeries.derivative g) * (1 + f) := by
             rw [hfmain, hgmain]
-      _ = d⁄dX h := hderiv.symm
+      _ = PowerSeries.derivative h := hderiv.symm
   change (PowerSeries.log ℚ_[3]).subst h =
       (PowerSeries.log ℚ_[3]).subst f +
         (PowerSeries.log ℚ_[3]).subst g
