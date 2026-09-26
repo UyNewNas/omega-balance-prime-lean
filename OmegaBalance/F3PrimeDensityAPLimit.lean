@@ -86,7 +86,9 @@ lemma f3_totient_three_pow_inv_sub_succ
         ((Nat.totient (3 ^ (k + 1)) : ℝ)⁻¹) =
       1 / (3 : ℝ) ^ k := by
   obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero hk.ne'
-  simp [Nat.totient_prime_pow, Nat.prime_three, pow_succ]
+  rw [Nat.totient_prime_pow Nat.prime_three (by omega : 0 < j + 1)]
+  rw [Nat.totient_prime_pow Nat.prime_three (by omega : 0 < (j + 1) + 1)]
+  norm_num [Nat.add_sub_cancel, pow_succ]
   field_simp
   ring
 
