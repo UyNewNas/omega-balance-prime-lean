@@ -19,7 +19,7 @@
 | INF-2 | 全体素数数列中连续两项的正→负、负→正转移各无穷次 | **完成，PR #6** |
 | COR-1 | 固定 `h≥0` 的完整整数相关核 | **证明完成；PR #19 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
-| DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | 未完成；需 ANT 等差数列渐近计数桥梁 |
+| DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | **证明完成；consumer exact head `0946893…` 已全绿，待 stacked 主线集成** |
 | DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | 未完成；依赖 DEN-1 |
 | LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
@@ -255,6 +255,23 @@ kernel regression、axiom/source audit、declaration coverage 与有限 F₃
 随后复用同一个未加权 AP-PNT 桥和 Euler-totient 差，目标定理
 `f3PrimePosLevelCountingReal_normalized_tendsto` 的常数同样为 `3^{-k}`。
 新声明已加入 `scripts/Audit.lean`；只有该新 exact head 完整门禁通过后才登记完成。
+
+### DEN-2：乘数 17 的第一条件分支计数候选
+
+从 exact-green consumer head `0946893b03609c192341a0c3b0fb2942f16142a2`
+分出 `feat/f3-prime-density-mul17-count-v1`。本层新增真实事件集合
+`f3PrimeMul17EqTwoPrimes` 并证明候选恒等式
+
+```math
+\{q\le x:q\text{ prime},F_3(q)=-2,F_3(17q)=2\}
+=
+\{q\le x:q\text{ prime},q\equiv10\pmod{27}\}.
+```
+
+随后复用已验证的未加权 AP-PNT 桥，目标得到分子标准归一化密度
+`1/φ(27)=1/18`。结合已验证的输入层 `F₃(q)=-2` 密度 `1/9`，
+下一层将显式证明真实计数比趋于 `1/2`；不能只口头相除两个渐近常数。
+只有本分支 exact-head build、axiom/source audit、declaration coverage 全绿后才登记完成。
 
 ## 停止规则
 

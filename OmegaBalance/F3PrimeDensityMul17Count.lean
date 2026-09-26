@@ -1,0 +1,64 @@
+import OmegaBalance.F3PrimeDensityMul17
+
+open Filter Topology
+
+namespace OmegaBalance
+
+noncomputable def f3PrimeMul17EqTwoPrimes (x : ℝ) : Finset ℕ :=
+  (Finset.Icc 0 ⌊x⌋₊).filter fun q =>
+    q.Prime ∧ f3 q = -2 ∧ f3 (17 * q) = 2
+
+noncomputable def f3PrimeMul17EqTwoCountingReal (x : ℝ) : ℝ :=
+  (f3PrimeMul17EqTwoPrimes x).card
+
+theorem f3PrimeMul17EqTwoPrimes_eq_AP (x : ℝ) :
+    f3PrimeMul17EqTwoPrimes x = f3APPrimes 27 10 x := by
+  ext q
+  simp only [f3PrimeMul17EqTwoPrimes, f3APPrimes, Finset.mem_filter]
+  constructor
+  · rintro ⟨hrange, hq, hf, hout⟩
+    exact ⟨hrange, hq,
+      (f3_seventeen_mul_eq_two_iff_mod_twentyseven_ten hq hf).1 hout⟩
+  · rintro ⟨hrange, hq, hmod⟩
+    have hq3 : 3 < q := by omega
+    have h9 : q % 9 = 1 := by omega
+    have h27 : q % 27 ≠ 1 := by omega
+    have hf' : f3 q = -(2 : ℤ) :=
+      (f3_prime_eq_neg_level_iff_nested_residue
+        (p := q) (k := 2) hq hq3 (by norm_num)).2 ⟨by
+          norm_num
+          exact h9, by
+          norm_num
+          exact h27⟩
+    have hf : f3 q = -2 := by simpa using hf'
+    exact ⟨hrange, hq, hf,
+      (f3_seventeen_mul_eq_two_iff_mod_twentyseven_ten hq hf).2 hmod⟩
+
+theorem f3PrimeMul17EqTwoCountingReal_eq_APCountingReal (x : ℝ) :
+    f3PrimeMul17EqTwoCountingReal x =
+      f3PrimeAPCountingReal 27 10 x := by
+  rw [f3PrimeMul17EqTwoCountingReal,
+    f3PrimeAPCountingReal_eq_card_apPrimes,
+    f3PrimeMul17EqTwoPrimes_eq_AP]
+
+lemma f3_totient_twentyseven : Nat.totient 27 = 18 := by
+  have h := Nat.totient_prime_pow Nat.prime_three
+    (by norm_num : 0 < (3 : ℕ))
+  norm_num at h
+  exact h
+
+theorem f3PrimeMul17EqTwoCountingReal_normalized_tendsto :
+    Tendsto
+      (fun x : ℝ =>
+        f3PrimeMul17EqTwoCountingReal x / (x / Real.log x))
+      atTop (𝓝 (1 / 18 : ℝ)) := by
+  have h :=
+    f3PrimeAPCountingReal_normalized_tendsto
+      (A := 27) (a := 10) (by norm_num) (by norm_num) (by norm_num)
+  have h' := h.congr' <|
+    Filter.Eventually.of_forall fun x => by
+      exact congrArg (fun y : ℝ => y / (x / Real.log x))
+        (f3PrimeMul17EqTwoCountingReal_eq_APCountingReal x).symm
+  simpa [f3_totient_twentyseven, one_div] using h'
+
+end OmegaBalance
