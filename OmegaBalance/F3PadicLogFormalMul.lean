@@ -96,7 +96,8 @@ theorem f3PadicFormal_log_mul
   apply PowerSeries.derivative.ext
   · apply mul_right_cancel₀ hunit.ne_zero
     rw [hmain, hrhs]
-  · rw [PowerSeries.constantCoeff_subst_of_constantCoeff_zero hh,
+  · simp only [PowerSeries.constantCoeff_eq, map_add]
+    rw [PowerSeries.constantCoeff_subst_of_constantCoeff_zero hh,
       PowerSeries.constantCoeff_subst_of_constantCoeff_zero hf,
       PowerSeries.constantCoeff_subst_of_constantCoeff_zero hg]
     simp
