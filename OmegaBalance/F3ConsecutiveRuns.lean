@@ -98,4 +98,65 @@ theorem f3ConsecutiveRuns_of_residueRuns {c : ℤ} (hc : c ≠ 0) {L : ℕ}
   intro B
   exact f3ConsecutiveRun_of_residueRun hc (h (max B 1))
 
+
+/-- Uniform diameter bound for all members of a finite natural-number list. -/
+def ListDiameterLe (ps : List ℕ) (H : ℕ) : Prop :=
+  ∀ p ∈ ps, ∀ q ∈ ps, q - p ≤ H
+
+/-- A residue-class consecutive-prime block with an explicit diameter bound. -/
+def ConsecutivePrimeRunInClassBounded (a D L B H : ℕ) : Prop :=
+  ∃ ps : List ℕ,
+    ps.length = L ∧
+    ConsecutivePrimeBlock ps ∧
+    (∀ p ∈ ps, B < p) ∧
+    (∀ p ∈ ps, p ≡ a [MOD D]) ∧
+    ListDiameterLe ps H
+
+/-- A constant-F₃ consecutive-prime block with an explicit diameter bound. -/
+def F3ConsecutiveRunBounded (c : ℤ) (L B H : ℕ) : Prop :=
+  ∃ ps : List ℕ,
+    ps.length = L ∧
+    ConsecutivePrimeBlock ps ∧
+    (∀ p ∈ ps, B < p) ∧
+    (∀ p ∈ ps, f3 p = c) ∧
+    ListDiameterLe ps H
+
+/-- The residue-to-F₃ specialization preserves the same explicit span bound. -/
+theorem f3ConsecutiveRunBounded_of_residueRunBounded
+    {c : ℤ} (hc : c ≠ 0) {L B H : ℕ}
+    (h : ConsecutivePrimeRunInClassBounded
+      (f3RunResidue c) (f3RunModulus c) L (max B 1) H) :
+    F3ConsecutiveRunBounded c L B H := by
+  rcases h with ⟨ps, hlen, hblock, hB, hmod, hdiam⟩
+  refine ⟨ps, hlen, hblock, ?_, ?_, hdiam⟩
+  · intro p hp
+    exact lt_of_le_of_lt (Nat.le_max_left B 1) (hB p hp)
+  · intro p hp
+    have hp1 : 1 < p :=
+      lt_of_le_of_lt (Nat.le_max_right B 1) (hB p hp)
+    exact f3_of_modEq_runResidue hp1 hc (hmod p hp)
+
+/-- Arbitrarily far bounded residue runs give bounded exact F₃ runs. -/
+theorem f3ConsecutiveRunsBounded_of_residueRunsBounded
+    {c : ℤ} (hc : c ≠ 0) {L H : ℕ}
+    (h : ∀ B : ℕ, ConsecutivePrimeRunInClassBounded
+      (f3RunResidue c) (f3RunModulus c) L B H) :
+    ∀ B : ℕ, F3ConsecutiveRunBounded c L B H := by
+  intro B
+  exact f3ConsecutiveRunBounded_of_residueRunBounded hc (h (max B 1))
+
+/-- The length-one constant-F₃ consecutive run is already unconditional. -/
+theorem f3ConsecutiveRun_one {c : ℤ} (hc : c ≠ 0) (B : ℕ) :
+    F3ConsecutiveRun c 1 B := by
+  obtain ⟨p, hp, hB⟩ :=
+    Set.infinite_iff_exists_gt.mp (f3_prime_level_infinite hc) B
+  refine ⟨[p], by simp, ?_, ?_, ?_⟩
+  · simpa [ConsecutivePrimeBlock] using hp.1
+  · intro q hq
+    have hqp : q = p := by simpa using hq
+    simpa [hqp] using hB
+  · intro q hq
+    have hqp : q = p := by simpa using hq
+    simpa [hqp] using hp.2.2
+
 end OmegaBalance

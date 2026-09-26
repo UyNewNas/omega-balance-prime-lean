@@ -585,3 +585,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_of_modEq_runResidue
 #print axioms OmegaBalance.f3ConsecutiveRun_of_residueRun
 #print axioms OmegaBalance.f3ConsecutiveRuns_of_residueRuns
+#print axioms OmegaBalance.f3ConsecutiveRunBounded_of_residueRunBounded
+#print axioms OmegaBalance.f3ConsecutiveRunsBounded_of_residueRunsBounded
+#print axioms OmegaBalance.f3ConsecutiveRun_one
