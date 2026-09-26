@@ -157,6 +157,19 @@ raw correlation 的双极限交换；exact-head CI 完整通过后才登记完�
 
 最终修复 head `5c47684ca9fd579da817ddbf35e74ae34dd53f06` 已通过 Lean #363 与 Factor-sum #351：library build、kernel regressions、axiom/source audit、declaration coverage 与有限 F₃ 回归全部成功。Axiom audit 为 315 declarations，source audit 为 31 Lean files 无 proof escape，Audit coverage 315/315，有限回归 144240 PASS。因此 `tendsto_f3CorrelationErrorSqMajorant` 正式登记完成；它只证明固定 `h` 的 uniform square-error majorant 随 cutoff 消失，尚不单独构成 raw correlation 的双极限交换。
 
+### COR-1：自然 Icc 截断相关 Cesàro 桥接
+
+分支 `feat/f3-correlation-trunc-icc-cesaro-v1` 已把自然窗口 `2≤n≤N`
+上的截断相关平均与从 0 开始的周期模型严格桥接。修复 head
+`26ee1d6902fdb6927e1a1d06caa269c434b9e5ab` 已通过 Lean #368 与
+Factor-sum #356：library build、kernel regressions、axiom/source audit、
+declaration coverage 与有限 F₃ 回归全部成功。Axiom audit 为 320 declarations，
+source audit 为 32 Lean files 无 proof escape，Audit coverage 320/320，有限回归
+144240 PASS。核心接口为 `f3TruncCorrelationIccSum_eq_periodic_sub_boundary`、
+`f3TruncCorrelationIccAverage_eq` 与 `tendsto_f3TruncCorrelationIccAverage`。
+本分支将它与已验证的 uniform majorant cutoff 衰减合流，为最终 raw/cutoff
+双极限交换准备同一文件树；尚不宣告双极限已经完成。
+
 ## COR-1 剩余链条
 
 1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
