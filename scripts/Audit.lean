@@ -389,6 +389,68 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.pow_three_dvd_iff_le_v3
 #print axioms OmegaBalance.f3_prime_natAbs_ge_iff
 
+-- Unweighted AP-count bridge primitives for DEN-1.
+#print axioms OmegaBalance.f3ThetaAP_eq_sum_apPrimes
+#print axioms OmegaBalance.f3PrimeAPCountingReal_eq_card_apPrimes
+#print axioms OmegaBalance.f3ThetaAP_nonneg
+#print axioms OmegaBalance.f3ThetaAP_le_count_mul_log
+#print axioms OmegaBalance.f3IntegrableOn_thetaAP_div_id_mul_log_sq
+#print axioms OmegaBalance.f3PrimeAPCountingReal_eq_thetaAP_div_log_add_integral
+#print axioms OmegaBalance.f3ThetaAP_le_theta
+#print axioms OmegaBalance.f3Integral_thetaAP_div_log_sq_isLittleO
+#print axioms OmegaBalance.f3ThetaAP_asymptotic
+#print axioms OmegaBalance.f3ThetaAP_div_id_tendsto
+#print axioms OmegaBalance.f3PrimeAPCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeNegLevelAPDifference_normalized_tendsto_totient
+#print axioms OmegaBalance.f3_totient_three_pow_inv_sub_succ
+#print axioms OmegaBalance.f3PrimeNegLevelAPDifference_normalized_tendsto
+#print axioms OmegaBalance.f3_mod_pow_three_eq_one_iff_dvd_sub_one
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff_nested_residue
+#print axioms OmegaBalance.f3APPrimes_succ_subset
+#print axioms OmegaBalance.f3APPrimes_sdiff_eq_neg_level
+#print axioms OmegaBalance.f3PrimeNegLevelCountingReal_eq_APDifference
+#print axioms OmegaBalance.f3PrimeNegLevelCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3_mod_pow_three_eq_sub_one_iff_dvd_add_one
+#print axioms OmegaBalance.f3_prime_eq_pos_level_iff_nested_residue
+#print axioms OmegaBalance.f3APPrimes_pos_succ_subset
+#print axioms OmegaBalance.f3APPrimes_pos_sdiff_eq_pos_level
+#print axioms OmegaBalance.f3PrimePosLevelAPDifference_normalized_tendsto_totient
+#print axioms OmegaBalance.f3PrimePosLevelAPDifference_normalized_tendsto
+#print axioms OmegaBalance.f3PrimePosLevelCountingReal_eq_APDifference
+#print axioms OmegaBalance.f3PrimePosLevelCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3_prime_natAbs_ge_iff_residue
+#print axioms OmegaBalance.f3APPrimes_tail_disjoint
+#print axioms OmegaBalance.f3APPrimes_tail_union_eq
+#print axioms OmegaBalance.f3PrimeTailCountingReal_eq_APSum
+#print axioms OmegaBalance.f3_pow_three_minus_one_coprime
+#print axioms OmegaBalance.f3_totient_pow_three
+#print axioms OmegaBalance.f3_two_inv_totient_pow_three
+#print axioms OmegaBalance.f3PrimeTailAPSum_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeTailCountingReal_normalized_tendsto
+#print axioms OmegaBalance.prime_gt_three_of_f3_eq_neg_two
+#print axioms OmegaBalance.f3_prime_eq_neg_two_mod_twentyseven
+#print axioms OmegaBalance.f3_seventeen_mul_eq_two_iff_mod_twentyseven_ten
+#print axioms OmegaBalance.f3PrimeMul17EqTwoPrimes_eq_AP
+#print axioms OmegaBalance.f3PrimeMul17EqTwoCountingReal_eq_APCountingReal
+#print axioms OmegaBalance.f3_totient_twentyseven
+#print axioms OmegaBalance.f3PrimeMul17EqTwoCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeMul17EqTwoRelativeRatio_tendsto
+#print axioms OmegaBalance.f3_seventeen_mul_high_level_implies_neg_two
+#print axioms OmegaBalance.f3_seventeen_mul_eq_two_add_implies_neg_two
+#print axioms OmegaBalance.f3_seventeen_mul_eq_level_iff_nested_residue
+#print axioms OmegaBalance.f3APPrimes_mul17_succ_subset
+#print axioms OmegaBalance.f3APPrimes_mul17_sdiff_eq_level
+#print axioms OmegaBalance.f3PrimeMul17LevelAPDifference_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeMul17LevelCountingReal_eq_APDifference
+#print axioms OmegaBalance.f3PrimeMul17LevelCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeMul17HighRelativeRatio_tendsto
+#print axioms OmegaBalance.f3_seventeen_coprime_three_pow
+#print axioms OmegaBalance.f3Mul17ResidueUnit_spec
+#print axioms OmegaBalance.f3Mul17Residue_lt
+#print axioms OmegaBalance.f3Mul17Residue_coprime
+#print axioms OmegaBalance.pow_three_dvd_seventeen_mul_residue_add_one
+#print axioms OmegaBalance.pow_three_dvd_seventeen_mul_add_one_iff_mod_eq_residue
+
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
 #print axioms OmegaBalance.exists_consecutive_primes_f3_pos_neg
@@ -400,3 +462,98 @@ import OmegaBalance.F3DeeperExamples
 -- Regression guards for the scope of the infinitude statements.
 #print axioms OmegaBalance.f3_infinitude_residue_not_necessary_example
 #print axioms OmegaBalance.f3_consecutive_crossing_not_twin_example
+
+-- Principal-unit p-adic domain for the genuine logarithmic coordinate.
+#print axioms OmegaBalance.f3PadicUnit_mul
+#print axioms OmegaBalance.f3PadicDelta_eq_intCast
+#print axioms OmegaBalance.f3PadicDelta_valuation
+#print axioms OmegaBalance.f3PadicDelta_ne_zero
+#print axioms OmegaBalance.f3PadicDelta_norm
+#print axioms OmegaBalance.f3PadicDelta_norm_lt_one
+#print axioms OmegaBalance.f3Unit_eq_chi_mul
+#print axioms OmegaBalance.f3_eq_neg_chi_mul_natAbs
+#print axioms OmegaBalance.f3PadicDelta_pow_tendsto_zero
+#print axioms OmegaBalance.f3Padic_norm_inv_natCast_le
+#print axioms OmegaBalance.norm_f3PadicLogTerm_le
+#print axioms OmegaBalance.tendsto_succ_mul_pow_zero
+#print axioms OmegaBalance.tendsto_f3PadicLogTerm_zero
+#print axioms OmegaBalance.summable_f3PadicLogTerm
+#print axioms OmegaBalance.summable_f3PadicLog
+#print axioms OmegaBalance.hasSum_f3PadicLog
+#print axioms OmegaBalance.f3PadicDelta_norm_le_one_third
+#print axioms OmegaBalance.f3PadicLogTerm_valuation
+#print axioms OmegaBalance.f3PadicLogTerm_delta_valuation_gt
+#print axioms OmegaBalance.norm_f3PadicLogTerm_delta_lt_first
+#print axioms OmegaBalance.norm_f3PadicLogTerm_delta_le_next_radius
+#print axioms OmegaBalance.norm_f3PadicLogTail_le_next_radius
+#print axioms OmegaBalance.norm_f3PadicLogTail_lt_delta
+#print axioms OmegaBalance.f3PadicLog_eq_delta_add_tail
+#print axioms OmegaBalance.f3PadicLog_norm_eq_delta_norm
+#print axioms OmegaBalance.f3PadicLog_ne_zero
+#print axioms OmegaBalance.f3PadicLog_valuation
+#print axioms OmegaBalance.f3_eq_neg_chi_mul_log_valuation
+
+#print axioms OmegaBalance.f3PadicLogTerm_eq_powerSeries_coeff
+#print axioms OmegaBalance.hasSum_f3PadicLog_powerSeries_coeff
+#print axioms OmegaBalance.f3PadicExp_eq_tsum_powerSeries_coeff
+#print axioms OmegaBalance.f3PadicFormal_exp_subst_log
+#print axioms OmegaBalance.f3PadicFormal_log_subst_exp_sub_one
+#print axioms OmegaBalance.f3_three_not_dvd_mul
+#print axioms OmegaBalance.f3PadicDelta_mul
+#print axioms OmegaBalance.one_add_f3PadicDelta_mul
+#print axioms OmegaBalance.f3PadicDelta_mul_norm_lt_one
+#print axioms OmegaBalance.f3PadicLog_mul_reduction
+#print axioms OmegaBalance.hasSum_f3PadicLog_mul_delta
+#print axioms OmegaBalance.f3PadicLog_mul_defect_eq
+#print axioms OmegaBalance.norm_f3PadicLogTail_le_one_ninth
+#print axioms OmegaBalance.norm_f3PadicDelta_mul_le_one_ninth
+#print axioms OmegaBalance.f3PadicLog_mul_defect_norm_le_one_ninth
+
+#print axioms OmegaBalance.norm_f3PadicLogTail_le_delta_div_three
+#print axioms OmegaBalance.norm_f3PadicDelta_product_le_max
+#print axioms OmegaBalance.norm_f3PadicDelta_mul_le_max_div_three
+#print axioms OmegaBalance.f3PadicLog_mul_defect_norm_le_max_div_three
+
+-- Formal logarithm group law for the final LOG-1 multiplicativity bridge.
+#print axioms OmegaBalance.f3PadicFormal_log_derivative_mul_one_add
+#print axioms OmegaBalance.f3PadicFormal_log_mul
+
+-- Coefficient-sum specialization of the formal logarithm group law.
+#print axioms OmegaBalance.f3PadicFormal_log_mul_rescale
+#print axioms OmegaBalance.hasSum_f3PadicLog_rescale_coeff
+#print axioms OmegaBalance.hasSum_f3PadicFormal_log_mul_rhs_coeff
+#print axioms OmegaBalance.hasSum_f3PadicFormal_log_mul_lhs_coeff
+
+-- Finite polynomial layer for the final p-adic log composition bridge.
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_eval_one
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_toPowerSeries
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_coeff_sum
+
+-- Finite outer-truncation bridge toward the final analytic composition identity.
+#print axioms OmegaBalance.hasSum_f3PadicLog_all_coeff
+#print axioms OmegaBalance.f3PadicLogTrunc_eval_eq_sum_range
+#print axioms OmegaBalance.tendsto_f3PadicLogTrunc_eval
+#print axioms OmegaBalance.f3PadicLogTrunc_comp_eval_one
+#print axioms OmegaBalance.tendsto_f3PadicLogTrunc_product_eval
+
+-- Nonarchimedean coefficient control for the final composition regrouping.
+#print axioms OmegaBalance.f3PadicNormAbsoluteValue_apply
+#print axioms OmegaBalance.f3PadicNormAbsoluteValue_nonarchimedean
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_gaussNorm_le_one_third
+#print axioms OmegaBalance.norm_f3PadicLogMulPolynomial_pow_coeff_le
+
+
+-- Scalar majorants for the outer-log / product-polynomial double series.
+#print axioms OmegaBalance.norm_f3PadicFormalLog_coeff_le
+#print axioms OmegaBalance.norm_f3PadicFormalLog_coeff_mul_pow_coeff_le
+
+
+-- Explicit finite support of powers of the quadratic product increment.
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_natDegree_le_two
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_natDegree_le
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_coeff_eq_zero_of_two_mul_lt
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_subset_range
+
+#print axioms OmegaBalance.summable_f3PadicLogComposition_scalar_majorant
+
+#print axioms OmegaBalance.summable_f3PadicLogComposition_supported_terms

@@ -19,9 +19,9 @@
 | INF-2 | 全体素数数列中连续两项的正→负、负→正转移各无穷次 | **完成，PR #6** |
 | COR-1 | 固定 `h≥0` 的完整整数相关核 | **证明完成；PR #19 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
-| DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | 未完成；需 ANT 等差数列渐近计数桥梁 |
-| DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | 未完成；依赖 DEN-1 |
-| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
+| DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | **证明完成；consumer exact head `0946893…` 已全绿，待 stacked 主线集成** |
+| DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | **证明完成；一般 `j≥1` 的 `3^{-j}` 已在 exact head `8029c306…` 全绿，待 stacked 主线集成** |
+| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | **进行中；收敛、主导项、等距/赋值连接及 formal coefficient bridge 已 exact-head 验证，乘法同态仍未完成** |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
 | RUN-2 | 上述长串的跨度有界版本 | 未完成；依赖定量上游版本 |
 
@@ -229,6 +229,186 @@ PR #20 exact head `7824f25eb31506eac747590ddfe99defc9913a4f` 已通过 Lean #410
 分支 `feat/f3-prime-density-residues-v1` 的 exact head `f78657256300009b3c51d271ae607cd58cf1ae86` 已通过 Lean #417 与 Factor-sum #405。新增 `v3_eq_iff_pow_three_dvd_not_succ`、`f3_prime_eq_pos_level_iff`、`f3_prime_eq_neg_level_iff`，把精确 `±k` 层化为嵌套 `3^k` 与 `3^(k+1)` 整除层之差。Lean #417 日志确认：Axiom audit 347 declarations，仅标准 Lean 公理；Source audit 36 Lean files、无 proof escape；Audit coverage 347/347 恰好一次；有限回归 144240 PASS。该算术前端正式登记完成，但 DEN-1 的渐近密度定理仍未完成。\n\n外部优先检索还找到 `plby/lean-proofs@8822f7ddef30fadbd92e1c6ab4ed897af356af5e` 的 `src/latest/ErdosProblems/Erdos730/PNTAP.lean`：其 `primeAPCountingReal_normalized_tendsto` 已从同源 `chebyshev_asymptotic_pnt` 推出未加权 AP 素数计数 `primeAPCountingReal A a x / (x / log x) → (φ(A))⁻¹`。该快照使用 Lean 4.33.0 / mathlib 4.33.0（manifest mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`），仍与本仓库 4.34.0 pin 不同；因此下一步优先做该现成证明的最小兼容适配，而不是重新发明 partial summation，也不把它未经重编译直接当作本仓库定理。
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
+
+
+### DEN-1：负层真实素数精确密度已通过 exact-head
+
+consumer exact head `52600809f57835ee7e5182f09c3c72ea2eac0893` 已通过
+Lean #526 与 Factor-sum #514。该 head 将 `F₃=-k` 的真实素数集合严格识别为
+`p ≡ 1 (mod 3^k)` 与 `p ≡ 1 (mod 3^(k+1))` 的有限集差，并证明
+
+```math
+\frac{\#\{p\le x: p\text{ prime},\ p>3,\ F_3(p)=-k\}}{x/\log x}
+\longrightarrow 3^{-k},\qquad k\ge1.
+```
+
+对应接口为 `f3PrimeNegLevelCountingReal_eq_APDifference` 与
+`f3PrimeNegLevelCountingReal_normalized_tendsto`。Lean #526 的 build、
+kernel regression、axiom/source audit、declaration coverage 与有限 F₃
+检查全部成功；axiom log 覆盖 369 个登记声明，有限检查 144240 PASS。
+
+### DEN-1：正层真实素数精确密度候选
+
+在上述 exact verified head 上新增 `F3PrimeDensityExactPos.lean`。候选层先证明
+`p % 3^k = 3^k-1 ↔ 3^k ∣ p+1`，并把 exact `F₃=+k`（包含 `p=2,k=1`
+这个真实有限边界）识别为 `-1 mod 3^k` 类去掉 `-1 mod 3^(k+1)` 类。
+随后复用同一个未加权 AP-PNT 桥和 Euler-totient 差，目标定理
+`f3PrimePosLevelCountingReal_normalized_tendsto` 的常数同样为 `3^{-k}`。
+新声明已加入 `scripts/Audit.lean`；只有该新 exact head 完整门禁通过后才登记完成。
+
+### DEN-2：乘数 17 的第一条件分支计数
+
+exact head `ffe62a3331f38f9b0312e4c16da723e2f60d9e61` 已通过 Lean
+#36233546297 与 Factor-sum #36233546285。该层新增真实事件集合
+`f3PrimeMul17EqTwoPrimes`，并验证
+
+```math
+\{q\le x:q\text{ prime},F_3(q)=-2,F_3(17q)=2\}
+=
+\{q\le x:q\text{ prime},q\equiv10\pmod{27}\},
+```
+
+从而由未加权 AP-PNT 得到分子标准归一化密度
+`1/φ(27)=1/18`。`f3PrimeMul17EqTwoRelativeRatio_tendsto` 进一步对真实计数商证明相对极限
+`1/2`。exact head `142ae6013cda00a01ba1bc018d2ae8f2a3e54a98` 已通过 Lean
+#36233902351 与 Factor-sum #36233902369；Lean 日志确认 Axiom audit 394
+条声明、Source audit 49 Lean files 无 proof escape、Audit coverage 394/394，
+有限检查 144240 PASS。因此乘数 17 的首分支 `1/2` 正式登记完成。后续仍需一般
+`F₃(17q)=2+j`（`j≥1`）的 `3^{-j}` 条件分布。
+
+### DEN-2：乘数 17 高层条件分布（exact-head 已验证）
+
+分支 `feat/f3-prime-density-mul17-high-count-v1` 从 exact-green 的 PR #22 head `faa696ed655e18a20bc3eb80d4905d72cb640f32` 分出。新增候选层把 `F₃(17q)=k`（`k≥3`）精确识别为唯一 primitive residue `f3Mul17Residue k mod 3^k` 去掉其模 `3^(k+1)` 的唯一 lift，并复用未加权 AP-PNT 与已验证的 `F₃(q)=-2` 输入密度，目标为每个 `j≥1` 的真实条件计数比例趋于 `3^(-j)`。exact head `8029c30612830f20ee4ce77e5afbf045bc2af30f` 已通过 Lean #577 与 Factor-sum #565；Axiom audit 409 declarations、Source audit 51 Lean files、Audit coverage 409/409、有限检查 144240 PASS。因此一般 `j≥1` 的 `3^(-j)` 条件分布证明层正式登记完成，仍待 stacked 主线集成。
+
+
+### LOG-1 convergence layer: exact-head verified
+
+Commit e48150f668cc5d8321877fa1a541f59077166057 adds
+OmegaBalance/F3PadicLog.lean. It defines the genuine Q_3 logarithm series,
+proves the natural-denominator inverse norm bound, a geometric norm majorant,
+term decay, absolute summability on the open unit ball, and the resulting
+HasSum for every admissible F3 input n > 1 with 3 not dividing n. All seven
+new theorem declarations are registered in scripts/Audit.lean.
+
+Exact-head gates: Lean run 607 (36241672820) SUCCESS and Factor-sum run 595
+(36241672808) SUCCESS. Build, kernel regressions, axiom audit,
+source/declaration coverage, and finite regressions all passed at the same
+commit. This closes only the convergence/existence sublayer of LOG-1;
+multiplicativity and valuation/isometry remain open.
+
+
+### LOG-1 radius-one-third domain bound (candidate)
+
+Branch `feat/f3-padic-log-dominant-term-v1` adds
+`f3PadicDelta_norm_le_one_third`. For every admissible input
+`n > 1` with `3 ∤ n`, it sharpens the open-unit-ball fact to
+`‖U(n)-1‖₃ ≤ 1/3`.
+
+The proof uses the already verified exact depth formula
+`‖f3PadicDelta n‖ = 3^{-natAbs(F₃(n))}` together with nonvanishing of
+`F₃(n)` on this domain. This is the discrete-radius input needed for a
+strict higher-log-term bound and the later logarithmic isometry. It does not
+claim multiplicativity or valuation preservation yet; only exact-head CI can
+promote this candidate to verified status.
+
+
+### LOG-1 dominant higher terms (candidate)
+
+On top of the verified radius-one-third bound, the same branch now adds
+`f3PadicLogTerm_valuation`, an exact valuation formula for every nonzero
+logarithm-series term, and specializes it to the F₃ coordinate.  Using
+`3 * padicValNat 3 (k+1) ≤ k+1`, the candidate theorem
+`f3PadicLogTerm_delta_valuation_gt` proves that each term with `k>0`
+has valuation strictly larger than the linear displacement.  Equivalently,
+`norm_f3PadicLogTerm_delta_lt_first` gives strict norm domination by the
+first term.  This is the key local input for proving
+`‖log(U(n))‖₃ = ‖U(n)-1‖₃`; the infinite-tail/isometry theorem itself is
+not claimed until a separate exact-head proof closes the limit step.
+
+
+
+### LOG-1 dominant-term layer: exact-head verified
+
+Exact head `218e173ce812135a06b8fe2f1707a9c5931ee36d` passed Lean #623
+(run `36243542287`) and Factor-sum #611 (run `36243542271`) completely.
+Therefore `f3PadicDelta_norm_le_one_third`, `f3PadicLogTerm_valuation`,
+`f3PadicLogTerm_delta_valuation_gt`, and
+`norm_f3PadicLogTerm_delta_lt_first` are now promoted from candidate to
+verified. This proves every genuinely higher logarithm term has strictly
+larger 3-adic valuation than the linear displacement.
+
+### LOG-1 logarithmic isometry layer: exact-head verified
+
+Branch `feat/f3-padic-log-isometry-v2` adds
+`OmegaBalance/F3PadicLogIsometry.lean`. It defines the nonlinear tail,
+bounds the whole tail by the next discrete 3-adic radius, splits the genuine
+logarithm into its linear term plus tail, and targets the exact identities
+
+```math
+||log(U(n))||_3 = ||U(n)-1||_3,
+v_3(log(U(n))) = |F_3(n)|,
+F_3(n) = -chi(n) v_3(log(U(n))).
+```
+
+All eight new theorem declarations are registered in `scripts/Audit.lean`.
+Exact head `b09e06d67329c309290c3252e81249fd518fb0d8` passed Lean #626
+(run `36244366034`) and Factor-sum #614 (run `36244366033`). The Lean log
+confirms Axiom audit 437 declarations with only standard Lean axioms, Source
+audit 55 Lean files with no proof escapes, Audit coverage 437/437 exactly once,
+and 144240 finite checks PASS. Therefore the genuine logarithmic norm
+isometry, nonvanishing, exact valuation preservation, and signed bridge
+`F₃(n) = -χ(n) v₃(L(n))` are formally verified. Multiplicativity
+`L(mn)=L(m)+L(n)` remains a separate LOG-1 task.
+
+
+### LOG-1 formal coefficient bridge repair
+
+Integrated head `9d05202fdc3f8ae4862bfe0a906c5bb9fae32abd` exposed a real pinned-version
+obstruction: Lean run 636 (36247112572) failed because
+`PowerSeries.eval₂` requires `IsLinearTopology ℚ_[3] ℚ_[3]`, which is not
+available for the usual topology on `ℚ_[3]`.  The failed analytic-evaluator
+interfaces are therefore removed rather than papered over with a discrete
+topology.
+
+The repair branch records the topology-free bridge actually justified by the
+pinned APIs: each project log term is the matching coefficient of
+`PowerSeries.log`, the convergent project log is the HasSum of those
+nonconstant coefficients, and `NormedSpace.exp` is the HasSum of the formal
+`PowerSeries.exp` coefficients.  It also records the two pinned formal
+exp/log substitution identities.  This repair remains candidate until its
+exact head passes build, axiom/source, declaration-coverage and regression
+gates.  Multiplicativity `L(mn)=L(m)+L(n)` remains the next LOG-1 target.
+
+
+### LOG-1 formal coefficient bridge：exact-head verified
+
+修复 head `77d25f892e8204a2b363036006b3d3efdbee798c` 已通过 Lean run
+`36248316381` 与 Factor-sum run `36248316358`。因此
+`f3PadicLogTerm_eq_powerSeries_coeff`、
+`hasSum_f3PadicLog_powerSeries_coeff`、
+`f3PadicExp_eq_tsum_powerSeries_coeff` 以及固定 mathlib 的两条 formal
+exp/log substitution identity 正式登记为 verified。这里没有伪造
+`IsLinearTopology ℚ_[3] ℚ_[3]`，也没有把 totalized `NormedSpace.exp`
+冒充全局收敛的 p-adic exponential。
+
+### LOG-1 multiplication domain reduction（candidate）
+
+分支 `feat/f3-padic-log-mul-domain-v1` 在上述 exact-green head 上新增
+`F3PadicLogMulDomain.lean`。它候选证明 admissible 输入乘积的精确
+principal-unit displacement
+
+```math
+\Delta(mn)=\Delta(m)+\Delta(n)+\Delta(m)\Delta(n),
+```
+
+同时证明该 nonlinear displacement 仍位于 log 的开单位球、其实际 log
+级数以 `f3PadicLog (m*n)` 为和，并把最终乘法同态严格归约到真正的分析恒等式
+
+```math
+\log(1+x+y+xy)=\log(1+x)+\log(1+y).
+```
+
+本层不把这个 reduction 冒充乘法同态；只有 exact-head CI 全绿后才登记完成。
 
 ## 停止规则
 
