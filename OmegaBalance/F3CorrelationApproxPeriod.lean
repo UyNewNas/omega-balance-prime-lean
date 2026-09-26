@@ -58,7 +58,9 @@ theorem f3CorrelationKernel_pow_three {r : ℕ} (hr : 0 < r) :
 theorem f3CorrelationKernel_zero :
     f3PadicKernel (Nat.dist 0 2) + f3PadicKernel (0 + 2) -
         2 * f3PadicKernel 0 = 2 := by
-  norm_num [f3PadicKernel_zero]
+  have hdist : Nat.dist 0 2 = 2 := by decide
+  rw [hdist, f3PadicKernel_two, f3PadicKernel_zero]
+  norm_num
 
 /-- The kernel difference which drives the mean-square `3^r` approximate
 period has the target value `4 / 3^r`. -/
