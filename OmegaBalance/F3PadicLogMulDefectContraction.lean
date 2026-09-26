@@ -28,6 +28,7 @@ theorem norm_f3PadicLogTail_le_delta_div_three {n : ℕ}
       rw [show (-((f3PadicDelta n).valuation + 1) : ℤ) =
           (-(f3PadicDelta n).valuation : ℤ) + (-1 : ℤ) by ring,
         zpow_add₀ (by norm_num : (3 : ℝ) ≠ 0), zpow_neg_one, div_eq_mul_inv]
+      norm_num
 
 /-- The product displacement never has larger norm than the larger input
 displacement on the admissible principal-unit ball. -/
