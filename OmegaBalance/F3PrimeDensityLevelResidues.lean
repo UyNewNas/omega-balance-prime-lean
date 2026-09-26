@@ -102,7 +102,7 @@ theorem f3_prime_eq_neg_level_modEq_iff
     f3 p = -(k : ℤ) ↔
       (p ≡ 1 [MOD 3 ^ k]) ∧
         ¬ (p ≡ 1 [MOD 3 ^ (k + 1)]) := by
-  have hp1 : 1 ≤ p := by omega
+  have hp1 : 1 ≤ p := le_trans (by norm_num) hp.two_le
   rw [f3_prime_eq_neg_level_iff_all hp hk,
     ← modEq_one_iff_dvd_sub_one (j := k) (n := p) hp1,
     ← modEq_one_iff_dvd_sub_one (j := k + 1) (n := p) hp1]

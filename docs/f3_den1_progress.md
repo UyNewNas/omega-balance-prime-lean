@@ -12,3 +12,5 @@ The first exact-head build exposed a real Lean 4.34 compatibility failure inside
 The stacked exact-level branch also adds all-prime residue characterizations for the actual F3 events. The small primes 2 and 3 are handled explicitly, so the later counting identity does not need to hide a finite exceptional correction.
 
 The next candidate layer defines the actual exact-level prime counting functions and proves, by an exact nested-finset difference, that they equal the corresponding two AP counts. It then transfers the AP asymptotic to the actual events `F3(p)=+k` and `F3(p)=-k`, each with normalized limit `1/3^k`. These declarations remain candidate until this exact tree passes Lean build, axiom, source and audit-coverage gates.
+
+CI repair: Lean run #36221940127 failed only at the negative ModEq wrapper because `omega` cannot use primality as an arithmetic hypothesis to infer `1 ≤ p`. The repair feeds `hp.two_le` explicitly; theorem statements are unchanged.
