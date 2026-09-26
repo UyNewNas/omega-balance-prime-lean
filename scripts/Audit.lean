@@ -563,3 +563,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicLogComposition_fin_fiber_sum
 #print axioms OmegaBalance.hasSum_f3PadicLogComposition_fibers
 #print axioms OmegaBalance.f3PadicLogComposition_supported_tsum_eq
+
+-- Regroup the same summable composition family by output coefficient degree.
+#print axioms OmegaBalance.hasSum_f3PadicLogComposition_by_output
