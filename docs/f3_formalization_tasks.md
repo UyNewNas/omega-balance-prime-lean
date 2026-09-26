@@ -337,7 +337,7 @@ Therefore `f3PadicDelta_norm_le_one_third`, `f3PadicLogTerm_valuation`,
 verified. This proves every genuinely higher logarithm term has strictly
 larger 3-adic valuation than the linear displacement.
 
-### LOG-1 logarithmic isometry layer (candidate)
+### LOG-1 logarithmic isometry layer: exact-head verified
 
 Branch `feat/f3-padic-log-isometry-v2` adds
 `OmegaBalance/F3PadicLogIsometry.lean`. It defines the nonlinear tail,
@@ -351,9 +351,14 @@ F_3(n) = -chi(n) v_3(log(U(n))).
 ```
 
 All eight new theorem declarations are registered in `scripts/Audit.lean`.
-This layer remains candidate until the exact integrated head passes library
-build, regressions, axiom/source audit, declaration coverage, and finite
-checks. Multiplicativity `L(mn)=L(m)+L(n)` remains a separate LOG-1 task.
+Exact head `b09e06d67329c309290c3252e81249fd518fb0d8` passed Lean #626
+(run `36244366034`) and Factor-sum #614 (run `36244366033`). The Lean log
+confirms Axiom audit 437 declarations with only standard Lean axioms, Source
+audit 55 Lean files with no proof escapes, Audit coverage 437/437 exactly once,
+and 144240 finite checks PASS. Therefore the genuine logarithmic norm
+isometry, nonvanishing, exact valuation preservation, and signed bridge
+`F₃(n) = -χ(n) v₃(L(n))` are formally verified. Multiplicativity
+`L(mn)=L(m)+L(n)` remains a separate LOG-1 task.
 
 ## 停止规则
 
