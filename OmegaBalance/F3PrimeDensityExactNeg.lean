@@ -121,7 +121,8 @@ theorem f3PrimeNegLevelCountingReal_eq_APDifference
     f3PrimeAPCountingReal_eq_card_apPrimes,
     f3PrimeAPCountingReal_eq_card_apPrimes,
     ← f3APPrimes_sdiff_eq_neg_level k x hk]
-  exact Finset.cast_card_sdiff (f3APPrimes_succ_subset k x hk)
+  rw [Finset.card_sdiff_of_subset (f3APPrimes_succ_subset k x hk),
+    Nat.cast_sub (Finset.card_le_card (f3APPrimes_succ_subset k x hk))]
 
 /-- The actual primes with exact negative F₃ level `-k` have normalized
 prime density constant `3⁻ᵏ` against the standard `x / log x` scale. -/
