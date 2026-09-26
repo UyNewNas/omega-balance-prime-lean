@@ -28,9 +28,8 @@ theorem f3Unit_eq_chi_mul (n : ℕ) :
 /-- The signed F₃ value is `-χ(n)` times its unsigned 3-adic depth. -/
 theorem f3_eq_neg_chi_mul_natAbs {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
     f3 n = -f3Chi n * ((f3 n).natAbs : ℤ) := by
-  rw [f3_eq_side_mul_natAbs hn h3]
   unfold f3Chi
-  ring
+  simpa only [neg_neg] using f3_eq_side_mul_natAbs hn h3
 
 /-- The existing normalized integer unit coordinate, embedded in the 3-adic field. -/
 noncomputable def f3PadicUnit (n : ℕ) : ℚ_[3] :=
@@ -86,7 +85,7 @@ theorem f3PadicDelta_norm_lt_one {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
 This is the convergence-domain input for the actual logarithm series. -/
 theorem f3PadicDelta_pow_tendsto_zero {n : ℕ}
     (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
-    Filter.Tendsto (fun k : ℕ => f3PadicDelta n ^ k) Filter.atTop (𝓝 0) :=
+    Filter.Tendsto (fun k : ℕ => f3PadicDelta n ^ k) Filter.atTop (nhds 0) :=
   tendsto_pow_atTop_nhds_zero_of_norm_lt_one (f3PadicDelta_norm_lt_one hn h3)
 
 end OmegaBalance
