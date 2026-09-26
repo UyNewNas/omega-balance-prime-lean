@@ -401,6 +401,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3ThetaAP_asymptotic
 #print axioms OmegaBalance.f3ThetaAP_div_id_tendsto
 #print axioms OmegaBalance.f3PrimeAPCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeNegLevelAPDifference_normalized_tendsto_totient
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
