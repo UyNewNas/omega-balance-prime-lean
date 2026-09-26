@@ -74,4 +74,21 @@ theorem f3CorrelationKernel_meanSquare_pow_three {r : ℕ} (hr : 0 < r) :
   rw [f3CorrelationKernel_zero, f3CorrelationKernel_pow_three hr]
   ring
 
+
+/-- COR-1 specialized to zero shift: the raw square mean tends to the zero-shift
+correlation kernel value `2`. -/
+theorem tendsto_f3CorrelationIccAverage_zero :
+    Tendsto (fun N : ℕ => f3CorrelationIccAverage 0 N) atTop (𝓝 2) := by
+  have hlim := tendsto_f3CorrelationIccAverage 0
+  rw [f3CorrelationKernel_zero] at hlim
+  exact hlim
+
+/-- COR-1 specialized to the nontrivial power-of-three shift `3^r`. -/
+theorem tendsto_f3CorrelationIccAverage_pow_three {r : ℕ} (hr : 0 < r) :
+    Tendsto (fun N : ℕ => f3CorrelationIccAverage (3 ^ r) N) atTop
+      (𝓝 (2 - 2 / (3 : ℝ) ^ r)) := by
+  have hlim := tendsto_f3CorrelationIccAverage (3 ^ r)
+  rw [f3CorrelationKernel_pow_three hr] at hlim
+  exact hlim
+
 end OmegaBalance
