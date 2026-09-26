@@ -17,6 +17,11 @@ open Filter Topology
   rw [v3_eq_zero_of_not_dvd (by norm_num)]
   norm_num
 
+@[simp] theorem f3PadicKernel_one : f3PadicKernel 1 = 1 := by
+  rw [f3PadicKernel, if_neg (by norm_num)]
+  rw [v3_eq_zero_of_not_dvd (by norm_num)]
+  norm_num
+
 @[simp] theorem f3PadicKernel_pow_three (r : ℕ) :
     f3PadicKernel (3 ^ r) = 1 / (3 : ℝ) ^ r := by
   rw [f3PadicKernel, if_neg (by positivity), v3_pow_three]
@@ -64,6 +69,17 @@ theorem f3CorrelationKernel_zero :
   rw [hdist, f3PadicKernel_two, f3PadicKernel_zero]
   norm_num
 
+/-- The shift-one correlation kernel.  This is the separate `r = 0`
+boundary case for the power-of-three mean-square family. -/
+theorem f3CorrelationKernel_one :
+    f3PadicKernel (Nat.dist 1 2) + f3PadicKernel (1 + 2) -
+        2 * f3PadicKernel 1 = (-2 / 3 : ℝ) := by
+  have hdist : Nat.dist 1 2 = 1 := by decide
+  have hthree : f3PadicKernel 3 = (1 / 3 : ℝ) := by
+    simpa using (f3PadicKernel_pow_three 1)
+  rw [hdist, show 1 + 2 = 3 by norm_num, f3PadicKernel_one, hthree]
+  norm_num
+
 /-- The kernel difference which drives the mean-square `3^r` approximate
 period has the target value `4 / 3^r`. -/
 theorem f3CorrelationKernel_meanSquare_pow_three {r : ℕ} (hr : 0 < r) :
@@ -83,6 +99,15 @@ theorem tendsto_f3CorrelationIccAverage_zero :
     Tendsto (fun N : ℕ => f3CorrelationIccAverage 0 N) atTop (𝓝 2) := by
   have hlim := tendsto_f3CorrelationIccAverage 0
   rw [f3CorrelationKernel_zero] at hlim
+  exact hlim
+
+/-- COR-1 specialized to shift one.  Its value is `-2/3`, not the
+nontrivial power-of-three formula used for `r > 0`. -/
+theorem tendsto_f3CorrelationIccAverage_one :
+    Tendsto (fun N : ℕ => f3CorrelationIccAverage 1 N) atTop
+      (𝓝 (-2 / 3 : ℝ)) := by
+  have hlim := tendsto_f3CorrelationIccAverage 1
+  rw [f3CorrelationKernel_one] at hlim
   exact hlim
 
 /-- COR-1 specialized to the nontrivial power-of-three shift `3^r`. -/

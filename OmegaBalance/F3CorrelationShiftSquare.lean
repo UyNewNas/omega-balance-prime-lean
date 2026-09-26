@@ -187,4 +187,35 @@ theorem tendsto_f3MeanSquareShiftIccAverage_pow_three
     ring
   rwa [hvalue] at hlim'
 
+/-- The excluded `r = 0` boundary case, proved separately from the full
+correlation kernel.  Since `3^0 = 1`, the shift-one mean square tends to
+`16/3`, so the `4/3^r` formula must not be extended to `r = 0`. -/
+theorem tendsto_f3MeanSquareShiftIccAverage_one :
+    Tendsto
+      (fun N : ℕ => f3MeanSquareShiftIccAverage 1 N)
+      atTop (𝓝 (16 / 3 : ℝ)) := by
+  have hshift := tendsto_f3ShiftSquareIccAverage 1
+  have hraw := tendsto_f3CorrelationIccAverage_zero
+  have hcross := tendsto_f3CorrelationIccAverage_one
+  have hlim :
+      Tendsto
+        (fun N : ℕ =>
+          f3ShiftSquareIccAverage 1 N +
+            f3CorrelationIccAverage 0 N -
+            2 * f3CorrelationIccAverage 1 N)
+        atTop
+        (𝓝 (2 + 2 - 2 * (-2 / 3 : ℝ))) := by
+    exact (hshift.add hraw).sub (hcross.const_mul 2)
+  have hlim' :
+      Tendsto
+        (fun N : ℕ => f3MeanSquareShiftIccAverage 1 N)
+        atTop
+        (𝓝 (2 + 2 - 2 * (-2 / 3 : ℝ))) := by
+    refine hlim.congr' ?_
+    filter_upwards [] with N
+    exact (f3MeanSquareShiftIccAverage_eq 1 N).symm
+  have hvalue : (2 + 2 - 2 * (-2 / 3 : ℝ)) = 16 / 3 := by
+    norm_num
+  rwa [hvalue] at hlim'
+
 end OmegaBalance
