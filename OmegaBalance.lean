@@ -15,6 +15,7 @@ import OmegaBalance.F3PadicLogIsometry
 import OmegaBalance.F3PadicLogFormal
 import OmegaBalance.F3PadicLogMulDomain
 import OmegaBalance.F3PadicLogMulDefect
+import OmegaBalance.F3PadicLogMulDefectBound
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite
