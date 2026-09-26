@@ -495,6 +495,6 @@ import OmegaBalance.F3DeeperExamples
 
 #print axioms OmegaBalance.f3PadicLogTerm_eq_powerSeries_coeff
 #print axioms OmegaBalance.hasSum_f3PadicLog_powerSeries_coeff
-#print axioms OmegaBalance.hasSum_f3PadicExp_powerSeries_coeff
+#print axioms OmegaBalance.f3PadicExp_eq_tsum_powerSeries_coeff
 #print axioms OmegaBalance.f3PadicFormal_exp_subst_log
 #print axioms OmegaBalance.f3PadicFormal_log_subst_exp_sub_one

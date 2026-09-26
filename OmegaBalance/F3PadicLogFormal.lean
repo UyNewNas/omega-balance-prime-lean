@@ -12,8 +12,8 @@ instance, so this module does not identify the analytic sum with
 
 Instead it records a topology-free coefficient bridge: the project logarithm
 is the convergent sum of the coefficients of mathlib's formal
-`PowerSeries.log`, and the analytic exponential is the convergent sum of the
-coefficients of `PowerSeries.exp`.
+`PowerSeries.log`; the pinned exponential is recorded as its coefficient
+tsum without asserting convergence outside its p-adic radius.
 -/
 
 namespace OmegaBalance
@@ -23,24 +23,25 @@ local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
 theorem f3PadicLogTerm_eq_powerSeries_coeff (x : ℚ_[3]) (k : ℕ) :
     f3PadicLogTerm x k =
       PowerSeries.coeff (k + 1) (PowerSeries.log ℚ_[3]) * x ^ (k + 1) := by
-  simp [f3PadicLogTerm, PowerSeries.coeff_log, pow_add, div_eq_mul_inv,
-    Algebra.smul_def]
+  simp [f3PadicLogTerm, PowerSeries.coeff_log, pow_add, div_eq_mul_inv]
+  ring
 
 theorem hasSum_f3PadicLog_powerSeries_coeff {x : ℚ_[3]} (hx : ‖x‖ < 1) :
     HasSum
       (fun k : ℕ =>
         PowerSeries.coeff (k + 1) (PowerSeries.log ℚ_[3]) * x ^ (k + 1))
       (f3PadicLogOnePlus x) := by
+  rw [f3PadicLogOnePlus]
   simpa only [← f3PadicLogTerm_eq_powerSeries_coeff] using
     (summable_f3PadicLogTerm hx).hasSum
 
-theorem hasSum_f3PadicExp_powerSeries_coeff (x : ℚ_[3]) :
-    HasSum
-      (fun k : ℕ =>
-        PowerSeries.coeff k (PowerSeries.exp ℚ_[3]) * x ^ k)
-      (NormedSpace.exp x) := by
-  simpa [PowerSeries.coeff_exp, Algebra.smul_def] using
-    (NormedSpace.exp_series_hasSum_exp' (𝕂 := ℚ) (𝔸 := ℚ_[3]) x)
+theorem f3PadicExp_eq_tsum_powerSeries_coeff (x : ℚ_[3]) :
+    NormedSpace.exp x =
+      ∑' k : ℕ, PowerSeries.coeff k (PowerSeries.exp ℚ_[3]) * x ^ k := by
+  rw [NormedSpace.exp_eq_tsum ℚ]
+  apply tsum_congr
+  intro k
+  simp [PowerSeries.coeff_exp, Algebra.smul_def]
 
 theorem f3PadicFormal_exp_subst_log :
     (PowerSeries.exp ℚ_[3]).subst (PowerSeries.log ℚ_[3]) =
