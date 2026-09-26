@@ -28,13 +28,13 @@ theorem f3PadicLogOnePlus_product
       PowerSeries ℚ_[3])
   have hb0 : PowerSeries.constantCoeff b = 0 := by
     dsimp [b]
-    rw [f3PadicLogMulPolynomial_toPowerSeries]
-    simp
+    simp [f3PadicLogMulPolynomial]
   have hzero :
       PowerSeries.coeff 0
         ((PowerSeries.log ℚ_[3]).subst b) = 0 := by
-    rw [PowerSeries.coeff_zero_eq_constantCoeff_apply,
-      PowerSeries.constantCoeff_subst_of_constantCoeff_zero hb0,
+    rw [PowerSeries.coeff_zero_eq_constantCoeff_apply]
+    simp only [PowerSeries.constantCoeff_eq]
+    rw [PowerSeries.constantCoeff_subst_of_constantCoeff_zero hb0,
       PowerSeries.constantCoeff_log]
     simp
   have hxlt : ‖x‖ < 1 := lt_of_le_of_lt hx (by norm_num)
@@ -63,7 +63,7 @@ theorem f3PadicLogOnePlus_product
           PowerSeries.coeff n
             ((PowerSeries.log ℚ_[3]).subst b))
         (f3PadicLogOnePlus (x + y + x * y)) := by
-    refine hout.congr fun n => ?_
+    refine HasSum.congr_fun hout (fun n => ?_)
     dsimp [b]
     exact f3PadicLogComposition_output_fiber_tsum_eq_coeff x y n
   exact hout'.unique hall
