@@ -35,8 +35,11 @@ theorem f3PadicLogTerm_valuation {x : ℚ_[3]} (hx : x ≠ 0) (k : ℕ) :
     Padic.valuation_pow, Padic.valuation_pow,
     Padic.valuation_inv, Padic.valuation_natCast]
   have hminus : ((-1 : ℚ_[3])).valuation = 0 := by
-    rw [← Int.cast_neg, Padic.valuation_intCast]
-    norm_num [padicValInt]
+    have hmul := Padic.valuation_mul
+      (p := 3) (x := (-1 : ℚ_[3])) (y := (-1 : ℚ_[3]))
+      (by norm_num) (by norm_num)
+    norm_num at hmul
+    omega
   rw [hminus]
   push_cast
   ring
