@@ -296,6 +296,21 @@ source/declaration coverage, and finite regressions all passed at the same
 commit. This closes only the convergence/existence sublayer of LOG-1;
 multiplicativity and valuation/isometry remain open.
 
+
+### LOG-1 radius-one-third domain bound (candidate)
+
+Branch `feat/f3-padic-log-dominant-term-v1` adds
+`f3PadicDelta_norm_le_one_third`. For every admissible input
+`n > 1` with `3 ∤ n`, it sharpens the open-unit-ball fact to
+`‖U(n)-1‖₃ ≤ 1/3`.
+
+The proof uses the already verified exact depth formula
+`‖f3PadicDelta n‖ = 3^{-natAbs(F₃(n))}` together with nonvanishing of
+`F₃(n)` on this domain. This is the discrete-radius input needed for a
+strict higher-log-term bound and the later logarithmic isometry. It does not
+claim multiplicativity or valuation preservation yet; only exact-head CI can
+promote this candidate to verified status.
+
 ## 停止规则
 
 只有 INF、COR、DEN、LOG、RUN 全部目标得到非空洞 Lean 证明并集成主分支，上游依赖经过信任审计，且精确版本的构建、回归、公理、源码、覆盖全部通过后，才结束全量任务。当前尚未满足停止条件。
