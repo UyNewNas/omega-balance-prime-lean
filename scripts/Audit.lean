@@ -395,6 +395,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3ThetaAP_nonneg
 #print axioms OmegaBalance.f3ThetaAP_le_count_mul_log
 #print axioms OmegaBalance.f3IntegrableOn_thetaAP_div_id_mul_log_sq
+#print axioms OmegaBalance.f3PrimeAPCountingReal_eq_thetaAP_div_log_add_integral
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime

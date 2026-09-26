@@ -32,4 +32,5 @@ import OmegaBalance.F3PrimeDensityAP
 import OmegaBalance.F3PrimeDensityAPBasic
 import OmegaBalance.F3PrimeDensityAPBound
 import OmegaBalance.F3PrimeDensityAPPartial
+import OmegaBalance.F3PrimeDensityAPAbel
 import OmegaBalance.F3SignChanges
