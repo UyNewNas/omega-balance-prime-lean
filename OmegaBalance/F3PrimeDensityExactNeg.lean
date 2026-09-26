@@ -1,5 +1,7 @@
 import OmegaBalance.F3PrimeDensityAPLimit
 
+open Filter Topology
+
 namespace OmegaBalance
 
 /-- For a positive power of three, residue one is the same as divisibility of
@@ -121,5 +123,17 @@ theorem f3PrimeNegLevelCountingReal_eq_APDifference
     ← f3APPrimes_sdiff_eq_neg_level k x hk]
   rw [Finset.card_sdiff_of_subset (f3APPrimes_succ_subset k x hk),
     Nat.cast_sub (Finset.card_le_card (f3APPrimes_succ_subset k x hk))]
+
+/-- The actual primes with exact negative F₃ level `-k` have normalized
+prime density constant `3⁻ᵏ` against the standard `x / log x` scale. -/
+theorem f3PrimeNegLevelCountingReal_normalized_tendsto
+    {k : ℕ} (hk : 0 < k) :
+    Tendsto
+      (fun x : ℝ =>
+        f3PrimeNegLevelCountingReal k x / (x / Real.log x))
+      atTop (𝓝 (1 / (3 : ℝ) ^ k)) := by
+  exact (f3PrimeNegLevelAPDifference_normalized_tendsto hk).congr' <|
+    Filter.Eventually.of_forall fun x => by
+      rw [f3PrimeNegLevelCountingReal_eq_APDifference k x hk]
 
 end OmegaBalance
