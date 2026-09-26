@@ -10,3 +10,5 @@ The first exact-head build exposed a real Lean 4.34 compatibility failure inside
 2026-09-26 exact-head bridge note: PR #22 head `6922dad91bf4301d3bbbf6b78f4233b5f6677635` passed both Lean and Factor-sum workflows. The next stacked branch adds power-of-three AP count differences for exact valuation layers and simplifies the limiting constant to `1 / 3^k`; these are still AP-difference counts, not yet the final `F₃` event-count theorem.
 
 The stacked exact-level branch also adds all-prime residue characterizations for the actual F3 events. The small primes 2 and 3 are handled explicitly, so the later counting identity does not need to hide a finite exceptional correction.
+
+The next candidate layer defines the actual exact-level prime counting functions and proves, by an exact nested-finset difference, that they equal the corresponding two AP counts. It then transfers the AP asymptotic to the actual events `F3(p)=+k` and `F3(p)=-k`, each with normalized limit `1/3^k`. These declarations remain candidate until this exact tree passes Lean build, axiom, source and audit-coverage gates.

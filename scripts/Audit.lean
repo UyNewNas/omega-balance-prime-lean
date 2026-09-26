@@ -414,6 +414,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_prime_eq_neg_level_iff_all
 #print axioms OmegaBalance.f3_prime_eq_pos_level_modEq_iff
 #print axioms OmegaBalance.f3_prime_eq_neg_level_modEq_iff
+#print axioms OmegaBalance.f3PrimeAPCountingReal_eq_modEq_card
+#print axioms OmegaBalance.f3PrimePosLevelCountingReal_eq_apDiff
+#print axioms OmegaBalance.f3PrimeNegLevelCountingReal_eq_apDiff
+#print axioms OmegaBalance.f3PrimePosLevelCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeNegLevelCountingReal_normalized_tendsto
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
