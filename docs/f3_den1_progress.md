@@ -14,3 +14,5 @@ The stacked exact-level branch also adds all-prime residue characterizations for
 The next candidate layer defines the actual exact-level prime counting functions and proves, by an exact nested-finset difference, that they equal the corresponding two AP counts. It then transfers the AP asymptotic to the actual events `F3(p)=+k` and `F3(p)=-k`, each with normalized limit `1/3^k`. These declarations remain candidate until this exact tree passes Lean build, axiom, source and audit-coverage gates.
 
 CI repair: Lean run #36221940127 failed only at the negative ModEq wrapper because `omega` cannot use primality as an arithmetic hypothesis to infer `1 ≤ p`. The repair feeds `hp.two_le` explicitly; theorem statements are unchanged.
+
+Static follow-up repair before the next gate: the first LevelCounts Git object had its finset set-difference backslash lost while serializing the source, and the negative nested-residue inclusion repeated the same `omega`/primality lower-bound issue. Both are repaired without changing any theorem statement.

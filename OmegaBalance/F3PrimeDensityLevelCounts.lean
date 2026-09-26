@@ -45,7 +45,7 @@ theorem f3PrimePosLevelCountingReal_eq_apDiff
     exact modEq_pow_three_sub_one_iff_dvd_add_one.mpr <|
       hdiv.trans (modEq_pow_three_sub_one_iff_dvd_add_one.mp hdeep)
   have hlevel :
-      (U.filter fun p => p.Prime ∧ f3 p = (k : ℤ)) = S  T := by
+      (U.filter fun p => p.Prime ∧ f3 p = (k : ℤ)) = S \ T := by
     ext p
     by_cases hpU : p ∈ U
     · by_cases hp : p.Prime
@@ -62,7 +62,7 @@ theorem f3PrimePosLevelCountingReal_eq_apDiff
   change (((U.filter fun p => p.Prime ∧ f3 p = (k : ℤ)).card : ℕ) : ℝ) = _
   rw [hlevel]
   calc
-    (((S  T).card : ℕ) : ℝ) =
+    (((S \ T).card : ℕ) : ℝ) =
         (S.card : ℝ) - (T.card : ℝ) :=
       Finset.cast_card_sdiff hTS
     _ = _ := by
@@ -86,13 +86,13 @@ theorem f3PrimeNegLevelCountingReal_eq_apDiff
     intro p hpT
     simp only [T, S, Finset.mem_filter] at hpT ⊢
     rcases hpT with ⟨hpU, hp, hdeep⟩
-    have hp1 : 1 ≤ p := by omega
+    have hp1 : 1 ≤ p := le_trans (by norm_num) hp.two_le
     refine ⟨hpU, hp, ?_⟩
     exact (modEq_one_iff_dvd_sub_one (j := k) (n := p) hp1).mpr <|
       hdiv.trans ((modEq_one_iff_dvd_sub_one
         (j := k + 1) (n := p) hp1).mp hdeep)
   have hlevel :
-      (U.filter fun p => p.Prime ∧ f3 p = -(k : ℤ)) = S  T := by
+      (U.filter fun p => p.Prime ∧ f3 p = -(k : ℤ)) = S \ T := by
     ext p
     by_cases hpU : p ∈ U
     · by_cases hp : p.Prime
@@ -111,7 +111,7 @@ theorem f3PrimeNegLevelCountingReal_eq_apDiff
   change (((U.filter fun p => p.Prime ∧ f3 p = -(k : ℤ)).card : ℕ) : ℝ) = _
   rw [hlevel]
   calc
-    (((S  T).card : ℕ) : ℝ) =
+    (((S \ T).card : ℕ) : ℝ) =
         (S.card : ℝ) - (T.card : ℝ) :=
       Finset.cast_card_sdiff hTS
     _ = _ := by
