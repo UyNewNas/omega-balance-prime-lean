@@ -541,3 +541,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicNormAbsoluteValue_nonarchimedean
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_gaussNorm_le_one_third
 #print axioms OmegaBalance.norm_f3PadicLogMulPolynomial_pow_coeff_le
+
+
+-- Scalar majorants for the outer-log / product-polynomial double series.
+#print axioms OmegaBalance.norm_f3PadicFormalLog_coeff_le
+#print axioms OmegaBalance.norm_f3PadicFormalLog_coeff_mul_pow_coeff_le
