@@ -42,8 +42,8 @@ theorem f3PadicLogMulPolynomial_natDegree_le_two (x y : ℚ_[3]) :
   unfold f3PadicLogMulPolynomial
   apply Polynomial.natDegree_add_le_of_degree_le
   · apply Polynomial.natDegree_add_le_of_degree_le
-    · simpa using Polynomial.natDegree_C_mul_X_pow_le x 1
-    · simpa using Polynomial.natDegree_C_mul_X_pow_le y 1
+    · simpa using (Polynomial.natDegree_C_mul_X_pow_le x 1).trans (by omega)
+    · simpa using (Polynomial.natDegree_C_mul_X_pow_le y 1).trans (by omega)
   · exact Polynomial.natDegree_C_mul_X_pow_le (x * y) 2
 
 /-- Consequently the d-th power of the substitution polynomial has degree
