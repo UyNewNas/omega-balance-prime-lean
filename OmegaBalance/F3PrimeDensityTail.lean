@@ -95,7 +95,8 @@ theorem f3PrimeTailCountingReal_eq_APSum
 
 lemma f3_pow_three_minus_one_coprime (K : ℕ) :
     (3 ^ K - 1).Coprime (3 ^ K) := by
-  rw [Nat.coprime_self_sub_left (by positivity : 1 ≤ (3 : ℕ) ^ K)]
+  have hpos : 0 < (3 : ℕ) ^ K := by positivity
+  rw [Nat.coprime_self_sub_left (by omega : 1 ≤ (3 : ℕ) ^ K)]
   simp
 
 lemma f3_totient_pow_three (K : ℕ) (hK : 0 < K) :
