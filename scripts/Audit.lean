@@ -508,3 +508,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.norm_f3PadicLogTail_le_one_ninth
 #print axioms OmegaBalance.norm_f3PadicDelta_mul_le_one_ninth
 #print axioms OmegaBalance.f3PadicLog_mul_defect_norm_le_one_ninth
+
+#print axioms OmegaBalance.norm_f3PadicLogTail_le_delta_div_three
+#print axioms OmegaBalance.norm_f3PadicDelta_product_le_max
+#print axioms OmegaBalance.norm_f3PadicDelta_mul_le_max_div_three
+#print axioms OmegaBalance.f3PadicLog_mul_defect_norm_le_max_div_three
