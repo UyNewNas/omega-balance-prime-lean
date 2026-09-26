@@ -588,3 +588,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3ConsecutiveRunBounded_of_residueRunBounded
 #print axioms OmegaBalance.f3ConsecutiveRunsBounded_of_residueRunsBounded
 #print axioms OmegaBalance.f3ConsecutiveRun_one
+#print axioms OmegaBalance.f3ConsecutiveRunsBounded_of_BFTB

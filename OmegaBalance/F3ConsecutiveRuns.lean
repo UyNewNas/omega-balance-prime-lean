@@ -159,4 +159,36 @@ theorem f3ConsecutiveRun_one {c : ℤ} (hc : c ≠ 0) (B : ℕ) :
     have hqp : q = p := by simpa using hq
     simpa [hqp] using hp.2.2
 
+
+/--
+The exact external shape supplied by Banks--Freiberg--Turnage-Butterbaugh
+Corollary 3: for each length L ≥ 2 there is a constant C depending only on L,
+and every reduced class modulo every D ≥ 3 has arbitrarily far genuine
+consecutive-prime blocks of length L and diameter at most D*C.
+
+This is a proposition, not an axiom or an asserted theorem.
+-/
+def BFTBConsecutiveResidueRuns : Prop :=
+  ∀ L : ℕ, 2 ≤ L →
+    ∃ C : ℕ, ∀ a D B : ℕ,
+      a.Coprime D → 3 ≤ D →
+      ConsecutivePrimeRunInClassBounded a D L B (D * C)
+
+/--
+Once the BFTB consecutive-residue theorem is formalized, its uniform constant
+specializes directly to exact constant-F₃ consecutive runs.  The output bound
+is the precise modulus factor 3^(|c|+1) times a constant depending only on L.
+-/
+theorem f3ConsecutiveRunsBounded_of_BFTB
+    (hBFTB : BFTBConsecutiveResidueRuns)
+    {c : ℤ} (hc : c ≠ 0) {L : ℕ} (hL : 2 ≤ L) :
+    ∃ C : ℕ, ∀ B : ℕ,
+      F3ConsecutiveRunBounded c L B (f3RunModulus c * C) := by
+  rcases hBFTB L hL with ⟨C, hC⟩
+  refine ⟨C, ?_⟩
+  intro B
+  apply f3ConsecutiveRunBounded_of_residueRunBounded hc
+  exact hC (f3RunResidue c) (f3RunModulus c) (max B 1)
+    (f3RunResidue_coprime hc) (f3RunModulus_ge_three c)
+
 end OmegaBalance
