@@ -39,4 +39,5 @@ import OmegaBalance.F3PrimeDensityAPThree
 import OmegaBalance.F3PrimeDensityConstants
 import OmegaBalance.F3PrimeDensityLevelResidues
 import OmegaBalance.F3PrimeDensityLevelCounts
+import OmegaBalance.F3PrimeDensityTail
 import OmegaBalance.F3SignChanges

@@ -16,3 +16,5 @@ The next candidate layer defines the actual exact-level prime counting functions
 CI repair: Lean run #36221940127 failed only at the negative ModEq wrapper because `omega` cannot use primality as an arithmetic hypothesis to infer `1 ≤ p`. The repair feeds `hp.two_le` explicitly; theorem statements are unchanged.
 
 Static follow-up repair before the next gate: the first LevelCounts Git object had its finset set-difference backslash lost while serializing the source, and the negative nested-residue inclusion repeated the same `omega`/primality lower-bound issue. Both are repaired without changing any theorem statement.
+
+2026-09-26 tail candidate: add an all-prime `|F3(p)|>=K` residue characterization, exact disjoint AP-sum counting identity, and normalized limit `1/3^(K-1)` for every `K>0`. This is the `3^(1-K)` coefficient in natural-exponent form; it remains candidate until its exact branch clears all gates.
