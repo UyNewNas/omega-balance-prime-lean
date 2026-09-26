@@ -389,6 +389,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.pow_three_dvd_iff_le_v3
 #print axioms OmegaBalance.f3_prime_natAbs_ge_iff
 
+-- Unweighted AP-count bridge primitives for DEN-1.
+#print axioms OmegaBalance.f3ThetaAP_eq_sum_apPrimes
+#print axioms OmegaBalance.f3PrimeAPCountingReal_eq_card_apPrimes
+#print axioms OmegaBalance.f3ThetaAP_nonneg
+
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
 #print axioms OmegaBalance.exists_consecutive_primes_f3_pos_neg
