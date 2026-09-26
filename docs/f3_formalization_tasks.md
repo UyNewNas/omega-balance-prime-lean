@@ -21,7 +21,7 @@
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | **证明完成；consumer exact head `0946893…` 已全绿，待 stacked 主线集成** |
 | DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | **证明完成；一般 `j≥1` 的 `3^{-j}` 已在 exact head `8029c306…` 全绿，待 stacked 主线集成** |
-| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
+| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | **进行中；收敛与高阶项主导层 exact-head 已验证，等距/赋值连接层候选，乘法同态仍未完成** |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
 | RUN-2 | 上述长串的跨度有界版本 | 未完成；依赖定量上游版本 |
 
@@ -324,6 +324,36 @@ has valuation strictly larger than the linear displacement.  Equivalently,
 first term.  This is the key local input for proving
 `‖log(U(n))‖₃ = ‖U(n)-1‖₃`; the infinite-tail/isometry theorem itself is
 not claimed until a separate exact-head proof closes the limit step.
+
+
+
+### LOG-1 dominant-term layer: exact-head verified
+
+Exact head `218e173ce812135a06b8fe2f1707a9c5931ee36d` passed Lean #623
+(run `36243542287`) and Factor-sum #611 (run `36243542271`) completely.
+Therefore `f3PadicDelta_norm_le_one_third`, `f3PadicLogTerm_valuation`,
+`f3PadicLogTerm_delta_valuation_gt`, and
+`norm_f3PadicLogTerm_delta_lt_first` are now promoted from candidate to
+verified. This proves every genuinely higher logarithm term has strictly
+larger 3-adic valuation than the linear displacement.
+
+### LOG-1 logarithmic isometry layer (candidate)
+
+Branch `feat/f3-padic-log-isometry-v2` adds
+`OmegaBalance/F3PadicLogIsometry.lean`. It defines the nonlinear tail,
+bounds the whole tail by the next discrete 3-adic radius, splits the genuine
+logarithm into its linear term plus tail, and targets the exact identities
+
+```math
+||log(U(n))||_3 = ||U(n)-1||_3,
+v_3(log(U(n))) = |F_3(n)|,
+F_3(n) = -chi(n) v_3(log(U(n))).
+```
+
+All eight new theorem declarations are registered in `scripts/Audit.lean`.
+This layer remains candidate until the exact integrated head passes library
+build, regressions, axiom/source audit, declaration coverage, and finite
+checks. Multiplicativity `L(mn)=L(m)+L(n)` remains a separate LOG-1 task.
 
 ## 停止规则
 

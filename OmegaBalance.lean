@@ -11,6 +11,7 @@ import OmegaBalance.F3Coordinates
 import OmegaBalance.F3PadicLogDomain
 import OmegaBalance.F3PadicLog
 import OmegaBalance.F3PadicLogDominant
+import OmegaBalance.F3PadicLogIsometry
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite
