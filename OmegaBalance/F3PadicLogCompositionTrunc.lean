@@ -3,6 +3,8 @@ import Mathlib.RingTheory.PowerSeries.Trunc
 
 namespace OmegaBalance
 
+open Filter Topology
+
 local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
 
 theorem hasSum_f3PadicLog_all_coeff {z : ℚ_[3]} (hz : ‖z‖ < 1) :
