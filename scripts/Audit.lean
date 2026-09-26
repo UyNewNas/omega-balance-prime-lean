@@ -513,3 +513,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.norm_f3PadicDelta_product_le_max
 #print axioms OmegaBalance.norm_f3PadicDelta_mul_le_max_div_three
 #print axioms OmegaBalance.f3PadicLog_mul_defect_norm_le_max_div_three
+
+-- Formal logarithm group law for the final LOG-1 multiplicativity bridge.
+#print axioms OmegaBalance.f3PadicFormal_log_derivative_mul_one_add
+#print axioms OmegaBalance.f3PadicFormal_log_mul
