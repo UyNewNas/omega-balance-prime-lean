@@ -18,6 +18,7 @@ import OmegaBalance.F3PadicLogMulDefect
 import OmegaBalance.F3PadicLogMulDefectBound
 import OmegaBalance.F3PadicLogMulDefectContraction
 import OmegaBalance.F3PadicLogFormalMul
+import OmegaBalance.F3PadicLogAnalyticRescale
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite

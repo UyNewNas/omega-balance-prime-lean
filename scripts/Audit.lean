@@ -517,3 +517,12 @@ import OmegaBalance.F3DeeperExamples
 -- Formal logarithm group law for the final LOG-1 multiplicativity bridge.
 #print axioms OmegaBalance.f3PadicFormal_log_derivative_mul_one_add
 #print axioms OmegaBalance.f3PadicFormal_log_mul
+
+
+-- Analytic specialization of the formal LOG-1 product law.
+#print axioms OmegaBalance.f3PadicFormal_log_smul_X_coeff
+#print axioms OmegaBalance.f3PadicLogTerm_eq_formal_rescale_coeff
+#print axioms OmegaBalance.hasSum_f3PadicFormal_log_rescale_coeff
+#print axioms OmegaBalance.f3PadicFormal_log_mul_rescaled
+#print axioms OmegaBalance.hasSum_f3PadicFormal_log_product_coeff
+#print axioms OmegaBalance.hasSum_f3PadicFormal_log_product_delta_coeff
