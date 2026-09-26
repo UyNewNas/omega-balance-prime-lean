@@ -20,6 +20,8 @@ theorem f3PadicFormal_log_derivative_mul_one_add
   have hs : PowerSeries.HasSubst f :=
     PowerSeries.HasSubst.of_constantCoeff_zero' hf
   rw [PowerSeries.derivative_subst hs]
+  have hone : (1 : PowerSeries ℚ_[3]).subst f = 1 := by
+    rw [← PowerSeries.coe_substAlgHom hs, map_one]
   have hlog :
       (PowerSeries.derivative (PowerSeries.log ℚ_[3])).subst f * (1 + f) = 1 := by
     calc
@@ -28,11 +30,10 @@ theorem f3PadicFormal_log_derivative_mul_one_add
           ((PowerSeries.derivative (PowerSeries.log ℚ_[3])) *
             (1 + PowerSeries.X)).subst f := by
               rw [PowerSeries.subst_mul hs, PowerSeries.subst_add hs,
-                PowerSeries.subst_X hs]
-              simp
+                PowerSeries.subst_X hs, hone]
       _ = (1 : PowerSeries ℚ_[3]).subst f := by
             rw [PowerSeries.derivative_log_mul_one_add_X]
-      _ = 1 := by simp
+      _ = 1 := hone
   calc
     ((PowerSeries.derivative (PowerSeries.log ℚ_[3])).subst f * PowerSeries.derivative f) * (1 + f)
         =
@@ -95,6 +96,9 @@ theorem f3PadicFormal_log_mul
   apply PowerSeries.derivative.ext
   · apply mul_right_cancel₀ hunit.ne_zero
     rw [hmain, hrhs]
-  · simp [PowerSeries.constantCoeff_subst_of_constantCoeff_zero, hh, hf, hg]
+  · rw [PowerSeries.constantCoeff_subst_of_constantCoeff_zero hh,
+      PowerSeries.constantCoeff_subst_of_constantCoeff_zero hf,
+      PowerSeries.constantCoeff_subst_of_constantCoeff_zero hg]
+    simp
 
 end OmegaBalance
