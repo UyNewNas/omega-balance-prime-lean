@@ -1,5 +1,6 @@
 import OmegaBalance.F3Coordinates
 import Mathlib.NumberTheory.Padics.PadicNumbers
+import Mathlib.Analysis.SpecificLimits.Normed
 
 /-!
 # The principal-unit p-adic domain behind the F₃ logarithmic coordinate
@@ -13,6 +14,22 @@ logarithm series must be constructed.
 namespace OmegaBalance
 
 local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
+
+/-- The sign character requested for the logarithmic coordinate.  On the
+ordinary domain `3 ∤ n`, it is `+1` on `n ≡ 1 (mod 3)` and `-1` on
+`n ≡ 2 (mod 3)`. -/
+def f3Chi (n : ℕ) : ℤ := -f3Side n
+
+/-- The existing integer unit is exactly `χ(n) n`. -/
+theorem f3Unit_eq_chi_mul (n : ℕ) :
+    f3Unit n = f3Chi n * (n : ℤ) := by
+  simp [f3Unit, f3Chi]
+
+/-- The signed F₃ value is `-χ(n)` times its unsigned 3-adic depth. -/
+theorem f3_eq_neg_chi_mul_natAbs {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
+    f3 n = -f3Chi n * ((f3 n).natAbs : ℤ) := by
+  rw [f3_eq_side_mul_natAbs hn h3]
+  simp [f3Chi]
 
 /-- The existing normalized integer unit coordinate, embedded in the 3-adic field. -/
 noncomputable def f3PadicUnit (n : ℕ) : ℚ_[3] :=
@@ -63,5 +80,12 @@ theorem f3PadicDelta_norm_lt_one {n : ℕ} (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
   have hthree : (1 : ℝ) < 3 := by norm_num
   rw [zpow_lt_one_iff_right₀ hthree]
   exact Int.neg_neg_of_pos (by exact_mod_cast habs)
+
+/-- The displacement is topologically nilpotent, i.e. its powers tend to zero.
+This is the convergence-domain input for the actual logarithm series. -/
+theorem f3PadicDelta_isTopologicallyNilpotent {n : ℕ}
+    (hn : 1 < n) (h3 : ¬ 3 ∣ n) :
+    IsTopologicallyNilpotent (f3PadicDelta n) :=
+  tendsto_pow_atTop_nhds_zero_of_norm_lt_one (f3PadicDelta_norm_lt_one hn h3)
 
 end OmegaBalance

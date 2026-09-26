@@ -470,3 +470,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicDelta_ne_zero
 #print axioms OmegaBalance.f3PadicDelta_norm
 #print axioms OmegaBalance.f3PadicDelta_norm_lt_one
+#print axioms OmegaBalance.f3Unit_eq_chi_mul
+#print axioms OmegaBalance.f3_eq_neg_chi_mul_natAbs
+#print axioms OmegaBalance.f3PadicDelta_isTopologicallyNilpotent
