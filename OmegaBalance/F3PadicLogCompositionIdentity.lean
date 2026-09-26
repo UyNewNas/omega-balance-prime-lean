@@ -65,7 +65,7 @@ theorem f3PadicLogOnePlus_product
         (f3PadicLogOnePlus (x + y + x * y)) := by
     refine HasSum.congr_fun hout (fun n => ?_)
     dsimp [b]
-    exact f3PadicLogComposition_output_fiber_tsum_eq_coeff x y n
+    exact (f3PadicLogComposition_output_fiber_tsum_eq_coeff x y n).symm
   exact hout'.unique hall
 
 /-- The genuine F₃ 3-adic logarithmic coordinate is multiplicative-to-additive
