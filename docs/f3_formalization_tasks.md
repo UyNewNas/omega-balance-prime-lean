@@ -20,7 +20,7 @@
 | COR-1 | 固定 `h≥0` 的完整整数相关核 | **证明完成；PR #19 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | **证明完成；consumer exact head `0946893…` 已全绿，待 stacked 主线集成** |
-| DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | 未完成；依赖 DEN-1 |
+| DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | **进行中：乘数 17 的首分支真实相对密度 `1/2` 已 exact-head 全绿；`j≥1` 的 `3^{-j}` 仍待完成** |
 | LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
 | RUN-2 | 上述长串的跨度有界版本 | 未完成；依赖定量上游版本 |
@@ -269,9 +269,11 @@ exact head `ffe62a3331f38f9b0312e4c16da723e2f60d9e61` 已通过 Lean
 ```
 
 从而由未加权 AP-PNT 得到分子标准归一化密度
-`1/φ(27)=1/18`。本轮下一候选
-`f3PrimeMul17EqTwoRelativeRatio_tendsto` 进一步对真实计数商证明相对极限
-`1/2`；其 exact-head CI 全绿前不登记完成。后续仍需一般
+`1/φ(27)=1/18`。`f3PrimeMul17EqTwoRelativeRatio_tendsto` 进一步对真实计数商证明相对极限
+`1/2`。exact head `142ae6013cda00a01ba1bc018d2ae8f2a3e54a98` 已通过 Lean
+#36233902351 与 Factor-sum #36233902369；Lean 日志确认 Axiom audit 394
+条声明、Source audit 49 Lean files 无 proof escape、Audit coverage 394/394，
+有限检查 144240 PASS。因此乘数 17 的首分支 `1/2` 正式登记完成。后续仍需一般
 `F₃(17q)=2+j`（`j≥1`）的 `3^{-j}` 条件分布。
 
 ## 停止规则
