@@ -555,3 +555,5 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_subset_range
 
 #print axioms OmegaBalance.summable_f3PadicLogComposition_scalar_majorant
+
+#print axioms OmegaBalance.summable_f3PadicLogComposition_supported_terms

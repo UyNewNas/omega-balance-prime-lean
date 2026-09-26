@@ -103,4 +103,24 @@ theorem summable_f3PadicLogComposition_scalar_majorant :
     simp
     ring
 
+
+/-- The actual composition coefficients are summable on the explicit
+triangular support. -/
+theorem summable_f3PadicLogComposition_supported_terms
+    {x y : ℚ_[3]}
+    (hx : ‖x‖ ≤ (1 / 3 : ℝ)) (hy : ‖y‖ ≤ (1 / 3 : ℝ)) :
+    Summable (fun p : Σ d : ℕ, Fin (2 * d + 1) =>
+      PowerSeries.coeff p.1 (PowerSeries.log ℚ_[3]) *
+        (f3PadicLogMulPolynomial x y ^ p.1).coeff p.2) := by
+  have hnorm :
+      Summable (fun p : Σ d : ℕ, Fin (2 * d + 1) =>
+        ‖PowerSeries.coeff p.1 (PowerSeries.log ℚ_[3]) *
+          (f3PadicLogMulPolynomial x y ^ p.1).coeff p.2‖) := by
+    refine summable_f3PadicLogComposition_scalar_majorant.of_nonneg_of_le
+      (fun _ => norm_nonneg _) ?_
+    intro p
+    exact norm_f3PadicFormalLog_coeff_mul_pow_coeff_le
+      hx hy p.1 p.2
+  exact hnorm.of_norm
+
 end OmegaBalance
