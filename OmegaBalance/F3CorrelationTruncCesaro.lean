@@ -113,7 +113,6 @@ theorem tendsto_f3PeriodicCorrelationPartialSum_succ_div (R h : ℕ) :
     have hN1r : (0 : ℝ) < ((N + 1 : ℕ) : ℝ) := by positivity
     push_cast
     field_simp [ne_of_gt hNr, ne_of_gt hN1r]
-    ring
   simpa using hmul'
 
 theorem tendsto_f3TruncCorrelationIccAverage (R h : ℕ) :
