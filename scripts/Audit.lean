@@ -398,6 +398,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PrimeAPCountingReal_eq_thetaAP_div_log_add_integral
 #print axioms OmegaBalance.f3ThetaAP_le_theta
 #print axioms OmegaBalance.f3Integral_thetaAP_div_log_sq_isLittleO
+#print axioms OmegaBalance.f3ThetaAP_asymptotic
+#print axioms OmegaBalance.f3ThetaAP_div_id_tendsto
+#print axioms OmegaBalance.f3PrimeAPCountingReal_normalized_tendsto
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
