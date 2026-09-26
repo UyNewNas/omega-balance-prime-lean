@@ -214,6 +214,10 @@ head 分出，新建 `F3CorrelationApproxPeriod.lean`。当前候选先完成 `r
 2. COR-2：分支 `feat/f3-correlation-shift-square-v1` 候选新增固定移位平方平均边界公式与 `tendsto_f3ShiftSquareIccAverage`，并把均方差有限和精确展开为两个平方平均与一个交叉相关平均。
 3. 候选 `tendsto_f3MeanSquareShiftIccAverage_pow_three` 对 `r>0` 代入 COR-1 与幂三核化简，目标正是 `4/3^r`。该分支仅在 exact-head CI 全绿后登记完成；`r=0` 仍单独由 COR-1 的 `h=1` 相关核处理，不能套该简式。
 
+### COR-2：CI 修复记录
+
+PR #20 head `657d6d749eb364b1086ab87fe1b132ed9c4f3bea`：Factor-sum #386 成功，Lean #398 在 `F3CorrelationShiftSquare.lean` build 失败。本轮 `b76efdc5e85d2471b925e26e358a357708c9c8d1` 修正三处纯证明脚本问题：自然数加法重排、冗余 `ring`、以及 `h+n` / `n+h` 正规化；theorem 陈述、前提与 Audit 不变。exact-head CI 全绿前仍保持候选状态。
+
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
 ## 停止规则
