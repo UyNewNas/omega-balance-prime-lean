@@ -76,4 +76,39 @@ theorem f3_prime_eq_neg_level_iff
       omega
     rw [(f3_of_mod_three_one (n := p) (by omega) hm).1, hv]
 
+/-- A direct divisibility/depth interface for later arithmetic-progression counts. -/
+theorem pow_three_dvd_iff_le_v3 {n k : ℕ} (hn : n ≠ 0) :
+    3 ^ k ∣ n ↔ k ≤ v3 n := by
+  change 3 ^ k ∣ n ↔ k ≤ valuation 3 n
+  rw [valuation_eq_padicValNat Nat.prime_three]
+  exact padicValNat_dvd_iff_le hn
+
+/-- On primes above three, the tail event for natAbs is the union of the two
+power-of-three neighbor divisibility events. -/
+theorem f3_prime_natAbs_ge_iff
+    {p K : ℕ} (hp : p.Prime) (h3 : 3 < p) (hK : 0 < K) :
+    K ≤ (f3 p).natAbs ↔
+      3 ^ K ∣ p + 1 ∨ 3 ^ K ∣ p - 1 := by
+  rcases prime_mod_three hp h3 with hm | hm
+  · have he := (f3_of_mod_three_one (n := p) (by omega) hm).1
+    have h3pow : 3 ∣ (3 : ℕ) ^ K :=
+      dvd_pow_self 3 (by omega : K ≠ 0)
+    have hnot : ¬ 3 ^ K ∣ p + 1 := by
+      intro hd
+      have hz := Nat.mod_eq_zero_of_dvd (h3pow.trans hd)
+      omega
+    rw [he]
+    simpa [hnot] using
+      (pow_three_dvd_iff_le_v3 (n := p - 1) (k := K) (by omega)).symm
+  · have he := (f3_of_mod_three_two (n := p) (by omega) hm).1
+    have h3pow : 3 ∣ (3 : ℕ) ^ K :=
+      dvd_pow_self 3 (by omega : K ≠ 0)
+    have hnot : ¬ 3 ^ K ∣ p - 1 := by
+      intro hd
+      have hz := Nat.mod_eq_zero_of_dvd (h3pow.trans hd)
+      omega
+    rw [he]
+    simpa [hnot] using
+      (pow_three_dvd_iff_le_v3 (n := p + 1) (k := K) (by omega)).symm
+
 end OmegaBalance

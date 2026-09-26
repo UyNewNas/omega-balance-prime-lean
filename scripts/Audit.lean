@@ -386,6 +386,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.v3_eq_iff_pow_three_dvd_not_succ
 #print axioms OmegaBalance.f3_prime_eq_pos_level_iff
 #print axioms OmegaBalance.f3_prime_eq_neg_level_iff
+#print axioms OmegaBalance.pow_three_dvd_iff_le_v3
+#print axioms OmegaBalance.f3_prime_natAbs_ge_iff
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
