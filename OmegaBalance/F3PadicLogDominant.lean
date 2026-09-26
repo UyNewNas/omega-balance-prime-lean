@@ -28,6 +28,7 @@ theorem f3PadicLogTerm_valuation {x : ℚ_[3]} (hx : x ≠ 0) (k : ℕ) :
   have hden : ((k + 1 : ℕ) : ℚ_[3]) ≠ 0 := by
     exact_mod_cast Nat.succ_ne_zero k
   unfold f3PadicLogTerm
+  rw [show (k : ℚ_[3]) + 1 = ((k + 1 : ℕ) : ℚ_[3]) by norm_num]
   rw [div_eq_mul_inv,
     Padic.valuation_mul (mul_ne_zero hneg hxpow) (inv_ne_zero hden),
     Padic.valuation_mul hneg hxpow,
@@ -75,6 +76,7 @@ theorem norm_f3PadicLogTerm_delta_lt_first {n k : ℕ}
     exact_mod_cast Nat.succ_ne_zero k
   have ht : f3PadicLogTerm (f3PadicDelta n) k ≠ 0 := by
     unfold f3PadicLogTerm
+    rw [show (k : ℚ_[3]) + 1 = ((k + 1 : ℕ) : ℚ_[3]) by norm_num]
     exact div_ne_zero
       (mul_ne_zero (pow_ne_zero _ (by norm_num)) (pow_ne_zero _ hx))
       hden
