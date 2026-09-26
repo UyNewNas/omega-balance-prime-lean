@@ -1,4 +1,5 @@
 import OmegaBalance.F3PrimeDensityResidueLimits
+import OmegaBalance.F3CorrelationPeriod
 import OmegaBalance.F3Extension
 
 namespace OmegaBalance
