@@ -37,4 +37,5 @@ import OmegaBalance.F3PrimeDensityAPTail
 import OmegaBalance.F3PrimeDensityAPLimit
 import OmegaBalance.F3PrimeDensityExactNeg
 import OmegaBalance.F3PrimeDensityExactPos
+import OmegaBalance.F3PrimeDensityTail
 import OmegaBalance.F3SignChanges
