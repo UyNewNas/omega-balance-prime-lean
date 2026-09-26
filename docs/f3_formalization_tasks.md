@@ -361,16 +361,23 @@ isometry, nonvanishing, exact valuation preservation, and signed bridge
 `L(mn)=L(m)+L(n)` remains a separate LOG-1 task.
 
 
-### LOG-1 formal power-series bridge candidate
+### LOG-1 formal coefficient bridge repair
 
-Prototype head `944710d55fadff50b059e07a174f54c36524099c` passed Lean #635
-(run `36246663571`) and Factor-sum #623 with no public declarations.  The
-next integrated head promotes those checked scripts to audited interfaces
-identifying the explicit Q_3 logarithm with `PowerSeries.log` evaluation,
-recording topological nilpotence of the F3 logarithm value, and identifying
-the analytic exponential with `PowerSeries.exp` evaluation.  The bridge is
-not complete until the promoted exact head passes all gates.  Multiplicativity
-`L(mn)=L(m)+L(n)` remains the next LOG-1 target.
+Integrated head `9d05202fdc3f8ae4862bfe0a906c5bb9fae32abd` exposed a real pinned-version
+obstruction: Lean run 636 (36247112572) failed because
+`PowerSeries.eval₂` requires `IsLinearTopology ℚ_[3] ℚ_[3]`, which is not
+available for the usual topology on `ℚ_[3]`.  The failed analytic-evaluator
+interfaces are therefore removed rather than papered over with a discrete
+topology.
+
+The repair branch records the topology-free bridge actually justified by the
+pinned APIs: each project log term is the matching coefficient of
+`PowerSeries.log`, the convergent project log is the HasSum of those
+nonconstant coefficients, and `NormedSpace.exp` is the HasSum of the formal
+`PowerSeries.exp` coefficients.  It also records the two pinned formal
+exp/log substitution identities.  This repair remains candidate until its
+exact head passes build, axiom/source, declaration-coverage and regression
+gates.  Multiplicativity `L(mn)=L(m)+L(n)` remains the next LOG-1 target.
 
 ## 停止规则
 
