@@ -18,11 +18,11 @@ def f3PadicLogCompositionOutputFiberEquiv (n : ℕ) :
     {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n} ≃
       {d : ℕ // n < 2 * d + 1} where
   toFun p := ⟨p.1.1, by
-    rw [← p.2]
-    exact p.1.2.2⟩
+    exact p.2 ▸ p.1.2.2⟩
   invFun d := ⟨⟨d.1, ⟨n, d.2⟩⟩, rfl⟩
   left_inv p := by
     rcases p with ⟨⟨d, ⟨v, hv⟩⟩, h⟩
+    change v = n at h
     subst v
     rfl
   right_inv d := by
@@ -53,12 +53,20 @@ theorem f3PadicLogComposition_output_fiber_tsum_eq_full
             apply tsum_congr
             intro p
             dsimp [e, f3PadicLogCompositionOutputFiberEquiv]
-            rw [← p.2]
+            exact congrArg
+              (fun k : ℕ =>
+                PowerSeries.coeff p.1.1 (PowerSeries.log ℚ_[3]) *
+                  (f3PadicLogMulPolynomial x y ^ p.1.1).coeff k)
+              p.2
     _ =
       ∑' d : ℕ,
         PowerSeries.coeff d (PowerSeries.log ℚ_[3]) *
           (f3PadicLogMulPolynomial x y ^ d).coeff n := by
-            apply tsum_subtype_eq_of_support_subset
+            refine tsum_subtype_eq_of_support_subset
+              (f := fun d : ℕ =>
+                PowerSeries.coeff d (PowerSeries.log ℚ_[3]) *
+                  (f3PadicLogMulPolynomial x y ^ d).coeff n)
+              (s := {d : ℕ | n < 2 * d + 1}) ?_
             intro d hd
             by_contra hdn
             have htwo : 2 * d < n := by omega
