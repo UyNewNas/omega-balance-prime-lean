@@ -8,6 +8,7 @@ import OmegaBalance.F3Rational
 import OmegaBalance.F3SumProduct
 import OmegaBalance.F3Order
 import OmegaBalance.F3Coordinates
+import OmegaBalance.F3PadicLogDomain
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite
