@@ -226,7 +226,7 @@ PR #20 exact head `7824f25eb31506eac747590ddfe99defc9913a4f` 已通过 Lean #410
 
 已核验 ANT：`PrimeNumberTheoremAnd/Wiener.lean` 的 `WeakPNT_AP` 给出 von Mangoldt 加权 AP 渐近，`PrimeNumberTheoremAnd/Consequences.lean` 的 `chebyshev_asymptotic_pnt` 给出固定原始剩余类中的素数 `log p` 加权渐近。ANT 当前 pin 为 Lean `v4.33.0-rc1` / mathlib `e4c91783ca8e6a7c693ae624ade32fd22d4e43c1`，本仓库固定 Lean `v4.34.0` / mathlib `5ed2965256430c3649e86755f9576b54eca72435`，因此不直接整仓依赖或升级；后续只适配所需 AP 计数接口并在本仓库 pin 上重编译审计。
 
-分支 `feat/f3-prime-density-residues-v1` 新增 DEN-1 算术前端候选：`v3_eq_iff_pow_three_dvd_not_succ`、`f3_prime_eq_pos_level_iff`、`f3_prime_eq_neg_level_iff`，把精确 `±k` 层化为嵌套 `3^k` 与 `3^(k+1)` 整除层之差。该层本身不声明密度，exact-head CI 全绿后才登记完成。
+分支 `feat/f3-prime-density-residues-v1` 的 exact head `f78657256300009b3c51d271ae607cd58cf1ae86` 已通过 Lean #417 与 Factor-sum #405。新增 `v3_eq_iff_pow_three_dvd_not_succ`、`f3_prime_eq_pos_level_iff`、`f3_prime_eq_neg_level_iff`，把精确 `±k` 层化为嵌套 `3^k` 与 `3^(k+1)` 整除层之差。Lean #417 日志确认：Axiom audit 347 declarations，仅标准 Lean 公理；Source audit 36 Lean files、无 proof escape；Audit coverage 347/347 恰好一次；有限回归 144240 PASS。该算术前端正式登记完成，但 DEN-1 的渐近密度定理仍未完成。\n\n外部优先检索还找到 `plby/lean-proofs@8822f7ddef30fadbd92e1c6ab4ed897af356af5e` 的 `src/latest/ErdosProblems/Erdos730/PNTAP.lean`：其 `primeAPCountingReal_normalized_tendsto` 已从同源 `chebyshev_asymptotic_pnt` 推出未加权 AP 素数计数 `primeAPCountingReal A a x / (x / log x) → (φ(A))⁻¹`。该快照使用 Lean 4.33.0 / mathlib 4.33.0（manifest mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`），仍与本仓库 4.34.0 pin 不同；因此下一步优先做该现成证明的最小兼容适配，而不是重新发明 partial summation，也不把它未经重编译直接当作本仓库定理。
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
