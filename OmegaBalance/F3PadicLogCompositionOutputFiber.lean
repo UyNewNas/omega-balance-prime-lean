@@ -13,6 +13,7 @@ substitution coefficients.
 namespace OmegaBalance
 
 local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
+attribute [local instance 1001] Ring.toAddCommGroup AddCommGroup.toAddCommMonoid
 
 /-- Regroup the absolutely summable composition family by its output
 coefficient degree.  No coefficient identification is used here; this is
