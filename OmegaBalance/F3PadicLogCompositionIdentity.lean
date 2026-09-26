@@ -13,7 +13,7 @@ closes the multiplicativity part of LOG-1.
 namespace OmegaBalance
 
 local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
-local instance : AddCommGroup ℚ_[3] := instAddCommGroupPadic 3
+attribute [local instance 1001] Ring.toAddCommGroup AddCommGroup.toAddCommMonoid
 
 /-- The genuine convergent 3-adic logarithm satisfies the principal-unit
 multiplication law on the closed radius-`1/3` ball. -/
