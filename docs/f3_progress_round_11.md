@@ -39,3 +39,23 @@ Source exact head: 76b932dc9caa0d8d62c06d18ac4bbbb6eded058d.
 The one-layer contraction layer is therefore exact-green. LOG-1 remains open only
 at the exact multiplicativity step L(m*n)=L(m)+L(n); the contraction theorem is
 not being used as a substitute for that identity.
+
+
+## Formal log product law exact verification
+
+Source exact head: dc722236cfbc3d3e21c3da04a9d84b48a99b8989.
+
+- Added OmegaBalance/F3PadicLogFormalMul.lean.
+- f3PadicFormal_log_derivative_mul_one_add proves the substituted derivative identity for zero-constant-term series.
+- f3PadicFormal_log_mul proves log(1+f+g+fg)=log(1+f)+log(1+g) as a formal power-series identity.
+- Lean push run 36253510647: completed / success.
+- Factor-sum push run 36253510650: completed / success.
+- Library build and kernel regressions: PASS.
+- Axiom audit: PASS, 458 project theorem declarations; only standard Lean axioms.
+- Source audit: PASS, 61 Lean files; no proof escapes.
+- Audit coverage: PASS, 458/458 declarations exactly once.
+- Finite F3 regression: 144240 PASS.
+
+This closes only the formal algebraic identity. LOG-1 still requires the analytic
+specialization/evaluation bridge proving the actual convergent Q_3 identity
+L(m*n)=L(m)+L(n). The contraction estimate is not used as a substitute for equality.
