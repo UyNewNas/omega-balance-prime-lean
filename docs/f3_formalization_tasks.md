@@ -17,7 +17,7 @@
 |---|---|---|
 | INF-1 | 每个固定 `k≥1`，`F₃=+k`、`F₃=-k` 的素数各无穷多 | **完成，PR #6** |
 | INF-2 | 全体素数数列中连续两项的正→负、负→正转移各无穷次 | **完成，PR #6** |
-| COR-1 | 固定 `h≥0` 的完整整数相关核 | **进行中** |
+| COR-1 | 固定 `h≥0` 的完整整数相关核 | **证明完成；PR #19 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | 未完成；依赖 COR-1 |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | 未完成；需 ANT 等差数列渐近计数桥梁 |
 | DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | 未完成；依赖 DEN-1 |
@@ -170,12 +170,53 @@ source audit 为 32 Lean files 无 proof escape，Audit coverage 320/320，有�
 本分支将它与已验证的 uniform majorant cutoff 衰减合流，为最终 raw/cutoff
 双极限交换准备同一文件树；尚不宣告双极限已经完成。
 
-## COR-1 剩余链条
 
-1. 把 `v3Excess_sq_eq_odd_sum` 与幂三整除密度计数结合，证明 `F₃-F₃,R` 的 `L²` Cesàro 尾部界。目标至少达到既定 `O(3^(1-R))`；纸面计算提示可进一步得到精确极限 `2/3^R`，只有完成 Lean 证明后才登记为定理。
-2. 用 Cauchy–Schwarz 控制原始相关平均与固定 cutoff 相关平均之间的误差。
-3. 完成 cutoff 极限与 Cesàro 极限交换，得到原始 `F₃` 的无限相关核 `|h-2|₃+|h+2|₃-2|h|₃`。
-4. 从 COR-1 推导 COR-2：固定 `r≥1` 的均方近似周期 `4/3^r`；`r=0` 必须单独处理，不能套该简式。
+### COR-1：原始 F₃ 相关核完成（stacked exact-head）
+
+PR #19 的 exact head `7398ad8edbe4f9d569d926d1c226529bc14755cd`
+已通过 Lean #378 与 Factor-sum #366。新增 `F3CorrelationLimitExchange.lean`，
+核心定理 `tendsto_f3CorrelationIccAverage` 对每个固定 `h` 证明自然窗口
+`2≤n≤N` 上的 raw F₃ 相关 Cesàro 平均收敛到
+
+```math
+|h-2|_3+|h+2|_3-2|h|_3,
+```
+
+其中源码以
+`f3PadicKernel (Nat.dist h 2) + f3PadicKernel (h+2) - 2*f3PadicKernel h`
+表达，且 `f3PadicKernel 0 = 0`。证明显式先选 cutoff，再选固定 cutoff 下的
+Cesàro 长度；没有把点态截断相等冒充极限交换，也没有切换到素数子序列。
+Lean #378 的完整日志确认：Axiom audit 324 declarations、Source audit 33 Lean
+files 无 proof escape、Audit coverage 324/324、有限回归 144240 PASS，全部边界
+回归通过。验证后 PR #17 head 分支已非强制 fast-forward 到同一 exact SHA。
+
+### COR-2：幂三移位的相关核代数层候选
+
+分支 `feat/f3-correlation-mean-square-period-v1` 从上述 exact verified COR-1
+head 分出，新建 `F3CorrelationApproxPeriod.lean`。当前候选先完成 `r>0`
+时的核值化简：
+
+- `f3PadicKernel_pow_three`；
+- `f3PadicKernel_pow_three_add_two`；
+- `f3PadicKernel_dist_pow_three_two`；
+- `f3CorrelationKernel_pow_three`；
+- `f3CorrelationKernel_meanSquare_pow_three`，目标值为
+  `4 / (3:ℝ)^r`。
+
+这一步只关闭 COR-2 的核代数，不把它冒充均方 Cesàro 极限；仍需证明
+`(F₃(n+3^r)-F₃(n))²` 平均与 `2R(0)-2R(3^r)` 的极限连接。新声明已加入
+`scripts/Audit.lean`，只有 exact-head CI 全绿后才登记为完成。
+
+
+## COR-1 / COR-2 剩余链条
+
+1. COR-1 的证明层已经 exact-head 全绿；剩余只是按 stacked PR 顺序最终集成主分支。
+2. COR-2：分支 `feat/f3-correlation-shift-square-v1` 候选新增固定移位平方平均边界公式与 `tendsto_f3ShiftSquareIccAverage`，并把均方差有限和精确展开为两个平方平均与一个交叉相关平均。
+3. 候选 `tendsto_f3MeanSquareShiftIccAverage_pow_three` 对 `r>0` 代入 COR-1 与幂三核化简，目标正是 `4/3^r`。该分支仅在 exact-head CI 全绿后登记完成；`r=0` 仍单独由 COR-1 的 `h=1` 相关核处理，不能套该简式。
+
+### COR-2：CI 修复记录
+
+PR #20 的 COR-2 主定理在提交 `34e0946d10d6476a6ebe4235e91376ec3a192b18` 获得 exact-head 完整门禁：Lean #408、Factor-sum #396 均成功；公理审计 340 条声明仅使用标准 Lean 公理，35 个 Lean 文件无 proof escape，Audit 340/340 一对一覆盖，144,240 项有限检查全部 PASS。因此 `tendsto_f3MeanSquareShiftIccAverage_pow_three` 对 `r>0` 已登记完成。本轮继续补 `r=0` 边界：单独计算 shift-one 相关核为 `-2/3`，并候选证明 shift-one 均方极限为 `16/3`；它不使用也不修改 `4/3^r` 的 `r>0` 定理。
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
