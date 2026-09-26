@@ -27,6 +27,7 @@ import OmegaBalance.F3PadicLogCompositionFiber
 import OmegaBalance.F3PadicLogCompositionOutputFiber
 import OmegaBalance.F3PadicLogCompositionCoeff
 import OmegaBalance.F3PadicLogCompositionOutputCoeff
+import OmegaBalance.F3PadicLogCompositionIdentity
 import OmegaBalance.F3Primitive
 import OmegaBalance.F3Finite
 import OmegaBalance.F3CorrelationFinite

@@ -573,3 +573,7 @@ import OmegaBalance.F3DeeperExamples
 -- Output-fiber identification with formal substitution coefficients.
 #print axioms OmegaBalance.f3PadicLogComposition_output_fiber_tsum_eq_full
 #print axioms OmegaBalance.f3PadicLogComposition_output_fiber_tsum_eq_coeff
+
+-- Analytic composition identity and F3 p-adic logarithm multiplicativity.
+#print axioms OmegaBalance.f3PadicLogOnePlus_product
+#print axioms OmegaBalance.f3PadicLog_mul
