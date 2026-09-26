@@ -557,3 +557,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.summable_f3PadicLogComposition_scalar_majorant
 
 #print axioms OmegaBalance.summable_f3PadicLogComposition_supported_terms
+
+-- Fiberwise regrouping of the summable p-adic log composition family.
+#print axioms OmegaBalance.f3PadicLogComposition_range_fiber_sum
+#print axioms OmegaBalance.f3PadicLogComposition_fin_fiber_sum
+#print axioms OmegaBalance.hasSum_f3PadicLogComposition_fibers
+#print axioms OmegaBalance.f3PadicLogComposition_supported_tsum_eq
