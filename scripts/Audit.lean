@@ -382,6 +382,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_prime_zero_level_empty
 #print axioms OmegaBalance.exists_ordered_prime_opposite_levels
 
+-- Arithmetic residue reductions for DEN-1 prime densities.
+#print axioms OmegaBalance.v3_eq_iff_pow_three_dvd_not_succ
+#print axioms OmegaBalance.f3_prime_eq_pos_level_iff
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff
+
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
 #print axioms OmegaBalance.exists_consecutive_primes_f3_pos_neg

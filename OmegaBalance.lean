@@ -27,4 +27,5 @@ import OmegaBalance.F3CorrelationLimitExchange
 import OmegaBalance.F3CorrelationApproxPeriod
 import OmegaBalance.F3CorrelationShiftSquare
 import OmegaBalance.F3Infinitude
+import OmegaBalance.F3PrimeDensityResidues
 import OmegaBalance.F3SignChanges

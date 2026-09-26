@@ -18,7 +18,7 @@
 | INF-1 | 每个固定 `k≥1`，`F₃=+k`、`F₃=-k` 的素数各无穷多 | **完成，PR #6** |
 | INF-2 | 全体素数数列中连续两项的正→负、负→正转移各无穷次 | **完成，PR #6** |
 | COR-1 | 固定 `h≥0` 的完整整数相关核 | **证明完成；PR #19 exact-head 已全绿，待 stacked 分支最终主线集成** |
-| COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | 未完成；依赖 COR-1 |
+| COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | 未完成；需 ANT 等差数列渐近计数桥梁 |
 | DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | 未完成；依赖 DEN-1 |
 | LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
@@ -217,6 +217,16 @@ head 分出，新建 `F3CorrelationApproxPeriod.lean`。当前候选先完成 `r
 ### COR-2：CI 修复记录
 
 PR #20 的 COR-2 主定理在提交 `34e0946d10d6476a6ebe4235e91376ec3a192b18` 获得 exact-head 完整门禁：Lean #408、Factor-sum #396 均成功；公理审计 340 条声明仅使用标准 Lean 公理，35 个 Lean 文件无 proof escape，Audit 340/340 一对一覆盖，144,240 项有限检查全部 PASS。因此 `tendsto_f3MeanSquareShiftIccAverage_pow_three` 对 `r>0` 已登记完成。本轮继续补 `r=0` 边界：单独计算 shift-one 相关核为 `-2/3`，并候选证明 shift-one 均方极限为 `16/3`；它不使用也不修改 `4/3^r` 的 `r>0` 定理。
+
+### COR-2：shift-one 边界 exact-head
+
+PR #20 exact head `7824f25eb31506eac747590ddfe99defc9913a4f` 已通过 Lean #410 与 Factor-sum #398。Lean #410 日志确认：Axiom audit 344 declarations，仅标准 Lean 公理；Source audit 35 Lean files、无 proof escape；Audit coverage 344/344 恰好一次；有限回归 144240 PASS。该 head 单独证明 shift-one 相关核 `-2/3` 与均方极限 `16/3`，没有把 `r=0` 错套进 `4/3^r`。
+
+### DEN-1：AP 渐近来源与版本边界
+
+已核验 ANT：`PrimeNumberTheoremAnd/Wiener.lean` 的 `WeakPNT_AP` 给出 von Mangoldt 加权 AP 渐近，`PrimeNumberTheoremAnd/Consequences.lean` 的 `chebyshev_asymptotic_pnt` 给出固定原始剩余类中的素数 `log p` 加权渐近。ANT 当前 pin 为 Lean `v4.33.0-rc1` / mathlib `e4c91783ca8e6a7c693ae624ade32fd22d4e43c1`，本仓库固定 Lean `v4.34.0` / mathlib `5ed2965256430c3649e86755f9576b54eca72435`，因此不直接整仓依赖或升级；后续只适配所需 AP 计数接口并在本仓库 pin 上重编译审计。
+
+分支 `feat/f3-prime-density-residues-v1` 新增 DEN-1 算术前端候选：`v3_eq_iff_pow_three_dvd_not_succ`、`f3_prime_eq_pos_level_iff`、`f3_prime_eq_neg_level_iff`，把精确 `±k` 层化为嵌套 `3^k` 与 `3^(k+1)` 整除层之差。该层本身不声明密度，exact-head CI 全绿后才登记完成。
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
