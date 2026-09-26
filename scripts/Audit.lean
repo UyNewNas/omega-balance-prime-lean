@@ -419,6 +419,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.mod_pow_three_eq_one_iff_dvd_sub_one
 #print axioms OmegaBalance.f3_prime_eq_pos_level_iff_mod_exact_above_three
 #print axioms OmegaBalance.f3_prime_eq_neg_level_iff_mod_exact_above_three
+#print axioms OmegaBalance.f3_prime_eq_pos_level_iff_mod_exact
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff_mod_exact
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
