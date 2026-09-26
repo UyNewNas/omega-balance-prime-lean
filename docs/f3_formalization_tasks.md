@@ -311,6 +311,20 @@ strict higher-log-term bound and the later logarithmic isometry. It does not
 claim multiplicativity or valuation preservation yet; only exact-head CI can
 promote this candidate to verified status.
 
+
+### LOG-1 dominant higher terms (candidate)
+
+On top of the verified radius-one-third bound, the same branch now adds
+`f3PadicLogTerm_valuation`, an exact valuation formula for every nonzero
+logarithm-series term, and specializes it to the F₃ coordinate.  Using
+`3 * padicValNat 3 (k+1) ≤ k+1`, the candidate theorem
+`f3PadicLogTerm_delta_valuation_gt` proves that each term with `k>0`
+has valuation strictly larger than the linear displacement.  Equivalently,
+`norm_f3PadicLogTerm_delta_lt_first` gives strict norm domination by the
+first term.  This is the key local input for proving
+`‖log(U(n))‖₃ = ‖U(n)-1‖₃`; the infinite-tail/isometry theorem itself is
+not claimed until a separate exact-head proof closes the limit step.
+
 ## 停止规则
 
 只有 INF、COR、DEN、LOG、RUN 全部目标得到非空洞 Lean 证明并集成主分支，上游依赖经过信任审计，且精确版本的构建、回归、公理、源码、覆盖全部通过后，才结束全量任务。当前尚未满足停止条件。

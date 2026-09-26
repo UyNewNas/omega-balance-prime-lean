@@ -481,3 +481,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.summable_f3PadicLog
 #print axioms OmegaBalance.hasSum_f3PadicLog
 #print axioms OmegaBalance.f3PadicDelta_norm_le_one_third
+#print axioms OmegaBalance.f3PadicLogTerm_valuation
+#print axioms OmegaBalance.f3PadicLogTerm_delta_valuation_gt
+#print axioms OmegaBalance.norm_f3PadicLogTerm_delta_lt_first
