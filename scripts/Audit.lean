@@ -583,3 +583,5 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3RunResidue_lt_modulus
 #print axioms OmegaBalance.f3RunResidue_coprime
 #print axioms OmegaBalance.f3_of_modEq_runResidue
+#print axioms OmegaBalance.f3ConsecutiveRun_of_residueRun
+#print axioms OmegaBalance.f3ConsecutiveRuns_of_residueRuns
