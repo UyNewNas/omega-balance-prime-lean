@@ -140,7 +140,7 @@ theorem tendsto_f3CorrelationIccAverage (h : ℕ) :
           dist (f3PeriodicCorrelationAverage R h)
             (f3PadicKernel (Nat.dist h 2) + f3PadicKernel (h + 2) -
               2 * f3PadicKernel h)) :=
-      add_le_add_left htri _
+      by nlinarith [htri]
     _ < ε := by
       dsimp [δ] at herr hcut hperiod
       linarith
