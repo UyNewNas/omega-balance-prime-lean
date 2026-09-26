@@ -402,6 +402,26 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3ThetaAP_div_id_tendsto
 #print axioms OmegaBalance.f3PrimeAPCountingReal_normalized_tendsto
 
+-- Power-of-three AP residue densities for DEN-1.
+#print axioms OmegaBalance.pow_three_minus_one_coprime
+#print axioms OmegaBalance.totient_pow_three
+#print axioms OmegaBalance.f3PrimeAP_pow_three_minus_one_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeAP_pow_three_one_normalized_tendsto
+#print axioms OmegaBalance.inv_totient_pow_three_sub_succ
+#print axioms OmegaBalance.two_inv_totient_pow_three
+#print axioms OmegaBalance.f3PrimePosExactResidueCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeNegExactResidueCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeTailResidueCountingReal_normalized_tendsto
+
+-- Exact F₃ level-to-residue bridge above the small-prime boundary.
+#print axioms OmegaBalance.f3_two
+#print axioms OmegaBalance.mod_pow_three_eq_sub_one_iff_dvd_add_one
+#print axioms OmegaBalance.mod_pow_three_eq_one_iff_dvd_sub_one
+#print axioms OmegaBalance.f3_prime_eq_pos_level_iff_mod_exact_above_three
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff_mod_exact_above_three
+#print axioms OmegaBalance.f3_prime_eq_pos_level_iff_mod_exact
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff_mod_exact
+
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
 #print axioms OmegaBalance.exists_consecutive_primes_f3_pos_neg

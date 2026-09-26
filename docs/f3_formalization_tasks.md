@@ -19,7 +19,7 @@
 | INF-2 | 全体素数数列中连续两项的正→负、负→正转移各无穷次 | **完成，PR #6** |
 | COR-1 | 固定 `h≥0` 的完整整数相关核 | **证明完成；PR #19 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
-| DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | 未完成；需 ANT 等差数列渐近计数桥梁 |
+| DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | 进行中；AP 未加权计数桥已 exact-head 全绿，正在把幂三剩余类渐近与 F₃ 事件精确接合 |
 | DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | 未完成；依赖 DEN-1 |
 | LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
@@ -227,6 +227,23 @@ PR #20 exact head `7824f25eb31506eac747590ddfe99defc9913a4f` 已通过 Lean #410
 已核验 ANT：`PrimeNumberTheoremAnd/Wiener.lean` 的 `WeakPNT_AP` 给出 von Mangoldt 加权 AP 渐近，`PrimeNumberTheoremAnd/Consequences.lean` 的 `chebyshev_asymptotic_pnt` 给出固定原始剩余类中的素数 `log p` 加权渐近。ANT 当前 pin 为 Lean `v4.33.0-rc1` / mathlib `e4c91783ca8e6a7c693ae624ade32fd22d4e43c1`，本仓库固定 Lean `v4.34.0` / mathlib `5ed2965256430c3649e86755f9576b54eca72435`，因此不直接整仓依赖或升级；后续只适配所需 AP 计数接口并在本仓库 pin 上重编译审计。
 
 分支 `feat/f3-prime-density-residues-v1` 的 exact head `f78657256300009b3c51d271ae607cd58cf1ae86` 已通过 Lean #417 与 Factor-sum #405。新增 `v3_eq_iff_pow_three_dvd_not_succ`、`f3_prime_eq_pos_level_iff`、`f3_prime_eq_neg_level_iff`，把精确 `±k` 层化为嵌套 `3^k` 与 `3^(k+1)` 整除层之差。Lean #417 日志确认：Axiom audit 347 declarations，仅标准 Lean 公理；Source audit 36 Lean files、无 proof escape；Audit coverage 347/347 恰好一次；有限回归 144240 PASS。该算术前端正式登记完成，但 DEN-1 的渐近密度定理仍未完成。\n\n外部优先检索还找到 `plby/lean-proofs@8822f7ddef30fadbd92e1c6ab4ed897af356af5e` 的 `src/latest/ErdosProblems/Erdos730/PNTAP.lean`：其 `primeAPCountingReal_normalized_tendsto` 已从同源 `chebyshev_asymptotic_pnt` 推出未加权 AP 素数计数 `primeAPCountingReal A a x / (x / log x) → (φ(A))⁻¹`。该快照使用 Lean 4.33.0 / mathlib 4.33.0（manifest mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`），仍与本仓库 4.34.0 pin 不同；因此下一步优先做该现成证明的最小兼容适配，而不是重新发明 partial summation，也不把它未经重编译直接当作本仓库定理。
+
+
+### DEN-1：未加权 AP 计数桥 exact-head
+
+PR #22 exact head `6922dad91bf4301d3bbbf6b78f4233b5f6677635` 已通过 Lean #460 与 Factor-sum #448。Lean #460 完整门禁确认：Axiom audit 360 declarations，仅标准 Lean 公理；Source audit 44 Lean files、无 proof escape；Audit coverage 360/360 恰好一次；有限回归 144240 PASS。因此 `f3PrimeAPCountingReal_normalized_tendsto` 在当前 Lean 4.34.0 / mathlib pin 和 ANT commit `099d3726c2c74841024110ec1dd9902f7ef36e9e` 上正式验证通过。
+
+分支 `feat/f3-prime-density-residue-limits-v1` 在该 exact head 上继续：对模 `3^k` 的 `-1` 与 `+1` 原始剩余类应用 AP 计数极限，候选证明精确层的两个嵌套剩余类之差趋于 `1/3^k`，以及两侧深度至少 `K` 的剩余类和趋于 `1/3^(K-1)`。这一层在新 exact-head CI 全绿前不登记完成；下一步还必须利用 `f3_prime_eq_pos_level_iff`、`f3_prime_eq_neg_level_iff` 与 `f3_prime_natAbs_ge_iff` 把有限计数函数精确接回 F₃ 素数事件。
+
+
+### DEN-1：F₃ 精确层到模剩余类桥候选
+
+分支 `feat/f3-prime-density-exact-v1` 从已验证的 residue-model head 继续，新建
+`F3PrimeDensityExact.lean`。候选先证明 `p>3` 时
+`F₃(p)=+k` / `F₃(p)=-k` 分别等价于模 `3^k` 命中 `-1` / `+1`
+且模 `3^(k+1)` 不再命中的精确剩余条件，并补 `f3 2 = 1` 作为小素数边界。
+后续仍需把有限集合的 exact-residue cardinal 精确化为两个嵌套 AP count 的差，
+再处理 `p=2,3` 后导出全体素数的语义计数极限。
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
