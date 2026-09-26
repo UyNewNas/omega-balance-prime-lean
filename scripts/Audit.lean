@@ -435,6 +435,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_totient_twentyseven
 #print axioms OmegaBalance.f3PrimeMul17EqTwoCountingReal_normalized_tendsto
 #print axioms OmegaBalance.f3PrimeMul17EqTwoRelativeRatio_tendsto
+#print axioms OmegaBalance.f3_seventeen_mul_high_level_implies_neg_two
+#print axioms OmegaBalance.f3_seventeen_mul_eq_two_add_implies_neg_two
 #print axioms OmegaBalance.f3_seventeen_coprime_three_pow
 #print axioms OmegaBalance.f3Mul17ResidueUnit_spec
 #print axioms OmegaBalance.f3Mul17Residue_lt

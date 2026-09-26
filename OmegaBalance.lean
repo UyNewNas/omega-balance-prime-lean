@@ -40,4 +40,5 @@ import OmegaBalance.F3PrimeDensityExactPos
 import OmegaBalance.F3PrimeDensityTail
 import OmegaBalance.F3PrimeDensityMul17
 import OmegaBalance.F3PrimeDensityMul17Count
+import OmegaBalance.F3PrimeDensityMul17High
 import OmegaBalance.F3SignChanges
