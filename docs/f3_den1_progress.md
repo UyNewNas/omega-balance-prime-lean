@@ -25,3 +25,8 @@ positive-level result. Unlike the negative side, the proof deliberately includes
 prime `2` at level `+1` instead of silently deleting it; the nested `-1` residue
 difference is therefore an exact finite-set identity for the actual positive-level
 prime count. This candidate is not promoted until its exact head passes the full gate.
+
+
+2026-09-26 positive exact-density note: head `3c93ea182cefa864b77d6fe74a55ff3cdd455485` passed Lean #530 and Factor-sum #518 completely. The exact positive-level prime count, including prime `2` at level `+1`, has normalized constant `1/(3:ℝ)^k` for every `k>0`. This head reports 377 audited declarations, 46 Lean files with no proof escape, exact audit coverage, and 144240 PASS.
+
+The next candidate layer is `F3PrimeDensityTail.lean` on PR #22. It identifies the actual event `K ≤ |F₃(p)|` for every prime, including `p=2,3`, with the union of the `-1` and `+1` classes modulo `3^K`; proves those AP sets are disjoint; and reduces the actual tail count exactly to their sum. The target `f3PrimeTailCountingReal_normalized_tendsto` has constant `1/(3:ℝ)^(K-1)=3^(1-K)`. Source head `feea462640ff7e5582d05342d376e2de865ee9e9` contains the file, top-level import, and Audit registrations; exact-head CI is still required before promotion.
