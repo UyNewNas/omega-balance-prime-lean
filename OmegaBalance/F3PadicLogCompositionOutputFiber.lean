@@ -51,6 +51,7 @@ theorem hasSum_f3PadicLogComposition_by_output
         ∑' p : {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n},
           F p := by
             rw [hset]
+            rfl
     _ = ∑' p : {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n},
         PowerSeries.coeff p.1.1 (PowerSeries.log ℚ_[3]) *
           (f3PadicLogMulPolynomial x y ^ p.1.1).coeff p.1.2 := by
