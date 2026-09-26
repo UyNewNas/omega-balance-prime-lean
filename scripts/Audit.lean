@@ -541,3 +541,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicNormAbsoluteValue_nonarchimedean
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_gaussNorm_le_one_third
 #print axioms OmegaBalance.norm_f3PadicLogMulPolynomial_pow_coeff_le
+
+-- Pointwise majorant for the final nonlinear composition/Fubini bridge.
+#print axioms OmegaBalance.norm_powerSeries_log_coeff_succ_le
+#print axioms OmegaBalance.norm_f3PadicLogCompositionTerm_le
