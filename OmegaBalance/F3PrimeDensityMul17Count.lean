@@ -100,4 +100,45 @@ theorem f3PrimeMul17EqTwoRelativeRatio_tendsto :
       (f3PrimeMul17EqTwoCountingReal x)
       (f3PrimeNegLevelCountingReal 2 x))
 
+/-- Seventeen stays coprime to every power of three. -/
+lemma f3_seventeen_coprime_three_pow (m : ℕ) : Nat.Coprime 17 (3 ^ m) := by
+  apply Nat.Coprime.pow_right
+  norm_num
+
+/-- The distinguished unit residue solving `17 a = -1` modulo `3^m`. -/
+noncomputable def f3Mul17ResidueUnit (m : ℕ) : (ZMod (3 ^ m))ˣ :=
+  -((ZMod.unitOfCoprime 17 (f3_seventeen_coprime_three_pow m))⁻¹)
+
+/-- The distinguished multiplier-17 residue has the defining equation in
+`ZMod (3^m)`. -/
+lemma f3Mul17ResidueUnit_spec (m : ℕ) :
+    (17 : ZMod (3 ^ m)) *
+        (f3Mul17ResidueUnit m : ZMod (3 ^ m)) = -1 := by
+  simp [f3Mul17ResidueUnit]
+
+/-- Least natural representative of the distinguished multiplier-17 residue. -/
+noncomputable def f3Mul17Residue (m : ℕ) : ℕ :=
+  (f3Mul17ResidueUnit m : ZMod (3 ^ m)).val
+
+lemma f3Mul17Residue_lt (m : ℕ) :
+    f3Mul17Residue m < 3 ^ m := by
+  letI : NeZero (3 ^ m) := ⟨by positivity⟩
+  exact ZMod.val_lt _
+
+lemma f3Mul17Residue_coprime (m : ℕ) :
+    Nat.Coprime (f3Mul17Residue m) (3 ^ m) := by
+  exact ZMod.val_coe_unit_coprime (f3Mul17ResidueUnit m)
+
+/-- The representative really makes `17a+1` divisible by the modulus. -/
+lemma pow_three_dvd_seventeen_mul_residue_add_one (m : ℕ) :
+    3 ^ m ∣ 17 * f3Mul17Residue m + 1 := by
+  rw [← ZMod.natCast_eq_zero_iff]
+  push_cast
+  letI : NeZero (3 ^ m) := ⟨by positivity⟩
+  rw [show (f3Mul17Residue m : ZMod (3 ^ m)) =
+      (f3Mul17ResidueUnit m : ZMod (3 ^ m)) by
+        exact ZMod.natCast_zmod_val _]
+  rw [f3Mul17ResidueUnit_spec]
+  simp
+
 end OmegaBalance
