@@ -549,3 +549,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_natDegree_le
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_subset_range
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_card_le
+
+-- Absolute row summability and summable outer majorant for LOG Fubini.
+#print axioms OmegaBalance.summable_norm_f3PadicLogCompositionRow
+#print axioms OmegaBalance.tsum_norm_f3PadicLogCompositionRow_le
+#print axioms OmegaBalance.summable_f3PadicLogCompositionRowMajorant
