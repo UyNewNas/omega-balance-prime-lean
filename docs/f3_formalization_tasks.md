@@ -230,6 +230,21 @@ PR #20 exact head `7824f25eb31506eac747590ddfe99defc9913a4f` 已通过 Lean #410
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
+
+### DEN-1：负层 exact AP proxy 当前推进
+
+已确认 consumer exact head `6922dad91bf4301d3bbbf6b78f4233b5f6677635`
+通过 Lean #460 与 Factor-sum #448，因此固定余数类未加权计数桥
+`f3PrimeAPCountingReal_normalized_tendsto` 正式视为 exact-head verified。
+
+当前后续分支新增 `f3PrimeNegLevelAPDifference`、
+`f3PrimeNegLevelAPDifference_normalized_tendsto_totient`、
+`f3_totient_three_pow_inv_sub_succ` 与
+`f3PrimeNegLevelAPDifference_normalized_tendsto`。目标是先把
+`F₃=-k` 对应的 residue-1 嵌套 AP 计数差正规化到精确常数 `1/3^k`。
+这些新声明均已登记 `scripts/Audit.lean`；在最新 exact head 完整门禁通过前，
+DEN-1 仍保持未完成，且尚未把 AP proxy 与真实 `f3 p=-k` 素数计数做有限例外桥接。
+
 ## 停止规则
 
 只有 INF、COR、DEN、LOG、RUN 全部目标得到非空洞 Lean 证明并集成主分支，上游依赖经过信任审计，且精确版本的构建、回归、公理、源码、覆盖全部通过后，才结束全量任务。当前尚未满足停止条件。
