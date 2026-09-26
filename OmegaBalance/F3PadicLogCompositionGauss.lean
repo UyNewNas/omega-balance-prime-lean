@@ -27,6 +27,7 @@ theorem f3PadicLogMulPolynomial_gaussNorm_le_one_third
       IsNonarchimedean
         (Polynomial.gaussNorm f3PadicNormAbsoluteValue (1 : ℝ)) :=
     Polynomial.isNonarchimedean_gaussNorm
+      f3PadicNormAbsoluteValue
       f3PadicNormAbsoluteValue_nonarchimedean (by norm_num)
   have hxterm :
       (Polynomial.C x * Polynomial.X : Polynomial ℚ_[3]).gaussNorm
@@ -93,7 +94,10 @@ theorem norm_f3PadicLogMulPolynomial_pow_coeff_le
             f3PadicNormAbsoluteValue 1) ^ m := by
     intro m
     induction m with
-    | zero => simp
+    | zero =>
+        change (Polynomial.C (1 : ℚ_[3])).gaussNorm
+            f3PadicNormAbsoluteValue 1 = 1
+        simp
     | succ m ih =>
         rw [pow_succ,
           Polynomial.gaussNorm_mul
@@ -111,7 +115,9 @@ theorem norm_f3PadicLogMulPolynomial_pow_coeff_le
     _ = ((f3PadicLogMulPolynomial x y).gaussNorm
           f3PadicNormAbsoluteValue 1) ^ d := hmul d
     _ ≤ (1 / 3 : ℝ) ^ d := by
-          gcongr
-          exact f3PadicLogMulPolynomial_gaussNorm_le_one_third hx hy
+          exact pow_le_pow_left₀
+            ((f3PadicLogMulPolynomial x y).gaussNorm_nonneg
+              f3PadicNormAbsoluteValue (by norm_num))
+            (f3PadicLogMulPolynomial_gaussNorm_le_one_third hx hy) d
 
 end OmegaBalance
