@@ -211,8 +211,8 @@ head 分出，新建 `F3CorrelationApproxPeriod.lean`。当前候选先完成 `r
 ## COR-1 / COR-2 剩余链条
 
 1. COR-1 的证明层已经 exact-head 全绿；剩余只是按 stacked PR 顺序最终集成主分支。
-2. COR-2：把均方差有限和展开为两个平方平均与一个交叉相关平均，并补齐固定移位平方平均的 Cesàro 极限连接。
-3. 对 `r≥1` 代入已候选完成的幂三核化简，得到 `4/3^r`；`r=0` 单独由 COR-1 的 `h=1` 相关核处理，不能套该简式。
+2. COR-2：分支 `feat/f3-correlation-shift-square-v1` 候选新增固定移位平方平均边界公式与 `tendsto_f3ShiftSquareIccAverage`，并把均方差有限和精确展开为两个平方平均与一个交叉相关平均。
+3. 候选 `tendsto_f3MeanSquareShiftIccAverage_pow_three` 对 `r>0` 代入 COR-1 与幂三核化简，目标正是 `4/3^r`。该分支仅在 exact-head CI 全绿后登记完成；`r=0` 仍单独由 COR-1 的 `h=1` 相关核处理，不能套该简式。
 
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 

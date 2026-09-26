@@ -25,5 +25,6 @@ import OmegaBalance.F3CorrelationTailError
 import OmegaBalance.F3CorrelationTruncCesaro
 import OmegaBalance.F3CorrelationLimitExchange
 import OmegaBalance.F3CorrelationApproxPeriod
+import OmegaBalance.F3CorrelationShiftSquare
 import OmegaBalance.F3Infinitude
 import OmegaBalance.F3SignChanges

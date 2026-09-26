@@ -340,6 +340,13 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3CorrelationKernel_meanSquare_pow_three
 #print axioms OmegaBalance.tendsto_f3CorrelationIccAverage_zero
 #print axioms OmegaBalance.tendsto_f3CorrelationIccAverage_pow_three
+#print axioms OmegaBalance.sum_Icc_two_eq_sum_range_sub_one_real
+#print axioms OmegaBalance.sum_Icc_f3_sq_shift_eq_full_sub_prefix
+#print axioms OmegaBalance.f3CorrelationIccAverage_zero_eq_square
+#print axioms OmegaBalance.f3ShiftSquareIccAverage_eq
+#print axioms OmegaBalance.tendsto_f3ShiftSquareIccAverage
+#print axioms OmegaBalance.f3MeanSquareShiftIccAverage_eq
+#print axioms OmegaBalance.tendsto_f3MeanSquareShiftIccAverage_pow_three
 
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
