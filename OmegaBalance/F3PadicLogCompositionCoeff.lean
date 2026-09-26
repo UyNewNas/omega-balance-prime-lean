@@ -37,7 +37,7 @@ theorem f3PadicLogComposition_coeff_tsum_eq
   have hfinite :=
     PowerSeries.coeff_subst_finite' hb (PowerSeries.log ℚ_[3]) n
   rw [PowerSeries.coeff_subst' hb]
-  rw [← tsum_eq_finsum hfinite]
+  rw [← tsum_eq_finsum (L := SummationFilter.unconditional ℕ) hfinite]
   congr 1
   funext d
   simp [b, ← Polynomial.coe_pow, smul_eq_mul]
