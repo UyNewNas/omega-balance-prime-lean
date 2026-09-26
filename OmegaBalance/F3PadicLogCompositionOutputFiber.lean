@@ -38,15 +38,16 @@ theorem hasSum_f3PadicLogComposition_by_output
     rw [← f3PadicLogComposition_supported_tsum_eq hx hy hxy]
     exact hs.hasSum
   have hfib := htotal.tsum_fiberwise (fun p => p.2.1)
-  refine hfib.congr fun n => ?_
+  refine HasSum.congr_fun hfib (fun n => ?_)
   let e :
       ↑((fun p : (Σ d : ℕ, Fin (2 * d + 1)) => p.2.1) ⁻¹'
         ({n} : Set ℕ)) ≃
-        {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n} where
-    toFun p := ⟨p.1, by simpa using p.2⟩
-    invFun p := ⟨p.1, by simpa using p.2⟩
-    left_inv p := by rfl
-    right_inv p := by rfl
+        {p : Σ d : ℕ, Fin (2 * d + 1) // p.2.1 = n} := {
+    toFun := fun p => ⟨p.1, by simpa using p.2⟩
+    invFun := fun p => ⟨p.1, by simpa using p.2⟩
+    left_inv := fun p => by rfl
+    right_inv := fun p => by rfl
+  }
   calc
     (∑' b : ↑((fun p : (Σ d : ℕ, Fin (2 * d + 1)) => p.2.1) ⁻¹'
         ({n} : Set ℕ)), F b) =
