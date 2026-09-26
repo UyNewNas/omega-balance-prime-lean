@@ -1,4 +1,5 @@
 import OmegaBalance.F3PadicLogCompositionGauss
+import Mathlib.Algebra.Polynomial.Degree.Support
 
 namespace OmegaBalance
 
@@ -33,5 +34,49 @@ theorem norm_f3PadicLogCompositionTerm_le
     (norm_f3PadicLogMulPolynomial_pow_coeff_le hx hy (k + 1) n)
     (norm_nonneg _)
     (by positivity)
+
+/-- The quadratic substitution polynomial has degree at most two, uniformly
+in its coefficients. -/
+theorem f3PadicLogMulPolynomial_natDegree_le_two (x y : ℚ_[3]) :
+    (f3PadicLogMulPolynomial x y).natDegree ≤ 2 := by
+  unfold f3PadicLogMulPolynomial
+  apply Polynomial.natDegree_add_le_of_degree_le
+  · apply Polynomial.natDegree_add_le_of_degree_le
+    · simpa using Polynomial.natDegree_C_mul_X_pow_le x 1
+    · simpa using Polynomial.natDegree_C_mul_X_pow_le y 1
+  · exact Polynomial.natDegree_C_mul_X_pow_le (x * y) 2
+
+/-- Consequently the d-th power of the substitution polynomial has degree
+at most 2d. -/
+theorem f3PadicLogMulPolynomial_pow_natDegree_le
+    (x y : ℚ_[3]) (d : ℕ) :
+    (f3PadicLogMulPolynomial x y ^ d).natDegree ≤ 2 * d := by
+  calc
+    (f3PadicLogMulPolynomial x y ^ d).natDegree
+        ≤ d * (f3PadicLogMulPolynomial x y).natDegree :=
+      Polynomial.natDegree_pow_le
+    _ ≤ d * 2 := Nat.mul_le_mul_left d
+      (f3PadicLogMulPolynomial_natDegree_le_two x y)
+    _ = 2 * d := by omega
+
+/-- Only the first 2d+1 coefficient indices can occur in the d-th power. -/
+theorem f3PadicLogMulPolynomial_pow_support_subset_range
+    (x y : ℚ_[3]) (d : ℕ) :
+    (f3PadicLogMulPolynomial x y ^ d).support ⊆
+      Finset.range (2 * d + 1) := by
+  exact Polynomial.supp_subset_range <|
+    (f3PadicLogMulPolynomial_pow_natDegree_le x y d).trans_lt
+      (Nat.lt_succ_self (2 * d))
+
+/-- The d-th power therefore has at most 2d+1 nonzero coefficients. -/
+theorem f3PadicLogMulPolynomial_pow_support_card_le
+    (x y : ℚ_[3]) (d : ℕ) :
+    (f3PadicLogMulPolynomial x y ^ d).support.card ≤ 2 * d + 1 := by
+  calc
+    (f3PadicLogMulPolynomial x y ^ d).support.card
+        ≤ (Finset.range (2 * d + 1)).card :=
+      Finset.card_le_card
+        (f3PadicLogMulPolynomial_pow_support_subset_range x y d)
+    _ = 2 * d + 1 := by simp
 
 end OmegaBalance

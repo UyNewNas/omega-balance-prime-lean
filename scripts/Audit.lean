@@ -545,3 +545,7 @@ import OmegaBalance.F3DeeperExamples
 -- Pointwise majorant for the final nonlinear composition/Fubini bridge.
 #print axioms OmegaBalance.norm_powerSeries_log_coeff_succ_le
 #print axioms OmegaBalance.norm_f3PadicLogCompositionTerm_le
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_natDegree_le_two
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_natDegree_le
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_subset_range
+#print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_card_le
