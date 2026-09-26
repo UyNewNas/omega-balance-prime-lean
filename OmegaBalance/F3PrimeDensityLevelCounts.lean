@@ -23,8 +23,9 @@ theorem f3_prime_eq_pos_level_iff_mod_exact
         not_congr hhigh
       rw [hlow, hhigh_ne]
       norm_num
+      have hv3 : v3 3 = 1 := by simpa using v3_pow_three 1
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 3) (k := k) (by norm_num),
-          v3_three]
+          hv3]
       norm_cast
     · have hlow := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k) (n := 3)
       have hhigh := mod_pow_three_eq_sub_one_iff_dvd_add_one (j := k + 1) (n := 3)
@@ -35,8 +36,10 @@ theorem f3_prime_eq_pos_level_iff_mod_exact
       rw [hlow, hhigh_ne]
       norm_num
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 4) (k := k) (by norm_num)]
+      have hv4 : v3 4 = 0 := v3_eq_zero_of_not_dvd (by norm_num)
+      have hv2 : v3 2 = 0 := v3_eq_zero_of_not_dvd (by norm_num)
       unfold f3 neighborDiff
-      simp [v3_four, v3_two]
+      simp [hv4, hv2]
 
 /-- Exact negative F₃ level as a nested power-of-three residue condition,
 including the two small primes. -/
@@ -67,7 +70,9 @@ theorem f3_prime_eq_neg_level_iff_mod_exact
       rw [hlow, hhigh_ne]
       norm_num
       rw [← v3_eq_iff_pow_three_dvd_not_succ (n := 2) (k := k) (by norm_num)]
+      have hv4 : v3 4 = 0 := v3_eq_zero_of_not_dvd (by norm_num)
+      have hv2 : v3 2 = 0 := v3_eq_zero_of_not_dvd (by norm_num)
       unfold f3 neighborDiff
-      simp [v3_four, v3_two]
+      simp [hv4, hv2]
 
 end OmegaBalance
