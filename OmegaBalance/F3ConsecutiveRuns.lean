@@ -44,14 +44,14 @@ theorem f3_of_modEq_runResidue {n : ℕ} {c : ℤ}
     have hf := f3_pos_of_modEq_level hn hk hm
     have he : (c.natAbs : ℤ) = c := by
       rw [Int.natCast_natAbs, abs_of_pos hpos]
-    simpa [he] using hf
+    exact hf.trans he
   · have hneg : c < 0 := by omega
     have hm : n ≡ 3 ^ c.natAbs + 1 [MOD 3 ^ (c.natAbs + 1)] := by
       simpa [f3RunResidue, f3RunModulus, hpos] using hmod
     have hf := f3_neg_of_modEq_level hn hk hm
     have he : -(c.natAbs : ℤ) = c := by
       rw [Int.natCast_natAbs, abs_of_neg hneg, neg_neg]
-    simpa [he] using hf
+    exact hf.trans he
 
 
 /-- A finite block of genuinely consecutive primes in the full prime sequence. -/
