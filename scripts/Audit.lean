@@ -528,3 +528,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_eval_one
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_toPowerSeries
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_coeff_sum
+
+-- Finite outer-truncation bridge toward the final analytic composition identity.
+#print axioms OmegaBalance.hasSum_f3PadicLog_all_coeff
+#print axioms OmegaBalance.f3PadicLogTrunc_eval_eq_sum_range
+#print axioms OmegaBalance.tendsto_f3PadicLogTrunc_eval
+#print axioms OmegaBalance.f3PadicLogTrunc_comp_eval_one
+#print axioms OmegaBalance.tendsto_f3PadicLogTrunc_product_eval
