@@ -45,4 +45,36 @@ theorem f3PrimeAPCountingReal_normalized_tendsto {A a : ℕ}
       Real.log_ne_zero_of_pos_of_ne_one (by linarith) (by linarith)
     field
 
+
+/-- The nested arithmetic-progression count for the exact negative F₃ level.
+For primes above three, the residue condition `p ≡ 1 [MOD 3^k]` is exactly
+`k ≤ v₃(p-1)`; subtracting the next modulus isolates valuation exactly `k`. -/
+noncomputable def f3PrimeNegLevelAPDifference (k : ℕ) (x : ℝ) : ℝ :=
+  f3PrimeAPCountingReal (3 ^ k) 1 x -
+    f3PrimeAPCountingReal (3 ^ (k + 1)) 1 x
+
+/-- Before simplifying Euler totients, the exact negative-level AP proxy has
+the expected difference of the two fixed-residue PNT-AP constants. -/
+theorem f3PrimeNegLevelAPDifference_normalized_tendsto_totient
+    {k : ℕ} (hk : 0 < k) :
+    Tendsto
+      (fun x : ℝ =>
+        f3PrimeNegLevelAPDifference k x / (x / Real.log x))
+      atTop
+      (𝓝 (((Nat.totient (3 ^ k) : ℝ)⁻¹) -
+        ((Nat.totient (3 ^ (k + 1)) : ℝ)⁻¹))) := by
+  have hklt : 1 < 3 ^ k :=
+    Nat.one_lt_pow hk.ne' (by norm_num : 1 < (3 : ℕ))
+  have hkslt : 1 < 3 ^ (k + 1) :=
+    Nat.one_lt_pow (by omega : k + 1 ≠ 0) (by norm_num : 1 < (3 : ℕ))
+  have h0 :=
+    f3PrimeAPCountingReal_normalized_tendsto
+      (A := 3 ^ k) (a := 1)
+      (by positivity) (by simp) hklt
+  have h1 :=
+    f3PrimeAPCountingReal_normalized_tendsto
+      (A := 3 ^ (k + 1)) (a := 1)
+      (by positivity) (by simp) hkslt
+  simpa [f3PrimeNegLevelAPDifference, sub_div] using h0.sub h1
+
 end OmegaBalance
