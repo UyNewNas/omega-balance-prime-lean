@@ -101,14 +101,20 @@ theorem tendsto_f3PeriodicCorrelationPartialSum_succ_div (R h : ℕ) :
     simpa [add_comm] using
       (tendsto_add_mul_div_add_mul_atTop_nhds (𝕜 := ℝ) 1 0 1 (d := 1) (by norm_num))
   have hmul := havg.mul hratio
-  refine hmul.congr' ?_
-  filter_upwards [eventually_gt_atTop 0] with N hN
-  rw [f3PeriodicCorrelationCesaroAverage]
-  have hNr : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
-  have hN1r : (0 : ℝ) < ((N + 1 : ℕ) : ℝ) := by positivity
-  push_cast
-  field_simp [ne_of_gt hNr, ne_of_gt hN1r]
-  ring
+  have hmul' :
+      Tendsto
+        (fun N : ℕ =>
+          (f3PeriodicCorrelationPartialSum R h (N + 1) : ℝ) / (N : ℝ))
+        atTop (𝓝 (f3PeriodicCorrelationAverage R h * 1)) := by
+    refine hmul.congr' ?_
+    filter_upwards [eventually_gt_atTop 0] with N hN
+    rw [f3PeriodicCorrelationCesaroAverage]
+    have hNr : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
+    have hN1r : (0 : ℝ) < ((N + 1 : ℕ) : ℝ) := by positivity
+    push_cast
+    field_simp [ne_of_gt hNr, ne_of_gt hN1r]
+    ring
+  simpa using hmul'
 
 theorem tendsto_f3TruncCorrelationIccAverage (R h : ℕ) :
     Tendsto (fun N : ℕ => f3TruncCorrelationIccAverage R h N)
@@ -125,8 +131,12 @@ theorem tendsto_f3TruncCorrelationIccAverage (R h : ℕ) :
         atTop (𝓝 0) :=
     tendsto_const_div_atTop_nhds_zero_nat _
   have hlim := (hmain.sub hzero).sub hone
-  refine hlim.congr' ?_
-  filter_upwards [eventually_gt_atTop 0] with N hN
-  exact (f3TruncCorrelationIccAverage_eq R h N hN).symm
+  have hlim' :
+      Tendsto (fun N : ℕ => f3TruncCorrelationIccAverage R h N)
+        atTop (𝓝 (f3PeriodicCorrelationAverage R h - 0 - 0)) := by
+    refine hlim.congr' ?_
+    filter_upwards [eventually_gt_atTop 0] with N hN
+    exact (f3TruncCorrelationIccAverage_eq R h N hN).symm
+  simpa using hlim'
 
 end OmegaBalance
