@@ -25,7 +25,6 @@ noncomputable def f3PadicLogMulPolynomial (x y : ℚ_[3]) : Polynomial ℚ_[3] :
 theorem f3PadicLogMulPolynomial_eval_one (x y : ℚ_[3]) :
     (f3PadicLogMulPolynomial x y).eval 1 = x + y + x * y := by
   simp [f3PadicLogMulPolynomial]
-  ring
 
 /-- The polynomial model embeds into the exact quadratic power series used in
 the specialized formal logarithm identity. -/
