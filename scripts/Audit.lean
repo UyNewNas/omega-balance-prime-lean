@@ -410,6 +410,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.inv_totient_pow_three_sub_succ
 #print axioms OmegaBalance.f3PosLevelAPDiff_normalized_tendsto_exact
 #print axioms OmegaBalance.f3NegLevelAPDiff_normalized_tendsto_exact
+#print axioms OmegaBalance.f3_prime_eq_pos_level_iff_all
+#print axioms OmegaBalance.f3_prime_eq_neg_level_iff_all
+#print axioms OmegaBalance.f3_prime_eq_pos_level_modEq_iff
+#print axioms OmegaBalance.f3_prime_eq_neg_level_modEq_iff
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
