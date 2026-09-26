@@ -569,3 +569,7 @@ import OmegaBalance.F3DeeperExamples
 
 -- Fixed-output coefficient identification for the analytic/formal bridge.
 #print axioms OmegaBalance.f3PadicLogComposition_coeff_tsum_eq
+
+-- Output-fiber identification with formal substitution coefficients.
+#print axioms OmegaBalance.f3PadicLogComposition_output_fiber_tsum_eq_full
+#print axioms OmegaBalance.f3PadicLogComposition_output_fiber_tsum_eq_coeff
