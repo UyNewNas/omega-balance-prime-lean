@@ -13,7 +13,6 @@ substitution coefficients.
 namespace OmegaBalance
 
 local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
-local instance : AddCommGroup ℚ_[3] := instAddCommGroupPadic 3
 
 /-- Regroup the absolutely summable composition family by its output
 coefficient degree.  No coefficient identification is used here; this is
@@ -37,6 +36,7 @@ theorem hasSum_f3PadicLogComposition_by_output
       HasSum F (f3PadicLogOnePlus (x + y + x * y)) := by
     rw [← f3PadicLogComposition_supported_tsum_eq hx hy hxy]
     exact hs.hasSum
-  simpa [F] using htotal.tsum_fiberwise (fun p => p.2.1)
+  with_reducible_and_instances
+    simpa [F] using htotal.tsum_fiberwise (fun p => p.2.1)
 
 end OmegaBalance
