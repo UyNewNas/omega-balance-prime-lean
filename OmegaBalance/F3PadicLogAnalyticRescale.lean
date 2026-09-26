@@ -22,7 +22,7 @@ local instance : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
 `X ↦ xX` are the original logarithm coefficients multiplied by `x^n`. -/
 theorem f3PadicFormal_log_smul_X_coeff (x : ℚ_[3]) (n : ℕ) :
     PowerSeries.coeff n
-        ((PowerSeries.log ℚ_[3]).subst (x • PowerSeries.X)) =
+        ((PowerSeries.log ℚ_[3]).subst (x • (PowerSeries.X : PowerSeries ℚ_[3]))) =
       x ^ n * PowerSeries.coeff n (PowerSeries.log ℚ_[3]) := by
   rw [← PowerSeries.rescale_eq_subst x (PowerSeries.log ℚ_[3])]
   exact PowerSeries.coeff_rescale (PowerSeries.log ℚ_[3]) x n
@@ -32,7 +32,7 @@ coefficient of the linearly rescaled formal logarithm. -/
 theorem f3PadicLogTerm_eq_formal_rescale_coeff (x : ℚ_[3]) (k : ℕ) :
     f3PadicLogTerm x k =
       PowerSeries.coeff (k + 1)
-        ((PowerSeries.log ℚ_[3]).subst (x • PowerSeries.X)) := by
+        ((PowerSeries.log ℚ_[3]).subst (x • (PowerSeries.X : PowerSeries ℚ_[3]))) := by
   calc
     f3PadicLogTerm x k =
         PowerSeries.coeff (k + 1) (PowerSeries.log ℚ_[3]) * x ^ (k + 1) :=
@@ -41,7 +41,7 @@ theorem f3PadicLogTerm_eq_formal_rescale_coeff (x : ℚ_[3]) (k : ℕ) :
         PowerSeries.coeff (k + 1) (PowerSeries.log ℚ_[3]) := by
       rw [mul_comm]
     _ = PowerSeries.coeff (k + 1)
-        ((PowerSeries.log ℚ_[3]).subst (x • PowerSeries.X)) :=
+        ((PowerSeries.log ℚ_[3]).subst (x • (PowerSeries.X : PowerSeries ℚ_[3]))) :=
       (f3PadicFormal_log_smul_X_coeff x (k + 1)).symm
 
 /-- On the open p-adic unit ball, summing the positive-degree coefficients of
@@ -50,7 +50,7 @@ theorem hasSum_f3PadicFormal_log_rescale_coeff {x : ℚ_[3]} (hx : ‖x‖ < 1) 
     HasSum
       (fun k : ℕ =>
         PowerSeries.coeff (k + 1)
-          ((PowerSeries.log ℚ_[3]).subst (x • PowerSeries.X)))
+          ((PowerSeries.log ℚ_[3]).subst (x • (PowerSeries.X : PowerSeries ℚ_[3]))))
       (f3PadicLogOnePlus x) := by
   simpa only [f3PadicFormal_log_smul_X_coeff, mul_comm] using
     hasSum_f3PadicLog_powerSeries_coeff hx
@@ -59,10 +59,10 @@ theorem hasSum_f3PadicFormal_log_rescale_coeff {x : ℚ_[3]} (hx : ‖x‖ < 1) 
 `yX`. -/
 theorem f3PadicFormal_log_mul_rescaled (x y : ℚ_[3]) :
     (PowerSeries.log ℚ_[3]).subst
-        (x • PowerSeries.X + y • PowerSeries.X +
-          (x • PowerSeries.X) * (y • PowerSeries.X)) =
-      (PowerSeries.log ℚ_[3]).subst (x • PowerSeries.X) +
-        (PowerSeries.log ℚ_[3]).subst (y • PowerSeries.X) := by
+        (x • (PowerSeries.X : PowerSeries ℚ_[3]) + y • (PowerSeries.X : PowerSeries ℚ_[3]) +
+          (x • (PowerSeries.X : PowerSeries ℚ_[3])) * (y • (PowerSeries.X : PowerSeries ℚ_[3]))) =
+      (PowerSeries.log ℚ_[3]).subst (x • (PowerSeries.X : PowerSeries ℚ_[3])) +
+        (PowerSeries.log ℚ_[3]).subst (y • (PowerSeries.X : PowerSeries ℚ_[3])) := by
   simpa using
     f3PadicFormal_log_mul
       (x • (PowerSeries.X : PowerSeries ℚ_[3]))
@@ -79,8 +79,8 @@ theorem hasSum_f3PadicFormal_log_product_coeff
       (fun k : ℕ =>
         PowerSeries.coeff (k + 1)
           ((PowerSeries.log ℚ_[3]).subst
-            (x • PowerSeries.X + y • PowerSeries.X +
-              (x • PowerSeries.X) * (y • PowerSeries.X))))
+            (x • (PowerSeries.X : PowerSeries ℚ_[3]) + y • (PowerSeries.X : PowerSeries ℚ_[3]) +
+              (x • (PowerSeries.X : PowerSeries ℚ_[3])) * (y • (PowerSeries.X : PowerSeries ℚ_[3])))))
       (f3PadicLogOnePlus x + f3PadicLogOnePlus y) := by
   rw [f3PadicFormal_log_mul_rescaled x y]
   simpa only [map_add] using
@@ -98,10 +98,10 @@ theorem hasSum_f3PadicFormal_log_product_delta_coeff
       (fun k : ℕ =>
         PowerSeries.coeff (k + 1)
           ((PowerSeries.log ℚ_[3]).subst
-            (f3PadicDelta m • PowerSeries.X +
-              f3PadicDelta n • PowerSeries.X +
-              (f3PadicDelta m • PowerSeries.X) *
-                (f3PadicDelta n • PowerSeries.X))))
+            (f3PadicDelta m • (PowerSeries.X : PowerSeries ℚ_[3]) +
+              f3PadicDelta n • (PowerSeries.X : PowerSeries ℚ_[3]) +
+              (f3PadicDelta m • (PowerSeries.X : PowerSeries ℚ_[3])) *
+                (f3PadicDelta n • (PowerSeries.X : PowerSeries ℚ_[3])))))
       (f3PadicLog m + f3PadicLog n) := by
   simpa [f3PadicLog] using
     hasSum_f3PadicFormal_log_product_coeff
