@@ -52,8 +52,8 @@ theorem hasSum_f3PadicFormal_log_rescale_coeff {x : ℚ_[3]} (hx : ‖x‖ < 1) 
         PowerSeries.coeff (k + 1)
           ((PowerSeries.log ℚ_[3]).subst (x • PowerSeries.X)))
       (f3PadicLogOnePlus x) := by
-  simpa only [← f3PadicLogTerm_eq_formal_rescale_coeff] using
-    (summable_f3PadicLogTerm hx).hasSum
+  simpa only [f3PadicFormal_log_smul_X_coeff, mul_comm] using
+    hasSum_f3PadicLog_powerSeries_coeff hx
 
 /-- Formal LOG-1 product law specialized to the two linear series `xX` and
 `yX`. -/
@@ -63,9 +63,11 @@ theorem f3PadicFormal_log_mul_rescaled (x y : ℚ_[3]) :
           (x • PowerSeries.X) * (y • PowerSeries.X)) =
       (PowerSeries.log ℚ_[3]).subst (x • PowerSeries.X) +
         (PowerSeries.log ℚ_[3]).subst (y • PowerSeries.X) := by
-  apply f3PadicFormal_log_mul
-  · simp
-  · simp
+  simpa using
+    f3PadicFormal_log_mul
+      (x • (PowerSeries.X : PowerSeries ℚ_[3]))
+      (y • (PowerSeries.X : PowerSeries ℚ_[3]))
+      (by simp) (by simp)
 
 /-- The coefficient sum of the formal product-law left side is already
 identified with the sum of the two genuine analytic logarithms.  This closes
