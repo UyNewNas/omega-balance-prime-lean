@@ -393,6 +393,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3ThetaAP_eq_sum_apPrimes
 #print axioms OmegaBalance.f3PrimeAPCountingReal_eq_card_apPrimes
 #print axioms OmegaBalance.f3ThetaAP_nonneg
+#print axioms OmegaBalance.f3ThetaAP_le_count_mul_log
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
