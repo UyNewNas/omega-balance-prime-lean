@@ -553,3 +553,5 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_natDegree_le
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_coeff_eq_zero_of_two_mul_lt
 #print axioms OmegaBalance.f3PadicLogMulPolynomial_pow_support_subset_range
+
+#print axioms OmegaBalance.summable_f3PadicLogComposition_scalar_majorant

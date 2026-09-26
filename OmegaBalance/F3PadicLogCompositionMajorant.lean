@@ -1,5 +1,6 @@
 import OmegaBalance.F3PadicLogCompositionGauss
 import Mathlib.Tactic.ComputeDegree
+import Mathlib.Topology.Algebra.InfiniteSum.Real
 
 /-!
 # Scalar majorants for the final 3-adic logarithm composition interchange
@@ -71,5 +72,35 @@ theorem f3PadicLogMulPolynomial_pow_support_subset_range
   have hlt : 2 * d < n := by omega
   exact (Polynomial.mem_support_iff.mp hn)
     (f3PadicLogMulPolynomial_pow_coeff_eq_zero_of_two_mul_lt x y hlt)
+
+
+/-- The scalar majorant over the entire explicit triangular support is
+summable.  This is the real Tonelli/Fubini input for the final analytic
+composition interchange. -/
+theorem summable_f3PadicLogComposition_scalar_majorant :
+    Summable (fun p : Σ d : ℕ, Fin (2 * d + 1) =>
+      (p.1 : ℝ) * (1 / 3 : ℝ) ^ p.1) := by
+  rw [summable_sigma_of_nonneg (fun _ => by positivity)]
+  constructor
+  · intro d
+    exact Summable.of_finite
+  · have hr : ‖(1 / 3 : ℝ)‖ < 1 := by norm_num
+    have h2 :
+        Summable (fun d : ℕ => (d : ℝ) ^ 2 * (1 / 3 : ℝ) ^ d) :=
+      summable_pow_mul_geometric_of_norm_lt_one (R := ℝ) 2 hr
+    have h1 :
+        Summable (fun d : ℕ => (d : ℝ) * (1 / 3 : ℝ) ^ d) := by
+      simpa only [pow_one] using
+        (summable_pow_mul_geometric_of_norm_lt_one (R := ℝ) 1 hr)
+    have hpoly :
+        Summable (fun d : ℕ =>
+          2 * ((d : ℝ) ^ 2 * (1 / 3 : ℝ) ^ d) +
+            (d : ℝ) * (1 / 3 : ℝ) ^ d) :=
+      (h2.mul_left 2).add h1
+    convert hpoly using 1
+    funext d
+    rw [tsum_fintype]
+    simp
+    ring
 
 end OmegaBalance
