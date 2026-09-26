@@ -21,7 +21,7 @@
 | COR-2 | 固定 `r≥1` 的均方近似周期 `4/3^r` | **证明完成；PR #20 exact-head 已全绿，待 stacked 分支最终主线集成** |
 | DEN-1 | 素数单点比例 `3^(-k)`、层级尾部 `3^(1-K)` | **证明完成；consumer exact head `0946893…` 已全绿，待 stacked 主线集成** |
 | DEN-2 | 固定乘子升层密度；含乘数 17 的 `1/2,1/3,1/9,…` 条件分布 | **证明完成；一般 `j≥1` 的 `3^{-j}` 已在 exact head `8029c306…` 全绿，待 stacked 主线集成** |
-| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | 未完成；已有整数坐标 U |
+| LOG-1 | 真正 `log₃-ad U` 的收敛、同态、等距及 F₃ 连接 | **进行中；收敛与高阶项主导层 exact-head 已验证，等距/赋值连接层候选，乘法同态仍未完成** |
 | RUN-1 | 任意固定 `c≠0,L≥1` 的连续素数同值长串 | 未完成；需 Shiu / BFTB 的可审计形式化 |
 | RUN-2 | 上述长串的跨度有界版本 | 未完成；依赖定量上游版本 |
 
@@ -324,6 +324,53 @@ has valuation strictly larger than the linear displacement.  Equivalently,
 first term.  This is the key local input for proving
 `‖log(U(n))‖₃ = ‖U(n)-1‖₃`; the infinite-tail/isometry theorem itself is
 not claimed until a separate exact-head proof closes the limit step.
+
+
+
+### LOG-1 dominant-term layer: exact-head verified
+
+Exact head `218e173ce812135a06b8fe2f1707a9c5931ee36d` passed Lean #623
+(run `36243542287`) and Factor-sum #611 (run `36243542271`) completely.
+Therefore `f3PadicDelta_norm_le_one_third`, `f3PadicLogTerm_valuation`,
+`f3PadicLogTerm_delta_valuation_gt`, and
+`norm_f3PadicLogTerm_delta_lt_first` are now promoted from candidate to
+verified. This proves every genuinely higher logarithm term has strictly
+larger 3-adic valuation than the linear displacement.
+
+### LOG-1 logarithmic isometry layer: exact-head verified
+
+Branch `feat/f3-padic-log-isometry-v2` adds
+`OmegaBalance/F3PadicLogIsometry.lean`. It defines the nonlinear tail,
+bounds the whole tail by the next discrete 3-adic radius, splits the genuine
+logarithm into its linear term plus tail, and targets the exact identities
+
+```math
+||log(U(n))||_3 = ||U(n)-1||_3,
+v_3(log(U(n))) = |F_3(n)|,
+F_3(n) = -chi(n) v_3(log(U(n))).
+```
+
+All eight new theorem declarations are registered in `scripts/Audit.lean`.
+Exact head `b09e06d67329c309290c3252e81249fd518fb0d8` passed Lean #626
+(run `36244366034`) and Factor-sum #614 (run `36244366033`). The Lean log
+confirms Axiom audit 437 declarations with only standard Lean axioms, Source
+audit 55 Lean files with no proof escapes, Audit coverage 437/437 exactly once,
+and 144240 finite checks PASS. Therefore the genuine logarithmic norm
+isometry, nonvanishing, exact valuation preservation, and signed bridge
+`F₃(n) = -χ(n) v₃(L(n))` are formally verified. Multiplicativity
+`L(mn)=L(m)+L(n)` remains a separate LOG-1 task.
+
+
+### LOG-1 formal power-series bridge candidate
+
+Prototype head `944710d55fadff50b059e07a174f54c36524099c` passed Lean #635
+(run `36246663571`) and Factor-sum #623 with no public declarations.  The
+next integrated head promotes those checked scripts to audited interfaces
+identifying the explicit Q_3 logarithm with `PowerSeries.log` evaluation,
+recording topological nilpotence of the F3 logarithm value, and identifying
+the analytic exponential with `PowerSeries.exp` evaluation.  The bridge is
+not complete until the promoted exact head passes all gates.  Multiplicativity
+`L(mn)=L(m)+L(n)` remains the next LOG-1 target.
 
 ## 停止规则
 

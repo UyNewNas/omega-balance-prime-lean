@@ -484,3 +484,17 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicLogTerm_valuation
 #print axioms OmegaBalance.f3PadicLogTerm_delta_valuation_gt
 #print axioms OmegaBalance.norm_f3PadicLogTerm_delta_lt_first
+#print axioms OmegaBalance.norm_f3PadicLogTerm_delta_le_next_radius
+#print axioms OmegaBalance.norm_f3PadicLogTail_le_next_radius
+#print axioms OmegaBalance.norm_f3PadicLogTail_lt_delta
+#print axioms OmegaBalance.f3PadicLog_eq_delta_add_tail
+#print axioms OmegaBalance.f3PadicLog_norm_eq_delta_norm
+#print axioms OmegaBalance.f3PadicLog_ne_zero
+#print axioms OmegaBalance.f3PadicLog_valuation
+#print axioms OmegaBalance.f3_eq_neg_chi_mul_log_valuation
+
+#print axioms OmegaBalance.f3Padic_hasEval_of_norm_lt_one
+#print axioms OmegaBalance.f3PadicLogOnePlus_eq_powerSeries_eval
+#print axioms OmegaBalance.f3PadicLog_eq_powerSeries_eval
+#print axioms OmegaBalance.f3PadicLog_hasEval
+#print axioms OmegaBalance.f3PadicExp_eq_powerSeries_eval
