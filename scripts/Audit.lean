@@ -504,3 +504,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicDelta_mul_norm_lt_one
 #print axioms OmegaBalance.f3PadicLog_mul_reduction
 #print axioms OmegaBalance.hasSum_f3PadicLog_mul_delta
+#print axioms OmegaBalance.f3PadicLog_mul_defect_eq
