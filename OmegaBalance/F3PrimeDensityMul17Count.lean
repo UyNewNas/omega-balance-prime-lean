@@ -61,4 +61,43 @@ theorem f3PrimeMul17EqTwoCountingReal_normalized_tendsto :
         (f3PrimeMul17EqTwoCountingReal_eq_APCountingReal x).symm
   simpa [f3_totient_twentyseven, one_div] using h'
 
+/-- The genuine conditional counting ratio inside the input population
+`F₃(q)=-2`. It is totalized as a real quotient for small cutoffs where the
+denominator may vanish; the limit theorem below only uses its eventual tail. -/
+noncomputable def f3PrimeMul17EqTwoRelativeRatio (x : ℝ) : ℝ :=
+  f3PrimeMul17EqTwoCountingReal x / f3PrimeNegLevelCountingReal 2 x
+
+/-- Among primes with `F₃(q)=-2`, the multiplier-17 output branch
+`F₃(17q)=2` has genuine relative natural density `1/2`.  The proof divides
+the two already-proved `x / log x` asymptotics and then removes the common
+normalization only on the eventual tail where it is nonzero. -/
+theorem f3PrimeMul17EqTwoRelativeRatio_tendsto :
+    Tendsto f3PrimeMul17EqTwoRelativeRatio atTop (𝓝 (1 / 2 : ℝ)) := by
+  have hnum := f3PrimeMul17EqTwoCountingReal_normalized_tendsto
+  have hden :=
+    f3PrimeNegLevelCountingReal_normalized_tendsto
+      (k := 2) (by norm_num)
+  have hratio :
+      Tendsto
+        (fun x : ℝ =>
+          (f3PrimeMul17EqTwoCountingReal x / (x / Real.log x)) /
+            (f3PrimeNegLevelCountingReal 2 x / (x / Real.log x)))
+        atTop (𝓝 (1 / 2 : ℝ)) := by
+    convert hnum.div hden (by norm_num : (1 / (3 : ℝ) ^ 2) ≠ 0) using 1 <;>
+      norm_num
+  refine hratio.congr' ?_
+  have hden_ne :
+      ∀ᶠ x : ℝ in atTop,
+        f3PrimeNegLevelCountingReal 2 x / (x / Real.log x) ≠ 0 :=
+    hden.eventually_ne (by norm_num : (1 / (3 : ℝ) ^ 2) ≠ 0)
+  filter_upwards [hden_ne] with x hx
+  have hscale : x / Real.log x ≠ 0 := by
+    intro hzero
+    apply hx
+    simp [hzero]
+  simpa [f3PrimeMul17EqTwoRelativeRatio] using
+    (div_div_div_cancel_right₀ hscale
+      (f3PrimeMul17EqTwoCountingReal x)
+      (f3PrimeNegLevelCountingReal 2 x))
+
 end OmegaBalance

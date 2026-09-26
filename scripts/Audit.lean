@@ -434,6 +434,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PrimeMul17EqTwoCountingReal_eq_APCountingReal
 #print axioms OmegaBalance.f3_totient_twentyseven
 #print axioms OmegaBalance.f3PrimeMul17EqTwoCountingReal_normalized_tendsto
+#print axioms OmegaBalance.f3PrimeMul17EqTwoRelativeRatio_tendsto
 
 -- Genuine consecutive-prime sign changes, not selected-subsequence adjacency.
 #print axioms OmegaBalance.f3_crossing_after_prime
