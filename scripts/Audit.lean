@@ -304,6 +304,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_neg_residue_coprime
 #print axioms OmegaBalance.f3_pos_of_modEq_level
 #print axioms OmegaBalance.f3_neg_of_modEq_level
+#print axioms OmegaBalance.f3_pos_residue_two_coprime
+#print axioms OmegaBalance.f3_neg_residue_two_coprime
+#print axioms OmegaBalance.f3_pos_of_modEq_level_two
+#print axioms OmegaBalance.f3_neg_of_modEq_level_two
 #print axioms OmegaBalance.exists_prime_gt_f3_pos
 #print axioms OmegaBalance.exists_prime_gt_f3_neg
 #print axioms OmegaBalance.f3_prime_level_pos_infinite

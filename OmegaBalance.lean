@@ -21,4 +21,5 @@ import OmegaBalance.F3CorrelationCesaro
 import OmegaBalance.F3CorrelationCesaroLimit
 import OmegaBalance.F3CorrelationTail
 import OmegaBalance.F3Infinitude
+import OmegaBalance.F3DensityResidues
 import OmegaBalance.F3SignChanges
