@@ -147,10 +147,10 @@ theorem f3MeanSquareShiftIccAverage_eq (h N : ℕ) :
       _ = _ := by
         rw [Finset.sum_sub_distrib, Finset.sum_add_distrib,
           ← Finset.mul_sum]
+  rw [f3CorrelationIccAverage_zero_eq_square]
   unfold f3MeanSquareShiftIccAverage f3ShiftSquareIccAverage
     f3CorrelationIccAverage
   rw [hsum]
-  simp only [Nat.add_zero]
   ring
 
 /-- The required mean-square approximate period theorem. The hypothesis
