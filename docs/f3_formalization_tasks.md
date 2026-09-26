@@ -231,19 +231,30 @@ PR #20 exact head `7824f25eb31506eac747590ddfe99defc9913a4f` 已通过 Lean #410
 DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 
 
-### DEN-1：负层 exact AP proxy 当前推进
+### DEN-1：负层真实素数精确密度已通过 exact-head
 
-已确认 consumer exact head `6922dad91bf4301d3bbbf6b78f4233b5f6677635`
-通过 Lean #460 与 Factor-sum #448，因此固定余数类未加权计数桥
-`f3PrimeAPCountingReal_normalized_tendsto` 正式视为 exact-head verified。
+consumer exact head `52600809f57835ee7e5182f09c3c72ea2eac0893` 已通过
+Lean #526 与 Factor-sum #514。该 head 将 `F₃=-k` 的真实素数集合严格识别为
+`p ≡ 1 (mod 3^k)` 与 `p ≡ 1 (mod 3^(k+1))` 的有限集差，并证明
 
-当前后续分支新增 `f3PrimeNegLevelAPDifference`、
-`f3PrimeNegLevelAPDifference_normalized_tendsto_totient`、
-`f3_totient_three_pow_inv_sub_succ` 与
-`f3PrimeNegLevelAPDifference_normalized_tendsto`。目标是先把
-`F₃=-k` 对应的 residue-1 嵌套 AP 计数差正规化到精确常数 `1/3^k`。
-这些新声明均已登记 `scripts/Audit.lean`；在最新 exact head 完整门禁通过前，
-DEN-1 仍保持未完成，且尚未把 AP proxy 与真实 `f3 p=-k` 素数计数做有限例外桥接。
+```math
+\frac{\#\{p\le x: p\text{ prime},\ p>3,\ F_3(p)=-k\}}{x/\log x}
+\longrightarrow 3^{-k},\qquad k\ge1.
+```
+
+对应接口为 `f3PrimeNegLevelCountingReal_eq_APDifference` 与
+`f3PrimeNegLevelCountingReal_normalized_tendsto`。Lean #526 的 build、
+kernel regression、axiom/source audit、declaration coverage 与有限 F₃
+检查全部成功；axiom log 覆盖 369 个登记声明，有限检查 144240 PASS。
+
+### DEN-1：正层真实素数精确密度候选
+
+在上述 exact verified head 上新增 `F3PrimeDensityExactPos.lean`。候选层先证明
+`p % 3^k = 3^k-1 ↔ 3^k ∣ p+1`，并把 exact `F₃=+k`（包含 `p=2,k=1`
+这个真实有限边界）识别为 `-1 mod 3^k` 类去掉 `-1 mod 3^(k+1)` 类。
+随后复用同一个未加权 AP-PNT 桥和 Euler-totient 差，目标定理
+`f3PrimePosLevelCountingReal_normalized_tendsto` 的常数同样为 `3^{-k}`。
+新声明已加入 `scripts/Audit.lean`；只有该新 exact head 完整门禁通过后才登记完成。
 
 ## 停止规则
 
