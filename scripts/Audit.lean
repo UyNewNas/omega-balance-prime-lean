@@ -327,6 +327,11 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.tendsto_f3PeriodicCorrelationPartialSum_succ_div
 #print axioms OmegaBalance.tendsto_f3TruncCorrelationIccAverage
 
+-- Full raw F3 correlation limit after the explicit cutoff/Cesaro exchange.
+#print axioms OmegaBalance.f3CorrelationIccAverage_sub_trunc
+#print axioms OmegaBalance.f3CorrelationIccAverage_sub_trunc_sq_le_majorant
+#print axioms OmegaBalance.tendsto_f3CorrelationIccAverage
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
