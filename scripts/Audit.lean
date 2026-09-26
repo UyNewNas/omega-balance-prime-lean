@@ -566,3 +566,6 @@ import OmegaBalance.F3DeeperExamples
 
 -- Regroup the same summable composition family by output coefficient degree.
 #print axioms OmegaBalance.hasSum_f3PadicLogComposition_by_output
+
+-- Fixed-output coefficient identification for the analytic/formal bridge.
+#print axioms OmegaBalance.f3PadicLogComposition_coeff_tsum_eq
