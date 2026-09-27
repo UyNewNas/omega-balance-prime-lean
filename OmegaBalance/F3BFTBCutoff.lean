@@ -75,4 +75,59 @@ theorem bftb_eventually_floor_rpow_le_floor_half_rpow_div_pow_log
       (bftb_eventually_rpow_le_half_rpow_div_pow_log B θ hθ)).mono
       (fun _ h => Nat.floor_mono h)
 
+
+/--
+Real-exponent logarithmic loss estimate matching the Liu--Wang
+`StandardBombieriVinogradov` parameter `B : ℝ`.
+-/
+theorem bftb_eventually_log_rpow_le_rpow
+    (B b : ℝ) (hb : 0 < b) :
+    ∀ᶠ x : ℝ in atTop, Real.log x ^ B ≤ x ^ b := by
+  have h :=
+    (Real.isLittleO_log_rpow_rpow_atTop B hb).def one_pos
+  filter_upwards [h, eventually_ge_atTop (1 : ℝ)] with x hx hx1
+  rw [Real.norm_eq_abs, Real.norm_eq_abs,
+    abs_of_nonneg (Real.rpow_nonneg (Real.log_nonneg hx1) B),
+    abs_of_nonneg (Real.rpow_nonneg (by linarith : (0 : ℝ) ≤ x) b),
+    one_mul] at hx
+  exact hx
+
+/--
+For every fixed real logarithmic-loss exponent `B` and every
+`θ < 1/2`, the power cutoff is eventually contained in the Liu--Wang
+Pan cutoff before flooring.
+-/
+theorem bftb_eventually_rpow_le_half_rpow_div_rpow_log
+    (B θ : ℝ) (hθ : θ < (1 / 2 : ℝ)) :
+    ∀ᶠ x : ℝ in atTop,
+      x ^ θ ≤ x ^ (1 / 2 : ℝ) / Real.log x ^ B := by
+  have hb : 0 < (1 / 2 : ℝ) - θ := sub_pos.mpr hθ
+  filter_upwards
+    [bftb_eventually_log_rpow_le_rpow B ((1 / 2 : ℝ) - θ) hb,
+      eventually_gt_atTop (1 : ℝ)]
+    with x hlog hx
+  have hx0 : 0 < x := zero_lt_one.trans hx
+  have hlog0 : 0 < Real.log x := Real.log_pos hx
+  have hden : 0 < Real.log x ^ B := Real.rpow_pos_of_pos hlog0 B
+  rw [le_div_iff₀ hden]
+  calc
+    x ^ θ * Real.log x ^ B
+        ≤ x ^ θ * x ^ ((1 / 2 : ℝ) - θ) :=
+      mul_le_mul_of_nonneg_left hlog (Real.rpow_nonneg hx0.le θ)
+    _ = x ^ (θ + ((1 / 2 : ℝ) - θ)) := by
+      rw [Real.rpow_add hx0]
+    _ = x ^ (1 / 2 : ℝ) := by
+      ring_nf
+
+/-- Floored real-exponent cutoff inclusion matching Liu--Wang's Pan cutoff. -/
+theorem bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log
+    (B θ : ℝ) (hθ : θ < (1 / 2 : ℝ)) :
+    ∀ᶠ N : ℕ in atTop,
+      ⌊(N : ℝ) ^ θ⌋₊ ≤
+        ⌊(N : ℝ) ^ (1 / 2 : ℝ) / Real.log (N : ℝ) ^ B⌋₊ := by
+  exact
+    (tendsto_natCast_atTop_atTop.eventually
+      (bftb_eventually_rpow_le_half_rpow_div_rpow_log B θ hθ)).mono
+      (fun _ h => Nat.floor_mono h)
+
 end OmegaBalance
