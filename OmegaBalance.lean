@@ -74,3 +74,5 @@ import OmegaBalance.F3BFTBMaximal
 import OmegaBalance.F3BFTBPigeonhole
 import OmegaBalance.F3BFTBConsecutiveAssembly
 import OmegaBalance.F3BFTBManyPrimesAdapter
+
+import OmegaBalance.F3BFTBOrderedBlock

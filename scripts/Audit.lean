@@ -652,3 +652,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_consecutivePrimes_of_exact_affine_offset_interval
 #print axioms OmegaBalance.bftb_consecutivePrimes_of_tuple_pattern_and_outside
 #print axioms OmegaBalance.bftb_indexed_many_primes_to_finset
+
+-- Ordered exact-pattern bridge for the BFTB RUN assembly.
+#print axioms OmegaBalance.bftb_orderEmbOfFin_adjacent_no_mem_between
