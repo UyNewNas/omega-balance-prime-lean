@@ -676,3 +676,54 @@ import OmegaBalance.F3DeeperExamples
 -- Full finite assembly from many primes plus uniform outside compositeness.
 #print axioms OmegaBalance.bftb_full_exact_prime_pattern_infinite_of_outside_composite
 #print axioms OmegaBalance.bftb_consecutivePrimeRunsInClassBounded_of_many_primes_and_outside
+
+-- BFTB BV Li-to-pi normalization seam.
+#print axioms OmegaBalance.bftb_abs_main_term_change_div
+#print axioms OmegaBalance.bftb_abs_main_term_change_totient
+#print axioms OmegaBalance.bftb_abs_main_term_change_totient_le
+
+#print axioms OmegaBalance.bftb_sum_abs_main_term_change_totient
+#print axioms OmegaBalance.bftb_le_totient_mul_card_divisors
+#print axioms OmegaBalance.bftb_inv_totient_le_card_divisors_div
+
+-- BFTB cutoff inclusion: fixed theta < 1/2 inside the Pan range.
+#print axioms OmegaBalance.bftb_tendsto_pow_log_div_rpow
+#print axioms OmegaBalance.bftb_eventually_pow_log_le_rpow
+#print axioms OmegaBalance.bftb_eventually_rpow_le_half_rpow_div_pow_log
+#print axioms OmegaBalance.bftb_eventually_floor_rpow_le_floor_half_rpow_div_pow_log
+
+-- BFTB BV normalization after the unit-residue supremum.
+#print axioms OmegaBalance.bftb_iSup_abs_main_term_change_totient
+#print axioms OmegaBalance.bftb_sum_iSup_abs_main_term_change_totient
+
+-- Canonical Liu--Wang reduced residues versus ZMod units.
+#print axioms OmegaBalance.mem_bftbUnitResidues
+#print axioms OmegaBalance.bftbUnitResidues_zero
+#print axioms OmegaBalance.bftbUnitResidues_one
+#print axioms OmegaBalance.bftb_unit_val_mem_residues
+#print axioms OmegaBalance.range_score_unit_eq_range_residue
+
+-- Exact identification of canonical finite maxima with unit-indexed suprema.
+#print axioms OmegaBalance.bftbUnitResidueEquiv_val
+#print axioms OmegaBalance.bftbCanonicalResidueMax_eq_iSup
+
+-- Modulus-one extraction for the StandardBV compatibility layer.
+#print axioms OmegaBalance.bftbPrimesInAP_one_zero
+#print axioms OmegaBalance.bftbPrimeAPError_one_zero
+#print axioms OmegaBalance.bftbCanonicalPrimeAPMaxError_one
+
+
+-- Reciprocal-totient normalization ledger, adapted from Liu--Wang DirectConductorWeight.
+#print axioms OmegaBalance.bftbHarmonicFactor_nonneg
+#print axioms OmegaBalance.bftbHarmonicFactor_eq_harmonic
+#print axioms OmegaBalance.bftbHarmonicFactor_le_one_add_log
+#print axioms OmegaBalance.bftb_sum_inv_multiples_Icc
+#print axioms OmegaBalance.bftb_sum_card_divisors_div_le_harmonic_sq
+#print axioms OmegaBalance.bftb_sum_inv_totient_le_harmonic_sq
+#print axioms OmegaBalance.bftb_sum_inv_totient_le_one_add_log_sq
+
+
+-- Aggregate Li-to-pi normalization and q=1 discrepancy extraction.
+#print axioms OmegaBalance.bftb_sum_abs_discrepancy_div_totient_le
+#print axioms OmegaBalance.bftb_sum_iSup_abs_main_term_change_Icc
+#print axioms OmegaBalance.bftb_global_discrepancy_le_modulus_sum
