@@ -84,7 +84,7 @@ theorem bftb_maximal_extras_uniformly_eventually_composite
       T.card ≤ S.card) :
     ∃ B : ℕ, ∀ n : ℕ, B < n →
       n ∈ BFTBSimultaneousPrimeSet value S →
-      ∀ h ∈ H, h ∉ S → ¬ (value n h).Prime := by
+      ∀ h : ℕ, h ∈ H → h ∉ S → ¬ (value n h).Prime := by
   let E : Finset ℕ := H \ S
   let bad : Set ℕ :=
     ⋃ h ∈ (E : Set ℕ),
