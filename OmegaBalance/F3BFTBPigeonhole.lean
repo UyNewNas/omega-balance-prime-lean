@@ -103,4 +103,57 @@ theorem bftb_exists_large_maximal_with_uniform_exclusion
     bftb_maximal_extras_uniformly_eventually_composite hSH hmax
   exact ⟨S, B, hSH, hcard, hSinf, hB⟩
 
+/-- Translation parameters whose prime offsets inside H are exactly S. -/
+def BFTBExactPrimePatternSet
+    (value : ℕ → ℕ → ℕ) (H S : Finset ℕ) : Set ℕ :=
+  {n : ℕ | ∀ h ∈ H, (value n h).Prime ↔ h ∈ S}
+
+/--
+A maximal infinitely simultaneous-prime subtuple occurs as the exact prime
+pattern inside the ambient finite tuple for infinitely many parameters.
+-/
+theorem bftb_exact_prime_pattern_infinite_of_maximal
+    {value : ℕ → ℕ → ℕ} {H S : Finset ℕ}
+    (hSH : S ⊆ H)
+    (hSinf : (BFTBSimultaneousPrimeSet value S).Infinite)
+    (hmax : ∀ T : Finset ℕ, T ⊆ H →
+      (BFTBSimultaneousPrimeSet value T).Infinite →
+      T.card ≤ S.card) :
+    (BFTBExactPrimePatternSet value H S).Infinite := by
+  obtain ⟨B, hB⟩ :=
+    bftb_maximal_extras_uniformly_eventually_composite hSH hmax
+  have htail :
+      (BFTBSimultaneousPrimeSet value S \ Set.Iic B).Infinite :=
+    hSinf.sdiff (Set.finite_Iic B)
+  apply htail.mono
+  intro n hn
+  rcases hn with ⟨hnS, hnB⟩
+  have hBn : B < n := by
+    simpa only [Set.mem_Iic, not_le] using hnB
+  change ∀ h ∈ H, (value n h).Prime ↔ h ∈ S
+  intro h hhH
+  constructor
+  · intro hp
+    by_contra hhS
+    exact (hB n hBn hnS h hhH hhS) hp
+  · intro hhS
+    exact hnS h hhS
+
+/--
+If infinitely many parameters make at least m offsets prime, then there is a
+fixed subtuple of cardinality at least m which is exactly the set of prime
+offsets inside H for infinitely many parameters.
+-/
+theorem bftb_exists_large_exact_prime_pattern
+    (value : ℕ → ℕ → ℕ) (H : Finset ℕ) {m : ℕ}
+    (hmany : (BFTBAtLeastPrimeCountSet value H m).Infinite) :
+    ∃ S : Finset ℕ,
+      S ⊆ H ∧
+      m ≤ S.card ∧
+      (BFTBExactPrimePatternSet value H S).Infinite := by
+  obtain ⟨S, hSH, hcard, hSinf, hmax⟩ :=
+    bftb_exists_large_maximal_simultaneous_subset value H hmany
+  exact ⟨S, hSH, hcard,
+    bftb_exact_prime_pattern_infinite_of_maximal hSH hSinf hmax⟩
+
 end OmegaBalance
