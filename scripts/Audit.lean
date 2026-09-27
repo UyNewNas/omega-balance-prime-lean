@@ -691,3 +691,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_eventually_pow_log_le_rpow
 #print axioms OmegaBalance.bftb_eventually_rpow_le_half_rpow_div_pow_log
 #print axioms OmegaBalance.bftb_eventually_floor_rpow_le_floor_half_rpow_div_pow_log
+
+-- BFTB BV normalization after the unit-residue supremum.
+#print axioms OmegaBalance.bftb_iSup_abs_main_term_change_totient
+#print axioms OmegaBalance.bftb_sum_iSup_abs_main_term_change_totient

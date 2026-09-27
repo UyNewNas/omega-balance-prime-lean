@@ -82,3 +82,4 @@ import OmegaBalance.F3BFTBResidueBlock
 import OmegaBalance.F3BFTBResidueAssembly
 import OmegaBalance.F3BFTBBVNormalization
 import OmegaBalance.F3BFTBCutoff
+import OmegaBalance.F3BFTBBVResidueMax
