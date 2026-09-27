@@ -76,3 +76,5 @@ import OmegaBalance.F3BFTBConsecutiveAssembly
 import OmegaBalance.F3BFTBManyPrimesAdapter
 
 import OmegaBalance.F3BFTBOrderedBlock
+
+import OmegaBalance.F3BFTBCRTProgression
