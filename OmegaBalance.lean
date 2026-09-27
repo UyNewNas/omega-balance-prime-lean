@@ -87,3 +87,5 @@ import OmegaBalance.F3BFTBUnitResidues
 import OmegaBalance.F3BFTBBVQOne
 import OmegaBalance.F3BFTBReciprocalTotient
 import OmegaBalance.F3BFTBBVGlobalDiscrepancy
+
+import OmegaBalance.F3BFTBMaynardAdapter
