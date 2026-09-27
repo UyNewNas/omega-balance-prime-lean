@@ -36,3 +36,11 @@ PrimeGaps 的 ZMod-unit iSup 精确识别，并把 q=1 的 StandardBV 误差用�
 |Li-pi|，再以 reciprocal-totient polylog sum 吸收 normalization loss。
 
 停止条件未满足；不得把本轮 seam 解释成无条件 BV 或最终 BFTB RUN。
+
+## 第一轮 CI 失败与修复
+
+commit a0e8d5d011eeabcf630035e248cc25c2c49c5797 的 Lean run
+36305493941 在 F3BFTBBVResidueMax.lean:28 失败。原因是
+add_le_add_right 生成了加数方向相反的目标，并非数学缺口。修复为显式
+add_le_add (le_ciSup hbdd a) (le_refl _)；修复 commit 必须重新通过完整门禁后
+才能把两条新 theorem 标记为 exact-green。

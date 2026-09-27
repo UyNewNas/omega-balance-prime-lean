@@ -25,7 +25,7 @@ theorem bftb_iSup_abs_main_term_change_totient
       bftb_abs_main_term_change_totient hq (x a) li pi
     _ ≤ (⨆ b : (ZMod q)ˣ, |x b - li / (q.totient : ℝ)|) +
           |li - pi| / (q.totient : ℝ) := by
-      exact add_le_add_right (le_ciSup hbdd a) _
+      exact add_le_add (le_ciSup hbdd a) (le_refl _)
 
 /--
 Sum the unit-residue supremum normalization over a finite positive modulus
