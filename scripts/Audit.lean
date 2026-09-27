@@ -648,3 +648,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_exists_large_maximal_with_uniform_exclusion
 #print axioms OmegaBalance.bftb_exact_prime_pattern_infinite_of_maximal
 #print axioms OmegaBalance.bftb_exists_large_exact_prime_pattern
+
+#print axioms OmegaBalance.bftb_crt_product_shift_proper_of_two_le
+#print axioms OmegaBalance.bftb_crt_product_shift_forces_composite_of_two_le
+#print axioms OmegaBalance.bftb_crt_product_progression_rewrite
+#print axioms OmegaBalance.bftb_crt_linear_progression_forces_composite
