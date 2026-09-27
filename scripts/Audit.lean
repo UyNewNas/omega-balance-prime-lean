@@ -673,3 +673,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix_diameter
 #print axioms OmegaBalance.bftb_consecutivePrimeRunInClassBounded_of_exact_prefix
 #print axioms OmegaBalance.bftb_consecutivePrimeRunsInClassBounded_of_infinite_exact_prefix
+-- Full finite assembly from many primes plus uniform outside compositeness.
+#print axioms OmegaBalance.bftb_full_exact_prime_pattern_infinite_of_outside_composite
+#print axioms OmegaBalance.bftb_consecutivePrimeRunsInClassBounded_of_many_primes_and_outside
