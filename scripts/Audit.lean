@@ -640,3 +640,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_maximal_extra_eventually_composite
 #print axioms OmegaBalance.bftb_maximal_extras_uniformly_eventually_composite
 #print axioms OmegaBalance.bftb_exists_maximal_simultaneous_subset
+
+-- Finite pigeonhole bridge from many-primes parameters to a fixed maximal subtuple.
+#print axioms OmegaBalance.bftb_exists_infinite_simultaneous_subset_of_many_primes
+#print axioms OmegaBalance.bftb_maximal_card_ge_of_many_primes
+#print axioms OmegaBalance.bftb_exists_large_maximal_simultaneous_subset
