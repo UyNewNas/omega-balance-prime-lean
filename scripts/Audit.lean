@@ -632,3 +632,5 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_crt_modulus_dvd_product
 #print axioms OmegaBalance.bftb_crt_shift_product_preserves_divisors
 #print axioms OmegaBalance.bftb_crt_shift_product_preserves_protected
+#print axioms OmegaBalance.bftb_crt_two_product_shift_proper
+#print axioms OmegaBalance.bftb_crt_two_product_shift_forces_composite
