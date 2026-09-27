@@ -727,3 +727,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_sum_abs_discrepancy_div_totient_le
 #print axioms OmegaBalance.bftb_sum_iSup_abs_main_term_change_Icc
 #print axioms OmegaBalance.bftb_global_discrepancy_le_modulus_sum
+
+#print axioms OmegaBalance.bftb_eventually_log_rpow_le_rpow
+#print axioms OmegaBalance.bftb_eventually_rpow_le_half_rpow_div_rpow_log
+#print axioms OmegaBalance.bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log
