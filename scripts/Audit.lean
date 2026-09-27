@@ -660,3 +660,6 @@ import OmegaBalance.F3DeeperExamples
 
 #print axioms OmegaBalance.consecutivePrimeBlock_of_isChain
 #print axioms OmegaBalance.bftb_consecutivePrimeBlock_of_orderEmbOfFin
+
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix_length

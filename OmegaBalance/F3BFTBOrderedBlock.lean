@@ -106,4 +106,55 @@ theorem bftb_consecutivePrimeBlock_of_orderEmbOfFin
       S.orderEmbOfFin_mem rfl i
     exact (hexact _ (hSI hiS)).2 hiS
 
+/--
+If an exact affine prime pattern contains at least (L) offsets, its first
+(L) offsets in increasing order form a genuine consecutive-prime block.
+The block is indexed by `Fin L`, so its length is definitionally controlled
+and no filtered-subsequence notion enters.
+-/
+theorem bftb_consecutivePrimeBlock_prefix
+    {g n lo hi L : ℕ} {S : Finset ℕ}
+    (hLS : L ≤ S.card)
+    (hSI : S ⊆ Finset.Icc lo hi)
+    (hexact : ∀ u ∈ Finset.Icc lo hi,
+      (g * n + u).Prime ↔ u ∈ S) :
+    ConsecutivePrimeBlock
+      (List.ofFn fun i : Fin L =>
+        g * n + S.orderEmbOfFin rfl
+          ⟨i, lt_of_lt_of_le i.isLt hLS⟩) := by
+  apply consecutivePrimeBlock_of_isChain
+  · rw [List.isChain_iff_getElem]
+    intro i hiIndex
+    have hiL : i + 1 < L := by
+      simpa using hiIndex
+    have hi0 : i < L := by omega
+    have hiFull : i < S.card :=
+      lt_of_lt_of_le hi0 hLS
+    have hi1Full : i + 1 < S.card :=
+      lt_of_lt_of_le hiL hLS
+    have hcon :=
+      bftb_consecutivePrimes_of_orderEmbOfFin_adjacent
+        hSI hexact
+        (i := ⟨i, hiFull⟩)
+        (j := ⟨i + 1, hi1Full⟩)
+        rfl
+    simpa using hcon
+  · rw [List.forall_mem_ofFn_iff]
+    intro i
+    have hiFull : (i : ℕ) < S.card :=
+      lt_of_lt_of_le i.isLt hLS
+    let j : Fin S.card := ⟨i, hiFull⟩
+    have hjS : S.orderEmbOfFin rfl j ∈ S :=
+      S.orderEmbOfFin_mem rfl j
+    exact (hexact _ (hSI hjS)).2 hjS
+
+/-- The prefix block above has exactly the requested length. -/
+theorem bftb_consecutivePrimeBlock_prefix_length
+    {g n lo hi L : ℕ} {S : Finset ℕ}
+    (hLS : L ≤ S.card) :
+    (List.ofFn fun i : Fin L =>
+      g * n + S.orderEmbOfFin rfl
+        ⟨i, lt_of_lt_of_le i.isLt hLS⟩).length = L := by
+  simp
+
 end OmegaBalance
