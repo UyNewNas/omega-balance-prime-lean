@@ -731,3 +731,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_eventually_log_rpow_le_rpow
 #print axioms OmegaBalance.bftb_eventually_rpow_le_half_rpow_div_rpow_log
 #print axioms OmegaBalance.bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log
+
+#print axioms OmegaBalance.bftb_one_add_sq_le_five_sq
+#print axioms OmegaBalance.bftb_one_add_log_sq_mono
+#print axioms OmegaBalance.bftb_one_add_log_sq_factor_le
+#print axioms OmegaBalance.bftb_eventually_one_add_log_sq_le_five_log_sq
