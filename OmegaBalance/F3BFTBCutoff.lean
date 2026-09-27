@@ -83,14 +83,19 @@ Real-exponent logarithmic loss estimate matching the Liu--Wang
 theorem bftb_eventually_log_rpow_le_rpow
     (B b : ℝ) (hb : 0 < b) :
     ∀ᶠ x : ℝ in atTop, Real.log x ^ B ≤ x ^ b := by
-  have h :=
-    (Real.isLittleO_log_rpow_rpow_atTop B hb).def one_pos
-  filter_upwards [h, eventually_ge_atTop (1 : ℝ)] with x hx hx1
-  rw [Real.norm_eq_abs, Real.norm_eq_abs,
-    abs_of_nonneg (Real.rpow_nonneg (Real.log_nonneg hx1) B),
-    abs_of_nonneg (Real.rpow_nonneg (by linarith : (0 : ℝ) ≤ x) b),
-    one_mul] at hx
-  exact hx
+  obtain ⟨m, hm⟩ :=
+    archimedean_iff_nat_lt.1 Real.instArchimedean B
+  have hlog :
+      ∀ᶠ x : ℝ in atTop, (1 : ℝ) ≤ Real.log x :=
+    Real.tendsto_log_atTop.eventually (eventually_ge_atTop (1 : ℝ))
+  filter_upwards
+    [bftb_eventually_pow_log_le_rpow m b hb, hlog]
+    with x hpow hxlog
+  calc
+    Real.log x ^ B ≤ Real.log x ^ (m : ℝ) :=
+      Real.rpow_le_rpow_of_exponent_le hxlog hm.le
+    _ = Real.log x ^ m := by rw [Real.rpow_natCast]
+    _ ≤ x ^ b := hpow
 
 /--
 For every fixed real logarithmic-loss exponent `B` and every
