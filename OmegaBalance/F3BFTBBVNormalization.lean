@@ -62,18 +62,18 @@ lose a polynomial factor over a Bombieri--Vinogradov range.
 theorem bftb_sum_abs_main_term_change_totient
     (S : Finset ℕ) (hS : ∀ q ∈ S, 0 < q)
     (x : ℕ → ℝ) (li pi : ℝ) :
-    (∑ q in S, |x q - pi / (q.totient : ℝ)|) ≤
-      (∑ q in S, |x q - li / (q.totient : ℝ)|) +
-        ∑ q in S, |li - pi| / (q.totient : ℝ) := by
+    (∑ q ∈ S, |x q - pi / (q.totient : ℝ)|) ≤
+      (∑ q ∈ S, |x q - li / (q.totient : ℝ)|) +
+        ∑ q ∈ S, |li - pi| / (q.totient : ℝ) := by
   calc
-    (∑ q in S, |x q - pi / (q.totient : ℝ)|)
-        ≤ ∑ q in S,
+    (∑ q ∈ S, |x q - pi / (q.totient : ℝ)|)
+        ≤ ∑ q ∈ S,
             (|x q - li / (q.totient : ℝ)| +
               |li - pi| / (q.totient : ℝ)) := by
       exact Finset.sum_le_sum fun q hq =>
         bftb_abs_main_term_change_totient (hS q hq) (x q) li pi
-    _ = (∑ q in S, |x q - li / (q.totient : ℝ)|) +
-          ∑ q in S, |li - pi| / (q.totient : ℝ) := by
+    _ = (∑ q ∈ S, |x q - li / (q.totient : ℝ)|) +
+          ∑ q ∈ S, |li - pi| / (q.totient : ℝ) := by
       rw [Finset.sum_add_distrib]
 
 /--
