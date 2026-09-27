@@ -10,16 +10,10 @@ def bftbPrimesInAP (x q l : ℕ) : ℕ :=
 /-- Modulo one the unique residue class contains every prime, so the AP count is ordinary `π(x)`. -/
 theorem bftbPrimesInAP_one_zero (x : ℕ) :
     bftbPrimesInAP x 1 0 = Nat.primeCounting x := by
-  rw [bftbPrimesInAP, Nat.primeCounting, Nat.primeCounting',
-    Nat.count_eq_card_filter_range]
+  rw [bftbPrimesInAP, ← Nat.primesLE_card_eq_primeCounting]
   apply congrArg Finset.card
   ext p
-  simp only [Finset.mem_filter, Finset.mem_range, Nat.ModEq, Nat.zero_mod]
-  constructor
-  · rintro ⟨hp, hprime, _⟩
-    exact ⟨hp, hprime⟩
-  · rintro ⟨hp, hprime⟩
-    exact ⟨hp, hprime, Nat.mod_one p⟩
+  simp [Nat.primesLE_eq_filter_range, Nat.ModEq]
 
 /-- AP error with an arbitrary global main term; the Liu--Wang bridge later instantiates `main` with true Li. -/
 noncomputable def bftbPrimeAPError
