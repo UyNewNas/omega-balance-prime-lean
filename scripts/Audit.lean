@@ -627,3 +627,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.exists_bftbAuxPrime_family_gt
 #print axioms OmegaBalance.bftbAuxPrime_coprime_of_lt
 #print axioms OmegaBalance.bftb_exists_crt_shift_from_bound
+#print axioms OmegaBalance.bftb_not_prime_of_prime_dvd_lt
+#print axioms OmegaBalance.bftb_crt_divisors_force_composite
+#print axioms OmegaBalance.bftb_crt_modulus_dvd_product
+#print axioms OmegaBalance.bftb_crt_shift_product_preserves_divisors
+#print axioms OmegaBalance.bftb_crt_shift_product_preserves_protected
