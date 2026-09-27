@@ -604,3 +604,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PrimeIndexRunStarts_infinite_of_arbitrarily_far
 #print axioms OmegaBalance.f3PrimeIndexRunStarts_infinite_uniform_of_BFTB
 #print axioms OmegaBalance.f3PrimeIndexRunStarts_infinite_all_lengths_of_BFTB
+
+-- Elementary affine arithmetic in the BFTB Corollary 3 reduction.
+#print axioms OmegaBalance.bftbAffineResidue_modEq
+#print axioms OmegaBalance.bftbAffineResidue_coprime
+#print axioms OmegaBalance.bftbAffine_span
+#print axioms OmegaBalance.bftbAffine_span_le

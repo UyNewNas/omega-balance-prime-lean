@@ -163,4 +163,37 @@ theorem f3PrimeIndexRunStarts_infinite_all_lengths_of_BFTB
   apply f3PrimeIndexRunStarts_infinite_of_arbitrarily_far
   exact hC c hc
 
+
+/-- Every affine BFTB value D*n + (D*t+a) lies in the class a mod D. -/
+theorem bftbAffineResidue_modEq (a D n t : ℕ) :
+    D * n + (D * t + a) ≡ a [MOD D] := by
+  have hn : D * n ≡ 0 [MOD D] :=
+    Nat.modEq_zero_iff_dvd.mpr ⟨n, rfl⟩
+  have ht : D * t ≡ 0 [MOD D] :=
+    Nat.modEq_zero_iff_dvd.mpr ⟨t, rfl⟩
+  have ha : a ≡ a [MOD D] := Nat.ModEq.refl a
+  simpa using hn.add (ht.add ha)
+
+/-- The affine offsets used in BFTB Corollary 3 stay coprime to D. -/
+theorem bftbAffineResidue_coprime {a D : ℕ} (ha : a.Coprime D) (t : ℕ) :
+    (D * t + a).Coprime D := by
+  have h : D.Coprime (a + D * t) :=
+    (Nat.coprime_add_mul_left_right D a t).2 ha.symm
+  simpa [Nat.add_comm] using h.symm
+
+/-- Affine scaling multiplies the endpoint span by exactly D. -/
+theorem bftbAffine_span {D a n s t : ℕ} (hst : s ≤ t) :
+    (D * n + (D * t + a)) - (D * n + (D * s + a)) =
+      D * (t - s) := by
+  have hmul : D * s ≤ D * t := Nat.mul_le_mul_left D hst
+  rw [Nat.mul_sub_left_distrib]
+  omega
+
+/-- Consequently any base span bound C becomes the exact BFTB bound D*C. -/
+theorem bftbAffine_span_le {D a n s t C : ℕ}
+    (hst : s ≤ t) (hC : t - s ≤ C) :
+    (D * n + (D * t + a)) - (D * n + (D * s + a)) ≤ D * C := by
+  rw [bftbAffine_span hst]
+  exact Nat.mul_le_mul_left D hC
+
 end OmegaBalance
