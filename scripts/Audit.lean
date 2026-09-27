@@ -711,3 +711,13 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftbPrimesInAP_one_zero
 #print axioms OmegaBalance.bftbPrimeAPError_one_zero
 #print axioms OmegaBalance.bftbCanonicalPrimeAPMaxError_one
+
+
+-- Reciprocal-totient normalization ledger, adapted from Liu--Wang DirectConductorWeight.
+#print axioms OmegaBalance.bftbHarmonicFactor_nonneg
+#print axioms OmegaBalance.bftbHarmonicFactor_eq_harmonic
+#print axioms OmegaBalance.bftbHarmonicFactor_le_one_add_log
+#print axioms OmegaBalance.bftb_sum_inv_multiples_Icc
+#print axioms OmegaBalance.bftb_sum_card_divisors_div_le_harmonic_sq
+#print axioms OmegaBalance.bftb_sum_inv_totient_le_harmonic_sq
+#print axioms OmegaBalance.bftb_sum_inv_totient_le_one_add_log_sq
