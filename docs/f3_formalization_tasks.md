@@ -413,3 +413,27 @@ principal-unit displacement
 ## 停止规则
 
 只有 INF、COR、DEN、LOG、RUN 全部目标得到非空洞 Lean 证明并集成主分支，上游依赖经过信任审计，且精确版本的构建、回归、公理、源码、覆盖全部通过后，才结束全量任务。当前尚未满足停止条件。
+
+## 2026-09-27 状态覆盖（Round 24）
+
+以下状态以 stacked exact head `0d5e9c3a9433eb43d0b773bf16da363ef528a0c8` 的完整成功门禁为准，
+覆盖本文件上方尚未及时改写的旧状态行。Lean run `36299729802` 与 Factor-sum
+run `36299729796` 均成功；565 declarations 仅标准 Lean axioms，86 Lean files
+无 proof escape，Audit 565/565 exactly once，有限回归 144240 PASS。
+
+| ID | 当前权威状态 |
+|---|---|
+| INF-1 / INF-2 | **完成** |
+| COR-1 / COR-2 | **证明层完成，stacked exact-green；待主线最终集成** |
+| DEN-1 / DEN-2 | **证明层完成，stacked exact-green；待主线最终集成** |
+| LOG-1 | **证明层完成，含 genuine p-adic log、signed valuation bridge 与 `f3PadicLog_mul`；stacked exact-green** |
+| RUN finite CRT / maximal / exact-pattern / ordered block | **完成，stacked exact-green** |
+| RUN residue-class packaging | **本轮完成，stacked exact-green** |
+| RUN many-primes + uniform outside composite → arbitrarily-far bounded residue runs | **本轮完成，stacked exact-green** |
+| RUN unconditional many-primes producer | **未完成；当前唯一主要数学依赖是可信 BV/Maynard--Tao producer 及接口兼容** |
+| RUN final unconditional constant-F₃ consecutive runs | **未完成** |
+| stacked → master | **未完成；master 仍未集成本轮 stacked 链** |
+
+本轮新增 exact-green 接口与精确上游阻塞记录见
+`docs/f3_progress_round_24.md`。不得把当前 conditional many-primes 入口
+解释成 BFTB/Shiu 已经无条件形式化完成。
