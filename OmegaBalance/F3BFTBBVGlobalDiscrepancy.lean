@@ -39,8 +39,8 @@ theorem bftb_sum_iSup_abs_main_term_change_Icc
   refine (bftb_sum_iSup_abs_main_term_change_totient
     (Finset.Icc 1 R) (fun q hq => (Finset.mem_Icc.mp hq).1)
     x li pi).trans ?_
-  exact add_le_add_left
-    (bftb_sum_abs_discrepancy_div_totient_le R (li - pi)) _
+  exact add_le_add (le_refl _)
+    (bftb_sum_abs_discrepancy_div_totient_le R (li - pi))
 
 /--
 Abstract q=1 extraction used by the StandardBV adapter. If a nonnegative
@@ -49,11 +49,11 @@ dominates the global prime-counting/main-term discrepancy.
 -/
 theorem bftb_global_discrepancy_le_modulus_sum
     (main : ℕ → ℝ) (x R : ℕ) (hR : 1 ≤ R)
-    (prefix : ℕ → ℝ)
-    (hnonneg : ∀ q ∈ Finset.Icc 1 R, 0 ≤ prefix q)
-    (hone : bftbCanonicalPrimeAPMaxError main x 1 ≤ prefix 1) :
+    (pref : ℕ → ℝ)
+    (hnonneg : ∀ q ∈ Finset.Icc 1 R, 0 ≤ pref q)
+    (hone : bftbCanonicalPrimeAPMaxError main x 1 ≤ pref 1) :
     |(Nat.primeCounting x : ℝ) - main x| ≤
-      ∑ q ∈ Finset.Icc 1 R, prefix q := by
+      ∑ q ∈ Finset.Icc 1 R, pref q := by
   rw [← bftbCanonicalPrimeAPMaxError_one main x]
   exact hone.trans
     (Finset.single_le_sum
