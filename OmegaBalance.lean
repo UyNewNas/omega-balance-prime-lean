@@ -64,3 +64,4 @@ import OmegaBalance.F3PrimeDensityMul17High
 import OmegaBalance.F3PrimeDensityMul17HighCount
 import OmegaBalance.F3SignChanges
 import OmegaBalance.F3ConsecutiveRuns
+import OmegaBalance.F3ConsecutivePrimeIndex

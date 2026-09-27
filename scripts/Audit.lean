@@ -589,3 +589,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3ConsecutiveRunsBounded_of_residueRunsBounded
 #print axioms OmegaBalance.f3ConsecutiveRun_one
 #print axioms OmegaBalance.f3ConsecutiveRunsBounded_of_BFTB
+
+-- Actual prime-index RUN bridge.
+#print axioms OmegaBalance.consecutivePrimes_nth_prime
+#print axioms OmegaBalance.f3PrimeIndexRunBounded_of_residue
