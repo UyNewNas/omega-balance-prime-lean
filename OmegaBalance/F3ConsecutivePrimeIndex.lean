@@ -72,4 +72,23 @@ theorem f3PrimeIndexRunsBounded_of_BFTB
   exact hC (f3RunResidue c) (f3RunModulus c) B
     (f3RunResidue_coprime hc) (f3RunModulus_ge_three c)
 
+
+/-- The length-one indexed RUN case is unconditional, with span exactly zero. -/
+theorem f3PrimeIndexRunBounded_one {c : ℤ} (hc : c ≠ 0) (B : ℕ) :
+    F3PrimeIndexRunBounded c 1 B 0 := by
+  obtain ⟨p, hp, hB⟩ :=
+    Set.infinite_iff_exists_gt.mp (f3_prime_level_infinite hc) B
+  have hinf : {q : ℕ | q.Prime}.Infinite := Nat.infinite_setOfPred_prime
+  have hrange : p ∈ Set.range (Nat.nth Nat.Prime) := by
+    rw [Nat.range_nth_of_infinite hinf]
+    exact hp.1
+  rcases hrange with ⟨r, hr⟩
+  refine ⟨r, ?_, ?_, ?_⟩
+  · simpa [hr] using hB
+  · intro i hi
+    have hi0 : i = 0 := by omega
+    subst i
+    simpa [hr] using hp.2.2
+  · simp
+
 end OmegaBalance

@@ -594,3 +594,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.consecutivePrimes_nth_prime
 #print axioms OmegaBalance.f3PrimeIndexRunBounded_of_residue
 #print axioms OmegaBalance.f3PrimeIndexRunsBounded_of_BFTB
+#print axioms OmegaBalance.f3PrimeIndexRunBounded_one
