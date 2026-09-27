@@ -42,7 +42,7 @@ theorem bftb_eventually_pow_log_le_rpow (m : ℕ) (b : ℝ) (hb : 0 < b) :
         (eventually_lt_nhds zero_lt_one)
   filter_upwards [hlt, eventually_gt_atTop (0 : ℝ)] with x hx hx0
   have hrpow : 0 < x ^ b := Real.rpow_pos_of_pos hx0 b
-  exact ((div_lt_iff₀ hrpow).mp hx).le
+  simpa only [one_mul] using ((div_lt_iff₀ hrpow).mp hx).le
 
 theorem bftb_eventually_rpow_le_half_rpow_div_pow_log
     (B : ℕ) (θ : ℝ) (hθ : θ < (1 / 2 : ℝ)) :
