@@ -634,3 +634,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_crt_shift_product_preserves_protected
 #print axioms OmegaBalance.bftb_crt_two_product_shift_proper
 #print axioms OmegaBalance.bftb_crt_two_product_shift_forces_composite
+#print axioms OmegaBalance.bftb_exists_composite_crt_shift_from_bound
