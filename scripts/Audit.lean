@@ -620,3 +620,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_exists_crt_residue
 #print axioms OmegaBalance.bftb_exists_crt_shift
 #print axioms OmegaBalance.bftb_exists_crt_shift_of_large_moduli
+#print axioms OmegaBalance.bftbAuxPrime_prime
+#print axioms OmegaBalance.bftbAuxPrime_lower_bound
+#print axioms OmegaBalance.bftbAuxPrime_injective
+#print axioms OmegaBalance.bftbAuxPrime_pairwise_coprime
+#print axioms OmegaBalance.exists_bftbAuxPrime_family_gt
+#print axioms OmegaBalance.bftbAuxPrime_coprime_of_lt
