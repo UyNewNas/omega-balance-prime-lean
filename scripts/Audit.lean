@@ -651,3 +651,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_exact_prime_pattern_extend
 #print axioms OmegaBalance.bftb_consecutivePrimes_of_exact_affine_offset_interval
 #print axioms OmegaBalance.bftb_consecutivePrimes_of_tuple_pattern_and_outside
+#print axioms OmegaBalance.bftb_indexed_many_primes_to_finset
