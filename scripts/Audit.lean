@@ -635,3 +635,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_crt_two_product_shift_proper
 #print axioms OmegaBalance.bftb_crt_two_product_shift_forces_composite
 #print axioms OmegaBalance.bftb_exists_composite_crt_shift_from_bound
+#print axioms OmegaBalance.bftbSimultaneousPrimeSet_insert
+#print axioms OmegaBalance.bftb_maximal_extra_finite
+#print axioms OmegaBalance.bftb_maximal_extra_eventually_composite

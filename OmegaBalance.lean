@@ -70,3 +70,4 @@ import OmegaBalance.F3BFTBCRT
 import OmegaBalance.F3BFTBAuxPrimes
 import OmegaBalance.F3BFTBCRTShift
 import OmegaBalance.F3BFTBCRTComposite
+import OmegaBalance.F3BFTBMaximal
