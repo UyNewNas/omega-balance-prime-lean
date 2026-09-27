@@ -685,3 +685,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_sum_abs_main_term_change_totient
 #print axioms OmegaBalance.bftb_le_totient_mul_card_divisors
 #print axioms OmegaBalance.bftb_inv_totient_le_card_divisors_div
+
+-- BFTB cutoff inclusion: fixed theta < 1/2 inside the Pan range.
+#print axioms OmegaBalance.bftb_tendsto_pow_log_div_rpow
+#print axioms OmegaBalance.bftb_eventually_pow_log_le_rpow
+#print axioms OmegaBalance.bftb_eventually_rpow_le_half_rpow_div_pow_log
+#print axioms OmegaBalance.bftb_eventually_floor_rpow_le_floor_half_rpow_div_pow_log
