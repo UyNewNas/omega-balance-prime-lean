@@ -657,3 +657,6 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_orderEmbOfFin_adjacent_no_mem_between
 
 #print axioms OmegaBalance.bftb_consecutivePrimes_of_orderEmbOfFin_adjacent
+
+#print axioms OmegaBalance.consecutivePrimeBlock_of_isChain
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_of_orderEmbOfFin
