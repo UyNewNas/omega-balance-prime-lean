@@ -610,3 +610,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftbAffineResidue_coprime
 #print axioms OmegaBalance.bftbAffine_span
 #print axioms OmegaBalance.bftbAffine_span_le
+
+
+-- Affine admissibility in the BFTB Corollary 3 reduction.
+#print axioms OmegaBalance.bftbAffineOffsets_admissible
+#print axioms OmegaBalance.bftbAffineOffsets_all_coprime
