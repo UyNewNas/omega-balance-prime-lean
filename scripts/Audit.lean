@@ -695,3 +695,14 @@ import OmegaBalance.F3DeeperExamples
 -- BFTB BV normalization after the unit-residue supremum.
 #print axioms OmegaBalance.bftb_iSup_abs_main_term_change_totient
 #print axioms OmegaBalance.bftb_sum_iSup_abs_main_term_change_totient
+
+
+-- Canonical Liu--Wang reduced residues and the exact ZMod-unit maximum bridge.
+#print axioms OmegaBalance.mem_bftbUnitResidues
+#print axioms OmegaBalance.bftbUnitResidues_zero
+#print axioms OmegaBalance.bftbUnitResidues_one
+#print axioms OmegaBalance.bftbUnitResidues_eq_image_units_val
+#print axioms OmegaBalance.bftbUnitResidues_nonempty
+#print axioms OmegaBalance.bftbUnitResidueMax_zero
+#print axioms OmegaBalance.bftbUnitResidueMax_one
+#print axioms OmegaBalance.bftbUnitResidueMax_eq_iSup_units
