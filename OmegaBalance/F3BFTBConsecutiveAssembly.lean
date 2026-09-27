@@ -54,4 +54,26 @@ theorem bftb_consecutivePrimes_of_exact_affine_offset_interval
   have huS : u ∈ S := (hexact u huI).1 hup
   exact (hadj u huS) ⟨hsu, hut⟩
 
+/--
+Combine tuple maximality/exactness with compositeness outside the tuple.  This
+is the finite bridge used after the CRT exclusion step in BFTB.
+-/
+theorem bftb_consecutivePrimes_of_tuple_pattern_and_outside
+    {g n lo hi s t : ℕ} {H S : Finset ℕ}
+    (hSH : S ⊆ H)
+    (hn : n ∈ BFTBExactPrimePatternSet (fun n u => g * n + u) H S)
+    (hout : ∀ u ∈ Finset.Icc lo hi, u ∉ H →
+      ¬ (g * n + u).Prime)
+    (hsI : s ∈ Finset.Icc lo hi)
+    (htI : t ∈ Finset.Icc lo hi)
+    (hsS : s ∈ S) (htS : t ∈ S)
+    (hst : s < t)
+    (hadj : ∀ u ∈ S, ¬ (s < u ∧ u < t)) :
+    ConsecutivePrimes (g * n + s) (g * n + t) := by
+  have hexact : ∀ u ∈ Finset.Icc lo hi,
+      (g * n + u).Prime ↔ u ∈ S :=
+    bftb_exact_prime_pattern_extend hSH hn hout
+  exact bftb_consecutivePrimes_of_exact_affine_offset_interval
+    hsI htI hexact hsS htS hst hadj
+
 end OmegaBalance
