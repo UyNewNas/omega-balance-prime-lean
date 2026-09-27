@@ -25,3 +25,7 @@
 commit `88c232c1201b787025ac413efdde658520932780` 已通过 Lean run `36307227853` 与 Factor-sum run `36307227847`：582 declarations，仅标准 Lean axioms；90 Lean files 无 proof escape；Audit 582/582 exactly once；144240 finite checks PASS。
 
 在此 exact-green 基线上继续候选实现 canonical finite `max'` = unit-indexed `iSup`，新增 `bftbUnitResidueEquiv_val` 与 `bftbCanonicalResidueMax_eq_iSup`；仍须新的 exact-head CI 后才可标绿。
+
+## 验证补充
+
+766b743a442603f22d573a6ced835b13f992c36a 已通过 Lean 36307522769 与 Factor-sum 36307522685。门禁为 584 declarations、90 Lean files、Audit 584/584、有限检查 144240 PASS。canonical max 与 unit supremum 层因此转为 verified。下一切片为 modulus-one AP compatibility，尚待新的 exact-head CI。

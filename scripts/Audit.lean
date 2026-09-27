@@ -706,3 +706,8 @@ import OmegaBalance.F3DeeperExamples
 -- Exact identification of canonical finite maxima with unit-indexed suprema.
 #print axioms OmegaBalance.bftbUnitResidueEquiv_val
 #print axioms OmegaBalance.bftbCanonicalResidueMax_eq_iSup
+
+-- Modulus-one extraction for the StandardBV compatibility layer.
+#print axioms OmegaBalance.bftbPrimesInAP_one_zero
+#print axioms OmegaBalance.bftbPrimeAPError_one_zero
+#print axioms OmegaBalance.bftbCanonicalPrimeAPMaxError_one
