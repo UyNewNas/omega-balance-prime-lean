@@ -1,4 +1,5 @@
 import OmegaBalance.F3BFTBReciprocalTotient
+import Mathlib.Tactic
 
 namespace OmegaBalance
 
@@ -59,5 +60,55 @@ theorem bftb_global_discrepancy_le_modulus_sum
     (Finset.single_le_sum
       (fun q hq => hnonneg q hq)
       (by simp [hR]))
+
+
+/-- The normalization factor `1 + (1 + L)^2` costs at most five squares once `L ≥ 1`. -/
+theorem bftb_one_add_sq_le_five_sq
+    (L : ℝ) (hL : 1 ≤ L) :
+    1 + (1 + L) ^ 2 ≤ 5 * L ^ 2 := by
+  have hprod : 0 ≤ (2 * L + 1) * (L - 1) :=
+    mul_nonneg (by linarith) (sub_nonneg.mpr hL)
+  nlinarith
+
+/-- Monotonicity of the reciprocal-totient logarithmic-square loss in its cutoff. -/
+theorem bftb_one_add_log_sq_mono
+    {R N : ℕ} (hR : 1 ≤ R) (hRN : R ≤ N) :
+    (1 + Real.log R) ^ 2 ≤ (1 + Real.log N) ^ 2 := by
+  have hRpos : (0 : ℝ) < (R : ℝ) := by
+    exact_mod_cast (Nat.zero_lt_of_lt hR)
+  have hlog : Real.log (R : ℝ) ≤ Real.log (N : ℝ) := by
+    exact Real.log_le_log hRpos (by exact_mod_cast hRN)
+  have hleft : 0 ≤ 1 + Real.log (R : ℝ) := by
+    have h := Real.log_natCast_nonneg R
+    linarith
+  have hright : 0 ≤ 1 + Real.log (N : ℝ) := by
+    have h := Real.log_natCast_nonneg N
+    linarith
+  exact (sq_le_sq₀ hleft hright).2 (by linarith)
+
+/-- Two extra logarithmic powers absorb the complete Li-to-pi normalization loss. -/
+theorem bftb_one_add_log_sq_factor_le
+    {R N : ℕ} (hR : 1 ≤ R) (hRN : R ≤ N)
+    (hlogN : 1 ≤ Real.log (N : ℝ)) :
+    1 + (1 + Real.log R) ^ 2 ≤
+      5 * Real.log N ^ 2 := by
+  calc
+    1 + (1 + Real.log R) ^ 2
+        ≤ 1 + (1 + Real.log N) ^ 2 := by
+          exact add_le_add_left (bftb_one_add_log_sq_mono hR hRN) 1
+    _ ≤ 5 * Real.log N ^ 2 :=
+      bftb_one_add_sq_le_five_sq (Real.log (N : ℝ)) hlogN
+
+/-- The same logarithmic-loss absorption is eventually available at natural endpoints. -/
+theorem bftb_eventually_one_add_log_sq_le_five_log_sq :
+    ∀ᶠ N : ℕ in Filter.atTop,
+      1 + (1 + Real.log (N : ℝ)) ^ 2 ≤
+        5 * Real.log (N : ℝ) ^ 2 := by
+  have hlog :
+      Filter.Tendsto (fun N : ℕ => Real.log (N : ℝ))
+        Filter.atTop Filter.atTop :=
+    Real.tendsto_log_atTop.comp tendsto_natCast_atTop_atTop
+  filter_upwards [hlog.eventually (eventually_ge_atTop (1 : ℝ))] with N hN
+  exact bftb_one_add_sq_le_five_sq (Real.log (N : ℝ)) hN
 
 end OmegaBalance
