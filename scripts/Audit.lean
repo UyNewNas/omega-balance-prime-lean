@@ -599,3 +599,8 @@ import OmegaBalance.F3DeeperExamples
 -- Uniform RUN specialization: C depends only on L; c enters via 3^(|c|+1).
 #print axioms OmegaBalance.f3PrimeIndexRunsBounded_uniform_of_BFTB
 #print axioms OmegaBalance.f3PrimeIndexRunsBounded_all_lengths_of_BFTB
+
+-- Literal infinitude of bounded prime-index RUN starts.
+#print axioms OmegaBalance.f3PrimeIndexRunStarts_infinite_of_arbitrarily_far
+#print axioms OmegaBalance.f3PrimeIndexRunStarts_infinite_uniform_of_BFTB
+#print axioms OmegaBalance.f3PrimeIndexRunStarts_infinite_all_lengths_of_BFTB

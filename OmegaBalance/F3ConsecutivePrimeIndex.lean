@@ -119,4 +119,48 @@ theorem f3PrimeIndexRunsBounded_all_lengths_of_BFTB
   · have hLtwo : 2 ≤ L := by omega
     exact f3PrimeIndexRunsBounded_uniform_of_BFTB hBFTB hLtwo
 
+
+/-- A start index for a bounded constant-F₃ run in the full prime enumeration. -/
+def F3PrimeIndexRunAt (c : ℤ) (L H r : ℕ) : Prop :=
+  (∀ i : ℕ, i < L → f3 (Nat.nth Nat.Prime (r + i)) = c) ∧
+  Nat.nth Nat.Prime (r + (L - 1)) - Nat.nth Nat.Prime r ≤ H
+
+/-- Arbitrarily far bounded indexed runs give infinitely many distinct start indices. -/
+theorem f3PrimeIndexRunStarts_infinite_of_arbitrarily_far
+    {c : ℤ} {L H : ℕ}
+    (h : ∀ B : ℕ, F3PrimeIndexRunBounded c L B H) :
+    Set.Infinite {r : ℕ | F3PrimeIndexRunAt c L H r} := by
+  apply Set.infinite_iff_exists_gt.mpr
+  intro M
+  rcases h (Nat.nth Nat.Prime M) with ⟨r, hrgt, hrvals, hrspan⟩
+  refine ⟨r, ?_, ?_⟩
+  · exact ⟨hrvals, hrspan⟩
+  · exact (Nat.nth_lt_nth Nat.infinite_setOfPred_prime).1 hrgt
+
+/-- Under BFTB, one C depending only on L works for every nonzero F₃ level. -/
+theorem f3PrimeIndexRunStarts_infinite_uniform_of_BFTB
+    (hBFTB : BFTBPrimeIndexRuns)
+    {L : ℕ} (hL : 2 ≤ L) :
+    ∃ C : ℕ, ∀ c : ℤ, c ≠ 0 →
+      Set.Infinite {r : ℕ |
+        F3PrimeIndexRunAt c L (f3RunModulus c * C) r} := by
+  rcases f3PrimeIndexRunsBounded_uniform_of_BFTB hBFTB hL with ⟨C, hC⟩
+  refine ⟨C, ?_⟩
+  intro c hc
+  apply f3PrimeIndexRunStarts_infinite_of_arbitrarily_far
+  exact hC c hc
+
+/-- Literal infinitude for every positive run length, conditional only for L≥2. -/
+theorem f3PrimeIndexRunStarts_infinite_all_lengths_of_BFTB
+    (hBFTB : BFTBPrimeIndexRuns)
+    {L : ℕ} (hL : 1 ≤ L) :
+    ∃ C : ℕ, ∀ c : ℤ, c ≠ 0 →
+      Set.Infinite {r : ℕ |
+        F3PrimeIndexRunAt c L (f3RunModulus c * C) r} := by
+  rcases f3PrimeIndexRunsBounded_all_lengths_of_BFTB hBFTB hL with ⟨C, hC⟩
+  refine ⟨C, ?_⟩
+  intro c hc
+  apply f3PrimeIndexRunStarts_infinite_of_arbitrarily_far
+  exact hC c hc
+
 end OmegaBalance
