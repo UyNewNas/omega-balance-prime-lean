@@ -676,3 +676,8 @@ import OmegaBalance.F3DeeperExamples
 -- Full finite assembly from many primes plus uniform outside compositeness.
 #print axioms OmegaBalance.bftb_full_exact_prime_pattern_infinite_of_outside_composite
 #print axioms OmegaBalance.bftb_consecutivePrimeRunsInClassBounded_of_many_primes_and_outside
+
+-- BFTB BV Li-to-pi normalization seam.
+#print axioms OmegaBalance.bftb_abs_main_term_change_div
+#print axioms OmegaBalance.bftb_abs_main_term_change_totient
+#print axioms OmegaBalance.bftb_abs_main_term_change_totient_le

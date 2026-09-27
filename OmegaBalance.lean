@@ -80,3 +80,4 @@ import OmegaBalance.F3BFTBOrderedBlock
 import OmegaBalance.F3BFTBCRTProgression
 import OmegaBalance.F3BFTBResidueBlock
 import OmegaBalance.F3BFTBResidueAssembly
+import OmegaBalance.F3BFTBBVNormalization
