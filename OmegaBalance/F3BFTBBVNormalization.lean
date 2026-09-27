@@ -18,7 +18,7 @@ theorem bftb_abs_main_term_change_div
   rw [hdecomp]
   calc
     |(x - li / d) + (li - pi) / d|
-        ≤ |x - li / d| + |(li - pi) / d| := abs_add _ _
+        ≤ |x - li / d| + |(li - pi) / d| := abs_add_le _ _
     _ = |x - li / d| + |li - pi| / d := by
       rw [abs_div, abs_of_pos hd]
 
@@ -50,6 +50,7 @@ theorem bftb_abs_main_term_change_totient_le
             |li - pi| / (q.totient : ℝ) :=
       bftb_abs_main_term_change_totient hq x li pi
     _ ≤ |x - li / (q.totient : ℝ)| + |li - pi| := by
-      exact add_le_add_left (div_le_self (abs_nonneg _) hφone) _
+      gcongr
+      exact div_le_self (abs_nonneg _) hφone
 
 end OmegaBalance
