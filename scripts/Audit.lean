@@ -615,3 +615,7 @@ import OmegaBalance.F3DeeperExamples
 -- Affine admissibility in the BFTB Corollary 3 reduction.
 #print axioms OmegaBalance.bftbAffineOffsets_admissible
 #print axioms OmegaBalance.bftbAffineOffsets_all_coprime
+
+-- Finite congruence layer in the BFTB reduction.
+#print axioms OmegaBalance.bftb_exists_crt_residue
+#print axioms OmegaBalance.bftb_exists_crt_shift

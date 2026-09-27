@@ -66,3 +66,4 @@ import OmegaBalance.F3SignChanges
 import OmegaBalance.F3ConsecutiveRuns
 import OmegaBalance.F3ConsecutivePrimeIndex
 import OmegaBalance.F3BFTBAdmissible
+import OmegaBalance.F3BFTBCRT
