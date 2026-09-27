@@ -19,3 +19,9 @@
 ## 下一步
 
 本层 exact-green 后继续证明 canonical finite `max'` 与 unit-indexed `iSup` 精确相等，再连接 Liu--Wang `standardPrimeAPMaxError` / prefix-max error，随后处理 q=1 项与 reciprocal-totient normalization loss。
+
+## Exact-head 验证与继续推进
+
+commit `88c232c1201b787025ac413efdde658520932780` 已通过 Lean run `36307227853` 与 Factor-sum run `36307227847`：582 declarations，仅标准 Lean axioms；90 Lean files 无 proof escape；Audit 582/582 exactly once；144240 finite checks PASS。
+
+在此 exact-green 基线上继续候选实现 canonical finite `max'` = unit-indexed `iSup`，新增 `bftbUnitResidueEquiv_val` 与 `bftbCanonicalResidueMax_eq_iSup`；仍须新的 exact-head CI 后才可标绿。

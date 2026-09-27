@@ -702,3 +702,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftbUnitResidues_one
 #print axioms OmegaBalance.bftb_unit_val_mem_residues
 #print axioms OmegaBalance.range_score_unit_eq_range_residue
+
+-- Exact identification of canonical finite maxima with unit-indexed suprema.
+#print axioms OmegaBalance.bftbUnitResidueEquiv_val
+#print axioms OmegaBalance.bftbCanonicalResidueMax_eq_iSup

@@ -77,4 +77,51 @@ theorem range_score_unit_eq_range_residue
   · rintro ⟨l, rfl⟩
     exact ⟨bftbUnitResidueEquiv q hq l, rfl⟩
 
+/-- The unit obtained from a canonical residue has exactly that residue as its `ZMod` value. -/
+theorem bftbUnitResidueEquiv_val
+    {q : ℕ} (hq : 0 < q)
+    (l : {l : ℕ // l ∈ bftbUnitResidues q}) :
+    ((bftbUnitResidueEquiv q hq l : (ZMod q)ˣ) : ZMod q).val = l.1 := by
+  letI : NeZero q := ⟨Nat.ne_of_gt hq⟩
+  change (ZMod.unitOfCoprime l.1 ((mem_bftbUnitResidues.mp l.2).2) :
+    ZMod q).val = l.1
+  rw [ZMod.coe_unitOfCoprime, ZMod.val_natCast,
+    Nat.mod_eq_of_lt ((mem_bftbUnitResidues.mp l.2).1)]
+
+/-- Finite maximum in the canonical reduced-residue presentation. -/
+noncomputable def bftbCanonicalResidueMax (q : ℕ) (score : ℕ → ℝ) : ℝ :=
+  let S := bftbUnitResidues q
+  if h : S.Nonempty then
+    (S.image score).max' (Finset.image_nonempty.mpr h)
+  else 0
+
+/-- For positive q, the canonical finite max is exactly the unit-indexed supremum. -/
+theorem bftbCanonicalResidueMax_eq_iSup
+    {q : ℕ} (hq : 0 < q) (score : ℕ → ℝ) :
+    bftbCanonicalResidueMax q score =
+      ⨆ u : (ZMod q)ˣ, score (u : ZMod q).val := by
+  let S := bftbUnitResidues q
+  have hS : S.Nonempty := by
+    let l := (bftbUnitResidueEquiv q hq).symm (1 : (ZMod q)ˣ)
+    exact ⟨l.1, l.2⟩
+  rw [bftbCanonicalResidueMax, dif_pos hS]
+  apply le_antisymm
+  · have hmem : (S.image score).max' (Finset.image_nonempty.mpr hS) ∈ S.image score :=
+      Finset.max'_mem _ _
+    rcases Finset.mem_image.mp hmem with ⟨l, hl, hscore⟩
+    rw [← hscore]
+    have hbdd :
+        BddAbove (Set.range fun u : (ZMod q)ˣ => score (u : ZMod q).val) :=
+      Set.Finite.bddAbove (Set.finite_range _)
+    let r : {l : ℕ // l ∈ bftbUnitResidues q} := ⟨l, hl⟩
+    have hval :
+        ((bftbUnitResidueEquiv q hq r : (ZMod q)ˣ) : ZMod q).val = l :=
+      bftbUnitResidueEquiv_val hq r
+    rw [← hval]
+    exact le_ciSup hbdd (bftbUnitResidueEquiv q hq r)
+  · refine ciSup_le fun u => ?_
+    have hmem : (u : ZMod q).val ∈ S := bftb_unit_val_mem_residues hq u
+    exact Finset.le_max' (S.image score) _
+      (Finset.mem_image.mpr ⟨(u : ZMod q).val, hmem, rfl⟩)
+
 end OmegaBalance
