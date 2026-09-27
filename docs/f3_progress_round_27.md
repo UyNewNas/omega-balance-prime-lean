@@ -35,3 +35,8 @@ commit `88c232c1201b787025ac413efdde658520932780` 已通过 Lean run `3630722785
 baaf88765ab3a48748eb3ea76bd2fc62c921bec4 的 Lean run 36307793126 在 F3BFTBBVQOne.lean:15 失败：固定版本不存在 Finset.card_congr。改为先用 finset extensionality 证明两个筛选集合相等，再对 card 取 congrArg；Factor-sum run 36307793113 已成功。修复后必须重新跑 exact-head 全门禁。
 
 第二次 Lean run 36307934633 继续在 q=1 余数恒等式处失败，剩余目标精确为 p % 1 = 0。现改为显式使用 Nat.mod_one，而不是依赖 simp 关闭该边界。Factor-sum 36307934621 成功；修复仍需重新跑完整 Lean 门禁。
+
+
+## Round 27 source verification 17489ad
+
+Source head 17489ad475c5d453810cec78dc74b719f3403833 passed Lean 36309267141 and Factor-sum 36309267094. Audit: 594 declarations, 92 Lean files, coverage 594/594, finite checks 144240 PASS. The q=1 AP compatibility and reciprocal-totient harmonic/log-square bound are verified. Next blocker: StandardBV q=1 global discrepancy extraction and conversion to the PrimeGaps level-of-distribution input.
