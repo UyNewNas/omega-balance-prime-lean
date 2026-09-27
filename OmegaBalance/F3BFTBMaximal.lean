@@ -54,7 +54,7 @@ theorem bftb_maximal_extra_eventually_composite
     (hmax : ∀ T : Finset ℕ, T ⊆ H →
       (BFTBSimultaneousPrimeSet value T).Infinite →
       T.card ≤ S.card) :
-    ∀ h ∈ H, h ∉ S, ∃ B : ℕ, ∀ n : ℕ, B < n →
+    ∀ h ∈ H, h ∉ S → ∃ B : ℕ, ∀ n : ℕ, B < n →
       n ∈ BFTBSimultaneousPrimeSet value S →
       ¬ (value n h).Prime := by
   intro h hhH hhS
