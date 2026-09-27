@@ -29,3 +29,7 @@ commit `88c232c1201b787025ac413efdde658520932780` 已通过 Lean run `3630722785
 ## 验证补充
 
 766b743a442603f22d573a6ced835b13f992c36a 已通过 Lean 36307522769 与 Factor-sum 36307522685。门禁为 584 declarations、90 Lean files、Audit 584/584、有限检查 144240 PASS。canonical max 与 unit supremum 层因此转为 verified。下一切片为 modulus-one AP compatibility，尚待新的 exact-head CI。
+
+## modulus-one 第一轮 CI 修复
+
+baaf88765ab3a48748eb3ea76bd2fc62c921bec4 的 Lean run 36307793126 在 F3BFTBBVQOne.lean:15 失败：固定版本不存在 Finset.card_congr。改为先用 finset extensionality 证明两个筛选集合相等，再对 card 取 congrArg；Factor-sum run 36307793113 已成功。修复后必须重新跑 exact-head 全门禁。

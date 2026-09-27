@@ -12,13 +12,9 @@ theorem bftbPrimesInAP_one_zero (x : ℕ) :
     bftbPrimesInAP x 1 0 = Nat.primeCounting x := by
   rw [bftbPrimesInAP, Nat.primeCounting, Nat.primeCounting',
     Nat.count_eq_card_filter_range]
-  apply Finset.card_congr (Equiv.refl ℕ)
-  · intro p hp
-    simp only [Finset.mem_filter, Finset.mem_range] at hp ⊢
-    exact ⟨hp.1, hp.2.1⟩
-  · intro p hp
-    simp only [Finset.mem_filter, Finset.mem_range] at hp ⊢
-    exact ⟨hp.1, hp.2, by simp [Nat.ModEq]⟩
+  apply congrArg Finset.card
+  ext p
+  simp [Nat.ModEq]
 
 /-- AP error with an arbitrary global main term; the Liu--Wang bridge later instantiates `main` with true Li. -/
 noncomputable def bftbPrimeAPError
