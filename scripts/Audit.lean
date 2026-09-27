@@ -595,3 +595,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PrimeIndexRunBounded_of_residue
 #print axioms OmegaBalance.f3PrimeIndexRunsBounded_of_BFTB
 #print axioms OmegaBalance.f3PrimeIndexRunBounded_one
+
+-- Uniform RUN specialization: C depends only on L; c enters via 3^(|c|+1).
+#print axioms OmegaBalance.f3PrimeIndexRunsBounded_uniform_of_BFTB
+#print axioms OmegaBalance.f3PrimeIndexRunsBounded_all_lengths_of_BFTB

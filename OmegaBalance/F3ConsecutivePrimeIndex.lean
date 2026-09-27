@@ -91,4 +91,32 @@ theorem f3PrimeIndexRunBounded_one {c : ℤ} (hc : c ≠ 0) (B : ℕ) :
     simpa [hr] using hp.2.2
   · simp
 
+
+/-- The BFTB constant can be chosen uniformly in the nonzero target F₃ level. -/
+theorem f3PrimeIndexRunsBounded_uniform_of_BFTB
+    (hBFTB : BFTBPrimeIndexRuns)
+    {L : ℕ} (hL : 2 ≤ L) :
+    ∃ C : ℕ, ∀ c : ℤ, c ≠ 0 → ∀ B : ℕ,
+      F3PrimeIndexRunBounded c L B (f3RunModulus c * C) := by
+  rcases hBFTB L hL with ⟨C, hC⟩
+  refine ⟨C, ?_⟩
+  intro c hc B
+  apply f3PrimeIndexRunBounded_of_residue hc
+  exact hC (f3RunResidue c) (f3RunModulus c) B
+    (f3RunResidue_coprime hc) (f3RunModulus_ge_three c)
+
+/-- Conditional bounded RUN theorem for every positive length, including L=1. -/
+theorem f3PrimeIndexRunsBounded_all_lengths_of_BFTB
+    (hBFTB : BFTBPrimeIndexRuns)
+    {L : ℕ} (hL : 1 ≤ L) :
+    ∃ C : ℕ, ∀ c : ℤ, c ≠ 0 → ∀ B : ℕ,
+      F3PrimeIndexRunBounded c L B (f3RunModulus c * C) := by
+  by_cases hLone : L = 1
+  · subst L
+    refine ⟨0, ?_⟩
+    intro c hc B
+    simpa using f3PrimeIndexRunBounded_one hc B
+  · have hLtwo : 2 ≤ L := by omega
+    exact f3PrimeIndexRunsBounded_uniform_of_BFTB hBFTB hLtwo
+
 end OmegaBalance
