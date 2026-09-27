@@ -14,7 +14,12 @@ theorem bftbPrimesInAP_one_zero (x : ℕ) :
     Nat.count_eq_card_filter_range]
   apply congrArg Finset.card
   ext p
-  simp [Nat.ModEq]
+  simp only [Finset.mem_filter, Finset.mem_range, Nat.ModEq, Nat.zero_mod]
+  constructor
+  · rintro ⟨hp, hprime, _⟩
+    exact ⟨hp, hprime⟩
+  · rintro ⟨hp, hprime⟩
+    exact ⟨hp, hprime, Nat.mod_one p⟩
 
 /-- AP error with an arbitrary global main term; the Liu--Wang bridge later instantiates `main` with true Li. -/
 noncomputable def bftbPrimeAPError
