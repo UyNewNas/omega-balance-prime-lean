@@ -655,3 +655,5 @@ import OmegaBalance.F3DeeperExamples
 
 -- Ordered exact-pattern bridge for the BFTB RUN assembly.
 #print axioms OmegaBalance.bftb_orderEmbOfFin_adjacent_no_mem_between
+
+#print axioms OmegaBalance.bftb_consecutivePrimes_of_orderEmbOfFin_adjacent
