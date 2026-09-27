@@ -38,7 +38,8 @@ theorem bftbAffineOffsets_admissible
     intro hbad
     have hDt : D * t ≡ 0 [MOD p] :=
       Nat.modEq_zero_iff_dvd.mpr (dvd_mul_of_dvd_left hpD t)
-    have haff : D * t + a ≡ a [MOD p] := by\n      simpa using hDt.add_right a
+    have haff : D * t + a ≡ a [MOD p] := by
+      simpa using hDt.add_right a
     have hstep : a ≡ a + 1 [MOD p] := haff.symm.trans hbad
     have hpone : p ∣ 1 := by
       simpa using (Nat.modEq_iff_dvd' (Nat.le_succ a)).mp hstep
