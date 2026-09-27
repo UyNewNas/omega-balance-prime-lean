@@ -52,4 +52,29 @@ theorem bftb_exists_crt_shift
       Nat.ModEq.add_left_cancel' (g * (cr : ℕ)) (hhzero.trans htzero.symm)
     exact hsafe t ht h hh hht
 
+
+/--
+When every auxiliary prime exceeds all protected and excluded offsets, disjointness
+of the two finite offset sets supplies the residue-separation hypothesis needed by
+`bftb_exists_crt_shift`.
+-/
+theorem bftb_exists_crt_shift_of_large_moduli
+    {T H : Finset ℕ} {g : ℕ} (q : ℕ → ℕ)
+    (hqprime : ∀ t ∈ T, (q t).Prime)
+    (hpair : Set.Pairwise (↑T : Set ℕ)
+      (fun s t => (q s).Coprime (q t)))
+    (hgq : ∀ t ∈ T, g.Coprime (q t))
+    (hdisj : Disjoint T H)
+    (htlt : ∀ t ∈ T, t < q t)
+    (hhlt : ∀ t ∈ T, ∀ h ∈ H, h < q t) :
+    ∃ A : ℕ,
+      (∀ t ∈ T, q t ∣ g * A + t) ∧
+      (∀ t ∈ T, ∀ h ∈ H, ¬ q t ∣ g * A + h) := by
+  apply bftb_exists_crt_shift q hqprime hpair hgq
+  intro t ht h hh hmod
+  have heq : h = t :=
+    hmod.eq_of_lt_of_lt (hhlt t ht h hh) (htlt t ht)
+  subst h
+  exact (Finset.disjoint_left.mp hdisj) ht hh
+
 end OmegaBalance
