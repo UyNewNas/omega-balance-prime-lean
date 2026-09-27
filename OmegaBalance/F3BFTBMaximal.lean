@@ -110,4 +110,35 @@ theorem bftb_maximal_extras_uniformly_eventually_composite
   have hnle : n ≤ B := hB hnBad
   omega
 
+
+/--
+Every finite ambient tuple has a cardinality-maximal subset that is
+simultaneously prime for infinitely many translation parameters.
+-/
+theorem bftb_exists_maximal_simultaneous_subset
+    (value : ℕ → ℕ → ℕ) (H : Finset ℕ) :
+    ∃ S : Finset ℕ,
+      S ⊆ H ∧
+      (BFTBSimultaneousPrimeSet value S).Infinite ∧
+      ∀ T : Finset ℕ, T ⊆ H →
+        (BFTBSimultaneousPrimeSet value T).Infinite →
+        T.card ≤ S.card := by
+  classical
+  let candidates : Finset (Finset ℕ) :=
+    H.powerset.filter fun T => (BFTBSimultaneousPrimeSet value T).Infinite
+  have hemptyInf : (BFTBSimultaneousPrimeSet value ∅).Infinite := by
+    simpa [BFTBSimultaneousPrimeSet] using
+      (Set.infinite_univ : (Set.univ : Set ℕ).Infinite)
+  have hempty : ∅ ∈ candidates := by
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_powerset.mpr (by simp), hemptyInf⟩
+  have hcand : candidates.Nonempty := ⟨∅, hempty⟩
+  obtain ⟨S, hS, hmax⟩ :=
+    Finset.exists_max_image candidates Finset.card hcand
+  have hS' := Finset.mem_filter.mp hS
+  refine ⟨S, Finset.mem_powerset.mp hS'.1, hS'.2, ?_⟩
+  intro T hTH hInf
+  exact hmax T (Finset.mem_filter.mpr
+    ⟨Finset.mem_powerset.mpr hTH, hInf⟩)
+
 end OmegaBalance

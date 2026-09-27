@@ -639,3 +639,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_maximal_extra_finite
 #print axioms OmegaBalance.bftb_maximal_extra_eventually_composite
 #print axioms OmegaBalance.bftb_maximal_extras_uniformly_eventually_composite
+#print axioms OmegaBalance.bftb_exists_maximal_simultaneous_subset
