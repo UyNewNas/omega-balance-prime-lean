@@ -721,3 +721,9 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_sum_card_divisors_div_le_harmonic_sq
 #print axioms OmegaBalance.bftb_sum_inv_totient_le_harmonic_sq
 #print axioms OmegaBalance.bftb_sum_inv_totient_le_one_add_log_sq
+
+
+-- Aggregate Li-to-pi normalization and q=1 discrepancy extraction.
+#print axioms OmegaBalance.bftb_sum_abs_discrepancy_div_totient_le
+#print axioms OmegaBalance.bftb_sum_iSup_abs_main_term_change_Icc
+#print axioms OmegaBalance.bftb_global_discrepancy_le_modulus_sum
