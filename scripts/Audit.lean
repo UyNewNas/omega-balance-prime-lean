@@ -648,3 +648,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_exists_large_maximal_with_uniform_exclusion
 #print axioms OmegaBalance.bftb_exact_prime_pattern_infinite_of_maximal
 #print axioms OmegaBalance.bftb_exists_large_exact_prime_pattern
+#print axioms OmegaBalance.bftb_exact_prime_pattern_extend
