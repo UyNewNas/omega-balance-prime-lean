@@ -20,14 +20,14 @@ theorem bftbHarmonicFactor_nonneg (R : ℕ) :
   positivity
 
 theorem bftbHarmonicFactor_eq_harmonic (R : ℕ) :
-    bftbHarmonicFactor R = (Nat.harmonic R : ℝ) := by
-  rw [Nat.harmonic_eq_sum_Icc, Rat.cast_sum]
+    bftbHarmonicFactor R = (harmonic R : ℝ) := by
+  rw [harmonic_eq_sum_Icc, Rat.cast_sum]
   simp [bftbHarmonicFactor]
 
 theorem bftbHarmonicFactor_le_one_add_log (R : ℕ) :
     bftbHarmonicFactor R ≤ 1 + Real.log R := by
   rw [bftbHarmonicFactor_eq_harmonic]
-  exact_mod_cast Nat.harmonic_le_one_add_log R
+  simpa using harmonic_le_one_add_log R
 
 theorem bftb_sum_inv_multiples_Icc (R e : ℕ) (he : 0 < e) :
     (∑ r ∈ Finset.Icc 1 R, if e ∣ r then ((r : ℝ)⁻¹) else 0) =
