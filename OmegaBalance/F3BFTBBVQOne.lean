@@ -13,7 +13,7 @@ theorem bftbPrimesInAP_one_zero (x : ℕ) :
   rw [bftbPrimesInAP, ← Nat.primesLE_card_eq_primeCounting]
   apply congrArg Finset.card
   ext p
-  simp [Nat.primesLE_eq_filter_range, Nat.ModEq]
+  simp [Nat.primesLE_eq_filter_range, Nat.ModEq, Nat.mod_one]
 
 /-- AP error with an arbitrary global main term; the Liu--Wang bridge later instantiates `main` with true Li. -/
 noncomputable def bftbPrimeAPError
