@@ -2,7 +2,7 @@ import OmegaBalance.F3BFTBReciprocalTotient
 
 namespace OmegaBalance
 
-open Classical Finset
+open Classical Finset Filter
 open scoped BigOperators
 
 /--
