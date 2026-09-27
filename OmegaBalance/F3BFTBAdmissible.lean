@@ -40,8 +40,8 @@ theorem bftbAffineOffsets_admissible
       Nat.modEq_zero_iff_dvd.mpr (dvd_mul_of_dvd_left hpD t)
     have haff : D * t + a ≡ a [MOD p] := by\n      simpa using hDt.add_right a
     have hstep : a ≡ a + 1 [MOD p] := haff.symm.trans hbad
-    have hpone : p ∣ 1 :=
-      (Nat.modEq_iff_dvd' (Nat.le_succ a)).mp hstep
+    have hpone : p ∣ 1 := by
+      simpa using (Nat.modEq_iff_dvd' (Nat.le_succ a)).mp hstep
     exact hp.not_dvd_one hpone
   · rcases hH p hp with ⟨r, hr⟩
     refine ⟨D * r + a, ?_⟩
