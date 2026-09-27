@@ -634,3 +634,36 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_crt_shift_product_preserves_protected
 #print axioms OmegaBalance.bftb_crt_two_product_shift_proper
 #print axioms OmegaBalance.bftb_crt_two_product_shift_forces_composite
+#print axioms OmegaBalance.bftb_exists_composite_crt_shift_from_bound
+#print axioms OmegaBalance.bftbSimultaneousPrimeSet_insert
+#print axioms OmegaBalance.bftb_maximal_extra_finite
+#print axioms OmegaBalance.bftb_maximal_extra_eventually_composite
+#print axioms OmegaBalance.bftb_maximal_extras_uniformly_eventually_composite
+#print axioms OmegaBalance.bftb_exists_maximal_simultaneous_subset
+
+-- Finite pigeonhole bridge from many-primes parameters to a fixed maximal subtuple.
+#print axioms OmegaBalance.bftb_exists_infinite_simultaneous_subset_of_many_primes
+#print axioms OmegaBalance.bftb_maximal_card_ge_of_many_primes
+#print axioms OmegaBalance.bftb_exists_large_maximal_simultaneous_subset
+#print axioms OmegaBalance.bftb_exists_large_maximal_with_uniform_exclusion
+#print axioms OmegaBalance.bftb_exact_prime_pattern_infinite_of_maximal
+#print axioms OmegaBalance.bftb_exists_large_exact_prime_pattern
+#print axioms OmegaBalance.bftb_exact_prime_pattern_extend
+#print axioms OmegaBalance.bftb_consecutivePrimes_of_exact_affine_offset_interval
+#print axioms OmegaBalance.bftb_consecutivePrimes_of_tuple_pattern_and_outside
+#print axioms OmegaBalance.bftb_indexed_many_primes_to_finset
+
+-- Ordered exact-pattern bridge for the BFTB RUN assembly.
+#print axioms OmegaBalance.bftb_orderEmbOfFin_adjacent_no_mem_between
+
+#print axioms OmegaBalance.bftb_consecutivePrimes_of_orderEmbOfFin_adjacent
+
+#print axioms OmegaBalance.consecutivePrimeBlock_of_isChain
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_of_orderEmbOfFin
+
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix_length
+
+#print axioms OmegaBalance.bftb_crt_product_shift_proper_of_two_le
+#print axioms OmegaBalance.bftb_crt_product_shift_forces_composite_of_two_le
+#print axioms OmegaBalance.bftb_exists_composite_crt_progression_from_bound
