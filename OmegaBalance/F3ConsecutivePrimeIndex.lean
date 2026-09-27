@@ -47,4 +47,29 @@ theorem f3PrimeIndexRunBounded_of_residue
     lt_of_lt_of_le (by decide : 1 < 2) hp.two_le
   exact f3_of_modEq_runResidue hp1 hc (hmod i hi)
 
+
+/--
+Exact prime-index form of the Banks--Freiberg--Turnage-Butterbaugh Corollary 3
+shape.  The constant C is chosen before a,D,B, so it depends only on L.
+This is a proposition, not an axiom or theorem assertion.
+-/
+def BFTBPrimeIndexRuns : Prop :=
+  ∀ L : ℕ, 2 ≤ L →
+    ∃ C : ℕ, ∀ a D B : ℕ,
+      a.Coprime D → 3 ≤ D →
+      PrimeIndexResidueRunBounded a D L B (D * C)
+
+/-- Specialize an indexed BFTB statement to exact bounded constant-F₃ runs. -/
+theorem f3PrimeIndexRunsBounded_of_BFTB
+    (hBFTB : BFTBPrimeIndexRuns)
+    {c : ℤ} (hc : c ≠ 0) {L : ℕ} (hL : 2 ≤ L) :
+    ∃ C : ℕ, ∀ B : ℕ,
+      F3PrimeIndexRunBounded c L B (f3RunModulus c * C) := by
+  rcases hBFTB L hL with ⟨C, hC⟩
+  refine ⟨C, ?_⟩
+  intro B
+  apply f3PrimeIndexRunBounded_of_residue hc
+  exact hC (f3RunResidue c) (f3RunModulus c) B
+    (f3RunResidue_coprime hc) (f3RunModulus_ge_three c)
+
 end OmegaBalance
