@@ -667,3 +667,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_crt_product_shift_proper_of_two_le
 #print axioms OmegaBalance.bftb_crt_product_shift_forces_composite_of_two_le
 #print axioms OmegaBalance.bftb_exists_composite_crt_progression_from_bound
+
+-- Residue-class and diameter packaging for exact BFTB prime patterns.
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix_modEq
+#print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix_diameter
+#print axioms OmegaBalance.bftb_consecutivePrimeRunInClassBounded_of_exact_prefix
