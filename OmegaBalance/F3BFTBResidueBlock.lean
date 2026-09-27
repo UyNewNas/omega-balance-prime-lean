@@ -96,4 +96,32 @@ theorem bftb_consecutivePrimeRunInClassBounded_of_exact_prefix
         (g := g) (n := n) (lo := lo) (hi := hi) (S := S)
         hLS hSI)
 
+/--
+If one fixed exact affine prime pattern occurs for infinitely many translation
+parameters, then the bounded residue-class consecutive block occurs beyond
+every lower bound.  Positivity of g converts an unbounded parameter n into an
+unbounded actual prime block.
+-/
+theorem bftb_consecutivePrimeRunsInClassBounded_of_infinite_exact_prefix
+    {a D g lo hi L : ℕ} {S : Finset ℕ}
+    (hg : 0 < g)
+    (hLS : L ≤ S.card)
+    (hSI : S ⊆ Finset.Icc lo hi)
+    (hDg : D ∣ g)
+    (hres : ∀ u ∈ S, u ≡ a [MOD D])
+    (hinf :
+      ({n : ℕ | ∀ u ∈ Finset.Icc lo hi,
+        (g * n + u).Prime ↔ u ∈ S} : Set ℕ).Infinite) :
+    ∀ B : ℕ, ConsecutivePrimeRunInClassBounded a D L B (hi - lo) := by
+  intro B
+  obtain ⟨n, hn, hBn⟩ := Set.infinite_iff_exists_gt.mp hinf B
+  have hexact : ∀ u ∈ Finset.Icc lo hi,
+      (g * n + u).Prime ↔ u ∈ S := by
+    simpa only [Set.mem_setOf_eq] using hn
+  have hngn : n ≤ g * n :=
+    Nat.le_mul_of_pos_left n hg
+  apply bftb_consecutivePrimeRunInClassBounded_of_exact_prefix
+    (n := n) hLS hSI hexact hDg hres
+  omega
+
 end OmegaBalance

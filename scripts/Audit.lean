@@ -672,3 +672,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix_modEq
 #print axioms OmegaBalance.bftb_consecutivePrimeBlock_prefix_diameter
 #print axioms OmegaBalance.bftb_consecutivePrimeRunInClassBounded_of_exact_prefix
+#print axioms OmegaBalance.bftb_consecutivePrimeRunsInClassBounded_of_infinite_exact_prefix
