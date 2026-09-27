@@ -70,4 +70,44 @@ theorem bftb_maximal_extra_eventually_composite
   have hnle : n ≤ B := hB hmem
   omega
 
+
+/--
+Because the ambient tuple H is finite, the pointwise eventual-compositeness
+bounds for all offsets outside a maximal simultaneous-prime subset can be
+combined into one common threshold.
+-/
+theorem bftb_maximal_extras_uniformly_eventually_composite
+    {value : ℕ → ℕ → ℕ} {H S : Finset ℕ}
+    (hSH : S ⊆ H)
+    (hmax : ∀ T : Finset ℕ, T ⊆ H →
+      (BFTBSimultaneousPrimeSet value T).Infinite →
+      T.card ≤ S.card) :
+    ∃ B : ℕ, ∀ n : ℕ, B < n →
+      n ∈ BFTBSimultaneousPrimeSet value S →
+      ∀ h ∈ H, h ∉ S → ¬ (value n h).Prime := by
+  let E : Finset ℕ := H \ S
+  let bad : Set ℕ :=
+    ⋃ h ∈ (E : Set ℕ),
+      {n : ℕ |
+        n ∈ BFTBSimultaneousPrimeSet value S ∧ (value n h).Prime}
+  have hEfinite : ((E : Set ℕ)).Finite := E.finite_toSet
+  have hbadfinite : bad.Finite := by
+    dsimp [bad]
+    apply hEfinite.biUnion
+    intro h hhE
+    have hhES : h ∈ H \ S := by simpa [E] using hhE
+    have hhH : h ∈ H := (Finset.mem_sdiff.mp hhES).1
+    have hhS : h ∉ S := (Finset.mem_sdiff.mp hhES).2
+    exact bftb_maximal_extra_finite hSH hmax hhH hhS
+  rcases hbadfinite.bddAbove with ⟨B, hB⟩
+  refine ⟨B, ?_⟩
+  intro n hBn hnS h hhH hhS hnprime
+  have hhE : h ∈ (E : Set ℕ) := by
+    simpa [E] using (Finset.mem_sdiff.mpr ⟨hhH, hhS⟩)
+  have hnBad : n ∈ bad := by
+    dsimp [bad]
+    exact Set.mem_biUnion hhE ⟨hnS, hnprime⟩
+  have hnle : n ≤ B := hB hnBad
+  omega
+
 end OmegaBalance
