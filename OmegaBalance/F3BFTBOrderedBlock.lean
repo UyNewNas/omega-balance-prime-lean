@@ -42,7 +42,8 @@ theorem bftb_consecutivePrimes_of_orderEmbOfFin_adjacent
   have hjS : S.orderEmbOfFin rfl j ∈ S :=
     S.orderEmbOfFin_mem rfl j
   have hijlt : i < j := by
-    exact hij ▸ Nat.lt_succ_self (i : ℕ)
+    change (i : ℕ) < (j : ℕ)
+    omega
   have hofflt :
       S.orderEmbOfFin rfl i < S.orderEmbOfFin rfl j :=
     (S.orderEmbOfFin rfl).strictMono hijlt
