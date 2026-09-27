@@ -53,4 +53,67 @@ theorem bftb_abs_main_term_change_totient_le
       gcongr
       exact div_le_self (abs_nonneg _) hφone
 
+
+/--
+Summed Li-to-pi normalization while retaining the reciprocal-totient weight.
+Keeping this weight is essential: replacing it by one at every modulus would
+lose a polynomial factor over a Bombieri--Vinogradov range.
+-/
+theorem bftb_sum_abs_main_term_change_totient
+    (S : Finset ℕ) (hS : ∀ q ∈ S, 0 < q)
+    (x : ℕ → ℝ) (li pi : ℝ) :
+    (∑ q in S, |x q - pi / (q.totient : ℝ)|) ≤
+      (∑ q in S, |x q - li / (q.totient : ℝ)|) +
+        ∑ q in S, |li - pi| / (q.totient : ℝ) := by
+  calc
+    (∑ q in S, |x q - pi / (q.totient : ℝ)|)
+        ≤ ∑ q in S,
+            (|x q - li / (q.totient : ℝ)| +
+              |li - pi| / (q.totient : ℝ)) := by
+      exact Finset.sum_le_sum fun q hq =>
+        bftb_abs_main_term_change_totient (hS q hq) (x q) li pi
+    _ = (∑ q in S, |x q - li / (q.totient : ℝ)|) +
+          ∑ q in S, |li - pi| / (q.totient : ℝ) := by
+      rw [Finset.sum_add_distrib]
+
+/--
+Elementary lower bound for Euler's totient:
+`q ≤ φ(q) * d(q)`, where `d(q)` is the number of positive divisors.
+This is the pointwise input for the reciprocal-totient polylogarithmic ledger.
+-/
+theorem bftb_le_totient_mul_card_divisors (q : ℕ) :
+    q ≤ Nat.totient q * q.divisors.card := by
+  rcases eq_or_ne q 0 with rfl | hq
+  · simp
+  conv_lhs => rw [← Nat.sum_totient q]
+  calc
+    q.divisors.sum Nat.totient
+        ≤ ∑ d ∈ q.divisors, Nat.totient q :=
+      Finset.sum_le_sum fun d hd =>
+        Nat.le_of_dvd
+          (Nat.totient_pos.mpr (Nat.pos_of_ne_zero hq))
+          (Nat.totient_dvd_of_dvd (Nat.dvd_of_mem_divisors hd))
+    _ = Nat.totient q * q.divisors.card := by
+      rw [Finset.sum_const, smul_eq_mul, mul_comm]
+
+/--
+For positive `q`, reciprocal totient is bounded by the divisor weight
+`d(q)/q`. Summing this will reduce the normalization loss to a standard
+divisor-harmonic estimate rather than a polynomial modulus count.
+-/
+theorem bftb_inv_totient_le_card_divisors_div
+    {q : ℕ} (hq : 0 < q) :
+    (1 : ℝ) / (q.totient : ℝ) ≤
+      (q.divisors.card : ℝ) / (q : ℝ) := by
+  have hqR : (0 : ℝ) < (q : ℝ) := by
+    exact_mod_cast hq
+  have hφnat : 0 < q.totient := Nat.totient_pos.mpr hq
+  have hφR : (0 : ℝ) < (q.totient : ℝ) := by
+    exact_mod_cast hφnat
+  rw [div_le_div_iff₀ hφR hqR]
+  have hreal :
+      (q : ℝ) ≤ (q.totient : ℝ) * (q.divisors.card : ℝ) := by
+    exact_mod_cast bftb_le_totient_mul_card_divisors q
+  simpa [mul_comm] using hreal
+
 end OmegaBalance

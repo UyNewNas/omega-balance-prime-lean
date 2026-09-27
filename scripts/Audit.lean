@@ -681,3 +681,7 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_abs_main_term_change_div
 #print axioms OmegaBalance.bftb_abs_main_term_change_totient
 #print axioms OmegaBalance.bftb_abs_main_term_change_totient_le
+
+#print axioms OmegaBalance.bftb_sum_abs_main_term_change_totient
+#print axioms OmegaBalance.bftb_le_totient_mul_card_divisors
+#print axioms OmegaBalance.bftb_inv_totient_le_card_divisors_div
