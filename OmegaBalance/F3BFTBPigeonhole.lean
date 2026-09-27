@@ -82,4 +82,25 @@ theorem bftb_exists_large_maximal_simultaneous_subset
     bftb_maximal_card_ge_of_many_primes hSH hmax hmany
   exact ⟨S, hSH, hcard, hSinf, hmax⟩
 
+/--
+Combine the many-primes pigeonhole step with maximality and the finite ambient
+tuple to obtain one threshold beyond which every offset outside the chosen
+maximal subtuple is composite.
+-/
+theorem bftb_exists_large_maximal_with_uniform_exclusion
+    (value : ℕ → ℕ → ℕ) (H : Finset ℕ) {m : ℕ}
+    (hmany : (BFTBAtLeastPrimeCountSet value H m).Infinite) :
+    ∃ S : Finset ℕ, ∃ B : ℕ,
+      S ⊆ H ∧
+      m ≤ S.card ∧
+      (BFTBSimultaneousPrimeSet value S).Infinite ∧
+      ∀ n : ℕ, B < n →
+        n ∈ BFTBSimultaneousPrimeSet value S →
+        ∀ h : ℕ, h ∈ H → h ∉ S → ¬ (value n h).Prime := by
+  obtain ⟨S, hSH, hcard, hSinf, hmax⟩ :=
+    bftb_exists_large_maximal_simultaneous_subset value H hmany
+  obtain ⟨B, hB⟩ :=
+    bftb_maximal_extras_uniformly_eventually_composite hSH hmax
+  exact ⟨S, B, hSH, hcard, hSinf, hB⟩
+
 end OmegaBalance

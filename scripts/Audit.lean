@@ -645,3 +645,4 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.bftb_exists_infinite_simultaneous_subset_of_many_primes
 #print axioms OmegaBalance.bftb_maximal_card_ge_of_many_primes
 #print axioms OmegaBalance.bftb_exists_large_maximal_simultaneous_subset
+#print axioms OmegaBalance.bftb_exists_large_maximal_with_uniform_exclusion
