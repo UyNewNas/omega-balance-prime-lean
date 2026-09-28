@@ -8,23 +8,24 @@ git = "https://github.com/UyNewNas/analytic-number-theory-lean.git"
 rev = "099d3726c2c74841024110ec1dd9902f7ef36e9e"
 
 [[require]]
-name = "mathlib"
-git = "https://github.com/leanprover-community/mathlib4.git"
-# mathlib v4.34.0, pinned to an immutable commit.
-rev = "5ed2965256430c3649e86755f9576b54eca72435"
-
-[[require]]
 name = "lean-proofs-latest"
 git = "https://github.com/plby/lean-proofs.git"
 rev = "8822f7ddef30fadbd92e1c6ab4ed897af356af5e"
 subDir = "src/latest"
 
 # Lake 4.34 resolves direct dependencies in reverse declaration order.
-# Keep the compatibility package last so its post_update hook runs before
-# lean-proofs-latest.
+# Keep this after lean-proofs so the compatibility post_update hook runs first.
 [[require]]
 name = "omega-balance-lean-proofs-compat"
 path = "lake-compat"
+
+# Keep mathlib last so its transitive dependency revisions take precedence
+# for mathlib's cache tool while preserving the project's immutable pin.
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+# mathlib v4.34.0, pinned to an immutable commit.
+rev = "5ed2965256430c3649e86755f9576b54eca72435"
 
 [[lean_lib]]
 name = "OmegaBalance"
