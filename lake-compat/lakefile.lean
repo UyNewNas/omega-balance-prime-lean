@@ -9,15 +9,15 @@ package «omega-balance-lean-proofs-compat»
 transitive packages are visible below `pkg.dir/.lake/packages`.
 
 Lake 4.34 materializes inherited Git dependencies in the root workspace package
-directory. This compatibility package is required before `lean-proofs-latest`.
-Its post-update hook exposes that root package directory at the nested path the
-pinned upstream hook expects. The upstream hook itself still runs afterwards
-and performs its original patch checks and applications.
+directory. This compatibility package is arranged to run before
+`lean-proofs-latest`. Its post-update hook exposes that root package directory
+at the nested path the pinned upstream hook expects. The upstream hook itself
+still runs afterwards and performs its original patch checks and applications.
 
 No proof source or theorem statement is modified.
 -/
 
-post_update _ do
+post_update pkg do
   let root ← getRootPackage
   let rootPackages := root.dir / ".lake" / "packages"
   let leanProofs := rootPackages / "lean-proofs-latest" / "src" / "latest"
