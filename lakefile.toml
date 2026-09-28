@@ -3,10 +3,6 @@ version = "0.1.0"
 defaultTargets = ["OmegaBalance"]
 
 [[require]]
-name = "omega-balance-lean-proofs-compat"
-path = "lake-compat"
-
-[[require]]
 name = "analytic_number_theory"
 git = "https://github.com/UyNewNas/analytic-number-theory-lean.git"
 rev = "099d3726c2c74841024110ec1dd9902f7ef36e9e"
@@ -22,6 +18,13 @@ name = "lean-proofs-latest"
 git = "https://github.com/plby/lean-proofs.git"
 rev = "8822f7ddef30fadbd92e1c6ab4ed897af356af5e"
 subDir = "src/latest"
+
+# Lake 4.34 resolves direct dependencies in reverse declaration order.
+# Keep the compatibility package last so its post_update hook runs before
+# lean-proofs-latest.
+[[require]]
+name = "omega-balance-lean-proofs-compat"
+path = "lake-compat"
 
 [[lean_lib]]
 name = "OmegaBalance"
