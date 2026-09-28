@@ -1,0 +1,230 @@
+{
+  "status": "PASS",
+  "max_r": 11,
+  "max_j": 14,
+  "exact_checks": {
+    "inverse_pairs": 44248,
+    "layer_set_checks": 50,
+    "normal_form_points": 44248,
+    "root_lifting_checks": 66364,
+    "box_checks": 150,
+    "divisibility_error_checks": 750,
+    "new_range_layer_checks": 30,
+    "local_root_checks": 1156,
+    "direct_presieve_checks": 20
+  },
+  "simplified_formula_counterexample": {
+    "a": 5,
+    "b": 65,
+    "m": 81,
+    "j": 1,
+    "c": 2,
+    "h": 4,
+    "u": 1,
+    "old_residual_mod_s": 6,
+    "corrected_residual": 0
+  },
+  "critical_presieve_data": [
+    {
+      "j": 4,
+      "r": 10,
+      "m": 59049,
+      "sieving_threshold": 27,
+      "raw_positive": 7,
+      "raw_negative": 0,
+      "rough_positive": 0,
+      "rough_negative": 0,
+      "line_density_num": 8748,
+      "line_density_den": 39767,
+      "line_main": 1.4848743933412125,
+      "count_over_line_main": 0.0,
+      "branches": [
+        {
+          "h": 4,
+          "u0": 4,
+          "raw": 4,
+          "survivors": 0
+        },
+        {
+          "h": 4,
+          "u0": 5,
+          "raw": 3,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "j": 6,
+      "r": 14,
+      "m": 4782969,
+      "sieving_threshold": 50,
+      "raw_positive": 61,
+      "raw_negative": 0,
+      "rough_positive": 2,
+      "rough_negative": 0,
+      "line_density_num": 2430000,
+      "line_density_den": 30886943,
+      "line_main": 4.7794467714075815,
+      "count_over_line_main": 0.418458473471185,
+      "branches": [
+        {
+          "h": 4,
+          "u0": 4,
+          "raw": 31,
+          "survivors": 1
+        },
+        {
+          "h": 4,
+          "u0": 5,
+          "raw": 30,
+          "survivors": 1
+        }
+      ]
+    },
+    {
+      "j": 7,
+      "r": 16,
+      "m": 43046721,
+      "sieving_threshold": 66,
+      "raw_positive": 183,
+      "raw_negative": 0,
+      "rough_positive": 16,
+      "rough_negative": 0,
+      "line_density_num": 5187975156000,
+      "line_density_den": 54986231363327,
+      "line_main": 17.195367799139728,
+      "count_over_line_main": 0.9304831502819305,
+      "branches": [
+        {
+          "h": 4,
+          "u0": 4,
+          "raw": 92,
+          "survivors": 9
+        },
+        {
+          "h": 4,
+          "u0": 5,
+          "raw": 91,
+          "survivors": 7
+        }
+      ]
+    },
+    {
+      "j": 8,
+      "r": 18,
+      "m": 387420489,
+      "sieving_threshold": 85,
+      "raw_positive": 547,
+      "raw_negative": 0,
+      "rough_positive": 46,
+      "rough_negative": 0,
+      "line_density_num": 984840580023300000,
+      "line_density_den": 13520902942667940641,
+      "line_main": 39.82438076886973,
+      "count_over_line_main": 1.1550713184210433,
+      "branches": [
+        {
+          "h": 4,
+          "u0": 4,
+          "raw": 274,
+          "survivors": 27
+        },
+        {
+          "h": 4,
+          "u0": 5,
+          "raw": 273,
+          "survivors": 19
+        }
+      ]
+    },
+    {
+      "j": 10,
+      "r": 22,
+      "m": 31381059609,
+      "sieving_threshold": 136,
+      "raw_positive": 4921,
+      "raw_negative": 0,
+      "rough_positive": 247,
+      "rough_negative": 0,
+      "line_density_num": 1811294092564505216968781250000,
+      "line_density_den": 35933446522781568443595569673461,
+      "line_main": 248.03981439231143,
+      "count_over_line_main": 0.9958078730430479,
+      "branches": [
+        {
+          "h": 4,
+          "u0": 4,
+          "raw": 2461,
+          "survivors": 122
+        },
+        {
+          "h": 4,
+          "u0": 5,
+          "raw": 2460,
+          "survivors": 125
+        }
+      ]
+    },
+    {
+      "j": 12,
+      "r": 26,
+      "m": 2541865828329,
+      "sieving_threshold": 209,
+      "raw_positive": 44287,
+      "raw_negative": 0,
+      "rough_positive": 1032,
+      "rough_negative": 0,
+      "line_density_num": 36284133757627198143794951850166142755567175903320312500,
+      "line_density_den": 1540902149343120366317906974190836469898777159381815296843,
+      "line_main": 1042.8347843992647,
+      "count_over_line_main": 0.9896102579609424,
+      "branches": [
+        {
+          "h": 4,
+          "u0": 4,
+          "raw": 22144,
+          "survivors": 518
+        },
+        {
+          "h": 4,
+          "u0": 5,
+          "raw": 22143,
+          "survivors": 514
+        }
+      ]
+    },
+    {
+      "j": 14,
+      "r": 30,
+      "m": 205891132094649,
+      "sieving_threshold": 311,
+      "raw_positive": 398581,
+      "raw_negative": 0,
+      "rough_positive": 14755,
+      "rough_negative": 0,
+      "line_density_num": 25451775986651802557844794486170087589537890906450146093750000,
+      "line_density_den": 687916363803183895243352414965067097208474175412708163038351799,
+      "line_main": 14746.833329427936,
+      "count_over_line_main": 1.0005537914743883,
+      "branches": [
+        {
+          "h": 4,
+          "u0": 4,
+          "raw": 199291,
+          "survivors": 7423
+        },
+        {
+          "h": 4,
+          "u0": 5,
+          "raw": 199290,
+          "survivors": 7332
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Finite checks are not asymptotic proofs.",
+    "Presieved survivors are not asserted to be primes.",
+    "No Lean or CI verification is claimed."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-28",
+  "branch": "codex/f3-balance-research-docs",
+  "observed_base_commit": "786843be1e32fdc63cdde3c195ffe4e5e467d7e1",
+  "round8_source_file_id": "file_00000000b9048206aa346851aec68465",
+  "round8_archive": "byte-for-byte copy of conversation attachment; mathematical content not re-audited in full",
+  "verification_command": "python3 verify_round9.py --max-r 11 --max-j 14",
+  "sha256": {
+    "notes_round8.md": "eaf6103fbebdd961c36e2862708fe95563013c5124dda672603d7fe53ef4b6f6",
+    "notes_round9.md": "2d48f4318916540b53e86823e3e93a3b9a5db2348afff1f479b8602ebcbf8798",
+    "verify_round9.py": "45020e993f0327c6271d26ebb63085906d10da808f804a21d1b099d01f7ac0e6",
+    "verification_results_round9.json": "3fd5edd44354fadb2d6d13010f018d852883d668ab10fb470ff37b022d51118a"
+  },
+  "lean_verification": false
+}
