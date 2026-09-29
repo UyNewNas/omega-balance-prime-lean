@@ -9,7 +9,7 @@
 | Lean 状态 | 尚未形式化；不属于 `LEAN-PROVED` |
 | 外部依赖 | Green–Tao [GT10]，Corollary 1.7 的无条件复杂度至多 2 情形 |
 
-[PDF 版](paper.pdf) · [书面证明](proof.md) · [引理与审计清单](scaffolding.md) · [形式化计划](formalization.md)
+[PDF 版](paper.pdf) · [PDF 源](paper.tex) · [书面证明](proof.md) · [引理与审计清单](scaffolding.md) · [形式化计划](formalization.md)
 
 审计范围与依据见脚手架第 5 节。本状态表示书面数学论证已经复核，不表示 Lean 内核已证明此定理。
 
