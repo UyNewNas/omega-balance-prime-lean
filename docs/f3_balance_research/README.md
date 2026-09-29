@@ -25,6 +25,8 @@ F_3(n)=v_3(n+1)-v_3(n-1).
 | [共享素数步长的深度矩](prime_depth_moments.md) | 一致深度尾界、极深尾单射、加权矩收敛、协方差与多元有理生成函数 |
 | [滑动窗口与协方差](F3_sliding_windows_and_covariance.md) | 精确双峰容量、窗口第二峰、单峰剔除与平移协方差反演 |
 | [F₃,D 三元最小值与范数形式](f3d_ternary_minima_and_norm_forms.md) | 9–10–9 次数谱、分母代价、有限域范数与分组范数上界 |
+| [共享根深度重建](prime_depth_reconstruction.md) | 无误判距离证书、采样复杂度、被动辨识下界与截断恢复 |
+| [Fₚ,D 区间检测与稳定次数](f3d_interval_detectors_and_stable_degree.md) | 四次区间检测、稳定次数核矩阵、有限层相互作用与连续区间最省 |
 | [有效双峰间隔](F3_effective_peak_separation.md) | 第二极值有效界、根反射、单异常点剔除与超临界稀疏性 |
 | [F₃,D 次数张量化](f3d_degree_tensorization.md) | 独立截面次数相加、最优 min/max 次数与放大降次 |
 
