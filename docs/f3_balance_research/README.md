@@ -22,7 +22,9 @@ F_3(n)=v_3(n+1)-v_3(n-1).
 | [粗糙 Liouville 和](rough_liouville.md) | 精确 F₃ 层上的素数／半素数主项与增长模数负号定理 |
 | [F₃,D 固定多项式实现](f3d_polynomial_realization.md) | 四次精确层检测、两端最终仿射分类与最低次数边界 |
 | [F₃,D 多输入热带实现](f3d_multivariate_tropical_realization.md) | 二次正性检测、min/max、批量 argmin 与多输入全域实现分类 |
-| [共享素数步长的深度矩](prime_depth_moments.md) | 一致深度尾界、加权矩收敛、协方差恢复根距离 |
+| [共享素数步长的深度矩](prime_depth_moments.md) | 一致深度尾界、极深尾单射、加权矩收敛、协方差与多元有理生成函数 |
+| [滑动窗口与协方差](F3_sliding_windows_and_covariance.md) | 精确双峰容量、窗口第二峰、单峰剔除与平移协方差反演 |
+| [F₃,D 三元最小值与范数形式](f3d_ternary_minima_and_norm_forms.md) | 9–10–9 次数谱、分母代价、有限域范数与分组范数上界 |
 | [有效双峰间隔](F3_effective_peak_separation.md) | 第二极值有效界、根反射、单异常点剔除与超临界稀疏性 |
 | [F₃,D 次数张量化](f3d_degree_tensorization.md) | 独立截面次数相加、最优 min/max 次数与放大降次 |
 
