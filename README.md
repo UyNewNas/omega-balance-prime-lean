@@ -2,6 +2,147 @@
 
 本仓库形式化了 Ω 平衡判据、素数邻数的赋值差分，以及孪生素数的三进赋值精确反号定理及其推论。已形式化定理与尚未证明的猜想分区列出。
 
+## 研究成果生命周期与提交规范
+
+本仓库同时保存数学探索、书面证明与 Lean 形式化结果。不同成熟度的内容必须分层记录，避免把计算证据、纸面证明和内核证明混为一谈。
+
+### 结果状态
+
+建议所有重要命题使用稳定编号（如 `F3-COR-1`、`F3-PAT-1`、`OBG-1`），并在不同阶段沿用同一编号。状态按下列生命周期推进：
+
+```text
+CONJECTURE
+  ↓
+EXPERIMENTAL / RESEARCH
+  ↓
+PAPER-PROVED
+  ↓
+PAPER-AUDITED
+  ↓
+FORMALIZATION-READY
+  ↓
+LEAN-IN-PROGRESS
+  ↓
+LEAN-PROVED
+```
+
+另设 `REFUTED`，用于已发现反例或证明为假的命题。
+
+各状态含义：
+
+- **CONJECTURE**：精确命题已经提出，但尚无证明。
+- **EXPERIMENTAL / RESEARCH**：有计算、结构观察、启发式推导或尚未封闭的证明尝试。
+- **PAPER-PROVED**：已有完整的人类可读书面证明，但尚未经过独立审计。
+- **PAPER-AUDITED**：书面证明已逐步检查，关键依赖、量词、边界条件与外部定理使用均已确认；这已经是数学意义上的证明，但**不等于 Lean 内核证明**。
+- **FORMALIZATION-READY**：书面证明已经拆成适合形式化的引理 DAG，并明确外部依赖、目标 Lean 接口和阻塞项。
+- **LEAN-IN-PROGRESS**：部分引理已进入 Lean，但主结论尚未通过完整门禁。
+- **LEAN-PROVED**：目标结论已经由 Lean kernel 检查，并且精确提交通过本仓库要求的构建、回归、公理与审计覆盖门禁。
+- **REFUTED**：命题已被反例或证明否定；保留记录以防重复探索。
+
+**核心原则：`PAPER-AUDITED` 不是 `CONJECTURE`，也不是 `LEAN-PROVED`。** 已审计书面证明可以直接提交到主仓库，不需要等待 Lean 形式化完成；同时不得在 README、PR 或提交信息中把纸面证明描述成“已形式化”。
+
+### 内容放置
+
+当前仓库按以下职责维护；已有历史目录无需为了形式统一而一次性大规模搬迁。
+
+| 内容类型 | 推荐位置 | 要求 |
+|---|---|---|
+| 猜想与精确命题 | `docs/conjectures/` | 写清量词、例外、当前证据和已知反例 |
+| 探索笔记、round 记录 | `docs/*_research/`，当前 F₃ 使用 `docs/f3_balance_research/` | 允许未完成推导、实验、失败路线和开放问题 |
+| 已证明但暂未形式化的书面证明 | `docs/proofs/<topic>/<result>/` | 必须明确 paper 状态，不得冒充 Lean 定理 |
+| 形式化任务、依赖和进度账本 | `docs/*formalization*.md`；后续新主题可用 `docs/formalization/` | 记录依赖 DAG、目标接口、阻塞项与精确验证状态 |
+| Lean 定义与证明 | `OmegaBalance/*.lean` | 遵守 `AGENTS.md`，禁止占位证明和自定义数学公理 |
+| 有限计算、实验输出、审计报告 | `reports/`、`data/` | 明确说明有限验证不能替代无限命题证明 |
+
+### 已审计书面证明的提交结构
+
+对于一个已经得到可靠书面证明、但尚未完成 Lean 形式化的重要结果，推荐直接建立：
+
+```text
+docs/proofs/<topic>/<result>/
+├── theorem.md
+├── proof.md
+├── scaffolding.md
+└── formalization.md
+```
+
+四个文件职责分离：
+
+- `theorem.md`：只保存最终、稳定、精确的定理陈述，标明结果 ID、状态、前提、外部依赖和边界情况。
+- `proof.md`：保存适合数学阅读的干净书面证明。不要混入大量探索历史或 Lean 实现细节。
+- `scaffolding.md`：把证明拆成引理、依赖 DAG 和可逐个核验的局部步骤；这是书面证明与 Lean 之间的脚手架。
+- `formalization.md`：记录每个书面引理对应的目标 Lean 名称、目标模块、完成状态、阻塞依赖和最终核验提交。
+
+简单结果不必机械拆成四个文件；但凡证明较长、依赖外部深定理、或预计需要多轮形式化，优先采用上述结构。
+
+### 书面证明准入要求
+
+标记为 `PAPER-AUDITED` 并提交前，至少确认：
+
+1. 定理陈述已经固定，量词、定义域、非零/正性条件、边界例外均明确。
+2. 证明中的每一步都可定位到已证明引理、明确计算或可靠外部定理。
+3. 外部定理写明准确版本和实际使用的结论，不能只写“由某著名定理可得”。
+4. 计算实验只作为 sanity check 或证据，不承担无限范围证明责任。
+5. 尚未形式化的部分明确写为 paper proof；不得使用“Lean verified”“kernel checked”等措辞。
+6. 若审计发现缺口，状态应退回 `PAPER-PROVED`、`RESEARCH` 或 `CONJECTURE`，而不是保留错误的高状态。
+
+### Lean 结果准入要求
+
+只有在目标定理真正进入 Lean 且通过精确 head 的完整验证后，才能标记 `LEAN-PROVED`。继续遵守 `AGENTS.md` 中的规则，尤其是：
+
+- 禁止 `sorry` / `admit`、自定义数学公理、unsafe/native proof escape；
+- 每条项目 theorem/lemma 必须登记到 `scripts/Audit.lean`；
+- 有符号统计量必须按既定整数语义处理；
+- 有限计算、源码检查和纸面推导都不能替代 Lean kernel 检查；
+- 声称“验证通过”前运行 `python3 scripts/verify.py`，或确认同一精确 Git head 的 CI 已成功。
+
+### 提交与 PR 命名
+
+提交信息应同时表达“内容类型”和“成熟度”，避免只写含糊的 `update notes`。
+
+推荐前缀：
+
+```text
+conjecture: ...
+research: ...
+proof: ...
+docs: ...
+formalize: ...
+feat: ...
+fix: ...
+refactor: ...
+audit: ...
+```
+
+示例：
+
+```text
+proof: add audited paper proof of F3 four-prime construction
+research: record F3 affine-kernel round 8
+formalize: add residue lemmas for F3-PAT-1
+feat: formalize F3-PAT-1 four-prime construction
+audit: register F3-PAT-1 declarations
+```
+
+其中：
+
+- 纯书面数学证明优先用 `proof:`；
+- 探索过程用 `research:`；
+- 正在搭 Lean 脚手架但主结论未完成时用 `formalize:`；
+- 已形成稳定 Lean 功能或主定理时可用 `feat:`；
+- 不要在未通过完整 Lean 门禁前使用会暗示“形式化已完成”的标题。
+
+对于较大的结果，PR 描述至少应列出：结果 ID、当前状态、数学结论、外部依赖、是否包含 Lean 证明、精确验证状态，以及明确的“本 PR 不声称什么”。
+
+### 仓库维护原则
+
+本仓库的四层知识应长期同时保留：
+
+> **探索记录发现过程；书面证明固化数学知识；脚手架暴露证明结构；Lean 固化机器核验。**
+
+不要为了追求目录整齐而删除有价值的历史探索，也不要因为已有 Lean 证明就自动删除高质量书面证明。两者服务于不同读者，也承担不同的审计职责。
+
+
 ## 记号
 
 $\Omega(n)$ 表示质因数总个数，**按重数计**；$v_q(n)$ 表示正整数 $n$ 中素因子 $q$ 的指数。对 $n>1$，记
