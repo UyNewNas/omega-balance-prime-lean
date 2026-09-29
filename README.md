@@ -247,6 +247,8 @@ python3 scripts/verify.py
 | [F3D-DEG-1 … 6](docs/proofs/f3d/degree_tensorization/theorem.md) | 固定整数多项式实现的总次数理论：独立输入截面次数下界可相加；有符号和外套一元函数精确张量化；(min/max) 最低 6 次，而 (kmin/kmax) 在 (kge2) 时最低 (2k) 次；另有不可除 (k) 与 (p=2) 低次检测差异 | `PAPER-AUDITED`；依赖 F3D-POLY / F3D-MULTI 的书面接口，无新增 Lean 证明 |
 | [F3-WIN-1 … 6](docs/proofs/f3/sliding_windows_covariance/theorem.md) | 固定整数双根轨道的滑动窗口结构：精确双峰容量、完整二点联合尾、所有窗口最佳第二峰、统一单峰剔除律、平移协方差闭式，以及“协方差恢复 $d$ 但不恢复 $n$”的相位丢失定理 | `PAPER-AUDITED`；核心为初等三进/剩余类证明，结式文献仅作背景定位 |
 | [F3D-TERN-1 … 6](docs/proofs/f3d/ternary_minima_norm_forms/theorem.md) | 三输入最小值的精确次数谱 $9,10,9$；两倍最小值具有额外分母代价；有限域范数给 $k\ge m$ 时 $\mathfrak d_m(k)=mk$；分组范数给一倍 $m$ 输入最小值的 $O(m^{3/2})$ 上界 | `PAPER-AUDITED`；依赖 F3D-DEG 的次数下界与经典有限域范数/低次数零点背景，无新增 Lean 证明 |
+| [F3-REC-1 … 5](docs/proofs/f3/prime_depth_reconstruction/theorem.md) | 共享根深度的有限观测恢复：第一次不等观测就是精确根距证书；给出完整矩阵恢复等待时间、$3^L$ 被动辨识下界、截断深度精确恢复，以及三个等距根的停止时间闭式 | `PAPER-AUDITED`；证书正确性为确定性三进论证，概率部分只使用局部采样与固定精度素数分布 |
+| [F3D-STABLE-1 … 5](docs/proofs/f3d/interval_detectors_stable_degree/theorem.md) | 任意有限整数区间在 $p=3$ 下有四次最优的增益 1/2 检测器；所有两端最终常值函数的放大最低次数存在稳定极限，并由射影剩余类核矩阵逆的 $\ell^1$ 范数给出；有限层集合具有显式指数相互作用公式，连续区间在固定层数下唯一最省 | `PAPER-AUDITED`；依赖标准 $p$ 进射影弦距/剩余树背景、Hensel 与有限矩阵构造，无新增 Lean 证明 |
 
 F3-PAT-1 可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超过任意给定下界。该结论保留可变步长，不包含固定 $d=1$ 的无穷性。
 
@@ -269,6 +271,10 @@ F3-MOM：[PDF 版](docs/proofs/f3/prime_depth_moments/paper.pdf) · [完整证�
 F3-WIN：[PDF 版](docs/proofs/f3/sliding_windows_covariance/paper.pdf) · [完整证明](docs/proofs/f3/sliding_windows_covariance/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/sliding_windows_covariance/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/sliding_windows_covariance/formalization.md)
 
 F3D-TERN：[PDF 版](docs/proofs/f3d/ternary_minima_norm_forms/paper.pdf) · [完整证明](docs/proofs/f3d/ternary_minima_norm_forms/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3d/ternary_minima_norm_forms/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3d/ternary_minima_norm_forms/formalization.md)
+
+F3-REC：[PDF 版](docs/proofs/f3/prime_depth_reconstruction/paper.pdf) · [完整证明](docs/proofs/f3/prime_depth_reconstruction/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/prime_depth_reconstruction/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/prime_depth_reconstruction/formalization.md)
+
+F3D-STABLE：[PDF 版](docs/proofs/f3d/interval_detectors_stable_degree/paper.pdf) · [完整证明](docs/proofs/f3d/interval_detectors_stable_degree/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3d/interval_detectors_stable_degree/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3d/interval_detectors_stable_degree/formalization.md)
 
 F3-PEAK：[PDF 版](docs/proofs/f3/effective_peak_separation/paper.pdf) · [完整证明](docs/proofs/f3/effective_peak_separation/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/effective_peak_separation/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/effective_peak_separation/formalization.md)
 
