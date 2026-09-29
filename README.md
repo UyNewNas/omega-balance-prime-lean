@@ -238,6 +238,8 @@ python3 scripts/verify.py
 | [F3-PAT-1](docs/proofs/f3/four_prime_construction/theorem.md) | 无穷多个正整数参数对 $(n,d)$ 使 $n,n+38d,n+92d,n+146d$ 全为素数，单点 $F_3$ 模式为 $(1,-1,-1,-1)$，三个以 $n$ 为中心的乘积模式为 $(3,5,3)$ | `PAPER-AUDITED`；Green–Tao, *Linear equations in primes*, Corollary 1.7 的无条件复杂度至多 2 情形 |
 | [F3-HI-1 / F3-HI-2](docs/proofs/f3/higher_interactions/theorem.md) | 固定形状 $(n,n+2\cdot3^{k+1}d,n+6\cdot3^{k+1}d)$ 中，三个单点值全为 $k$、三个两两乘积值全为 $-k$，但三因子值具有显式几何深度分布并可取任意 $R\ge k+1$；因此全部二阶数据不能控制三阶输出 | `PAPER-AUDITED`；主计数使用 Green–Tao 复杂度至多 2 的无条件素数线性形式定理 |
 | [F3-HI-3](docs/proofs/f3/higher_interactions/theorem.md#4-定理-f3-hi-3有限剩余模式的素数伸缩实现) | 任意有限的三进单位剩余模式可嵌入某个固定二参数伸缩族，并由无穷多组素数端点及素数步长实现；有限单项式 $F_3$ 模式作为推论得到 | `PAPER-AUDITED`；一般有限复杂度版本依赖 Green–Tao–Ziegler 后续结果 |
+| [F3-HIER-1 / 2 / 3](docs/proofs/f3/product_hierarchy/theorem.md) | 对任意 $q=3^s$，固定 $q$ 个素数端点的全部总次数 $<q$ 单项式 $F_3$ 数据（允许重复因子），而总乘积深度可取任意 $R\ge k+s$；系数和模 $3$ 决定最高阶锁死或开放；普通族与末点移动族拥有相同全素数计数主系数但不同最高阶分布 | `PAPER-AUDITED`；一般 $q$ 使用完整有限复杂度素数线性形式理论 |
+| [F3-ROOT-1 / 2 / 3 / 4](docs/proofs/f3/two_root_process/theorem.md) | 平移配对乘积序列由两个简单三进根精确控制；给出完整联合尾律、区段层级计数、深度序列到参数的显式反演，以及六位置模 $5$ 障碍与 $d=5r$ 后七素数模式 $(3,4,2)$ 的比例 $2/729$ | `PAPER-AUDITED`；局部部分为二次多项式/Hensel 论证，全素数扩展使用一般有限复杂度素数定理 |
 
 F3-PAT-1 可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超过任意给定下界。该结论保留可变步长，不包含固定 $d=1$ 的无穷性。
 
@@ -246,6 +248,10 @@ F3-HI 在 $k=1$ 时给出固定偏移 $(18,54)$：六个低阶值锁定为 $(1,1
 F3-PAT-1：[PDF 版](docs/proofs/f3/four_prime_construction/paper.pdf) · [完整证明](docs/proofs/f3/four_prime_construction/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/four_prime_construction/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/four_prime_construction/formalization.md)
 
 F3-HI：[PDF 版](docs/proofs/f3/higher_interactions/paper.pdf) · [完整证明](docs/proofs/f3/higher_interactions/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/higher_interactions/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/higher_interactions/formalization.md)
+
+F3-HIER：[PDF 版](docs/proofs/f3/product_hierarchy/paper.pdf) · [完整证明](docs/proofs/f3/product_hierarchy/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/product_hierarchy/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/product_hierarchy/formalization.md)
+
+F3-ROOT：[PDF 版](docs/proofs/f3/two_root_process/paper.pdf) · [完整证明](docs/proofs/f3/two_root_process/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/two_root_process/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/two_root_process/formalization.md)
 
 ## 猜想地图（未证明）
 
