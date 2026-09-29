@@ -3,169 +3,138 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
 \newtheorem{theorem}{定理}
-\newtheorem{lemma}{引理}
-\title{\bfseries 共享素数步长的深度矩与根距离恢复}
+\title{\bfseries 共享素数步长的深度矩、根距离与生成函数}
 \author{研究札记 · F3-MOM}
 \date{2026 年 9 月 29 日}
 \begin{document}
 \maketitle
 \begin{abstract}
-固定共享根素数伸缩族中，固定精度联合分布已经由有限复杂度素数线性形式理论给出。本文新增增长深度下的一致尾界，并由此证明指数加权总变差收敛以及全部固定阶联合矩收敛。局部 Haar 模型的二阶矩可显式计算，进而得到深度协方差矩阵与根距离矩阵之间的一一对应：在已知共享根模型中，带标签的极限协方差矩阵确定完整根树和联合深度律。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+固定共享根素数伸缩族中，本文在已有固定精度联合分布的基础上建立随深度增长的一致尾界。全素数乘积的单射性进一步控制极深尾，从而把指数加权分布收敛范围提升到 \(\eta<1/(q-1)\)，并得到全部固定阶矩收敛。二阶统计显式恢复根距离矩阵。最后利用“超过最大根距后仅一个坐标可继续加深”的结构，给出多元概率生成函数的有限有理表示，并证明全素数生成函数在 \(|z_i|<3^{1/(q-1)}\) 的紧多圆盘上一致收敛。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
 \end{abstract}
 
 \section{固定共享根模型}
 固定 \(k,s\ge1\)，令
 \[
-q=3^s,\qquad b=k+s,\qquad M=3^b.
+q=3^s,\qquad b=k+s.
 \]
-采用固定形状
+在此前构造的固定素数伸缩族中，输出深度写成
 \[
-p_h=n+MWhd,
+D_i=b+R_i,\qquad
+R_i=v_3(d-\alpha_i(n)).
 \]
-以及 \(q\) 因子输出 \(P_i\)。记
+根距离
 \[
-D_i=F_3(P_i),\qquad R_i=D_i-b,\qquad Z=\max_iR_i.
+L_{ij}=v_3(\alpha_i-\alpha_j)
 \]
-此前固定精度结果给出唯一单位根 \(\alpha_i(n)\) 使
+有限且与 \(n\) 无关。全素数参数集合 \(\mathcal P(X)\) 满足固定形状主项
 \[
-R_i=v_3(d-\alpha_i(n)),
+|\mathcal P(X)|
+=
+(\kappa+o(1))
+\frac{X^2}{(\log X)^a},
 \]
-且
-\[
-L_{ij}:=v_3(\alpha_i-\alpha_j)
-=b+v_3(E_i-E_j)
-\]
-与 \(n\) 无关。全素数参数集合满足
-\[
-B(X)=(\kappa+o(1))\frac{X^2}{(\log X)^a},\qquad\kappa>0,
-\]
-并且每个固定有限深度向量的点概率趋于单位步长 Haar 模型 \(\mu\)。
+并且每个固定深度向量的点概率趋于局部 Haar 模型 \(\mu\)。
 
-\section{增长模数与一致尾界}
+\section{统一尾界与极深尾}
 令
 \[
-Q_t=3^{b+t},\qquad
-\delta_t=\frac{2}{3^{k+1+t}}.
+Z=\max_iR_i.
 \]
-满足
+对中等深度，增长模数剩余类计数与 Selberg 上界筛给出
 \[
-F_3(n)=k,\qquad3^{b+t}\mid P_i(n,d)+1
-\]
-的模 \(Q_t\) 参数类精确有
-\[
-\boxed{
-|\mathcal U_{i,t}|
-=
-2\cdot3^{2b+t-k-1}
-=
-\delta_tQ_t^2.
-}
-\]
-
-令
-\[
-\mathcal F(n,d)=d\prod_{h\in\mathcal H}(n+MWhd).
-\]
-对平方自由 \(e\)、\((e,3)=1\)，其模 \(e\) 零集合密度写为 \(g(e)\)。中国剩余定理与矩形格点计数给出
-\[
-A_e(X;i,t)
-=
-\delta_tX^2g(e)+r_e,
-\]
-\[
-|r_e|
-\ll
-a^{\omega(e)}(X+Q_te).
-\]
-
-在该序列上应用 Selberg 上界筛，取
-\[
-z=X^{1/16},\qquad D=z^2=X^{1/8}.
-\]
-若
-\[
-3^{b+t}\le X^{1/2},
-\]
-则得到
-\[
-\boxed{
 \Pr_X(Z\ge t)
 \ll
-3^{-t}+X^{-3/4}.
-}
+3^{-t}+X^{-3/4}
 \]
-对任意 \(t\ge1\)，直接丢弃素性要求并按根剩余类计数，得到
+当 \(3^{b+t}\le X^{1/2}\)。
+
+对全部 \(t\)，丢弃素性后按根剩余类直接计数可得
 \[
-\boxed{
 \Pr_X(Z\ge t)
 \ll
 (\log X)^a(3^{-t}+X^{-1}).
-}
 \]
-同时由 \(P_i+1\ll X^q\) 有
+
+本版新增一个极深尾改进。固定任一输出乘积 \(P_i\)。其 \(q\) 个线性素数因子严格递增；若两个参数点给出同一乘积，唯一分解恢复每个素数因子，再由前两个因子恢复 \(d,n\)。因此
+\[
+(n,d)\longmapsto P_i(n,d)
+\]
+在全素数参数集上单射。
+
+又因为
+\[
+0<P_i+1\ll X^q,
+\]
+若
+\[
+R_i\ge t,
+\]
+则 \(P_i+1\) 是 \(3^{b+t}\) 的正倍数。于是
+\[
+\#\{R_i\ge t\}\ll X^q3^{-t}.
+\]
+除以总计数后得到
 \[
 \boxed{
-Z\le q\log_3X+O(1).
+\Pr_X(Z\ge t)
+\ll
+(\log X)^a
+\min\{3^{-t}+X^{-1},\,X^{q-2}3^{-t}\}.
 }
 \]
 
-\section{加权分布收敛}
+\section{指数加权分布}
 固定
 \[
-0<\theta<1/q.
+0<\theta<\frac1{q-1}.
 \]
-尾求和公式
+把尾求和分成三段：
 \[
-\mathbb E_X3^{\theta Z}
-=
-1+
-\sum_{t\ge1}
-(3^{\theta t}-3^{\theta(t-1)})
-\Pr_X(Z\ge t)
+t\le \tfrac12\log_3X,
+\qquad
+\tfrac12\log_3X<t\le(q-1)\log_3X,
+\qquad
+t>(q-1)\log_3X.
 \]
-配合前节两段尾界，给出
+前两段使用中等/全深度尾界，第三段使用新的单射尾界。得到
 \[
 \sup_X\mathbb E_X3^{\theta Z}<\infty.
 \]
-因此对任意
+
+于是对任意
 \[
-0<\eta<1/q
+0<\eta<1/(q-1)
 \]
-可取 \(\eta<\theta<1/q\)，并在 \(Z>K\) 上使用
+选 \(\eta<\theta<1/(q-1)\)，可在盒外用
 \[
 3^{\eta Z}
 \le
-3^{-(\theta-\eta)K}3^{\theta Z}.
+3^{-(\theta-\eta)K}3^{\theta Z}
 \]
-有限盒内用固定点概率收敛，盒外由上式统一压低，得到
+做统一可积控制。有限盒内使用固定点概率收敛，得到
 \[
 \boxed{
 \sum_{\mathbf r}
-3^{\eta\max r_i}
+3^{\eta\max_i r_i}
 |\mu_X(\mathbf r)-\mu(\mathbf r)|
 \to0.
 }
 \]
-所有固定阶多项式矩随之收敛。
+所以全部固定阶多项式矩收敛。
 
-\section{二阶统计与根距离}
-局部边缘分布为
+\section{协方差恢复根距离}
+局部边缘分布满足
 \[
 \Pr(R_i=0)=\frac12,\qquad
-\Pr(R_i=t)=3^{-t}\quad(t\ge1).
+\Pr(R_i=t)=3^{-t}\quad(t\ge1),
 \]
-所以
+故
 \[
 \mathbb ER_i=\frac34,\qquad
-\mathbb ER_i^2=\frac32,\qquad
 \operatorname{Var}(R_i)=\frac{15}{16}.
 \]
 
-若
-\[
-L=L_{ij},
-\]
-超度量性质给出 \(R_i\ne R_j\) 时较小值恰为 \(L\)，且
+若 \(L=L_{ij}\)，当两坐标不等时较小者恰为 \(L\)，并且
 \[
 \Pr(R_i=L+t,R_j=L)
 =
@@ -173,21 +142,15 @@ L=L_{ij},
 =
 3^{-(L+t)}.
 \]
-因此
+所以
 \[
 \boxed{
 \mathbb E(R_i-R_j)^2
 =
-3^{1-L}.
+3^{1-L_{ij}}.
 }
 \]
-由
-\[
-\mathbb E(X-Y)^2
-=
-2\operatorname{Var}(X)-2\operatorname{Cov}(X,Y)
-\]
-得到
+进而
 \[
 \boxed{
 \operatorname{Cov}(D_i,D_j)
@@ -204,32 +167,95 @@ L=L_{ij},
 1-\frac85\,3^{-L_{ij}}.
 }
 \]
-加权矩收敛把这些局部公式转移到全素数族。
+指数矩收敛把这些公式转移到全素数族。
 
-于是
+\section{有限根树与多元生成函数}
+令
+\[
+K=\max_{i\ne j}L_{ij}.
+\]
+若某个 \(R_i=u>K\)，则对所有 \(j\ne i\)
+\[
+R_j=L_{ij}.
+\]
+因此深层支撑只由 \(m\) 条互不相交的射线组成。
+
+定义
+\[
+\Phi(\mathbf z)=\mathbb E_\mu\prod_i z_i^{R_i}.
+\]
+有限盒内的部分记为 \(A_K(\mathbf z)\)。在 \(|z_i|<3\) 内，
 \[
 \boxed{
-3^{-L_{ij}}
+\Phi(\mathbf z)
 =
-\frac23
-\left(
-\frac{15}{16}-\Sigma_{ij}
-\right)
-=
-\frac13
-\lim_X\mathbb E_X(D_i-D_j)^2.
+A_K(\mathbf z)
++
+\sum_i
+\left(\prod_{j\ne i}z_j^{L_{ij}}\right)
+\frac{(z_i/3)^{K+1}}{1-z_i/3}.
 }
 \]
-在共享根模型中，协方差矩阵恢复全部 \(L_{ij}\)，继而恢复根树和完整联合深度律。
+所以 \(\Phi\) 是有理函数，分母整除
+\[
+\prod_i(1-z_i/3).
+\]
+
+令
+\[
+S_0=\sum_iR_i,\qquad
+s_i=\sum_{j\ne i}L_{ij}.
+\]
+当
+\[
+r>mK
+\]
+时，只有深层射线能贡献，因此
+\[
+\boxed{
+\mu(S_0=r)
+=
+3^{-r}\sum_i3^{s_i}.
+}
+\]
+
+\section{全素数生成函数收敛}
+定义
+\[
+\Phi_X(\mathbf z)=\mathbb E_X\prod_i z_i^{R_i}.
+\]
+由于深层支撑满足
+\[
+\sum_iR_i\le Z+(m-1)K,
+\]
+任意紧多圆盘
+\[
+|z_i|\le R<3^{1/(q-1)}
+\]
+上有
+\[
+|\mathbf z^{\mathbf r}|
+\le
+R^{(m-1)K}R^Z.
+\]
+令
+\[
+\eta=\log_3R<1/(q-1),
+\]
+再用指数加权总变差，即得
+\[
+\boxed{
+\Phi_X\to\Phi
+}
+\]
+在这些紧集上一致收敛。固定阶复偏导数则由稍大多圆盘上的 Cauchy 积分公式得到一致收敛。
 
 \section{边界}
-这里恢复的是根间距离而非绝对根位置。结果要求形状固定，不给出增长形状、固定步长、或深层事件的统一相对素数主项。固定精度收敛本身不足以推出无界矩；一致尾界是本稿新增的关键。
+局部函数在 \(|z_i|<3\) 内绝对收敛；目前全素数平均只证明到 \(|z_i|<3^{1/(q-1)}\)。本文不声称后一范围最优，也不提供增长深度事件的相对素数主项。
 
 \begin{thebibliography}{9}
-\bibitem{GT} B. Green and T. Tao, \emph{Linear equations in primes}, Ann. of Math. 171 (2010), 1753--1850.
-\bibitem{GTZ} B. Green, T. Tao and T. Ziegler, finite-complexity prime linear-forms inputs used by the preceding fixed-shape result.
+\bibitem{GT} B. Green and T. Tao, \emph{Linear equations in primes}, Ann. of Math. 171 (2010).
 \bibitem{Kedlaya} K. Kedlaya, \emph{Notes on analytic number theory}, Selberg sieve chapters.
+\bibitem{Zuniga} W. A. Zúñiga-Galindo, work on Igusa local zeta functions of univariate polynomials.
 \end{thebibliography}
 \end{document}
-
-% final-proof-pdf-build
