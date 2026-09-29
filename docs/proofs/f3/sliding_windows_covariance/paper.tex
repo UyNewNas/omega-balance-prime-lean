@@ -1,0 +1,248 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newtheorem{theorem}{定理}
+\title{\bfseries 滑动窗口双峰容量、统一剔除律\\与平移协方差}
+\author{研究札记 · F3-WIN}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+\begin{abstract}
+固定普通整数参数的双根 \(F_3\) 轨道中，本文从前缀极值推进到所有平移窗口与二点平移相关。对固定间隔 \(h\)，两个位置能够共同达到的最大额外深度由一个显式三次多项式的三进赋值精确给出。这个容量同时决定完整二点联合尾、所有长度 \(N\) 窗口的最佳第二峰以及平移协方差。进一步，任意滑动窗口删去一个最大值后的总深度具有统一有效 \(O(\log N)\) 误差；全部精确协方差恢复普通步长 \(d\)，但平移平均不可恢复相位参数 \(n\)。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+\end{abstract}
+
+\section{双根设置}
+固定
+\[
+q=3^k,\qquad k\ge1,
+\]
+以及处在基础双根事件中的普通整数 \(n,d>1\)。令
+\[
+D_j=v_3(Q_j),\qquad e_j=D_j-2k.
+\]
+归一化二次式分解为
+\[
+G(X)=4d^2(X-r_0)(X-r_1),
+\]
+其中
+\[
+r_0\in3\mathbb Z_3,\qquad
+r_1\in1+3\mathbb Z_3.
+\]
+记
+\[
+\delta=r_1-r_0,\qquad
+c=\frac{d^2-1}{q^2}.
+\]
+则
+\[
+\delta^2=\frac{c}{d^2}.
+\]
+
+\section{精确双峰容量}
+对固定正整数 \(h\)，定义
+\[
+\kappa_{k,d}(h)=
+\max_{j\ge0}\min(e_j,e_{j+h}).
+\]
+若 \(3\mid h\)，两个正深度位置必须逼近同一根，所以共同深度不超过 \(v_3(h)\)。
+
+若 \(3\nmid h\)，两个位置必须逼近不同根；根据 \(h\bmod3\)，共同深度由
+\[
+v_3(h-\delta)
+\quad\text{或}\quad
+v_3(h+\delta)
+\]
+控制，而另一个因子为单位。因此
+\[
+v_3(h^2-\delta^2)
+=
+v_3(d^2h^2-c).
+\]
+
+反过来，在相应根的模 \(3^{t+1}\) 类中选择起点，可以让一端深于 \(t\)、另一端恰为 \(t\)。所以
+\[
+\boxed{
+\kappa_{k,d}(h)
+=
+v_3\!\left(h(d^2h^2-c)\right).
+}
+\]
+
+\section{二点尾分布}
+固定 \(a,b\ge1\)。条件
+\[
+e_j\ge a
+\]
+由两个模 \(3^a\) 根类组成。和
+\[
+e_{j+h}\ge b
+\]
+相交时，同支间隔 \(3\mid h\) 有两个匹配，异支间隔只有一个匹配。
+
+令
+\[
+\nu_h=
+\begin{cases}
+2,&3\mid h,\\
+1,&3\nmid h.
+\end{cases}
+\]
+则自然密度为
+\[
+\boxed{
+P_h(a,b)
+=
+\begin{cases}
+\nu_h3^{-\max(a,b)},&
+\min(a,b)\le\kappa(h),\\
+0,&\min(a,b)>\kappa(h).
+\end{cases}
+}
+\]
+
+\section{滑动窗口的最佳第二峰}
+对任意 \(U\ge0\)、\(N\ge3\)，记窗口
+\[
+[U,U+N)
+\]
+中的最大、第二大深度为
+\[
+M_1(U,N),\qquad M_2(U,N).
+\]
+定义
+\[
+K_{k,d}(N)=\max_{1\le h<N}\kappa_{k,d}(h).
+\]
+窗口内任意两位置间距小于 \(N\)，所以
+\[
+M_2(U,N)\le2k+K(N).
+\]
+反过来选择达到 \(K(N)\) 的间隔 \(h\)，再选容量达到点作为窗口起点，即有等号：
+\[
+\boxed{
+\max_{U\ge0}M_2(U,N)
+=
+2k+K_{k,d}(N).
+}
+\]
+
+\section{统一单峰剔除律}
+令
+\[
+L=\lfloor\log_3N\rfloor.
+\]
+第 \(t\) 层在长度 \(N\) 窗口内的计数记为 \(A_t(U,N)\)。因为每层是两个剩余类，
+\[
+\Theta(U,N)
+=
+\sum_{t=1}^{L}
+\left(
+A_t(U,N)-\frac{2N}{3^t}
+\right)
+\]
+满足
+\[
+|\Theta(U,N)|<2L
+\]
+且对所有起点 \(U\) 一致。
+
+结合最高两项之外的截断层求和，得到精确式；特别地
+\[
+\boxed{
+\sum_{U\le j<U+N}D_j-M_1(U,N)
+=
+(2k+1)(N-1)+O_d(\log N),
+}
+\]
+误差常数完全有效且与 \(U\) 无关。
+
+\section{平移协方差}
+定义
+\[
+\mathcal C_{k,d}(h)
+=
+\lim_{N\to\infty}
+\frac1N
+\sum_{j<N}
+(D_j-(2k+1))(D_{j+h}-(2k+1)).
+\]
+由二点尾分布计算
+\[
+\mathbb E[e_je_{j+h}]
+=
+\nu_h(1-3^{-\kappa(h)}).
+\]
+边缘均值为 \(1\)，方差为 \(1\)。于是
+\[
+\boxed{
+\mathcal C_{k,d}(h)=
+\begin{cases}
+1,&h=0,\\
+1-2\cdot3^{-v_3(h)},&h\ne0,\ 3\mid h,\\
+-3^{-\kappa_{k,d}(|h|)},&3\nmid h.
+\end{cases}
+}
+\]
+
+整数轨道的极限不是直接用 Haar 平均替代。先截断
+\[
+e_R=\min(e,R),
+\]
+此时是模 \(3^R\) 周期函数；再用层计数证明
+\[
+\limsup_{N\to\infty}
+\frac1N
+\sum_{j<N}(e_j-e_{R,j})^2
+\le
+2\cdot3^{-R}.
+\]
+Cauchy--Schwarz 允许先 \(N\to\infty\)，再 \(R\to\infty\)。
+
+\section{相关数据恢复参数}
+对
+\[
+h\equiv1\pmod3
+\]
+有
+\[
+-\mathcal C(h)=3^{-v_3(h-\delta)}.
+\]
+因此全部精确协方差逐位确定
+\[
+\delta\in1+3\mathbb Z_3.
+\]
+由
+\[
+\delta^2=\frac{d^2-1}{q^2d^2}
+\]
+得到
+\[
+\boxed{
+d=(1-q^2\delta^2)^{-1/2},
+\qquad d\equiv1\pmod3.
+}
+\]
+
+但是若固定同一 \(k,d\) 改变合法 \(n\)，深度函数只发生三进平移
+\[
+e'(x)=e(x+\theta).
+\]
+Haar 测度与有限周期平均都对平移不变，所以全部平移不变有限模式密度与协方差相同。相关平均恢复 \(d\)，不能恢复 \(n\)。
+
+\section{结式背景}
+首一化二次式 \(f\) 满足
+\[
+\operatorname{Res}(f(X),f(X+h))
+=
+h^2(h^2-\delta^2).
+\]
+这把容量问题放入经典多项式值 gcd/结式框架；本文的精确容量公式则利用分裂二次根的剩余类结构直接得到。
+
+\begin{thebibliography}{9}
+\bibitem{FZ} P. E. Frenkel and G. Zábrádi, \emph{Estimating the greatest common divisor of the value of two polynomials}.
+\end{thebibliography}
+\end{document}
+
+% final-proof-pdf-build

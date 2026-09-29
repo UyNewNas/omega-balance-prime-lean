@@ -1,31 +1,30 @@
-# F3-MOM：形式化映射
+# F3-MOM：形式化映射（更新稿）
 
 数学状态：PAPER-AUDITED。Lean 状态：NOT-STARTED。
 
 ## 推荐模块
 
-- \`OmegaBalance/F3PrimeDepthLocal.lean\`
 - \`OmegaBalance/F3PrimeDepthFinite.lean\`
 - \`OmegaBalance/F3PrimeDepthMoments.lean\`
+- \`OmegaBalance/F3PrimeDepthGenerating.lean\`
 
-## 可先形式化的有限层
+## 可优先形式化
 
-| 节点 | 建议接口 |
+| 节点 | Lean 名称草案 |
 |---|---|
-| 根深度边缘分布的有限模版本 | \`f3Depth_root_count_mod_pow\` |
-| 两根距离导致的平方差有限和 | \`f3Depth_pair_sqDiff_sum\` |
-| 均值/二阶矩有限模公式 | \`f3Depth_mean_secondMoment_finite\` |
-| 根距离到协方差的有限精度公式 | \`f3Depth_covariance_finite\` |
+| 根深度有限模分布 | \`f3Depth_root_count_mod_pow\` |
+| 极深单坐标支撑限制 | \`f3Depth_atMostOne_above_maxRootDistance\` |
+| 局部平方差矩 | \`f3Depth_pair_sqDiff_finite\` |
+| 根树有限 PGF | \`f3Depth_generatingFunction_finite\` |
+| 总深度最终尾律 | \`f3Depth_sum_eventual_geometric_tail\` |
 
-## 分析阻塞
+## 外部分析阻塞
 
-F3-MOM-1/2 的全素数极限依赖：
-- 固定形状素数主项；
+全素数侧的：
+- 固定形状主项；
 - Selberg 上界筛；
-- 统一尾界与极限交换。
+- 指数加权极限交换；
 
-这些不是当前仓库已有 Lean 分析数论接口。不要通过自定义 axiom 占位。
+目前都不应以自定义公理代替。
 
-## 建议顺序
-
-先把局部 Haar 模型全部改写成有限模 \(3^T\) 精确计数并形式化；随后再把极限层标记为外部分析阻塞。F3-MOM-3 中“给定矩收敛后恢复 \(L_{ij}\)”的代数部分可以独立形式化。
+F3-MOM-4 的**局部**有理生成函数完全是有限根树/几何级数，可独立先形式化。

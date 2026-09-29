@@ -1,0 +1,282 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newtheorem{theorem}{定理}
+\title{\bfseries 三输入最小值的 9--10--9 次数谱\\分母代价与分组范数构造}
+\author{研究札记 · F3D-TERN}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+\begin{abstract}
+本文研究 \(F_{3,D}\) 多输入最小值的精确实现次数。三个输入时，一倍、两倍、三倍最小值的最低总次数依次为 \(9,10,9\)。两倍情形之所以更昂贵，是因为任意齐次有理正规化都必须为公共分母支付至少四次额外次数；常数分母又被三元二次型在 \(\mathbf F_3\) 上必有非平凡零点排除。三倍情形则由 \(\mathbf F_{27}/\mathbf F_3\) 的三元三次范数形式直接九次实现。更一般地，有限域范数给出 \(k\ge m\) 时的精确公式 \(\mathfrak d_m(k)=mk\)，并通过分组范数得到一倍 \(m\) 输入最小值的 \(O(m^{3/2})\) 上界。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+\end{abstract}
+
+\section{次数函数}
+令
+\[
+F(n,d)=v_3(n+d)-v_3(n-d),
+\]
+并定义
+\[
+\mathfrak d_m(k)
+=
+\deg_F(k\min(t_1,\ldots,t_m)).
+\]
+
+\section{一倍最小值：九次与十二次}
+定义
+\[
+Q(x,y)=x^2+y^2,
+\qquad
+H(x,y)=x^3-xy^2+y^3.
+\]
+对非零有理数 \(x,y\)，
+\[
+v_3(Q)=2\min(v_3x,v_3y),
+\]
+\[
+v_3(H)=3\min(v_3x,v_3y).
+\]
+
+三输入时取
+\[
+R_{3,1}(x,y,z)
+=
+\frac{H(x,y)+3z^3}{Q(x,y)+3z^2}.
+\]
+分子、分母的最低候选赋值分别为
+\[
+3a,\ 1+3c
+\]
+和
+\[
+2a,\ 1+2c,
+\]
+从不相等，因此
+\[
+v_3(R_{3,1})=\min(v_3x,v_3y,v_3z).
+\]
+逐变量齐次化后得到总次数 \(9\) 的整数数对实现。
+
+每个单输入截面都是 \(\min(t,0)\)，最低次数 \(3\)。独立截面次数相加给下界 \(9\)，所以
+\[
+\boxed{\mathfrak d_3(1)=9.}
+\]
+
+四输入把两对输入先分别用 \(Q,H\) 压缩，再用系数 \(3\) 消除并列最低项，得到十二次实现；四个截面各需三次，所以
+\[
+\boxed{\mathfrak d_4(1)=12.}
+\]
+
+\section{两倍三输入最小值：十次}
+定义
+\[
+B(x,y)=x^2+y^2,
+\]
+\[
+A(x,y,z)
+=
+B(x,y)^2+x^2yz+B(x,y)z^2.
+\]
+则
+\[
+\boxed{
+v_3(A/B)
+=
+2\min(v_3x,v_3y,v_3z).
+}
+\]
+当 \(z\) 更浅时，最后一项严格最低；当 \(z\) 不更浅时，模 \(3\) 检查保证 \(A\) 为单位倍 \(3^{4a}\)。交叉项 \(x^2yz\) 正是三单位情形中防止抵消的修正。
+
+回到原整数数对后，各组输入次数为
+\[
+(4,4,2),
+\]
+所以总次数为 \(10\)。
+
+\section{分母代价下界}
+若
+\[
+k\min(t_1,\ldots,t_m)
+\]
+有总次数 \(D\) 的全域实现，通过独立多齐次缩放与总齐次最低层抽取，可正规化成互素齐次有理函数
+\[
+A/B
+\]
+满足
+\[
+\deg_iA=\deg_iB+k.
+\]
+若记
+\[
+b_i=\deg_iB,
+\]
+则
+\[
+\boxed{
+D\ge mk+\sum_i b_i.
+}
+\]
+
+若某个 \(b_i=1\)，把 \(B\) 视为 \(x_i\) 的一次多项式：
+\[
+B=b_1(\widehat x_i)x_i+b_0(\widehat x_i).
+\]
+无坐标因子保证 \(b_0,b_1\ne0\)。在函数域中它和 \(A\) 互素，于是可选一般有理的其他变量，使
+\[
+x_i=-b_0/b_1\ne0
+\]
+成为真正极点而 \(A\ne0\)，与全域实现矛盾。
+
+因此每个 \(b_i\) 要么 \(0\)，要么至少 \(2\)。若 \(B\) 非常数，齐次性又使它至少依赖两个变量，所以
+\[
+\sum_i b_i\ge4.
+\]
+
+对 \(k=2,m\ge3\)，还需排除常数分母。若 \(B\) 常数，则得到齐次二次型 \(Q\) 满足
+\[
+v_3(Q(\mathbf x))
+=
+2\min_i v_3(x_i).
+\]
+规范化后其模 \(3\) 二次型必须在每个非零向量上非零。但三元以上二次型在 \(\mathbf F_3\) 上必有非平凡零点；正文给出初等对角化证明。
+
+所以
+\[
+\boxed{
+\mathfrak d_m(2)\ge2m+4
+\qquad(m\ge3).
+}
+\]
+对 \(m=3\) 得下界 \(10\)，与显式构造吻合：
+\[
+\boxed{\mathfrak d_3(2)=10.}
+\]
+
+\section{三元三次范数形式}
+多项式
+\[
+f(T)=T^3-T+1
+\]
+在 \(\mathbf F_3\) 中无根，因此不可约。取扩域
+\[
+\mathbf F_{27}
+=
+\mathbf F_3[T]/(f).
+\]
+乘以
+\[
+x+y\theta+z\theta^2
+\]
+的行列式给出三元三次范数形式
+\[
+\mathcal N_3(x,y,z)
+=
+x^3+2x^2z-xy^2+3xyz+xz^2-y^3+yz^2+z^3.
+\]
+只要 \((x,y,z)\bmod3\) 非零，该域元素非零，其范数非零。因此
+\[
+\boxed{
+v_3(\mathcal N_3(x,y,z))
+=
+3\min(v_3x,v_3y,v_3z).
+}
+\]
+原数对中得到九次实现；截面下界也是九次：
+\[
+\boxed{\mathfrak d_3(3)=9.}
+\]
+
+因此三输入完整谱为
+\[
+\boxed{
+\mathfrak d_3(k)=
+\begin{cases}
+9,&k=1,\\
+10,&k=2,\\
+3k,&k\ge3.
+\end{cases}
+}
+\]
+
+\section{一般有限域范数}
+对每个 \(k\ge1\)，有限扩域
+\[
+\mathbf F_{3^k}/\mathbf F_3
+\]
+的域范数是 \(k\) 元齐次 \(k\) 次形式，在非零向量处不为零。提升为整数系数，并在 \(m\le k\) 时令多余变量为零，得到
+\[
+N_{k,m}
+\]
+满足
+\[
+v_3(N_{k,m}(\mathbf x))
+=
+k\min_i v_3(x_i).
+\]
+因此
+\[
+\boxed{
+\mathfrak d_m(k)=mk
+\qquad(m\ge2,\ k\ge m).
+}
+\]
+
+\section{分组范数上界}
+对任意 \(m\ge2\)，取
+\[
+r=\lceil\sqrt m\rceil,
+\qquad
+s=\lceil m/r\rceil\le r.
+\]
+把输入分成 \(s\) 组，每组至多 \(r\) 个变量。
+
+每组用 \(r\) 次和 \(r+1\) 次范数形式编码该组最小赋值 \(a_j\)：
+\[
+v_3(P_j)=ra_j,
+\qquad
+v_3(Q_j)=(r+1)a_j.
+\]
+再定义
+\[
+P=\sum_{j=0}^{s-1}3^jP_j,
+\qquad
+Q=\sum_{j=0}^{s-1}3^jQ_j.
+\]
+因为 \(s\le r\)，最先达到全局最小值的组在两式中都唯一最低：
+\[
+v_3(P)=ra+j_0,
+\qquad
+v_3(Q)=(r+1)a+j_0.
+\]
+所以
+\[
+v_3(Q/P)=a.
+\]
+
+逐变量齐次化后总次数至多
+\[
+m(r+1).
+\]
+配合截面下界 \(3m\)：
+\[
+\boxed{
+3m
+\le
+\mathfrak d_m(1)
+\le
+m(\lceil\sqrt m\rceil+1).
+}
+\]
+
+\section{边界}
+有限域范数形式和低次数有限域零点理论都是经典工具。本文不声明一般 \(m\) 的一倍最小值次数已经完全分类；9--10--9 谱与分母代价下界由本文正文证明承担。
+
+\begin{thebibliography}{9}
+\bibitem{CW} Chevalley--Warning theorem, used only as optional background for the ternary quadratic special case.
+\bibitem{Norm} Standard finite-field norm forms.
+\end{thebibliography}
+\end{document}
+
+% final-proof-pdf-build

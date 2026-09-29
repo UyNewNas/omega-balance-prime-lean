@@ -1,6 +1,6 @@
-# F3-MOM：完整书面证明
+# F3-MOM：完整书面证明（更新稿）
 
-状态：`PAPER-AUDITED`。以下正文按研究稿 `prime_depth_moments.md` 原文保存，并以 theorem/scaffolding 文件固定最终接口。
+状态：`PAPER-AUDITED`。以下正文按更新后的研究稿 `prime_depth_moments.md` 保存。
 
 # 共享素数步长的深度矩与根距离恢复
 
@@ -22,7 +22,7 @@ D_i=F_3(P_i),\quad R_i=D_i-b,
 \]
 记 $B(X)=|\mathcal P(X)|$、$a=N+1$。$\mathbb E_X$ 和 $\Pr_X$ 表示在该有限集合中的等权平均和概率；仅在 $X$ 足够大、$B(X)>0$ 时使用。$Z=\max_iR_i$。
 
-本文证明所有固定阶的联合深度矩收敛，并由它们恢复根距离。不对形状增长、固定步长或素数定理的有效误差作断言。
+本文证明指数加权分布及所有固定阶的联合深度矩收敛，由它们恢复根距离，并给出联合概率生成函数的有限有理表示。不对形状增长、固定步长或素数定理的有效误差作断言。
 
 ## 1. 已有的固定精度输入
 
@@ -182,11 +182,40 @@ S(X;z)\le \frac{\delta_tX^2}{H(z)}
 \]
 再除以 (1.3) 并对输出求并。最后，每个 $P_i+1$ 为正且至多为常数乘以 $X^q$，因此其三进赋值不超过 $q\log_3X+O(1)$，得到 (3.3)。$\square$
 
+
+### 定理 3.2（素数乘积的单射性与极深尾部）
+
+固定任一输出 $P_i$。在 $\mathcal P(X)$ 上，映射 $(n,d)\mapsto P_i(n,d)$ 是单射。存在仅依赖固定形状的常数 $C_1$，使全部整数 $t\ge1$ 都满足
+\[
+\Pr_X(Z\ge t)\le C_1(\log X)^a
+\min\{3^{-t}+X^{-1},\ X^{q-2}3^{-t}\}.
+\tag{3.6}
+\]
+特别地，右边可以放宽为
+\[
+C_1(\log X)^a\left(3^{-t}+\min\{X^{-1},X^{q-2}3^{-t}\}\right).
+\tag{3.7}
+\]
+
+**证明。** 将这个输出使用的 $q$ 个偏移排序为 $H_1<\cdots<H_q$，其素数因子相应为 $n+MW H_jd$。因 $d>0$，这些因子严格递增，且都为素数。若两个参数点产生同一乘积，则素数唯一分解及排序给出每个对应因子相等。前两个因子已确定
+\[
+d=\frac{p_{H_2}-p_{H_1}}{MW(H_2-H_1)},\qquad n=p_{H_1}-MW H_1d.
+\]
+因此参数相同。证明不要求某个 $H_j$ 等于零，也不需要将分解计算看成一个高效算法。
+
+在当前参数盒中，$0<P_i+1\le C_iX^q$。条件 $R_i\ge t$ 要求 $P_i+1$ 为 $3^{b+t}$ 的正倍数。这些倍数至多有 $\lfloor C_iX^q/3^{b+t}\rfloor$ 个，且每个乘积至多来自一个参数点。因此
+\[
+\#\{(n,d)\in\mathcal P(X):R_i\ge t\}\ll X^q3^{-t}.
+\]
+这里没有 $+1$ 舍入项，因为从第一个正倍数开始计数。对输出求并并除以 (1.3)，得到 $C(\log X)^aX^{q-2}3^{-t}$。与 (3.2) 取较小者得 (3.6)。最后使用 $\min(A+B,C)\le A+\min(B,C)$ 得 (3.7)。$\square$
+
+该论证使用完整的乘积整数及其素数唯一分解，不是从单个 $F_3(P_i)$ 数值恢复参数；也没有将整数或几乎素数因子当作素数使用。
+
 ## 4. 指数加权总变差与全部固定阶矩
 
 ### 定理 4.1
 
-对每个固定 $0<\eta<1/q$，有
+对每个固定 $0<\eta<1/(q-1)$，有
 \[
 \boxed{\sum_{\mathbf r\in\mathbb Z_{\ge0}^{m}}
 3^{\eta\max_i r_i}|\mu_X(\mathbf r)-\mu(\mathbf r)|\longrightarrow0.}
@@ -198,33 +227,42 @@ S(X;z)\le \frac{\delta_tX^2}{H(z)}
 \int F(\mathbf r)\,d\mu(\mathbf r).
 \tag{4.2}
 \]
-同样结论适用于满足 $|F(\mathbf r)|\le C_F3^{\eta\max r_i}$ 的任意固定函数，其中 $0<\eta<1/q$。
+同样结论适用于满足 $|F(\mathbf r)|\le C_F3^{\eta\max r_i}$ 的任意固定函数，其中 $0<\eta<1/(q-1)$。
 
-**证明。** 先对任意固定 $0<\theta<1/q$ 证明
+**证明。** 先对任意固定 $0<\theta<1/(q-1)$ 证明
 \[
 \sup_{X\ge X_1}\mathbb E_X3^{\theta Z}<\infty.
 \tag{4.3}
 \]
-取 $T_0=\lfloor\tfrac12\log_3X\rfloor-b$，则 $3^{T_0}\asymp X^{1/2}$，常数允许依赖 $b$。整数非负变量的尾求和给出
+取
+\[
+T_0=\left\lfloor\tfrac12\log_3X\right\rfloor-b,\qquad
+T_1=\lfloor(q-1)\log_3X\rfloor.
+\]
+对足够大的 $X$，有 $1\le T_0<T_1$。非负整数变量的尾求和给出
 \[
 \mathbb E_X3^{\theta Z}
 =1+\sum_{t\ge1}(3^{\theta t}-3^{\theta(t-1)})\Pr_X(Z\ge t).
 \]
-在 $1\le t\le T_0$ 使用 (3.1)，和至多为一个收敛几何级数加
-$O(X^{-3/4+\theta/2})$。在 $t>T_0$ 使用 (3.2)，并由 (3.3) 在 $q\log_3X+O(1)$ 处截断，所得上界为
+在 $t\le T_0$ 使用 (3.1)，所得上界是一个收敛几何级数加 $O(X^{-3/4+\theta/2})$。在 $T_0<t\le T_1$ 使用 (3.2)，贡献为
 \[
-O_\theta\!\left((\log X)^a
-\left[X^{-(1-\theta)/2}+X^{q\theta-1}\right]\right)=o(1).
+O_\theta\left((\log X)^a
+\left[X^{-(1-\theta)/2}+X^{-1+(q-1)\theta}\right]\right).
 \]
-这里 $\theta<1/q\le1/3$ 使所有指数为负，故 (4.3) 成立。
+在 $t>T_1$ 使用定理 3.2 中的新上界，贡献至多
+\[
+C(\log X)^aX^{q-2}\sum_{t>T_1}3^{-(1-\theta)t}
+\ll_\theta(\log X)^aX^{-1+(q-1)\theta}.
+\]
+这里 $0<\theta<1/(q-1)\le1/2$ 使所有余项趋零。因此 (4.3) 成立。这一论证不需要把最后一段截断在 (3.3) 的大小上界。
 
-局部分布满足 $\mu(Z\ge t)\le m/(2\cdot3^{t-1})$，因而对所有 $\theta<1$，$\int3^{\theta Z}\,d\mu<\infty$。给定 $\eta<1/q$，取 $\eta<\theta<1/q$。在 $Z>K$ 上，
+局部分布满足 $\mu(Z\ge t)\le m/(2\cdot3^{t-1})$，因而对所有 $\theta<1$ 有 $\int3^{\theta Z}\,d\mu<\infty$。给定 $\eta<1/(q-1)$，取 $\eta<\theta<1/(q-1)$。在 $Z>K$ 上，
 \[
 3^{\eta Z}\le3^{-(\theta-\eta)K}3^{\theta Z}.
 \]
 因此两个模型的加权盒外质量统一随 $K\to\infty$ 趋零。在有限盒 $\{0,\ldots,K\}^m$ 内使用 (1.4) 的逐点收敛，再令 $K\to\infty$，得到 (4.1)。多项式增长被任一正指数权控制，故 (4.2) 及最后的结论随之成立。$\square$
 
-这是固定形状下的加权分布收敛。指数范围 $\eta<1/q$ 来自 (3.2)–(3.3) 的粗界，不声称最优；局部模型自身的指数矩允许 $\eta<1$。本证明不提供总计数 (1.3) 的有效误差，也不保证深度随 $X$ 增长时有统一相对主项或非空。
+这是固定形状下的加权分布收敛。指数范围 $\eta<1/(q-1)$ 是充分范围，不声称最优；局部模型自身的指数矩允许 $\eta<1$。本证明不提供总计数 (1.3) 的有效误差，也不保证深度随 $X$ 增长时有统一相对主项或非空。
 
 ## 5. 均值、协方差与根树恢复
 
@@ -323,6 +361,143 @@ D_1=F_3(p_0p_3p_5),\quad D_2=F_3(p_1p_2p_5)
 \]
 六素数形状中该值为 $17/6$；三个等距根的八素数形状中为 $101/36$。
 
+
+## 7. 有限部分与单坐标几何尾
+
+置 $K=\max_{i\ne j}L_{ij}$，并约定 $L_{ii}=+\infty$。$K$ 为固定的有限整数。以下局部结论对每个允许的固定 $n$ 成立，其分布与 $n$ 无关。
+
+### 引理 7.1（极深层至多一个坐标变化）
+
+对每个有限深度向量，最多只有一个 $R_i>K$。若 $R_i=u>K$，则所有 $j\ne i$ 均有 $R_j=L_{ij}$，且该精确向量的局部概率为 $3^{-u}$。在整数全素数模型中也有同样的确定性支撑限制。特别地，
+\[
+\sum_iR_i\le Z+(m-1)K.
+\tag{7.1}
+\]
+
+**证明。** 两个坐标若都大于 $K$，则两根相差的赋值也大于 $K$，与其定义矛盾。若 $R_i=u>K\ge L_{ij}$，不等赋值相加法则给出 $v_3(d-\alpha_j)=L_{ij}$。事件因而等价于 $R_i=u$，其概率由 (1.2) 为 $3^{-u}$。若全部坐标不超过 $K$，(7.1) 同样显然。$\square$
+
+### 定理 7.2（多元有理生成函数）
+
+令 $\mathbf z^{\mathbf r}=\prod_i z_i^{r_i}$，并定义
+\[
+\Phi(\mathbf z)=\mathbb E_\mu\mathbf z^{\mathbf R},\qquad
+A_K(\mathbf z)=\sum_{0\le r_i\le K}\mu(\mathbf r)\mathbf z^{\mathbf r}.
+\]
+在多圆盘 $|z_i|<3$ 内，这些期望绝对收敛，且
+\[
+\boxed{
+\Phi(\mathbf z)=A_K(\mathbf z)+
+\sum_{i=1}^m
+\left(\prod_{j\ne i}z_j^{L_{ij}}\right)
+\frac{(z_i/3)^{K+1}}{1-z_i/3}.
+}\tag{7.2}
+\]
+这是有理系数的有理函数，其分母整除 $\prod_i(1-z_i/3)$。$A_K$ 及全部尾项仅由带标签的矩阵 $(L_{ij})$ 决定。
+
+**证明。** 引理 7.1 将分布拆成有限盒内部分，以及 $m$ 条互不相交的尾部射线。在第 $i$ 条射线上，其他坐标固定为 $L_{ij}$，第 $i$ 坐标的质量为 $3^{-u}$，$u=K+1,K+2,\ldots$。分别求几何级数即得。精确层概率是有理数，见所引用文稿定理 3.2；绝对收敛也由这有限个几何级数直接给出。$\square$
+
+有限多项式无需枚举全部 $(K+1)^m$ 个向量。对 $1\le t\le K$，令 $\mathscr C_t$ 为由 $L_{ij}\ge t$ 给出的根簇划分。对 $C\in\mathscr C_t$，取任意代表 $a_C$，令 $c(C)$ 为 $C$ 包含的 $\mathscr C_{t+1}$ 子簇数，定义
+\[
+r_i(C,t)=\min(t,L_{a_Ci}).
+\]
+则
+\[
+\boxed{
+A_K(\mathbf z)=\frac12+
+\sum_{t=1}^K\sum_{C\in\mathscr C_t}
+\frac{3-c(C)}{2\cdot3^t}\prod_i z_i^{r_i(C,t)}.
+}\tag{7.3}
+\]
+表达式至多有 $1+mK$ 个有限项，允许合并相同单项式及删去零系数。
+
+**证明。** 所有根属于同一个单位首位类，另一个首位类给出零向量及质量 $1/2$。深度 $t$ 的每个根簇对应一个父球；其 $3-c(C)$ 个不含根的子球上，全部深度恒等于 $r_i(C,t)$，每个子球的单位域测度为 $1/(2\cdot3^t)$。沿根树遍历，未进入超过 $K$ 的根邻域的点恰好落入这些互不相交的空子球。根距性质保证向量不依赖代表选择。$\square$
+
+### 推论 7.3（总深度的最终精确尾律）
+
+令 $S_0=\sum_iR_i$、$s_i=\sum_{j\ne i}L_{ij}$。则
+\[
+\mathbb E_\mu z^{S_0}
+=A_K(z,\ldots,z)+
+\frac{(z/3)^{K+1}}{1-z/3}\sum_i z^{s_i}.
+\tag{7.4}
+\]
+对每个整数 $r>mK$，恰有
+\[
+\boxed{\mu(S_0=r)=3^{-r}\sum_i3^{s_i}.}\tag{7.5}
+\]
+因此对实数 $z>0$，$\mathbb E_\mu z^{S_0}$ 有限当且仅当 $z<3$。作为有理函数，它在 $z=3$ 具有简单极点，且
+\[
+\lim_{z\uparrow3}(1-z/3)\mathbb E_\mu z^{S_0}=\sum_i3^{s_i}>0.
+\]
+
+**证明。** 在 (7.2) 中令所有变量为 $z$。有限多项式的总次数至多为 $mK$；当 $r>mK$ 时，第 $i$ 条射线唯一的对应坐标为 $u=r-s_i>K$，其质量为 $3^{-u}$。相加得到 (7.5)。其余断言由正系数几何尾直接得到。$\square$
+
+式 (7.5) 是局部模型的精确等式；对于全素数模型，它给出每个预先固定的 $r$ 的极限比例，不是允许 $r$ 随 $X$ 增长的统一渐近。
+
+## 8. 全素数生成函数及一个明确的指数平均
+
+定义有限多项式
+\[
+\Phi_X(\mathbf z)=\mathbb E_X\prod_i z_i^{R_i},
+\]
+按多项式约定 $z_i^0=1$，包括 $z_i=0$ 的情形。
+
+### 定理 8.1
+
+在多圆盘
+\[
+|z_i|<3^{1/(q-1)}\qquad(1\le i\le m)
+\]
+内，$\Phi_X$ 在紧集上一致收敛到定理 7.2 的有理函数 $\Phi$。其任意固定阶复偏导数也在紧集上一致收敛。
+
+**证明。** 给定紧集，取 $1<R<3^{1/(q-1)}$，使其全部坐标绝对值不超过 $R$。两个模型均有支撑限制 (7.1)，所以
+\[
+|\mathbf z^{\mathbf r}|\le R^{(m-1)K}R^{\max r_i}.
+\]
+因此
+\[
+\sup|\Phi_X-\Phi|\le R^{(m-1)K}
+\sum_{\mathbf r}3^{(\log_3R)\max r_i}|\mu_X(\mathbf r)-\mu(\mathbf r)|\to0
+\]
+由定理 4.1。导数结论是在略大的紧多圆盘上应用 Cauchy 积分公式。$\square$
+
+该多圆盘条件分别约束每个坐标，不要求 $\sum_i\log_3|z_i|<1/(q-1)$；原因是足够深处只有一个坐标能够继续增长。局部函数的绝对收敛范围 $|z_i|<3$ 大于此处已证明的素数收敛范围，不可混同。
+
+### 六素数形状
+
+采用第 6 节的 $b=2,L_{12}=K=2$。写 $R_i=D_i-2$，则
+\[
+\Phi(z_1,z_2)=\frac12+\frac{z_1z_2}{3}+\frac{z_1^2z_2^2}{18}
++z_2^2\frac{(z_1/3)^3}{1-z_1/3}
++z_1^2\frac{(z_2/3)^3}{1-z_2/3}.
+\tag{8.1}
+\]
+从而
+\[
+\mathbb E_\mu z^{R_1+R_2}=\frac12+\frac{z^2}{3}+\frac{z^4}{18}
++\frac{2z^5}{27(1-z/3)},
+\quad
+\mathbb E_\mu z^{\max(R_1,R_2)}=\frac12+\frac z3+\frac{z^2}{18}
++\frac{2z^3}{27(1-z/3)}.
+\]
+由于 $\log_3(3/2)<1/2=1/(q-1)$，定理 8.1 和定理 4.1 分别给出
+\[
+\boxed{
+\lim_{X\to\infty}\mathbb E_X(3/2)^{D_1+D_2-4}=\frac{85}{32},\qquad
+\lim_{X\to\infty}\mathbb E_X(3/2)^{\max(D_1,D_2)-2}=\frac{13}{8}.
+}\tag{8.2}
+\]
+另外，对每个固定整数 $r\ge5$，
+\[
+\lim_X\Pr_X(D_1+D_2-4=r)=18\cdot3^{-r}.
+\]
+
+若将两个边缘相同的局部变量误当作独立，其单变量生成函数为 $(3+z)/(2(3-z))$，和的生成函数具有二阶极点。实际共享根模型 (8.1) 只有一个简单极点。这里的区别来自有限分支之后的单坐标尾部，而不是独立性近似。
+
+### 生成函数的既有背景
+
+从根的有限三进展开建立树状结构，再求一元局部 zeta 函数的有理表达，已有直接文献 [6]；一元多项式的一般计算结果另见 [7]。这里不将有理性本身声明为新的原理。本文给出该固定共享根模型的多元公式，并通过另行证明的指数尾界，建立其全素数平均在指定多圆盘内的收敛。
+
 ## 参考
 
 [1] B. Green and T. Tao, *Linear equations in primes*, Annals of Mathematics 171 (2010), 1753–1850.
@@ -340,4 +515,10 @@ https://kskedlaya.org/ant/chap-selberg.html
 [5] K. S. Kedlaya, *Notes on analytic number theory*, Chapter 14, §14.2, (14.2.1).
 https://kskedlaya.org/ant/chap-selberg2.html
 
-本文使用已有的素数总计数与固定精度分布作为输入，另给出一致尾界与矩传递证明。全部文稿均为书面数学证明，不等同于 Lean 内核验证。
+[6] W. A. Zúñiga-Galindo, *Computing Igusa's local zeta functions of univariate polynomials, and linear feedback shift registers*, arXiv:math/0204360.
+https://arxiv.org/abs/math/0204360
+
+[7] A. Dwivedi and N. Saxena, *Computing Igusa's local zeta function of univariates in deterministic polynomial-time*, arXiv:2006.08926.
+https://arxiv.org/abs/2006.08926
+
+本文使用已有的素数总计数与固定精度分布作为输入，另给出一致尾界、唯一分解尾界、矩传递及生成函数证明。全部文稿均为书面数学证明，不等同于 Lean 内核验证。
