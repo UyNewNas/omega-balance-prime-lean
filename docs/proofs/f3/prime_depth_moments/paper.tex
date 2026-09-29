@@ -1,0 +1,233 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\title{\bfseries 共享素数步长的深度矩与根距离恢复}
+\author{研究札记 · F3-MOM}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+\begin{abstract}
+固定共享根素数伸缩族中，固定精度联合分布已经由有限复杂度素数线性形式理论给出。本文新增增长深度下的一致尾界，并由此证明指数加权总变差收敛以及全部固定阶联合矩收敛。局部 Haar 模型的二阶矩可显式计算，进而得到深度协方差矩阵与根距离矩阵之间的一一对应：在已知共享根模型中，带标签的极限协方差矩阵确定完整根树和联合深度律。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+\end{abstract}
+
+\section{固定共享根模型}
+固定 \(k,s\ge1\)，令
+\[
+q=3^s,\qquad b=k+s,\qquad M=3^b.
+\]
+采用固定形状
+\[
+p_h=n+MWhd,
+\]
+以及 \(q\) 因子输出 \(P_i\)。记
+\[
+D_i=F_3(P_i),\qquad R_i=D_i-b,\qquad Z=\max_iR_i.
+\]
+此前固定精度结果给出唯一单位根 \(\alpha_i(n)\) 使
+\[
+R_i=v_3(d-\alpha_i(n)),
+\]
+且
+\[
+L_{ij}:=v_3(\alpha_i-\alpha_j)
+=b+v_3(E_i-E_j)
+\]
+与 \(n\) 无关。全素数参数集合满足
+\[
+B(X)=(\kappa+o(1))\frac{X^2}{(\log X)^a},\qquad\kappa>0,
+\]
+并且每个固定有限深度向量的点概率趋于单位步长 Haar 模型 \(\mu\)。
+
+\section{增长模数与一致尾界}
+令
+\[
+Q_t=3^{b+t},\qquad
+\delta_t=\frac{2}{3^{k+1+t}}.
+\]
+满足
+\[
+F_3(n)=k,\qquad3^{b+t}\mid P_i(n,d)+1
+\]
+的模 \(Q_t\) 参数类精确有
+\[
+\boxed{
+|\mathcal U_{i,t}|
+=
+2\cdot3^{2b+t-k-1}
+=
+\delta_tQ_t^2.
+}
+\]
+
+令
+\[
+\mathcal F(n,d)=d\prod_{h\in\mathcal H}(n+MWhd).
+\]
+对平方自由 \(e\)、\((e,3)=1\)，其模 \(e\) 零集合密度写为 \(g(e)\)。中国剩余定理与矩形格点计数给出
+\[
+A_e(X;i,t)
+=
+\delta_tX^2g(e)+r_e,
+\]
+\[
+|r_e|
+\ll
+a^{\omega(e)}(X+Q_te).
+\]
+
+在该序列上应用 Selberg 上界筛，取
+\[
+z=X^{1/16},\qquad D=z^2=X^{1/8}.
+\]
+若
+\[
+3^{b+t}\le X^{1/2},
+\]
+则得到
+\[
+\boxed{
+\Pr_X(Z\ge t)
+\ll
+3^{-t}+X^{-3/4}.
+}
+\]
+对任意 \(t\ge1\)，直接丢弃素性要求并按根剩余类计数，得到
+\[
+\boxed{
+\Pr_X(Z\ge t)
+\ll
+(\log X)^a(3^{-t}+X^{-1}).
+}
+\]
+同时由 \(P_i+1\ll X^q\) 有
+\[
+\boxed{
+Z\le q\log_3X+O(1).
+}
+\]
+
+\section{加权分布收敛}
+固定
+\[
+0<\theta<1/q.
+\]
+尾求和公式
+\[
+\mathbb E_X3^{\theta Z}
+=
+1+
+\sum_{t\ge1}
+(3^{\theta t}-3^{\theta(t-1)})
+\Pr_X(Z\ge t)
+\]
+配合前节两段尾界，给出
+\[
+\sup_X\mathbb E_X3^{\theta Z}<\infty.
+\]
+因此对任意
+\[
+0<\eta<1/q
+\]
+可取 \(\eta<\theta<1/q\)，并在 \(Z>K\) 上使用
+\[
+3^{\eta Z}
+\le
+3^{-(\theta-\eta)K}3^{\theta Z}.
+\]
+有限盒内用固定点概率收敛，盒外由上式统一压低，得到
+\[
+\boxed{
+\sum_{\mathbf r}
+3^{\eta\max r_i}
+|\mu_X(\mathbf r)-\mu(\mathbf r)|
+\to0.
+}
+\]
+所有固定阶多项式矩随之收敛。
+
+\section{二阶统计与根距离}
+局部边缘分布为
+\[
+\Pr(R_i=0)=\frac12,\qquad
+\Pr(R_i=t)=3^{-t}\quad(t\ge1).
+\]
+所以
+\[
+\mathbb ER_i=\frac34,\qquad
+\mathbb ER_i^2=\frac32,\qquad
+\operatorname{Var}(R_i)=\frac{15}{16}.
+\]
+
+若
+\[
+L=L_{ij},
+\]
+超度量性质给出 \(R_i\ne R_j\) 时较小值恰为 \(L\)，且
+\[
+\Pr(R_i=L+t,R_j=L)
+=
+\Pr(R_i=L,R_j=L+t)
+=
+3^{-(L+t)}.
+\]
+因此
+\[
+\boxed{
+\mathbb E(R_i-R_j)^2
+=
+3^{1-L}.
+}
+\]
+由
+\[
+\mathbb E(X-Y)^2
+=
+2\operatorname{Var}(X)-2\operatorname{Cov}(X,Y)
+\]
+得到
+\[
+\boxed{
+\operatorname{Cov}(D_i,D_j)
+=
+\frac{15}{16}
+-
+\frac32\,3^{-L_{ij}},
+}
+\]
+\[
+\boxed{
+\operatorname{Corr}(D_i,D_j)
+=
+1-\frac85\,3^{-L_{ij}}.
+}
+\]
+加权矩收敛把这些局部公式转移到全素数族。
+
+于是
+\[
+\boxed{
+3^{-L_{ij}}
+=
+\frac23
+\left(
+\frac{15}{16}-\Sigma_{ij}
+\right)
+=
+\frac13
+\lim_X\mathbb E_X(D_i-D_j)^2.
+}
+\]
+在共享根模型中，协方差矩阵恢复全部 \(L_{ij}\)，继而恢复根树和完整联合深度律。
+
+\section{边界}
+这里恢复的是根间距离而非绝对根位置。结果要求形状固定，不给出增长形状、固定步长、或深层事件的统一相对素数主项。固定精度收敛本身不足以推出无界矩；一致尾界是本稿新增的关键。
+
+\begin{thebibliography}{9}
+\bibitem{GT} B. Green and T. Tao, \emph{Linear equations in primes}, Ann. of Math. 171 (2010), 1753--1850.
+\bibitem{GTZ} B. Green, T. Tao and T. Ziegler, finite-complexity prime linear-forms inputs used by the preceding fixed-shape result.
+\bibitem{Kedlaya} K. Kedlaya, \emph{Notes on analytic number theory}, Selberg sieve chapters.
+\end{thebibliography}
+\end{document}
