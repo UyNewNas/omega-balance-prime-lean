@@ -1,6 +1,6 @@
 {
   "result_id": "F3-PAT-1",
-  "result_status": "PAPER-PROVED",
+  "result_status_source": "docs/proofs/f3/four_prime_construction/theorem.md",
   "repository_base": "f7033c1625b2fc36d76544488ba0402a0a1619fc",
   "check_status": "PASS",
   "scope": "Finite arithmetic sanity checks only; not Lean or infinitude verification",
@@ -88,7 +88,7 @@
       "in_sufficient_class": false
     }
   ],
-  "script_sha256": "8a95a66d2a6ec019b17531cdba17a9b5ed66e97bf5be483e7c9d494a536d3f0d",
-  "independent_paper_audit": "pending",
-  "lean_verification": "not_run"
+  "script_sha256": "076338ea1a5939f9bc5ba0af42b9bf7b43ce668aa9bb821c1ec312bf55f609b4",
+  "paper_audit": "not_assessed_by_this_script",
+  "lean_verification": "not_run_by_this_script"
 }

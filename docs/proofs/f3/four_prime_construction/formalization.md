@@ -1,6 +1,6 @@
 # F3-PAT-1：形式化映射与阻塞依赖
 
-数学状态：`PAPER-PROVED`。Lean 状态：`NOT-STARTED`。以下是目标接口与依赖计划，不是已存在的 Lean 声明；提供脚手架不自动升级为 `FORMALIZATION-READY`。
+数学状态：`PAPER-AUDITED`。Lean 状态：`NOT-STARTED`。以下是目标接口与依赖计划，不是已存在的 Lean 声明；提供脚手架不自动升级为 `FORMALIZATION-READY`。
 
 [定理](theorem.md) · [证明](proof.md) · [引理 DAG](scaffolding.md)
 
@@ -29,7 +29,7 @@
 | PAT-L6 | `f3_pat1_prime_parameter_count_asymptotic` | F3FourPrimeConstruction | 阻塞于 EXT-GT2 | 真正的全局计数证明 |
 | PAT-L7 | `f3_pat1_four_primes_unbounded`, `f3_pat1_four_primes_infinite` | F3FourPrimeConstruction | 未实现且受阻塞 | 无限参数的算术映射、PAT-L3、PAT-L6 |
 
-`BLOCKED-EXTERNAL` 只描述本次工程尚未解决的依赖，不断言整个形式化社区都没有相关结果。独立审计和外部接口核验完成前，不把计划中的 DAG 当成已完成形式化。
+`BLOCKED-EXTERNAL` 只描述本次工程尚未解决的依赖，不断言整个形式化社区都没有相关结果。书面审计已完成；外部接口核验与目标声明仍待实现，不把计划中的 DAG 当成已完成形式化。
 
 ## 3. 必须保留的语义
 
@@ -48,12 +48,13 @@
 
 | 项目 | 当前状态 |
 |---|---|
-| 完整书面证明 | 已整理；本轮自查完成 |
-| 独立书面审计 | 待完成 |
+| 完整书面证明 | 已整理；书面审计通过 |
+| 对既有提交的书面审计 | 已完成；对象与范围见 [审计记录](scaffolding.md#5-书面审计记录2026-09-29) |
 | Python 有限复核 | [报告](../../../../reports/f3_pat1_paper_check.json)；不承担无限证明责任 |
 | 新增 Lean 声明 | 0 |
 | 当前主结果的 Lean 核验提交 | 无 |
 | 当前主结果的内核公理审计 | 未运行 |
-| 本轮 `python3 scripts/verify.py` | 未运行 |
+| 本轮 `python3 scripts/verify.py` | 已执行；本地缺少 `lake`，退出码 2，未进入 Lean 构建 |
+| 提交的仓库 CI | 在 PR 中记录精确 head 与运行链接；不作为本主结果的 Lean 证明 |
 
 以后每条新增 Lean theorem/lemma 都须登记 `scripts/Audit.lean`，完成构建、回归、公理、源码及覆盖检查。只有同一精确 Git head 通过完整门禁，才能将主结果标为 `LEAN-PROVED`。本提交不改 Lean 源码、工具链、依赖版本、默认 import 或审计表。

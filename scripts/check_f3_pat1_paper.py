@@ -105,7 +105,7 @@ def main() -> None:
 
     report = {
         "result_id": "F3-PAT-1",
-        "result_status": "PAPER-PROVED",
+        "result_status_source": "docs/proofs/f3/four_prime_construction/theorem.md",
         "repository_base": BASE,
         "check_status": "PASS",
         "scope": "Finite arithmetic sanity checks only; not Lean or infinitude verification",
@@ -117,8 +117,8 @@ def main() -> None:
         "checked_primes": [row["prime"] for row in local_rows],
         "witnesses": witnesses,
         "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        "independent_paper_audit": "pending",
-        "lean_verification": "not_run",
+        "paper_audit": "not_assessed_by_this_script",
+        "lean_verification": "not_run_by_this_script",
     }
     target = Path(__file__).resolve().parents[1] / "reports/f3_pat1_paper_check.json"
     target.parent.mkdir(parents=True, exist_ok=True)
