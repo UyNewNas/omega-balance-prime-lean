@@ -21,6 +21,7 @@ F_3(n)=v_3(n+1)-v_3(n-1).
 | [预筛层分布](presieved_geometry.md) | 逐线局部因子、增长预筛、面积主项及有界几乎素数下界 |
 | [粗糙 Liouville 和](rough_liouville.md) | 精确 F₃ 层上的素数／半素数主项与增长模数负号定理 |
 | [F₃,D 固定多项式实现](f3d_polynomial_realization.md) | 四次精确层检测、两端最终仿射分类与最低次数边界 |
+| [F₃,D 多输入热带实现](f3d_multivariate_tropical_realization.md) | 二次正性检测、min/max、批量 argmin 与多输入全域实现分类 |
 
 ## 依赖与证明范围
 
