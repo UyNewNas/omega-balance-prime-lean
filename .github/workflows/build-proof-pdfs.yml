@@ -23,7 +23,7 @@ jobs:
       - name: Install XeLaTeX and CJK support
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-xetex texlive-lang-chinese texlive-latex-extra fonts-noto-cjk poppler-utils
+          sudo apt-get install -y --no-install-recommends texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-fonts-recommended fonts-noto-cjk poppler-utils
 
       - name: Build all proof PDFs
         shell: bash
@@ -48,7 +48,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add 'docs/proofs/**/paper.pdf'
+          find docs/proofs -name paper.pdf -print0 | xargs -0 git add
           if git diff --cached --quiet; then
             echo "No PDF changes."
             exit 0
