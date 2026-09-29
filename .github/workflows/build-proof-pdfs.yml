@@ -39,7 +39,6 @@ jobs:
           cat /tmp/proof-tex-files
 
       - name: Install XeLaTeX and CJK support
-        if: hashFiles('/tmp/proof-tex-files') != ''
         run: |
           if [[ ! -s /tmp/proof-tex-files ]]; then
             echo "No proof PDFs need rebuilding."
