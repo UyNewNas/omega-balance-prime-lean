@@ -38,6 +38,10 @@ jobs:
               xelatex -interaction=nonstopmode -halt-on-error paper.tex
               pdfinfo paper.pdf | grep -E '^(Pages|Page size):'
               test -s paper.pdf
+              render_dir="$(mktemp -d)"
+              pdftoppm -png -r 120 paper.pdf "$render_dir/page" >/dev/null
+              test -n "$(find "$render_dir" -name 'page-*.png' -print -quit)"
+              rm -rf "$render_dir"
               rm -f paper.aux paper.log paper.out paper.toc
             )
           done < <(find docs/proofs -name paper.tex -print | sort)
