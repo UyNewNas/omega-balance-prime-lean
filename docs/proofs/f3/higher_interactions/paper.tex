@@ -1,0 +1,400 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,longtable,hyperref,microtype}
+\usepackage{enumitem}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.25em}
+\linespread{1.08}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\renewcommand{\proofname}{证明}
+\newcommand{\vthree}{v_3}
+\newcommand{\Fthree}{F_3}
+\newcommand{\Qk}{\mathcal Q_k}
+\newcommand{\Cfrak}{\mathfrak C}
+\title{\bfseries 固定伸缩素数族中的\\高阶 $F_3$ 相互作用}
+\author{研究札记 · F3-HI-1 / F3-HI-2 / F3-HI-3}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+设 $\Fthree(m)=\vthree(m+1)-\vthree(m-1)$。本文研究固定伸缩形状
+\[
+ p_0=n,\qquad p_1=n+2\cdot 3^{k+1}d,\qquad p_2=n+6\cdot 3^{k+1}d.
+\]
+在要求 $d,p_0,p_1,p_2$ 全为素数且 $\Fthree(n)=k\ge1$ 时，三个单点的 $F_3$ 值恒为 $k$，三个两两乘积的 $F_3$ 值恒为 $-k$，但三因子乘积的 $F_3$ 值仍可达到任意预先指定的层级 $R\ge k+1$。更进一步，三因子深度具有显式极限分布：最低层概率为 $1/2$，其后各层依次为 $1/3,1/9,1/27,\ldots$。证明先把全部未记录的高阶信息压缩到一个二次多项式余因子 $G_n(d)$，再利用其模 $3$ 的唯一简单根做逐层提升，最后用 Green--Tao 的素数线性形式定理把有限剩余类比例转移到真实全素数配置。文末还给出一般有限剩余模式的素数伸缩实现定理。
+\end{abstract}
+
+\noindent\textbf{关键词：} 三进赋值；$F_3$；高阶相互作用；Hensel 型提升；素数线性形式；Green--Tao。
+
+\section{定义与主定理}
+对正整数 $a$，$\vthree(a)$ 表示 $3$ 在 $a$ 中的指数。对整数 $m>1$，定义
+\[
+\Fthree(m)=\vthree(m+1)-\vthree(m-1)\in\mathbb Z.
+\]
+固定 $k\ge1$，令
+\[
+M=3^{k+1},\qquad p_0=n,\quad p_1=n+2Md,\quad p_2=n+6Md.
+\]
+定义
+\[
+\Qk(X)=\{(n,d):X<n,d\le2X,\ d,p_0,p_1,p_2\text{ 均为素数},\ \Fthree(n)=k\}.
+\]
+记
+\[
+D(n,d)=\Fthree(p_0p_1p_2),
+\quad
+\Cfrak=\prod_{\substack{\ell\ge5\\ \ell\ \mathrm{prime}}}
+\frac{\ell^2(\ell-3)}{(\ell-1)^3},
+\quad
+\kappa_k=3^{2-k}\Cfrak.
+\]
+
+\begin{theorem}[F3-HI-1]
+在 $\Qk(X)$ 中恒有
+\[
+\Fthree(p_0)=\Fthree(p_1)=\Fthree(p_2)=k,
+\]
+\[
+\Fthree(p_0p_1)=\Fthree(p_0p_2)=\Fthree(p_1p_2)=-k.
+\]
+并且
+\[
+|\Qk(X)|=(\kappa_k+o_k(1))\frac{X^2}{(\log X)^4}.
+\]
+对每个固定整数 $R\ge k+1$，
+\[
+\#\{(n,d)\in\Qk(X):D(n,d)=R\}
+=\bigl(\kappa_k w_k(R)+o_{k,R}(1)\bigr)\frac{X^2}{(\log X)^4},
+\]
+其中
+\[
+w_k(R)=
+\begin{cases}
+\frac12,&R=k+1,\\[2mm]
+3^{-(R-k-1)},&R\ge k+2.
+\end{cases}
+\]
+因此每个 $R\ge k+1$ 都有无穷多个全素数实现，且偏移系数 $2M,6M$ 不随 $R$ 改变。
+\end{theorem}
+
+\begin{corollary}[F3-HI-2]
+即使同时知道同一固定伸缩形状中的三个单点 $F_3$ 值、三个两两乘积 $F_3$ 值，并且步长 $d$ 也为素数，三因子乘积的 $F_3$ 值仍不能由这些二阶数据给出有限上界。
+\end{corollary}
+
+当 $k=1$ 时，$M=9$，形状成为
+\[
+(n,n+18d,n+54d).
+\]
+六个低阶值固定为 $(1,1,1)$ 与 $(-1,-1,-1)$，而三因子深度可取任意 $R\ge2$。
+
+\section{六个低阶值为何完全锁定}
+假设 $n>1$、$d>0$、$3\nmid d$ 且 $\Fthree(n)=k>0$。于是
+\[
+\vthree(n+1)=k,\qquad \vthree(n-1)=0,
+\]
+所以可写成
+\[
+n=-1+3^k a,\qquad 3\nmid a. \tag{2.1}
+\]
+
+\begin{lemma}
+三个单点均满足 $\Fthree(p_i)=k$。
+\end{lemma}
+\begin{proof}
+三个 $p_i$ 都满足 $p_i\equiv n\pmod{3^{k+1}}$。因此
+\[
+p_i+1\equiv3^k a\pmod{3^{k+1}},
+\qquad p_i-1\equiv-2\pmod3.
+\]
+故 $\vthree(p_i+1)=k$ 且 $\vthree(p_i-1)=0$。
+\end{proof}
+
+\begin{lemma}
+任意 $i\ne j$ 都有 $\Fthree(p_ip_j)=-k$。
+\end{lemma}
+\begin{proof}
+由 $p_ip_j\equiv n^2\pmod{3^{k+1}}$ 与 (2.1)，
+\[
+n^2-1=-2\cdot3^ka+3^{2k}a^2
+\equiv-2\cdot3^ka\pmod{3^{k+1}}.
+\]
+因为 $3\nmid2a$，有 $\vthree(p_ip_j-1)=k$。另一方面 $p_ip_j\equiv1\pmod3$，故 $\vthree(p_ip_j+1)=0$。于是 $\Fthree(p_ip_j)=-k$。
+\end{proof}
+
+到这里，六个低阶数据已经固定，而且完全没有使用素数性。
+
+\section{三因子乘积中的可提升根}
+定义
+\[
+A(n)=\frac{n^3+1}{M}.
+\]
+由 (2.1) 展开得
+\[
+A(n)=a-3^ka^2+3^{2k-1}a^3\in\mathbb Z,
+\qquad A(n)\equiv a\pmod3. \tag{3.1}
+\]
+另一方面
+\[
+\begin{aligned}
+p_0p_1p_2+1
+&=n(n+2Md)(n+6Md)+1\\
+&=n^3+1+8Mn^2d+12M^2nd^2\\
+&=M G_n(d),
+\end{aligned}
+\]
+其中
+\[
+\boxed{G_n(d)=A(n)+8n^2d+12Mnd^2.} \tag{3.2}
+\]
+三个因子都模 $3$ 同余于 $-1$，所以 $p_0p_1p_2\equiv-1\pmod3$，从而
+\[
+\boxed{D(n,d)=k+1+\vthree(G_n(d)).} \tag{3.3}
+\]
+真正没有被六个低阶值记录的信息，恰好落在 $G_n(d)$ 中。
+
+模 $3$ 看，
+\[
+G_n(d)\equiv a+2d\pmod3,
+\qquad
+G_n'(d)=8n^2+24Mnd\equiv2\pmod3. \tag{3.4}
+\]
+因此模 $3$ 恰有一个根 $d\equiv a$，而且导数是单位。
+
+\begin{lemma}[唯一根逐层提升]
+对每个 $t\ge1$，$G_n(d)\equiv0\pmod{3^t}$ 在单位剩余类中恰有一个根。
+\end{lemma}
+\begin{proof}
+若 $u$ 是模 $3^t$ 的根，则
+\[
+G_n(u+3^tb)
+\equiv G_n(u)+3^tbG_n'(u)\pmod{3^{t+1}}.
+\]
+除以 $3^t$ 后，因 $G_n'(u)\not\equiv0\pmod3$，$b\bmod3$ 中恰有一个选择继续成为根。由模 $3$ 唯一根归纳即可。
+\end{proof}
+
+\begin{lemma}[精确有限比例]
+在模 $3^T$ 的单位类中均匀计数，则
+\[
+\Pr(\vthree(G_n(d))\ge t)=\frac{1}{2\cdot3^{t-1}}
+\qquad(1\le t\le T).
+\]
+因此
+\[
+\Pr(\vthree(G_n(d))=0)=\frac12,
+\qquad
+\Pr(\vthree(G_n(d))=t)=3^{-t}\quad(t\ge1).
+\]
+\end{lemma}
+\begin{proof}
+模 $3^T$ 一共有 $2\cdot3^{T-1}$ 个单位类。唯一的模 $3^t$ 根有 $3^{T-t}$ 个提升，因此门槛比例为
+\[
+\frac{3^{T-t}}{2\cdot3^{T-1}}=\frac1{2\cdot3^{t-1}}.
+\]
+相邻门槛相减得到精确层比例。
+\end{proof}
+
+结合 (3.3)，局部深度分布正是
+\[
+\Pr(D=k+1)=\frac12,
+\qquad
+\Pr(D=k+1+t)=3^{-t}\quad(t\ge1). \tag{3.5}
+\]
+这只是有限剩余类的精确比例，并没有把素数事件当作独立随机事件。
+
+\section{四素数系统与奇异乘积}
+固定 $A\ge k+1$，令 $Q=3^A$，并固定一个允许的模 $Q$ 参数类。写
+\[
+n=b+Qx,\qquad d=c+Qy.
+\]
+需要同时为素数的四个形式为
+\[
+d,\quad n,\quad n+2Md,\quad n+6Md.
+\]
+它们的齐次方向是
+\[
+(0,1),\quad(1,0),\quad(1,2M),\quad(1,6M),
+\]
+两两不成比例。因此按 Green--Tao 的复杂度定义，该系统复杂度至多为 $2$。
+
+局部因子可直接计算。模 $3$ 时四形式均为单位，所以
+\[
+\beta_3=(3/2)^4.
+\]
+模 $2$ 时要求 $n,d$ 都为奇数，故
+\[
+\beta_2=4.
+\]
+若 $\ell\ge5$ 为素数，要求 $d\ne0$ 后，$n/d$ 只需避开
+\[
+0,\quad-2M,\quad-6M.
+\]
+三类互异，因此允许参数数为 $(\ell-1)(\ell-3)$，于是
+\[
+\beta_\ell=
+\frac{\ell^2(\ell-3)}{(\ell-1)^3}
+=1-\frac{3\ell-1}{(\ell-1)^3}
+=1+O(\ell^{-2}). \tag{4.1}
+\]
+所以
+\[
+\Cfrak=\prod_{\ell\ge5}\beta_\ell>0,
+\qquad
+\mathfrak S=\beta_2\beta_3\Cfrak=\frac{81}{4}\Cfrak>0. \tag{4.2}
+\]
+这里严格使用了 $\sum|\beta_\ell-1|<\infty$，而不是简单地用“每个局部因子为正”来推出无穷乘积为正。
+
+\section{从有限参数类转移到真实全素数配置}
+在原盒 $X<n,d\le2X$ 内，一个固定模 $Q$ 的参数类对应面积
+\[
+\frac{X^2}{Q^2}+O(X)
+\]
+的二维矩形。由 Green--Tao 关于复杂度至多 $2$ 的素数线性形式无条件定理，每个允许参数类的全素数计数为
+\[
+\left(\frac{\mathfrak S}{Q^2}+o_{k,Q}(1)\right)
+\frac{X^2}{(\log X)^4}. \tag{5.1}
+\]
+主系数不依赖于具体允许类。
+
+模 $Q=3^A$ 下，满足 $\vthree(n+1)=k$ 的 $n$ 类数为
+\[
+2\cdot3^{A-k-1},
+\]
+单位 $d$ 类数为
+\[
+2\cdot3^{A-1}.
+\]
+故允许参数类总数为
+\[
+4\cdot3^{2A-k-2}. \tag{5.2}
+\]
+对 (5.1) 求和，得到
+\[
+\begin{aligned}
+|\Qk(X)|
+&=\left(
+4\cdot3^{2A-k-2}\cdot3^{-2A}\cdot\frac{81}{4}\Cfrak+o_k(1)
+\right)
+\frac{X^2}{(\log X)^4}\\
+&=(3^{2-k}\Cfrak+o_k(1))\frac{X^2}{(\log X)^4}.
+\end{aligned}
+\]
+即主项常数正是 $\kappa_k=3^{2-k}\Cfrak$。
+
+固定 $R\ge k+1$，取 $A\ge R+1$。此时模 $3^A$ 信息足够判断 $\vthree(G_n(d))=R-k-1$。第 3 节已经说明，在每个允许 $n$ 类上，对应的 $d$ 类比例都相同，所以只需把精确有限比例乘进 (5.1)。得到
+\[
+\#\{(n,d)\in\Qk(X):D=R\}
+=
+(\kappa_kw_k(R)+o_{k,R}(1))\frac{X^2}{(\log X)^4}.
+\]
+每个 $w_k(R)>0$，因此每个指定深度都有无穷多个全素数实现。定理 F3-HI-1 与推论 F3-HI-2 得证。
+
+\section{一般有限模式的伸缩实现}
+\begin{theorem}[F3-HI-3]
+固定 $s\ge2$、$A\ge1$，令 $Q=3^A$。给定模 $Q$ 的单位类
+\[
+a_0,\ldots,a_{s-1},b,
+\]
+存在固定整数
+\[
+0=h_0<h_1<\cdots<h_{s-1}
+\]
+和常数 $c>0$，使满足
+\[
+(n,d)\equiv(a_0,b)\pmod Q,\qquad X<n,d\le2X,
+\]
+且
+\[
+d,n+h_0d,\ldots,n+h_{s-1}d
+\]
+全部为素数的参数对数为
+\[
+(c+o(1))\frac{X^2}{(\log X)^{s+1}}.
+\]
+并且 $n+h_i d\equiv a_i\pmod Q$。
+\end{theorem}
+
+\begin{proof}
+令
+\[
+P=\prod_{\substack{\ell\le s\\ \ell\text{ prime},\ \ell\ne3}}\ell.
+\]
+对 $i\ge1$，由中国剩余定理选取 $h_i$ 满足
+\[
+h_i\equiv(a_i-a_0)b^{-1}\pmod Q,
+\qquad h_i\equiv0\pmod P,
+\]
+再分别加上足够大的 $QP$ 倍数使其严格递增。这样保证端点落入指定模 $Q$ 类。
+
+系统 $d,n+h_0d,\ldots,n+h_{s-1}d$ 的齐次方向两两不平行，故复杂度有限。模 $3$ 时所有形式是指定单位。对 $\ell\ne3$，要求 $d\ne0$ 后，$n/d$ 需避开 $-h_i$。若 $\ell\le s$，由于 $h_i\equiv0\pmod\ell$，只排除一个类；若 $\ell>s$，最多排除 $s<\ell$ 个类。因此所有局部因子为正。除有限个整除某个 $h_i-h_j$ 的素数外，$h_i$ 两两不同，尾部局部因子为
+\[
+\frac{\ell^{s-1}(\ell-s)}{(\ell-1)^s}=1+O_s(\ell^{-2}),
+\]
+故奇异乘积正。应用一般有限复杂度的素数线性形式定理即得结论。
+\end{proof}
+
+若有限多个非空单项式
+\[
+Y_\alpha(x)=\prod_i x_i^{e_{\alpha,i}}
+\]
+在一组正整数 $x_i$ 上实现了非零目标
+\[
+\Fthree(Y_\alpha(x))=f_\alpha,
+\]
+则取 $A>\max_\alpha|f_\alpha|$，并令 $a_i\equiv x_i\pmod{3^A}$。任何落入相同模 $3^A$ 类的端点都会保持这些精确赋值，因此 F3-HI-3 给出无穷多全素数实现。
+
+\section{一个深度 14 的有限实例}
+取
+\[
+n=129539,\qquad d=144481.
+\]
+则
+\[
+p_1=2730197,\qquad p_2=7931513,
+\]
+并且四个数 $d,n,p_1,p_2$ 均为素数。三个单点值全为 $1$，三个两两乘积值全为 $-1$，而
+\[
+129539\cdot2730197\cdot7931513+1
+=3^{14}\cdot586479720520,
+\]
+最后余因子不被 $3$ 整除，所以
+\[
+\Fthree(129539\cdot2730197\cdot7931513)=14.
+\]
+该实例仅用于 sanity check；无限结论完全来自前述证明。
+
+\section{边界：为什么这不是固定间距结果}
+若固定 $d=D$，则
+\[
+n,\qquad n+2MD,\qquad n+6MD
+\]
+变成单变量仿射形式，其齐次部分互相成比例，已经不属于上述有限复杂度非退化系统。因此本文不能推出固定 $D$ 时有无穷多解，也不推出孪生素数猜想或任何固定间距素数簇结论。
+
+本文证明的是：在同一个固定\emph{形状}中，允许素数步长 $d$ 变化时，低阶 $F_3$ 数据完全相同而高阶乘法深度仍可无界变化，并且这种高阶自由度具有明确的渐近统计规律。
+
+\section*{文稿状态与来源}
+本结果在仓库中标记为 \texttt{PAPER-AUDITED}。本文是人类可读的书面证明；尚未形式化为 Lean 主定理。Markdown 证明包包含精确定理陈述、完整证明、引理依赖与审计记录、形式化映射及阻塞项。PDF 仅是稳定证明的排版版本，不替代 Lean kernel 核验。
+
+\section*{参考文献}
+\begin{thebibliography}{9}
+\bibitem{GT10}
+Ben Green and Terence Tao.
+\emph{Linear equations in primes}.
+Annals of Mathematics, 171 (2010), 1753--1850.
+DOI: 10.4007/annals.2010.171.1753.
+
+\bibitem{GT12}
+Ben Green and Terence Tao.
+\emph{The Möbius function is strongly orthogonal to nilsequences}.
+Annals of Mathematics, 175 (2012), 541--566.
+
+\bibitem{GTZ}
+Ben Green, Terence Tao and Tamar Ziegler.
+\emph{An inverse theorem for the Gowers $U^{s+1}[N]$-norm}.
+Annals of Mathematics, 176 (2012), 1231--1372.
+\end{thebibliography}
+
+\end{document}
