@@ -242,9 +242,11 @@ python3 scripts/verify.py
 | [F3-ROOT-1 / 2 / 3 / 4](docs/proofs/f3/two_root_process/theorem.md) | 平移配对乘积序列由两个简单三进根精确控制；给出完整联合尾律、区段层级计数、深度序列到参数的显式反演，以及六位置模 $5$ 障碍与 $d=5r$ 后七素数模式 $(3,4,2)$ 的比例 $2/729$ | `PAPER-AUDITED`；局部部分为二次多项式/Hensel 论证，全素数扩展使用一般有限复杂度素数定理 |
 | [F3D-POLY-1 / 2 / 3 / 4](docs/proofs/f3d/polynomial_realization/theorem.md) | 对 $F_{3,D}(n,d)=v_3(n+d)-v_3(n-d)$：给出四次精确层检测器；完全分类固定整数多项式对可实现的单输入函数为“两端最终整数仿射”；证明层平移、绝对值、取正部、精确零层检测的最低次数分别为 $1,2,3,4$，并排除 $t^2$ 与固定双输入 $F$ 乘法器 | `PAPER-AUDITED`；依赖标准三进赋值、Hensel 与完备赋值域扩张唯一性，无新增 Lean 证明 |
 | [F3D-MULTI-1 / 2 / 3 / 4](docs/proofs/f3d/multivariate_tropical/theorem.md) | 多输入 $F_{3,D}$：二次判断 $F>0$；固定多项式实现 min/max、批量最小值与第一极小位置；完全分类任意固定有限输入的全域可实现函数为有限整数热带表达式；所有可实现函数具有统一 Lipschitz 界，因此无界条件开关不可实现而固定幅度开关可实现 | `PAPER-AUDITED`；依赖三进赋值与有限 Lagrange 插值，无新增 Lean 证明 |
-| [F3-MOM-1 / 2 / 3](docs/proofs/f3/prime_depth_moments/theorem.md) | 固定共享根全素数族中建立增长深度的一致尾界、指数加权总变差与全部固定阶矩收敛；显式协方差公式恢复根距离矩阵，并在共享根模型中确定完整联合深度律 | `PAPER-AUDITED`；以前序固定形状素数主项/固定精度分布为输入，新增 Selberg 上界筛尾控制与矩传递 |
+| [F3-MOM-1 / 2 / 3 / 4](docs/proofs/f3/prime_depth_moments/theorem.md) | 固定共享根全素数族中：一致尾界与乘积单射给出更强极深尾；指数加权收敛范围提升到 $\eta<1/(q-1)$；协方差恢复根距离；有限根树给出多元有理概率生成函数，并在 $|z_i|<3^{1/(q-1)}$ 的紧多圆盘上得到全素数生成函数一致收敛 | `PAPER-AUDITED`；以前序固定形状素数主项/固定精度分布为输入，新增 Selberg 尾控制、唯一分解尾界、矩传递与生成函数证明 |
 | [F3-PEAK-1 / 2 / 3 / 4](docs/proofs/f3/effective_peak_separation/theorem.md) | 固定普通整数双根轨道中，第二极值具有全范围有效的 (log_3N+O(1)) 界；给出双峰整除分离、根反射定位、完整 (3^T) 区段剔除恒等式、负整数迹直方图及超临界峰有效 (O(loglog X)) 稀疏界 | `PAPER-AUDITED`；核心为初等整数/三进证明，Hensel 只用于任意高孤峰构造 |
 | [F3D-DEG-1 … 6](docs/proofs/f3d/degree_tensorization/theorem.md) | 固定整数多项式实现的总次数理论：独立输入截面次数下界可相加；有符号和外套一元函数精确张量化；(min/max) 最低 6 次，而 (kmin/kmax) 在 (kge2) 时最低 (2k) 次；另有不可除 (k) 与 (p=2) 低次检测差异 | `PAPER-AUDITED`；依赖 F3D-POLY / F3D-MULTI 的书面接口，无新增 Lean 证明 |
+| [F3-WIN-1 … 6](docs/proofs/f3/sliding_windows_covariance/theorem.md) | 固定整数双根轨道的滑动窗口结构：精确双峰容量、完整二点联合尾、所有窗口最佳第二峰、统一单峰剔除律、平移协方差闭式，以及“协方差恢复 $d$ 但不恢复 $n$”的相位丢失定理 | `PAPER-AUDITED`；核心为初等三进/剩余类证明，结式文献仅作背景定位 |
+| [F3D-TERN-1 … 6](docs/proofs/f3d/ternary_minima_norm_forms/theorem.md) | 三输入最小值的精确次数谱 $9,10,9$；两倍最小值具有额外分母代价；有限域范数给 $k\ge m$ 时 $\mathfrak d_m(k)=mk$；分组范数给一倍 $m$ 输入最小值的 $O(m^{3/2})$ 上界 | `PAPER-AUDITED`；依赖 F3D-DEG 的次数下界与经典有限域范数/低次数零点背景，无新增 Lean 证明 |
 
 F3-PAT-1 可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超过任意给定下界。该结论保留可变步长，不包含固定 $d=1$ 的无穷性。
 
@@ -263,6 +265,10 @@ F3D-POLY：[PDF 版](docs/proofs/f3d/polynomial_realization/paper.pdf) · [完�
 F3D-MULTI：[PDF 版](docs/proofs/f3d/multivariate_tropical/paper.pdf) · [完整证明](docs/proofs/f3d/multivariate_tropical/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3d/multivariate_tropical/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3d/multivariate_tropical/formalization.md)
 
 F3-MOM：[PDF 版](docs/proofs/f3/prime_depth_moments/paper.pdf) · [完整证明](docs/proofs/f3/prime_depth_moments/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/prime_depth_moments/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/prime_depth_moments/formalization.md)
+
+F3-WIN：[PDF 版](docs/proofs/f3/sliding_windows_covariance/paper.pdf) · [完整证明](docs/proofs/f3/sliding_windows_covariance/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/sliding_windows_covariance/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/sliding_windows_covariance/formalization.md)
+
+F3D-TERN：[PDF 版](docs/proofs/f3d/ternary_minima_norm_forms/paper.pdf) · [完整证明](docs/proofs/f3d/ternary_minima_norm_forms/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3d/ternary_minima_norm_forms/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3d/ternary_minima_norm_forms/formalization.md)
 
 F3-PEAK：[PDF 版](docs/proofs/f3/effective_peak_separation/paper.pdf) · [完整证明](docs/proofs/f3/effective_peak_separation/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/effective_peak_separation/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/effective_peak_separation/formalization.md)
 
