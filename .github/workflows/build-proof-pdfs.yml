@@ -20,15 +20,42 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
 
-      - name: Install XeLaTeX and CJK support
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-fonts-recommended fonts-noto-cjk poppler-utils
-
-      - name: Build all proof PDFs
+      - name: Select proof PDFs to build
         shell: bash
         run: |
           set -euo pipefail
+          : > /tmp/proof-tex-files
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            find docs/proofs -name paper.tex -print | sort > /tmp/proof-tex-files
+          else
+            before="${{ github.event.before }}"
+            if [[ -z "$before" || "$before" =~ ^0+$ ]]; then
+              find docs/proofs -name paper.tex -print | sort > /tmp/proof-tex-files
+            else
+              git diff --name-only "$before" "${GITHUB_SHA}" -- 'docs/proofs/**/paper.tex'                 | sort -u > /tmp/proof-tex-files
+            fi
+          fi
+          echo "Selected sources:"
+          cat /tmp/proof-tex-files
+
+      - name: Install XeLaTeX and CJK support
+        if: hashFiles('/tmp/proof-tex-files') != ''
+        run: |
+          if [[ ! -s /tmp/proof-tex-files ]]; then
+            echo "No proof PDFs need rebuilding."
+            exit 0
+          fi
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-fonts-recommended fonts-noto-cjk poppler-utils
+
+      - name: Build changed proof PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! -s /tmp/proof-tex-files ]]; then
+            echo "No changed paper.tex files."
+            exit 0
+          fi
           while IFS= read -r tex; do
             dir="$(dirname "$tex")"
             echo "Building $tex"
@@ -44,15 +71,21 @@ jobs:
               rm -rf "$render_dir"
               rm -f paper.aux paper.log paper.out paper.toc
             )
-          done < <(find docs/proofs -name paper.tex -print | sort)
+          done < /tmp/proof-tex-files
 
       - name: Commit generated PDFs
         shell: bash
         run: |
           set -euo pipefail
+          if [[ ! -s /tmp/proof-tex-files ]]; then
+            echo "No PDF changes."
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          find docs/proofs -name paper.pdf -print0 | xargs -0 git add
+          while IFS= read -r tex; do
+            git add "${tex%.tex}.pdf"
+          done < /tmp/proof-tex-files
           if git diff --cached --quiet; then
             echo "No PDF changes."
             exit 0
