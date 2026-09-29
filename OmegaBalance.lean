@@ -20,5 +20,6 @@ import OmegaBalance.F3CorrelationLimit
 import OmegaBalance.F3CorrelationCesaro
 import OmegaBalance.F3CorrelationCesaroLimit
 import OmegaBalance.F3CorrelationTail
+import OmegaBalance.F3CorrelationTailMean
 import OmegaBalance.F3Infinitude
 import OmegaBalance.F3SignChanges

@@ -282,6 +282,18 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.v3Excess_sq_eq_odd_sum
 #print axioms OmegaBalance.pow_three_dvd_iff_lt_v3Excess
 
+-- Finite counting and geometric bounds for the L2 tail mean.
+#print axioms OmegaBalance.card_filter_Icc_dvd_pow_three
+#print axioms OmegaBalance.card_filter_Icc_lt_v3Excess
+#print axioms OmegaBalance.odd_geometric_partial_sum_real
+#print axioms OmegaBalance.odd_geometric_partial_sum_le_one
+#print axioms OmegaBalance.odd_weighted_floor_sum_le
+#print axioms OmegaBalance.v3Excess_le_self
+#print axioms OmegaBalance.v3Excess_sq_eq_odd_sum_real
+#print axioms OmegaBalance.v3Excess_sq_eq_indicator_sum
+#print axioms OmegaBalance.sum_Icc_v3Excess_sq_eq_weighted_floor
+#print axioms OmegaBalance.sum_Icc_v3Excess_sq_le
+
 -- Kernel regressions and a universal impossibility theorem.
 #print axioms OmegaBalance.f3_eleven
 #print axioms OmegaBalance.f3_thirty_five
