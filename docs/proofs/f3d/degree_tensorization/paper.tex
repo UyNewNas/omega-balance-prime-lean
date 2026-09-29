@@ -1,0 +1,294 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newtheorem{theorem}{定理}
+\title{\bfseries \(F_{3,D}\) 的次数张量化、最优双输入运算\\与放大降次现象}
+\author{研究札记 · F3D-DEG}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+\begin{abstract}
+本文研究全域固定整数多项式实现的最小总次数。首先证明数值放大可能降低单位输出的实现复杂度：\(t_+\) 的最低次数为 \(3\)，而 \(k t_+\) 在 \(k\ge2\) 时最低次数恰为 \(k\)。核心结构定理说明，独立输入的单变量截面次数下界可以相加；由此得到有符号和外套任意一元实现时的精确张量化公式。作为应用，双输入 \(\min/\max\) 的最低次数为 \(6\)，而 \(k\min/k\max\) 在 \(k\ge2\) 时最低次数为 \(2k\)。另证明固定多项式不能在 \(k\mathbb Z\) 层上实现除以 \(k\)，并指出 \(p=2\) 的精确单位层检测比 \(p=3\) 低两次。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+\end{abstract}
+
+\section{次数与单输入齐次归约}
+令
+\[
+\mathcal D=\{(n,d):(n+d)(n-d)\ne0\},
+\qquad
+F(n,d)=v_3(n+d)-v_3(n-d).
+\]
+对可实现 \(g:\mathbb Z^m\to\mathbb Z\)，定义 \(\deg_F(g)\) 为实现它的固定整数多项式对的最小最大总次数。
+
+单输入时，若非齐次数对次数至多 \(D\)，取输出和差 \(U=P+Q,V=P-Q\) 的最低非零齐次部分。对
+\[
+X\mapsto3^sX
+\]
+缩放时输入 \(F\) 不变；输出中线性于 \(s\) 的次数差必须为零，所以两侧最低齐次次数相同。其商给出不更高次的既约有理函数实现。反向齐次化也不增加次数。
+
+若
+\[
+R(x)=A(x)/B(x)
+\]
+实现一元 \(h(v_3(x))\)，则正端斜率等于
+\[
+\operatorname{ord}_0A-\operatorname{ord}_0B,
+\]
+负端斜率等于
+\[
+\deg A-\deg B.
+\]
+因此尾斜率直接给出次数下界。
+
+\section{放大取正部}
+定义
+\[
+Q_2(u,v)=u^2+v^2,
+\qquad
+Q_3(u,v)=u^3-uv^2+v^3.
+\]
+两者满足
+\[
+v_3(Q_j(u,v))
+=
+j\min(v_3(u),v_3(v)).
+\]
+每个 \(k\ge2\) 可写为
+\[
+k=2a+3b,\qquad b\in\{0,1\}.
+\]
+令
+\[
+H_k=Q_2^aQ_3^b.
+\]
+则
+\[
+v_3(H_k)=k\min(v_3(u),v_3(v)).
+\]
+
+取
+\[
+\mathcal R_k=
+(u^k+H_k,u^k-H_k).
+\]
+于是
+\[
+\boxed{
+F(\mathcal R_k)=k\max(F(n,d),0).
+}
+\]
+次数为 \(k\)，而正端斜率也强迫下界 \(k\)。因此
+\[
+\boxed{
+\deg_F(k t_+)
+=
+\begin{cases}
+3,&k=1,\\
+k,&k\ge2.
+\end{cases}
+}
+\]
+
+\section{独立输入次数下界可相加}
+对 \(g:\mathbb Z^m\to\mathbb Z\)，固定除第 \(i\) 个坐标外的其他值 \(c\)，记截面为 \(g_{i,c}\)，并定义
+\[
+\delta_i(g)=\sup_c\deg_F(g_{i,c}).
+\]
+
+设 \(P,Q\) 是次数至多 \(D\) 的实现，\(U=P+Q,V=P-Q\)。按每组输入变量作多齐次分解。选择正整数权重 \(w_i\)，使所有出现的多重次数 \(\alpha\) 的权重
+\[
+w\cdot\alpha
+\]
+互不相同。
+
+独立缩放
+\[
+X_i\mapsto3^{sw_i}X_i
+\]
+保持全部输入 \(F_i\) 不变。对 \(s\) 足够大，\(U,V\) 各自唯一最低权多齐次分量控制赋值。输出不随 \(s\) 改变，迫使两侧最低权多重次数相同，记为 \(\alpha\)。
+
+再固定其他输入的任意 \(F\)-壳层，并利用完整整数同余类的 Zariski 稠密性选择代表，使两侧作为第 \(i\) 组变量的多项式都不恒零。由单输入齐次归约得到
+\[
+\deg_F(g_{i,c})\le\alpha_i.
+\]
+所以
+\[
+\boxed{
+\deg_F(g)
+\ge
+\sum_{i=1}^m\delta_i(g).
+}
+\]
+
+\section{有符号和的精确张量化}
+若一元 \(h\) 可实现，\(\epsilon_i\in\{\pm1\}\)，\(r\in\mathbb Z\)，则每个单坐标截面都与 \(h\) 通过一次可逆层平移/符号翻转等价，因此下界为
+\[
+m\deg_F(h).
+\]
+
+上界先定义
+\[
+A=\prod_i(n_i+\epsilon_id_i),
+\qquad
+B=\prod_i(n_i-\epsilon_id_i),
+\]
+以及
+\[
+Z=(3^{r_+}A+3^{(-r)_+}B,\,
+   3^{r_+}A-3^{(-r)_+}B).
+\]
+则
+\[
+F(Z)=\sum_i\epsilon_iF(X_i)+r.
+\]
+再只应用一次最优齐次 \(h\) 实现，得到
+\[
+\boxed{
+\deg_F\left(
+h\left(\sum_i\epsilon_it_i+r\right)
+\right)
+=
+m\deg_F(h).
+}
+\]
+
+\section{双输入 min/max 的精确次数}
+令
+\[
+U=u_1v_2,\qquad
+W=u_2v_1,\qquad
+C=v_1v_2,\qquad
+A=u_1u_2.
+\]
+设
+\[
+K_2=U^2+3W^2,
+\qquad
+K_3=U^3+3W^3.
+\]
+六次数对
+\[
+(K_3+CK_2,K_3-CK_2)
+\]
+实现
+\[
+\min(t,s),
+\]
+而
+\[
+(AK_2+K_3,AK_2-K_3)
+\]
+实现
+\[
+\max(t,s).
+\]
+固定另一个输入的 \(F\) 为零，每个截面都是 \(\min(t,0)\) 或 \(\max(t,0)\)，最低次数为 \(3\)。独立截面下界相加给
+\[
+\boxed{
+\deg_F(\min(t,s))
+=
+\deg_F(\max(t,s))
+=
+6.
+}
+\]
+
+对 \(k\ge2\)，用前节 \(H_k(U,W)\) 得到总次数 \(2k\) 的构造：
+\[
+(H_k(U,W)+C^k,H_k(U,W)-C^k)
+\]
+实现
+\[
+k\min(t,s),
+\]
+对应最大值同理。截面下界给出最优性：
+\[
+\boxed{
+\deg_F(k\min(t,s))
+=
+\deg_F(k\max(t,s))
+=
+2k.
+}
+\]
+
+\section{进一步精确次数}
+由张量化定理与单输入基础次数：
+\[
+\deg_F(t\pm s)=2,
+\qquad
+\deg_F(|t-s|)=4,
+\]
+\[
+\deg_F(\mathbf1_{t>s})
+=
+\deg_F(\mathbf1_{t\ge s})
+=
+4,
+\]
+\[
+\deg_F(\mathbf1_{t=s})=8.
+\]
+更一般地，
+\[
+\deg_F\left|\sum_i\epsilon_it_i+r\right|=2m,
+\]
+\[
+\deg_F\mathbf1_{\{\sum_i\epsilon_it_i>r\}}=2m,
+\]
+\[
+\deg_F\max\left(\sum_i\epsilon_it_i+r,0\right)=3m,
+\]
+\[
+\deg_F\mathbf1_{\{\sum_i\epsilon_it_i=r\}}=4m.
+\]
+
+\section{不存在固定多项式除 \(k\) 器}
+固定 \(k\ge2\)。即使只要求在
+\[
+F(X)\in k\mathbb Z
+\]
+的输入上成立，也不存在固定整数多项式对 \(T\) 满足
+\[
+F(T(X))=F(X)/k.
+\]
+取
+\[
+X_m=(3^{km}+1,3^{km}-1),
+\qquad F(X_m)=km.
+\]
+代入 \(T\) 的输出和差后得到两个固定一元整数多项式。充分大 \(m\) 时，其赋值差必为
+\[
+k(a-b)m+c.
+\]
+若等于 \(m\)，则
+\[
+k(a-b)=1,
+\]
+矛盾。
+
+\section{\(p=2\) 的低次单位层检测}
+对 \(F_{2,D}\)，
+\[
+R_2(x)=\frac{x^2+1}{x^2+x+1}
+\]
+满足
+\[
+\boxed{
+v_2(R_2(x))
+=
+\mathbf1_{\{v_2(x)=0\}}.
+}
+\]
+所以 \(p=2\) 的精确单位层检测最低次数为 \(2\)，双输入等值检测最低次数为 \(4\)。对 \(p=3\) 对应次数为 \(4\) 与 \(8\)。
+
+这说明不同素数的可实现函数类相同，但最优实现次数可以不同。
+
+\section{边界}
+次数指原整数多项式数对的最大总次数，不是表达式长度或运行时间。下界要求全域固定公式并且输出只由输入 \(F\) 值决定。热带表示复杂度文献不直接替代这里的总次数下界。
+
+\begin{thebibliography}{9}
+\bibitem{TW} N. M. Tran and J. Wang, \emph{Minimal Representations of Tropical Rational Functions}, Algebraic Statistics 15 (2024).
+\end{thebibliography}
+\end{document}
