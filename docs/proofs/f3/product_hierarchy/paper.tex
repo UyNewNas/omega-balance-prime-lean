@@ -1,0 +1,305 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\renewcommand{\proofname}{证明}
+\newcommand{\Fthree}{F_3}
+\newcommand{\vthree}{v_3}
+\title{\bfseries 任意高阶的低次数刚性\\与总乘积深度分岔}
+\author{研究札记 · F3-HIER}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+\begin{abstract}
+设 \(F_3(m)=v_3(m+1)-v_3(m-1)\)。本文构造一族具有 \(q=3^s\) 个素数端点的固定伸缩形状，使所有总次数小于 \(q\) 的单项式 \(F_3\) 数据完全固定，包括重复因子；但全部 \(q\) 个端点的总乘积深度仍可取任意预先指定的高层。核心机制是：低次数赋值始终停在模 \(3^{k+s}\) 的精度以内，而次数 \(q\) 首次触及边界。最高阶行为进一步由偏移系数和 \(C=\sum c_i\bmod3\) 控制：\(3\mid C\) 时总深度锁死，\(3\nmid C\) 时出现唯一三进根分支。对相应全素数族，得到显式渐近计数与几何深度律；普通等差族与末点移动族甚至拥有完全相同的素数计数主系数，却有不同的最高阶深度分布。
+\end{abstract}
+
+\section{定义与主定理}
+对 \(m>1\)，
+\[
+\Fthree(m)=\vthree(m+1)-\vthree(m-1).
+\]
+固定
+\[
+k,s\ge1,\quad q=3^s,\quad b=k+s,\quad M=3^b,
+\]
+以及
+\[
+W=\prod_{\substack{\ell\le q\\ \ell\ {\rm prime},\ \ell\ne3}}\ell.
+\]
+取
+\[
+(c_0,\ldots,c_{q-1})=(0,1,\ldots,q-2,q),
+\quad p_i=n+MWc_i d.
+\]
+令 \(\mathcal Q_{k,s}(X)\) 为满足 \(X<n,d\le2X\)、\(F_3(n)=k\)，且
+\[
+d,p_0,\ldots,p_{q-1}
+\]
+全部为素数的参数集合。
+
+定义
+\[
+\begin{aligned}
+\kappa_{k,s}:={}&
+\frac4{3^{k+2}}\left(\frac32\right)^{q+1}
+\prod_{\substack{\ell\le q\\\ell\ne3}}
+\left(\frac{\ell}{\ell-1}\right)^{q-1}\\
+&\times
+\prod_{\ell>q}
+\frac{\ell^{q-1}(\ell-q)}{(\ell-1)^q},
+\end{aligned}
+\]
+其中乘积均遍历素数。
+
+\begin{theorem}[F3-HIER-1]
+若 \(\mathbf e=(e_i)\) 为非负整数指数向量，且
+\[
+1\le u:=\sum_i e_i<q,
+\]
+则
+\[
+\boxed{
+\Fthree\!\left(\prod_i p_i^{e_i}\right)
+=(-1)^{u+1}\bigl(k+\vthree(u)\bigr).
+}
+\]
+此外
+\[
+|\mathcal Q_{k,s}(X)|
+=
+(\kappa_{k,s}+o(1))
+\frac{X^2}{(\log X)^{q+1}}.
+\]
+若
+\[
+D=\Fthree\!\left(\prod_{i=0}^{q-1}p_i\right),
+\]
+则对每个固定 \(R\ge k+s\)
+\[
+\#\{D=R\}
+=
+(\kappa_{k,s}w_{k+s}(R)+o(1))
+\frac{X^2}{(\log X)^{q+1}},
+\]
+其中
+\[
+w_b(R)=
+\begin{cases}
+1/2,&R=b,\\
+3^{-(R-b)},&R>b.
+\end{cases}
+\]
+\end{theorem}
+
+\section{幂赋值与低次数刚性}
+\begin{lemma}
+若 \(F_3(n)=k\ge1\)，则对任意 \(u\ge1\)
+\[
+\vthree\bigl(n^u-(-1)^u\bigr)=k+\vthree(u),
+\]
+并且
+\[
+F_3(n^u)=(-1)^{u+1}(k+\vthree(u)).
+\]
+\end{lemma}
+\begin{proof}
+令 \(U=-n\in1+3\mathbb Z_3\)，则 \(v_3(U-1)=k\)。写 \(u=3^ta\)，\(3\nmid a\)。对 \(V\equiv1\pmod3\)，
+\[
+V^3-1=(V-1)(V^2+V+1),
+\]
+而 \(v_3(V^2+V+1)=1\)，故每立方一次赋值恰增加 \(1\)。于是
+\[
+v_3(U^{3^t}-1)=k+t.
+\]
+再因 \(3\nmid a\)，几何和 \((X^a-1)/(X-1)\) 在 \(X\equiv1\pmod3\) 时为单位，得到结论。
+\end{proof}
+
+若所有端点满足
+\[
+p_i\equiv n\pmod{3^{k+s}},
+\]
+则对单项式 \(P=\prod p_i^{e_i}\)
+\[
+P\equiv n^u\pmod{3^{k+s}}.
+\]
+当 \(u<3^s\) 时
+\[
+\vthree(u)\le s-1,
+\]
+所以
+\[
+k+\vthree(u)<k+s.
+\]
+因此模 \(3^{k+s}\) 已足以固定该精确赋值，主定理的低次数公式成立。
+
+次数 \(q=3^s\) 时
+\[
+k+\vthree(q)=k+s,
+\]
+恰好首次碰到精度边界。
+
+\section{系数和控制最高阶}
+更一般地取
+\[
+p_i=n+MWc_i d,\qquad C=\sum_i c_i,
+\]
+其中 \(3\nmid W\)。由
+\[
+v_3(n^q+1)=k+s
+\]
+定义
+\[
+A(n)=\frac{n^q+1}{M}\in\mathbb Z_3^\times.
+\]
+展开总乘积可写成
+\[
+\prod_i p_i+1=M G_n(d),
+\]
+其中
+\[
+\boxed{
+G_n(d)=A(n)+WCn^{q-1}d+M H_n(d).
+}
+\]
+由于 \(q\) 为奇数，
+\[
+\Fthree\!\left(\prod_i p_i\right)=k+s+v_3(G_n(d)).
+\]
+
+若 \(3\mid C\)，则
+\[
+G_n(d)\equiv A(n)\not\equiv0\pmod3,
+\]
+所以总深度恒为 \(k+s\)。
+
+若 \(3\nmid C\)，则
+\[
+G_n(d)\equiv A(n)+WCd\pmod3
+\]
+且
+\[
+G_n(d)-G_n(e)
+=(d-e)\bigl(WCn^{q-1}+MK_n(d,e)\bigr).
+\]
+括号恒为单位，因此
+\[
+v_3(G_n(d)-G_n(e))=v_3(d-e).
+\]
+于是 \(G_n\) 是 \(\mathbb Z_3\) 上等距双射，存在唯一单位根 \(d_*(n)\)，且
+\[
+\boxed{
+\Fthree\!\left(\prod_i p_i\right)
+=
+k+s+v_3(d-d_*(n)).
+}
+\]
+
+普通系数 \(0,1,\ldots,q-1\) 的和被 \(3\) 整除；把最后一个点从 \(q-1\) 移到 \(q\)，系数和增加 \(1\)，因此从“锁死”切换为“开放根分支”，而低次数数据完全不变。
+
+\section{全素数计数}
+主形状取
+\[
+W=\prod_{\substack{\ell\le q\\\ell\ne3}}\ell.
+\]
+需要同时为素数的形式是
+\[
+d,\quad n+MWc_i d.
+\]
+方向 \((0,1)\) 与 \((1,MWc_i)\) 两两不成比例，系统有限复杂。
+
+模 \(3\) 局部因子为
+\[
+\beta_3=\left(\frac32\right)^{q+1}.
+\]
+对 \(\ell\le q,\ell\ne3\)，因 \(\ell\mid W\)，所有偏移归零，仅需 \(n,d\) 为单位，得到
+\[
+\beta_\ell=\left(\frac{\ell}{\ell-1}\right)^{q-1}.
+\]
+对 \(\ell>q\)，\(c_i\) 模 \(\ell\) 两两不同，固定 \(d\ne0\) 后 \(n/d\) 需避开 \(q\) 个类，所以
+\[
+\beta_\ell=
+\frac{\ell^{q-1}(\ell-q)}{(\ell-1)^q}
+=
+1+O_q(\ell^{-2}).
+\]
+因此奇异乘积严格为正。
+
+对一个固定允许的模 \(3^A\) 参数类，有限复杂度素数线性形式定理给出
+\[
+\left(\frac{\mathfrak S_q}{3^{2A}}+o(1)\right)
+\frac{X^2}{(\log X)^{q+1}}.
+\]
+满足 \(F_3(n)=k\) 的 \(n\) 类有
+\[
+2\cdot3^{A-k-1},
+\]
+单位 \(d\) 类有
+\[
+2\cdot3^{A-1}.
+\]
+求和得到
+\[
+\kappa_{k,s}=\frac4{3^{k+2}}\mathfrak S_q.
+\]
+
+唯一根分支在单位 \(d\) 中给出
+\[
+\Pr(v_3(G_n(d))=0)=1/2,
+\qquad
+\Pr(v_3(G_n(d))=t)=3^{-t}\quad(t\ge1).
+\]
+固定深度事件由有限模类决定，而每个允许类具有相同素数主系数，因此该比例原样转移到全素数集合。
+
+\section{同主系数对照族}
+比较
+\[
+(0,1,\ldots,q-1)
+\]
+与
+\[
+(0,1,\ldots,q-2,q).
+\]
+对于每个 \(\ell\le q,\ell\ne3\)，两族偏移都被 \(\ell\) 整除；对于 \(\ell>q\)，两族都给出 \(q\) 个互异排除类。因此每个素数处的局部因子完全相同，全素数主系数也相同。
+
+然而普通族总深度恒为 \(k+s\)，移动族具有无限几何尾。这证明“相同低次数数据 + 相同素数计数主项”仍不足以决定最高阶深度分布。
+
+\section{九端点与有限次数截断}
+当 \(k=1,s=2\) 时
+\[
+q=9,\quad W=70,\quad M=27,
+\]
+所以
+\[
+p_i=n+1890c_i d,\qquad
+(c_i)=(0,1,2,3,4,5,6,7,9).
+\]
+总次数 \(1,\ldots,8\) 的固定值为
+\[
+1,-1,2,-1,1,-2,1,-1.
+\]
+非空真子集有 \(510\) 个，含重复因子的低次数单项式共有
+\[
+\binom{17}{8}-1=24309.
+\]
+
+更一般地，给定任意次数上限 \(L\)，取 \(3^s>L\)，就得到全部次数 \(\le L\) 的 \(F_3\) 数据固定、而总乘积深度无界的全素数族。
+
+\section{边界}
+本文的全素数结论使用已有有限复杂度线性形式理论。\(q=3\) 时 Green--Tao 2010 的复杂度至多 \(2\) 无条件结果已经够用；一般 \(q\) 使用后续完成的一般有限复杂度版本。
+
+固定 \(d\) 后系统退化为一变量仿射相关问题，本文不推出固定间距素数簇结论。
+
+本稿状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+
+\begin{thebibliography}{9}
+\bibitem{GT10} Ben Green and Terence Tao, \emph{Linear equations in primes}, Ann. of Math. 171 (2010), 1753--1850.
+\bibitem{GT12} Ben Green and Terence Tao, \emph{The Möbius function is strongly orthogonal to nilsequences}, Ann. of Math. 175 (2012), 541--566.
+\bibitem{GTZ12} Ben Green, Terence Tao and Tamar Ziegler, \emph{An inverse theorem for the Gowers \(U^{s+1}[N]\)-norm}, Ann. of Math. 176 (2012), 1231--1372.
+\end{thebibliography}
+\end{document}
+
+% final-proof-pdf-build

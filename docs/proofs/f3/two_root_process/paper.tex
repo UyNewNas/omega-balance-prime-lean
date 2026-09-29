@@ -1,0 +1,360 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\renewcommand{\proofname}{证明}
+\newcommand{\Fthree}{F_3}
+\newcommand{\vthree}{v_3}
+\title{\bfseries 平移乘积过程的双根坐标、\\联合深度律与可逆重建}
+\author{研究札记 · F3-ROOT}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+\begin{abstract}
+本文研究配对乘积
+\[
+a_j=n+2j3^k d,\qquad
+b_j=n+(2j3^k+2)d,\qquad
+D_j=F_3(a_jb_j).
+\]
+在前两组进入深层的分支上，归一化后的 \(Q_j=a_jb_j+1\) 是模 \(3\) 等于 \(j(j-1)\) 的首一二次多项式，因此具有两个唯一提升的简单三进根。整条无限深度序列被两个根精确控制，形成两条可升层分支与一条恒定分支。两个根在条件 Haar 测度下独立均匀，由此得到所有有限门槛事件的闭式联合律；反过来，完整深度序列可恢复两个根并显式重建原参数。把结构扩展到六个素数位置时出现强制的模 \(5\) 障碍，令 \(d=5r\) 后可恢复七素数全局实现，并得到模式 \((3,4,2)\) 的渐近比例 \(2/729\)。
+\end{abstract}
+
+\section{二次平移乘积}
+固定 \(k\ge1\)，令
+\[
+q=3^k.
+\]
+定义
+\[
+a_j=n+2jqd,\qquad
+b_j=n+(2jq+2)d,
+\]
+\[
+Q_j=a_jb_j+1.
+\]
+展开得
+\[
+\boxed{
+Q_j=4q^2d^2j^2+4qd(n+d)j+Q_0.
+}
+\]
+所以
+\[
+Q_{j+2}-2Q_{j+1}+Q_j=8q^2d^2.
+\]
+
+定义基础分支
+\[
+E_k:\quad
+d\equiv1\pmod3,\qquad
+v_3(Q_0),v_3(Q_1)\ge2k+1.
+\]
+在 \(E_k\) 上自动有 \(n\equiv2\pmod3\)，从而
+\[
+a_j\equiv2,\qquad b_j\equiv1\pmod3,
+\]
+因此
+\[
+D_j:=F_3(a_jb_j)=v_3(Q_j).
+\]
+
+由于 \(v_3(8q^2d^2)=2k\)，而 \(Q_0,Q_1\) 的赋值至少为 \(2k+1\)，二阶差分立即给出
+\[
+\boxed{D_2=2k.}
+\]
+
+\section{双根因子分解}
+定义
+\[
+P(X)=\frac{Q_X}{4q^2d^2}
+=X^2+BX+C,
+\]
+其中
+\[
+B=\frac{n+d}{qd},
+\qquad
+C=\frac{Q_0}{4q^2d^2}.
+\]
+由
+\[
+Q_1-Q_0=4qd(n+d+qd)
+\]
+和 \(E_k\) 得
+\[
+B\equiv-1\pmod3,\qquad C\equiv0\pmod3.
+\]
+所以
+\[
+P(X)\equiv X(X-1)\pmod3.
+\]
+模 \(3\) 的两个根 \(0,1\) 都是简单根，Hensel 提升给出唯一
+\[
+r_0\in3\mathbb Z_3,\qquad
+r_1\in1+3\mathbb Z_3.
+\]
+于是
+\[
+\boxed{
+Q_j=4q^2d^2(j-r_0)(j-r_1)
+}
+\]
+以及
+\[
+\boxed{
+D_j=2k+v_3(j-r_0)+v_3(j-r_1).
+}
+\]
+
+写
+\[
+r_0=3Z_0,\qquad r_1=1+3Z_1,
+\]
+得到
+\[
+\boxed{
+\begin{aligned}
+D_{3u}&=2k+1+v_3(u-Z_0),\\
+D_{3u+1}&=2k+1+v_3(u-Z_1),\\
+D_{3u+2}&=2k.
+\end{aligned}}
+\]
+
+\section{根坐标与参数反演}
+令
+\[
+\sigma=r_0+r_1,\qquad
+\delta=r_1-r_0.
+\]
+比较二次多项式线性系数：
+\[
+\frac{n+d}{qd}=-\sigma,
+\]
+故
+\[
+\boxed{n=-d(1+q\sigma).}
+\]
+判别式满足
+\[
+\delta^2
+=
+\frac{(n+d)^2-(n(n+2d)+1)}{q^2d^2}
+=
+\frac{d^2-1}{q^2d^2}.
+\]
+因此
+\[
+\boxed{
+d=(1-q^2\delta^2)^{-1/2},
+}
+\]
+取唯一的 \(d\equiv1\pmod3\) 分支。
+
+反过来，任意
+\[
+r_0\in3\mathbb Z_3,\qquad
+r_1\in1+3\mathbb Z_3
+\]
+都由这两个公式给出唯一的 \(E_k\) 参数。因此
+\[
+E_k\longleftrightarrow\mathbb Z_3^2
+\]
+具有显式双射坐标。
+
+\section{独立 Haar 根与联合尾分布}
+令
+\[
+S=Z_0+Z_1,\qquad
+\Delta=Z_1-Z_0.
+\]
+则
+\[
+\sigma=1+3S,\qquad
+\delta=1+3\Delta.
+\]
+由反演公式
+\[
+\frac{\partial d}{\partial\Delta}
+=
+3q^2\delta d^3,
+\]
+故其赋值为 \(2k+1\)；而
+\[
+\frac{\partial n}{\partial S}
+=
+-3qd
+\]
+的赋值为 \(k+1\)。
+
+坐标变换 \((Z_0,Z_1)\mapsto(S,\Delta)\) 的行列式为单位 \(2\)，因此总 Jacobian 的赋值恒为
+\[
+3k+2.
+\]
+所以条件于 \(E_k\) 后，\((Z_0,Z_1)\) 正是 \(\mathbb Z_3^2\) 上的乘积 Haar 坐标；同时
+\[
+\mu(E_k)=3^{-(3k+2)}.
+\]
+
+令 \(L=2k+1\)。则
+\[
+D_{3u}\ge L+t
+\iff
+Z_0\equiv u\pmod{3^t},
+\]
+\[
+D_{3u+1}\ge L+t
+\iff
+Z_1\equiv u\pmod{3^t}.
+\]
+同一根上的有限球条件要么不相容，要么等于最深的那个球。若两个分支内部均相容，所有门槛联合概率为
+\[
+\boxed{
+3^{-(T_0+T_1)},
+}
+\]
+其中 \(T_c\) 是第 \(c\) 个根分支上的最大门槛深度；若不相容则概率为 \(0\)。
+
+\section{完整区段层级计数}
+对 \(1\le t\le T\)，
+\[
+D_j\ge2k+t
+\]
+等价于
+\[
+j\equiv r_0\quad\text{或}\quad r_1\pmod{3^t}.
+\]
+两个类不相交，所以任意连续 \(3^T\) 个索引中
+\[
+\boxed{
+\#\{j:D_j\ge2k+t\}
+=
+2\cdot3^{T-t}.
+}
+\]
+特别地，连续九项中恰有三项等于 \(2k\)、四项等于 \(2k+1\)、两项至少为 \(2k+2\)。
+
+\section{深度序列可逆恢复参数}
+在
+\[
+0\le j<3^T
+\]
+中，满足
+\[
+D_j\ge2k+T
+\]
+的恰有两个位置，它们分别给出
+\[
+r_0\bmod3^T,\qquad r_1\bmod3^T.
+\]
+模 \(3\) 余数 \(0,1\) 区分两根。
+
+因此整条 \((D_j)_{j\ge0}\) 恢复 \(r_0,r_1\)，再由反演公式恢复 \(n,d\)。
+
+若根已知模 \(3^T\)，则
+\[
+d\bmod3^{2k+T},
+\qquad
+n\bmod3^{k+T}
+\]
+均可恢复。
+
+逐位恢复时，每个根的下一位有三个候选，测试两个后第三个可由排除确定，因此从模 \(3\) 提升到模 \(3^T\) 最多需要
+\[
+\boxed{4(T-1)}
+\]
+次自适应阈值查询。
+
+\section{六位置的模 \(5\) 障碍}
+取 \(k=1\)。前三组六个位置是
+\[
+n,\ n+2d,\ n+6d,\ n+8d,\ n+12d,\ n+14d.
+\]
+系数
+\[
+\{0,2,6,8,12,14\}
+\]
+模 \(5\) 覆盖全部五个剩余类。若 \(5\nmid d\)，乘以 \(d\) 是模 \(5\) 置换，所以六个位置中必有一个被 \(5\) 整除。
+
+若六个位置都大于 \(5\) 且均为素数，则必有
+\[
+\boxed{5\mid d.}
+\]
+而 \(E_1\) 又要求 \(d\equiv1\pmod3\)，所以 \(d\) 本身不能是素数。
+
+\section{七素数修复与 \(2/729\)}
+令
+\[
+d=5r.
+\]
+考虑
+\[
+r,\ n,\ n+10r,\ n+30r,\ n+40r,\ n+60r,\ n+70r.
+\]
+这些方向两两不同。
+
+模 \(2\)、模 \(5\) 均显然可容许；模 \(3\) 的允许类恰为
+\[
+(n,r)\equiv(1,1),(2,2),
+\]
+占 \(2/9\)。对 \(\ell\ge7\)，固定 \(r\ne0\) 后六个端点最多排除六个 \(n/r\) 类，而 \(6<\ell\)。所以奇异乘积严格为正。
+
+由一般有限复杂度素数线性形式定理，
+\[
+\#\mathcal P(X)
+=
+(\mathfrak S+o(1))
+\frac{X^2}{(\log X)^7},
+\qquad \mathfrak S>0.
+\]
+
+在 \(k=1\) 时
+\[
+\mu(E_1)=3^{-5}.
+\]
+条件于 \(E_1\)，
+\[
+D_0=3
+\]
+的概率为 \(2/3\)，
+\[
+D_1=4
+\]
+的概率为 \(2/9\)，且两个根独立；\(D_2=2\) 自动成立。所以精确事件的绝对三进测度为
+\[
+3^{-5}\cdot\frac23\cdot\frac29
+=
+\frac4{3^8}.
+\]
+除以整个七素数系统模 \(3\) 的允许域 \(2/9\)，得到
+\[
+\boxed{
+\Pr((D_0,D_1,D_2)=(3,4,2)\mid\text{七形式全素})
+\to\frac2{729}.
+}
+\]
+
+有限见证：
+\[
+n=208049,\qquad r=47,\qquad d=235.
+\]
+\(47\) 与六个位置
+\[
+208049,\ 208519,\ 209459,\ 209929,\ 210869,\ 211339
+\]
+全部为素数，前三组深度为 \((3,4,2)\)。
+
+\section{文献边界}
+二次多项式 \(p\)-进赋值树的两条无限分支已有一般分类；随机 \(p\)-进多项式根的分布与相关性也已有独立研究。本文不把“双根”本身视为新发现，所固化的是这个特定 \(F_3\) 平移乘积过程的显式根坐标、联合律、可逆重建和全素数局部障碍。
+
+本稿状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+
+\begin{thebibliography}{9}
+\bibitem{BHS} Will Boultinghouse et al., \emph{The \(p\)-Adic Valuation Trees for Quadratic Polynomials for Odd Primes}, arXiv:2309.16637.
+\bibitem{Caruso} Xavier Caruso, \emph{Where are the zeroes of a random \(p\)-adic polynomial?}, arXiv:2110.03942.
+\bibitem{GT10} Ben Green and Terence Tao, \emph{Linear equations in primes}, Ann. of Math. 171 (2010), 1753--1850.
+\bibitem{GTZ12} Ben Green, Terence Tao and Tamar Ziegler, \emph{An inverse theorem for the Gowers \(U^{s+1}[N]\)-norm}, Ann. of Math. 176 (2012), 1231--1372.
+\end{thebibliography}
+\end{document}
