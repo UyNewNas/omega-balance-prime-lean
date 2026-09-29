@@ -231,10 +231,16 @@ python3 scripts/verify.py
 | 编号 | 数学结论 | 状态与外部依赖 |
 |---|---|---|
 | [F3-PAT-1](docs/proofs/f3/four_prime_construction/theorem.md) | 无穷多个正整数参数对 $(n,d)$ 使 $n,n+38d,n+92d,n+146d$ 全为素数，单点 $F_3$ 模式为 $(1,-1,-1,-1)$，三个以 $n$ 为中心的乘积模式为 $(3,5,3)$ | `PAPER-AUDITED`；Green–Tao, *Linear equations in primes*, Corollary 1.7 的无条件复杂度至多 2 情形 |
+| [F3-HI-1 / F3-HI-2](docs/proofs/f3/higher_interactions/theorem.md) | 固定形状 $(n,n+2\cdot3^{k+1}d,n+6\cdot3^{k+1}d)$ 中，三个单点值全为 $k$、三个两两乘积值全为 $-k$，但三因子值具有显式几何深度分布并可取任意 $R\ge k+1$；因此全部二阶数据不能控制三阶输出 | `PAPER-AUDITED`；主计数使用 Green–Tao 复杂度至多 2 的无条件素数线性形式定理 |
+| [F3-HI-3](docs/proofs/f3/higher_interactions/theorem.md#4-定理-f3-hi-3有限剩余模式的素数伸缩实现) | 任意有限的三进单位剩余模式可嵌入某个固定二参数伸缩族，并由无穷多组素数端点及素数步长实现；有限单项式 $F_3$ 模式作为推论得到 | `PAPER-AUDITED`；一般有限复杂度版本依赖 Green–Tao–Ziegler 后续结果 |
 
-可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超过任意给定下界。该结论保留可变步长，不包含固定 $d=1$ 的无穷性。
+F3-PAT-1 可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超过任意给定下界。该结论保留可变步长，不包含固定 $d=1$ 的无穷性。
 
-[完整证明](docs/proofs/f3/four_prime_construction/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/four_prime_construction/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/four_prime_construction/formalization.md)
+F3-HI 在 $k=1$ 时给出固定偏移 $(18,54)$：六个低阶值锁定为 $(1,1,1)$ 与 $(-1,-1,-1)$，而三因子深度的极限比例为 $1/2,1/3,1/9,\ldots$。这些结果同样保留可变素数步长，不推出固定间距素数簇。
+
+F3-PAT-1：[完整证明](docs/proofs/f3/four_prime_construction/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/four_prime_construction/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/four_prime_construction/formalization.md)
+
+F3-HI：[完整证明](docs/proofs/f3/higher_interactions/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/higher_interactions/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/higher_interactions/formalization.md)
 
 ## 猜想地图（未证明）
 
