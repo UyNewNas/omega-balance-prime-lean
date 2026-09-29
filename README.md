@@ -64,16 +64,18 @@ docs/proofs/<topic>/<result>/
 ├── proof.md
 ├── scaffolding.md
 ├── formalization.md
-└── paper.pdf
+├── paper.pdf
+└── paper.tex        # 推荐；使用定制 LaTeX 排版时保留可复现源
 ```
 
-五个文件职责分离：
+核心五件套为四个 Markdown + `paper.pdf`；若使用定制 LaTeX 排版，额外保留 `paper.tex` 作为可复现源：
 
 - `theorem.md`：只保存最终、稳定、精确的定理陈述，标明结果 ID、状态、前提、外部依赖和边界情况。
 - `proof.md`：保存适合数学阅读的干净书面证明。不要混入大量探索历史或 Lean 实现细节。
 - `scaffolding.md`：把证明拆成引理、依赖 DAG 和可逐个核验的局部步骤；这是书面证明与 Lean 之间的脚手架。
 - `formalization.md`：记录每个书面引理对应的目标 Lean 名称、目标模块、完成状态、阻塞依赖和最终核验提交。
 - `paper.pdf`：面向阅读、归档和引用的稳定排版版本。内容应与当前已审计的定理和证明一致；PDF 是书面证明的呈现层，不代表 Lean kernel 验证。
+- `paper.tex`：推荐保留的 PDF 排版源。仓库工作流在它变化时自动构建 `paper.pdf`；简单结果也可采用其他可复现生成方式，但最终 PDF 仍是必需交付物。
 
 简单结果不必机械拆成四个文件；但凡证明较长、依赖外部深定理、或预计需要多轮形式化，优先采用上述结构。
 
