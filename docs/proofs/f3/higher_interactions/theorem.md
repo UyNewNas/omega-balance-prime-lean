@@ -9,7 +9,7 @@
 | Lean 状态 | 尚未形式化；不属于 \`LEAN-PROVED\` |
 | 外部依赖 | Green–Tao 的复杂度至多 2 素数线性形式定理；一般有限模式实现使用后续 Green–Tao–Ziegler 有限复杂度版本 |
 
-[PDF 版](paper.pdf) · [完整证明](proof.md) · [引理 DAG 与审计记录](scaffolding.md) · [形式化计划](formalization.md)
+[PDF 版](paper.pdf) · [PDF 源](paper.tex) · [完整证明](proof.md) · [引理 DAG 与审计记录](scaffolding.md) · [形式化计划](formalization.md)
 
 本包从研究稿 \`docs/f3_balance_research/prime_higher_products.md\` 中抽取并固定最终定理。研究稿保留探索背景；本目录保存稳定定理、完整证明、审计脚手架、形式化计划和 PDF 排版版本。
 
