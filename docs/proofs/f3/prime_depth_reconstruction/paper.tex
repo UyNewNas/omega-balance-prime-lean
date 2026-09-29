@@ -1,0 +1,261 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newtheorem{theorem}{定理}
+\title{\bfseries 共享根深度的有限观测证书\\与采样复杂度}
+\author{研究札记 · F3-REC}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+\begin{abstract}
+固定共享根深度模型
+\[
+R_i=v_3(d-\alpha_i),\qquad L_{ij}=v_3(\alpha_i-\alpha_j)
+\]
+中，本文研究只观察带标签深度向量时如何恢复根距离矩阵。核心事实极为简单：一旦某对深度不同，较小值就等于根距离，因此第一次不等观测就是无误判的精确证书。由此得到几何等待时间、完整矩阵恢复的高概率上界，以及区分距离 \(L\) 与 \(L+1\) 所需的 \(\Omega(3^L)\) 被动样本下界。进一步给出截断深度的精确恢复规则和三个等距根的停止时间闭式。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+\end{abstract}
+
+\section{模型}
+固定
+\[
+b\ge1,\qquad
+R_i=v_3(d-\alpha_i),\qquad
+D_i=b+R_i,
+\]
+以及
+\[
+L_{ij}=v_3(\alpha_i-\alpha_j).
+\]
+所有根是三进单位并在模 \(3\) 下同余。
+
+局部单位域归一化 Haar 模型中，
+\[
+\Pr(R_i=0)=\frac12,\qquad
+\Pr(R_i=t)=3^{-t}\quad(t\ge1).
+\]
+
+\section{一次不等观测就是证书}
+对
+\[
+x=d-\alpha_i,\qquad
+y=d-\alpha_j
+\]
+有
+\[
+x-y=\alpha_j-\alpha_i.
+\]
+强三角不等式给出
+\[
+\min(R_i,R_j)\le L_{ij}.
+\]
+若
+\[
+R_i\ne R_j,
+\]
+则不等赋值时和差取较小值，所以
+\[
+\boxed{
+L_{ij}=\min(R_i,R_j).
+}
+\]
+
+令
+\[
+\Delta=R_i-R_j,\qquad L=L_{ij}.
+\]
+若 \(\Delta=h>0\)，则
+\[
+(R_i,R_j)=(L+h,L),
+\]
+该事件概率是
+\[
+3^{-(L+h)}.
+\]
+负差同理，因此
+\[
+\boxed{
+\Pr(\Delta=0)=1-3^{-L},
+}
+\]
+\[
+\boxed{
+\Pr(\Delta=h)=3^{-(L+|h|)}\quad(h\ne0).
+}
+\]
+所以
+\[
+\boxed{\Pr(R_i\ne R_j)=3^{-L_{ij}}.}
+\]
+
+\section{无误判算法与等待时间}
+扫描独立观测向量。对每一对 \((i,j)\)，首次遇到
+\[
+R_i\ne R_j
+\]
+就记录
+\[
+L_{ij}=\min(R_i,R_j).
+\]
+没有不等观测时只标记“未知”。
+
+单对等待时间 \(\tau_{ij}\) 是参数
+\[
+3^{-L_{ij}}
+\]
+的几何分布：
+\[
+\boxed{
+\Pr(\tau_{ij}>T)
+=
+(1-3^{-L_{ij}})^T,
+\qquad
+\mathbb E\tau_{ij}=3^{L_{ij}}.
+}
+\]
+
+令
+\[
+K=\max_{i\ne j}L_{ij},
+\qquad
+B_m=\binom m2.
+\]
+全矩阵停止时间 \(\tau\) 满足
+\[
+\boxed{
+\Pr(\tau>T)
+\le
+B_me^{-T3^{-K}},
+}
+\]
+\[
+\boxed{
+\mathbb E\tau
+\le
+1+3^K(1+\log B_m).
+}
+\]
+
+\section{被动样本下界}
+考虑两个可能模型，其根距分别为
+\[
+L,\qquad L+1.
+\]
+两分布总变差为
+\[
+\boxed{
+\|\mu_L-\mu_{L+1}\|_{\rm TV}=3^{-L}.
+}
+\]
+它们单次观测的共同质量为
+\[
+1-3^{-L}.
+\]
+所以 \(T\) 次乘积分布共同质量至少
+\[
+(1-3^{-L})^T.
+\]
+任意判别规则的两种错误概率之和至少为该共同质量，因此较大错误率至少
+\[
+\boxed{
+\frac12(1-3^{-L})^T.
+}
+\]
+要求两边都不超过 \(\delta<1/2\) 时，
+\[
+\boxed{
+T
+\ge
+\frac{\log(1/(2\delta))}
+{-\log(1-3^{-L})}
+\ge
+\frac23\,3^L\log(1/(2\delta)).
+}
+\]
+
+\section{截断深度}
+固定
+\[
+H\ge1,\qquad
+Y_i=\min(R_i,H).
+\]
+目标是
+\[
+L^{[H]}_{ij}=\min(L_{ij},H).
+\]
+
+若
+\[
+Y_i\ne Y_j,
+\]
+则较小值未截断，
+\[
+L_{ij}=\min(Y_i,Y_j).
+\]
+若
+\[
+Y_i=Y_j=H,
+\]
+则
+\[
+L_{ij}\ge H.
+\]
+所以两种情况都给精确的截断距离证书。
+
+单次证书概率
+\[
+\boxed{
+\pi_H(L)=
+\begin{cases}
+3^{-L},&L<H,\\
+1/(2\cdot3^{H-1}),&L\ge H.
+\end{cases}
+}
+\]
+于是
+\[
+\boxed{
+\Pr(\text{\(T\) 次后未恢复全部截断距离})
+\le
+B_m\exp\!\left(-\frac{T}{2\cdot3^{H-1}}\right).
+}
+\]
+
+当两个真实距离都至少为 \(H\) 时，截断观测分布完全相同，所以有限精度数据本来就不能恢复 \(H\) 以上的信息。
+
+\section{三个等距根}
+若
+\[
+m=3,\qquad
+L_{12}=L_{13}=L_{23}=L,
+\]
+三个根占共同父球的三个下一层子球。进入两个不同子球以后，三对距离证书全部完成。
+
+容斥得到
+\[
+\boxed{
+\Pr(\tau>T)
+=
+3(1-3^{-L})^T
+-
+2\left(1-\frac32\,3^{-L}\right)^T,
+}
+\]
+以及
+\[
+\boxed{
+\mathbb E\tau
+=
+5\cdot3^{L-1}.
+}
+\]
+
+\section{边界}
+证书正确性是确定性的；只有等待时间使用独立采样模型。本文讨论被动观测，不讨论已知系数后的直接计算，也不把截断恢复冒充无限精度恢复。
+
+\begin{thebibliography}{9}
+\bibitem{Ultra} S. G. Corregidor and A. Martínez-Pérez, work on finite metric and \(k\)-metric bases in ultrametric spaces.
+\end{thebibliography}
+\end{document}
+
+% final-proof-pdf-build
