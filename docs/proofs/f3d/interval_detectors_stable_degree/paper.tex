@@ -1,0 +1,319 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newtheorem{theorem}{定理}
+\title{\bfseries 四次区间检测、有限层集合的稳定次数\\与剩余类核矩阵}
+\author{研究札记 · F3D-STABLE}
+\date{2026 年 9 月 29 日}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+对
+\[
+F_{p,D}(n,d)=v_p(n+d)-v_p(n-d)
+\]
+的全域固定整数多项式实现，本文研究放大目标 \(kg\) 的最低次数增长率。首先在 \(p=3\) 给出任意长度有限整数区间的四次检测器，并证明增益 \(1,2\) 时四次最优。随后在射影剩余树上构造共同深度核矩阵 \(K_r\)，证明所有两端最终常值函数 \(g\) 的稳定次数
+\[
+\lim_{k\to\infty}\deg_p(kg)/k
+\]
+存在，并由一个有限矩阵逆的 \(\ell^1\) 范数精确给出。对有限层集合得到显式两两相互作用公式，连续区间在固定层数下恰好最省。状态为 \texttt{PAPER-AUDITED}，尚未 Lean 形式化。
+\end{abstract}
+
+\section{四次区间检测}
+以下取 \(p=3\)。令
+\[
+u=n+d,\qquad v=n-d.
+\]
+固定
+\[
+L\ge1,\qquad q\in\{1,2\},
+\]
+定义
+\[
+A_{L,q}
+=
+(9u^2+3^qv^2)
+(u^2+3^{2L-2}v^2),
+\]
+\[
+B_{L,q}
+=
+(9u^2+v^2)
+(u^2+3^{2L-2+q}v^2).
+\]
+输出
+\[
+\mathcal I_{L,q}
+=
+(A_{L,q}+B_{L,q},A_{L,q}-B_{L,q}).
+\]
+
+对
+\[
+x=u/v,\qquad t=v_3(x),
+\]
+置
+\[
+\theta_q(x)=\frac{x^2+3^q}{x^2+1}.
+\]
+当 \(q=1,2\) 时，
+\[
+v_3(\theta_q(x))
+=
+q\,\mathbf1_{\{t\ge1\}}.
+\]
+所以
+\[
+v_3\!\left(
+\frac{\theta_q(3x)}
+{\theta_q(3^{1-L}x)}
+\right)
+=
+q(\mathbf1_{\{t\ge0\}}-\mathbf1_{\{t\ge L\}}).
+\]
+清分母后正是
+\[
+A_{L,q}/B_{L,q}.
+\]
+因此
+\[
+\boxed{
+F_{3,D}(\mathcal I_{L,q}(n,d))
+=
+q\,\mathbf1_{\{0\le F_{3,D}(n,d)<L\}}.
+}
+\]
+
+线性平移把它移动到任意有限整数区间
+\[
+[a,a+L-1].
+\]
+
+若次数至多 \(3\)，两端输出为零会迫使候选有理函数的根集中在单一赋值层，因此不能支持长度至少 \(2\) 的区间；单层情况再由模 \(3\) 两个单位类和 Hensel 简单根提升排除。故
+\[
+\boxed{
+a_{3,I}(1)=a_{3,I}(2)=4.
+}
+\]
+
+\section{射影剩余类核}
+固定深度 \(r\)。射影直线
+\[
+\mathbf P^1(\mathbb Q_p)
+\]
+有
+\[
+N_r=(p+1)p^{r-1}
+\]
+个深度 \(r\) 剩余类。
+
+定义共同深度核
+\[
+(K_r)_{ij}
+=
+\min\{v_p(u_iv_j-u_jv_i),r\}.
+\]
+令 \(P_j\) 是对深度 \(j\) 大类取平均的嵌套投影，则
+\[
+K_r
+=
+\sum_{j=1}^r
+p^{r-j}P_j.
+\]
+
+对 \(\theta\ge0\)，设
+\[
+\lambda_j(\theta)
+=
+\frac{p^{r-j+1}-1}{p-1}+\theta.
+\]
+由嵌套投影谱分解，
+\[
+\boxed{
+(K_r+\theta I)^{-1}
+=
+\lambda_r^{-1}I
+-
+\sum_{j=1}^{r-1}
+(\lambda_{j+1}^{-1}-\lambda_j^{-1})P_j.
+}
+\]
+
+特别取
+\[
+\tau=\frac1{p-1},\qquad
+M_r=K_r+\tau I.
+\]
+则 \(M_r\) 正定，\(M_r^{-1}\) 非对角元非正，且
+\[
+M_r\mathbf1
+=
+\frac{p^r}{p-1}\mathbf1.
+\]
+
+\section{稳定次数公式}
+设
+\[
+g:\mathbb Z\to\mathbb Z
+\]
+两端最终常值。取足够大的 \(r\)，让
+\[
+g(v_p(x))
+\]
+在每个深度 \(r\) 剩余类上恒定，形成向量 \(\mathbf g\)。记
+\[
+\bar g=\frac1{N_r}\sum_i g_i.
+\]
+
+则极限存在：
+\[
+\boxed{
+\sigma_p(g)
+=
+\lim_{k\to\infty}
+\frac{\deg_p(kg)}k.
+}
+\]
+而且
+\[
+\boxed{
+\sigma_p(g)
+=
+\frac12
+\left\|
+\left(K_r+\frac1{p-1}I\right)^{-1}
+(\mathbf g-\bar g\mathbf1)
+\right\|_1.
+}
+\]
+
+下界的核心是：任一代数根对剩余类平均的射影弦距剖面都可写成
+\[
+M_r\mu_\alpha
+\]
+其中
+\[
+\mu_\alpha\ge0,\qquad
+\|\mu_\alpha\|_1\le1.
+\]
+因此一个分子根或分母根最多贡献一单位正/负权重，直接得到 \(\ell^1\) 次数下界。
+
+上界则对核矩阵每一列构造二次无抵消多项式因子，解有限有理线性方程并清分母，得到真实整数多项式乘积。继续细分剩余树，使构造代价趋于上述下界。次可加性
+\[
+a(k+\ell)\le a(k)+a(\ell)
+\]
+把子序列逼近提升成完整极限。
+
+\section{有限层集合}
+取
+\[
+g=\mathbf1_S,
+\qquad S\subset\mathbb Z
+\]
+有限。
+
+二值目标使 \(\ell^1\) 范数简化为一个二次型，最终得到
+\[
+\boxed{
+\sigma_p(S)
+=
+\frac{2(p-1)^2}{p(p+1)}|S|
+-
+\frac{2(p-1)^3}{p(p+1)}
+\sum_{\substack{i<j\\i,j\in S}}
+p^{-(j-i)}.
+}
+\]
+
+对每个有限增益 \(k\)，统一有
+\[
+\boxed{
+a_{p,S}(k)
+\ge
+\lceil k\sigma_p(S)\rceil.
+}
+\]
+
+当 \(p=3\)：
+\[
+\boxed{
+\sigma_3(S)
+=
+\frac23|S|
+-
+\frac43
+\sum_{i<j\in S}3^{-(j-i)}.
+}
+\]
+
+因此两个检测层越近，稳定次数中的共享节省越大；相互作用按层距指数衰减。
+
+\section{连续区间最省}
+固定
+\[
+S=\{t_1<\cdots<t_L\}.
+\]
+因为
+\[
+t_j-t_i\ge j-i,
+\]
+有
+\[
+\sum_{i<j}p^{-(t_j-t_i)}
+\le
+\sum_{i<j}p^{-(j-i)}.
+\]
+交互项前系数为负，所以总代价最小时必须让层距尽可能小。
+
+于是
+\[
+\boxed{
+\sigma_p(S)
+\ge
+\frac{2(p-1)}{p+1}(1-p^{-L}),
+}
+\]
+且 \(L\ge2\) 时等号当且仅当 \(S\) 是连续整数区间。
+
+对区间
+\[
+[a,a+L-1]
+\]
+有显式闭式：
+\[
+\boxed{
+\sigma_p([a,a+L-1])
+=
+\frac{2(p-1)}{p+1}(1-p^{-L}).
+}
+\]
+特别地，
+\[
+\boxed{
+\sigma_3([a,a+L-1])
+=
+1-3^{-L}.
+}
+\]
+
+\section{阈值与边界}
+单阈值
+\[
+\mathbf1_{\{t\ge1\}}
+\]
+的稳定代价是
+\[
+\boxed{
+\frac{p-1}{p+1}.
+}
+\]
+所以长有限区间的稳定代价趋于两个边界阈值代价之和。
+
+稳定次数是增益 \(k\to\infty\) 后的次数/增益比；它不意味着每个有限 \(k\) 都达到取整下界，也不是运行时间或系数位长。
+
+\begin{thebibliography}{9}
+\bibitem{FiliPetsche} P. Fili and C. Petsche, work on energy integrals over local fields and projective chordal kernels.
+\end{thebibliography}
+\end{document}
