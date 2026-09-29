@@ -63,15 +63,17 @@ docs/proofs/<topic>/<result>/
 ├── theorem.md
 ├── proof.md
 ├── scaffolding.md
-└── formalization.md
+├── formalization.md
+└── paper.pdf
 ```
 
-四个文件职责分离：
+五个文件职责分离：
 
 - `theorem.md`：只保存最终、稳定、精确的定理陈述，标明结果 ID、状态、前提、外部依赖和边界情况。
 - `proof.md`：保存适合数学阅读的干净书面证明。不要混入大量探索历史或 Lean 实现细节。
 - `scaffolding.md`：把证明拆成引理、依赖 DAG 和可逐个核验的局部步骤；这是书面证明与 Lean 之间的脚手架。
 - `formalization.md`：记录每个书面引理对应的目标 Lean 名称、目标模块、完成状态、阻塞依赖和最终核验提交。
+- `paper.pdf`：面向阅读、归档和引用的稳定排版版本。内容应与当前已审计的定理和证明一致；PDF 是书面证明的呈现层，不代表 Lean kernel 验证。
 
 简单结果不必机械拆成四个文件；但凡证明较长、依赖外部深定理、或预计需要多轮形式化，优先采用上述结构。
 
@@ -84,7 +86,8 @@ docs/proofs/<topic>/<result>/
 3. 外部定理写明准确版本和实际使用的结论，不能只写“由某著名定理可得”。
 4. 计算实验只作为 sanity check 或证据，不承担无限范围证明责任。
 5. 尚未形式化的部分明确写为 paper proof；不得使用“Lean verified”“kernel checked”等措辞。
-6. 若审计发现缺口，状态应退回 `PAPER-PROVED`、`RESEARCH` 或 `CONJECTURE`，而不是保留错误的高状态。
+6. PDF 已从当前稳定书面证明生成，并完成至少一次渲染检查，确认无文字裁切、公式溢出、缺字或乱码；PDF 中应标明结果 ID、paper 状态及“尚未形式化”边界。
+7. 若审计发现缺口，状态应退回 `PAPER-PROVED`、`RESEARCH` 或 `CONJECTURE`，而不是保留错误的高状态。
 
 ### Lean 结果准入要求
 
@@ -132,7 +135,7 @@ audit: register F3-PAT-1 declarations
 - 已形成稳定 Lean 功能或主定理时可用 `feat:`；
 - 不要在未通过完整 Lean 门禁前使用会暗示“形式化已完成”的标题。
 
-对于较大的结果，PR 描述至少应列出：结果 ID、当前状态、数学结论、外部依赖、是否包含 Lean 证明、精确验证状态，以及明确的“本 PR 不声称什么”。
+对于较大的结果，PR 描述至少应列出：结果 ID、当前状态、数学结论、外部依赖、是否包含 Lean 证明、精确验证状态、PDF 生成/渲染检查状态，以及明确的“本 PR 不声称什么”。
 
 ### 仓库维护原则
 
@@ -238,9 +241,9 @@ F3-PAT-1 可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超�
 
 F3-HI 在 $k=1$ 时给出固定偏移 $(18,54)$：六个低阶值锁定为 $(1,1,1)$ 与 $(-1,-1,-1)$，而三因子深度的极限比例为 $1/2,1/3,1/9,\ldots$。这些结果同样保留可变素数步长，不推出固定间距素数簇。
 
-F3-PAT-1：[完整证明](docs/proofs/f3/four_prime_construction/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/four_prime_construction/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/four_prime_construction/formalization.md)
+F3-PAT-1：[PDF 版](docs/proofs/f3/four_prime_construction/paper.pdf) · [完整证明](docs/proofs/f3/four_prime_construction/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/four_prime_construction/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/four_prime_construction/formalization.md)
 
-F3-HI：[完整证明](docs/proofs/f3/higher_interactions/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/higher_interactions/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/higher_interactions/formalization.md)
+F3-HI：[PDF 版](docs/proofs/f3/higher_interactions/paper.pdf) · [完整证明](docs/proofs/f3/higher_interactions/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/higher_interactions/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/higher_interactions/formalization.md)
 
 ## 猜想地图（未证明）
 
