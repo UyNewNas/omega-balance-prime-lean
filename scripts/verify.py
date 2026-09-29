@@ -35,7 +35,7 @@ def main() -> int:
         run([sys.executable, 'scripts/check_audit_coverage.py'])
         run(['lake', 'build'], 'build.log')
         run(['lake', 'build', 'OmegaBalance.Examples', 'OmegaBalance.F3Examples',
-             'OmegaBalance.F3DeeperExamples'], 'examples.log')
+             'OmegaBalance.F3DeeperExamples', 'OmegaBalance.FactorSumExamples'], 'examples.log')
         run(['lake', 'env', 'lean', 'scripts/Audit.lean'], 'axioms.log')
         run([sys.executable, 'scripts/check_axioms.py', 'axioms.log'])
         run([sys.executable, 'scripts/f3_corollaries_verify.py', '--limit', '10000000'], 'f3.log')
