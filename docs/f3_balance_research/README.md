@@ -14,7 +14,7 @@ F_3(n)=v_3(n+1)-v_3(n-1).
 | [固定间距与联合深度律](F3_fixed_gaps.md) | 平方坐标、Haar 分布、多移位联合尾律与单素数输入计数 |
 | [素数伸缩配置](prime_dilations.md) | 五素数伸缩族、任意精确升层与联合几何律 |
 | [素数伸缩族的高阶乘积](prime_higher_products.md) | 任意高阶的低次数刚性、系数和判据、全素数深度律与同主系数对照族 |
-| [共享步长的乘积联合深度](prime_product_correlations.md) | 多输出根间距、精确联合阈值律、可指定的升层分界与全素数实现 |
+| [共享步长的乘积联合深度](prime_product_correlations.md) | 多输出根距离、精确层闭式判据、三项不可实现证书与全素数联合律 |
 | [二次赋值差分权](quadratic_weights.md) | 有限驻相、判别式传递、两支差分、等差数列界与稀疏窗口 |
 | [乘积核的谱](spectral_kernels.md) | 特征展开、投影恒等式、正负谱及短带匹配 |
 | [平衡逆元几何](inverse_geometry.md) | 深度边界、全层二次正规形、斜线极限与精确盒计数 |
