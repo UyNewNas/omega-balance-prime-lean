@@ -224,6 +224,18 @@ $$
 python3 scripts/verify.py
 ```
 
+## 已审计书面证明（尚未形式化）
+
+以下结果状态为 `PAPER-AUDITED`：书面证明及外部定理的适用条件已经复核，主结果尚未写入 Lean。
+
+| 编号 | 数学结论 | 状态与外部依赖 |
+|---|---|---|
+| [F3-PAT-1](docs/proofs/f3/four_prime_construction/theorem.md) | 无穷多个正整数参数对 $(n,d)$ 使 $n,n+38d,n+92d,n+146d$ 全为素数，单点 $F_3$ 模式为 $(1,-1,-1,-1)$，三个以 $n$ 为中心的乘积模式为 $(3,5,3)$ | `PAPER-AUDITED`；Green–Tao, *Linear equations in primes*, Corollary 1.7 的无条件复杂度至多 2 情形 |
+
+可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超过任意给定下界。该结论保留可变步长，不包含固定 $d=1$ 的无穷性。
+
+[完整证明](docs/proofs/f3/four_prime_construction/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/four_prime_construction/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/four_prime_construction/formalization.md)
+
 ## 猜想地图（未证明）
 
 令 $\mathcal B=\{p>2:p\text{ 为素数且 }\Omega(p-1)=\Omega(p+1)\}$。这里是最初的 **Ω 计重个数平衡**，不是质因数求和的 $S$ 平衡。默认允许 $p=q$，不要求两个加数的平衡级数相同。
