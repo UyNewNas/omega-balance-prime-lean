@@ -1,0 +1,215 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\setlength{\parindent}{2em}\setlength{\parskip}{0.2em}\linespread{1.06}
+\newtheorem{theorem}{定理}\newtheorem{lemma}{引理}\renewcommand{\proofname}{证明}
+\newcommand{\vthree}{v_3}\newcommand{\Fthree}{F_3}
+\title{\bfseries 具有指定七个三进赋值差的\\四素数构造}
+\author{研究札记 · F3-PAT-1}\date{2026 年 9 月 29 日}
+\begin{document}\maketitle
+\begin{abstract}
+设 $\Fthree(m)=\vthree(m+1)-\vthree(m-1)$。本文证明存在无穷多个正整数参数对 $(n,d)$，使
+\[
+n,\ n+38d,\ n+92d,\ n+146d
+\]
+全为素数，其单点 $F_3$ 值为 $(1,-1,-1,-1)$，三个以 $n$ 为中心的乘积的 $F_3$ 值为 $(3,5,3)$。证明先用模 $3^6$ 的一个剩余类确定七个精确赋值，再应用 Green--Tao 关于复杂度至多 $2$ 的素数线性形式的无条件定理。两个参数可以同时任意大；固定步长的无穷性不在本文结论之内。
+\end{abstract}
+\noindent\textbf{关键词：} 三进赋值；素数线性形式；局部可解性；奇异乘积。
+
+\section{定义与主定理}
+对正整数 $a\ge1$，定义
+\[
+\vthree(a)=\max\{k\in\mathbb Z_{\ge0}:3^k\mid a\}.
+\]
+对整数 $m\ge2$，定义有符号差分
+\[
+\Fthree(m)=\vthree(m+1)-\vthree(m-1)\in\mathbb Z.
+\]
+这里不涉及 $\vthree(0)$；减法在整数中进行。
+
+\begin{theorem}[F3-PAT-1]
+存在无穷多个整数参数对 $(n,d)$，其中 $n\ge2$、$d\ge1$，使
+\[
+p_0=n,\quad p_1=n+38d,\quad p_2=n+92d,\quad p_3=n+146d
+\]
+全部为素数，且同时满足
+\[
+(\Fthree(p_0),\Fthree(p_1),\Fthree(p_2),\Fthree(p_3))=(1,-1,-1,-1),
+\tag{1}
+\]
+\[
+(\Fthree(p_0p_1),\Fthree(p_0p_2),\Fthree(p_0p_3))=(3,5,3).
+\tag{2}
+\]
+可以额外要求
+\[
+n\equiv5\pmod{729},\qquad d\equiv1\pmod{729}.\tag{3}
+\]
+更精确地，对每个整数 $B\ge1$，都存在满足上述全部条件的 $n>B$、$d>B$。
+\end{theorem}
+因为 $d>0$，四个素数严格递增，因而互不相同。条件 (3) 只足以保证七个赋值等式；全素数参数的无穷性需要下文的全局定理。
+
+\noindent\textbf{文稿状态。} 本结果在仓库中标记为 \texttt{PAPER-AUDITED}。本文是人类可读的书面证明；尚未形式化为 Lean 定理。PDF 与 Markdown 证明包不以有限计算或仓库 CI 代替主结论的 Lean 内核证明。
+
+\section{用一个同余类确定七个赋值}
+\begin{lemma}[精确赋值的同余稳定性]
+设 $A,B$ 为正整数、$R\ge1$。若
+\[
+A\equiv B\pmod{3^R},\qquad \vthree(B)=e<R,
+\]
+则 $\vthree(A)=e$。
+\end{lemma}
+\begin{proof}
+写 $B=3^eb$，其中 $3\nmid b$。存在整数 $z$ 使
+\[
+A=3^e\bigl(b+3^{R-e}z\bigr).
+\]
+因 $R-e\ge1$，括号内模 $3$ 同余于 $b$，不被 $3$ 整除。
+\end{proof}
+
+令 $Q=729=3^6$，并假设 $n\ge2,d\ge1$ 满足 (3)。令
+\[
+(h_0,h_1,h_2,h_3)=(0,38,92,146),\qquad p_i=n+h_id.
+\]
+则
+\[
+(p_0,p_1,p_2,p_3)\equiv(5,43,97,151)\pmod Q.
+\]
+代表元两侧的赋值如下：
+\begin{center}
+\begin{tabular}{c|ccc}
+\toprule
+$b$ & $\vthree(b+1)$ & $\vthree(b-1)$ & $\Fthree(b)$\\
+\midrule
+5&1&0&1\\43&0&1&-1\\97&0&1&-1\\151&0&1&-1\\
+\bottomrule
+\end{tabular}
+\end{center}
+这些赋值都小于 $6$。对每个 $p_i\pm1$ 应用引理 1，即得 (1)。
+
+三个乘积加一满足
+\[
+p_0p_1+1\equiv216=3^3\cdot8\pmod Q,
+\]
+\[
+p_0p_2+1\equiv486=3^5\cdot2\pmod Q,
+\]
+\[
+p_0p_3+1\equiv756=3^3\cdot28\pmod Q.
+\]
+其代表元的赋值依次为 $3,5,3$，均小于 $6$，所以引理 1 给出对应邻数的精确赋值。另一方面，对 $i=1,2,3$，
+\[
+p_0\equiv2,\quad p_i\equiv1\pmod3
+\quad\Longrightarrow\quad
+p_0p_i-1\equiv1\pmod3.
+\]
+因此 $\vthree(p_0p_i-1)=0$，得到 (2)。这一部分对所有满足前提的整数参数成立，完全不需要素数性。
+
+\section{四个仿射线性形式}
+作代换
+\[
+n=5+Qu,\qquad d=1+Qv.\tag{4}
+\]
+定义 $L_i(u,v)=5+h_i+Qu+Qh_iv$，即
+\[
+\begin{aligned}
+L_0(u,v)&=5+729u,\\
+L_1(u,v)&=43+729u+27702v,\\
+L_2(u,v)&=97+729u+67068v,\\
+L_3(u,v)&=151+729u+106434v.
+\end{aligned}
+\]
+记 $L=(L_0,L_1,L_2,L_3)$。在凸方框 $K_X=[X,2X]^2$ 内计数。四个形式系数固定，并满足
+\[
+729X\le L_i(u,v)\le215000X\qquad((u,v)\in K_X,X\ge1).\tag{5}
+\]
+故所有形式为正且 $\log L_i\sim\log X$。
+
+\subsection{复杂度至多 2}
+线性部分的系数向量为 $Q(1,h_i)$。若 $i\ne j$，则
+\[
+\det\begin{pmatrix}Q&Qh_i\\Q&Qh_j\end{pmatrix}=Q^2(h_j-h_i)\ne0.
+\]
+所以不同形式之间不存在 $L_i=aL_j+b$（$a,b\in\mathbb Q$）这样的仿射依赖。固定任意 $i$，把另外三个形式各自放入一个单元素组，则 $L_i$ 不在任一组的仿射线性张成中。依照 Green--Tao 的定义，系统复杂度至多 $3-1=2$。
+
+\subsection{每个素数处的局部可解性}
+对素数 $\ell$，定义局部因子
+\[
+\beta_\ell=\frac1{\ell^2}\sum_{u,v\bmod\ell}
+\prod_{i=0}^3\left(\frac{\ell}{\ell-1}\mathbf 1_{\ell\nmid L_i(u,v)}\right).\tag{6}
+\]
+当 $\ell=3$ 时，四形式恒为 $(2,1,1,1)\pmod3$，故 $\beta_3=(3/2)^4>0$。
+
+当 $\ell\ne3$ 时，$Q$ 在模 $\ell$ 下可逆。取
+\[
+u\equiv-4Q^{-1}\pmod\ell,\qquad v\equiv-Q^{-1}\pmod\ell.
+\]
+由 (4) 得 $n\equiv1,d\equiv0\pmod\ell$，于是四个 $L_i\equiv1\pmod\ell$。因此每个素数处都存在使四形式同时非零的参数，从而 $\beta_\ell>0$。
+
+\section{奇异乘积与全素数计数}
+\subsection{奇异乘积严格为正}
+各局部因子为正之外，还须检查无穷乘积尾部。对 $\ell>146$，四个 $h_i$ 模 $\ell$ 互异，且 $(u,v)\mapsto(n,d)$ 是模 $\ell$ 的双射。当 $d=0$ 时允许的 $n$ 有 $\ell-1$ 个；每个 $d\ne0$ 排除四个不同的 $n=-h_id$，所以允许的 $n$ 有 $\ell-4$ 个。允许参数对总数为
+\[
+(\ell-1)+(\ell-1)(\ell-4)=(\ell-1)(\ell-3).
+\]
+代入 (6) 得
+\[
+\beta_\ell
+=\frac{(\ell-1)(\ell-3)}{\ell^2}\left(\frac\ell{\ell-1}\right)^4
+=\frac{\ell^2(\ell-3)}{(\ell-1)^3}
+=1-\frac{3\ell-1}{(\ell-1)^3}
+=1+O(\ell^{-2}).\tag{7}
+\]
+于是 $\sum_{\ell>146}|\beta_\ell-1|<\infty$，尾部乘积收敛且非零。结合有限个小素数处的正性，得到
+\[
+\mathfrak S_L:=\prod_{\ell\ \mathrm{prime}}\beta_\ell\in(0,\infty).\tag{8}
+\]
+
+\subsection{应用 Green--Tao 的无条件推论}
+本文唯一的全局外部输入是 Green--Tao 2010 的 Corollary 1.7：复杂度至多 $2$ 的仿射线性形式系统满足其素数计数渐近式。这里使用的推论本身是无条件的。
+
+四个形式在 $K_X$ 上均为正，故实数处因子为
+\[
+\beta_\infty=\operatorname{vol}_2(K_X)=X^2.
+\]
+记 $\mathbb P$ 为素数集合，并令
+\[
+A(X)=\#\{(u,v)\in K_X\cap\mathbb Z^2:L_i(u,v)\in\mathbb P\ (0\le i\le3)\}.
+\]
+结合尺寸、复杂度、局部因子检查，得到
+\[
+A(X)=(\mathfrak S_L+o(1))\frac{X^2}{(\log X)^4}.\tag{9}
+\]
+这里确实数素数而非所有素数幂；由 (8)，$A(X)\to\infty$。
+
+\subsection{完成主定理}
+将每个被 $A(X)$ 计数的参数对映为
+\[
+(n,d)=(5+729u,1+729v).
+\]
+该映射为单射，四个 $p_i=L_i(u,v)$ 全为素数，第 2 节保证七个赋值等式。给定任意 $B\ge1$，取充分大的 $X$ 使 $A(X)>0$ 且 $1+729X>B$，就得到 $n>B,d>B$。定理 1 及其同余加强版得证。
+
+\section{固定步长与 Dickson 猜想}
+若固定任意正整数 $d=D$，四个形式成为单变量形式
+\[
+n,\quad n+38D,\quad n+92D,\quad n+146D.
+\]
+它们两两仿射相关，属于上述复杂度定义中的无限复杂度情形，因此不能使用复杂度至多 $2$ 的推论。
+
+特别地，固定 $d=1$ 并保留 $n=5+729u$ 后，四形式为
+\[
+5+729u,\quad43+729u,\quad97+729u,\quad151+729u.
+\]
+它们仍没有局部障碍，因此 Dickson 猜想预言这一固定步长版本也有无穷多解，而第 2 节自动保证七个赋值；这里并未证明该预言。
+
+本文证明的是无穷多个参数对 $(n,d)$，并且两个参数可同时任意大。这不推出存在某个固定 $D$ 使 $(n,D)$ 有无穷多解。
+
+\section*{文稿来源与复现}
+本文根据仓库已审计证明包整理，结果编号为 F3-PAT-1，状态为 \texttt{PAPER-AUDITED}。证明包包含精确陈述、完整证明、引理依赖与审计记录、形式化映射及阻塞项。有限复核脚本只用于检查算术一致性，不承担无限范围证明责任。
+
+\section*{参考文献}
+\begin{thebibliography}{9}
+\bibitem{GT10} Ben Green and Terence Tao. \emph{Linear equations in primes}. Annals of Mathematics, 171 (2010), 1753--1850. DOI: 10.4007/annals.2010.171.1753. Definition 1.5、Corollary 1.7 及素数计数式见固定预印本 arXiv:math/0606088v2。
+\end{thebibliography}
+\end{document}
