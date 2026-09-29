@@ -241,6 +241,7 @@ python3 scripts/verify.py
 | [F3-HIER-1 / 2 / 3](docs/proofs/f3/product_hierarchy/theorem.md) | 对任意 $q=3^s$，固定 $q$ 个素数端点的全部总次数 $<q$ 单项式 $F_3$ 数据（允许重复因子），而总乘积深度可取任意 $R\ge k+s$；系数和模 $3$ 决定最高阶锁死或开放；普通族与末点移动族拥有相同全素数计数主系数但不同最高阶分布 | `PAPER-AUDITED`；一般 $q$ 使用完整有限复杂度素数线性形式理论 |
 | [F3-ROOT-1 / 2 / 3 / 4](docs/proofs/f3/two_root_process/theorem.md) | 平移配对乘积序列由两个简单三进根精确控制；给出完整联合尾律、区段层级计数、深度序列到参数的显式反演，以及六位置模 $5$ 障碍与 $d=5r$ 后七素数模式 $(3,4,2)$ 的比例 $2/729$ | `PAPER-AUDITED`；局部部分为二次多项式/Hensel 论证，全素数扩展使用一般有限复杂度素数定理 |
 | [F3D-POLY-1 / 2 / 3 / 4](docs/proofs/f3d/polynomial_realization/theorem.md) | 对 $F_{3,D}(n,d)=v_3(n+d)-v_3(n-d)$：给出四次精确层检测器；完全分类固定整数多项式对可实现的单输入函数为“两端最终整数仿射”；证明层平移、绝对值、取正部、精确零层检测的最低次数分别为 $1,2,3,4$，并排除 $t^2$ 与固定双输入 $F$ 乘法器 | `PAPER-AUDITED`；依赖标准三进赋值、Hensel 与完备赋值域扩张唯一性，无新增 Lean 证明 |
+| [F3D-MULTI-1 / 2 / 3 / 4](docs/proofs/f3d/multivariate_tropical/theorem.md) | 多输入 $F_{3,D}$：二次判断 $F>0$；固定多项式实现 min/max、批量最小值与第一极小位置；完全分类任意固定有限输入的全域可实现函数为有限整数热带表达式；所有可实现函数具有统一 Lipschitz 界，因此无界条件开关不可实现而固定幅度开关可实现 | `PAPER-AUDITED`；依赖三进赋值与有限 Lagrange 插值，无新增 Lean 证明 |
 
 F3-PAT-1 可以额外要求 $n\equiv5,d\equiv1\pmod{729}$，且 $n,d$ 同时超过任意给定下界。该结论保留可变步长，不包含固定 $d=1$ 的无穷性。
 
@@ -255,6 +256,8 @@ F3-HIER：[PDF 版](docs/proofs/f3/product_hierarchy/paper.pdf) · [完整证明
 F3-ROOT：[PDF 版](docs/proofs/f3/two_root_process/paper.pdf) · [完整证明](docs/proofs/f3/two_root_process/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3/two_root_process/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3/two_root_process/formalization.md)
 
 F3D-POLY：[PDF 版](docs/proofs/f3d/polynomial_realization/paper.pdf) · [完整证明](docs/proofs/f3d/polynomial_realization/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3d/polynomial_realization/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3d/polynomial_realization/formalization.md)
+
+F3D-MULTI：[PDF 版](docs/proofs/f3d/multivariate_tropical/paper.pdf) · [完整证明](docs/proofs/f3d/multivariate_tropical/proof.md) · [引理 DAG 与审计记录](docs/proofs/f3d/multivariate_tropical/scaffolding.md) · [形式化映射及阻塞项](docs/proofs/f3d/multivariate_tropical/formalization.md)
 
 ## 猜想地图（未证明）
 
