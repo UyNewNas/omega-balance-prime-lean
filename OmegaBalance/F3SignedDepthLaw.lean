@@ -96,12 +96,13 @@ theorem f3SignedDepthEvent_zero_eq_equal {a b : ℤ_[3]} {L : ℕ}
   constructor
   · rintro ⟨r, s, hr, hs, hdiff⟩
     have hrs : r = s := by omega
-    simpa only [hr, hs, hrs]
+    change rootDepth (d : ℚ_[3]) (a : ℚ_[3]) = rootDepth (d : ℚ_[3]) (b : ℚ_[3])
+    rw [hr, hs, hrs]
   · intro heq
     have hm := rootDepth_min_le_distance (d : ℚ_[3]) (a : ℚ_[3]) (b : ℚ_[3])
     rw [← heq, min_self, hL] at hm
     cases hd : rootDepth (d : ℚ_[3]) (a : ℚ_[3]) using WithTop.recTopCoe with
-    | top => simp only [hd, top_le_iff, WithTop.coe_ne_top] at hm
+    | top => simp only [hd, top_le_iff, WithTop.natCast_ne_top] at hm
     | coe r => exact ⟨r, r, hd, heq.symm.trans hd, sub_self r⟩
 
 /-- Positive signed atoms are genuinely measurable. -/
