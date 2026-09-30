@@ -53,7 +53,10 @@ theorem f3RootWait_gt_iff (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) (T : ℕ) :
     cases u using ENat.recTopCoe with
     | top => simp
     | coe n => norm_cast <;> omega
-  unfold f3RootWait
+  change (T : ℕ∞) < (show ℕ∞ from hittingAfter
+    (fun n (x : ℕ → ℤ_[3]) => x n)
+    {d : ℤ_[3] | rootDepth (d : ℚ_[3]) (a : ℚ_[3]) ≠
+      rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω) + 1 ↔ _
   rw [hshift]
   change (T : WithTop ℕ) ≤ hittingAfter (fun n (x : ℕ → ℤ_[3]) => x n)
     {d : ℤ_[3] | rootDepth (d : ℚ_[3]) (a : ℚ_[3]) ≠
@@ -67,7 +70,13 @@ theorem f3RootWait_eq_top_iff (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) :
     f3RootWait a b ω = ⊤ ↔ ∀ n : ℕ,
       rootDepth (ω n : ℚ_[3]) (a : ℚ_[3]) =
         rootDepth (ω n : ℚ_[3]) (b : ℚ_[3]) := by
-  simp [f3RootWait, hittingAfter_eq_top_iff]
+  rw [ENat.eq_top_iff_forall_gt]
+  simp_rw [f3RootWait_gt_iff]
+  constructor
+  · intro h n
+    exact h (n + 1) n (by omega)
+  · intro h T n _hn
+    exact h n
 
 /-- The first-hit convention counts at least one observation, including infinite waits. -/
 theorem f3RootWait_pos (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) :
@@ -159,7 +168,7 @@ theorem f3UnitHaarStream_rootWait_mean {a b : ℤ_[3]} (ha : IsUnit a) (hb : IsU
     (measurable_const.indicator (f3RootWait_tail_measurable hL T)).aemeasurable)]
   simp_rw [lintegral_indicator_fun_one (f3RootWait_tail_measurable hL _),
     f3UnitHaarStream_rootWait_gt ha hb hLpos hL]
-  rw [ENNReal.tsum_geometric, ENNReal.sub_sub_cancel one_ne_top hp, inv_inv]
+  rw [ENNReal.tsum_geometric, ENNReal.sub_sub_cancel ENNReal.one_ne_top hp, inv_inv]
 
 /-- A certificate occurs after finitely many actual observations almost surely. -/
 theorem f3UnitHaarStream_rootWait_finite_ae {a b : ℤ_[3]} (ha : IsUnit a)
