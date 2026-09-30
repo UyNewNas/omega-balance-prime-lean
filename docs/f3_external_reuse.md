@@ -789,3 +789,52 @@ m≥2、互异同模3单位根；截断/联合矩阵停止界、移动配置、�
 前三轮编译失败属于类型包装/命名/API匹配：最终使用ENat专用递归、显式类型及
 库hittingAfter等价的直接命题组合，避免重写器展开p-adic包装。没有改动公开结论或
 前提，也未增加透明度/安全设置。以上是已验代码；本次状态文档头仍另行运行完整CI。
+
+## 2026-09-30：REC-L7 实际联合停止尾界复用门
+
+目标优先检索于09:49 UTC完成，消费基线PR54合入
+`338442744c906dae107b65e83f010f0b76d71ad2`。先查最终最大几何等待/矩阵恢复尾界，
+再查 `maximum geometric expectation tail bound`、`max geometric`、`coupon collector`、
+`union bound exponential`、`tsum min exp`，及下述精确库符号。在已查范围未发现能直接
+替代本项目真实根观测停止时间的最终定理；这不是一般不存在声明。均值所需分析留作下一批，
+不先搭建新概率框架。
+
+固定mathlib仍为 `5ed2965256430c3649e86755f9576b54eca72435`，Lean仍为4.34.0。
+实施时重新直接读取锁定源码声明，而不只依赖研究报告。全部复用均为调用原库API，
+不复制外部证明语料；源码Apache-2.0。查询当前上游 `f58d2cce48bddea8dacaa277791d40138cddc6fb`
+仅作兼容检索；本项目不升版本，实际构建须使用固定pin。
+
+| 锁定源码/声明 | 精确用途与边界 |
+|---|---|
+| [Finset/Prod](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Finset/Prod.lean)，blob `3a331ec6ea39157f7cb3c2725091d2ef94340233`；`Finset.card_product_filter_lt` | 直接给出规范i<j对的choose-two系数，不重做双计数 |
+| [Finset/Lattice/Fold](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Finset/Lattice/Fold.lean)，blob `783cde945127918c9131e63274d5e39f464e61c2`；`sup_le_iff`、`lt_sup_iff`、`le_sup` | 自然数真实最大K与ENat真实最大等待；无限值保留 |
+| [Measure/Real](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/MeasureTheory/Measure/Real.lean)，blob `2be899626f4e667ab2434919350e73a0074fc0e8`；`measureReal_biUnion_finset_le` | 真实尾事件有限并上界，无根对独立或不交前提 |
+| [Probability](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/MeasureTheory/Measure/Typeclasses/Probability.lean)，blob `854e28ccdb1cca99e61f76fceaad6390c1d227be`；`measureReal_le_one` | 实际概率≤1，与指数包络合成min |
+| [ENNReal/Operations](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Basic/ENNReal/Operations.lean)，blob `1006cb4b9e785650269a0d1c9aaf61c67d63b740`；`toReal_sub_of_le`，加既有`toReal_pow`/`toReal_inv` | 从已经证明的实际单对ENNReal律转换；先由真实成功概率证明p≤1，避免错误实化截断减法 |
+| [Complex/Exponential](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Analysis/Complex/Exponential.lean)，blob `33157375f0b14cae92abf333dadef21ebbfce756`；`one_sub_le_exp_neg`、`exp_nat_mul` | 实数指数包络；不新建ENNReal指数体系 |
+| [GroupWithZero/Basic](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Algebra/Order/GroupWithZero/Basic.lean)，blob `335ef50464487b5763d4ad885d55d83b00964f1b`；`pow_le_pow_left₀`、`pow_le_pow_right₀`、`one_le_pow₀`、`inv_le_inv₀`、`inv_le_one_of_one_le₀` | 非负幂及反比例比较，保留所需正性 |
+
+本项目已有 `f3SharedRootWait`、原配置等待尾律、`rootDepth_eq_valuation` 和
+`depthCertificateScan_recover_iff` / `depthCertificateMatrix_recover` 直接复用。
+新增只是实际有限max/事件桥/union适配，14条候选声明全部进入Audit。
+真实根距的toNat转换仅在互异且赋值≥1后通过Lean4.34 `Int.toNat_of_nonneg`证明正确，
+不对∞或对角做这一转换。最新主线接口研究证据、静态源码检查、实际内核编译明确分开。
+[精确映射及未覆盖部分](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30rec-l7-实际全矩阵停止尾界候选)。
+
+## 2026-09-30 10:12 UTC：REC-L7 实际联合停止尾界已通过精确 CI
+
+代码0324861a6b94294421d692203e8847802b1044f4，树dbbe7e42a1c38aff722b05568ca5c9a957fe69dd，
+[push36700614557](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36700614557)和
+[PR36700618251](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36700618251)
+均完整成功。14条新声明逐条仅依赖propext、Classical.choice、Quot.sound；全726项
+公理输出（725项目+1必需产生器）、109项目源文件、650依赖模块及固定版本、完整构建、
+内核回归、覆盖和144240有限检查通过。
+
+已验范围是REC-L7/定理2.3式(2.8)的尾界部分：固定原配置的真实一基最大等待时间，
+按i<j恰计choose(m,2)对，K为这些实际有限根距的最大值；逐点证明τ≤T等价于原证书
+矩阵恢复全部真实根距，保留∞对角线、命中根和T=0。真实单位Haar无限流的尾概率
+不超过min(1,choose(m,2)·exp(-T·3^-K))，仅使用对之间并集界，不假设根对独立。
+
+首轮编译失败已作四处语法/推断/存在量词归一化修复，14条公开命题及模型前提不变。
+185653个有限批次（含27607个命中根批次）只是补充语义回归。对数期望界、移动配置、
+完整有符号差律及素数传递仍开放，不把尾界当作这些结论。本次状态文档头还需独立完整CI。

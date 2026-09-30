@@ -1,6 +1,6 @@
 # F3-REC：形式化映射
 
-数学状态：PAPER-AUDITED。Lean 状态：LEAN-IN-PROGRESS（确定性矩阵、实际 Haar 单次/有限批次概率及固定根实际等待尾律/期望已通过精确 CI；联合/移动配置与素数传递等其余部分未完成）。
+数学状态：PAPER-AUDITED。Lean 状态：LEAN-IN-PROGRESS（确定性矩阵、实际 Haar 单次/有限批次概率及固定根实际等待尾律/期望已通过精确 CI；实际联合矩阵停止尾界亦已通过；联合对数期望界、移动配置与素数传递等其余部分未完成）。
 
 ## 推荐模块
 
@@ -337,3 +337,66 @@ m≥2、互异同模3单位根；截断/联合矩阵停止界、移动配置、�
 前三轮编译失败属于类型包装/命名/API匹配：最终使用ENat专用递归、显式类型及
 库hittingAfter等价的直接命题组合，避免重写器展开p-adic包装。没有改动公开结论或
 前提，也未增加透明度/安全设置。以上是已验代码；本次状态文档头仍另行运行完整CI。
+
+## 2026-09-30：REC-L7 实际全矩阵停止尾界候选
+
+基线 `338442744c906dae107b65e83f010f0b76d71ad2`（已合入固定根等待律 PR54）。
+新增 [F3JointWaitingHaar.lean](../../../../OmegaBalance/F3JointWaitingHaar.lean)，
+对应本包定理2.3式(2.8)的尾界；脚手架稳定节点是 **REC-L7**，依赖已验证的
+REC-L6单对等待和REC-L5确定性扫描。不是将REC-L6重新定义为联合结论。
+
+`f3RootPairs m` 为有限集 `{(i,j) | i<j}`，直接复用库精确计数得到 `m.choose 2`。
+`f3RootDistanceExponent C i j` 是真实根差赋值的自然数表达；只有 i≠j 时才证明它
+等于扩展根距，故不把对角∞当成0。`f3RootMaxDistance C` 是这些实际有限指数在
+规范指标对上的有限最大值。`f3JointRootWait C ω` 是原 `f3SharedRootWait` 的有限最大值，
+值域ENat，从未出现证书仍是∞，没有另规定一个等待时间分布。
+
+| 精确候选声明 | 覆盖 |
+|---|---|
+| `f3RootPairs_mem` / `f3RootPairs_card` | 规范 i<j 指标与精确 choose-two 系数 |
+| `f3RootDistanceExponent_eq` / `f3RootDistanceExponent_pos` | 实际非对角根距有限且≥1 |
+| `f3RootDistanceExponent_le_max` | 每个规范真实根距≤实际最大值K |
+| `f3SharedRootWait_gt_iff` / `f3SharedRootWait_le_iff` | 原配置中逐点的全失败/存在证书语义 |
+| `f3JointRootWait_gt_iff` / `f3JointRootWait_le_iff` | 真正最大等待的失败与成功，反向标签不重复计数 |
+| `f3JointRootWait_le_iff_matrix_recover` | τ≤T iff 原 `depthCertificateMatrix` 在前T次完整观测上等于真实带标签矩阵 |
+| `f3JointRootWait_tail_eq_union` | 实际联合尾事件恰等于规范对尾事件之有限并 |
+| `f3SharedRootConfig_unitHaar_wait_gt_real` | 从已有ENNReal实际几何尾律导出实数概率 |
+| `f3SharedRootConfig_unitHaar_wait_gt_le_exp` | 对任一真实距离上界K的单对指数包络 |
+| `f3SharedRootConfig_unitHaar_jointWait_gt` | 实际K下 `Pr(τ>T)≤min(1,choose(m,2)*exp(-T*3^(-K)))` |
+
+所有C均是原完整 `F3SharedRootConfig`，保留共同正b、m≥2、互异同模3单位根。
+配置固定，所以各次的公共b及根相同；观测为R，不把原始D混入扫描。恢复等价对每条
+`ℕ→ℤ_[3]` 流成立，包括T=0、恰好命中根、所有失败流；概率使用已有的单位支持无限
+Haar乘积，只在时间方向独立。同一时刻的所有根坐标使用同一个ω(n)，并集界不需要
+各对独立。算法仍只读取深度观测，未把真实矩阵或待证结论作为输入前提。
+
+局部源码守卫109文件、725条项目声明+1必需产生器的一对一审计覆盖、6项审计规则测试、
+15项兼容测试及11项边界回归通过。可重现脚本
+[check_f3_joint_waiting.py](../../../../scripts/check_f3_joint_waiting.py) 检查185653个有限
+单位剩余类批次、28种情形，其中27607批次含精确根命中；包括K=1,2,3、m=2,3,4、T=0..3、
+对角∞、完整矩阵的双向恢复等价、单对精确尾和联合界。有限计算不是无限采样或内核证明。
+按本轮约定没有执行本地Lean；此14条声明在精确代码/最终树Actions通过前均为候选。
+
+剩余明确保留：式(2.8)的对数均值、置信参数推论、移动随机配置、三等距精确联合律、
+截断概率等待界与素数采样传递。不能从本批尾界单独宣告整个REC-L7或REC-2完成。
+[任务账本](../../../f3_formalization_tasks.md#2026-09-30rec-l7-实际联合停止尾界候选)
+· [复用门](../../../f3_external_reuse.md#2026-09-30rec-l7-实际联合停止尾界复用门)
+· [接收区分](../../../f3_proof_intake.md#2026-09-30rec-l7-实现增量)
+
+## 2026-09-30 10:12 UTC：REC-L7 实际联合停止尾界已通过精确 CI
+
+代码0324861a6b94294421d692203e8847802b1044f4，树dbbe7e42a1c38aff722b05568ca5c9a957fe69dd，
+[push36700614557](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36700614557)和
+[PR36700618251](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36700618251)
+均完整成功。14条新声明逐条仅依赖propext、Classical.choice、Quot.sound；全726项
+公理输出（725项目+1必需产生器）、109项目源文件、650依赖模块及固定版本、完整构建、
+内核回归、覆盖和144240有限检查通过。
+
+已验范围是REC-L7/定理2.3式(2.8)的尾界部分：固定原配置的真实一基最大等待时间，
+按i<j恰计choose(m,2)对，K为这些实际有限根距的最大值；逐点证明τ≤T等价于原证书
+矩阵恢复全部真实根距，保留∞对角线、命中根和T=0。真实单位Haar无限流的尾概率
+不超过min(1,choose(m,2)·exp(-T·3^-K))，仅使用对之间并集界，不假设根对独立。
+
+首轮编译失败已作四处语法/推断/存在量词归一化修复，14条公开命题及模型前提不变。
+185653个有限批次（含27607个命中根批次）只是补充语义回归。对数期望界、移动配置、
+完整有符号差律及素数传递仍开放，不把尾界当作这些结论。本次状态文档头还需独立完整CI。
