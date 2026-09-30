@@ -1,5 +1,39 @@
 # F₃ 全量形式化任务清单
 
+## 2026-09-30 07:16 UTC：无条件 RUN 精确验证及最新主线组合
+
+无条件代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 的
+[push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与
+[PR 36679105586](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679105586)
+全部成功。实际日志中 `MaynardBFT.consecutive_primes`、
+`OmegaBalance.bftbPrimeIndexRuns_unconditional`、
+`OmegaBalance.f3PrimeIndexRunStarts_infinite_unconditional` 均仅依赖
+`propext`、`Classical.choice`、`Quot.sound`。完整产生器、项目构建、内核回归、
+650 个依赖模块源码/固定版本检查、99 个项目文件、646+1 精确审计和144240有限检查通过。
+
+最终接口是：每个 L≥1 存在仅依赖 L 的自然数 C，对每个非零整数 c，
+全体素数枚举 `Nat.nth Nat.Prime` 中有无限多个起始下标 r，使连续 L 个素数
+的 F₃ 全为 c，且末首素数之差≤`f3RunModulus c * C`。长度1保留零跨度情形。
+`F3PrimeIndexRunAt` 明确使用全体素数，不是某个筛选子列；原条件接口由实际
+上游定理产生，不再作为未经证明的前提。
+
+新增五条声明：`bftbPrimeIndexRuns_unconditional`、
+`f3PrimeIndexRunStarts_infinite_unconditional`（F3BFTBMaynardAdapter），以及
+`bftb_eventually_log_rpow_le_rpow`、`bftb_eventually_rpow_le_half_rpow_div_rpow_log`、
+`bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log`（F3BFTBCutoff）。
+原始固定 Lean/mathlib、真实参数边界和全部审计门禁保持不变。第三方来源说明
+继续如实标注作者代码许可范围尚未确认；不把署名或沉默解释为许可。
+
+随后真实三方合入已验 Haar 主线 `f45cd8a7586609555e8f307d25c38fee5c105249`，
+保留双方全部数学源码字节及文档。组合候选是684条项目声明+1必需上游产生器、
+105个项目文件；本地15项兼容测试、6项审计规则测试与源码/覆盖检查通过。
+这个新增组合树仍须自己的完整 CI，不能用69c48f9的旧run替代。
+
+原五项目标中的 INF/COR/DEN/LOG 已在主线；RUN 已有无条件内核证明，等待最新
+组合验证与合并。全部接收 proof 任务尚未完成：全局 PAT、REC 等剩余概率/等待律、
+其它登记节点继续开放。单次 Haar 范围已合入 PR51，不扩张为完整 REC 完成。
+
+
 此文件是持续推进的权威任务账本。只有精确提交实际通过 Lean 构建、回归、公理、源码与声明覆盖门禁的结果才标记为完成；纸面推导、Python 有限验算或外部文献本身不算 Lean 证明。
 
 ## 最新组合验证（2026-09-30，优先于历史状态行）
@@ -474,6 +508,16 @@ run `36299729796` 均成功；565 declarations 仅标准 Lean axioms，86 Lean f
 
 代码70becdbf通过push36662676882和PR36662680539完整门禁，620条标准公理声明、96源文件覆盖、既有回归全部成功。DEN-1现有实际全素数计数分母的正层、负层与尾比例，模1PNT与最终非零均已证明；DEN-2原条件17倍比例沿用。REC仅确定性L1/L2、单对L4与L11已证，其余新proof任务继续开放。首轮0cf502e6曾因simp方向/函数商展示/section闭合失败，已作等价语法修复，不改变定理签名或工具链；旧失败不冒充通过。当前文档head另验CI。
 
+## 2026-09-30：RUN 当前主线组合候选
+
+主线 `5a622dc4e90db25dbc21f926de873be17372ed39` 已包含 PR45 的 COR/DEN/LOG、PR46 的真实全素数相对密度与 REC 确定性证书，以及 PR48 的 MULTI 证明边界和 TERN 维数前提修正。当前 RUN 候选保留该主线全部文件，通过三方合并加入五条已有待验证 RUN 接口：625条项目定理加1条上游产生器审计，逐条恰好覆盖。
+
+首次 RUN 冷构建在 BFTExtraction 的巨大符号幂处失败；已仅将该处 `omega` 改为传递性与加法单调性的显式证明，并在完整产生器之前单独验证有限提取模块。全部依赖版本、证明前提和审计允许列表保持原样。修复头 `939f8600f70d97889019cde667a2e24effe3b800` 的 CI 仍在整个私有定理处触发相同巨大幂内核保护；现已将该私有定理全部反射算术换成显式次序证明。本组合仍须新的精确完整 CI，不登记 RUN 完成。
+
+[第三方来源说明](f3_third_party_sources.md) 记录固定来源、署名、许可范围尚未确认及权利人联系后的处理方式。继续技术集成不表示已取得未确认部分的许可，也不降低数学和工程合并门禁。其余已接收 F3 书面证明继续按各结果 ID 推进；原始五目标与新增证明的完整完成尚未达成。
+
+04:01 UTC 已刷新全部162分支及01:58之后更新的issue/PR：仅本任务七个分支、主线和PR42–48发生变化，未发现新的外部证明来源。原始接收水位及声明状态不因刷新而自动升级；详见 `reports/f3_intake_refresh_20260930.json`。
+
 
 ## 2026-09-30：REC-L5 有限矩阵与阈值根簇候选
 
@@ -509,6 +553,18 @@ ROOT/PAT/RUN 及其它已接收证明任务的未完成部分保持开放。
   固定精度全素数传递；不把有限可观测见证的 iff 解释成随机采样必然完备
 
 原五项目标、其它已接收 proofs、RUN 的无条件产生器和外部证明信任审计继续开放。
+
+## 2026-09-30 05:58 UTC: RUN 恢复与当前主线组合
+
+本轮从远程恢复 RUN 65e0f5e，并真实三方合入 master 8548f385，保留 PR49/50
+的全部21条矩阵声明及最新文档。组合候选为646条项目声明及1条必需上游产生器审计，
+源文件99个；没有将未验证的 RUN 五条计入 master 已验证641条。
+
+RUN 最新实际CI36671388031已通过 BFTExtraction，但 BFTParameters 两处巨大幂
+内核归约失败，后续工程门禁未执行。现以符号参数化小引理修复，保留全部常数、
+公开命题与信任门禁；先验两个有限模块，再验完整产生器。15项兼容测试及源码/覆盖
+检查通过，新候选仍等待精确 Actions 编译。Haar 概率另在 draft PR51 独立验证，
+不把其候选或运行中的CI登记为已证。其余接收清单继续开放。
 
 ## 2026-09-30 REC-L3 actual Haar probability candidate
 

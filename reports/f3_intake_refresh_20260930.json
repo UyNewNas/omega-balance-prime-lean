@@ -1,0 +1,42 @@
+{
+  "observed_at": "2026-09-30T04:01:00Z",
+  "branches": 162,
+  "new": [
+    {
+      "name": "docs/f3d-proof-boundary-corrections",
+      "sha": "dcb30e39d41358451390b4d186b2eca0227beca0"
+    },
+    {
+      "name": "fix/f3-root4-normalization-cloud",
+      "sha": "2358ebf4dfce0c7a3900815b2f9dc2153dc972fe"
+    },
+    {
+      "name": "fix/proof-pdf-writeback-cloud",
+      "sha": "f011eeb58e803fa11629e839f944c37dacd56751"
+    },
+    {
+      "name": "formalize/f3-density-root-certificates",
+      "sha": "280a5701a341075ded0c800738a0b667fe12f5f0"
+    },
+    {
+      "name": "formalize/f3-pat1-local-cloud",
+      "sha": "6725e0f7c616d83d4a4e4f509ebebdb8ee7f0e65"
+    },
+    {
+      "name": "integrate/f3-verified-analysis-cloud",
+      "sha": "3175ce968957dca07cbfe8007983cf312f924f46"
+    },
+    {
+      "name": "repair/f3-run-compat-cloud",
+      "sha": "939f8600f70d97889019cde667a2e24effe3b800"
+    }
+  ],
+  "changed": [
+    {
+      "name": "master",
+      "sha": "5a622dc4e90db25dbc21f926de873be17372ed39"
+    }
+  ],
+  "issues_since_snapshot": "Only our PR42–48 changed; no original PR/standalone issue update",
+  "scope": "Refresh of full branch heads and updated issue/PR inventory; original source-intake watermark remains intact, no external proof change detected"
+}

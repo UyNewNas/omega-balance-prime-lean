@@ -88,6 +88,8 @@ import OmegaBalance.F3BFTBBVQOne
 import OmegaBalance.F3BFTBReciprocalTotient
 import OmegaBalance.F3BFTBBVGlobalDiscrepancy
 import OmegaBalance.F3FourPrimePattern
+
+import OmegaBalance.F3BFTBMaynardAdapter
 import OmegaBalance.F3PrimeRelativeDensity
 import OmegaBalance.F3RootCertificates
 

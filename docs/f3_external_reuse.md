@@ -40,6 +40,165 @@ RUN 的有限 CRT、最大化、顺序块和条件组合接口一并保留，但
 
 ANT源闭包复核完成：从`PrimeNumberTheoremAnd/Consequences.lean`递归到9个本包模块，379391字符；使用本仓库支持嵌套注释与字符串擦除的禁用项扫描，0命中。范围排除锁定Mathlib、Architect及Batteries的实现源码。WeakPNT_AP的前提仅q≥1、a.Coprime q、a<q，不含目标重述假设；最终COR/DEN/LOG声明在历史成功日志中逐条只依赖标准3公理。证据摘要见`reports/f3_ant_source_scan.json`；本组合CI仍会实际执行全601条公理审计。
 
+## 2026-09-30: RUN dependency compatibility repair candidate (not kernel-verified)
+
+This candidate preserves Lean `v4.34.0`, mathlib
+`5ed2965256430c3649e86755f9576b54eca72435`, and ANT
+`099d3726c2c74841024110ec1dd9902f7ef36e9e`. It ports the actual PR #29
+adapter and three real-exponent cutoff lemmas onto the PR #45 source tree,
+preserving the four local PAT-1 theorems and all prior public declarations.
+There are 606 project theorem declarations and one separately mandatory
+external producer audit entry. No successful build is claimed in this record.
+
+### Exact producer and bounded reuse search
+
+The imported theorem is
+[`MaynardBFT.consecutive_primes`](https://github.com/plby/lean-proofs/blob/8822f7ddef30fadbd92e1c6ab4ed897af356af5e/src/latest/Util/MaynardTao/BFT/Result.lean).
+It provides arbitrary positive block length, arbitrarily late starting index in
+the full `Nat.nth Nat.Prime` enumeration, a prescribed reduced residue class,
+and diameter at most `q * C`, with `C` chosen before modulus and residue. The
+OmegaBalance adapter preserves that order of quantifiers and derives all
+nonzero F3 levels, with bound `f3RunModulus c * C`. It does not replace
+full-prime consecutiveness by adjacency in a selected subsequence.
+
+The 2026-09-30 source search read all 77 reachable plby modules and all 573
+reachable BoundedGaps modules at immutable SHAs. The source closure has no
+`PrimeNumberTheoremAnd`, `APAP`, `AINTLIB`, `Waring`, `leancert`, Comparator,
+or `ErdosProblems.Axioms` import. Its remaining imports are Mathlib or Lean.
+Queries covered `MaynardBFT`, Shiu, BFTB, consecutive primes, prescribed
+residue classes, and Lean 4.34 compatibility, including plby branches/PRs,
+FormalPantheon, PrimeGapsLib, and gotrevor forks. This is a bounded search,
+not a universal absence claim. FormalPantheon main at
+`e2a77fe164e54b205d9716e92de8d80e05aac342` still supplies the weaker final
+bounded-pair interface and an older toolchain. PrimeGapsLib main
+`1faa7b14e82ddebc2772dfb9153922f01b106477` supplies a conditional bounded-gap
+result; PR #11's unconditional 246 result targets Lean 4.33.1 and does not
+replace the arbitrary-length, prescribed-class BFT producer.
+
+The [gotrevor ownership fix](https://github.com/gotrevor/lean-proofs/commit/8b7630fef471b6ac8685f1830f8b0288e5b9f4f1)
+and [root-package hook fix](https://github.com/gotrevor/lean-proofs/commit/ff0f9f63d7175dfa07b44a9c6a7148ca60a61676)
+are relevant packaging precedents, but their 4.33.1 pins are not adopted.
+The original PR #29 failure is recorded at
+[run 36467303064](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36467303064),
+head `9033636693d0f713c9cb6e1bc5d13149052b812b`, job `109080485402`.
+It failed during the build, before the previously latent audit-coverage
+rejection of its external producer entry could execute.
+
+### Small source-preserving adapter
+
+`python3 scripts/prepare_run_dependencies.py update` is the supported update
+entry point. It restores only its recognized 4.34 proof edits, invokes a real
+`lake update` so all nine original upstream patch checks/applications run,
+then reapplies exact-hunk, full-file SHA256-guarded compatibility edits. Unknown
+source edits, wrong checkout SHAs, unexpected root pins, or a mismatched
+resolved Lake manifest fail closed. No fuzzy patching or proof-source copying
+into this repository is used. Cached reruns follow the same checked sequence.
+
+Only the downloaded plby Lake library declaration block is narrowed: a
+`F3RunProducer` library has empty roots and exactly 77 one-module globs. This
+uses the actual Lean 4.34
+[`LeanLibConfig`](https://github.com/leanprover/lean4/blob/v4.34.0/src/lake/Lake/Config/LeanLibConfig.lean)
+`isLocalModule`/`isBuildableModule` behavior. All original requirements and
+post-update checks remain. The next Lake invocation loads the modified
+configuration; changing the file is not alleged to change an already-loaded
+Lake graph. ANT remains the sole owner of `PrimeNumberTheoremAnd`. CI uses a
+compatibility-sensitive cache key. The source/pin check also rejects stale
+embedded PNT build artifacts that could otherwise shadow ANT on Lean's search
+path; only the indicated generated upstream build cache should then be removed.
+
+The locked mathlib APIs used for the proof-only compatibility changes are:
+
+- `Finset.prod_le_prod₀`, `one_le_prod₀`, `prod_le_one₀`, and
+  `prod_le_prod_of_subset_of_one_le₀` for old nonnegative ordered-ring proofs
+  ([locked source](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Algebra/Order/BigOperators/GroupWithZero/Finset.lean))
+- `logDeriv_fun_mul`, `logDeriv_fun_div`, `logDeriv_fun_prod` for existing
+  lambda-shaped goals
+  ([locked source](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Analysis/Calculus/LogDeriv.lean))
+- Explicit `Mathlib.Analysis.Analytic.Order` and
+  `Mathlib.Analysis.Meromorphic.Basic` imports for existing, still-supported APIs
+
+These are proof-body/API/import changes, not theorem statement changes or new
+mathematical assumptions. No artificial `MulLeftMono ℝ` instance is introduced.
+The project source audit, exact declaration coverage, executed standard-axiom
+check, finite checks, and kernel regressions remain required. The only audit
+coverage extension names exactly `MaynardBFT.consecutive_primes` as a required
+entry; missing, duplicate, or unknown entries still fail, with focused tests.
+
+### Provenance and verification boundary
+
+FormalPantheon `ffbb65c21afc8a36ace67720f1b0df1c63d26bd1` has Apache-2.0
+licensing; source and authorship headers are preserved. plby's
+`src/latest/LICENSE` licenses some externally sourced files, but a blanket
+license grant for its authored BFT closure was not verified. The dependency
+remains an immutable upstream checkout with narrow compatibility instructions;
+it is not wholesale vendored or relabeled Apache. This avoids a new ownership
+claim but does not itself resolve upstream license scope.
+
+No Lean executable is installed in the dot cloud checkout. Python source,
+hunk, idempotence, and negative tests are local evidence only. CI must first
+resolve and verify actual manifest/checkouts, build the exact producer, then
+build the project, execute all 607 axiom entries, and pass the remaining
+repository gates at the exact candidate head. CI preserves the actual
+`lake-manifest.json` and `reports/f3_run_dependency_resolution.json` as
+artifacts. The committed manifest now reproduces the actual dependency resolution
+from failed PR #29 run `36467303064`, artifact `10990772124`, without treating
+that failed proof build as verification. Its exact bytes have SHA256
+`89f5ab9a58281ab317598d35eee76eb2cc2b547c7fa8d2ab10eef9894a5a1267`; the
+downloaded artifact archive has SHA256
+`a53693cdf5ca68f7ffaa938543a05e103ef64a93a194b24e70d36eac442ef84c`.
+Lake serializes the producer Name as `«lean-proofs-latest»`; the validator uses
+that one explicit `manifest_name`, rather than stripping quotation marks or
+accepting aliases. All four source packages retain exact revision, URL, and
+subdirectory guards. A new update must reproduce the complete observed manifest
+byte-for-byte, in addition to matching actual checkout SHAs. Regression tests
+cover the actual manifest, every pin field, missing/duplicate package entries,
+and incorrect quoted/unquoted aliases. RUN remains unverified until exact-head
+CI passes; additional downstream API failures must be repaired without changing
+pins.
+
+### 2026-09-30: symbolic bound repair after the first RUN producer build
+
+The actual first candidate build at head
+`0b13f311284e16d97f2dbdb0b93eded09a5c5552`,
+[run 36663110201](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36663110201),
+job `109721941998`, passed dependency preparation and reached the producer's
+source closure. Its sole reported failed target was
+`ErdosProblems.Erdos6.BFTExtraction`: line 55's `hzmax` proof and the enclosing
+private declaration at line 24 failed the kernel's `Nat.pow` evaluation guard.
+The full producer, project build, and executed axiom audit therefore did not
+pass; the previously failing build is not reused as proof verification.
+
+At the immutable producer SHA, `Erdos6.Maynard.largeK = 2 ^ 512`. The bound
+`2 ^ largeK` must stay symbolic. Lean 4.34's actual
+[`get_count_arg` kernel implementation](https://github.com/leanprover/lean4/blob/v4.34.0/src/kernel/type_checker.cpp#L305-L313)
+rejects numeric power evaluation when the exponent exceeds `UINT_MAX`.
+The failing `omega` proof was unnecessarily requesting arithmetic reflection
+for a bound already implied by two local inequalities.
+
+The additional guarded hunk replaces only that proof body:
+
+```lean
+  have hzmax : z ≤ n + 2 ^ largeK :=
+    Nat.le_trans (Nat.le_of_lt hzhi) (Nat.add_le_add_left hbmax n)
+```
+
+It composes `z < n + b` with `b ≤ 2 ^ largeK`, without evaluating the power.
+The exact [locked Nat API](https://github.com/leanprover/lean4/blob/v4.34.0/src/Init/Data/Nat/Basic.lean)
+provides `Nat.le_of_lt` and `Nat.add_le_add_left`; `Nat.le_trans` is also used
+there. No theorem signature, constant, assumption, kernel setting, or axiom
+allowlist changes. The file's original, pre-patch, and prepared SHA256 guards
+are updated; there are now 41 managed files. A focused regression asserts the
+single symbolic-proof hunk and unchanged bound statement. Offline application,
+reverse application, repeated application, and all 650 prepared source hashes
+pass. This is still only source/tooling evidence: the repaired exact head must
+be rebuilt and audited by CI. The upstream authored-source license scope remains unconfirmed; see the
+[attribution and contact notice](f3_third_party_sources.md). Technical work
+continues with that uncertainty explicitly recorded; all mathematical and
+engineering merge gates remain mandatory.
+
+### 诊断顺序与冷构建时间
+
+已对实际来源导入图计算：BFTExtraction只闭包到48个非mathlib模块，全producer闭包为650个。因此CI和verify先单独构建该已知失败的有限提取模块，再构建完整producer与全部项目，任何阶段失败仍阻止后续成功声明。第一轮冷构建耗时约26分钟后在唯一已知节点失败；为完整producer及后续项目/审计留下时间，将同一job超时从30改为60分钟，不删除、跳过或削弱任何证明/源码/公理门禁。日志分别保留run-extraction.log和run-producer.log。
 ## 2026-09-30：相对全部素数计数与 REC 确定性证书
 
 密度最终目标先查：GitHub `f3PrimePosLevel relative density` 在已查范围无匹配；本仓库所有分支标题/现有API核对后，仅17倍接口已用实际计数比。薄复用既有 `f3PrimeAPCountingReal_normalized_tendsto` 的模1特化（0与1互素）得到真实全素数计数PNT，复用 `Filter.Tendsto.div` 及 `div_div_div_cancel_right₀` 将三个x/log x极限转换为实际素数计数比例，无新分析栈。
@@ -47,6 +206,68 @@ ANT源闭包复核完成：从`PrimeNumberTheoremAnd/Consequences.lean`递归到
 锁定mathlib5ed2965实际源码：`Mathlib/Topology/Algebra/GroupWithZero.lean` blob `ad409ad08d53ad030bfd8f29cb2825a19b33872e` 的 `Filter.Tendsto.div` 要求分母极限非零；`Mathlib/Algebra/GroupWithZero/Units/Basic.lean` blob `b3148d9bd8bac8cbc1c64edf40b1c0bbb61f2916` 的商约消要求公共除数非零。已分别读完整声明及证明，最新默认源同API仍在（blob4ef88673与9fd9e942），不升级。通过PNT极限1证明分母最终非零，有限初段不强加全局假设。库为Apache2，当前代码独立CI待执行。
 
 REC最终目标在已查GitHub精确名 `rootDepth_min_eq_distance_of_ne` / `truncatedDepthCertificate_sound` 无匹配；直接复用锁定 `AddValuation.map_sub`、`map_add_of_distinct_val`、`map_neg`、`map_sub_swap`、`top_iff`/`ne_top_iff`（`Mathlib/RingTheory/Valuation/Basic.lean` blob73f71ae8fde499401b25db33fd2d826eecfb9c0b），以及真正 `Padic.addValuation : AddValuation ℚ_[3] (WithTop ℤ)` 和 `.apply`（PadicNumbers blob79040472922216be2c0d66793e3b2a3965347e9c）。有限精度只用 `Mathlib/Order/MinMax.lean` 的已读 `min_lt_min_left_iff`、`min_eq_right_iff`。保持∞零点、实际p-adic域和源模型b+R；不以有理数弱化或概率假设代替目标。
+
+### 2026-09-30: remove reflection throughout the private extraction proof
+
+The next exact build, head `939f8600`,
+[run 36665897371](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36665897371),
+job `109730369373`, passed the earlier `hzmax` location but still rejected the
+enclosing private declaration at line 24 with the same `Nat.pow` guard. The
+one-line repair was therefore insufficient. Other `omega` invocations in that
+declaration still had the closed giant bound in their local context; the log
+does not identify which generated subterm caused the remaining rejection.
+
+The guarded replacement now removes every arithmetic-reflection invocation in
+that one private declaration. Fin index bounds use `Nat.lt_of_succ_lt`; the
+power comparison uses `Nat.pow_le_pow_right` and `Nat.succ_le_of_lt`; lower and
+upper interval bounds use direct order composition; and the final index
+contradiction uses `Nat.not_lt_of_ge`. Equality transport and the locked
+[`OrderIso.apply_symm_apply`](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Order/Hom/Basic.lean#L842-L843)
+replace unnecessary simplification. The proposition, original hypotheses,
+`largeK`, and `2 ^ largeK` span are unchanged; only proof terms change. There
+is no new declaration or opaque substitute. Original source SHA guards and
+all kernel safeguards remain. Focused tests check the unchanged proposition
+(up to proof-irrelevant Fin bounds), absence of reflection tactics, exact
+symbolic terms, and all 41 patch round trips plus 650 prepared source hashes.
+These are offline checks; the new exact-head finite-extraction checkpoint,
+producer, library, and full audit still have to pass actual CI. The current
+source-attribution notice is preserved.
+
+
+### 2026-09-30: generic finite-extraction helper and connector recovery
+
+Exact head `51478e43277c7b3072fb50d57d96655ffe473011`, push run
+[36667342374](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36667342374)
+(job `109734723911`), still failed the private theorem at line 24 after all
+arithmetic reflection in that declaration had been removed. Thus reflection
+alone does not explain the kernel rejection. The precise definitional-equality
+reduction causing the closed giant power to be evaluated remains unlocalized.
+
+The next narrow replacement proves a separate private helper over free
+`H : Finset ℕ` and `B : ℕ`, with a proved-use premise bounding all shifts by B.
+Its proof contains no powers or fixed tuple constants. The original theorem
+retains its exact proposition and original hypotheses (only proof-irrelevant
+Fin index terms differ), and instantiates the helper with the unchanged
+`largePowerTuple` and `2 ^ largeK`. The required shift bound is actually proved
+parametrically in K before specialization. No kernel option, axiom allowance,
+public target, or numerical constant changes; no dependency module is pruned.
+
+The local candidate was committed as `f60a1ee82bb9d66be6c018b606c6bcd99b109079`
+before the cloud execution environment went offline. This publication does
+not claim to upload that complete local tree. The complete previously read
+replacement and immutable upstream source were reconstructed through the
+GitHub connector and checked byte-for-byte by SHA256: original BFTExtraction
+`ca1327c93e785659208d3af958f62e05e89ca4930d6a77076d6f99e74c52ff00`,
+prepared `8ec558b9450f02553b35aa3d27fc7c850caf5de5923ad84b3a80193c9ee2a579`.
+The latter exactly matches the previously recorded local candidate hash.
+The manifest changes only this prepared source/guard and records the added
+private helper. The focused Python test was reconstructed from its last
+published version to check the generic helper and unchanged wrapper signature;
+it has not been executed locally in the offline environment. All existing
+round-trip, 650-file source-closure, manifest-pin, producer, project, regression,
+axiom and coverage gates remain for actual Actions validation. The two bot
+regenerated PDF blobs are restored to the already reviewed master versions.
+The full RUN target remains unverified until the exact candidate passes.
 
 ## 2026-09-30：REC-L5 目标优先查重复用
 
@@ -130,6 +351,38 @@ Lean 与 mathlib 许可证为 Apache-2.0；本次仅调用已有依赖，无外�
 代码564bb498的push36671721342与PR36671762437均已实际全门禁通过，641条标准公理、98源文件及完整覆盖/回归；最终文档头仍另验CI。仅确定性范围已核验，详细声明和边界见
 [形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵已通过精确-ci)。
 
+## 2026-09-30: BFTParameters symbolic checkpoint
+
+Exact RUN head `65e0f5e21bba434aca8624eb04338b0ddb87329b`,
+[run 36671388031](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36671388031),
+job `109746931058`, successfully compiled the full BFTExtraction checkpoint.
+The subsequent producer build failed in BFTParameters at lines 14 and 170
+with the same closed huge-power kernel reduction guard. Project build,
+regressions and actual axiom checks did not run; RUN remains unverified.
+
+The immutable upstream BFTParameters source at plby/lean-proofs
+`8822f7ddef30fadbd92e1c6ab4ed897af356af5e` has SHA256
+`bda78b68b8a4ac94189c36ad8dd131b9013dc28cccbd37d69b23563b7435d10a`.
+A bounded upstream check found the current file byte-identical; no newer fix
+was found. The existing fixed-version Nat order and power APIs suffice.
+Two private helpers prove the power bound parametrically in K and interval
+subtraction bounds parametrically in B. Original public statements, largeK,
+all hypotheses and numerical constants remain unchanged. Four exact guarded
+hunks replace only those proof terms; the final contradiction explicitly
+eliminates False into the original existential isolation target. Independent
+source review caught and corrected that elimination before publication.
+Prepared source SHA256 is
+`762a6b5e9d74bfd6e5de8d582909a939d22873552e2116c9ff3519733cb740f9`.
+
+The manifest records the 42nd managed file and both private helpers. Exact
+forward/reverse hashes, the source guard and 15 focused compatibility tests
+pass locally; these are not kernel checks. Actions now builds BFTExtraction
+and BFTParameters together before the full producer so another failure here
+is reported early. All later producer, project, regression, axiom, source and
+coverage gates remain. The precise global definitional-reduction mechanism
+is not claimed to be fully localized. The source notice and unconfirmed
+authored-source license scope remain accurately recorded.
+
 ## 2026-09-30 REC-L3 actual Haar law: target-first reuse gate
 
 Starting tree: master `8548f385e095bf399c27bc3388f8128e4c7fc93c` (641 verified
@@ -198,3 +451,36 @@ PR51 代码 dc063232 的 push36681283200 与 PR36681288176 已全部通过：
 [精确声明及范围](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30rec-l3-实际-haar-单次概率已通过精确-ci)。
 独立等待律/均值、完整有符号差分布、联合恢复概率及素数传递仍未完成；
 独立专项源码复核与最终文档头 CI 是合并前剩余门禁。
+
+## 2026-09-30 07:16 UTC：无条件 RUN 精确验证及最新主线组合
+
+无条件代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 的
+[push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与
+[PR 36679105586](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679105586)
+全部成功。实际日志中 `MaynardBFT.consecutive_primes`、
+`OmegaBalance.bftbPrimeIndexRuns_unconditional`、
+`OmegaBalance.f3PrimeIndexRunStarts_infinite_unconditional` 均仅依赖
+`propext`、`Classical.choice`、`Quot.sound`。完整产生器、项目构建、内核回归、
+650 个依赖模块源码/固定版本检查、99 个项目文件、646+1 精确审计和144240有限检查通过。
+
+最终接口是：每个 L≥1 存在仅依赖 L 的自然数 C，对每个非零整数 c，
+全体素数枚举 `Nat.nth Nat.Prime` 中有无限多个起始下标 r，使连续 L 个素数
+的 F₃ 全为 c，且末首素数之差≤`f3RunModulus c * C`。长度1保留零跨度情形。
+`F3PrimeIndexRunAt` 明确使用全体素数，不是某个筛选子列；原条件接口由实际
+上游定理产生，不再作为未经证明的前提。
+
+新增五条声明：`bftbPrimeIndexRuns_unconditional`、
+`f3PrimeIndexRunStarts_infinite_unconditional`（F3BFTBMaynardAdapter），以及
+`bftb_eventually_log_rpow_le_rpow`、`bftb_eventually_rpow_le_half_rpow_div_rpow_log`、
+`bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log`（F3BFTBCutoff）。
+原始固定 Lean/mathlib、真实参数边界和全部审计门禁保持不变。第三方来源说明
+继续如实标注作者代码许可范围尚未确认；不把署名或沉默解释为许可。
+
+随后真实三方合入已验 Haar 主线 `f45cd8a7586609555e8f307d25c38fee5c105249`，
+保留双方全部数学源码字节及文档。组合候选是684条项目声明+1必需上游产生器、
+105个项目文件；本地15项兼容测试、6项审计规则测试与源码/覆盖检查通过。
+这个新增组合树仍须自己的完整 CI，不能用69c48f9的旧run替代。
+
+原五项目标中的 INF/COR/DEN/LOG 已在主线；RUN 已有无条件内核证明，等待最新
+组合验证与合并。全部接收 proof 任务尚未完成：全局 PAT、REC 等剩余概率/等待律、
+其它登记节点继续开放。单次 Haar 范围已合入 PR51，不扩张为完整 REC 完成。

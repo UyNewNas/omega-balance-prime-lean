@@ -732,6 +732,15 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_pat1_product_add_one_mod729
 #print axioms OmegaBalance.f3_pat1_pattern_of_mod729
 
+#print axioms OmegaBalance.bftb_eventually_log_rpow_le_rpow
+#print axioms OmegaBalance.bftb_eventually_rpow_le_half_rpow_div_rpow_log
+#print axioms OmegaBalance.bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log
+
+
+-- Imported proved BFTB producer and local unconditional RUN adapters.
+#print axioms MaynardBFT.consecutive_primes
+#print axioms OmegaBalance.bftbPrimeIndexRuns_unconditional
+#print axioms OmegaBalance.f3PrimeIndexRunStarts_infinite_unconditional
 #print axioms OmegaBalance.f3AllPrimeCountingReal_eq_AP
 #print axioms OmegaBalance.f3AllPrimeCountingReal_normalized_tendsto
 #print axioms OmegaBalance.eventually_f3AllPrimeCountingReal_ne_zero
