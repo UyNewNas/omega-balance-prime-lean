@@ -776,3 +776,26 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.truncatedDepthCertificateMatrix_cluster_iff
 #print axioms OmegaBalance.truncatedDepthCertificateMatrix_cluster_equivalence
 #print axioms OmegaBalance.f3SharedRootConfig_truncatedMatrix_recover_iff
+
+-- Actual unit Haar probability and extended root-depth tails.
+#print axioms OmegaBalance.padicInt_fiber_translate
+#print axioms OmegaBalance.padicInt_measurable_zero_fiber
+#print axioms OmegaBalance.padicInt_measurable_fiber
+#print axioms OmegaBalance.padicInt_haar_fiber_eq_zero_fiber
+#print axioms OmegaBalance.padicInt_haar_fiber
+#print axioms OmegaBalance.f3PadicHaar_univ
+#print axioms OmegaBalance.f3PadicInt_not_isUnit_iff
+#print axioms OmegaBalance.f3PadicUnitSet_compl
+#print axioms OmegaBalance.f3PadicUnitSet_measurable
+#print axioms OmegaBalance.f3PadicHaar_units
+#print axioms OmegaBalance.f3UnitHaar_univ
+#print axioms OmegaBalance.f3UnitHaar_units
+#print axioms OmegaBalance.f3UnitHaar_nonunits
+#print axioms OmegaBalance.f3PadicInt_unit_fiber_subset
+#print axioms OmegaBalance.f3UnitHaar_fiber
+#print axioms OmegaBalance.rootDepth_ge_iff_toZModPow
+#print axioms OmegaBalance.f3RootDepthTail_eq_fiber
+#print axioms OmegaBalance.f3RootDepthTail_measurable
+#print axioms OmegaBalance.f3RootDepthTail_zero
+#print axioms OmegaBalance.f3RootDepthTail_antitone
+#print axioms OmegaBalance.f3UnitHaar_rootDepth_ge

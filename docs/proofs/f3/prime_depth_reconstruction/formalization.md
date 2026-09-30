@@ -135,3 +135,21 @@
 · [来源接收与实现区分](../../../f3_proof_intake.md#2026-09-30rec-有限精度实现增量)
 
 输入阈值H作用于已减去已知公共基础深度b的超额深度R，即Y=min(R,H)。它不是对原始D在同一H处截断的接口；不会把这两种观测混用。
+
+## 2026-09-30 REC-L3 actual Haar probability candidate
+
+Baseline master `8548f385e095bf399c27bc3388f8128e4c7fc93c`.
+`PadicIntHaar.lean` minimally ports five individually auditable CC0 declarations;
+`F3UnitHaar.lean` constructs concrete normalized additive Haar, proves actual
+unit-domain mass 2/3 and normalizes its restriction; `F3RootDepthHaar.lean`
+connects the existing actual `ℚ_[3]` / `WithTop ℤ` rootDepth to residue fibers and
+proves the positive unit-root tail `1/(2*3^(t-1))`. A sample at the root retains
+infinite depth, and the residue theorem includes it without totalized valuation.
+This candidate covers the normalization and single-root tail input to REC-L3.
+Exact layers, unequal-depth mass, root-nullity, full signed difference law,
+configuration wrappers, independent waiting and prime transfer remain open at
+this checkpoint. No sampling-law premise, geometric PMF declaration or count
+assumption replaces a proof. Source/API reuse and licensing are recorded in
+[the reuse ledger](../../../f3_external_reuse.md#2026-09-30-rec-l3-actual-haar-law-target-first-reuse-gate).
+All declarations are registered once in Audit. Local source/coverage checks are
+not Lean execution; exact locked-pin CI remains required before status promotion.

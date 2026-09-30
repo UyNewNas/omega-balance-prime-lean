@@ -129,3 +129,48 @@ Lean 与 mathlib 许可证为 Apache-2.0；本次仅调用已有依赖，无外�
 与工作区更换前记录相同；源码守卫与覆盖检查重新通过（98 文件、641 条 exactly once）。
 代码564bb498的push36671721342与PR36671762437均已实际全门禁通过，641条标准公理、98源文件及完整覆盖/回归；最终文档头仍另验CI。仅确定性范围已核验，详细声明和边界见
 [形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵已通过精确-ci)。
+
+## 2026-09-30 REC-L3 actual Haar law: target-first reuse gate
+
+Starting tree: master `8548f385e095bf399c27bc3388f8128e4c7fc93c` (641 verified
+project declarations). The accepted paper node is REC-L3, proof §1 and theorem
+2.1, not a new conjecture. Its actual source normalization was also read at
+[prime_product_correlations §3](https://github.com/UyNewNas/omega-balance-prime-lean/blob/a1a724b6083e223ee407046c17dc8c90b036150f/docs/f3_balance_research/prime_product_correlations.md),
+blob `0642a3a41c6ce854cb4038250d17d27edff3dfbf`.
+
+Target-first searches included PadicInt Haar measure, p-adic valuation geometric
+distribution Lean, padic measure ball, toZModPow addHaar, measure_toZModPow_fiber,
+PadicInt volume_closedBall, PadicInt measure IsUnit, firstSuccess geometric, and
+mathlib PR / Zulip p-adic Haar equivalents. Current mathlib master was resolved
+as `380f2aafb622cb2c1c93dac545b6389083c68c51`; no complete REC law was located in
+the inspected sources. This is a bounded negative finding, not universal absence.
+
+Selected minimal closure: Ralf Stephan, in collaboration with Claude Code,
+[PadicIntHaar.lean at 7cc2da3f9219e084ee656c096c2055922f4b267c](https://github.com/rwst/lean-code/blob/7cc2da3f9219e084ee656c096c2055922f4b267c/ForMathlib/NumberTheory/PadicIntHaar.lean),
+CC0 1.0 Universal. Its complete 100-line source and license were inspected.
+Four private helpers plus its public theorem are ported with original attribution
+and URL, all renamed to public `OmegaBalance` declarations and individually
+registered in Audit. All four imports are mathlib; the external repository's
+other potentially axiomatic files are not imported. The actual theorem partitions
+all p-adic integers into finite disjoint translated fibers and uses Haar
+translation invariance and total mass one; it does not assume ball masses.
+
+Upstream uses Lean4.34.0-rc2 / mathlib169f50d4; this project retains Lean4.34.0 /
+mathlib5ed2965256430c3649e86755f9576b54eca72435. Exact source comparisons found
+RingHoms, ProperSpace and Haar/Basic identical, and the used PadicIntegers and
+Group/Measure APIs unchanged. No dependency is added or upgraded. Exact upstream
+commit had zero GitHub Actions runs; this is source compatibility evidence only,
+not executed upstream or project kernel verification.
+
+Alternatives read: the same repository's larger ambient `PadicHaar.lean`, and
+ImperialCollegeLondon/FLT `eb6df2b018f81920cd48dd510417f0b7790c305e` Haar setup
+(Apache-2.0). Neither larger closure is needed. `Padics.Measure.Basic` is
+p-adic-valued measure theory and does not prove this real probability law.
+An algebraically defined geometric PMF is not an actual Haar pushforward proof.
+
+The local adapters instantiate concrete `addHaarMeasure ⊤`, prove genuine
+unit-domain mass 2/3 and normalize its restriction, and bridge actual WithTop ℤ
+rootDepth to residue fibers with the zero/infinite case explicitly separated.
+[Implementation map](proofs/f3/prime_depth_reconstruction/formalization.md) and
+[task ledger](f3_formalization_tasks.md) record exact coverage and open work.
+No Lean/Lake executable is present locally; this candidate awaits exact-head CI.

@@ -509,3 +509,15 @@ ROOT/PAT/RUN 及其它已接收证明任务的未完成部分保持开放。
   固定精度全素数传递；不把有限可观测见证的 iff 解释成随机采样必然完备
 
 原五项目标、其它已接收 proofs、RUN 的无条件产生器和外部证明信任审计继续开放。
+
+## 2026-09-30 REC-L3 actual Haar probability candidate
+
+- Source: accepted REC proof §1/theorem2.1 and original shared-product source
+  a1a724b6 §3; [exact map](proofs/f3/prime_depth_reconstruction/formalization.md)
+- Minimal licensed reuse: [decision and pins](f3_external_reuse.md#2026-09-30-rec-l3-actual-haar-law-target-first-reuse-gate)
+- Candidate files: PadicIntHaar / F3UnitHaar / F3RootDepthHaar; concrete normalized
+  Haar, actual units of mass2/3, normalized restriction, actual-depth residue
+  equivalence including∞, positive single-root tail
+- Pending: exact layers, unequal-depth mass, null roots and signed difference,
+  original model wrapper, independent waiting-law and prime transfer
+- Validation: no local Lean/Lake; source and coverage only until exact-head CI
