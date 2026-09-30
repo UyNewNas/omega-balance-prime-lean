@@ -33,13 +33,13 @@ theorem f3RootDepthLayer_eq_sdiff (a : ℤ_[3]) (t : ℕ) :
       ¬((t + 1 : ℕ) : WithTop ℤ) ≤ rootDepth (d : ℚ_[3]) (a : ℚ_[3])
   cases h : rootDepth (d : ℚ_[3]) (a : ℚ_[3]) using WithTop.recTopCoe with
   | top => simp
-  | coe z => norm_cast; omega
+  | coe z => norm_cast <;> omega
 
 /-- Every finite exact layer is measurable. -/
 theorem f3RootDepthLayer_measurable (a : ℤ_[3]) (t : ℕ) :
     MeasurableSet (f3RootDepthLayer a t) := by
   rw [f3RootDepthLayer_eq_sdiff]
-  exact (f3RootDepthTail_measurable a t).sdiff (f3RootDepthTail_measurable a (t + 1))
+  exact (f3RootDepthTail_measurable a t).diff (f3RootDepthTail_measurable a (t + 1))
 
 /-- The actual unit-root exact layer at positive depth has mass `3^(-t)`. -/
 theorem f3UnitHaar_rootDepth_eq {a : ℤ_[3]} (ha : IsUnit a) {t : ℕ} (ht : 1 ≤ t) :
@@ -60,8 +60,8 @@ theorem f3UnitHaar_rootDepth_eq {a : ℤ_[3]} (ha : IsUnit a) {t : ℕ} (ht : 1 
         ac_rfl
     _ = (3 ^ t)⁻¹ := by
       have hc : (2 / 3 : ℝ≥0∞)⁻¹ - (2 / 3 : ℝ≥0∞)⁻¹ * 3⁻¹ = 1 := by
-        simp only [ENNReal.inv_div (a := 2) (b := 3) (by norm_num) (by norm_num),
-          div_eq_mul_inv]
+        simp only [ENNReal.inv_div (a := 2) (b := 3) (by norm_num) (by norm_num)]
+        simp only [div_eq_mul_inv]
         have hp : (3 : ℝ≥0∞) * 2⁻¹ * 3⁻¹ = 2⁻¹ := by
           rw [mul_right_comm, ENNReal.mul_inv_cancel
             (by norm_num : (3 : ℝ≥0∞) ≠ 0) (by norm_num : (3 : ℝ≥0∞) ≠ ⊤), one_mul]
@@ -78,7 +78,11 @@ theorem f3UnitHaar_rootDepth_eq {a : ℤ_[3]} (ha : IsUnit a) {t : ℕ} (ht : 1 
 /-- At depth zero, the other unit residue class carries probability one half. -/
 theorem f3UnitHaar_rootDepth_zero {a : ℤ_[3]} (ha : IsUnit a) :
     f3UnitHaar (f3RootDepthLayer a 0) = 1 / 2 := by
-  rw [f3RootDepthLayer_eq_sdiff, f3RootDepthTail_zero, Set.univ_sdiff,
+  have hcompl : (Set.univ \ f3RootDepthTail a (0 + 1)) =
+      (f3RootDepthTail a 1)ᶜ := by
+    ext d
+    simp
+  rw [f3RootDepthLayer_eq_sdiff, f3RootDepthTail_zero, hcompl,
     prob_compl_eq_one_sub (f3RootDepthTail_measurable a 1),
     f3UnitHaar_rootDepth_ge ha (by decide : 1 ≤ 1)]
   simpa only [Nat.sub_self, pow_zero, mul_one, one_div] using
@@ -90,7 +94,7 @@ theorem rootDepth_nat_lt_iff (d a : ℤ_[3]) (L : ℕ) :
       ((L + 1 : ℕ) : WithTop ℤ) ≤ rootDepth (d : ℚ_[3]) (a : ℚ_[3]) := by
   cases h : rootDepth (d : ℚ_[3]) (a : ℚ_[3]) using WithTop.recTopCoe with
   | top => simp
-  | coe z => norm_cast; omega
+  | coe z => norm_cast <;> omega
 
 /-- REC-L3: unequal actual depths are exactly the two next-level root balls. -/
 theorem rootDepth_ne_iff_mem_tail_union {a b : ℤ_[3]} {L : ℕ}

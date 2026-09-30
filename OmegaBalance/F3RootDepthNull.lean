@@ -41,7 +41,7 @@ theorem f3UnitHaar_singleton (a : ℤ_[3]) : f3UnitHaar {a} = 0 := by
     Measure.restrict_apply (measurableSet_singleton a), smul_eq_mul]
   have hzero : f3PadicHaar (({a} : Set ℤ_[3]) ∩ f3PadicUnitSet) = 0 :=
     le_antisymm ((measure_mono Set.inter_subset_left).trans_eq (f3PadicHaar_singleton a))
-      (zero_le _)
+      zero_le
   rw [hzero, mul_zero]
 
 /-- The infinite-depth event is exactly the null root point, not a zero-depth layer. -/
