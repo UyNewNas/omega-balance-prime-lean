@@ -992,3 +992,62 @@ The corollary still requires implementation and full exact CI. Moving configurat
 全素数传递、有符号差律、被动下界和三等距根精确停止律等继续开放。36个数值阈值与
 8个有限根模型有理成功概率仅为回归。独立数学/源码复核通过；此状态文档头仍另行
 执行完整CI。原始proof来源水位保持不变。
+
+# REC-L12 truncated single-certificate Haar law: reuse gate
+
+Observed 2026-09-30 11:09 UTC. Consumer master3b0d3aad1665b47dc1a169fd8111ccb74ce7df99, Lean4.34.0/mathlib5ed2965256430c3649e86755f9576b54eca72435. Accepted paper proof theorem2.6 equation(2.13), not its yet-unproved finite-batch matrix bound or prime transfer.
+
+## Target and actual domain
+For positive natural precision H (the existing representation of the paper's positive integer precision), genuine unit roots with finite true distance L>=1, observe min(rootDepth,H). Use the existing truncatedDepthWitness: unequal observations OR both saturated at H. Prove its actual normalized unit-Haar probability is3^(-L) if L<H, and1/(2*3^(H-1)) if H<=L. Preserve root-hit infinity before truncation. The cutoff acts on normalized R, not raw D=b+R. A wrapper must use the original F3SharedRootConfig and its proved actual off-diagonal exponent, not assume a probability law.
+
+## Bounded final-target search
+GitHub mathlib4 code queries truncated padic; valuation certificate; min_eq_min; min_eq_iff. Final-target searches returned unrelated Witt-vector/tactic material among inspected results, not an equivalent actual truncated-certificate probability theorem. This is bounded evidence only. The minimal route reuses the existing project ultrametric/certificate and exact Haar tail/unequal laws; no probability or valuation foundations are rebuilt.
+
+## Exact project reuse at consumer master
+- OmegaBalance/F3RootCertificates.lean blob4ebd2866950885848efca01b5157f7e4941a59bf:
+  rootDepth_min_le_distance d a b; rootDepth_min_eq_distance_of_ne (unequal actual extended depths);
+  truncatedRootDepth_ne_certificate: unequal truncated depths imply true rootDistance equals their minimum and that minimum<H;
+  truncatedRootDepth_saturated_certificate: both cut depths=H imply H<=rootDistance and true truncated target=H.
+  Existing definitions use WithTop Int and retain infinity.
+- OmegaBalance/F3RootTruncatedReconstruction.lean blob4a24db55453664e08976cd883757912c874f1adb:
+  truncatedDepthWitness, truncatedDepthCertificate_eq_some_iff and the actual finite scan/matrix. Keep this algorithm and success event.
+- OmegaBalance/F3RootDepthHaar.lean blob7c41520fbd70c7001d2096f0822bc60188ed7ab6:
+  f3RootDepthTail a H is the actual threshold event, measurable;
+  f3UnitHaar_rootDepth_ge (ha:IsUnit a) (hH:1<=H) gives its actual mass (2*3^(H-1))^(-1).
+- OmegaBalance/F3RootDepthLaw.lean blob0e014a2a754b6635a999b4473587cba84b447310:
+  f3UnitHaar_rootDepth_ne (ha:IsUnit a)(hb:IsUnit b)(hLpos:1<=L)(hL:actual distance=cast L) gives actual unequal-depth mass (3^L)^(-1).
+- OmegaBalance/F3RootBatchHaar.lean blobb3862170beda67dd0d0bfd00698ad7c311c94c5d:
+  f3RootDepth_ne_measurable hL gives measurability of the actual unequal event.
+- Existing f3RootDistanceExponent_eq/pos on original C supplies actual finite positive distance for distinct labels. It is already kernel verified; no new rational-only model.
+
+## Minimal mathematical composition
+When L<H, joint saturation is impossible by the existing saturated certificate. A raw unequal pair has minimum=L<H, so truncation preserves a strict inequality; conversely unequal cuts imply unequal raw depths. Thus success event is exactly the already-proved unequal event.
+When H<=L, unequal cuts are impossible by the existing unequal certificate. Saturation of the first root also saturates the second by the ultrametric minimum bound and valuation subtraction symmetry. Thus success is exactly the first root's H-tail.
+Uniform lower bound is even simpler: the H-tail of the first root is always a subset of the success event, regardless of root distance; if the second cut is not H the cuts differ, otherwise both saturate. Measure monotonicity supplies the bound without rebuilding ENNReal inverse inequalities.
+Only the single-observation law, its measurability, uniform lower bound and fixed-C wrappers are the first implementation slice. Finite-batch matrix recovery probability and all-prime transfer remain open.
+
+## Locked external API/current/license check
+Mathlib/Order/MinMax.lean at5ed2965, blobde014275ed509bebd700df981e9562e26194bbe7:
+- line79 min_eq_right_iff: min a b=b iff b<=a
+- line97 min_lt_min_left_iff: min a c<min b c iff a<b and a<c
+Used with the linear order WithTop Int. The currently indexed commit0e51f706a3f127b7a708185c0bd7b4beb74d5a17 was separately fetched; current file has the identical blob and declarations. Header Apache2, pinned root LICENSE checked in this round. AddValuation.map_sub_swap was already read at the fixed pin and used in the verified project. No new dependency, toolchain upgrade or external proof copying.
+
+## Intake refresh and acceptance
+At11:09 UTC, git fetch listed172 actual remote heads (excluding origin/HEAD). Compared155 original watermark entries: only master moved; original research heads are unchanged. Repository issues updated since09:11 were only this integration's PR53/54/56/57/58. No additional external mathematical package found; do not alter original source watermarks. Every new lemma needs Audit exactly once and full exact-tree Actions plus independent review. This report is not kernel verification.
+
+## 2026-09-30 11:23 UTC：单次截断证书 Haar 分段律已通过精确 CI
+
+代码94bc0693b5c1bfca7d054d20daf9efea00a0b67a，树9ba2bea3889e77d85a63fcf3c86d3f27b51d0250，
+[push36707863669](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36707863669)与
+[PR36707908267](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36707908267)
+首轮完整成功。12条新声明仅标准公理；全753项公理输出（752项目+1产生器）、112项目
+源文件、650依赖模块及版本锁、构建、内核回归、精确覆盖和144240有限检查通过。
+
+已覆盖REC-L12/定理2.6式(2.13)的实际单次概率：L<H时证书事件等于原不等深度事件，
+质量3^(−L)；L≥H时等于真实共同H球，质量1/(2·3^(H−1))，包括L=H。另有可测性、
+实际事件包含给出的统一下界、原固定配置包装。H截断标准化R，命中根∞保留至截断，
+恢复目标仍为min(L,H)。高距离一般引理允许更广根域，但最终包装保持原C全部前提。
+
+30个精确有限剩余类案例6564次观测含60次根命中只是补充回归；H=0反例说明为何质量
+公式要求H≥1。独立源码/数学复核通过。式(2.14)的有限批次截断矩阵尾界、移动配置、
+全素数传递与整个REC包仍开放。此状态文档头不变更已验代码或审计，仍单独执行完整CI。
