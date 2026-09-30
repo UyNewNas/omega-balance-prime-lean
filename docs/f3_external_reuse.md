@@ -947,3 +947,48 @@ Eτ≤1+3^K(1+log choose(m,2))，这里期望是保留∞的真实非负积分�
 已显式修复，12个公开命题及全部前提保持不变。294个浮点解析前缀与28个有限样本尾和
 仅为补充回归。显式置信参数δ推论、移动配置、完整有符号差律和素数传递仍开放。
 本次状态文档头保留全部已验代码和审计，仍独立执行完整CI。原纸面来源水位不变。
+
+# REC-L7 explicit confidence corollary: reuse gate
+
+Observed 2026-09-30 10:53 UTC. Read-only target-first preparation; no code or kernel claim. Consumer Lean4.34.0/mathlib5ed2965256430c3649e86755f9576b54eca72435. Existing F3JointWaitingHaar proves the actual finite-pair maximum tail with exact choose-two coefficient and actual K; F3JointWaitingMean proves tail measurability on the same actual stream.
+
+## Target
+For a fixed original F3SharedRootConfig, 0<delta<1 and natural T satisfying T>=3^K*log((m.choose2)/delta), prove the real probability of actual complete certificate-matrix recovery after exactly the firstT whole observations is at least1-delta. Preserve actual matrix equality, genuine shared stream, true infinite diagonal/root-hit depths, actual K and all C hypotheses.
+
+## Bounded search and decision
+GitHub final-target queries log confidence and exp_neg log measureReal found unrelated weak-topology, tilted-measure and moment/subGaussian results among inspected matches, not an equivalent final matrix-certificate confidence theorem. Exact API query measureReal_compl identifies the minimal finite-probability complement bridge. Bounded only, not an absence proof. Reuse the already-proved project tail and matrix iff plus elementary locked log/exponential and complement APIs; no new dependency or probability framework.
+
+## Exact APIs
+All paths relative to https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/ .
+
+- Mathlib/MeasureTheory/Measure/Real.lean:409, blob2be899626f4e667ab2434919350e73a0074fc0e8:
+MeasureTheory.measureReal_compl [IsFiniteMeasure mu] (hs:MeasurableSet s): mu.real s.compl=mu.real univ-mu.real s.
+It requires the actual measurable failure event and finite measure. Existing stream probability and joint-tail measurability supply these; real mass of univ is1.
+- Mathlib/Analysis/SpecialFunctions/Log/Basic.lean:59, blob0ed3c957d0d1f37094a8da10e42e6d2c2807e7be:
+Real.exp_log {x:Real} (hx:0<x):exp(log x)=x.
+Use positive B/delta, not log at zero. Real.exp_neg and Real.exp_le_exp are already directly used and kernel-verified in preceding consumer modules at this pin.
+- Existing Nat.choose_pos C.two_le_card proves B=m.choose2>0. Positive3^K permits division. Ordered-field arithmetic turns T>=A*log(B/delta) into exp(-T/A)<=exp(-log(B/delta)); multiplication by B gives <=delta exactly.
+- Derive actual success as the complement of the failure event pointwise from f3JointRootWait_le_iff_matrix_recover; do not assume this correspondence or root-pair independence.
+
+## Current and license comparison
+Current search index resolved to dca97ab984e97c9d1edcdbea3dc9e0c0c1d673ee, independently fetched as a commit. Current Measure/Real blob91ebdd41fdbc3f448c4f4120e19a9b774696c567 and Log/Basic blob9a7df2d42999a58e7619e89227ba5e75d6ba60a6 were separately read. Selected signatures/hypotheses unchanged. No upgrade proposed. Both source headers declare Apache2; pinned root LICENSE directly checked in this integration round. Only library calls/project adapters planned, no external proof corpus copied.
+
+The corollary still requires implementation and full exact CI. Moving configurations, prime transfer, signed differences and other accepted results remain open.
+
+## 2026-09-30 11:04 UTC：实际完整矩阵置信保证已通过精确 CI
+
+代码361cdd3c958897b342297dfbc7abb55a66e3a4cb，树6979590446d56975243dd667081e37c40542456f，
+[push36705872257](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36705872257)和
+[PR36705919682](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36705919682)
+首轮完整成功。三条新声明仅标准公理；全741项公理输出（740项目+1产生器）、111项目
+源文件、650依赖模块及版本锁、构建、内核回归、覆盖和144240有限检查全部通过。
+
+对原固定配置、0<δ<1和自然T≥3^K log(choose(m,2)/δ)，真实单位Haar流前T次观测使
+原证书矩阵恢复全部真实距离的概率至少1−δ。成功事件通过已有逐点矩阵等价和可测尾
+补事件证明，不预设目标概率；K为实际根距最大值，根命中∞及真实∞对角线保留。
+
+与先前已验标量尾律/期望、联合尾界/对数期望一起，覆盖纸面定理2.3在固定原局部模型
+中的式(2.7)、式(2.8)及其显式置信推论。整个REC包仍未完成：截断概率、移动配置、
+全素数传递、有符号差律、被动下界和三等距根精确停止律等继续开放。36个数值阈值与
+8个有限根模型有理成功概率仅为回归。独立数学/源码复核通过；此状态文档头仍另行
+执行完整CI。原始proof来源水位保持不变。

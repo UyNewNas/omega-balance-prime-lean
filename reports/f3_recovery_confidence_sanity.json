@@ -1,0 +1,377 @@
+{
+  "status": "finite numerical/exact-rational sanity only; not Lean verification",
+  "threshold_cases": 36,
+  "actual_finite_cases": 8,
+  "threshold_checks": [
+    {
+      "B": 1,
+      "K": 1,
+      "delta": "0.9",
+      "threshold": 0.31608154697347907,
+      "T": 1,
+      "failure_envelope": 0.7165313105737893
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "delta": "0.5",
+      "threshold": 2.0794415416798357,
+      "T": 3,
+      "failure_envelope": 0.36787944117144233
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "delta": "0.01",
+      "threshold": 13.815510557964275,
+      "T": 14,
+      "failure_envelope": 0.009403562551495206
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "delta": "0.000001",
+      "threshold": 41.44653167389282,
+      "T": 42,
+      "failure_envelope": 8.315287191035679e-07
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "delta": "0.9",
+      "threshold": 0.9482446409204371,
+      "T": 1,
+      "failure_envelope": 0.8948393168143698
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "delta": "0.5",
+      "threshold": 6.238324625039508,
+      "T": 7,
+      "failure_envelope": 0.45942582403592663
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "delta": "0.01",
+      "threshold": 41.44653167389283,
+      "T": 42,
+      "failure_envelope": 0.009403562551495206
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "delta": "0.000001",
+      "threshold": 124.33959502167846,
+      "T": 125,
+      "failure_envelope": 9.292491998047335e-07
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "delta": "0.9",
+      "threshold": 25.602605304851803,
+      "T": 26,
+      "failure_envelope": 0.8985293706344282
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "delta": "0.5",
+      "threshold": 168.4347648760667,
+      "T": 169,
+      "failure_envelope": 0.4988383163683483
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "delta": "0.01",
+      "threshold": 1119.0563551951063,
+      "T": 1120,
+      "failure_envelope": 0.009961242183509097
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "delta": "0.000001",
+      "threshold": 3357.1690655853185,
+      "T": 3358,
+      "failure_envelope": 9.965863565864136e-07
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "delta": "0.9",
+      "threshold": 3.6119184129778077,
+      "T": 4,
+      "failure_envelope": 0.7907914143471804
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "delta": "0.5",
+      "threshold": 5.375278407684165,
+      "T": 6,
+      "failure_envelope": 0.4060058497098381
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "delta": "0.01",
+      "threshold": 17.111347423968603,
+      "T": 18,
+      "failure_envelope": 0.0074362565299990755
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "delta": "0.000001",
+      "threshold": 44.74236853989716,
+      "T": 45,
+      "failure_envelope": 9.177069615054774e-07
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "delta": "0.9",
+      "threshold": 10.835755238933423,
+      "T": 11,
+      "failure_envelope": 0.8837244849303221
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "delta": "0.5",
+      "threshold": 16.125835223052494,
+      "T": 17,
+      "failure_envelope": 0.45371927907148735
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "delta": "0.01",
+      "threshold": 51.33404227190581,
+      "T": 52,
+      "failure_envelope": 0.00928676055709572
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "delta": "0.000001",
+      "threshold": 134.22710561969146,
+      "T": 135,
+      "failure_envelope": 9.177069615054774e-07
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "delta": "0.9",
+      "threshold": 292.5653914512024,
+      "T": 293,
+      "failure_envelope": 0.8983917773000909
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "delta": "0.5",
+      "threshold": 435.39755102241736,
+      "T": 436,
+      "failure_envelope": 0.4987619284065437
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "delta": "0.01",
+      "threshold": 1386.0191413414568,
+      "T": 1387,
+      "failure_envelope": 0.009959716801511625
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "delta": "0.000001",
+      "threshold": 3624.1318517316695,
+      "T": 3625,
+      "failure_envelope": 9.964337476186496e-07
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "delta": "0.9",
+      "threshold": 7.223836825955615,
+      "T": 8,
+      "failure_envelope": 0.6948345122280154
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "delta": "0.5",
+      "threshold": 8.987196820661973,
+      "T": 9,
+      "failure_envelope": 0.49787068367863946
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "delta": "0.01",
+      "threshold": 20.72326583694641,
+      "T": 21,
+      "failure_envelope": 0.009118819655545162
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "delta": "0.000001",
+      "threshold": 48.35428695287496,
+      "T": 49,
+      "failure_envelope": 8.063497622724119e-07
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "delta": "0.9",
+      "threshold": 21.671510477866846,
+      "T": 22,
+      "failure_envelope": 0.8677432947392922
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "delta": "0.5",
+      "threshold": 26.961590461985917,
+      "T": 27,
+      "failure_envelope": 0.49787068367863946
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "delta": "0.01",
+      "threshold": 62.16979751083923,
+      "T": 63,
+      "failure_envelope": 0.009118819655545162
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "delta": "0.000001",
+      "threshold": 145.06286085862487,
+      "T": 146,
+      "failure_envelope": 9.011112354148884e-07
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "delta": "0.9",
+      "threshold": 585.1307829024048,
+      "T": 586,
+      "failure_envelope": 0.8967864283560179
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "delta": "0.5",
+      "threshold": 727.9629424736198,
+      "T": 728,
+      "failure_envelope": 0.49992375575949494
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "delta": "0.01",
+      "threshold": 1678.5845327926593,
+      "T": 1679,
+      "failure_envelope": 0.009982917191815295
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "delta": "0.000001",
+      "threshold": 3916.6972431828717,
+      "T": 3917,
+      "failure_envelope": 9.987548629994608e-07
+    }
+  ],
+  "actual_checks": [
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "T": 1,
+      "delta": "0.9",
+      "exact_failure": "2/3",
+      "exact_success": "1/3"
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "T": 2,
+      "delta": "0.9",
+      "exact_failure": "4/9",
+      "exact_success": "5/9"
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "T": 3,
+      "delta": "0.9",
+      "exact_failure": "8/27",
+      "exact_success": "19/27"
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "T": 3,
+      "delta": "0.5",
+      "exact_failure": "8/27",
+      "exact_success": "19/27"
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "T": 1,
+      "delta": "0.9",
+      "exact_failure": "8/9",
+      "exact_success": "1/9"
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "T": 2,
+      "delta": "0.9",
+      "exact_failure": "64/81",
+      "exact_success": "17/81"
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "T": 3,
+      "delta": "0.9",
+      "exact_failure": "512/729",
+      "exact_success": "217/729"
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "T": 3,
+      "delta": "0.9",
+      "exact_failure": "17576/19683",
+      "exact_success": "2107/19683"
+    }
+  ]
+}
