@@ -2,7 +2,7 @@
   "schema": 1,
   "result_id": "F3-WAV-1-PROOF-BOUND",
   "checked_at_utc": "2026-09-30T07:50:49Z",
-  "status": "CODE-CANDIDATE; EXACT-HEAD-CI-PENDING",
+  "status": "LEAN-PROVED for the single discriminant lemma and four regressions only; full WAV1–6 incomplete",
   "implementation_base": "0bd5333e92b429306ffb139728c04cd4a1ee796b",
   "paper_sources": {
     "theorem": {
@@ -184,5 +184,20 @@
     "general wavelet weight or valuation theorems",
     "prime-pair asymptotics or twin-prime infinitude"
   ],
-  "upgrade_condition": "Exact implementation head must pass all repository build, kernel regression, axiom, source, audit-coverage and finite gates before LEAN-PROVED credit"
+  "upgrade_condition": "Exact implementation head must pass all repository build, kernel regression, axiom, source, audit-coverage and finite gates before LEAN-PROVED credit",
+  "executed_ci": {
+    "verified_code_sha": "c7e5d7d55209e575cc1449cf4595762f63469cf2",
+    "runs": [
+      36690453078,
+      36690460110
+    ],
+    "project_declarations": 699,
+    "required_external": 1,
+    "project_source_files": 107,
+    "dependency_source_modules": 650,
+    "axioms": "only propext/Classical.choice/Quot.sound; each declaration uses a subset",
+    "review": "independent scope/math/source review passed",
+    "latest_workflow_base": "ef68dc4c09fbb56efe2aa438a7bfae937ba2e154",
+    "latest_combined_ci": "pending its own exact run"
+  }
 }

@@ -2,7 +2,7 @@
 
 来源数学状态：PAPER-AUDITED（`311b0a226c0a64854f495dd3d1561fefaf6cb6e6`）。
 本次数学范围：第 1 节错误大小界的局部修正；其余证明沿用来源，未重新做全包审计。
-Lean 状态：`F3-WAV-1-PROOF-BOUND` 为 `CODE-CANDIDATE / EXACT-HEAD-CI-PENDING`；
+Lean 状态：`F3-WAV-1-PROOF-BOUND` 的一般引理与四条回归已通过代码c7e5d7d的精确CI（仅此范围）；
 完整 F3-WAV-1 条件传递与 F3-WAV-2–6 均未完成。
 
 推荐模块：
@@ -67,3 +67,20 @@ Lean 状态：`F3-WAV-1-PROOF-BOUND` 为 `CODE-CANDIDATE / EXACT-HEAD-CI-PENDING
 
 其余 WAV-L1–L13、实际权函数/条件传递、两根/小波、Fourier、AP、除数传递、
 单端素数渐近与一般驻相仍开放；不从此引理推出双端素数估计或孪生素数无穷性。
+
+## 2026-09-30 09:03 UTC：WAV 短窗口修复已通过精确内核验证
+
+代码 `c7e5d7d55209e575cc1449cf4595762f63469cf2` 的
+[push 36690453078](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36690453078) 与
+[PR 36690460110](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36690460110)
+全部成功：700项公理审计（699条项目声明+1必需产生器）仅含标准公理，
+107个项目源文件、650个依赖模块及固定版本检查、完整覆盖、构建和回归均通过。
+一般非整除引理与四个边界回归均有实际公理输出；独立数学/源码复核通过。
+
+只升级 `F3-WAV-1-PROOF-BOUND`：严格窗口的整数判别式非整除、r=2/h=10旧大小界
+反例及其正确结论、h=2零判别式、h=25排除端点的精确整除层/权重回归。
+不宣告整个条件传递或WAV2–6已形式化，不把源PAPER-AUDITED归属解释为本次全包再审计。
+首轮未限定dvd_sub的失败已据固定Lean4.34 API改为Int.dvd_sub，公开命题没有改变。
+
+最终树另合入已验缓存工作流主线ef68dc4，数学源码与上述已验版本字节相同；
+仅更换缓存保存范围，所有内核/源码/公理门禁保留。这个组合/文档头仍单独执行CI。

@@ -5,7 +5,7 @@
 | 结果 ID | \`F3-WAV-1\` 至 \`F3-WAV-6\` |
 | 来源 | “F3探索2”最新一轮：research_notes_round2.md（2026-09-28） |
 | 状态 | \`PAPER-AUDITED\` |
-| Lean 状态 | 仅短窗口非整除步骤已有代码候选，等待精确 head CI；F3-WAV-1–6 主结论均未形式化完成 |
+| Lean 状态 | 仅短窗口非整除步骤及四条回归已通过精确代码c7e5d7d的CI；F3-WAV-1–6完整主结论仍未形式化完成 |
 | 外部依赖 | 等差数列素数定理 / Siegel–Walfisz；其余主局部结论为初等有限同余与 Hensel 型提升 |
 
 [完整证明](proof.md) · [脚手架](scaffolding.md) · [形式化计划](formalization.md)

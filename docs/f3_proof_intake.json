@@ -2257,7 +2257,7 @@
       "priority": "independent-local-first",
       "source_read_complete": true,
       "formalization_complete": false,
-      "local_implementation": "F3-WAV-1-PROOF-BOUND code candidate only; exact-head CI pending; full conditional transfer incomplete"
+      "local_implementation": "F3-WAV-1-PROOF-BOUND exact-CI verified atc7e5d7d only; full conditional transfer incomplete"
     },
     {
       "id": "F3-WAV-2",
@@ -3705,7 +3705,7 @@
     {
       "id": "F3-WAV-1-PROOF-BOUND",
       "source_sha": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
-      "status": "paper proof step repaired in imported copy; CODE-CANDIDATE; EXACT-HEAD-CI-PENDING; theorem unchanged",
+      "status": "paper step repaired; single lemma and four regressions exact-CI verified; full theorem transfer still incomplete",
       "original": "h²−4<3^(2r−1) under2<h<3^(2r−1)−2 is false",
       "repair": "Factor(h−2)(h+2); both positive below3^(2r−1); difference4 means3 cannot divide both. Reuse prime-power-product divisibility and Int.le_of_dvd.",
       "downstream": "Preserve strict short-shift window; no theorem weakening needed.",
@@ -3719,8 +3719,13 @@
       "lean_declaration": "OmegaBalance.f3Wavelet_discriminant_not_dvd",
       "module": "OmegaBalance/F3WaveletLocal.lean",
       "evidence": "reports/f3_wavelet_bound_correction.json",
-      "kernel_verified": false,
-      "strict_boundary": "At h=3^(2r−1)−2, v3(D)=2r−1 and W(D)=−1; h=2 remains zero discriminant exception"
+      "kernel_verified": true,
+      "strict_boundary": "At h=3^(2r−1)−2, v3(D)=2r−1 and W(D)=−1; h=2 remains zero discriminant exception",
+      "verified_code_sha": "c7e5d7d55209e575cc1449cf4595762f63469cf2",
+      "successful_code_runs": [
+        36690453078,
+        36690460110
+      ]
     }
   ],
   "source_status_boundary": "Source-reported PAPER-AUDITED is not CONJECTURE and not Lean proof. Scan completion does not imply formalization completion. No branch name or historical green report is accepted as exact-head verification.",
@@ -4140,7 +4145,7 @@
           "url": "https://github.com/UyNewNas/omega-balance-prime-lean/blob/311b0a226c0a64854f495dd3d1561fefaf6cb6e6/docs/proofs/f3/wavelet_transfer/formalization.md"
         }
       },
-      "lean_mapping": "F3-WAV-1-PROOF-BOUND only: OmegaBalance.f3Wavelet_discriminant_not_dvd plus four F3DeeperExamples regressions are code candidates awaiting exact-head CI. All original full WAV1–6 conclusions remain incomplete. Exact map: docs/proofs/f3/wavelet_transfer/formalization.md.",
+      "lean_mapping": "OmegaBalance.f3Wavelet_discriminant_not_dvd and four audited kernel regressions verified atc7e5d7d; full WAV1–6 remain incomplete. See package formalization map.",
       "missing_DAG": "WAV-L1–L3 conditional transfer; L4 twin shift; L5–L8 root/wavelet/Fourier; L9 AP bound; L10 CRT divisor transfer; L11 AP-prime main term; L12 two-prime exact interface only; L13 general stationary phase",
       "target_names": [
         "f3Wavelet_block_cancel",
@@ -6586,7 +6591,7 @@
       "whole_task_complete": false
     },
     "F3-WAV-1-PROOF-BOUND": {
-      "status": "CODE-CANDIDATE; EXACT-HEAD-CI-PENDING",
+      "status": "LEAN-PROVED for one general lemma and four kernel regressions only",
       "source_sha": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
       "implementation_base": "0bd5333e92b429306ffb139728c04cd4a1ee796b",
       "paper_node": "proof §1 lower-layer discriminant nondivisibility only",
@@ -6611,11 +6616,15 @@
       "audit_coverage_count": 689,
       "formalization_complete": false,
       "kernel_verified": false,
-      "successful_code_runs": [],
+      "successful_code_runs": [
+        36690453078,
+        36690460110
+      ],
       "remaining": [
         "Exact-head CI for local lemma and regressions",
         "WAV-L1–L13 and all complete F3-WAV-1–6 statements"
-      ]
+      ],
+      "verified_code_sha": "c7e5d7d55209e575cc1449cf4595762f63469cf2"
     },
     "REC-L6-FINITE-BATCH": {
       "status": "LEAN-PROVED for10 fixed-root finite-batch declarations only; full waiting/moving/prime tasks open",
