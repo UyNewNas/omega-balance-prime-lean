@@ -22,3 +22,4 @@ import OmegaBalance.F3CorrelationCesaroLimit
 import OmegaBalance.F3CorrelationTail
 import OmegaBalance.F3Infinitude
 import OmegaBalance.F3SignChanges
+import OmegaBalance.F3FourPrimePattern

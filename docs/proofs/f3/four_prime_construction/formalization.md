@@ -1,6 +1,6 @@
 # F3-PAT-1：形式化映射与阻塞依赖
 
-数学状态：`PAPER-AUDITED`。Lean 状态：`NOT-STARTED`。以下是目标接口与依赖计划，不是已存在的 Lean 声明；提供脚手架不自动升级为 `FORMALIZATION-READY`。
+数学状态：`PAPER-AUDITED`。Lean 状态：`LEAN-IN-PROGRESS`（PAT-L1–3 已写入，精确 CI 待运行）。以下是目标接口与依赖计划，不是已存在的 Lean 声明；提供脚手架不自动升级为 `FORMALIZATION-READY`。
 
 [定理](theorem.md) · [证明](proof.md) · [引理 DAG](scaffolding.md)
 
@@ -19,10 +19,10 @@
 
 | 书面节点 | 建议目标 Lean 名称 | 目标模块 | 当前完成状态 | 依赖或阻塞 |
 |---|---|---|---|---|
-| 定义 | `f3Pat1Point`, `F3Pat1Pattern`, `F3Pat1PrimeConfiguration` | F3FourPrimePattern | 未实现 | 复用现有 `f3`、`Nat.Prime`，形式索引可用 `Fin 4` |
-| PAT-L1 | `v3_eq_of_modEq_pow_of_lt` | F3FourPrimePattern | 未实现 | 先搜索固定 mathlib 中可复用的赋值同余引理 |
-| PAT-L2 | `f3_pat1_point_mod729`, `f3_pat1_product_add_one_mod729` | F3FourPrimePattern | 未实现 | `Nat.ModEq` 与有限系数算术 |
-| PAT-L3 | `f3_pat1_pattern_of_mod729` | F3FourPrimePattern | 未实现 | PAT-L1、PAT-L2、现有模 3 符号接口 |
+| 定义 | `f3Pat1Point`, `F3Pat1Pattern`, `F3Pat1PrimeConfiguration` | F3FourPrimePattern | 已写入，待 CI | 复用现有 `f3`、`Nat.Prime`，形式索引可用 `Fin 4` |
+| PAT-L1 | `v3_eq_of_modEq_pow_of_lt` | F3FourPrimePattern | 已写入，待 CI | 已查重，复用 `Nat.ModEq.dvd_iff` 和 `padicValNat_dvd_iff_le` |
+| PAT-L2 | `f3_pat1_point_mod729`, `f3_pat1_product_add_one_mod729` | F3FourPrimePattern | 已写入，待 CI | `Nat.ModEq` 与有限系数算术 |
+| PAT-L3 | `f3_pat1_pattern_of_mod729` | F3FourPrimePattern | 已写入，待 CI | PAT-L1、PAT-L2、现有模 3 符号接口 |
 | PAT-L4 | `f3_pat1_complexity_le_two` | F3FourPrimeConstruction | 未实现 | 需要与外部素数线性形式定理一致的复杂度定义 |
 | PAT-L5 | `f3_pat1_local_admissible`, `f3_pat1_singular_product_pos` | F3FourPrimeConstruction | 未实现 | `ZMod` 单位、局部计数、无穷乘积基础 |
 | EXT-GT2 | 名称待实际库检索后确定 | 外部依赖 | `BLOCKED-EXTERNAL` | 尚未完成复杂度至多 2 的 Green–Tao 定理的可用 Lean 接口核验 |
@@ -51,10 +51,12 @@
 | 完整书面证明 | 已整理；书面审计通过 |
 | 对既有提交的书面审计 | 已完成；对象与范围见 [审计记录](scaffolding.md#5-书面审计记录2026-09-29) |
 | Python 有限复核 | [报告](../../../../reports/f3_pat1_paper_check.json)；不承担无限证明责任 |
-| 新增 Lean 声明 | 0 |
+| 新增 Lean 声明 | 3 个定义、4 条 theorem；精确 CI 待运行 |
 | 当前主结果的 Lean 核验提交 | 无 |
 | 当前主结果的内核公理审计 | 未运行 |
 | 本轮 `python3 scripts/verify.py` | 已执行；本地缺少 `lake`，退出码 2，未进入 Lean 构建 |
 | 提交的仓库 CI | 在 PR 中记录精确 head 与运行链接；不作为本主结果的 Lean 证明 |
 
-以后每条新增 Lean theorem/lemma 都须登记 `scripts/Audit.lean`，完成构建、回归、公理、源码及覆盖检查。只有同一精确 Git head 通过完整门禁，才能将主结果标为 `LEAN-PROVED`。本提交不改 Lean 源码、工具链、依赖版本、默认 import 或审计表。
+以后每条新增 Lean theorem/lemma 都须登记 `scripts/Audit.lean`，完成构建、回归、公理、源码及覆盖检查。只有同一精确 Git head 通过完整门禁，才能将主结果标为 `LEAN-PROVED`。本轮新增 `F3FourPrimePattern.lean` 并接入默认 import 与一对一审计；工具链和依赖版本不变。
+
+查重证据见 [外部复用记录](../../../f3_external_reuse.md)，接收及任务状态见 [持续任务清单](../../../f3_formalization_tasks.md)。PAT-L1 显式要求两个赋值参数非零，防止总化零点破坏结论。
