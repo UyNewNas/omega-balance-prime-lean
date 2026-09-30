@@ -956,3 +956,19 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_signedDepth_pos
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_signedDepth_neg
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_signedDepth_zero
+
+-- Actual conditioned signed and absolute depth atoms
+#print axioms OmegaBalance.f3SignedDepthEvent_subset_ne
+#print axioms OmegaBalance.f3SignedDepthEvent_disjoint
+#print axioms OmegaBalance.f3UnequalDepthHaar_isProbability
+#print axioms OmegaBalance.f3UnequalDepthHaar_absolutelyContinuous
+#print axioms OmegaBalance.f3UnequalDepthHaar_signedDepth_defined_ae
+#print axioms OmegaBalance.f3UnequalDepthHaar_signed_pos
+#print axioms OmegaBalance.f3UnequalDepthHaar_signed_neg
+#print axioms OmegaBalance.f3UnequalDepthHaar_signed_zero
+#print axioms OmegaBalance.f3AbsDepthEvent_measurable
+#print axioms OmegaBalance.f3UnequalDepthHaar_abs_eq
+#print axioms OmegaBalance.f3SharedRootConfig_conditional_signed_pos
+#print axioms OmegaBalance.f3SharedRootConfig_conditional_signed_neg
+#print axioms OmegaBalance.f3SharedRootConfig_conditional_abs_eq
+#print axioms OmegaBalance.f3AbsDepthEvent_iff

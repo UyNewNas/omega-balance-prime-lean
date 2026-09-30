@@ -6994,6 +6994,51 @@
         "equidistant triple waiting law",
         "remaining REC nodes"
       ]
+    },
+    "REC-L3-ACTUAL-CONDITIONAL-ATOMS": {
+      "status": "LEAN-PROVED: actual normalized conditional positive, negative, zero and absolute finite depth atoms",
+      "module": "OmegaBalance/F3ConditionalDepthLaw.lean",
+      "declarations": [
+        "f3SignedDepthEvent_subset_ne",
+        "f3SignedDepthEvent_disjoint",
+        "f3UnequalDepthHaar_isProbability",
+        "f3UnequalDepthHaar_absolutelyContinuous",
+        "f3UnequalDepthHaar_signedDepth_defined_ae",
+        "f3UnequalDepthHaar_signed_pos",
+        "f3UnequalDepthHaar_signed_neg",
+        "f3UnequalDepthHaar_signed_zero",
+        "f3AbsDepthEvent_iff",
+        "f3AbsDepthEvent_measurable",
+        "f3UnequalDepthHaar_abs_eq",
+        "f3SharedRootConfig_conditional_signed_pos",
+        "f3SharedRootConfig_conditional_signed_neg",
+        "f3SharedRootConfig_conditional_abs_eq"
+      ],
+      "verified_code_sha": "84c62787c4758fd30d0e714b10bda278d29f4030",
+      "verified_tree": "ccef9dd53635e8d39acdad579e4193511baa57be",
+      "successful_code_runs": [
+        36721583571
+      ],
+      "tested_merge_sha": "f821720e9bab520ef4a5186fcdd84609aa0221ac",
+      "project_declarations": 806,
+      "required_external_producer": 1,
+      "source_files": 116,
+      "axiom_bound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "paper_scope": "REC-L3 actual conditional atom formulas after equation2.3, including actual natAbs event equivalence, positive normalization and null-root finite coverage; fixed original configuration wrappers",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "full conditional sign/absolute-value independence",
+        "moving configurations",
+        "prime transfer",
+        "passive lower bounds",
+        "equidistant triple waiting law",
+        "remaining REC nodes"
+      ]
     }
   }
 }

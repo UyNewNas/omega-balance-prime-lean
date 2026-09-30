@@ -1202,3 +1202,37 @@ Decision: thin independent event adapter over existing kernel-verified local Haa
 不属于有限差原子，零测例外已单独证明；原共享根单位/同余/正基深前提保留。
 条件绝对值分布、符号独立性、移动配置、素数转移、被动下界和三等距根等仍开放，
 整个REC包formalization_complete=false。最终状态头只改文档，仍另行完整精确CI。
+
+# 2026-09-30 13:17 UTC — actual conditional signed-depth laws
+
+Target: REC-L3, proof.md theorem2.1 after equations2.2–2.3: condition on the actual unequal-depth event, obtain each signed atom 3^-h and absolute atom2·3^-h for h≥1, independent of fixed finite root distance L≥1. This round uses actual conditional measure, not an assumed PMF. Full sign/absolute-value independence as an independence declaration remains separately open until implemented.
+
+Final-target search reuses the immediately preceding signed-depth queries and adds `"padic" "signed" "cond" language:Lean`, `repo:leanprover-community/mathlib4 "cond_apply" "Measure"`, `"cond_absolutelyContinuous"`, and `"AbsolutelyContinuous.ae"`. Six broad signed/cond hits concern Granville–Moore binomial expansions, a general imports index, or Coleman power series. Read representative AxiomMath/GranvilleMoore@16181f1f6a46d3001c1011c8947df13bcede948c CollapsedCoeff.lean (Apache2, signed coefficient/binomial expansion, unrelated) and CBirkbeck/tauceti-explorer@ae69ae1ca3899c3c4414099aef964a3d92a5898d suggested/ColemanPowerSeries.lean (power-series/local-field framework, not this Haar conditional law). No code reused from these projects; no exact target found in inspected results, not an exhaustive claim.
+
+Direct fixed-pin reuse: mathlib5ed2965256430c3649e86755f9576b54eca72435 Mathlib/Probability/ConditionalProbability.lean defines ProbabilityTheory.cond μ s=(μ s)⁻¹ • μ.restrict s. cond_apply takes actual measurable s and evaluates arbitrary t as inverse mass times μ(s∩t). cond_isProbabilityMeasure needs proved μ(s)≠0 under finite μ. cond_absolutelyContinuous is an actual theorem for the normalized restriction. The whole relevant API bodies and Apache2 notice were read. Mathlib/MeasureTheory/Measure/AbsolutelyContinuous.lean provides AbsolutelyContinuous.ae_le to transfer the existing genuine finite-depth a.e. statement. Its initial read suffered a transport disconnect, a single read retry succeeded; no missing source inferred.
+
+Current master6bd5e549d902323693ddf9128120376848331c85 ConditionalProbability.lean was separately fetched and retains these mathematical interfaces. Existing standard measure_union, measurable finite atoms and ENNReal inverse/multiplication cancellation from locked mathlib suffice; all coefficient arithmetic is finite and positive under existing L/h hypotheses. The prior F3SignedDepthLaw exact code744ec233 and final master4fff32ec supply actual atom laws, null-root coverage and original-root wrappers. No new dependency, package copy, version upgrade, or invented distribution.
+
+Source URLs: https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Probability/ConditionalProbability.lean ; https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/MeasureTheory/Measure/AbsolutelyContinuous.lean . Decision: directly reuse normalized restriction/probability/absolute-continuity APIs, add only actual atom inclusion/disjointness and thin event calculations. Positive probability of the conditioning event is proved from existing 3^-L, not assumed. Exact Actions and one-to-one Audit remain mandatory.
+
+Intake continues the12:47 refresh (175remoteheads, original source branches unchanged apart from our master integration, updatedPR58–61 only). PR62 is our same bounded signed-atom implementation; no new external paper package observed or watermarks promoted without reading.
+
+Additional precise semantic bridge: Lean4 v4.34.0 src/Init/Data/Int/Order.lean `Int.natAbs_eq_iff {a:Int}{n:Nat}:a.natAbs=n ↔ a=n ∨ a= -↑n` body read at the locked tag. Direct reuse proves the union event is the actual absolute integer difference, including h=0; no renamed probability-only surrogate. Source https://github.com/leanprover/lean4/blob/v4.34.0/src/Init/Data/Int/Order.lean .
+
+## 2026-09-30 13:31 UTC：实际条件化正负与绝对差原子律通过精确 CI
+
+代码84c62787c4758fd30d0e714b10bda278d29f4030，树ccef9dd53635e8d39acdad579e4193511baa57be，
+[PR36721583571](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36721583571)
+首轮完整成功。实际测试合并f821720e9bab520ef4a5186fcdd84609aa0221ac文件树相同。
+十四条新声明均仅标准公理；807项总输出（806项目+1产生器）、116项目源码、650依赖
+模块及固定版本、实际产生器与项目构建、内核回归、逐一覆盖和144240有限检查通过。
+
+验收范围为真实不等深事件上的ProbabilityTheory.cond：正质量由已验3^-L推出，
+条件测度确为概率测度；绝对连续性传递根例外零测和有限差几乎处处有定义。条件
+正/负h≥1各为3^-h，零为0，绝对差h为2·3^-h；绝对事件已证明等价于真实有限整数
+深度差的natAbs，而不是仅改名的离散分布。原配置包装保留实际单位根和共同模3
+条件、正基深等原域。十二个有限条件化案例只是补充回归，独立数学源码复核通过。
+
+完整符号与绝对值独立性仍未登记为完成；移动配置、素数转移、被动下界、三等距根
+停止律及其他REC节点继续开放，formalization_complete=false。此最终文档头不改已验
+数学源码/Audit/依赖，发布后仍需精确头完整CI和当前主分支检查。

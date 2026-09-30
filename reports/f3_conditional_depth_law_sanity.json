@@ -1,0 +1,151 @@
+{
+  "status": "finite conditional regression only, not kernel proof",
+  "boundary": "L+abs(h)<N; genuine root representatives remain undefined in finite signed atoms",
+  "cases": 12,
+  "rows": [
+    {
+      "L": 1,
+      "precision": 3,
+      "conditioning_event_count": 6,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-1": 2,
+        "1": 2
+      }
+    },
+    {
+      "L": 1,
+      "precision": 4,
+      "conditioning_event_count": 18,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-2": 2,
+        "-1": 6,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 1,
+      "precision": 5,
+      "conditioning_event_count": 54,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    },
+    {
+      "L": 2,
+      "precision": 4,
+      "conditioning_event_count": 6,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-1": 2,
+        "1": 2
+      }
+    },
+    {
+      "L": 2,
+      "precision": 5,
+      "conditioning_event_count": 18,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-2": 2,
+        "-1": 6,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 2,
+      "precision": 6,
+      "conditioning_event_count": 54,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 5,
+      "conditioning_event_count": 6,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-1": 2,
+        "1": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 6,
+      "conditioning_event_count": 18,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-2": 2,
+        "-1": 6,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 7,
+      "conditioning_event_count": 54,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 6,
+      "conditioning_event_count": 6,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-1": 2,
+        "1": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 7,
+      "conditioning_event_count": 18,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-2": 2,
+        "-1": 6,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 8,
+      "conditioning_event_count": 54,
+      "root_hit_representatives_kept_in_condition": 2,
+      "finite_signed_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    }
+  ]
+}
