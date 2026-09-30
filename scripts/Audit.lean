@@ -751,3 +751,15 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.truncatedDepthCertificate_sound
 #print axioms OmegaBalance.f3SharedRootDepth_certificate
 #print axioms OmegaBalance.f3SharedRootDepth_truncatedCertificate
+
+-- REC-L5 finite observation matrix and threshold-cluster recovery.
+#print axioms OmegaBalance.depthCertificateScan_first
+#print axioms OmegaBalance.depthCertificateScan_eq_none_iff
+#print axioms OmegaBalance.depthCertificateScan_sound
+#print axioms OmegaBalance.depthCertificateScan_recover_iff
+#print axioms OmegaBalance.depthCertificateMatrix_recover
+#print axioms OmegaBalance.rootDistance_threshold_equivalence
+#print axioms OmegaBalance.rootClusterSetoid_refines
+#print axioms OmegaBalance.depthCertificateMatrix_cluster_iff
+#print axioms OmegaBalance.depthCertificateMatrix_cluster_equivalence
+#print axioms OmegaBalance.f3SharedRootConfig_matrix_recover
