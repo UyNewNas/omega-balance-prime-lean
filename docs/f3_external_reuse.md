@@ -39,3 +39,119 @@ RUN 的有限 CRT、最大化、顺序块和条件组合接口一并保留，但
 源 CI 解析依赖已从成功 run `36309723481` 的 artifact `10929140097` 下载，ZIP SHA256 与 GitHub 报告一致：`31e70f907bde8c1e375f5acfd3384771d616249091a7f45c68fbb685e21cc0e1`。本次提交该实际 `lake-manifest.json`：mathlib `5ed2965256430c3649e86755f9576b54eca72435`、ANT `099d3726c2c74841024110ec1dd9902f7ef36e9e`、LeanArchitect `78dd66840d3efe8c824c699fc03381cec817c271`、Cli `e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204`；其余传递固定版本按完整清单保留。不是手工猜测 Lake 的解析结果。ANT 原源使用4.33rc1/mathlibe4c91783，但上述消费端4.34/5ed组合已有真实编译证据；当前组合仍待新CI。ANT许可证Apache2，依赖源码闭包审计继续独立记录。
 
 ANT源闭包复核完成：从`PrimeNumberTheoremAnd/Consequences.lean`递归到9个本包模块，379391字符；使用本仓库支持嵌套注释与字符串擦除的禁用项扫描，0命中。范围排除锁定Mathlib、Architect及Batteries的实现源码。WeakPNT_AP的前提仅q≥1、a.Coprime q、a<q，不含目标重述假设；最终COR/DEN/LOG声明在历史成功日志中逐条只依赖标准3公理。证据摘要见`reports/f3_ant_source_scan.json`；本组合CI仍会实际执行全601条公理审计。
+
+## 2026-09-30: RUN dependency compatibility repair candidate (not kernel-verified)
+
+This candidate preserves Lean `v4.34.0`, mathlib
+`5ed2965256430c3649e86755f9576b54eca72435`, and ANT
+`099d3726c2c74841024110ec1dd9902f7ef36e9e`. It ports the actual PR #29
+adapter and three real-exponent cutoff lemmas onto the PR #45 source tree,
+preserving the four local PAT-1 theorems and all prior public declarations.
+There are 606 project theorem declarations and one separately mandatory
+external producer audit entry. No successful build is claimed in this record.
+
+### Exact producer and bounded reuse search
+
+The imported theorem is
+[`MaynardBFT.consecutive_primes`](https://github.com/plby/lean-proofs/blob/8822f7ddef30fadbd92e1c6ab4ed897af356af5e/src/latest/Util/MaynardTao/BFT/Result.lean).
+It provides arbitrary positive block length, arbitrarily late starting index in
+the full `Nat.nth Nat.Prime` enumeration, a prescribed reduced residue class,
+and diameter at most `q * C`, with `C` chosen before modulus and residue. The
+OmegaBalance adapter preserves that order of quantifiers and derives all
+nonzero F3 levels, with bound `f3RunModulus c * C`. It does not replace
+full-prime consecutiveness by adjacency in a selected subsequence.
+
+The 2026-09-30 source search read all 77 reachable plby modules and all 573
+reachable BoundedGaps modules at immutable SHAs. The source closure has no
+`PrimeNumberTheoremAnd`, `APAP`, `AINTLIB`, `Waring`, `leancert`, Comparator,
+or `ErdosProblems.Axioms` import. Its remaining imports are Mathlib or Lean.
+Queries covered `MaynardBFT`, Shiu, BFTB, consecutive primes, prescribed
+residue classes, and Lean 4.34 compatibility, including plby branches/PRs,
+FormalPantheon, PrimeGapsLib, and gotrevor forks. This is a bounded search,
+not a universal absence claim. FormalPantheon main at
+`e2a77fe164e54b205d9716e92de8d80e05aac342` still supplies the weaker final
+bounded-pair interface and an older toolchain. PrimeGapsLib main
+`1faa7b14e82ddebc2772dfb9153922f01b106477` supplies a conditional bounded-gap
+result; PR #11's unconditional 246 result targets Lean 4.33.1 and does not
+replace the arbitrary-length, prescribed-class BFT producer.
+
+The [gotrevor ownership fix](https://github.com/gotrevor/lean-proofs/commit/8b7630fef471b6ac8685f1830f8b0288e5b9f4f1)
+and [root-package hook fix](https://github.com/gotrevor/lean-proofs/commit/ff0f9f63d7175dfa07b44a9c6a7148ca60a61676)
+are relevant packaging precedents, but their 4.33.1 pins are not adopted.
+The original PR #29 failure is recorded at
+[run 36467303064](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36467303064),
+head `9033636693d0f713c9cb6e1bc5d13149052b812b`, job `109080485402`.
+It failed during the build, before the previously latent audit-coverage
+rejection of its external producer entry could execute.
+
+### Small source-preserving adapter
+
+`python3 scripts/prepare_run_dependencies.py update` is the supported update
+entry point. It restores only its recognized 4.34 proof edits, invokes a real
+`lake update` so all nine original upstream patch checks/applications run,
+then reapplies exact-hunk, full-file SHA256-guarded compatibility edits. Unknown
+source edits, wrong checkout SHAs, unexpected root pins, or a mismatched
+resolved Lake manifest fail closed. No fuzzy patching or proof-source copying
+into this repository is used. Cached reruns follow the same checked sequence.
+
+Only the downloaded plby Lake library declaration block is narrowed: a
+`F3RunProducer` library has empty roots and exactly 77 one-module globs. This
+uses the actual Lean 4.34
+[`LeanLibConfig`](https://github.com/leanprover/lean4/blob/v4.34.0/src/lake/Lake/Config/LeanLibConfig.lean)
+`isLocalModule`/`isBuildableModule` behavior. All original requirements and
+post-update checks remain. The next Lake invocation loads the modified
+configuration; changing the file is not alleged to change an already-loaded
+Lake graph. ANT remains the sole owner of `PrimeNumberTheoremAnd`. CI uses a
+compatibility-sensitive cache key. The source/pin check also rejects stale
+embedded PNT build artifacts that could otherwise shadow ANT on Lean's search
+path; only the indicated generated upstream build cache should then be removed.
+
+The locked mathlib APIs used for the proof-only compatibility changes are:
+
+- `Finset.prod_le_prod₀`, `one_le_prod₀`, `prod_le_one₀`, and
+  `prod_le_prod_of_subset_of_one_le₀` for old nonnegative ordered-ring proofs
+  ([locked source](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Algebra/Order/BigOperators/GroupWithZero/Finset.lean))
+- `logDeriv_fun_mul`, `logDeriv_fun_div`, `logDeriv_fun_prod` for existing
+  lambda-shaped goals
+  ([locked source](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Analysis/Calculus/LogDeriv.lean))
+- Explicit `Mathlib.Analysis.Analytic.Order` and
+  `Mathlib.Analysis.Meromorphic.Basic` imports for existing, still-supported APIs
+
+These are proof-body/API/import changes, not theorem statement changes or new
+mathematical assumptions. No artificial `MulLeftMono ℝ` instance is introduced.
+The project source audit, exact declaration coverage, executed standard-axiom
+check, finite checks, and kernel regressions remain required. The only audit
+coverage extension names exactly `MaynardBFT.consecutive_primes` as a required
+entry; missing, duplicate, or unknown entries still fail, with focused tests.
+
+### Provenance and verification boundary
+
+FormalPantheon `ffbb65c21afc8a36ace67720f1b0df1c63d26bd1` has Apache-2.0
+licensing; source and authorship headers are preserved. plby's
+`src/latest/LICENSE` licenses some externally sourced files, but a blanket
+license grant for its authored BFT closure was not verified. The dependency
+remains an immutable upstream checkout with narrow compatibility instructions;
+it is not wholesale vendored or relabeled Apache. This avoids a new ownership
+claim but does not itself resolve upstream license scope.
+
+No Lean executable is installed in the dot cloud checkout. Python source,
+hunk, idempotence, and negative tests are local evidence only. CI must first
+resolve and verify actual manifest/checkouts, build the exact producer, then
+build the project, execute all 607 axiom entries, and pass the remaining
+repository gates at the exact candidate head. CI preserves the actual
+`lake-manifest.json` and `reports/f3_run_dependency_resolution.json` as
+artifacts. The committed manifest now reproduces the actual dependency resolution
+from failed PR #29 run `36467303064`, artifact `10990772124`, without treating
+that failed proof build as verification. Its exact bytes have SHA256
+`89f5ab9a58281ab317598d35eee76eb2cc2b547c7fa8d2ab10eef9894a5a1267`; the
+downloaded artifact archive has SHA256
+`a53693cdf5ca68f7ffaa938543a05e103ef64a93a194b24e70d36eac442ef84c`.
+Lake serializes the producer Name as `«lean-proofs-latest»`; the validator uses
+that one explicit `manifest_name`, rather than stripping quotation marks or
+accepting aliases. All four source packages retain exact revision, URL, and
+subdirectory guards. A new update must reproduce the complete observed manifest
+byte-for-byte, in addition to matching actual checkout SHAs. Regression tests
+cover the actual manifest, every pin field, missing/duplicate package entries,
+and incorrect quoted/unquoted aliases. RUN remains unverified until exact-head
+CI passes; additional downstream API failures must be repaired without changing
+pins.

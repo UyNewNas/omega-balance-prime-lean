@@ -12,6 +12,9 @@ import sys
 from check_sources import erase_comments_and_strings
 
 ROOT = Path(__file__).resolve().parents[1]
+# Explicit imported producer audit, in addition to every project declaration.
+# This is a required entry, not a wildcard exemption from coverage or axiom checks.
+REQUIRED_EXTERNAL = {'MaynardBFT.consecutive_primes'}
 
 
 def main() -> int:
@@ -23,13 +26,15 @@ def main() -> int:
     audit = erase_comments_and_strings((ROOT / 'scripts/Audit.lean').read_text(encoding='utf-8'))
     names = re.findall(r'^#print axioms (\S+)\s*$', audit, re.M)
     found = set(names)
-    errors = [f'Missing audit entry: {name}' for name in sorted(expected - found)]
-    errors += [f'Audit entry without project declaration: {name}' for name in sorted(found - expected)]
+    required = expected | REQUIRED_EXTERNAL
+    errors = [f'Missing audit entry: {name}' for name in sorted(required - found)]
+    errors += [f'Audit entry without registered declaration: {name}' for name in sorted(found - required)]
     errors += [f'Duplicate audit entry: {name}' for name, count in Counter(names).items() if count != 1]
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1
-    print(f'Audit coverage PASS: all {len(expected)} project theorem declarations covered exactly once.')
+    print(f'Audit coverage PASS: all {len(expected)} project declarations and '
+          f'{len(REQUIRED_EXTERNAL)} required external producer covered exactly once.')
     return 0
 
 

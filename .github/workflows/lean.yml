@@ -28,11 +28,16 @@ jobs:
           path: |
             ~/.elan
             .lake
-          key: lean-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}
+          key: lean-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json', 'lake-compat/**', 'scripts/prepare_run_dependencies.py') }}
       - name: Fetch pinned dependencies and cache
         run: |
-          lake update
+          python3 scripts/prepare_run_dependencies.py update
           lake exe cache get
+      - name: Build exact RUN producer
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build Util.MaynardTao.BFT.Result 2>&1 | tee run-producer.log
       - name: Build library
         shell: bash
         run: |
@@ -51,6 +56,9 @@ jobs:
           python3 scripts/check_axioms.py axioms.log
       - name: Audit source and declaration coverage
         run: |
+          python3 scripts/prepare_run_dependencies.py check
+          python3 scripts/test_run_compatibility.py
+          python3 scripts/test_audit_coverage.py
           python3 scripts/check_sources.py
           python3 scripts/check_audit_coverage.py
       - name: Finite F3 checks and distribution
@@ -65,6 +73,8 @@ jobs:
         with:
           name: lean-verification
           path: |
+            run-producer.log
+            reports/f3_run_dependency_resolution.json
             build.log
             examples.log
             axioms.log

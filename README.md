@@ -226,8 +226,14 @@ $$
 复现完整检查（先安装固定工具链并获取依赖）：
 
 ```sh
+python3 scripts/prepare_run_dependencies.py update
+lake exe cache get
 python3 scripts/verify.py
 ```
+
+RUN 兼容候选使用固定上游源码、原始补丁检查和精确哈希保护；依赖更新请使用上述包装入口。
+当前新增的无条件 RUN 适配器仍须精确 head CI 完成内核构建和 607 项公理审计，不能以源码检查代替通过。
+兼容范围与许可证边界见 [外部复用记录](docs/f3_external_reuse.md#2026-09-30-run-dependency-compatibility-repair-candidate-not-kernel-verified)。
 
 ## 已审计书面证明（尚未形式化）
 
