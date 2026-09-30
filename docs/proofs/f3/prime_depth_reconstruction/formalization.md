@@ -63,7 +63,7 @@
 | `rootClusterSetoid_refines` | REC-L5：更高阈值的分区细化更低阈值的分区 |
 | `depthCertificateMatrix_cluster_iff` | REC-L5：恢复矩阵的阈值测试等价于真实根簇关系 |
 | `depthCertificateMatrix_cluster_equivalence` | REC-L5：观测矩阵诱导的阈值关系确为等价关系 |
-| `f3SharedRootConfig_matrix_recover` | REC-L5 纸面定义域：每个配置正的基础深度、至少两根、互异同模 3 单位根、单位样本；非对角根距有限 |
+| `f3SharedRootConfig_matrix_recover` | REC-L5 纸面定义域：公共正基础深度（显式 _hbase）、至少两根、互异同模 3 单位根、单位样本；非对角根距有限 |
 
 算法仅接收有限观测编号列表及其带标签超额深度 `R`，不接收根或真实距离矩阵。
 扫描返回距离值；首个观测及其编号由 `depthCertificateScan_first` 的存在性前缀见证，
@@ -82,4 +82,4 @@
 [持续任务与范围](../../../f3_formalization_tasks.md#2026-09-30rec-l5-有限矩阵与阈值根簇候选)
 · [外部复用门](../../../f3_external_reuse.md#2026-09-30rec-l5-目标优先查重复用)
 
-矩阵算法的输入是超额深度R，未处理从原始D中估计未知b的问题；各配置的正b由结构保留，矩阵结论不要求它们相等。纸面固定b模型是其特例。
+底层矩阵算法的输入是超额深度R，不处理从原始D估计未知b；纸面模型wrapper显式通过 `_hbase` 保留所有观测配置与参考配置的公共baseDepth，另保留单位样本等前提。
