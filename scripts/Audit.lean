@@ -323,3 +323,8 @@ import OmegaBalance.F3DeeperExamples
 -- Regression guards for the scope of the infinitude statements.
 #print axioms OmegaBalance.f3_infinitude_residue_not_necessary_example
 #print axioms OmegaBalance.f3_consecutive_crossing_not_twin_example
+
+#print axioms OmegaBalance.v3_eq_of_modEq_pow_of_lt
+#print axioms OmegaBalance.f3_pat1_point_mod729
+#print axioms OmegaBalance.f3_pat1_product_add_one_mod729
+#print axioms OmegaBalance.f3_pat1_pattern_of_mod729
