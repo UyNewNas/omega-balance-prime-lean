@@ -500,11 +500,11 @@ ROOT/PAT/RUN 及其它已接收证明任务的未完成部分保持开放。
   单对/全矩阵恢复 iff、已知截断对角 H、t≤H 阈值根簇及公共正基础深度的纸面模型包装
 - 恢复证据：原本地 e0d7f9c 提交已丢失；244 行源文件按原始写入记录重建，
   blob 4a24db55453664e08976cd883757912c874f1adb 与旧记录相同，文档在最新主线增量接回
-- 精确公开声明、前提和节点：[REC 形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵候选尚未执行-lean)
+- 精确公开声明、前提和节点：[REC 形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵已通过精确-ci)
 - 查重决定：[外部复用门](f3_external_reuse.md#2026-09-30rec-l11--截断-rec-l5-增量复用门)，
   直接调用已验单对截断证书、锁定 List.findSome? 与现有 Setoid，没有新分析基础
 - 恢复后重新执行 source 98 / Audit 641 exactly once / diff 空白检查及有限数学 sanity，
-  均通过；没有运行 Lean/Lake，必须等待新精确 CI。此候选仍为 LEAN-IN-PROGRESS
+  均通过；随后代码564bb498的push36671721342与PR36671762437实际全门禁成功。仅本批11条确定性定理为已核验，完整REC-4仍未完成；最终文档头另验CI
 - 剩余：REC-L3、L6–L10、L12–L13、概率联合深度公式、整数素数乘积根构造、
   固定精度全素数传递；不把有限可观测见证的 iff 解释成随机采样必然完备
 

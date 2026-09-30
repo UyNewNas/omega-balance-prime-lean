@@ -84,7 +84,7 @@
 
 底层矩阵算法的输入是超额深度R，不处理从原始D估计未知b；纸面模型wrapper显式通过 `_hbase` 保留所有观测配置与参考配置的公共baseDepth，另保留单位样本等前提。
 
-## 2026-09-30 REC-L11 / 截断 REC-L5 有限矩阵候选（尚未执行 Lean）
+## 2026-09-30 REC-L11 / 截断 REC-L5 有限矩阵（已通过精确 CI）
 
 新增 [F3RootTruncatedReconstruction.lean](../../../../OmegaBalance/F3RootTruncatedReconstruction.lean)。
 本轮恢复基于已合入 PR #49 的 master `f50d23667628c868610c34d5157fe9bbd21357d3`，
@@ -128,8 +128,10 @@
 641/641、`git diff --check`，均通过。重新执行的有限 sanity check 涉及 178746 个整数根
 观测、180 组有限矩阵与 365 个已恢复阈值分区，包括空列表、命中根、相等未饱和、
 联合饱和、移动根及阈值 H。有限检查及源码恢复不等于内核证明；按任务约定没有执行
-本地 Lean/Lake，本新候选仍必须等待自己的精确 head 完整 CI，不借用旧工作区或 PR #49 的结果。
+本地 Lean/Lake。随后本批代码 `564bb4987980002f37990c2346a847f47138095e` 的 [push run36671721342](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36671721342) 与 [PR run36671762437](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36671762437) 均完整通过：641条仅标准公理、98源文件无逃逸、一对一覆盖、内核回归与144240有限检查。仅本节11条确定性声明登记已核验；最终文档头另验全门禁。
 
 [持续任务](../../../f3_formalization_tasks.md#2026-09-30rec-l11--截断-rec-l5-有限矩阵候选)
 · [外部复用证据](../../../f3_external_reuse.md#2026-09-30rec-l11--截断-rec-l5-增量复用门)
 · [来源接收与实现区分](../../../f3_proof_intake.md#2026-09-30rec-有限精度实现增量)
+
+输入阈值H作用于已减去已知公共基础深度b的超额深度R，即Y=min(R,H)。它不是对原始D在同一H处截断的接口；不会把这两种观测混用。

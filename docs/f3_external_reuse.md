@@ -127,5 +127,5 @@ Lean 与 mathlib 许可证为 Apache-2.0；本次仅调用已有依赖，无外�
 “不同或联合饱和”存在见证；不存在以同名目标假设证明自身的接口。
 恢复后的 244 行 Lean 源码 blob 为 `4a24db55453664e08976cd883757912c874f1adb`，
 与工作区更换前记录相同；源码守卫与覆盖检查重新通过（98 文件、641 条 exactly once）。
-完整内核/公理结果待新精确 head CI。详细声明和边界见
-[形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵候选尚未执行-lean)。
+代码564bb498的push36671721342与PR36671762437均已实际全门禁通过，641条标准公理、98源文件及完整覆盖/回归；最终文档头仍另验CI。仅确定性范围已核验，详细声明和边界见
+[形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵已通过精确-ci)。
