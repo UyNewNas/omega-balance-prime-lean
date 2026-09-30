@@ -1,6 +1,6 @@
 # F3-REC：形式化映射
 
-数学状态：PAPER-AUDITED。Lean 状态：LEAN-IN-PROGRESS（确定性局部引理已通过精确CI，主结果其余部分未完成）。
+数学状态：PAPER-AUDITED。Lean 状态：LEAN-IN-PROGRESS（确定性矩阵及本页所列实际 Haar 单次概率已通过精确 CI；等待律等其余部分未完成）。
 
 ## 推荐模块
 
@@ -135,3 +135,79 @@
 · [来源接收与实现区分](../../../f3_proof_intake.md#2026-09-30rec-有限精度实现增量)
 
 输入阈值H作用于已减去已知公共基础深度b的超额深度R，即Y=min(R,H)。它不是对原始D在同一H处截断的接口；不会把这两种观测混用。
+
+## 2026-09-30 REC-L3 actual Haar probability candidate
+
+Baseline master `8548f385e095bf399c27bc3388f8128e4c7fc93c`.
+`PadicIntHaar.lean` minimally ports five individually auditable CC0 declarations;
+`F3UnitHaar.lean` constructs concrete normalized additive Haar, proves actual
+unit-domain mass 2/3 and normalizes its restriction; `F3RootDepthHaar.lean`
+connects the existing actual `ℚ_[3]` / `WithTop ℤ` rootDepth to residue fibers and
+proves the positive unit-root tail `1/(2*3^(t-1))`. A sample at the root retains
+infinite depth, and the residue theorem includes it without totalized valuation.
+This candidate covers the normalization and single-root tail input to REC-L3.
+Exact layers, unequal-depth mass, root-nullity, full signed difference law,
+configuration wrappers, independent waiting and prime transfer remain open at
+this checkpoint. No sampling-law premise, geometric PMF declaration or count
+assumption replaces a proof. Source/API reuse and licensing are recorded in
+[the reuse ledger](../../../f3_external_reuse.md#2026-09-30-rec-l3-actual-haar-law-target-first-reuse-gate).
+All declarations are registered once in Audit. Local source/coverage checks are
+not Lean execution; exact locked-pin CI remains required before status promotion.
+
+### Extension of the actual Haar candidate
+
+`F3RootDepthLaw.lean` adds eight declarations: finite-layer set difference and
+measurability, exact positive layer mass 3^-t, zero layer mass 1/2, the integer
+strict-threshold adapter, unequal-depth event as two next-level balls, their
+disjointness, and actual unequal-depth probability 3^-L for genuine unit roots
+with finite L≥1. This establishes candidate coverage of the single-observation
+probability (2.3), without taking the requested law as an assumption.
+
+`F3SharedRootHaar.lean` adds six declarations: original model roots have norm 1,
+mkUnits preserves the exact ℚ_[3] root and gives real units, and the original
+F3SharedRootConfig receives tail/layer/unequal-event wrappers. Positive base depth,
+cardinality ≥ 2, distinct unit roots and common first residue remain in the same
+configuration structure; observations are excess depths R, not raw D.
+
+`F3RootDepthNull.lean` adds three declarations: ambient Haar singletons have
+mass 0 by containment in all residue fibers, normalized unit Haar singletons also
+have mass 0, and the infinite-depth event is exactly a null root point. The proof
+uses locked ENNReal.exists_inv_two_pow_lt and pow_le_pow_left', not a new
+non-atomicity hypothesis. The full signed integer difference law still needs an
+explicit almost-everywhere finite-difference interface and is not claimed here.
+
+All17 extension declarations are in Audit. These are source candidates awaiting
+actual Lean CI; local source/coverage/finite checks do not promote them. Independent
+waiting time, expected stopping time, complete joint law and prime transfer remain
+open. The first checkpoint's actual CI36675740452 failed on import/namespace/cast
+elaboration; the 5 ported Haar declarations compiled. Those concrete errors are
+fixed in the subsequent candidate, without changing pinned dependencies.
+
+## 2026-09-30：REC-L3 实际 Haar 单次概率已通过精确 CI
+
+代码 `dc0632322c3de631a167f6cb7308d01e7b0069fc` 的
+[push 36681283200](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36681283200) 与
+[PR 36681288176](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36681288176)
+全部成功：679 条仅含标准 Lean 公理，104 源文件无逃逸，679/679 一对一覆盖，
+完整构建、三组内核回归、144240 有限检查及11项边界测试通过。以下38条新增声明
+仅升级其实际覆盖的单次 Haar 概率范围；上文 candidate / pending 描述为此前检查点历史。
+本节文档后的最终提交仍单独验证。
+
+| 模块与纸面依赖 | 精确已验声明（均为 OmegaBalance 命名空间） |
+|---|---|
+| `PadicIntHaar.lean`：CC0 最小纤维测度复用闭包 | `padicInt_fiber_translate`, `padicInt_measurable_zero_fiber`, `padicInt_measurable_fiber`, `padicInt_haar_fiber_eq_zero_fiber`, `padicInt_haar_fiber` |
+| `F3UnitHaar.lean`：实际单位域和归一化，不假设球质量 | `f3PadicHaar_univ`, `f3PadicInt_not_isUnit_iff`, `f3PadicUnitSet_compl`, `f3PadicUnitSet_measurable`, `f3PadicHaar_units`, `f3UnitHaar_univ`, `f3UnitHaar_units`, `f3UnitHaar_nonunits`, `f3PadicInt_unit_fiber_subset`, `f3UnitHaar_fiber` |
+| `F3RootDepthHaar.lean`：REC-L3 单根尾律及无限根点的同余桥 | `rootDepth_ge_iff_toZModPow`, `f3RootDepthTail_eq_fiber`, `f3RootDepthTail_measurable`, `f3RootDepthTail_zero`, `f3RootDepthTail_antitone`, `f3UnitHaar_rootDepth_ge` |
+| `F3RootDepthLaw.lean`：REC-L3 正层、零层、式(2.3)单次不等证书概率 | `f3RootDepthLayer_eq_sdiff`, `f3RootDepthLayer_measurable`, `f3UnitHaar_rootDepth_eq`, `f3UnitHaar_rootDepth_zero`, `rootDepth_nat_lt_iff`, `rootDepth_ne_iff_mem_tail_union`, `f3RootDepthTail_disjoint`, `f3UnitHaar_rootDepth_ne` |
+| `F3SharedRootHaar.lean`：原 F3SharedRootConfig 域保持包装 | `f3SharedRootConfig_root_norm`, `f3SharedRootUnit_coe`, `f3SharedRootUnit_isUnit`, `f3SharedRootConfig_unitHaar_depth_ge`, `f3SharedRootConfig_unitHaar_depth_eq`, `f3SharedRootConfig_unitHaar_depth_ne` |
+| `F3RootDepthNull.lean`：根命中事件零测，不将∞总化为0 | `f3PadicHaar_singleton`, `f3UnitHaar_singleton`, `f3UnitHaar_rootDepth_top` |
+
+精确概率是实际单位 Haar 下的 Pr(R≥t)=1/(2·3^(t−1))（t≥1）、
+Pr(R=t)=3^(-t)（t≥1）、Pr(R=0)=1/2，以及具有有限真实根距 L≥1 的
+Pr(R_i≠R_j)=3^(-L)。共享根包装保留公共正 b、m≥2、互异单位根和同模3前提，
+观测为 R，未将 D=b+R 与 R 混用。根点是证明出的零测例外，未添加非原子性假设。
+
+剩余：完整有符号整数差的几乎处处定义和分布、独立整组采样的几何等待律及均值、
+多对联合概率/恢复界、被动下界、整数素数乘积根构造、固定精度全素数传递。
+本批不把随机变量定义成几何 PMF 后宣告等待律，也不假设各根坐标相互独立。
+[任务账本](../../../f3_formalization_tasks.md) · [复用与许可](../../../f3_external_reuse.md)
