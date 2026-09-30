@@ -1,0 +1,157 @@
+{
+  "status": "finite regression only; root-representative atoms are not the exact Haar marginal",
+  "cases": 12,
+  "algebra_cases": 3660,
+  "rows": [
+    {
+      "L": 1,
+      "precision": 3,
+      "condition_count": 6,
+      "explicit_root_representatives": 2,
+      "sign_true": 3,
+      "sign_false": 3,
+      "size_counts": {
+        "1": 6
+      }
+    },
+    {
+      "L": 1,
+      "precision": 4,
+      "condition_count": 18,
+      "explicit_root_representatives": 2,
+      "sign_true": 9,
+      "sign_false": 9,
+      "size_counts": {
+        "1": 14,
+        "2": 4
+      }
+    },
+    {
+      "L": 1,
+      "precision": 5,
+      "condition_count": 54,
+      "explicit_root_representatives": 2,
+      "sign_true": 27,
+      "sign_false": 27,
+      "size_counts": {
+        "1": 38,
+        "2": 12,
+        "3": 4
+      }
+    },
+    {
+      "L": 2,
+      "precision": 4,
+      "condition_count": 6,
+      "explicit_root_representatives": 2,
+      "sign_true": 3,
+      "sign_false": 3,
+      "size_counts": {
+        "1": 4,
+        "2": 2
+      }
+    },
+    {
+      "L": 2,
+      "precision": 5,
+      "condition_count": 18,
+      "explicit_root_representatives": 2,
+      "sign_true": 9,
+      "sign_false": 9,
+      "size_counts": {
+        "1": 12,
+        "2": 6
+      }
+    },
+    {
+      "L": 2,
+      "precision": 6,
+      "condition_count": 54,
+      "explicit_root_representatives": 2,
+      "sign_true": 27,
+      "sign_false": 27,
+      "size_counts": {
+        "1": 36,
+        "2": 14,
+        "3": 4
+      }
+    },
+    {
+      "L": 3,
+      "precision": 5,
+      "condition_count": 6,
+      "explicit_root_representatives": 2,
+      "sign_true": 3,
+      "sign_false": 3,
+      "size_counts": {
+        "1": 4,
+        "3": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 6,
+      "condition_count": 18,
+      "explicit_root_representatives": 2,
+      "sign_true": 9,
+      "sign_false": 9,
+      "size_counts": {
+        "1": 12,
+        "2": 4,
+        "3": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 7,
+      "condition_count": 54,
+      "explicit_root_representatives": 2,
+      "sign_true": 27,
+      "sign_false": 27,
+      "size_counts": {
+        "1": 36,
+        "2": 12,
+        "3": 6
+      }
+    },
+    {
+      "L": 4,
+      "precision": 6,
+      "condition_count": 6,
+      "explicit_root_representatives": 2,
+      "sign_true": 3,
+      "sign_false": 3,
+      "size_counts": {
+        "1": 4,
+        "4": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 7,
+      "condition_count": 18,
+      "explicit_root_representatives": 2,
+      "sign_true": 9,
+      "sign_false": 9,
+      "size_counts": {
+        "1": 12,
+        "2": 4,
+        "4": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 8,
+      "condition_count": 54,
+      "explicit_root_representatives": 2,
+      "sign_true": 27,
+      "sign_false": 27,
+      "size_counts": {
+        "1": 36,
+        "2": 12,
+        "3": 4,
+        "4": 2
+      }
+    }
+  ]
+}

@@ -1236,3 +1236,22 @@ Additional precise semantic bridge: Lean4 v4.34.0 src/Init/Data/Int/Order.lean `
 完整符号与绝对值独立性仍未登记为完成；移动配置、素数转移、被动下界、三等距根
 停止律及其他REC节点继续开放，formalization_complete=false。此最终文档头不改已验
 数学源码/Audit/依赖，发布后仍需精确头完整CI和当前主分支检查。
+
+# 2026-09-30 — REC-L3 actual sign/absolute-size independence
+
+Final target: the fixed-unit-root conditional observation in REC theorem2.1 after equation2.3 has fair sign, geometric positive absolute difference, and full independence of sign and absolute size. Existing proved per-atom symmetry is not itself registered as a full independence proof.
+
+Bounded final-target search continues the signed/conditional Haar queries from the last two accepted slices. Additional exact API searches: `repo:leanprover-community/mathlib4 "indepFun_iff" "singleton"`, `"measurable" "untopD"`, `"ext_of_singleton"`, `"measurable_of_countable"`. No inspected result was an exact two-root final theorem; reuse standard generic probability foundations directly.
+
+Read fixed mathlib5ed2965256430c3649e86755f9576b54eca72435 and current6bd5e549d902323693ddf9128120376848331c85 actual source:
+- Constructions/BorelSpace/WithTop.lean: Measurable.untopD takes measurable extended observable to a measurable integer representative. Standard topology/Borel instances, no invented sigma algebra.
+- MeasurableSpace/Basic.lean: measurable_of_countable (f:α→β), under Countable α and MeasurableSingletonClass α. Use only for elementary integer sign/absolute maps.
+- Measure/Dirac/Basic.lean: Measure.ext_of_singleton under Countable target identifies the whole measure, not merely selected moments.
+- Probability/Independence/Basic.lean: indepFun_iff_map_prod_eq_prod_map_map under IsFiniteMeasure and AEMeasurable functions gives genuine IndepFun iff joint pushforward equals product of its actual marginals. The weaker event-pair formula alone is not substituted for this target.
+- Existing pinned map_apply, prod_prod, singleton product and conditional Haar/layer/nullity APIs supply marginal/joint calculations. File Apache2 notices and source bodies inspected; no new dependency or version change.
+
+Precise URLs use https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/ followed by the Mathlib/ paths above. Current signatures independently checked; pinned Actions remains the elaboration/kernel authority.
+
+Domain and infinity policy: the new integer random-variable representative explicitly uses untopD0 solely to make a total measurable function. Its value at either actual root is not claimed to be the mathematical infinite-depth difference. First prove equality with the genuine finite signed event outside the already proved null root set, including under the actual conditional measure by absolute continuity. Every distribution calculation transfers through this a.e. identity. RootDepth itself is unchanged and still infinity at roots. All original finite root distance L≥1, units, common residue and known positive base conditions remain on public wrappers.
+
+Decision: thin measurable-observable and pushforward adapters, actual fair-sign marginal, actual geometric absolute marginal, full joint product law by countable singleton uniqueness, then direct standard IndepFun criterion. No assumed PMF, assumed target factorization, root-pair independence, or prime-sampling claim. Intake source watermarks remain the12:47 bounded175-head scan; only own already reviewed engineering integration since then. Exact CI, independent review and one-to-one Audit remain hard gates.

@@ -126,3 +126,5 @@ import OmegaBalance.F3TruncatedNonidentifiability
 import OmegaBalance.F3SignedDepthLaw
 
 import OmegaBalance.F3ConditionalDepthLaw
+
+import OmegaBalance.F3SignSizeIndependence

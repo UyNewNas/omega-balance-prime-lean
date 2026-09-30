@@ -972,3 +972,20 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3SharedRootConfig_conditional_signed_neg
 #print axioms OmegaBalance.f3SharedRootConfig_conditional_abs_eq
 #print axioms OmegaBalance.f3AbsDepthEvent_iff
+
+-- Full conditional sign and absolute-size independence
+#print axioms OmegaBalance.f3SignedDepthValue_eq_of_depths
+#print axioms OmegaBalance.f3SignedDepthValue_measurable
+#print axioms OmegaBalance.f3SignedDepthValue_event_ae
+#print axioms OmegaBalance.f3DepthSign_measurable
+#print axioms OmegaBalance.f3DepthSize_measurable
+#print axioms OmegaBalance.rootDepth_lt_iff_mem_first_tail
+#print axioms OmegaBalance.f3DepthSign_true_event_ae
+#print axioms OmegaBalance.f3UnequalDepthHaar_sign_true
+#print axioms OmegaBalance.f3UnequalDepthHaar_sign_eq
+#print axioms OmegaBalance.f3DepthSize_event_ae
+#print axioms OmegaBalance.f3UnequalDepthHaar_size_eq
+#print axioms OmegaBalance.f3DepthSign_size_atom
+#print axioms OmegaBalance.f3UnequalDepthHaar_sign_size_eq
+#print axioms OmegaBalance.f3UnequalDepthHaar_sign_size_indep
+#print axioms OmegaBalance.f3SharedRootConfig_conditional_sign_size_indep
