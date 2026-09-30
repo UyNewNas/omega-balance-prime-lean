@@ -148,15 +148,15 @@ theorem f3_pat1_pattern_of_mod729 {n d : ℕ} (hn : 1 < n) (hd : 0 < d)
   have hm03 : f3Pat1Point n d 0 * f3Pat1Point n d 3 ≡ 755 [MOD 729] :=
     Nat.ModEq.add_right_cancel' 1 h03
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
-  · exact hpositive hp0 h0 (by decide) hv6 (by decide)
-  · exact hnegative hp1 (by decide) h1 (by decide) hv42 (by decide)
-  · exact hnegative hp2 (by decide) h2 (by decide) hv96 (by decide)
-  · exact hnegative hp3 (by decide) h3 (by decide) hv150 (by decide)
-  · exact hpositive (by nlinarith : 1 < f3Pat1Point n d 0 * f3Pat1Point n d 1)
-      hm01 (by decide) hv216 (by decide)
-  · exact hpositive (by nlinarith : 1 < f3Pat1Point n d 0 * f3Pat1Point n d 2)
-      hm02 (by decide) hv486 (by decide)
-  · exact hpositive (by nlinarith : 1 < f3Pat1Point n d 0 * f3Pat1Point n d 3)
-      hm03 (by decide) hv756 (by decide)
+  · exact hpositive (b := 5) (k := 1) hp0 h0 (by decide) hv6 (by decide)
+  · exact hnegative (b := 43) (k := 1) hp1 (by decide) h1 (by decide) hv42 (by decide)
+  · exact hnegative (b := 97) (k := 1) hp2 (by decide) h2 (by decide) hv96 (by decide)
+  · exact hnegative (b := 151) (k := 1) hp3 (by decide) h3 (by decide) hv150 (by decide)
+  · apply hpositive (b := 215) (k := 3) ?_ hm01 (by decide) hv216 (by decide)
+    exact lt_of_lt_of_le hp0 (Nat.le_mul_of_pos_right _ (by omega))
+  · apply hpositive (b := 485) (k := 5) ?_ hm02 (by decide) hv486 (by decide)
+    exact lt_of_lt_of_le hp0 (Nat.le_mul_of_pos_right _ (by omega))
+  · apply hpositive (b := 755) (k := 3) ?_ hm03 (by decide) hv756 (by decide)
+    exact lt_of_lt_of_le hp0 (Nat.le_mul_of_pos_right _ (by omega))
 
 end OmegaBalance
