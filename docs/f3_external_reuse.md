@@ -484,3 +484,45 @@ PR51 代码 dc063232 的 push36681283200 与 PR36681288176 已全部通过：
 原五项目标中的 INF/COR/DEN/LOG 已在主线；RUN 已有无条件内核证明，等待最新
 组合验证与合并。全部接收 proof 任务尚未完成：全局 PAT、REC 等剩余概率/等待律、
 其它登记节点继续开放。单次 Haar 范围已合入 PR51，不扩张为完整 REC 完成。
+
+## 2026-09-30: F3-WAV-1-PROOF-BOUND target-first reuse gate
+
+Target before implementation: for integer `h`, natural `r >= 2`, and the unchanged
+strict window `2 < h < (3 : Int)^(2*r-1)-2`, prove
+`¬ (3 : Int)^(2*r-1) ∣ h^2-4`. This is only the nondivisibility step in the
+accepted WAV1 paper proof, not conditional transfer or a wavelet theorem.
+
+Bounded searches performed before writing Lean on 2026-09-30:
+
+- Web: `Lean mathlib wavelet discriminant h^2 - 4 prime power nondivisibility`,
+  `"F3-WAV" Lean`, `site:github.com/leanprover-community/mathlib4 "h ^ 2 - 4"`,
+  and `site:github.com "Lean" "discriminant" "nondivisibility"`
+- GitHub code search of mathlib4: `wavelet discriminant` returned no entries;
+  the final-form web queries surfaced unrelated discriminant material, not an
+  identified equivalent final theorem in the inspected results
+- Lemma-level web/GitHub queries for `pow_dvd_of_dvd_mul_left` and
+  `pow_dvd_of_dvd_mul_right` identified the existing prime-power product API
+- Decision: compose the locked mathlib prime and integer divisibility APIs in a
+  small project-specific adapter. These bounded results do not establish that
+  no equivalent proof exists anywhere, and do not justify new foundations
+
+The exact APIs were read at the existing mathlib pin
+`5ed2965256430c3649e86755f9576b54eca72435`, not inferred from current master:
+
+- [Prime.pow_dvd_of_dvd_mul_left/right](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Algebra/Prime/Lemmas.lean#L94-L109),
+  blob `70beb3f1460d26ac03d12d4f0cc65809c18b50b6`: a prime power dividing
+  `a*b` divides the other factor when the prime does not divide one factor
+- [Int.prime_three](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Nat/Prime/Int.lean#L63-L64),
+  blob `e3c787bcbef6024c0d29c750be0f8266db1c172a`
+- [Integer positive-divisor order interface](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Int/Init.lean#L318-L319),
+  blob `fb55fc31647617a5556331fdc54dcbae5facd9a7`, explicitly using core
+  `Int.le_of_dvd` with positive dividend and divisibility
+- [Apache-2.0 license](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/LICENSE),
+  blob `8dada3edaf50dbc082c9a125058f25def75e625a`, checked at the same pin
+
+No external proof is copied; no dependency or toolchain change is needed.
+Lean remains 4.34.0. Factor `h^2-4=(h-2)*(h+2)`; their difference is 4, so
+3 cannot divide both. The API forces the entire power into one positive factor
+strictly below that power, contradicting `Int.le_of_dvd`. No gcd or valuation
+foundation is recreated. No local Lean/Lake executable is available; source
+compatibility is not kernel verification, and exact-head CI remains required.

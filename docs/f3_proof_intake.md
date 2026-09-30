@@ -79,3 +79,27 @@ PAT局部L1–3已通过代码5f94116a全门禁并合入59be8b23；ROOT4归一�
 恢复后的源码与覆盖检查本身不构成内核证明；其后的独立精确CI记录如下。
 
 本批代码564bb498已在精确push36671721342与PR36671762437通过全部门禁；641条声明仅标准公理，98源文件与覆盖通过。只更新确定性截断矩阵/阈值关系的Lean覆盖，原始来源水位与概率节点保持不变。
+
+## 2026-09-30: narrow WAV discriminant proof-step repair
+
+`F3-WAV-1-PROOF-BOUND` now has an imported paper correction and a local Lean
+code candidate, awaiting exact-head CI. The source four-file package remains
+fixed at `311b0a226c0a64854f495dd3d1561fefaf6cb6e6`; its research branch is not
+changed. The false statement `h²−4<3^(2r−1)` fails at `r=2,h=10,H=10`
+(`96<27` is false). The corrected argument bounds the two factors separately
+and reuses prime-power divisibility; the original theorem and strict window stay
+unchanged. General transfer inherits integer `h`, `r≥1`; only the short-window
+lemma takes `r≥2`, `2<h<3^(2r−1)−2`. The zero case `h=2` is separate, and the
+first excluded point has valuation `2r−1` and weight `−1`.
+
+The candidate is one general declaration and four existing-target kernel
+regressions, all in Audit. Source guard 106 files, coverage 689 project
+statements plus one required external producer, six audit-guard tests and
+199262 finite interior checks pass locally. `verify.py` exits 2 before Lean
+stages because Lake is absent; none of those passes is kernel verification.
+Full WAV1 conditional transfer and WAV2–6 remain incomplete. The source directory
+has no PDF or TeX; its broken PDF link is replaced with a factual missing-artifact
+note, with no generation/render claim. See the
+[exact mapping](proofs/f3/wavelet_transfer/formalization.md),
+[source/correction evidence](../reports/f3_wavelet_bound_correction.json), and
+[reuse gate](f3_external_reuse.md#2026-09-30-f3-wav-1-proof-bound-target-first-reuse-gate).

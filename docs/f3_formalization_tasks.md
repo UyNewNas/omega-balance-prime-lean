@@ -1,5 +1,26 @@
 # F₃ 全量形式化任务清单
 
+## 2026-09-30: F3-WAV-1-PROOF-BOUND code candidate
+
+Only the accepted paper proof's short-window discriminant step is repaired and
+implemented: integer `h`, natural `r≥2`, and `2<h<3^(2r−1)−2` imply
+`3^(2r−1) ∤ h²−4`. `OmegaBalance.f3Wavelet_discriminant_not_dvd` uses the two
+positive factors, their difference 4, and existing mathlib prime-power APIs.
+It does not use the false whole-discriminant size bound. Four kernel regression
+candidates cover `r=2,h=10` as a counterexample to that bound, its valid
+nondivisibility, `h=2`, and the first excluded `h=25` with weight `−1`.
+
+Status: **CODE-CANDIDATE / EXACT-HEAD-CI-PENDING**, not LEAN-PROVED.
+Source guard (106 files), one-to-one Audit (689 project + 1 external), six
+coverage tests, and 199262 finite interior checks pass; Lean/Lake is absent and
+`verify.py` stops before kernel work. Fixed toolchain and all public hypotheses
+remain unchanged. Full F3-WAV-1 conditional transfer and F3-WAV-2–6 remain open.
+The source package has no PDF/TeX and this repair makes no render claim.
+[Mapping](proofs/f3/wavelet_transfer/formalization.md),
+[exact source correction](../reports/f3_wavelet_bound_correction.json),
+[reuse gate](f3_external_reuse.md#2026-09-30-f3-wav-1-proof-bound-target-first-reuse-gate).
+
+
 ## 2026-09-30 07:16 UTC：无条件 RUN 精确验证及最新主线组合
 
 无条件代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 的

@@ -2256,7 +2256,8 @@
       },
       "priority": "independent-local-first",
       "source_read_complete": true,
-      "formalization_complete": false
+      "formalization_complete": false,
+      "local_implementation": "F3-WAV-1-PROOF-BOUND code candidate only; exact-head CI pending; full conditional transfer incomplete"
     },
     {
       "id": "F3-WAV-2",
@@ -3704,10 +3705,22 @@
     {
       "id": "F3-WAV-1-PROOF-BOUND",
       "source_sha": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
-      "status": "proof-step repair pending; theorem unchanged",
+      "status": "paper proof step repaired in imported copy; CODE-CANDIDATE; EXACT-HEAD-CI-PENDING; theorem unchanged",
       "original": "h²−4<3^(2r−1) under2<h<3^(2r−1)−2 is false",
-      "repair": "Factor(h−2)(h+2), both positive below3^(2r−1), gcd divides4. Hence3^(2r−1) cannot divide their product.",
-      "downstream": "Preserve strict short-shift window; no theorem weakening needed."
+      "repair": "Factor(h−2)(h+2); both positive below3^(2r−1); difference4 means3 cannot divide both. Reuse prime-power-product divisibility and Int.le_of_dvd.",
+      "downstream": "Preserve strict short-shift window; no theorem weakening needed.",
+      "implementation_base": "0bd5333e92b429306ffb139728c04cd4a1ee796b",
+      "source_proof_blob": "f61e35e3ea3b80c58195422b520050e58470c0de",
+      "source_proof_lines": [
+        79,
+        89
+      ],
+      "counterexample": "r=2,h=10,H=10 satisfies original window; h²−4=96 is not <27, while27 does not divide96",
+      "lean_declaration": "OmegaBalance.f3Wavelet_discriminant_not_dvd",
+      "module": "OmegaBalance/F3WaveletLocal.lean",
+      "evidence": "reports/f3_wavelet_bound_correction.json",
+      "kernel_verified": false,
+      "strict_boundary": "At h=3^(2r−1)−2, v3(D)=2r−1 and W(D)=−1; h=2 remains zero discriminant exception"
     }
   ],
   "source_status_boundary": "Source-reported PAPER-AUDITED is not CONJECTURE and not Lean proof. Scan completion does not imply formalization completion. No branch name or historical green report is accepted as exact-head verification.",
@@ -4127,7 +4140,7 @@
           "url": "https://github.com/UyNewNas/omega-balance-prime-lean/blob/311b0a226c0a64854f495dd3d1561fefaf6cb6e6/docs/proofs/f3/wavelet_transfer/formalization.md"
         }
       },
-      "lean_mapping": "No package-specific Lean declaration in master; existing foundational API may be reused after checking exact statements. See formalization file for proposed names.",
+      "lean_mapping": "F3-WAV-1-PROOF-BOUND only: OmegaBalance.f3Wavelet_discriminant_not_dvd plus four F3DeeperExamples regressions are code candidates awaiting exact-head CI. All original full WAV1–6 conclusions remain incomplete. Exact map: docs/proofs/f3/wavelet_transfer/formalization.md.",
       "missing_DAG": "WAV-L1–L3 conditional transfer; L4 twin shift; L5–L8 root/wavelet/Fourier; L9 AP bound; L10 CRT divisor transfer; L11 AP-prime main term; L12 two-prime exact interface only; L13 general stationary phase",
       "target_names": [
         "f3Wavelet_block_cancel",
@@ -4142,7 +4155,8 @@
       "external_dependencies": [
         "PNT in AP",
         "Siegel–Walfisz for uniformity"
-      ]
+      ],
+      "implementation_status": "Imported four source Markdown files with explicit inherited domain and narrow proof correction; no source branch changes; no source PDF/TeX present"
     },
     "prime_depth_moments": {
       "source_sha": "b4c14823d9a97a45770ed42379673d39b5295be6",
@@ -6570,6 +6584,38 @@
       "new_combined_project_count": 684,
       "new_base": "f45cd8a7586609555e8f307d25c38fee5c105249",
       "whole_task_complete": false
+    },
+    "F3-WAV-1-PROOF-BOUND": {
+      "status": "CODE-CANDIDATE; EXACT-HEAD-CI-PENDING",
+      "source_sha": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
+      "implementation_base": "0bd5333e92b429306ffb139728c04cd4a1ee796b",
+      "paper_node": "proof §1 lower-layer discriminant nondivisibility only",
+      "modules": {
+        "OmegaBalance/F3WaveletLocal.lean": [
+          "f3Wavelet_discriminant_not_dvd"
+        ],
+        "OmegaBalance/F3DeeperExamples.lean": [
+          "f3Wavelet_false_size_bound_example",
+          "f3Wavelet_interior_nondivisibility_example",
+          "f3Wavelet_zero_discriminant_example",
+          "f3Wavelet_excluded_boundary_example"
+        ]
+      },
+      "new_theorem_count": 5,
+      "general_theorem_count": 1,
+      "kernel_regression_count": 4,
+      "mapping": "docs/proofs/f3/wavelet_transfer/formalization.md",
+      "evidence": "reports/f3_wavelet_bound_correction.json",
+      "reuse_evidence": "docs/f3_external_reuse.md",
+      "source_audit_files": 106,
+      "audit_coverage_count": 689,
+      "formalization_complete": false,
+      "kernel_verified": false,
+      "successful_code_runs": [],
+      "remaining": [
+        "Exact-head CI for local lemma and regressions",
+        "WAV-L1–L13 and all complete F3-WAV-1–6 statements"
+      ]
     }
   }
 }

@@ -828,3 +828,10 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicHaar_singleton
 #print axioms OmegaBalance.f3UnitHaar_singleton
 #print axioms OmegaBalance.f3UnitHaar_rootDepth_top
+
+-- F3-WAV-1 strict-window proof repair and kernel boundary regressions.
+#print axioms OmegaBalance.f3Wavelet_discriminant_not_dvd
+#print axioms OmegaBalance.f3Wavelet_false_size_bound_example
+#print axioms OmegaBalance.f3Wavelet_interior_nondivisibility_example
+#print axioms OmegaBalance.f3Wavelet_zero_discriminant_example
+#print axioms OmegaBalance.f3Wavelet_excluded_boundary_example
