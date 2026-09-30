@@ -1147,3 +1147,22 @@ The current default mathlib master was independently fetched at12:12 as5bd58ac29
 
 ## Acceptance boundary
 No new code or kernel proof is claimed by this report. All new declarations require Audit exactly once, full exact-tree Actions and independent review. Equality concerns observations alone under the original local Haar model; it does not deny recovery from separately supplied coefficients, nor assert equality of finite prime-box laws. Moving/prime sampling, signed differences, passive lower bounds, triple stopping and other accepted packages remain open.
+
+## 2026-09-30 12:34 UTC：完整双输出截断观测分布已通过精确 CI
+
+代码add478972bb5b3cd2a255cc0aab1ef6e078578b1，树7b38ee3b132fb3039518f4700ea3b4d509cdc44f，
+[PR36715105909](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36715105909)
+首轮完整成功；实际测试合并提交864ceb48a06109125d76756a0f41bd4161423530的文件树相同。
+14条新增声明只有标准公理，778项总审计输出（777项目+1产生器）、114项目源文件、
+650依赖模块及版本锁、构建、内核回归、一对一覆盖和144240有限检查均通过。
+
+现已覆盖REC定理2.6的固定双根、有限精度完整观测分布不可辨识结论：标准单位Haar
+采样下，两模型的真实根距均至少H时，每个有限T的完整双输出观测序列具有相同分布，
+包括真实距离H与K>H的比较。原模型包装保留共同已知基深度、m=2、互异同模3单位根、
+正基深和H≥1；根命中保留原深度∞，明确证明完整可测推前律，不使用非可测map默认值。
+
+该结论仅针对观测接口，不是已知系数后的计算下界，也不是有限素数盒的分布相等。
+16个完整序列直方图案例333768输入批次与3个反向控制仅为补充回归。独立数学/源码
+复核通过；移动配置、素数传递、完整有符号分歧律、被动样本下界、三等距根停止律及
+其他REC节点仍开放，整个包formalization_complete仍为false。此文档头不改已验Lean
+代码、Audit或依赖，发布后仍需完整精确头CI和当前主分支检查。
