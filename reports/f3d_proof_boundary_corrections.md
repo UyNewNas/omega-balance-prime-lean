@@ -177,3 +177,7 @@ report's source-commit stage.
 
 No Lean source, audit registration, pinned dependency, workflow, or other
 worktree was modified.
+
+## Rebuilt PDF verification
+
+Existing workflow run [36664836638](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36664836638) completed the actual XeLaTeX/render steps and committed generated output at `dece93f2b640b1532c9c3635220542f47cda29b8`. Both corrected PDFs were retrieved from that exact commit, rendered again, and visually inspected on every page: MULTI 7 pages and TERN 5 pages. The MULTI abstract and boundary section prominently distinguish the retained constructive status from the RESEARCH necessity route; the TERN summary, lower-bound section and boundary include m≥2 and the m=1 identity witness. No clipping, missing glyphs or formula overlap was observed. The eleven unrelated regenerated PDF blobs are restored to the master versions in this follow-up. Exact final-head Lean gates remain required before merge.
