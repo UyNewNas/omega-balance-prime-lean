@@ -58,7 +58,22 @@ theorem f3UnitHaar_rootDepth_eq {a : ℤ_[3]} (ha : IsUnit a) {t : ℕ} (ht : 1 
         rw [ENNReal.sub_mul (by intro _ _; simp)]
         congr 1
         ac_rfl
-    _ = (3 ^ t)⁻¹ := by norm_num
+    _ = (3 ^ t)⁻¹ := by
+      have hc : (2 / 3 : ℝ≥0∞)⁻¹ - (2 / 3 : ℝ≥0∞)⁻¹ * 3⁻¹ = 1 := by
+        simp only [ENNReal.inv_div (a := 2) (b := 3) (by norm_num) (by norm_num),
+          div_eq_mul_inv]
+        have hp : (3 : ℝ≥0∞) * 2⁻¹ * 3⁻¹ = 2⁻¹ := by
+          rw [mul_right_comm, ENNReal.mul_inv_cancel
+            (by norm_num : (3 : ℝ≥0∞) ≠ 0) (by norm_num : (3 : ℝ≥0∞) ≠ ⊤), one_mul]
+        rw [hp]
+        apply ENNReal.sub_eq_of_eq_add (by simp)
+        calc
+          (3 : ℝ≥0∞) * 2⁻¹ = (2 + 1) * 2⁻¹ := by norm_num
+          _ = 2 * 2⁻¹ + 2⁻¹ := by rw [add_mul, one_mul]
+          _ = 1 + 2⁻¹ := by
+            rw [ENNReal.mul_inv_cancel (by norm_num : (2 : ℝ≥0∞) ≠ 0)
+              (by norm_num : (2 : ℝ≥0∞) ≠ ⊤)]
+      rw [hc, one_mul]
 
 /-- At depth zero, the other unit residue class carries probability one half. -/
 theorem f3UnitHaar_rootDepth_zero {a : ℤ_[3]} (ha : IsUnit a) :
@@ -66,7 +81,8 @@ theorem f3UnitHaar_rootDepth_zero {a : ℤ_[3]} (ha : IsUnit a) :
   rw [f3RootDepthLayer_eq_sdiff, f3RootDepthTail_zero, Set.univ_sdiff,
     prob_compl_eq_one_sub (f3RootDepthTail_measurable a 1),
     f3UnitHaar_rootDepth_ge ha (by decide : 1 ≤ 1)]
-  norm_num
+  simpa only [Nat.sub_self, pow_zero, mul_one, one_div] using
+    (ENNReal.sub_half (a := 1) (by norm_num))
 
 /-- A threshold just above an integer is equivalent to a strict depth inequality. -/
 theorem rootDepth_nat_lt_iff (d a : ℤ_[3]) (L : ℕ) :
@@ -135,9 +151,13 @@ theorem f3UnitHaar_rootDepth_ne {a b : ℤ_[3]} (ha : IsUnit a) (hb : IsUnit b)
     (f3RootDepthTail_measurable b (L + 1)),
     f3UnitHaar_rootDepth_ge ha (by omega), f3UnitHaar_rootDepth_ge hb (by omega)]
   simp only [Nat.add_sub_cancel]
-  rw [ENNReal.mul_inv (Or.inl (by norm_num : (2 : ℝ≥0∞) ≠ 0))
-    (Or.inl (by norm_num : (2 : ℝ≥0∞) ≠ ⊤)), ← add_mul]
-  norm_num
+  simp only [ENNReal.mul_inv (a := 2) (b := (3 : ℝ≥0∞) ^ L)
+    (Or.inl (by norm_num : (2 : ℝ≥0∞) ≠ 0))
+    (Or.inl (by norm_num : (2 : ℝ≥0∞) ≠ ⊤))]
+  rw [← add_mul]
+  have hhalf : (2 : ℝ≥0∞)⁻¹ + 2⁻¹ = 1 := by
+    simpa only [one_div] using (ENNReal.add_halves (1 : ℝ≥0∞))
+  rw [hhalf, one_mul]
 
 end
 

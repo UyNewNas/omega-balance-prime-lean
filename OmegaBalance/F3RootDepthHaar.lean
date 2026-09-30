@@ -78,7 +78,9 @@ theorem f3UnitHaar_rootDepth_ge {a : ℤ_[3]} (ha : IsUnit a) {t : ℕ} (ht : 1 
     calc
       (3 : ℝ≥0∞) * 2⁻¹ * ((3 ^ n)⁻¹ * 3⁻¹) =
           (3 * 3⁻¹) * (2⁻¹ * (3 ^ n)⁻¹) := by ac_rfl
-      _ = 2⁻¹ * (3 ^ n)⁻¹ := by norm_num
+      _ = 2⁻¹ * (3 ^ n)⁻¹ := by
+        rw [ENNReal.mul_inv_cancel (by norm_num : (3 : ℝ≥0∞) ≠ 0)
+          (by norm_num : (3 : ℝ≥0∞) ≠ ⊤), one_mul]
 
 end
 

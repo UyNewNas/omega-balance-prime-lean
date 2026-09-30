@@ -62,7 +62,14 @@ theorem f3PadicHaar_units : f3PadicHaar f3PadicUnitSet = 2 / 3 := by
   have h := prob_compl_eq_one_sub (μ := f3PadicHaar)
     (padicInt_measurable_fiber (p := 3) 1 0)
   rw [padicInt_haar_fiber, ← f3PadicUnitSet_compl, compl_compl] at h
-  convert h using 1 <;> norm_num
+  rw [h]
+  norm_num only [pow_one]
+  apply ENNReal.sub_eq_of_eq_add (by simp)
+  calc
+    (1 : ℝ≥0∞) = 3 * 3⁻¹ :=
+      (ENNReal.mul_inv_cancel (by norm_num) (by norm_num)).symm
+    _ = (2 + 1) * 3⁻¹ := by norm_num
+    _ = 2 / 3 + 3⁻¹ := by rw [add_mul, one_mul, div_eq_mul_inv]
 
 /-- The paper's normalized additive Haar probability on the units, represented
 as a measure on `ℤ_[3]` supported on its actual unit set. -/
