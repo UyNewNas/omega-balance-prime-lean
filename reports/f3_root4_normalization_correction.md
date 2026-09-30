@@ -13,3 +13,5 @@
 有限回归：`python3 scripts/check_f3_root4_normalization.py`，精确枚举 mod243 的参数类。允许13122类，事件72类，其中两个符号分支各36类，72/13122=4/729。精确深度3、4、2均由mod243决定。结果在 `reports/f3_root4_normalization_check.json`。这项枚举独立复现；不是渐近或内核证明。
 
 状态：ROOT-1/2/3 的既有 PAPER-AUDITED 记录保留；ROOT-4 R9 修订为 PAPER-PROVED，修订稿和重建 PDF 复核待完成。禁止沿用错误常数形式化。无新 Lean 声明。
+
+PDF 重建：GitHub Actions run 36658450546 在工作分支成功执行 XeLaTeX 双遍、pdfinfo 及逐页渲染，生成提交 `20c48634cef90ba51f04b32c0c036bd0b4d71015`。已下载对应 ROOT PDF 并独立渲染检查全部 6 页，文字/公式无裁切重叠，摘要与第 8 节均为 4/729，第 9 节保留修订状态。首次分支触发导致其他 12 份未改源 PDF 一并重建；本后续提交仅恢复它们原有 blob，保留此次 ROOT PDF。
