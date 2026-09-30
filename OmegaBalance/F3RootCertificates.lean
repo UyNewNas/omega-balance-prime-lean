@@ -179,10 +179,12 @@ theorem truncatedDepthCertificate_sound {H : ℕ} {d α β : ℚ_[3]} {l : WithT
   by_cases heq : truncatedRootDepth H d α = truncatedRootDepth H d β
   · by_cases hsat : truncatedRootDepth H d α = (H : WithTop ℤ)
     · have hl : (H : WithTop ℤ) = l := by
-        simpa [truncatedDepthCertificate, heq, hsat] using h
+        rw [truncatedDepthCertificate, if_pos heq, if_pos hsat] at h
+        exact Option.some.inj h
       have hsat' : truncatedRootDepth H d β = (H : WithTop ℤ) := heq.symm.trans hsat
       exact (truncatedRootDepth_saturated_certificate hsat hsat').2.trans hl
-    · simp [truncatedDepthCertificate, heq, hsat] at h
+    · rw [truncatedDepthCertificate, if_pos heq, if_neg hsat] at h
+      contradiction
   · have hl : min (truncatedRootDepth H d α) (truncatedRootDepth H d β) = l := by
       simpa [truncatedDepthCertificate, heq] using h
     have hc := truncatedRootDepth_ne_certificate heq
@@ -225,5 +227,7 @@ theorem f3SharedRootDepth_truncatedCertificate {m : ℕ} (C : F3SharedRootConfig
       (truncatedRootDepth H d (C.root j)) = some l) :
     truncatedRootDistance H (C.root i) (C.root j) = l :=
   truncatedDepthCertificate_sound h
+
+end
 
 end OmegaBalance

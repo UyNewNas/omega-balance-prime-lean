@@ -20,7 +20,7 @@ noncomputable def f3AllPrimeCountingReal (x : ℝ) : ℝ :=
 /-- Modulus one and residue zero impose no additional restriction on primes. -/
 theorem f3AllPrimeCountingReal_eq_AP (x : ℝ) :
     f3AllPrimeCountingReal x = f3PrimeAPCountingReal 1 0 x := by
-  simp [f3AllPrimeCountingReal, f3PrimeAPCountingReal]
+  simp only [f3AllPrimeCountingReal, f3PrimeAPCountingReal, Nat.mod_one, and_true]
 
 /-- The denominator asymptotic is the proved AP-PNT at modulus one. -/
 theorem f3AllPrimeCountingReal_normalized_tendsto :
@@ -50,8 +50,7 @@ theorem f3PrimeRelativeLimit_of_normalized {f : ℝ → ℝ} {a : ℝ}
       (fun x : ℝ => (f x / (x / Real.log x)) /
         (f3AllPrimeCountingReal x / (x / Real.log x)))
       atTop (𝓝 a) := by
-    simpa only [Pi.div_apply, div_one] using
-      hf.div hden (by norm_num : (1 : ℝ) ≠ 0)
+    convert hf.div hden (by norm_num : (1 : ℝ) ≠ 0) using 1 <;> norm_num
   refine hratio.congr' ?_
   have hne := hden.eventually_ne (by norm_num : (1 : ℝ) ≠ 0)
   filter_upwards [hne] with x hx
