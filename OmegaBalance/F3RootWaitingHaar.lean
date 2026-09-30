@@ -40,9 +40,9 @@ instance f3UnitHaarStream_isProbabilityMeasure : IsProbabilityMeasure f3UnitHaar
 
 /-- One-based first actual unequal-depth observation, with infinity if none occurs. -/
 def f3RootWait (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) : ℕ∞ :=
-  hittingAfter (fun n (x : ℕ → ℤ_[3]) => x n)
+  (show ℕ∞ from hittingAfter (fun n (x : ℕ → ℤ_[3]) => x n)
     {d : ℤ_[3] | rootDepth (d : ℚ_[3]) (a : ℚ_[3]) ≠
-      rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω + 1
+      rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω) + 1
 
 /-- The actual one-based first-hit count exceeds T exactly after T failures. -/
 theorem f3RootWait_gt_iff (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) (T : ℕ) :
@@ -50,11 +50,15 @@ theorem f3RootWait_gt_iff (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) (T : ℕ) :
       rootDepth (ω n : ℚ_[3]) (a : ℚ_[3]) =
         rootDepth (ω n : ℚ_[3]) (b : ℚ_[3]) := by
   have hshift (u : ℕ∞) : (T : ℕ∞) < u + 1 ↔ (T : ℕ∞) ≤ u := by
-    cases u using WithTop.recTopCoe with
+    cases u using ENat.recTopCoe with
     | top => simp
     | coe n => norm_cast <;> omega
   unfold f3RootWait
-  rw [hshift, ← not_lt, hittingAfter_lt_iff]
+  rw [hshift]
+  change (T : WithTop ℕ) ≤ hittingAfter (fun n (x : ℕ → ℤ_[3]) => x n)
+    {d : ℤ_[3] | rootDepth (d : ℚ_[3]) (a : ℚ_[3]) ≠
+      rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω ↔ _
+  rw [← not_lt, hittingAfter_lt_iff]
   simp only [Set.mem_Ico, Nat.zero_le, true_and, Set.mem_setOf_eq,
     not_exists, not_and, not_not]
 
@@ -112,12 +116,12 @@ theorem f3RootWait_toENNReal_eq_tsum (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) :
         (fun _ => (1 : ℝ≥0∞))) ω := by
   classical
   simp only [Set.indicator_apply, Set.mem_setOf_eq]
-  cases h : f3RootWait a b ω using WithTop.recTopCoe with
+  cases h : f3RootWait a b ω using ENat.recTopCoe with
   | top =>
     simp only [ENat.toENNReal_top, ENat.natCast_lt_top, if_true]
     exact (ENNReal.tsum_const_eq_top_of_ne_zero (one_ne_zero : (1 : ℝ≥0∞) ≠ 0)).symm
   | coe k =>
-    simp only [ENat.some_eq_natCast, ENat.toENNReal_coe, Nat.cast_lt]
+    simp only [ENat.toENNReal_coe, ENat.natCast_lt_natCast]
     rw [tsum_eq_sum (s := Finset.range k) (fun n hn =>
       if_neg (by simpa only [Finset.mem_range] using hn))]
     have hsum : (∑ n ∈ Finset.range k, if n < k then (1 : ℝ≥0∞) else 0) =
@@ -153,7 +157,7 @@ theorem f3UnitHaarStream_rootWait_mean {a b : ℤ_[3]} (ha : IsUnit a) (hb : IsU
   simp_rw [f3RootWait_toENNReal_eq_tsum]
   rw [lintegral_tsum (fun T =>
     (measurable_const.indicator (f3RootWait_tail_measurable hL T)).aemeasurable)]
-  simp_rw [lintegral_indicator_one (f3RootWait_tail_measurable hL _),
+  simp_rw [lintegral_indicator_fun_one (f3RootWait_tail_measurable hL _),
     f3UnitHaarStream_rootWait_gt ha hb hLpos hL]
   rw [ENNReal.tsum_geometric, ENNReal.sub_sub_cancel one_ne_top hp, inv_inv]
 

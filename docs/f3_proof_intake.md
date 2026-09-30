@@ -140,3 +140,57 @@ T=0、从未命中的有限前缀语义、几何尾及截断期望；不是无�
 最终接入最新主线及新的完整Actions门禁仍是接受条件。
 
 未引入新纸面来源；沿用既有REC来源和原始水位，不把此候选计为LEAN-PROVED。
+
+## 2026-09-30: narrow WAV discriminant proof-step repair
+
+`F3-WAV-1-PROOF-BOUND` now has an imported paper correction and a local Lean
+code candidate, awaiting exact-head CI. The source four-file package remains
+fixed at `311b0a226c0a64854f495dd3d1561fefaf6cb6e6`; its research branch is not
+changed. The false statement `h²−4<3^(2r−1)` fails at `r=2,h=10,H=10`
+(`96<27` is false). The corrected argument bounds the two factors separately
+and reuses prime-power divisibility; the original theorem and strict window stay
+unchanged. General transfer inherits integer `h`, `r≥1`; only the short-window
+lemma takes `r≥2`, `2<h<3^(2r−1)−2`. The zero case `h=2` is separate, and the
+first excluded point has valuation `2r−1` and weight `−1`.
+
+The candidate is one general declaration and four existing-target kernel
+regressions, all in Audit. Source guard 106 files, coverage 689 project
+statements plus one required external producer, six audit-guard tests and
+199262 finite interior checks pass locally. `verify.py` exits 2 before Lean
+stages because Lake is absent; none of those passes is kernel verification.
+Full WAV1 conditional transfer and WAV2–6 remain incomplete. The source directory
+has no PDF or TeX; its broken PDF link is replaced with a factual missing-artifact
+note, with no generation/render claim. See the
+[exact mapping](proofs/f3/wavelet_transfer/formalization.md),
+[source/correction evidence](../reports/f3_wavelet_bound_correction.json), and
+[reuse gate](f3_external_reuse.md#2026-09-30-f3-wav-1-proof-bound-target-first-reuse-gate).
+
+## 2026-09-30 09:03 UTC：WAV 短窗口修复已通过精确内核验证
+
+代码 `c7e5d7d55209e575cc1449cf4595762f63469cf2` 的
+[push 36690453078](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36690453078) 与
+[PR 36690460110](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36690460110)
+全部成功：700项公理审计（699条项目声明+1必需产生器）仅含标准公理，
+107个项目源文件、650个依赖模块及固定版本检查、完整覆盖、构建和回归均通过。
+一般非整除引理与四个边界回归均有实际公理输出；独立数学/源码复核通过。
+
+只升级 `F3-WAV-1-PROOF-BOUND`：严格窗口的整数判别式非整除、r=2/h=10旧大小界
+反例及其正确结论、h=2零判别式、h=25排除端点的精确整除层/权重回归。
+不宣告整个条件传递或WAV2–6已形式化，不把源PAPER-AUDITED归属解释为本次全包再审计。
+首轮未限定dvd_sub的失败已据固定Lean4.34 API改为Int.dvd_sub，公开命题没有改变。
+
+最终树另合入已验缓存工作流主线ef68dc4，数学源码与上述已验版本字节相同；
+仅更换缓存保存范围，所有内核/源码/公理门禁保留。这个组合/文档头仍单独执行CI。
+
+## 2026-09-30 09:23 UTC：等待时间首轮 CI 诊断与主线组合
+
+候选0b80102d的push36691409632和PR36691460119均在新等待模块失败；实际RUN产生器
+已构建，但后续公理/回归/覆盖门禁未完成，不能据此认定等待律已证明。固定版本中ENat
+是WithTop Nat的类型定义而非可自由混用的缩写；修复将实际hittingAfter结果显式标成ENat，
+使用ENat专用recTopCoe及自然数嵌入比较API，并调用实际常函数指标的积分变体。
+所有公开结论、无限值、原模型及概率前提不变。
+
+同时真实三方接入主线7d94cf69，完整保留已验WAV五条声明与默认分支缓存保存工作流。
+组合源码108文件、711条项目声明+1必需上游产生器的一对一覆盖及六项审计规则测试通过；
+这些只是预检，组合仍须新的精确CI。09:11读取169个实际远端分支并检查近期PR/issue，
+原研究来源头未变，新增记录仅为本轮工程PR；不更改原始proof水位或提升未验任务状态。

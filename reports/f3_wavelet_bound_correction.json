@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "result_id": "F3-WAV-1-PROOF-BOUND",
+  "checked_at_utc": "2026-09-30T07:50:49Z",
+  "status": "LEAN-PROVED for the single discriminant lemma and four regressions only; full WAV1–6 incomplete",
+  "implementation_base": "0bd5333e92b429306ffb139728c04cd4a1ee796b",
+  "paper_sources": {
+    "theorem": {
+      "commit": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
+      "path": "docs/proofs/f3/wavelet_transfer/theorem.md",
+      "blob": "6d761ddc8634192e085f7245eb5db98f57b42bf2",
+      "url": "https://github.com/UyNewNas/omega-balance-prime-lean/blob/311b0a226c0a64854f495dd3d1561fefaf6cb6e6/docs/proofs/f3/wavelet_transfer/theorem.md"
+    },
+    "proof": {
+      "commit": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
+      "path": "docs/proofs/f3/wavelet_transfer/proof.md",
+      "blob": "f61e35e3ea3b80c58195422b520050e58470c0de",
+      "url": "https://github.com/UyNewNas/omega-balance-prime-lean/blob/311b0a226c0a64854f495dd3d1561fefaf6cb6e6/docs/proofs/f3/wavelet_transfer/proof.md"
+    },
+    "scaffolding": {
+      "commit": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
+      "path": "docs/proofs/f3/wavelet_transfer/scaffolding.md",
+      "blob": "0898d381383649367ab4413ecab4d0016789bad8",
+      "url": "https://github.com/UyNewNas/omega-balance-prime-lean/blob/311b0a226c0a64854f495dd3d1561fefaf6cb6e6/docs/proofs/f3/wavelet_transfer/scaffolding.md"
+    },
+    "formalization": {
+      "commit": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
+      "path": "docs/proofs/f3/wavelet_transfer/formalization.md",
+      "blob": "3c6b82d95943fdcb469c50357111d0e911911526",
+      "url": "https://github.com/UyNewNas/omega-balance-prime-lean/blob/311b0a226c0a64854f495dd3d1561fefaf6cb6e6/docs/proofs/f3/wavelet_transfer/formalization.md"
+    }
+  },
+  "source_branch": "proof/f3-exploration-123-latest",
+  "source_branch_modified": false,
+  "original_fault": {
+    "proof_blob": "f61e35e3ea3b80c58195422b520050e58470c0de",
+    "lines": [
+      79,
+      89
+    ],
+    "verbatim": "在\n\\[\n2<h<3^{2r-1}-2\n\\]\n时，\n\\[\n0<|h^2-4|<3^{2r-1}\n\\]\n在相关正整数窗口内，故\n\\[\nW_r(D_h)=0.",
+    "counterexample": {
+      "r": 2,
+      "h": 10,
+      "H": 10,
+      "q": 27,
+      "discriminant": 96,
+      "valid_original_short_window": true,
+      "false_claim": "96 < 27",
+      "correct_nondivisibility": "27 does not divide 96"
+    }
+  },
+  "repair_source": {
+    "commit": "82f93f9668a43aabd69258fe1682efa7804a03ec",
+    "path": "docs/f3_balance_research/research_notes.md",
+    "blob": "291286f475f130e7090c922f0389388a15b4a8d1",
+    "lines": [
+      116,
+      139
+    ],
+    "section": "4"
+  },
+  "inherited_domain_source": {
+    "commit": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
+    "path": "docs/f3_balance_research/research_notes_round2.md",
+    "blob": "5e7830b5566e6e40082952ea0380e16d098a44d3",
+    "line": 44,
+    "domain": "integer h; natural r>=1 for general transfer; short window r>=2 and integer 2<=h<=H<3^(2r-1)-2"
+  },
+  "statement": {
+    "r_type": "Nat",
+    "h_type": "Int",
+    "assumptions": [
+      "2 <= r",
+      "2 < h",
+      "h < (3 : Int)^(2*r-1)-2"
+    ],
+    "conclusion": "not ((3 : Int)^(2*r-1) divides h^2-4)"
+  },
+  "proof_method": "Factor (h-2)*(h+2). Since their difference is 4, 3 cannot divide both. Existing mathlib prime-power-product lemma puts the whole power into one positive factor below the modulus; Int.le_of_dvd contradicts the strict bound.",
+  "declarations": {
+    "OmegaBalance/F3WaveletLocal.lean": [
+      "f3Wavelet_discriminant_not_dvd"
+    ],
+    "OmegaBalance/F3DeeperExamples.lean": [
+      "f3Wavelet_false_size_bound_example",
+      "f3Wavelet_interior_nondivisibility_example",
+      "f3Wavelet_zero_discriminant_example",
+      "f3Wavelet_excluded_boundary_example"
+    ]
+  },
+  "reuse_gate": "docs/f3_external_reuse.md#2026-09-30-f3-wav-1-proof-bound-target-first-reuse-gate",
+  "pins": {
+    "lean": "leanprover/lean4:v4.34.0",
+    "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+    "changed": false
+  },
+  "checks": {
+    "source_guard": "PASS: 106 Lean files, no proof escapes",
+    "audit_coverage": "PASS: 689 project declarations plus 1 required external producer, exactly once",
+    "audit_coverage_regressions": "PASS: 6 tests",
+    "verify_py": "BLOCKED: exit 2; lake was not found; no Lean stages executed",
+    "finite_arithmetic": {
+      "r_values": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "interior_cases": 199262,
+      "rows": [
+        {
+          "r": 2,
+          "q": 27,
+          "interior_cases": 22,
+          "all_nondivisible": true,
+          "excluded_h": 25,
+          "excluded_discriminant": 621,
+          "excluded_weight": -1,
+          "zero_discriminant_weight": 2
+        },
+        {
+          "r": 3,
+          "q": 243,
+          "interior_cases": 238,
+          "all_nondivisible": true,
+          "excluded_h": 241,
+          "excluded_discriminant": 58077,
+          "excluded_weight": -1,
+          "zero_discriminant_weight": 2
+        },
+        {
+          "r": 4,
+          "q": 2187,
+          "interior_cases": 2182,
+          "all_nondivisible": true,
+          "excluded_h": 2185,
+          "excluded_discriminant": 4774221,
+          "excluded_weight": -1,
+          "zero_discriminant_weight": 2
+        },
+        {
+          "r": 5,
+          "q": 19683,
+          "interior_cases": 19678,
+          "all_nondivisible": true,
+          "excluded_h": 19681,
+          "excluded_discriminant": 387341757,
+          "excluded_weight": -1,
+          "zero_discriminant_weight": 2
+        },
+        {
+          "r": 6,
+          "q": 177147,
+          "interior_cases": 177142,
+          "all_nondivisible": true,
+          "excluded_h": 177145,
+          "excluded_discriminant": 31380351021,
+          "excluded_weight": -1,
+          "zero_discriminant_weight": 2
+        }
+      ],
+      "status": "PASS",
+      "kernel_verification": false
+    }
+  },
+  "presentation": {
+    "source_files": [
+      "theorem.md",
+      "proof.md",
+      "scaffolding.md",
+      "formalization.md"
+    ],
+    "source_has_pdf": false,
+    "source_has_tex": false,
+    "pdf_generated": false,
+    "render_verified": false,
+    "note": "Broken source PDF link replaced by explicit missing-artifact note; no global presentation claim"
+  },
+  "not_proved": [
+    "F3-WAV-1 conditional transfer",
+    "F3-WAV-2 through F3-WAV-6",
+    "general wavelet weight or valuation theorems",
+    "prime-pair asymptotics or twin-prime infinitude"
+  ],
+  "upgrade_condition": "Exact implementation head must pass all repository build, kernel regression, axiom, source, audit-coverage and finite gates before LEAN-PROVED credit",
+  "executed_ci": {
+    "verified_code_sha": "c7e5d7d55209e575cc1449cf4595762f63469cf2",
+    "runs": [
+      36690453078,
+      36690460110
+    ],
+    "project_declarations": 699,
+    "required_external": 1,
+    "project_source_files": 107,
+    "dependency_source_modules": 650,
+    "axioms": "only propext/Classical.choice/Quot.sound; each declaration uses a subset",
+    "review": "independent scope/math/source review passed",
+    "latest_workflow_base": "ef68dc4c09fbb56efe2aa438a7bfae937ba2e154",
+    "latest_combined_ci": "pending its own exact run"
+  }
+}

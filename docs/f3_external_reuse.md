@@ -702,3 +702,72 @@ are actual roots, actual finite distance and actual canonical sampling measure.
 The listed candidate proof structure is not Lean-compiled. Every new declaration must
 enter scripts/Audit.lean and the exact source tree must pass full project/producer,
 regression, axiom, source and coverage CI before status promotion.
+
+## 2026-09-30: F3-WAV-1-PROOF-BOUND target-first reuse gate
+
+Target before implementation: for integer `h`, natural `r >= 2`, and the unchanged
+strict window `2 < h < (3 : Int)^(2*r-1)-2`, prove
+`¬ (3 : Int)^(2*r-1) ∣ h^2-4`. This is only the nondivisibility step in the
+accepted WAV1 paper proof, not conditional transfer or a wavelet theorem.
+
+Bounded searches performed before writing Lean on 2026-09-30:
+
+- Web: `Lean mathlib wavelet discriminant h^2 - 4 prime power nondivisibility`,
+  `"F3-WAV" Lean`, `site:github.com/leanprover-community/mathlib4 "h ^ 2 - 4"`,
+  and `site:github.com "Lean" "discriminant" "nondivisibility"`
+- GitHub code search of mathlib4: `wavelet discriminant` returned no entries;
+  the final-form web queries surfaced unrelated discriminant material, not an
+  identified equivalent final theorem in the inspected results
+- Lemma-level web/GitHub queries for `pow_dvd_of_dvd_mul_left` and
+  `pow_dvd_of_dvd_mul_right` identified the existing prime-power product API
+- Decision: compose the locked mathlib prime and integer divisibility APIs in a
+  small project-specific adapter. These bounded results do not establish that
+  no equivalent proof exists anywhere, and do not justify new foundations
+
+The exact APIs were read at the existing mathlib pin
+`5ed2965256430c3649e86755f9576b54eca72435`, not inferred from current master:
+
+- [Prime.pow_dvd_of_dvd_mul_left/right](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Algebra/Prime/Lemmas.lean#L94-L109),
+  blob `70beb3f1460d26ac03d12d4f0cc65809c18b50b6`: a prime power dividing
+  `a*b` divides the other factor when the prime does not divide one factor
+- [Int.prime_three](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Nat/Prime/Int.lean#L63-L64),
+  blob `e3c787bcbef6024c0d29c750be0f8266db1c172a`
+- [Integer positive-divisor order interface](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Int/Init.lean#L318-L319),
+  blob `fb55fc31647617a5556331fdc54dcbae5facd9a7`, explicitly using core
+  `Int.le_of_dvd` with positive dividend and divisibility
+- [Apache-2.0 license](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/LICENSE),
+  blob `8dada3edaf50dbc082c9a125058f25def75e625a`, checked at the same pin
+
+No external proof is copied; no dependency or toolchain change is needed.
+Lean remains 4.34.0. Factor `h^2-4=(h-2)*(h+2)`; their difference is 4, so
+3 cannot divide both. The API forces the entire power into one positive factor
+strictly below that power, contradicting `Int.le_of_dvd`. No gcd or valuation
+foundation is recreated. No local Lean/Lake executable is available; source
+compatibility is not kernel verification, and exact-head CI remains required.
+
+## 2026-09-30 08:30 UTC：WAV 精确 API 修复与当前主线组合
+
+首个实际 PR run36686787116 在 F3WaveletLocal 第30行报告未找到未限定的
+`dvd_sub`；并未通过内核门禁。源码已仅改为固定 Lean4.34 的 `Int.dvd_sub`，
+其精确声明位于 src/Init/Data/Int/DivMod/Lemmas.lean:54–55，
+blob99da2d83e13e782fb6ab3304b39321ded95e3737。公开命题、窗口及其余证明保持原样。
+同时真实三方接入已验批次主线33ccdfe，保留全部10条新 Haar 批次声明和现有文档；
+组合候选为699条项目声明+1条必需上游产生器，107个源文件。
+新组合仍需精确CI，不能把源码/覆盖通过或旧基础CI当作WAV内核证明。
+
+## 2026-09-30 09:03 UTC：WAV 短窗口修复已通过精确内核验证
+
+代码 `c7e5d7d55209e575cc1449cf4595762f63469cf2` 的
+[push 36690453078](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36690453078) 与
+[PR 36690460110](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36690460110)
+全部成功：700项公理审计（699条项目声明+1必需产生器）仅含标准公理，
+107个项目源文件、650个依赖模块及固定版本检查、完整覆盖、构建和回归均通过。
+一般非整除引理与四个边界回归均有实际公理输出；独立数学/源码复核通过。
+
+只升级 `F3-WAV-1-PROOF-BOUND`：严格窗口的整数判别式非整除、r=2/h=10旧大小界
+反例及其正确结论、h=2零判别式、h=25排除端点的精确整除层/权重回归。
+不宣告整个条件传递或WAV2–6已形式化，不把源PAPER-AUDITED归属解释为本次全包再审计。
+首轮未限定dvd_sub的失败已据固定Lean4.34 API改为Int.dvd_sub，公开命题没有改变。
+
+最终树另合入已验缓存工作流主线ef68dc4，数学源码与上述已验版本字节相同；
+仅更换缓存保存范围，所有内核/源码/公理门禁保留。这个组合/文档头仍单独执行CI。
