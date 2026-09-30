@@ -1,0 +1,391 @@
+{
+  "status": "finite full-histogram regression only, not a kernel proof",
+  "cases": 16,
+  "batch_inputs_checked": 333768,
+  "known_base_depth": 1,
+  "T0_included": true,
+  "root_infinity_preserved_before_min": true,
+  "rows": [
+    {
+      "H": 1,
+      "T": 0,
+      "models": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          11
+        ]
+      ],
+      "true_distances": [
+        1,
+        2
+      ],
+      "unit_residues": 2,
+      "batch_inputs_per_model": 1,
+      "full_observation_sequences": 1,
+      "histograms_equal": true
+    },
+    {
+      "H": 1,
+      "T": 1,
+      "models": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          11
+        ]
+      ],
+      "true_distances": [
+        1,
+        2
+      ],
+      "unit_residues": 2,
+      "batch_inputs_per_model": 2,
+      "full_observation_sequences": 2,
+      "histograms_equal": true
+    },
+    {
+      "H": 1,
+      "T": 2,
+      "models": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          11
+        ]
+      ],
+      "true_distances": [
+        1,
+        2
+      ],
+      "unit_residues": 2,
+      "batch_inputs_per_model": 4,
+      "full_observation_sequences": 4,
+      "histograms_equal": true
+    },
+    {
+      "H": 1,
+      "T": 3,
+      "models": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          11
+        ]
+      ],
+      "true_distances": [
+        1,
+        2
+      ],
+      "unit_residues": 2,
+      "batch_inputs_per_model": 8,
+      "full_observation_sequences": 8,
+      "histograms_equal": true
+    },
+    {
+      "H": 2,
+      "T": 0,
+      "models": [
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          29
+        ]
+      ],
+      "true_distances": [
+        2,
+        3
+      ],
+      "unit_residues": 6,
+      "batch_inputs_per_model": 1,
+      "full_observation_sequences": 1,
+      "histograms_equal": true
+    },
+    {
+      "H": 2,
+      "T": 1,
+      "models": [
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          29
+        ]
+      ],
+      "true_distances": [
+        2,
+        3
+      ],
+      "unit_residues": 6,
+      "batch_inputs_per_model": 6,
+      "full_observation_sequences": 3,
+      "histograms_equal": true
+    },
+    {
+      "H": 2,
+      "T": 2,
+      "models": [
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          29
+        ]
+      ],
+      "true_distances": [
+        2,
+        3
+      ],
+      "unit_residues": 6,
+      "batch_inputs_per_model": 36,
+      "full_observation_sequences": 9,
+      "histograms_equal": true
+    },
+    {
+      "H": 2,
+      "T": 3,
+      "models": [
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          29
+        ]
+      ],
+      "true_distances": [
+        2,
+        3
+      ],
+      "unit_residues": 6,
+      "batch_inputs_per_model": 216,
+      "full_observation_sequences": 27,
+      "histograms_equal": true
+    },
+    {
+      "H": 3,
+      "T": 0,
+      "models": [
+        [
+          1,
+          28
+        ],
+        [
+          2,
+          83
+        ]
+      ],
+      "true_distances": [
+        3,
+        4
+      ],
+      "unit_residues": 18,
+      "batch_inputs_per_model": 1,
+      "full_observation_sequences": 1,
+      "histograms_equal": true
+    },
+    {
+      "H": 3,
+      "T": 1,
+      "models": [
+        [
+          1,
+          28
+        ],
+        [
+          2,
+          83
+        ]
+      ],
+      "true_distances": [
+        3,
+        4
+      ],
+      "unit_residues": 18,
+      "batch_inputs_per_model": 18,
+      "full_observation_sequences": 4,
+      "histograms_equal": true
+    },
+    {
+      "H": 3,
+      "T": 2,
+      "models": [
+        [
+          1,
+          28
+        ],
+        [
+          2,
+          83
+        ]
+      ],
+      "true_distances": [
+        3,
+        4
+      ],
+      "unit_residues": 18,
+      "batch_inputs_per_model": 324,
+      "full_observation_sequences": 16,
+      "histograms_equal": true
+    },
+    {
+      "H": 3,
+      "T": 3,
+      "models": [
+        [
+          1,
+          28
+        ],
+        [
+          2,
+          83
+        ]
+      ],
+      "true_distances": [
+        3,
+        4
+      ],
+      "unit_residues": 18,
+      "batch_inputs_per_model": 5832,
+      "full_observation_sequences": 64,
+      "histograms_equal": true
+    },
+    {
+      "H": 4,
+      "T": 0,
+      "models": [
+        [
+          1,
+          82
+        ],
+        [
+          2,
+          245
+        ]
+      ],
+      "true_distances": [
+        4,
+        5
+      ],
+      "unit_residues": 54,
+      "batch_inputs_per_model": 1,
+      "full_observation_sequences": 1,
+      "histograms_equal": true
+    },
+    {
+      "H": 4,
+      "T": 1,
+      "models": [
+        [
+          1,
+          82
+        ],
+        [
+          2,
+          245
+        ]
+      ],
+      "true_distances": [
+        4,
+        5
+      ],
+      "unit_residues": 54,
+      "batch_inputs_per_model": 54,
+      "full_observation_sequences": 5,
+      "histograms_equal": true
+    },
+    {
+      "H": 4,
+      "T": 2,
+      "models": [
+        [
+          1,
+          82
+        ],
+        [
+          2,
+          245
+        ]
+      ],
+      "true_distances": [
+        4,
+        5
+      ],
+      "unit_residues": 54,
+      "batch_inputs_per_model": 2916,
+      "full_observation_sequences": 25,
+      "histograms_equal": true
+    },
+    {
+      "H": 4,
+      "T": 3,
+      "models": [
+        [
+          1,
+          82
+        ],
+        [
+          2,
+          245
+        ]
+      ],
+      "true_distances": [
+        4,
+        5
+      ],
+      "unit_residues": 54,
+      "batch_inputs_per_model": 157464,
+      "full_observation_sequences": 125,
+      "histograms_equal": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "H": 2,
+      "distances": [
+        1,
+        2
+      ],
+      "histograms_equal": false,
+      "reason": "both distances must be at least H for the nonidentifiability theorem"
+    },
+    {
+      "H": 3,
+      "distances": [
+        2,
+        3
+      ],
+      "histograms_equal": false,
+      "reason": "both distances must be at least H for the nonidentifiability theorem"
+    },
+    {
+      "H": 4,
+      "distances": [
+        3,
+        4
+      ],
+      "histograms_equal": false,
+      "reason": "both distances must be at least H for the nonidentifiability theorem"
+    }
+  ]
+}

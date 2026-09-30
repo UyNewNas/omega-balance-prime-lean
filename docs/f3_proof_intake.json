@@ -6902,6 +6902,51 @@
         "prime transfer",
         "remaining REC nodes"
       ]
+    },
+    "REC-L12-TRUNCATED-NONIDENTIFIABILITY": {
+      "status": "LEAN-PROVED: actual full two-output and all finite-batch truncated observation-law equality",
+      "module": "OmegaBalance/F3TruncatedNonidentifiability.lean",
+      "declarations": [
+        "f3RootDepthObservation_nonneg",
+        "f3RootDepthObservation_preimage_top",
+        "f3RootDepthObservation_preimage_nonpos",
+        "f3RootDepthObservation_preimage_nat",
+        "f3RootDepthObservation_measurable",
+        "f3UnitHaar_rootDepth_map_eq",
+        "f3TruncatedDepthObservation_measurable",
+        "f3UnitHaar_truncatedDepth_map_eq",
+        "truncatedRootDepth_eq_of_le_distance",
+        "f3TruncatedPairObservation_measurable",
+        "f3UnitHaar_truncatedPair_map_eq",
+        "f3UnitHaar_truncatedPair_batch_map_eq",
+        "f3SharedRootConfig_truncatedPair_batch_law_eq",
+        "f3SharedRootConfig_truncatedPair_H_vs_higher"
+      ],
+      "verified_code_sha": "add478972bb5b3cd2a255cc0aab1ef6e078578b1",
+      "verified_tree": "7b38ee3b132fb3039518f4700ea3b4d509cdc44f",
+      "successful_code_runs": [
+        36715105909
+      ],
+      "tested_merge_sha": "864ceb48a06109125d76756a0f41bd4161423530",
+      "project_declarations": 777,
+      "required_external_producer": 1,
+      "source_files": 114,
+      "axiom_bound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "paper_scope": "fixed original two-root model, common known base and H≥1; observation-only equality for distances at least H, including H versus K>H; all finite batch sizes including zero",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "moving configurations",
+        "prime transfer",
+        "full signed difference law",
+        "passive lower bounds",
+        "equidistant triple waiting law",
+        "remaining REC nodes"
+      ]
     }
   }
 }

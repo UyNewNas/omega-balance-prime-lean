@@ -1104,3 +1104,65 @@ This is a pre-implementation reuse decision. New declarations must enter Audit e
 84个有限案例45143批次（含16636根命中批次）只是补充回归。独立数学/源码复核
 通过；有限精度不可辨识的完整分布声明、移动配置和全素数传递仍开放，不能把整个
 定理2.6或REC包全部标成完成。此状态文档头不变更已验代码/审计，仍另行完整CI。
+
+# Finite-precision two-output nonidentifiability: exact-law reuse gate
+
+Observed2026-09-30 11:53–12:12 UTC. Consumer master50942b02105f6372da0d8d4d8629caf0da65188c, Lean4.34.0/mathlib5ed2965256430c3649e86755f9576b54eca72435. Target is the final local paragraph of REC proof theorem2.6: when both genuine root distances are at least H, the two-coordinate truncated observation laws agree, and so do the laws of every finite independent batch. This is stronger and more appropriate than equal moments.
+
+## Actual domain and chosen minimal route
+Use existing rootDepth : Q_3 -> Q_3 -> WithTop Int and truncatedRootDepth=min(rootDepth,H), retaining the infinite root value before truncation. Define only transparent observation functions of these existing statistics. Prove their measurability and compare their actual pushforward measures under f3UnitHaar.
+The existing positive-depth tails are independent of the unit root, nonpositive tails are universal, and the top fiber is the proved null root singleton. Locked finite-measure uniqueness on Ici sets therefore gives equality of the entire raw single-root laws. Compose with the measurable min-at-H map to obtain the entire truncated marginal law.
+When H<=rootDistance(a,b), the two truncated coordinates agree pointwise, including root hits. Factor the actual pair observation through the diagonal of its first marginal, then use the marginal pushforward equality. Finally apply the existing finite-product pushforward theorem to every T, including T=0. A fixed-original-model wrapper and an H-versus-strictly-higher-distance corollary preserve the paper's assumptions.
+Every observation map is explicitly proved measurable before using map_apply/map_map/pi_map_pi. Do not rely on Measure.map's fallback for an unproved nonmeasurable map.
+
+## Bounded final-target and API search
+Queries included padic distribution; measurePreserving addHaar; IsHaarMeasure Equiv; continuous/measurable addValuation; continuous_valuation; Measure.ext singleton Countable; measurable_iff singleton Countable; map_pi Measure; map_map in MeasureTheory. No equivalent final censored two-root pushforward-law theorem was found in the inspected results; not a universal absence claim.
+Current Mathlib/NumberTheory/Padics/Measure/Monoid.lean was inspected and rejected: it is AbstractMeasure D(G,R) convolution on topological monoids, not the actual real-valued normalized Haar observation law, and is absent at the consumer pin. No port or upgrade is justified. General Haar automorphism APIs were located, but the existing exact project tails plus the final measure-uniqueness interface are a smaller bridge and avoid rebuilding valuation/Haar foundations.
+
+## Existing verified project inputs
+At consumer master:
+- F3RootDepthHaar.lean blob7c41520fbd70c7001d2096f0822bc60188ed7ab6: zero tail=univ; measurable actual tails; unit-root tail mass(2*3^(t-1))^-1 for t>=1.
+- F3RootDepthNull.lean blob5a8370a224b0f6abf42b03d8a5b3eb02b8b4b381: every actual unit-Haar singleton is null; the infinite-depth event equals the actual root singleton, not a zero layer.
+- F3RootCertificates/F3TruncatedCertificateHaar: unequal cuts force true distance<H; hence H<=distance gives pointwise equal cuts. Original C wrappers use the existing genuine integral-root representatives and their proven coercion identity.
+These are conclusions already kernel-verified, not probability assumptions.
+
+## Locked external interfaces
+Paths relative to https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/ .
+- MeasureTheory/Constructions/BorelSpace/WithTop.lean, blob9a13abed88439e018183388d1697e55b76c9437b: standard Borel measurable space on WithTop of a linearly ordered order-topological space; no custom sigma algebra.
+- Topology/Order/WithTop.lean:34 gives SecondCountableTopology(WithTop iota) from the corresponding base instance. Int has the required order/Borel structure.
+- MeasureTheory/Constructions/BorelSpace/Order.lean, blob373362a90f7b59d21ae884ceadb84fc51fcae514:
+  measurable_of_Ici (hf:forall x,MeasurableSet(f^-1'Ici x)):Measurable f, under BorelSpace/LinearOrder/OrderTopology/SecondCountableTopology and a measurable domain.
+  Measure.ext_of_Ici (mu nu:Measure alpha) [IsFiniteMeasure mu] (h:forall a,mu(Ici a)=nu(Ici a)):mu=nu, with explicitly listed Borel/order/second-countable hypotheses.
+  Measurable.min gives the measurable cutoff map.
+- MeasureTheory/Measure/Map.lean, blob767657b96b1f0b439934e230c9561ca0d343244e:
+  Measure.map_apply (hf:Measurable f)(hs:MeasurableSet s):mu.map f s=mu(f^-1's).
+  Measure.map_map (hg:Measurable g)(hf:Measurable f):(mu.map f).map g=mu.map(g o f).
+- MeasureTheory/Constructions/Pi.lean, blob2a62c773222f631197270b3ac84ea3efaf728458:385:
+  Measure.pi_map_pi, finite index, coordinate measurable spaces, [forall i,SigmaFinite((mu_i).map f_i)], and hf_i:AEMeasurable f_i mu_i:
+  (Measure.pi mu).map(fun x i=>f_i(x_i))=Measure.pi(fun i=>(mu_i).map f_i).
+  Actual probability measures and measurable observation maps supply these hypotheses. The same sample is fed to both coordinates at each time.
+
+## Current compatibility/license
+The current default mathlib master was independently fetched at12:12 as5bd58ac291422a21f412ae354c91e7d172255a2c. Selected current files were separately read; map and WithTop Borel files are byte-identical, while Order current blob0b605af332546cd8a0af932f2e9fd8d6f35ff6c6 and Pi current blobfd0e501cf14e19104cfa989adf4625e84ce8c974 differ elsewhere. Selected ext_of_Ici/measurable_of_Ici/pi_map_pi signatures are unchanged; required typeclass contexts were inspected. Apache2 source headers and pinned root license checked. No dependency upgrade or external proof corpus copying.
+
+## Acceptance boundary
+No new code or kernel proof is claimed by this report. All new declarations require Audit exactly once, full exact-tree Actions and independent review. Equality concerns observations alone under the original local Haar model; it does not deny recovery from separately supplied coefficients, nor assert equality of finite prime-box laws. Moving/prime sampling, signed differences, passive lower bounds, triple stopping and other accepted packages remain open.
+
+## 2026-09-30 12:34 UTC：完整双输出截断观测分布已通过精确 CI
+
+代码add478972bb5b3cd2a255cc0aab1ef6e078578b1，树7b38ee3b132fb3039518f4700ea3b4d509cdc44f，
+[PR36715105909](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36715105909)
+首轮完整成功；实际测试合并提交864ceb48a06109125d76756a0f41bd4161423530的文件树相同。
+14条新增声明只有标准公理，778项总审计输出（777项目+1产生器）、114项目源文件、
+650依赖模块及版本锁、构建、内核回归、一对一覆盖和144240有限检查均通过。
+
+现已覆盖REC定理2.6的固定双根、有限精度完整观测分布不可辨识结论：标准单位Haar
+采样下，两模型的真实根距均至少H时，每个有限T的完整双输出观测序列具有相同分布，
+包括真实距离H与K>H的比较。原模型包装保留共同已知基深度、m=2、互异同模3单位根、
+正基深和H≥1；根命中保留原深度∞，明确证明完整可测推前律，不使用非可测map默认值。
+
+该结论仅针对观测接口，不是已知系数后的计算下界，也不是有限素数盒的分布相等。
+16个完整序列直方图案例333768输入批次与3个反向控制仅为补充回归。独立数学/源码
+复核通过；移动配置、素数传递、完整有符号分歧律、被动样本下界、三等距根停止律及
+其他REC节点仍开放，整个包formalization_complete仍为false。此文档头不改已验Lean
+代码、Audit或依赖，发布后仍需完整精确头CI和当前主分支检查。
