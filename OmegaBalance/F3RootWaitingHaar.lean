@@ -53,17 +53,18 @@ theorem f3RootWait_gt_iff (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) (T : ℕ) :
     cases u using ENat.recTopCoe with
     | top => simp
     | coe n => norm_cast <;> omega
-  change (T : ℕ∞) < (show ℕ∞ from hittingAfter
-    (fun n (x : ℕ → ℤ_[3]) => x n)
+  have hhit :
+      hittingAfter (fun n (x : ℕ → ℤ_[3]) => x n)
+        {d : ℤ_[3] | rootDepth (d : ℚ_[3]) (a : ℚ_[3]) ≠
+          rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω < (T : WithTop ℕ) ↔
+      ∃ n ∈ Set.Ico 0 T, rootDepth (ω n : ℚ_[3]) (a : ℚ_[3]) ≠
+        rootDepth (ω n : ℚ_[3]) (b : ℚ_[3]) := hittingAfter_lt_iff
+  have hnot := not_congr hhit
+  simp only [Set.mem_Ico, Nat.zero_le, true_and,
+    not_exists, not_and, not_not] at hnot
+  exact (hshift (show ℕ∞ from hittingAfter (fun n (x : ℕ → ℤ_[3]) => x n)
     {d : ℤ_[3] | rootDepth (d : ℚ_[3]) (a : ℚ_[3]) ≠
-      rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω) + 1 ↔ _
-  rw [hshift]
-  change (T : WithTop ℕ) ≤ hittingAfter (fun n (x : ℕ → ℤ_[3]) => x n)
-    {d : ℤ_[3] | rootDepth (d : ℚ_[3]) (a : ℚ_[3]) ≠
-      rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω ↔ _
-  rw [← not_lt, hittingAfter_lt_iff]
-  simp only [Set.mem_Ico, Nat.zero_le, true_and, Set.mem_setOf_eq,
-    not_exists, not_and, not_not]
+      rootDepth (d : ℚ_[3]) (b : ℚ_[3])} 0 ω)).trans (not_lt.symm.trans hnot)
 
 /-- A never-ending wait means every actual observation has equal depths. -/
 theorem f3RootWait_eq_top_iff (a b : ℤ_[3]) (ω : ℕ → ℤ_[3]) :
