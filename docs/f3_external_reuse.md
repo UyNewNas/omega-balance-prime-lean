@@ -552,3 +552,153 @@ pending exact locked-pin CI. [Scope and declarations](proofs/f3/prime_depth_reco
 前提和无限根点；未构造无限单边等待变量、未证明其均值、移动随机配置、
 多对联合恢复界或素数传递。此前 candidate/pending 文字是实现历史。
 最终文档提交仍单独执行完整CI，原始 proof 来源水位不因本次实现而改变。
+
+## 2026-09-30: actual one-based waiting-time target-first reuse
+
+Observed 2026-09-30 08:07 UTC. Read-only research, no new Lean execution or proof claim.
+This continues the preceding fixed-root finite-batch reuse decision in this ledger.
+Consumer pins: Lean v4.34.0, mathlib 5ed2965256430c3649e86755f9576b54eca72435.
+
+### Target and decision
+
+For fixed genuine p-adic unit roots with finite true distance L>=1, use the actual
+infinite product Measure.infinitePi (fun _ : Nat => f3UnitHaar). One time coordinate
+is one complete sample d shared by all root labels. Reuse MeasureTheory.hittingAfter
+on the actual unequal-depth event, starting at0; define the paper's one-based waiting
+time as hittingAfter +1 in ENat=WithTop Nat. Top remains top if no certificate occurs.
+
+Prove the actual tail event equivalence before computing its mass. Then prove a
+pointwise tail-indicator representation of this actual waiting variable, interchange
+nonnegative sums/integral using existing mathlib, and evaluate the geometric series.
+This is not a stipulated geometric PMF or a random variable named by its desired law.
+The fixed-configuration scope remains explicit; moving random configurations, joint
+recovery bounds and prime transfer are separate.
+
+### Bounded search evidence
+
+Existing report already searched firstSuccess/geometric/hitting and read Geometric.lean.
+Additional actual GitHub code queries: integral nat tsum measure; lintegral enat;
+hittingAfter expectation; lintegral_eq_tsum_measure; tsum measure natCast;
+ENat toENNReal tsum; hittingAfter geometric; toENNReal tsum; lintegral tail;
+tsum measure Ioi; ENat indicator; encard_Iio; tsum_ite_lt; lintegral_eq_tsum;
+measurable_enat; ENat.toENNReal; toENNReal_natCast; toENNReal_add;
+lintegral_tsum; ENNReal.sub_sub_cancel; lintegral_ne_top ae_lt_top; ae_lt_top;
+tsum_eq_sum. GitHub PR searches: geometric hitting; expectation tail sum.
+No equivalent final first-certificate mean theorem was found in this bounded scope.
+Several search results were unrelated; they are not reuse candidates or absence proof.
+The current default mathlib head was independently fetched as728a93eeff833da3173895bb0575752fdc24edb0.
+Every recommended declaration below was separately read at the consumer pin.
+Previously observed default head380f2a... is not substituted for current evidence.
+
+### Exact pinned API map
+
+All paths below are relative to:
+https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/
+
+1. Mathlib/Probability/Process/HittingTime.lean
+- Lines65–68: MeasureTheory.hittingAfter (u : iota -> Omega -> beta) (s : Set beta)
+  (n : iota) : Omega -> WithTop iota is the infimum of actual hit indices if one
+  exists, else top. It is a genuine first-hit definition, not a distribution model.
+- Line140: hittingAfter_eq_top_iff: hittingAfter u s n w = top iff every j>=n misses s.
+- Lines238–248: hittingAfter_le_iff [WellFoundedLT iota]:
+  hittingAfter u s n w <= i iff exists j in Set.Icc n i, u j w in s.
+- Lines279–299: hittingAfter_lt_iff:
+  hittingAfter u s n w < i iff exists j in Set.Ico n i, u j w in s.
+The enclosing contexts supply the appropriate conditional complete order structure;
+Nat has the needed instances. Read the actual context when implementing.
+The current file differs from the pin, but these three exact declaration prefixes,
+hypotheses and statements were checked unchanged. No upgrade is needed.
+
+2. Mathlib/Data/ENat/Basic.lean
+The source explicitly defines ENat / notation Nat-infinity as WithTop Nat.
+ENat.some_eq_natCast is rfl; finite and top cases can use WithTop.recTopCoe.
+The one-based shift must occur in ENat, not a toNat conversion that maps top to0.
+
+3. Mathlib/Basic/Real/ENatENNReal.lean
+- ENat.toENNReal_top, line50
+- ENat.toENNReal_coe (n:Nat), line54
+- ENat.toENNReal_eq_top/ne_top, lines65–66
+- ENat.toENNReal_le/lt, lines69–73
+- ENat.toENNReal_add, line94
+- ENat.toENNReal_one, line98
+These are the actual ENat-to-ENNReal coercion APIs for a nonnegative extended
+expectation. Current default source is byte-identical to the pin.
+
+4. Mathlib/Probability/ProductMeasure.lean
+- Measure.infinitePi constructs the actual product of probability measures.
+- IsProbabilityMeasure (infinitePi mu), lines378ff
+- Measure.infinitePi_pi, lines402–411:
+  for a finite index set s and measurable coordinate sets t_i,
+  infinitePi mu (Set.pi s t) = product over i in s of mu_i(t_i).
+Use s=Finset.range T and equal-depth event from the batch module. The sigma algebra,
+probability instance and measure are actual constructions. Do not posit time
+independence and then silently apply it to root labels.
+
+5. Mathlib/Topology/Algebra/InfiniteSum/ENNReal.lean
+- ENNReal.tsum_set_one, lines636–641: sum over x:s of1 equals s.encard as ENNReal.
+- ENNReal.tsum_const_eq_top_of_ne_zero, line167
+- General tsum_eq_sum is available to reduce a function supported on Finset.range N.
+A minimal pointwise lemma specialized to the actual wait variable can split its
+ENat value into finite N versus top and prove
+  (tau(w):ENNReal) = sum'_T {indicator of T<tau(w)}.
+For finite N, the support is range N and each term there is1. For top, every term
+is1 and the sum is top. This small bridge was not found as an exact final library
+theorem in the bounded search; it must actually be proved, not assumed.
+
+6. Mathlib/MeasureTheory/Constructions/BorelSpace/Real.lean, lines354–359
+Measurable.ennreal_tsum (h:forall i,Measurable(f i)) proves measurability of the
+pointwise ENNReal series. It is deprecated in favor of Measurable.tsum from
+Constructions/Polish/Basic but remains present at the pin. Avoid adding a larger
+new framework merely to remove a nonblocking deprecation; alternatively use the
+existing proof's iSup of finite measurable sums. No source copying is required.
+
+7. Mathlib/MeasureTheory/Integral/Lebesgue/Add.lean, lines362–370
+lintegral_tsum [Countable beta] (hf:forall i,AEMeasurable(f i) mu):
+  integral^- a, sum'_i f i a = sum'_i integral^- a, f i a.
+Use measurable indicators of the already proved tail/cylinder events.
+
+8. Mathlib/MeasureTheory/Integral/Lebesgue/Basic.lean, lines559–561
+lintegral_indicator_one (hs:MeasurableSet s):
+  integral^- a, s.indicator 1 a = mu s.
+A generated lintegral_indicator_fun_one variant is also available.
+This directly turns the actual pointwise tail-count identity into a probability sum.
+
+9. Mathlib/Analysis/SpecificLimits/Basic.lean, lines403–412
+ENNReal.tsum_geometric (r:ENNReal):
+  sum'_n r^n = (1-r)^(-1), with no r<1 premise needed for this extended identity.
+For p=(3^L)^(-1), the actual single-event probability implies p<=1.
+Then ENNReal.sub_sub_cancel one_ne_top hp_le_one evaluates1-(1-p)=p,
+and inv_inv gives the mean3^L. The exact ENNReal.sub_sub_cancel interface was
+confirmed in its actual uses in pinned Probability.lean/Continuity.lean; fetch its
+own defining source as needed before coding.
+
+10. Mathlib/MeasureTheory/Integral/Lebesgue/Markov.lean, lines154–161
+ae_lt_top' (hf:AEMeasurable f mu) (h2f:integral^- x,f x != top):
+  almost everywhere f x < top.
+ae_lt_top is the measurable variant.
+Thus the finite proved expectation yields almost-sure finiteness without separately
+rebuilding continuity-from-above or a Borel–Cantelli framework.
+Current default source is byte-identical to the pin.
+
+### Minimal implementation structure
+
+A. Define actual stream measure, actual success set, and one-based hittingAfter+1.
+B. Prove tau>T iff every n<T has equal depths; include T=0. Use hittingAfter_lt_iff,
+   ENat addition arithmetic and the original unequal event, not a PMF law.
+C. Prove finite-prefix event measurable; use coordinate evaluation and finite/countable
+   intersections, or a finite Set.pi cylinder.
+D. Apply infinitePi_pi and the existing actual equal-depth Haar mass to obtain the tail.
+E. Prove the pointwise ENat tail-indicator identity, then measurability/lintegral exchange.
+F. Evaluate the geometric series to the finite value3^L; derive almost-sure finiteness.
+G. Add fixed original F3SharedRootConfig wrappers with all existing model assumptions.
+Exact first-success point masses can follow from consecutive tails if useful, but are
+not necessary to establish the paper's tail and mean. Do not mark all REC complete.
+
+### Trust and status
+
+All fetched mathematical library files carry the Apache-2.0 header. This route only
+calls the existing locked dependency and copies no external proof corpus. Its hypotheses
+are actual roots, actual finite distance and actual canonical sampling measure.
+The listed candidate proof structure is not Lean-compiled. Every new declaration must
+enter scripts/Audit.lean and the exact source tree must pass full project/producer,
+regression, axiom, source and coverage CI before status promotion.

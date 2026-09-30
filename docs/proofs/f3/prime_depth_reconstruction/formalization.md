@@ -283,3 +283,39 @@ waiting variable. [Reuse and pin evidence](../../../f3_external_reuse.md#2026-09
 前提和无限根点；未构造无限单边等待变量、未证明其均值、移动随机配置、
 多对联合恢复界或素数传递。此前 candidate/pending 文字是实现历史。
 最终文档提交仍单独执行完整CI，原始 proof 来源水位不因本次实现而改变。
+
+## 2026-09-30：实际一基等待时间候选（固定根）
+
+本候选基于已验证批次主线33ccdfe，新增 `F3RootWaitingHaar.lean`。
+`f3UnitHaarStream` 是实际 `Measure.infinitePi` 单位 Haar 乘积；
+`f3RootWait` 是对真实“不等深度”事件调用库的 `hittingAfter`，从下标0开始再加1，
+值域 `ENat = WithTop Nat`。从不出现证书时仍为∞，没有通过 toNat 把∞改成0。
+
+候选逐点证明 T<τ 等价于前T次全部失败，包括T=0；把该事件识别为实际有限柱集，
+再由已有单次Haar律计算几何尾概率。τ本身逐点等于尾指标的非负级数，包括∞情形；
+可测性、非负积分交换和库几何级数给出实际期望 `∫⁻τ=3^L`，再推出几乎处处有限。
+没有预设几何分布、概率公式或同次观测的根标签独立性。
+
+纸面映射：REC-L6 / 定理2.3式(2.7)的固定根与固定原配置部分。
+此处没有证明移动随机配置、联合矩阵停止界、完整有符号差律、被动下界或素数传递。
+原配置包装保留正b、m≥2、互异同模3单位根；观测为超额深度R。
+
+代码和12个Audit条目目前为未编译候选，本地源码107文件、706条项目声明+1产生器
+覆盖检查通过，不能替代精确CI。有限二元前缀回归共1533个带权样本，验证一基计数、
+T=0、从未命中的有限前缀语义、几何尾及截断期望；不是无限采样证明。
+最终接入最新主线及新的完整Actions门禁仍是接受条件。
+
+| 精确候选声明（OmegaBalance） |
+|---|
+| `f3RootWait_gt_iff` |
+| `f3RootWait_eq_top_iff` |
+| `f3RootWait_pos` |
+| `f3RootWait_tail_eq_pi` |
+| `f3RootWait_tail_measurable` |
+| `f3UnitHaarStream_rootWait_gt` |
+| `f3RootWait_toENNReal_eq_tsum` |
+| `f3RootWait_measurable_toENNReal` |
+| `f3UnitHaarStream_rootWait_mean` |
+| `f3UnitHaarStream_rootWait_finite_ae` |
+| `f3SharedRootConfig_unitHaar_wait_gt` |
+| `f3SharedRootConfig_unitHaar_wait_mean` |

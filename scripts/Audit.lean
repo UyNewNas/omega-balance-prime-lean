@@ -840,3 +840,17 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.depthCertificateScan_finRange_eq_none_iff
 #print axioms OmegaBalance.f3UnitHaar_depthCertificateScan_none
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_scan_none
+
+-- Actual one-based fixed-root Haar waiting-time candidate
+#print axioms OmegaBalance.f3RootWait_gt_iff
+#print axioms OmegaBalance.f3RootWait_eq_top_iff
+#print axioms OmegaBalance.f3RootWait_pos
+#print axioms OmegaBalance.f3RootWait_tail_eq_pi
+#print axioms OmegaBalance.f3RootWait_tail_measurable
+#print axioms OmegaBalance.f3UnitHaarStream_rootWait_gt
+#print axioms OmegaBalance.f3RootWait_toENNReal_eq_tsum
+#print axioms OmegaBalance.f3RootWait_measurable_toENNReal
+#print axioms OmegaBalance.f3UnitHaarStream_rootWait_mean
+#print axioms OmegaBalance.f3UnitHaarStream_rootWait_finite_ae
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_wait_gt
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_wait_mean
