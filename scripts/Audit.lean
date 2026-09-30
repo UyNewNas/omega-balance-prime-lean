@@ -861,3 +861,19 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3Wavelet_interior_nondivisibility_example
 #print axioms OmegaBalance.f3Wavelet_zero_discriminant_example
 #print axioms OmegaBalance.f3Wavelet_excluded_boundary_example
+
+-- Actual canonical joint matrix waiting tail (REC-L7).
+#print axioms OmegaBalance.f3RootPairs_mem
+#print axioms OmegaBalance.f3RootPairs_card
+#print axioms OmegaBalance.f3RootDistanceExponent_eq
+#print axioms OmegaBalance.f3RootDistanceExponent_pos
+#print axioms OmegaBalance.f3RootDistanceExponent_le_max
+#print axioms OmegaBalance.f3SharedRootWait_gt_iff
+#print axioms OmegaBalance.f3SharedRootWait_le_iff
+#print axioms OmegaBalance.f3JointRootWait_gt_iff
+#print axioms OmegaBalance.f3JointRootWait_le_iff
+#print axioms OmegaBalance.f3JointRootWait_le_iff_matrix_recover
+#print axioms OmegaBalance.f3JointRootWait_tail_eq_union
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_wait_gt_real
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_wait_gt_le_exp
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_jointWait_gt
