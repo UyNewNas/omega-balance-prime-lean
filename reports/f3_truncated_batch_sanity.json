@@ -1,0 +1,1384 @@
+{
+  "status": "finite exact-rational/numerical regression only; no kernel or Haar proof claim",
+  "cases": 84,
+  "batches_checked": 45143,
+  "root_hit_batches": 16636,
+  "checks": [
+    "actual scan target min(L,H) and diagonalH",
+    "joint-saturation certificates",
+    "T0",
+    "exact time-product pair law",
+    "canonical union bound without pair independence",
+    "paper precision-uniform exponential bound"
+  ],
+  "rows": [
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 1,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 1,
+      "T": 1,
+      "batches": 2,
+      "actual_matrix_failure": "1/2",
+      "paper_exponential_bound": 0.6065306597126334,
+      "pair_failures": {
+        "(0, 1)": "1/2"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 1,
+      "T": 2,
+      "batches": 4,
+      "actual_matrix_failure": "1/4",
+      "paper_exponential_bound": 0.36787944117144233,
+      "pair_failures": {
+        "(0, 1)": "1/4"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 1,
+      "T": 3,
+      "batches": 8,
+      "actual_matrix_failure": "1/8",
+      "paper_exponential_bound": 0.22313016014842982,
+      "pair_failures": {
+        "(0, 1)": "1/8"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 2,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 2,
+      "T": 1,
+      "batches": 6,
+      "actual_matrix_failure": "2/3",
+      "paper_exponential_bound": 0.8464817248906141,
+      "pair_failures": {
+        "(0, 1)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 2,
+      "T": 2,
+      "batches": 36,
+      "actual_matrix_failure": "4/9",
+      "paper_exponential_bound": 0.7165313105737893,
+      "pair_failures": {
+        "(0, 1)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 2,
+      "T": 3,
+      "batches": 216,
+      "actual_matrix_failure": "8/27",
+      "paper_exponential_bound": 0.6065306597126334,
+      "pair_failures": {
+        "(0, 1)": "8/27"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 3,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 3,
+      "T": 1,
+      "batches": 18,
+      "actual_matrix_failure": "2/3",
+      "paper_exponential_bound": 0.9459594689067654,
+      "pair_failures": {
+        "(0, 1)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 3,
+      "T": 2,
+      "batches": 324,
+      "actual_matrix_failure": "4/9",
+      "paper_exponential_bound": 0.8948393168143698,
+      "pair_failures": {
+        "(0, 1)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "H": 3,
+      "T": 3,
+      "batches": 5832,
+      "actual_matrix_failure": "8/27",
+      "paper_exponential_bound": 0.8464817248906141,
+      "pair_failures": {
+        "(0, 1)": "8/27"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 1,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 1,
+      "T": 1,
+      "batches": 2,
+      "actual_matrix_failure": "1/2",
+      "paper_exponential_bound": 0.6065306597126334,
+      "pair_failures": {
+        "(0, 1)": "1/2"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 1,
+      "T": 2,
+      "batches": 4,
+      "actual_matrix_failure": "1/4",
+      "paper_exponential_bound": 0.36787944117144233,
+      "pair_failures": {
+        "(0, 1)": "1/4"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 1,
+      "T": 3,
+      "batches": 8,
+      "actual_matrix_failure": "1/8",
+      "paper_exponential_bound": 0.22313016014842982,
+      "pair_failures": {
+        "(0, 1)": "1/8"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 2,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 2,
+      "T": 1,
+      "batches": 6,
+      "actual_matrix_failure": "5/6",
+      "paper_exponential_bound": 0.8464817248906141,
+      "pair_failures": {
+        "(0, 1)": "5/6"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 2,
+      "T": 2,
+      "batches": 36,
+      "actual_matrix_failure": "25/36",
+      "paper_exponential_bound": 0.7165313105737893,
+      "pair_failures": {
+        "(0, 1)": "25/36"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 2,
+      "T": 3,
+      "batches": 216,
+      "actual_matrix_failure": "125/216",
+      "paper_exponential_bound": 0.6065306597126334,
+      "pair_failures": {
+        "(0, 1)": "125/216"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 3,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 3,
+      "T": 1,
+      "batches": 18,
+      "actual_matrix_failure": "8/9",
+      "paper_exponential_bound": 0.9459594689067654,
+      "pair_failures": {
+        "(0, 1)": "8/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 3,
+      "T": 2,
+      "batches": 324,
+      "actual_matrix_failure": "64/81",
+      "paper_exponential_bound": 0.8948393168143698,
+      "pair_failures": {
+        "(0, 1)": "64/81"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "H": 3,
+      "T": 3,
+      "batches": 5832,
+      "actual_matrix_failure": "512/729",
+      "paper_exponential_bound": 0.8464817248906141,
+      "pair_failures": {
+        "(0, 1)": "512/729"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 1,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 1,
+      "T": 1,
+      "batches": 2,
+      "actual_matrix_failure": "1/2",
+      "paper_exponential_bound": 0.6065306597126334,
+      "pair_failures": {
+        "(0, 1)": "1/2"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 1,
+      "T": 2,
+      "batches": 4,
+      "actual_matrix_failure": "1/4",
+      "paper_exponential_bound": 0.36787944117144233,
+      "pair_failures": {
+        "(0, 1)": "1/4"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 1,
+      "T": 3,
+      "batches": 8,
+      "actual_matrix_failure": "1/8",
+      "paper_exponential_bound": 0.22313016014842982,
+      "pair_failures": {
+        "(0, 1)": "1/8"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 2,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 2,
+      "T": 1,
+      "batches": 6,
+      "actual_matrix_failure": "5/6",
+      "paper_exponential_bound": 0.8464817248906141,
+      "pair_failures": {
+        "(0, 1)": "5/6"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 2,
+      "T": 2,
+      "batches": 36,
+      "actual_matrix_failure": "25/36",
+      "paper_exponential_bound": 0.7165313105737893,
+      "pair_failures": {
+        "(0, 1)": "25/36"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 2,
+      "T": 3,
+      "batches": 216,
+      "actual_matrix_failure": "125/216",
+      "paper_exponential_bound": 0.6065306597126334,
+      "pair_failures": {
+        "(0, 1)": "125/216"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 3,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 3,
+      "T": 1,
+      "batches": 18,
+      "actual_matrix_failure": "17/18",
+      "paper_exponential_bound": 0.9459594689067654,
+      "pair_failures": {
+        "(0, 1)": "17/18"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 3,
+      "T": 2,
+      "batches": 324,
+      "actual_matrix_failure": "289/324",
+      "paper_exponential_bound": 0.8948393168143698,
+      "pair_failures": {
+        "(0, 1)": "289/324"
+      }
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "H": 3,
+      "T": 3,
+      "batches": 5832,
+      "actual_matrix_failure": "4913/5832",
+      "paper_exponential_bound": 0.8464817248906141,
+      "pair_failures": {
+        "(0, 1)": "4913/5832"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 1,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 1,
+      "T": 1,
+      "batches": 2,
+      "actual_matrix_failure": "1/2",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/2",
+        "(0, 2)": "1/2",
+        "(1, 2)": "1/2"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 1,
+      "T": 2,
+      "batches": 4,
+      "actual_matrix_failure": "1/4",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/4",
+        "(0, 2)": "1/4",
+        "(1, 2)": "1/4"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 1,
+      "T": 3,
+      "batches": 8,
+      "actual_matrix_failure": "1/8",
+      "paper_exponential_bound": 0.6693904804452895,
+      "pair_failures": {
+        "(0, 1)": "1/8",
+        "(0, 2)": "1/8",
+        "(1, 2)": "1/8"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 2,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 2,
+      "T": 1,
+      "batches": 6,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "2/3",
+        "(0, 2)": "2/3",
+        "(1, 2)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 2,
+      "T": 2,
+      "batches": 36,
+      "actual_matrix_failure": "5/6",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "4/9",
+        "(0, 2)": "4/9",
+        "(1, 2)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 2,
+      "T": 3,
+      "batches": 216,
+      "actual_matrix_failure": "23/36",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "8/27",
+        "(0, 2)": "8/27",
+        "(1, 2)": "8/27"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 3,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 3,
+      "T": 1,
+      "batches": 18,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "2/3",
+        "(0, 2)": "2/3",
+        "(1, 2)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 3,
+      "T": 2,
+      "batches": 324,
+      "actual_matrix_failure": "5/6",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "4/9",
+        "(0, 2)": "4/9",
+        "(1, 2)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "H": 3,
+      "T": 3,
+      "batches": 5832,
+      "actual_matrix_failure": "23/36",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "8/27",
+        "(0, 2)": "8/27",
+        "(1, 2)": "8/27"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 1,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 1,
+      "T": 1,
+      "batches": 2,
+      "actual_matrix_failure": "1/2",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/2",
+        "(0, 2)": "1/2",
+        "(1, 2)": "1/2"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 1,
+      "T": 2,
+      "batches": 4,
+      "actual_matrix_failure": "1/4",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/4",
+        "(0, 2)": "1/4",
+        "(1, 2)": "1/4"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 1,
+      "T": 3,
+      "batches": 8,
+      "actual_matrix_failure": "1/8",
+      "paper_exponential_bound": 0.6693904804452895,
+      "pair_failures": {
+        "(0, 1)": "1/8",
+        "(0, 2)": "1/8",
+        "(1, 2)": "1/8"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 2,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 2,
+      "T": 1,
+      "batches": 6,
+      "actual_matrix_failure": "5/6",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "2/3",
+        "(0, 2)": "5/6",
+        "(1, 2)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 2,
+      "T": 2,
+      "batches": 36,
+      "actual_matrix_failure": "25/36",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "4/9",
+        "(0, 2)": "25/36",
+        "(1, 2)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 2,
+      "T": 3,
+      "batches": 216,
+      "actual_matrix_failure": "125/216",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "8/27",
+        "(0, 2)": "125/216",
+        "(1, 2)": "8/27"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 3,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 3,
+      "T": 1,
+      "batches": 18,
+      "actual_matrix_failure": "8/9",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "2/3",
+        "(0, 2)": "8/9",
+        "(1, 2)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 3,
+      "T": 2,
+      "batches": 324,
+      "actual_matrix_failure": "64/81",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "4/9",
+        "(0, 2)": "64/81",
+        "(1, 2)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "H": 3,
+      "T": 3,
+      "batches": 5832,
+      "actual_matrix_failure": "512/729",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "8/27",
+        "(0, 2)": "512/729",
+        "(1, 2)": "8/27"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 1,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 1,
+      "T": 1,
+      "batches": 2,
+      "actual_matrix_failure": "1/2",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/2",
+        "(0, 2)": "1/2",
+        "(1, 2)": "1/2"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 1,
+      "T": 2,
+      "batches": 4,
+      "actual_matrix_failure": "1/4",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/4",
+        "(0, 2)": "1/4",
+        "(1, 2)": "1/4"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 1,
+      "T": 3,
+      "batches": 8,
+      "actual_matrix_failure": "1/8",
+      "paper_exponential_bound": 0.6693904804452895,
+      "pair_failures": {
+        "(0, 1)": "1/8",
+        "(0, 2)": "1/8",
+        "(1, 2)": "1/8"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 2,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 2,
+      "T": 1,
+      "batches": 6,
+      "actual_matrix_failure": "5/6",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "5/6",
+        "(0, 2)": "5/6",
+        "(1, 2)": "5/6"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 2,
+      "T": 2,
+      "batches": 36,
+      "actual_matrix_failure": "25/36",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "25/36",
+        "(0, 2)": "25/36",
+        "(1, 2)": "25/36"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 2,
+      "T": 3,
+      "batches": 216,
+      "actual_matrix_failure": "125/216",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "125/216",
+        "(0, 2)": "125/216",
+        "(1, 2)": "125/216"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 3,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(1, 2)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 3,
+      "T": 1,
+      "batches": 18,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "8/9",
+        "(0, 2)": "8/9",
+        "(1, 2)": "8/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 3,
+      "T": 2,
+      "batches": 324,
+      "actual_matrix_failure": "53/54",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "64/81",
+        "(0, 2)": "64/81",
+        "(1, 2)": "64/81"
+      }
+    },
+    {
+      "roots": [
+        1,
+        10,
+        19
+      ],
+      "H": 3,
+      "T": 3,
+      "batches": 5832,
+      "actual_matrix_failure": "923/972",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "512/729",
+        "(0, 2)": "512/729",
+        "(1, 2)": "512/729"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 1,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(0, 3)": "1",
+        "(1, 2)": "1",
+        "(1, 3)": "1",
+        "(2, 3)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 1,
+      "T": 1,
+      "batches": 2,
+      "actual_matrix_failure": "1/2",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/2",
+        "(0, 2)": "1/2",
+        "(0, 3)": "1/2",
+        "(1, 2)": "1/2",
+        "(1, 3)": "1/2",
+        "(2, 3)": "1/2"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 1,
+      "T": 2,
+      "batches": 4,
+      "actual_matrix_failure": "1/4",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/4",
+        "(0, 2)": "1/4",
+        "(0, 3)": "1/4",
+        "(1, 2)": "1/4",
+        "(1, 3)": "1/4",
+        "(2, 3)": "1/4"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 1,
+      "T": 3,
+      "batches": 8,
+      "actual_matrix_failure": "1/8",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1/8",
+        "(0, 2)": "1/8",
+        "(0, 3)": "1/8",
+        "(1, 2)": "1/8",
+        "(1, 3)": "1/8",
+        "(2, 3)": "1/8"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 2,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(0, 3)": "1",
+        "(1, 2)": "1",
+        "(1, 3)": "1",
+        "(2, 3)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 2,
+      "T": 1,
+      "batches": 6,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "2/3",
+        "(0, 2)": "2/3",
+        "(0, 3)": "5/6",
+        "(1, 2)": "2/3",
+        "(1, 3)": "2/3",
+        "(2, 3)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 2,
+      "T": 2,
+      "batches": 36,
+      "actual_matrix_failure": "8/9",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "4/9",
+        "(0, 2)": "4/9",
+        "(0, 3)": "25/36",
+        "(1, 2)": "4/9",
+        "(1, 3)": "4/9",
+        "(2, 3)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 2,
+      "T": 3,
+      "batches": 216,
+      "actual_matrix_failure": "3/4",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "8/27",
+        "(0, 2)": "8/27",
+        "(0, 3)": "125/216",
+        "(1, 2)": "8/27",
+        "(1, 3)": "8/27",
+        "(2, 3)": "8/27"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 3,
+      "T": 0,
+      "batches": 1,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "1",
+        "(0, 2)": "1",
+        "(0, 3)": "1",
+        "(1, 2)": "1",
+        "(1, 3)": "1",
+        "(2, 3)": "1"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 3,
+      "T": 1,
+      "batches": 18,
+      "actual_matrix_failure": "1",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "2/3",
+        "(0, 2)": "2/3",
+        "(0, 3)": "8/9",
+        "(1, 2)": "2/3",
+        "(1, 3)": "2/3",
+        "(2, 3)": "2/3"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 3,
+      "T": 2,
+      "batches": 324,
+      "actual_matrix_failure": "25/27",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "4/9",
+        "(0, 2)": "4/9",
+        "(0, 3)": "64/81",
+        "(1, 2)": "4/9",
+        "(1, 3)": "4/9",
+        "(2, 3)": "4/9"
+      }
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "H": 3,
+      "T": 3,
+      "batches": 5832,
+      "actual_matrix_failure": "67/81",
+      "paper_exponential_bound": 1.0,
+      "pair_failures": {
+        "(0, 1)": "8/27",
+        "(0, 2)": "8/27",
+        "(0, 3)": "512/729",
+        "(1, 2)": "8/27",
+        "(1, 3)": "8/27",
+        "(2, 3)": "8/27"
+      }
+    }
+  ]
+}
