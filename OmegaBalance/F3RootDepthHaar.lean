@@ -56,6 +56,7 @@ theorem f3RootDepthTail_zero (a : ℤ_[3]) : f3RootDepthTail a 0 = Set.univ := b
   rw [f3RootDepthTail_eq_fiber]
   ext d
   simp only [Set.mem_preimage, Set.mem_singleton_iff, Set.mem_univ, iff_true]
+  haveI : Subsingleton (ZMod (3 ^ 0)) := ZMod.subsingleton_iff.mpr (by norm_num)
   exact Subsingleton.elim _ _
 
 /-- Depth tails decrease as the threshold increases. -/
