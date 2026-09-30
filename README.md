@@ -231,7 +231,7 @@ python3 scripts/verify.py
 
 ## 已审计书面证明（尚未形式化）
 
-以下结果状态为 `PAPER-AUDITED`：书面证明及外部定理的适用条件已经复核，主结果尚未写入 Lean。
+以下列出书面结果的分项状态；标为 `PAPER-AUDITED` 的部分已作书面复核，不等于 Lean 内核证明。已发现的证明缺口或修订另列状态，不沿用整包标签。
 
 | 编号 | 数学结论 | 状态与外部依赖 |
 |---|---|---|
@@ -241,12 +241,12 @@ python3 scripts/verify.py
 | [F3-HIER-1 / 2 / 3](docs/proofs/f3/product_hierarchy/theorem.md) | 对任意 $q=3^s$，固定 $q$ 个素数端点的全部总次数 $<q$ 单项式 $F_3$ 数据（允许重复因子），而总乘积深度可取任意 $R\ge k+s$；系数和模 $3$ 决定最高阶锁死或开放；普通族与末点移动族拥有相同全素数计数主系数但不同最高阶分布 | `PAPER-AUDITED`；一般 $q$ 使用完整有限复杂度素数线性形式理论 |
 | [F3-ROOT-1 / 2 / 3 / 4](docs/proofs/f3/two_root_process/theorem.md) | 平移配对乘积序列由两个简单三进根精确控制；给出完整联合尾律、区段层级计数、深度序列到参数的显式反演，以及六位置模 $5$ 障碍与 $d=5r$ 后七素数模式 $(3,4,2)$ 的比例 $4/729$（修正双分支归一化） | ROOT-1/2/3 `PAPER-AUDITED`；ROOT-4 修订为 `PAPER-PROVED`、复核待完成；局部部分为二次多项式/Hensel 论证，全素数扩展使用一般有限复杂度素数定理 |
 | [F3D-POLY-1 / 2 / 3 / 4](docs/proofs/f3d/polynomial_realization/theorem.md) | 对 $F_{3,D}(n,d)=v_3(n+d)-v_3(n-d)$：给出四次精确层检测器；完全分类固定整数多项式对可实现的单输入函数为“两端最终整数仿射”；证明层平移、绝对值、取正部、精确零层检测的最低次数分别为 $1,2,3,4$，并排除 $t^2$ 与固定双输入 $F$ 乘法器 | `PAPER-AUDITED`；依赖标准三进赋值、Hensel 与完备赋值域扩张唯一性，无新增 Lean 证明 |
-| [F3D-MULTI-1 / 2 / 3 / 4](docs/proofs/f3d/multivariate_tropical/theorem.md) | 多输入 $F_{3,D}$：二次判断 $F>0$；固定多项式实现 min/max、批量最小值与第一极小位置；完全分类任意固定有限输入的全域可实现函数为有限整数热带表达式；所有可实现函数具有统一 Lipschitz 界，因此无界条件开关不可实现而固定幅度开关可实现 | `PAPER-AUDITED`；依赖三进赋值与有限 Lagrange 插值，无新增 Lean 证明 |
+| [F3D-MULTI-1 / 2 / 3 / 4](docs/proofs/f3d/multivariate_tropical/theorem.md) | 二次正性检测、min/max、批量最小值与第一极小位置；有限整数热带表达式的充分性及固定幅度开关。完全分类必要性与依赖它的全体可实现函数 Lipschitz / 无界开关结论仍待修复 | MULTI-1/2、构造方向、有限热带 Lipschitz 与固定幅度开关保留 `PAPER-AUDITED`；MULTI-3 必要性及 MULTI-4 依赖路线为 `RESEARCH`，见 [L12 修正](reports/f3d_proof_boundary_corrections.md)；无新增 Lean 证明 |
 | [F3-MOM-1 / 2 / 3 / 4](docs/proofs/f3/prime_depth_moments/theorem.md) | 固定共享根全素数族中：一致尾界与乘积单射给出更强极深尾；指数加权收敛范围提升到 $\eta<1/(q-1)$；协方差恢复根距离；有限根树给出多元有理概率生成函数，并在 $|z_i|<3^{1/(q-1)}$ 的紧多圆盘上得到全素数生成函数一致收敛 | `PAPER-AUDITED`；以前序固定形状素数主项/固定精度分布为输入，新增 Selberg 尾控制、唯一分解尾界、矩传递与生成函数证明 |
 | [F3-PEAK-1 / 2 / 3 / 4](docs/proofs/f3/effective_peak_separation/theorem.md) | 固定普通整数双根轨道中，第二极值具有全范围有效的 (log_3N+O(1)) 界；给出双峰整除分离、根反射定位、完整 (3^T) 区段剔除恒等式、负整数迹直方图及超临界峰有效 (O(loglog X)) 稀疏界 | `PAPER-AUDITED`；核心为初等整数/三进证明，Hensel 只用于任意高孤峰构造 |
 | [F3D-DEG-1 … 6](docs/proofs/f3d/degree_tensorization/theorem.md) | 固定整数多项式实现的总次数理论：独立输入截面次数下界可相加；有符号和外套一元函数精确张量化；(min/max) 最低 6 次，而 (kmin/kmax) 在 (kge2) 时最低 (2k) 次；另有不可除 (k) 与 (p=2) 低次检测差异 | `PAPER-AUDITED`；依赖 F3D-POLY / F3D-MULTI 的书面接口，无新增 Lean 证明 |
 | [F3-WIN-1 … 6](docs/proofs/f3/sliding_windows_covariance/theorem.md) | 固定整数双根轨道的滑动窗口结构：精确双峰容量、完整二点联合尾、所有窗口最佳第二峰、统一单峰剔除律、平移协方差闭式，以及“协方差恢复 $d$ 但不恢复 $n$”的相位丢失定理 | `PAPER-AUDITED`；核心为初等三进/剩余类证明，结式文献仅作背景定位 |
-| [F3D-TERN-1 … 6](docs/proofs/f3d/ternary_minima_norm_forms/theorem.md) | 三输入最小值的精确次数谱 $9,10,9$；两倍最小值具有额外分母代价；有限域范数给 $k\ge m$ 时 $\mathfrak d_m(k)=mk$；分组范数给一倍 $m$ 输入最小值的 $O(m^{3/2})$ 上界 | `PAPER-AUDITED`；依赖 F3D-DEG 的次数下界与经典有限域范数/低次数零点背景，无新增 Lean 证明 |
+| [F3D-TERN-1 … 6](docs/proofs/f3d/ternary_minima_norm_forms/theorem.md) | 三输入最小值的精确次数谱 $9,10,9$；两倍最小值具有额外分母代价；有限域范数给 $m\ge2,k\ge m$ 时 $\mathfrak d_m(k)=mk$；对 $m\ge2$，分组范数给 $3m\le\mathfrak d_m(1)\le m(\lceil\sqrt m\rceil+1)$；$m=1$ 的恒等对次数为 1，排除在该双边界外 | `PAPER-AUDITED`（保留原分项状态）；[TERN-6 修正](reports/f3d_proof_boundary_corrections.md) 仅补齐 $m\ge2$ 范围，不是整个理论的新审计；无新增 Lean 证明 |
 | [F3-REC-1 … 5](docs/proofs/f3/prime_depth_reconstruction/theorem.md) | 共享根深度的有限观测恢复：第一次不等观测就是精确根距证书；给出完整矩阵恢复等待时间、$3^L$ 被动辨识下界、截断深度精确恢复，以及三个等距根的停止时间闭式 | `PAPER-AUDITED`；证书正确性为确定性三进论证，概率部分只使用局部采样与固定精度素数分布 |
 | [F3D-STABLE-1 … 5](docs/proofs/f3d/interval_detectors_stable_degree/theorem.md) | 任意有限整数区间在 $p=3$ 下有四次最优的增益 1/2 检测器；所有两端最终常值函数的放大最低次数存在稳定极限，并由射影剩余类核矩阵逆的 $\ell^1$ 范数给出；有限层集合具有显式指数相互作用公式，连续区间在固定层数下唯一最省 | `PAPER-AUDITED`；依赖标准 $p$ 进射影弦距/剩余树背景、Hensel 与有限矩阵构造，无新增 Lean 证明 |
 
