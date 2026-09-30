@@ -1,0 +1,2341 @@
+{
+  "actual_finite_residue_prefix_checks": [
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "tail_prefix_through_T": 0,
+      "exact_prefix_tail_sum": "1",
+      "paper_upper_bound": 4.0
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "tail_prefix_through_T": 1,
+      "exact_prefix_tail_sum": "5/3",
+      "paper_upper_bound": 4.0
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "tail_prefix_through_T": 2,
+      "exact_prefix_tail_sum": "19/9",
+      "paper_upper_bound": 4.0
+    },
+    {
+      "roots": [
+        1,
+        4
+      ],
+      "tail_prefix_through_T": 3,
+      "exact_prefix_tail_sum": "65/27",
+      "paper_upper_bound": 4.0
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "tail_prefix_through_T": 0,
+      "exact_prefix_tail_sum": "1",
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "tail_prefix_through_T": 1,
+      "exact_prefix_tail_sum": "2",
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "tail_prefix_through_T": 2,
+      "exact_prefix_tail_sum": "17/6",
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "roots": [
+        1,
+        4,
+        7
+      ],
+      "tail_prefix_through_T": 3,
+      "exact_prefix_tail_sum": "125/36",
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "tail_prefix_through_T": 0,
+      "exact_prefix_tail_sum": "1",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "tail_prefix_through_T": 1,
+      "exact_prefix_tail_sum": "17/9",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "tail_prefix_through_T": 2,
+      "exact_prefix_tail_sum": "217/81",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10
+      ],
+      "tail_prefix_through_T": 3,
+      "exact_prefix_tail_sum": "2465/729",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        2,
+        5,
+        11
+      ],
+      "tail_prefix_through_T": 0,
+      "exact_prefix_tail_sum": "1",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        2,
+        5,
+        11
+      ],
+      "tail_prefix_through_T": 1,
+      "exact_prefix_tail_sum": "17/9",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        2,
+        5,
+        11
+      ],
+      "tail_prefix_through_T": 2,
+      "exact_prefix_tail_sum": "217/81",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        2,
+        5,
+        11
+      ],
+      "tail_prefix_through_T": 3,
+      "exact_prefix_tail_sum": "2465/729",
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "tail_prefix_through_T": 0,
+      "exact_prefix_tail_sum": "1",
+      "paper_upper_bound": 10.0
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "tail_prefix_through_T": 1,
+      "exact_prefix_tail_sum": "17/9",
+      "paper_upper_bound": 10.0
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "tail_prefix_through_T": 2,
+      "exact_prefix_tail_sum": "217/81",
+      "paper_upper_bound": 10.0
+    },
+    {
+      "roots": [
+        1,
+        10
+      ],
+      "tail_prefix_through_T": 3,
+      "exact_prefix_tail_sum": "2465/729",
+      "paper_upper_bound": 10.0
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "tail_prefix_through_T": 0,
+      "exact_prefix_tail_sum": "1",
+      "paper_upper_bound": 28.0
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "tail_prefix_through_T": 1,
+      "exact_prefix_tail_sum": "53/27",
+      "paper_upper_bound": 28.0
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "tail_prefix_through_T": 2,
+      "exact_prefix_tail_sum": "2107/729",
+      "paper_upper_bound": 28.0
+    },
+    {
+      "roots": [
+        1,
+        28
+      ],
+      "tail_prefix_through_T": 3,
+      "exact_prefix_tail_sum": "74465/19683",
+      "paper_upper_bound": 28.0
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10,
+        13
+      ],
+      "tail_prefix_through_T": 0,
+      "exact_prefix_tail_sum": "1",
+      "paper_upper_bound": 26.125835223052494
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10,
+        13
+      ],
+      "tail_prefix_through_T": 1,
+      "exact_prefix_tail_sum": "2",
+      "paper_upper_bound": 26.125835223052494
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10,
+        13
+      ],
+      "tail_prefix_through_T": 2,
+      "exact_prefix_tail_sum": "241/81",
+      "paper_upper_bound": 26.125835223052494
+    },
+    {
+      "roots": [
+        1,
+        4,
+        10,
+        13
+      ],
+      "tail_prefix_through_T": 3,
+      "exact_prefix_tail_sum": "950/243",
+      "paper_upper_bound": 26.125835223052494
+    }
+  ],
+  "scope": "Supplemental floating-point analytic envelope sanity only, not a Lean proof or infinite Haar computation",
+  "cases": 294,
+  "includes_B_one": true,
+  "includes_K_zero": true,
+  "prefix_zero_checked": true,
+  "rows": [
+    {
+      "B": 1,
+      "K": 0,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 2.0
+    },
+    {
+      "B": 1,
+      "K": 0,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 2.0
+    },
+    {
+      "B": 1,
+      "K": 0,
+      "prefix_length": 2,
+      "envelope_partial_sum": 1.3678794411714423,
+      "paper_upper_bound": 2.0
+    },
+    {
+      "B": 1,
+      "K": 0,
+      "prefix_length": 3,
+      "envelope_partial_sum": 1.5032147244080551,
+      "paper_upper_bound": 2.0
+    },
+    {
+      "B": 1,
+      "K": 0,
+      "prefix_length": 10,
+      "envelope_partial_sum": 1.5819048852379487,
+      "paper_upper_bound": 2.0
+    },
+    {
+      "B": 1,
+      "K": 0,
+      "prefix_length": 100,
+      "envelope_partial_sum": 1.5819767068693265,
+      "paper_upper_bound": 2.0
+    },
+    {
+      "B": 1,
+      "K": 0,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 1.5819767068693265,
+      "paper_upper_bound": 2.0
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 4.0
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 4.0
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "prefix_length": 2,
+      "envelope_partial_sum": 1.7165313105737892,
+      "paper_upper_bound": 4.0
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.2299484296063814,
+      "paper_upper_bound": 4.0
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "prefix_length": 10,
+      "envelope_partial_sum": 3.4018783824227956,
+      "paper_upper_bound": 4.0
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "prefix_length": 100,
+      "envelope_partial_sum": 3.5277264731571174,
+      "paper_upper_bound": 4.0
+    },
+    {
+      "B": 1,
+      "K": 1,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 3.527726473157129,
+      "paper_upper_bound": 4.0
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 10.0
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 10.0
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "prefix_length": 2,
+      "envelope_partial_sum": 1.8948393168143698,
+      "paper_upper_bound": 10.0
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.6955767197311777,
+      "paper_upper_bound": 10.0
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "prefix_length": 10,
+      "envelope_partial_sum": 6.3788765142195025,
+      "paper_upper_bound": 10.0
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "prefix_length": 100,
+      "envelope_partial_sum": 9.509115235551446,
+      "paper_upper_bound": 10.0
+    },
+    {
+      "B": 1,
+      "K": 2,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 9.509257354621731,
+      "paper_upper_bound": 10.0
+    },
+    {
+      "B": 1,
+      "K": 3,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 28.0
+    },
+    {
+      "B": 1,
+      "K": 3,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 28.0
+    },
+    {
+      "B": 1,
+      "K": 3,
+      "prefix_length": 2,
+      "envelope_partial_sum": 1.9636404443012863,
+      "paper_upper_bound": 28.0
+    },
+    {
+      "B": 1,
+      "K": 3,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.8922433501944664,
+      "paper_upper_bound": 28.0
+    },
+    {
+      "B": 1,
+      "K": 3,
+      "prefix_length": 10,
+      "envelope_partial_sum": 8.512795153155302,
+      "paper_upper_bound": 28.0
+    },
+    {
+      "B": 1,
+      "K": 3,
+      "prefix_length": 100,
+      "envelope_partial_sum": 26.825626827402708,
+      "paper_upper_bound": 28.0
+    },
+    {
+      "B": 1,
+      "K": 3,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 27.503086349192525,
+      "paper_upper_bound": 28.0
+    },
+    {
+      "B": 1,
+      "K": 4,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 82.0
+    },
+    {
+      "B": 1,
+      "K": 4,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 82.0
+    },
+    {
+      "B": 1,
+      "K": 4,
+      "prefix_length": 2,
+      "envelope_partial_sum": 1.9877302162356105,
+      "paper_upper_bound": 82.0
+    },
+    {
+      "B": 1,
+      "K": 4,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.9633411963004566,
+      "paper_upper_bound": 82.0
+    },
+    {
+      "B": 1,
+      "K": 4,
+      "prefix_length": 10,
+      "envelope_partial_sum": 9.465543186171681,
+      "paper_upper_bound": 82.0
+    },
+    {
+      "B": 1,
+      "K": 4,
+      "prefix_length": 100,
+      "envelope_partial_sum": 57.787452065254186,
+      "paper_upper_bound": 82.0
+    },
+    {
+      "B": 1,
+      "K": 4,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 81.50067439653894,
+      "paper_upper_bound": 82.0
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 243.99999999999997
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 243.99999999999997
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "prefix_length": 2,
+      "envelope_partial_sum": 1.995893229603109,
+      "paper_upper_bound": 243.99999999999997
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.98769655437242,
+      "paper_upper_bound": 243.99999999999997
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "prefix_length": 10,
+      "envelope_partial_sum": 9.817204725918005,
+      "paper_upper_bound": 243.99999999999997
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "prefix_length": 100,
+      "envelope_partial_sum": 82.1471483935846,
+      "paper_upper_bound": 243.99999999999997
+    },
+    {
+      "B": 1,
+      "K": 5,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 239.5258705207458,
+      "paper_upper_bound": 243.99999999999997
+    },
+    {
+      "B": 1,
+      "K": 6,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 730.0
+    },
+    {
+      "B": 1,
+      "K": 6,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 730.0
+    },
+    {
+      "B": 1,
+      "K": 6,
+      "prefix_length": 2,
+      "envelope_partial_sum": 1.9986291982956805,
+      "paper_upper_bound": 730.0
+    },
+    {
+      "B": 1,
+      "K": 6,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.995889473984354,
+      "paper_upper_bound": 730.0
+    },
+    {
+      "B": 1,
+      "K": 6,
+      "prefix_length": 10,
+      "envelope_partial_sum": 9.938538874939267,
+      "paper_upper_bound": 730.0
+    },
+    {
+      "B": 1,
+      "K": 6,
+      "prefix_length": 100,
+      "envelope_partial_sum": 93.50854120938656,
+      "paper_upper_bound": 730.0
+    },
+    {
+      "B": 1,
+      "K": 6,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 544.4517143681151,
+      "paper_upper_bound": 730.0
+    },
+    {
+      "B": 3,
+      "K": 0,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 3.09861228866811
+    },
+    {
+      "B": 3,
+      "K": 0,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 3.09861228866811
+    },
+    {
+      "B": 3,
+      "K": 0,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 3.09861228866811
+    },
+    {
+      "B": 3,
+      "K": 0,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.406005849709838,
+      "paper_upper_bound": 3.09861228866811
+    },
+    {
+      "B": 3,
+      "K": 0,
+      "prefix_length": 10,
+      "envelope_partial_sum": 2.642076332199519,
+      "paper_upper_bound": 3.09861228866811
+    },
+    {
+      "B": 3,
+      "K": 0,
+      "prefix_length": 100,
+      "envelope_partial_sum": 2.642291797093652,
+      "paper_upper_bound": 3.09861228866811
+    },
+    {
+      "B": 3,
+      "K": 0,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 2.642291797093652,
+      "paper_upper_bound": 3.09861228866811
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "prefix_length": 10,
+      "envelope_partial_sum": 6.412151534934916,
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "prefix_length": 100,
+      "envelope_partial_sum": 6.789695807137881,
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "B": 3,
+      "K": 1,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 6.7896958071379165,
+      "paper_upper_bound": 7.29583686600433
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "prefix_length": 100,
+      "envelope_partial_sum": 19.390716163995833,
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "B": 3,
+      "K": 2,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 19.391142521206685,
+      "paper_upper_bound": 19.88751059801299
+    },
+    {
+      "B": 3,
+      "K": 3,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 57.662531794038976
+    },
+    {
+      "B": 3,
+      "K": 3,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 57.662531794038976
+    },
+    {
+      "B": 3,
+      "K": 3,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 57.662531794038976
+    },
+    {
+      "B": 3,
+      "K": 3,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 57.662531794038976
+    },
+    {
+      "B": 3,
+      "K": 3,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 57.662531794038976
+    },
+    {
+      "B": 3,
+      "K": 3,
+      "prefix_length": 100,
+      "envelope_partial_sum": 55.12909094231908,
+      "paper_upper_bound": 57.662531794038976
+    },
+    {
+      "B": 3,
+      "K": 3,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 57.16146950768852,
+      "paper_upper_bound": 57.662531794038976
+    },
+    {
+      "B": 3,
+      "K": 4,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 170.98759538211692
+    },
+    {
+      "B": 3,
+      "K": 4,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 170.98759538211692
+    },
+    {
+      "B": 3,
+      "K": 4,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 170.98759538211692
+    },
+    {
+      "B": 3,
+      "K": 4,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 170.98759538211692
+    },
+    {
+      "B": 3,
+      "K": 4,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 170.98759538211692
+    },
+    {
+      "B": 3,
+      "K": 4,
+      "prefix_length": 100,
+      "envelope_partial_sum": 99.34781819633706,
+      "paper_upper_bound": 170.98759538211692
+    },
+    {
+      "B": 3,
+      "K": 4,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 170.48748519019134,
+      "paper_upper_bound": 170.98759538211692
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 510.9627861463507
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 510.9627861463507
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 510.9627861463507
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 510.9627861463507
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 510.9627861463507
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 510.9627861463507
+    },
+    {
+      "B": 3,
+      "K": 5,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 498.5396380687419,
+      "paper_upper_bound": 510.9627861463507
+    },
+    {
+      "B": 3,
+      "K": 6,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 1530.8883584390524
+    },
+    {
+      "B": 3,
+      "K": 6,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 1530.8883584390524
+    },
+    {
+      "B": 3,
+      "K": 6,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 1530.8883584390524
+    },
+    {
+      "B": 3,
+      "K": 6,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 1530.8883584390524
+    },
+    {
+      "B": 3,
+      "K": 6,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 1530.8883584390524
+    },
+    {
+      "B": 3,
+      "K": 6,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 1530.8883584390524
+    },
+    {
+      "B": 3,
+      "K": 6,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 975.2432048845111,
+      "paper_upper_bound": 1530.8883584390524
+    },
+    {
+      "B": 6,
+      "K": 0,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 3.791759469228055
+    },
+    {
+      "B": 6,
+      "K": 0,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 3.791759469228055
+    },
+    {
+      "B": 6,
+      "K": 0,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 3.791759469228055
+    },
+    {
+      "B": 6,
+      "K": 0,
+      "prefix_length": 3,
+      "envelope_partial_sum": 2.812011699419676,
+      "paper_upper_bound": 3.791759469228055
+    },
+    {
+      "B": 6,
+      "K": 0,
+      "prefix_length": 10,
+      "envelope_partial_sum": 3.284152664399038,
+      "paper_upper_bound": 3.791759469228055
+    },
+    {
+      "B": 6,
+      "K": 0,
+      "prefix_length": 100,
+      "envelope_partial_sum": 3.2845835941873047,
+      "paper_upper_bound": 3.791759469228055
+    },
+    {
+      "B": 6,
+      "K": 0,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 3.2845835941873047,
+      "paper_upper_bound": 3.791759469228055
+    },
+    {
+      "B": 6,
+      "K": 1,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 9.375278407684165
+    },
+    {
+      "B": 6,
+      "K": 1,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 9.375278407684165
+    },
+    {
+      "B": 6,
+      "K": 1,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 9.375278407684165
+    },
+    {
+      "B": 6,
+      "K": 1,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 9.375278407684165
+    },
+    {
+      "B": 6,
+      "K": 1,
+      "prefix_length": 10,
+      "envelope_partial_sum": 8.1094666241501,
+      "paper_upper_bound": 9.375278407684165
+    },
+    {
+      "B": 6,
+      "K": 1,
+      "prefix_length": 100,
+      "envelope_partial_sum": 8.86455516855603,
+      "paper_upper_bound": 9.375278407684165
+    },
+    {
+      "B": 6,
+      "K": 1,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 8.864555168556102,
+      "paper_upper_bound": 9.375278407684165
+    },
+    {
+      "B": 6,
+      "K": 2,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 26.125835223052498
+    },
+    {
+      "B": 6,
+      "K": 2,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 26.125835223052498
+    },
+    {
+      "B": 6,
+      "K": 2,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 26.125835223052498
+    },
+    {
+      "B": 6,
+      "K": 2,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 26.125835223052498
+    },
+    {
+      "B": 6,
+      "K": 2,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 26.125835223052498
+    },
+    {
+      "B": 6,
+      "K": 2,
+      "prefix_length": 100,
+      "envelope_partial_sum": 25.62821406846672,
+      "paper_upper_bound": 26.125835223052498
+    },
+    {
+      "B": 6,
+      "K": 2,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 25.629066782888422,
+      "paper_upper_bound": 26.125835223052498
+    },
+    {
+      "B": 6,
+      "K": 3,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 76.37750566915749
+    },
+    {
+      "B": 6,
+      "K": 3,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 76.37750566915749
+    },
+    {
+      "B": 6,
+      "K": 3,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 76.37750566915749
+    },
+    {
+      "B": 6,
+      "K": 3,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 76.37750566915749
+    },
+    {
+      "B": 6,
+      "K": 3,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 76.37750566915749
+    },
+    {
+      "B": 6,
+      "K": 3,
+      "prefix_length": 100,
+      "envelope_partial_sum": 71.81148982348277,
+      "paper_upper_bound": 76.37750566915749
+    },
+    {
+      "B": 6,
+      "K": 3,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 75.87624695422167,
+      "paper_upper_bound": 76.37750566915749
+    },
+    {
+      "B": 6,
+      "K": 4,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 227.13251700747247
+    },
+    {
+      "B": 6,
+      "K": 4,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 227.13251700747247
+    },
+    {
+      "B": 6,
+      "K": 4,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 227.13251700747247
+    },
+    {
+      "B": 6,
+      "K": 4,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 227.13251700747247
+    },
+    {
+      "B": 6,
+      "K": 4,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 227.13251700747247
+    },
+    {
+      "B": 6,
+      "K": 4,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 227.13251700747247
+    },
+    {
+      "B": 6,
+      "K": 4,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 226.63071083452175,
+      "paper_upper_bound": 227.13251700747247
+    },
+    {
+      "B": 6,
+      "K": 5,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 679.3975510224172
+    },
+    {
+      "B": 6,
+      "K": 5,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 679.3975510224172
+    },
+    {
+      "B": 6,
+      "K": 5,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 679.3975510224172
+    },
+    {
+      "B": 6,
+      "K": 5,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 679.3975510224172
+    },
+    {
+      "B": 6,
+      "K": 5,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 679.3975510224172
+    },
+    {
+      "B": 6,
+      "K": 5,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 679.3975510224172
+    },
+    {
+      "B": 6,
+      "K": 5,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 655.0505667321479,
+      "paper_upper_bound": 679.3975510224172
+    },
+    {
+      "B": 6,
+      "K": 6,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 2036.1926530672522
+    },
+    {
+      "B": 6,
+      "K": 6,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 2036.1926530672522
+    },
+    {
+      "B": 6,
+      "K": 6,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 2036.1926530672522
+    },
+    {
+      "B": 6,
+      "K": 6,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 2036.1926530672522
+    },
+    {
+      "B": 6,
+      "K": 6,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 2036.1926530672522
+    },
+    {
+      "B": 6,
+      "K": 6,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 2036.1926530672522
+    },
+    {
+      "B": 6,
+      "K": 6,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 1000.0,
+      "paper_upper_bound": 2036.1926530672522
+    },
+    {
+      "B": 10,
+      "K": 0,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 4.302585092994046
+    },
+    {
+      "B": 10,
+      "K": 0,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 4.302585092994046
+    },
+    {
+      "B": 10,
+      "K": 0,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 4.302585092994046
+    },
+    {
+      "B": 10,
+      "K": 0,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 4.302585092994046
+    },
+    {
+      "B": 10,
+      "K": 0,
+      "prefix_length": 10,
+      "envelope_partial_sum": 3.7869016082989364,
+      "paper_upper_bound": 4.302585092994046
+    },
+    {
+      "B": 10,
+      "K": 0,
+      "prefix_length": 100,
+      "envelope_partial_sum": 3.787619824612714,
+      "paper_upper_bound": 4.302585092994046
+    },
+    {
+      "B": 10,
+      "K": 0,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 3.787619824612714,
+      "paper_upper_bound": 4.302585092994046
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 10.907755278982139
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 10.907755278982139
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 10.907755278982139
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 10.907755278982139
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "prefix_length": 10,
+      "envelope_partial_sum": 9.162424874550705,
+      "paper_upper_bound": 10.907755278982139
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "prefix_length": 100,
+      "envelope_partial_sum": 10.420905781893925,
+      "paper_upper_bound": 10.907755278982139
+    },
+    {
+      "B": 10,
+      "K": 1,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 10.420905781894042,
+      "paper_upper_bound": 10.907755278982139
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 30.723265836946414
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 30.723265836946414
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 30.723265836946414
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 30.723265836946414
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 30.723265836946414
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "prefix_length": 100,
+      "envelope_partial_sum": 30.219892795364522,
+      "paper_upper_bound": 30.723265836946414
+    },
+    {
+      "B": 10,
+      "K": 2,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 30.22131398606736,
+      "paper_upper_bound": 30.723265836946414
+    },
+    {
+      "B": 10,
+      "K": 3,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 90.16979751083925
+    },
+    {
+      "B": 10,
+      "K": 3,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 90.16979751083925
+    },
+    {
+      "B": 10,
+      "K": 3,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 90.16979751083925
+    },
+    {
+      "B": 10,
+      "K": 3,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 90.16979751083925
+    },
+    {
+      "B": 10,
+      "K": 3,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 90.16979751083925
+    },
+    {
+      "B": 10,
+      "K": 3,
+      "prefix_length": 100,
+      "envelope_partial_sum": 82.89568883836037,
+      "paper_upper_bound": 90.16979751083925
+    },
+    {
+      "B": 10,
+      "K": 3,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 89.67028405625854,
+      "paper_upper_bound": 90.16979751083925
+    },
+    {
+      "B": 10,
+      "K": 4,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 268.5093925325177
+    },
+    {
+      "B": 10,
+      "K": 4,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 268.5093925325177
+    },
+    {
+      "B": 10,
+      "K": 4,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 268.5093925325177
+    },
+    {
+      "B": 10,
+      "K": 4,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 268.5093925325177
+    },
+    {
+      "B": 10,
+      "K": 4,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 268.5093925325177
+    },
+    {
+      "B": 10,
+      "K": 4,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 268.5093925325177
+    },
+    {
+      "B": 10,
+      "K": 4,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 268.0053345421273,
+      "paper_upper_bound": 268.5093925325177
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 803.528177597553
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 803.528177597553
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 803.528177597553
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 803.528177597553
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 803.528177597553
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 803.528177597553
+    },
+    {
+      "B": 10,
+      "K": 5,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 763.2832835968953,
+      "paper_upper_bound": 803.528177597553
+    },
+    {
+      "B": 10,
+      "K": 6,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 2408.5845327926595
+    },
+    {
+      "B": 10,
+      "K": 6,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 2408.5845327926595
+    },
+    {
+      "B": 10,
+      "K": 6,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 2408.5845327926595
+    },
+    {
+      "B": 10,
+      "K": 6,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 2408.5845327926595
+    },
+    {
+      "B": 10,
+      "K": 6,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 2408.5845327926595
+    },
+    {
+      "B": 10,
+      "K": 6,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 2408.5845327926595
+    },
+    {
+      "B": 10,
+      "K": 6,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 1000.0,
+      "paper_upper_bound": 2408.5845327926595
+    },
+    {
+      "B": 15,
+      "K": 0,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 4.7080502011022105
+    },
+    {
+      "B": 15,
+      "K": 0,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 4.7080502011022105
+    },
+    {
+      "B": 15,
+      "K": 0,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 4.7080502011022105
+    },
+    {
+      "B": 15,
+      "K": 0,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 4.7080502011022105
+    },
+    {
+      "B": 15,
+      "K": 0,
+      "prefix_length": 10,
+      "envelope_partial_sum": 4.180352412448405,
+      "paper_upper_bound": 4.7080502011022105
+    },
+    {
+      "B": 15,
+      "K": 0,
+      "prefix_length": 100,
+      "envelope_partial_sum": 4.181429736919071,
+      "paper_upper_bound": 4.7080502011022105
+    },
+    {
+      "B": 15,
+      "K": 0,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 4.181429736919071,
+      "paper_upper_bound": 4.7080502011022105
+    },
+    {
+      "B": 15,
+      "K": 1,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 12.124150603306632
+    },
+    {
+      "B": 15,
+      "K": 1,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 12.124150603306632
+    },
+    {
+      "B": 15,
+      "K": 1,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 12.124150603306632
+    },
+    {
+      "B": 15,
+      "K": 1,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 12.124150603306632
+    },
+    {
+      "B": 15,
+      "K": 1,
+      "prefix_length": 10,
+      "envelope_partial_sum": 9.746806025517959,
+      "paper_upper_bound": 12.124150603306632
+    },
+    {
+      "B": 15,
+      "K": 1,
+      "prefix_length": 100,
+      "envelope_partial_sum": 11.634527386532787,
+      "paper_upper_bound": 12.124150603306632
+    },
+    {
+      "B": 15,
+      "K": 1,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 11.634527386532964,
+      "paper_upper_bound": 12.124150603306632
+    },
+    {
+      "B": 15,
+      "K": 2,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 34.372451809919895
+    },
+    {
+      "B": 15,
+      "K": 2,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 34.372451809919895
+    },
+    {
+      "B": 15,
+      "K": 2,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 34.372451809919895
+    },
+    {
+      "B": 15,
+      "K": 2,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 34.372451809919895
+    },
+    {
+      "B": 15,
+      "K": 2,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 34.372451809919895
+    },
+    {
+      "B": 15,
+      "K": 2,
+      "prefix_length": 100,
+      "envelope_partial_sum": 33.866656739077605,
+      "paper_upper_bound": 34.372451809919895
+    },
+    {
+      "B": 15,
+      "K": 2,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 33.86878852513186,
+      "paper_upper_bound": 34.372451809919895
+    },
+    {
+      "B": 15,
+      "K": 3,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 101.11735542975968
+    },
+    {
+      "B": 15,
+      "K": 3,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 101.11735542975968
+    },
+    {
+      "B": 15,
+      "K": 3,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 101.11735542975968
+    },
+    {
+      "B": 15,
+      "K": 3,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 101.11735542975968
+    },
+    {
+      "B": 15,
+      "K": 3,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 101.11735542975968
+    },
+    {
+      "B": 15,
+      "K": 3,
+      "prefix_length": 100,
+      "envelope_partial_sum": 90.45663983000107,
+      "paper_upper_bound": 101.11735542975968
+    },
+    {
+      "B": 15,
+      "K": 3,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 100.6185326568483,
+      "paper_upper_bound": 101.11735542975968
+    },
+    {
+      "B": 15,
+      "K": 4,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 301.35206628927904
+    },
+    {
+      "B": 15,
+      "K": 4,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 301.35206628927904
+    },
+    {
+      "B": 15,
+      "K": 4,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 301.35206628927904
+    },
+    {
+      "B": 15,
+      "K": 4,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 301.35206628927904
+    },
+    {
+      "B": 15,
+      "K": 4,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 301.35206628927904
+    },
+    {
+      "B": 15,
+      "K": 4,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 301.35206628927904
+    },
+    {
+      "B": 15,
+      "K": 4,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 300.84637172198916,
+      "paper_upper_bound": 301.35206628927904
+    },
+    {
+      "B": 15,
+      "K": 5,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 902.056198867837
+    },
+    {
+      "B": 15,
+      "K": 5,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 902.056198867837
+    },
+    {
+      "B": 15,
+      "K": 5,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 902.056198867837
+    },
+    {
+      "B": 15,
+      "K": 5,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 902.056198867837
+    },
+    {
+      "B": 15,
+      "K": 5,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 902.056198867837
+    },
+    {
+      "B": 15,
+      "K": 5,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 902.056198867837
+    },
+    {
+      "B": 15,
+      "K": 5,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 841.9393465124899,
+      "paper_upper_bound": 902.056198867837
+    },
+    {
+      "B": 15,
+      "K": 6,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 2704.1685966035116
+    },
+    {
+      "B": 15,
+      "K": 6,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 2704.1685966035116
+    },
+    {
+      "B": 15,
+      "K": 6,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 2704.1685966035116
+    },
+    {
+      "B": 15,
+      "K": 6,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 2704.1685966035116
+    },
+    {
+      "B": 15,
+      "K": 6,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 2704.1685966035116
+    },
+    {
+      "B": 15,
+      "K": 6,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 2704.1685966035116
+    },
+    {
+      "B": 15,
+      "K": 6,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 1000.0,
+      "paper_upper_bound": 2704.1685966035116
+    },
+    {
+      "B": 100,
+      "K": 0,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 6.605170185988092
+    },
+    {
+      "B": 100,
+      "K": 0,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 6.605170185988092
+    },
+    {
+      "B": 100,
+      "K": 0,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 6.605170185988092
+    },
+    {
+      "B": 100,
+      "K": 0,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 6.605170185988092
+    },
+    {
+      "B": 100,
+      "K": 0,
+      "prefix_length": 10,
+      "envelope_partial_sum": 6.0587453573295535,
+      "paper_upper_bound": 6.605170185988092
+    },
+    {
+      "B": 100,
+      "K": 0,
+      "prefix_length": 100,
+      "envelope_partial_sum": 6.065927520467329,
+      "paper_upper_bound": 6.605170185988092
+    },
+    {
+      "B": 100,
+      "K": 0,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 6.065927520467329,
+      "paper_upper_bound": 6.605170185988092
+    },
+    {
+      "B": 100,
+      "K": 1,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 17.815510557964277
+    },
+    {
+      "B": 100,
+      "K": 1,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 17.815510557964277
+    },
+    {
+      "B": 100,
+      "K": 1,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 17.815510557964277
+    },
+    {
+      "B": 100,
+      "K": 1,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 17.815510557964277
+    },
+    {
+      "B": 100,
+      "K": 1,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 17.815510557964277
+    },
+    {
+      "B": 100,
+      "K": 1,
+      "prefix_length": 100,
+      "envelope_partial_sum": 17.31731965548869,
+      "paper_upper_bound": 17.815510557964277
+    },
+    {
+      "B": 100,
+      "K": 1,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 17.317319655489865,
+      "paper_upper_bound": 17.815510557964277
+    },
+    {
+      "B": 100,
+      "K": 2,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 51.44653167389283
+    },
+    {
+      "B": 100,
+      "K": 2,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 51.44653167389283
+    },
+    {
+      "B": 100,
+      "K": 2,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 51.44653167389283
+    },
+    {
+      "B": 100,
+      "K": 2,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 51.44653167389283
+    },
+    {
+      "B": 100,
+      "K": 2,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 51.44653167389283
+    },
+    {
+      "B": 100,
+      "K": 2,
+      "prefix_length": 100,
+      "envelope_partial_sum": 50.92787772821672,
+      "paper_upper_bound": 51.44653167389283
+    },
+    {
+      "B": 100,
+      "K": 2,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 50.94208963524513,
+      "paper_upper_bound": 51.44653167389283
+    },
+    {
+      "B": 100,
+      "K": 3,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 152.3395950216785
+    },
+    {
+      "B": 100,
+      "K": 3,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 152.3395950216785
+    },
+    {
+      "B": 100,
+      "K": 3,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 152.3395950216785
+    },
+    {
+      "B": 100,
+      "K": 3,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 152.3395950216785
+    },
+    {
+      "B": 100,
+      "K": 3,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 152.3395950216785
+    },
+    {
+      "B": 100,
+      "K": 3,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 152.3395950216785
+    },
+    {
+      "B": 100,
+      "K": 3,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 151.83853654890214,
+      "paper_upper_bound": 152.3395950216785
+    },
+    {
+      "B": 100,
+      "K": 4,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 455.01878506503544
+    },
+    {
+      "B": 100,
+      "K": 4,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 455.01878506503544
+    },
+    {
+      "B": 100,
+      "K": 4,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 455.01878506503544
+    },
+    {
+      "B": 100,
+      "K": 4,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 455.01878506503544
+    },
+    {
+      "B": 100,
+      "K": 4,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 455.01878506503544
+    },
+    {
+      "B": 100,
+      "K": 4,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 455.01878506503544
+    },
+    {
+      "B": 100,
+      "K": 4,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 454.4842595722222,
+      "paper_upper_bound": 455.01878506503544
+    },
+    {
+      "B": 100,
+      "K": 5,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 1363.056355195106
+    },
+    {
+      "B": 100,
+      "K": 5,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 1363.056355195106
+    },
+    {
+      "B": 100,
+      "K": 5,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 1363.056355195106
+    },
+    {
+      "B": 100,
+      "K": 5,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 1363.056355195106
+    },
+    {
+      "B": 100,
+      "K": 5,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 1363.056355195106
+    },
+    {
+      "B": 100,
+      "K": 5,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 1363.056355195106
+    },
+    {
+      "B": 100,
+      "K": 5,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 1000.0,
+      "paper_upper_bound": 1363.056355195106
+    },
+    {
+      "B": 100,
+      "K": 6,
+      "prefix_length": 0,
+      "envelope_partial_sum": 0,
+      "paper_upper_bound": 4087.169065585319
+    },
+    {
+      "B": 100,
+      "K": 6,
+      "prefix_length": 1,
+      "envelope_partial_sum": 1.0,
+      "paper_upper_bound": 4087.169065585319
+    },
+    {
+      "B": 100,
+      "K": 6,
+      "prefix_length": 2,
+      "envelope_partial_sum": 2.0,
+      "paper_upper_bound": 4087.169065585319
+    },
+    {
+      "B": 100,
+      "K": 6,
+      "prefix_length": 3,
+      "envelope_partial_sum": 3.0,
+      "paper_upper_bound": 4087.169065585319
+    },
+    {
+      "B": 100,
+      "K": 6,
+      "prefix_length": 10,
+      "envelope_partial_sum": 10.0,
+      "paper_upper_bound": 4087.169065585319
+    },
+    {
+      "B": 100,
+      "K": 6,
+      "prefix_length": 100,
+      "envelope_partial_sum": 100.0,
+      "paper_upper_bound": 4087.169065585319
+    },
+    {
+      "B": 100,
+      "K": 6,
+      "prefix_length": 1000,
+      "envelope_partial_sum": 1000.0,
+      "paper_upper_bound": 4087.169065585319
+    }
+  ]
+}

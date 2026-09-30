@@ -877,3 +877,17 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_wait_gt_real
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_wait_gt_le_exp
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_jointWait_gt
+
+-- REC-L7 actual maximum waiting expectation candidate
+#print axioms OmegaBalance.f3JointTailEnvelope_nonneg
+#print axioms OmegaBalance.f3JointTailEnvelope_antitone
+#print axioms OmegaBalance.f3JointTailEnvelope_integrable
+#print axioms OmegaBalance.f3JointTailEnvelope_integral_le
+#print axioms OmegaBalance.f3JointTailEnvelope_tsum_le
+#print axioms OmegaBalance.f3JointRootWait_tail_measurable
+#print axioms OmegaBalance.f3JointRootWait_toENNReal_eq_tsum
+#print axioms OmegaBalance.f3JointRootWait_measurable_toENNReal
+#print axioms OmegaBalance.f3JointRootWait_lintegral_eq_tsum
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_jointWait_mean_le
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_jointWait_finite_ae
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_matrix_recover_ae
