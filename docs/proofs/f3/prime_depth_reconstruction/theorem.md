@@ -309,3 +309,5 @@ L_{12}=L_{13}=L_{23}=L,
 ## 2026-09-30 形式化覆盖补记
 
 REC-L1/L2、单对REC-L4与REC-L11的确定性证书部分已通过代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` 的完整Lean门禁；详见 [形式化映射](formalization.md)。这不标记本页含概率、等待时间、矩阵恢复或素数采样的全部主结果为LEAN-PROVED。纸面PAPER-AUDITED状态与局部内核覆盖分开记录。
+
+2026-09-30：REC-L5 的有限证书矩阵及阈值根簇分区已由 `F3RootReconstruction.lean` 的10条声明通过精确CI（c2fe3c4，runs36667493101/36667536541）。这不包括联合概率、随机等待、被动下界、截断矩阵扫描或素数传递；完整REC-2仍未完成。
