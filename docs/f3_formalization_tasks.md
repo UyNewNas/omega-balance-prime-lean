@@ -547,3 +547,14 @@ F3RootDepthHaar on a cast-lemma name, the modulus-one subsingleton equality and
 an insufficiently typed monotonicity cast. The following source fix addresses
 these exact elaboration errors without changing statements, assumptions or pins.
 The whole 679-declaration candidate still awaits complete exact-head verification.
+
+## 2026-09-30 07:05 UTC：实际 Haar 单次概率内核验证
+
+PR51 代码 dc063232 的 push36681283200 与 PR36681288176 已全部通过：
+679 条标准公理声明、104 源文件、精确 Audit 覆盖及全部构建/回归。
+六个模块共38条新增声明证明实际单位域归一化、单根尾/层质量、有限根距下
+不等深度质量3^-L、原配置包装和无限根点零测。CC0 五声明移植及其全部适配器
+现在具有本项目固定 Lean/mathlib 的实际传递公理验证，不再仅为源码兼容猜测。
+[精确声明及范围](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30rec-l3-实际-haar-单次概率已通过精确-ci)。
+独立等待律/均值、完整有符号差分布、联合恢复概率及素数传递仍未完成；
+独立专项源码复核与最终文档头 CI 是合并前剩余门禁。
