@@ -828,3 +828,15 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3PadicHaar_singleton
 #print axioms OmegaBalance.f3UnitHaar_singleton
 #print axioms OmegaBalance.f3UnitHaar_rootDepth_top
+
+-- Actual fixed-root finite-batch certificate probability.
+#print axioms OmegaBalance.f3RootDepth_ne_measurable
+#print axioms OmegaBalance.f3RootDepth_equal_measurable
+#print axioms OmegaBalance.f3UnitHaar_rootDepth_equal
+#print axioms OmegaBalance.f3RootDepthBatchFailure_eq_pi
+#print axioms OmegaBalance.f3RootDepthBatchFailure_zero
+#print axioms OmegaBalance.f3RootDepthBatchFailure_measurable
+#print axioms OmegaBalance.f3UnitHaar_batch_failure
+#print axioms OmegaBalance.depthCertificateScan_finRange_eq_none_iff
+#print axioms OmegaBalance.f3UnitHaar_depthCertificateScan_none
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_scan_none

@@ -234,7 +234,7 @@ python3 scripts/verify.py
 ```
 
 RUN 兼容候选使用固定上游源码、原始补丁检查和精确哈希保护；依赖更新请使用上述包装入口。
-无条件 RUN 适配器已在精确代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 通过完整内核构建及647项标准公理审计（646条项目声明与1条上游产生器）。最新 Haar 主线组合为684+1条，仍须其自身精确 CI，不能用旧 run 代替。
+无条件 RUN 适配器已在精确代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 通过完整内核构建及647项标准公理审计（646条项目声明与1条上游产生器）。最新 Haar/RUN 主线组合为684+1条，已由组合 runs36683223631/36683404748 完整核验并经PR47合入master0bd5333；合并后CI仍单独跟踪。
 兼容范围与许可证边界见 [外部复用记录](docs/f3_external_reuse.md#2026-09-30-run-dependency-compatibility-repair-candidate-not-kernel-verified)。
 
 ## 已审计书面证明（尚未形式化）
@@ -320,8 +320,18 @@ F3D-DEG：[PDF 版](docs/proofs/f3d/degree_tensorization/paper.pdf) · [完整�
 
 `python3 scripts/verify.py` 现在也检查第三组 Lean 回归模块和 [公理审计覆盖](scripts/check_audit_coverage.py)：每条项目 theorem/lemma 必须登记一次。
 
-**2026-09-30 验证更新：** 组合提交 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 已通过完整 Lean 门禁：原始整数无限相关核、`r>0` 的均方近似周期（平移1单独处理）、真实三进对数的收敛/等距/乘法同态、精确素数层计数渐近以及17倍条件比例均已有证明。正负层与尾计数另由 `F3PrimeRelativeDensity.lean` 明确除以真实全体素数计数，比例接口也已在代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` 通过完整门禁。无条件连续素数同值长串及有界跨度已在代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 通过内核和完整信任审计；最新 Haar 主线组合的验证与合并仍待完成。
+**2026-09-30 验证更新：** 组合提交 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 已通过完整 Lean 门禁：原始整数无限相关核、`r>0` 的均方近似周期（平移1单独处理）、真实三进对数的收敛/等距/乘法同态、精确素数层计数渐近以及17倍条件比例均已有证明。正负层与尾计数另由 `F3PrimeRelativeDensity.lean` 明确除以真实全体素数计数，比例接口也已在代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` 通过完整门禁。无条件连续素数同值长串及有界跨度已在代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 通过内核和完整信任审计；最新 Haar/RUN 组合已全门禁通过并合入master0bd5333（树a0109985），原五项目标已集成；其余接收proof任务继续开放。
 
 精确 [Lean run 36660504382](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36660504382) 与 push run 36660499386 均成功：601条公理/覆盖、94个源文件、144240项有限回归。当前新文档提交仍以自己的后续CI为准。完整 [来源接收账本](docs/f3_proof_intake.md) 区分已扫描、纸面与内核状态。
 
 **当前 RUN 精确证据：** [push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与 [PR 36679105586](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679105586) 均成功。`f3PrimeIndexRunStarts_infinite_unconditional` 覆盖每个非零整数值及每个正长度，使用全体素数序列，跨度常数对固定长度统一。全部新增书面证明的形式化仍有未完成节点，见[当前任务](docs/f3_formalization_tasks.md)。
+
+
+**2026-09-30 REC 有限批次候选：**
+[F3RootBatchHaar.lean](OmegaBalance/F3RootBatchHaar.lean) 在实际
+`Measure.pi (fun _ : Fin T => f3UnitHaar)` 中证明固定单位根、有限真实根距L≥1
+下T次观测全部相等的概率 `(1 - 3^(-L))^T`，并连接既有按 `List.finRange T`
+顺序扫描的未知事件；包括T=0和固定原配置包装。新增10条声明已一对一登记，
+源码/覆盖与有限sanity通过，尚无本地Lean/Lake，全部新结果待精确CI。
+这只是REC-L6的有限批次切片，不标记无限一基等待时间、均值、多对恢复界或素数采样完成。
+[精确范围与后续任务](docs/proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l6-fixed-root-finite-batch-candidate)。

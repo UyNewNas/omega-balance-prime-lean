@@ -484,3 +484,55 @@ PR51 代码 dc063232 的 push36681283200 与 PR36681288176 已全部通过：
 原五项目标中的 INF/COR/DEN/LOG 已在主线；RUN 已有无条件内核证明，等待最新
 组合验证与合并。全部接收 proof 任务尚未完成：全局 PAT、REC 等剩余概率/等待律、
 其它登记节点继续开放。单次 Haar 范围已合入 PR51，不扩张为完整 REC 完成。
+
+
+## 2026-09-30 REC-L6 finite-batch target-first reuse gate
+
+Decision: implement the smallest genuine fixed-root finite-batch consequence
+of the already proved actual Haar law, under `Measure.pi (fun _ : Fin T =>
+f3UnitHaar)`. Target: REC theorem 2.3 / (2.7), with actual unit roots and finite
+actual distance L≥1. T=0 is included. This is not a geometric PMF declaration,
+infinite waiting-time theorem, expectation, or prime-sampling result.
+
+The bounded target-first research was completed before implementation and its
+full report was read. Searches included public web / mathlib GitHub queries
+`firstSuccess geometric`, `firstSuccess`, `geometric hitting`,
+`f3UnitHaar_rootDepth_ne`, and `certificate waiting`, before selecting the
+finite-product and complement primitives. Then `infinitePi`, `hittingAfter`,
+`integral_eq_tsum`, `lintegral_eq_tsum_measure`, `measure_biUnion_finset_le` and
+`tsum_geometric ENNReal` were checked for the later boundary. No equal final
+F3 theorem or first-success-from-independent-samples theorem was found in
+that searched scope; this is bounded negative evidence, not universal absence.
+
+Consumer remains Lean v4.34.0 / mathlib
+`5ed2965256430c3649e86755f9576b54eca72435`. The current default-branch search
+snapshot was `380f2aafb622cb2c1c93dac545b6389083c68c51`; decisions below were
+rechecked at the consumer pin, including actual source signatures/proofs.
+
+| Reused exact source | Locked blob / API and decision |
+|---|---|
+| [Constructions/Pi.lean](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/MeasureTheory/Constructions/Pi.lean#L289-L317) | `2a62c773222f631197270b3ac84ea3efaf728458`; `Measure.pi_pi`, probability/SigmaFinite instances. Box mass is the finite product, no measurable-side premise needed for pi_pi |
+| [Probability.lean](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/MeasureTheory/Measure/Typeclasses/Probability.lean#L146-L156) | `854e28ccdb1cca99e61f76fceaad6390c1d227be`; `prob_compl_eq_one_sub`, applied to the proved measurable unequal event |
+| [MeasurableSpace/Constructions.lean](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/MeasureTheory/MeasurableSpace/Constructions.lean#L708-L722) | `b66e9602adfff1ac1f45d9adf1ce804335ebc8f3`; `MeasurableSet.univ_pi` |
+| [Data/List/FinRange.lean](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/List/FinRange.lean) | `61e2e0702872f77229101756e7daa20cdaa62e8f`; existing `List.finRange` / `List.mem_finRange` enumeration, not a replacement search algorithm |
+| Existing project `F3RootDepthLaw.lean` | `rootDepth_ne_iff_mem_tail_union`, tail measurability, actual `f3UnitHaar_rootDepth_ne`; no probability premise replaces this proof |
+| Existing project `F3RootReconstruction.lean`, `F3SharedRootHaar.lean` | `depthCertificateScan_eq_none_iff`, exact `f3SharedRootUnit_coe` and genuine-unit facts; existing algorithm and actual roots are retained |
+
+The earlier source comparison found current finite-product blob
+`13f98ef6a0bfe4c2c0eff540803351fb027f146a` retains the relevant API, and the
+probability-typeclass source is byte-identical at the blob above. No upgrade
+or backport is needed. All newly imported mathlib source headers are
+Apache-2.0; imports copy no source and add no dependency or license terms.
+The already accepted CC0 Haar port remains the existing dependency, not a
+new port. The unrelated RUN author's unconfirmed license scope is unchanged.
+
+The new module imports only existing F3SharedRootHaar/F3RootReconstruction,
+finite `MeasureTheory.Constructions.Pi`, and `Data.List.FinRange`. It does
+not add Probability.ProductMeasure, Independence.Basic, Geometric, or
+HittingTime. Infinite-product first hit and its one-based indexing/expectation
+need separate proofs. The exact unordered-pair union bound is deferred rather
+than silently assuming pair independence or double-counting ordered pairs.
+
+Ten project theorems are added once each to Audit. Local source/API, coverage
+and finite checks are not Lean execution; the whole new candidate remains
+pending exact locked-pin CI. [Scope and declarations](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l6-fixed-root-finite-batch-candidate).

@@ -79,3 +79,25 @@ PAT局部L1–3已通过代码5f94116a全门禁并合入59be8b23；ROOT4归一�
 恢复后的源码与覆盖检查本身不构成内核证明；其后的独立精确CI记录如下。
 
 本批代码564bb498已在精确push36671721342与PR36671762437通过全部门禁；641条声明仅标准公理，98源文件与覆盖通过。只更新确定性截断矩阵/阈值关系的Lean覆盖，原始来源水位与概率节点保持不变。
+
+
+## 2026-09-30 07:30 UTC bounded refresh and REC finite-batch implementation
+
+After the 07:28 full fetch, 165 actual remote branch heads were compared with
+the original intake watermark: among original sources only master changed
+to `0bd5333e92b429306ffb139728c04cd4a1ee796b`; original research heads are
+unchanged. The all-issues query updated since 06:38 returned only our PR47/51.
+No new external paper intake was found in this bounded refresh. Original
+mathematical source watermarks remain unchanged; this does not claim another
+full reading of every research file.
+
+The existing REC four-file package was reread for the next implementation
+slice: theorem 2.3 / equation (2.7), using theorem 2.1 / (2.3) and the existing
+Proposition 2.2 scan. `F3RootBatchHaar.lean` adds 10 candidate declarations for
+actual fixed-root finite-batch probability under the genuine finite product
+of unit Haar measures, including T=0 and the unchanged scan/model wrappers.
+This is a new implementation of an already accepted source, not a new paper
+or source-watermark advance. Local 694+1 coverage, source and finite checks
+are not kernel validation; new exact-head CI remains pending. Infinite
+waiting time, its mean, moving random configurations, union bounds and prime
+sampling remain open. [Exact scope](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l6-fixed-root-finite-batch-candidate).
