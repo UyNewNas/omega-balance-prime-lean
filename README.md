@@ -312,6 +312,6 @@ F3D-DEG：[PDF 版](docs/proofs/f3d/degree_tensorization/paper.pdf) · [完整�
 
 `python3 scripts/verify.py` 现在也检查第三组 Lean 回归模块和 [公理审计覆盖](scripts/check_audit_coverage.py)：每条项目 theorem/lemma 必须登记一次。
 
-**2026-09-30 验证更新：** 组合提交 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 已通过完整 Lean 门禁：原始整数无限相关核、`r>0` 的均方近似周期（平移1单独处理）、真实三进对数的收敛/等距/乘法同态、精确素数层计数渐近以及17倍条件比例均已有证明。正负层与尾计数目前以 `x/log x` 归一化；显式除以全体素数计数的薄桥接仍待补齐。无条件连续素数同值长串仍未完成。
+**2026-09-30 验证更新：** 组合提交 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 已通过完整 Lean 门禁：原始整数无限相关核、`r>0` 的均方近似周期（平移1单独处理）、真实三进对数的收敛/等距/乘法同态、精确素数层计数渐近以及17倍条件比例均已有证明。正负层与尾计数另由 `F3PrimeRelativeDensity.lean` 明确除以真实全体素数计数，比例接口也已在代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` 通过完整门禁。无条件连续素数同值长串仍未完成。
 
 精确 [Lean run 36660504382](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36660504382) 与 push run 36660499386 均成功：601条公理/覆盖、94个源文件、144240项有限回归。当前新文档提交仍以自己的后续CI为准。完整 [来源接收账本](docs/f3_proof_intake.md) 区分已扫描、纸面与内核状态。

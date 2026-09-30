@@ -731,3 +731,23 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3_pat1_point_mod729
 #print axioms OmegaBalance.f3_pat1_product_add_one_mod729
 #print axioms OmegaBalance.f3_pat1_pattern_of_mod729
+
+#print axioms OmegaBalance.f3AllPrimeCountingReal_eq_AP
+#print axioms OmegaBalance.f3AllPrimeCountingReal_normalized_tendsto
+#print axioms OmegaBalance.eventually_f3AllPrimeCountingReal_ne_zero
+#print axioms OmegaBalance.f3PrimeRelativeLimit_of_normalized
+#print axioms OmegaBalance.f3PrimePosLevel_relative_density
+#print axioms OmegaBalance.f3PrimeNegLevel_relative_density
+#print axioms OmegaBalance.f3PrimeTail_relative_density
+#print axioms OmegaBalance.rootDepth_eq_top_iff
+#print axioms OmegaBalance.rootDepth_eq_valuation
+#print axioms OmegaBalance.rootDistance_ne_top
+#print axioms OmegaBalance.rootDepth_min_le_distance
+#print axioms OmegaBalance.rootDepth_min_eq_distance_of_ne
+#print axioms OmegaBalance.depthCertificate_sound
+#print axioms OmegaBalance.depthCertificate_consistent
+#print axioms OmegaBalance.truncatedRootDepth_ne_certificate
+#print axioms OmegaBalance.truncatedRootDepth_saturated_certificate
+#print axioms OmegaBalance.truncatedDepthCertificate_sound
+#print axioms OmegaBalance.f3SharedRootDepth_certificate
+#print axioms OmegaBalance.f3SharedRootDepth_truncatedCertificate

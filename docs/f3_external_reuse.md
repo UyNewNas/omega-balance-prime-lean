@@ -39,3 +39,11 @@ RUN 的有限 CRT、最大化、顺序块和条件组合接口一并保留，但
 源 CI 解析依赖已从成功 run `36309723481` 的 artifact `10929140097` 下载，ZIP SHA256 与 GitHub 报告一致：`31e70f907bde8c1e375f5acfd3384771d616249091a7f45c68fbb685e21cc0e1`。本次提交该实际 `lake-manifest.json`：mathlib `5ed2965256430c3649e86755f9576b54eca72435`、ANT `099d3726c2c74841024110ec1dd9902f7ef36e9e`、LeanArchitect `78dd66840d3efe8c824c699fc03381cec817c271`、Cli `e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204`；其余传递固定版本按完整清单保留。不是手工猜测 Lake 的解析结果。ANT 原源使用4.33rc1/mathlibe4c91783，但上述消费端4.34/5ed组合已有真实编译证据；当前组合仍待新CI。ANT许可证Apache2，依赖源码闭包审计继续独立记录。
 
 ANT源闭包复核完成：从`PrimeNumberTheoremAnd/Consequences.lean`递归到9个本包模块，379391字符；使用本仓库支持嵌套注释与字符串擦除的禁用项扫描，0命中。范围排除锁定Mathlib、Architect及Batteries的实现源码。WeakPNT_AP的前提仅q≥1、a.Coprime q、a<q，不含目标重述假设；最终COR/DEN/LOG声明在历史成功日志中逐条只依赖标准3公理。证据摘要见`reports/f3_ant_source_scan.json`；本组合CI仍会实际执行全601条公理审计。
+
+## 2026-09-30：相对全部素数计数与 REC 确定性证书
+
+密度最终目标先查：GitHub `f3PrimePosLevel relative density` 在已查范围无匹配；本仓库所有分支标题/现有API核对后，仅17倍接口已用实际计数比。薄复用既有 `f3PrimeAPCountingReal_normalized_tendsto` 的模1特化（0与1互素）得到真实全素数计数PNT，复用 `Filter.Tendsto.div` 及 `div_div_div_cancel_right₀` 将三个x/log x极限转换为实际素数计数比例，无新分析栈。
+
+锁定mathlib5ed2965实际源码：`Mathlib/Topology/Algebra/GroupWithZero.lean` blob `ad409ad08d53ad030bfd8f29cb2825a19b33872e` 的 `Filter.Tendsto.div` 要求分母极限非零；`Mathlib/Algebra/GroupWithZero/Units/Basic.lean` blob `b3148d9bd8bac8cbc1c64edf40b1c0bbb61f2916` 的商约消要求公共除数非零。已分别读完整声明及证明，最新默认源同API仍在（blob4ef88673与9fd9e942），不升级。通过PNT极限1证明分母最终非零，有限初段不强加全局假设。库为Apache2，当前代码独立CI待执行。
+
+REC最终目标在已查GitHub精确名 `rootDepth_min_eq_distance_of_ne` / `truncatedDepthCertificate_sound` 无匹配；直接复用锁定 `AddValuation.map_sub`、`map_add_of_distinct_val`、`map_neg`、`map_sub_swap`、`top_iff`/`ne_top_iff`（`Mathlib/RingTheory/Valuation/Basic.lean` blob73f71ae8fde499401b25db33fd2d826eecfb9c0b），以及真正 `Padic.addValuation : AddValuation ℚ_[3] (WithTop ℤ)` 和 `.apply`（PadicNumbers blob79040472922216be2c0d66793e3b2a3965347e9c）。有限精度只用 `Mathlib/Order/MinMax.lean` 的已读 `min_lt_min_left_iff`、`min_eq_right_iff`。保持∞零点、实际p-adic域和源模型b+R；不以有理数弱化或概率假设代替目标。
