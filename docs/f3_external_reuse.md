@@ -1,0 +1,27 @@
+# F₃ 外部查重复用记录
+
+本记录区分源码核验、外部构建报告与本仓库精确提交的内核验证。未找到表示下述已查范围内未找到；访问失败不表示定理不存在。
+
+## 2026-09-30：F3-PAT-1 局部算术（PAT-L1–3）
+
+- 本仓库基线：`b4c14823d9a97a45770ed42379673d39b5295be6`；证明来源：`4c532a866ad60bbe0492a928b41fe1fa1c1766e6`，后续 PDF 整理不改变局部结论。
+- 目标：对 `1<n`、`0<d`、`n≡5,d≡1 (mod 729)`，四点值 `(1,-1,-1,-1)` 与三个乘积值 `(3,5,3)`；无素性假设，也不作全局素数存在性推论。
+- 锁定 mathlib：[`5ed2965256430c3649e86755f9576b54eca72435`](https://github.com/leanprover-community/mathlib4/tree/5ed2965256430c3649e86755f9576b54eca72435)，Lean `v4.34.0`。已读取实际声明及证明体，许可证为 Apache-2.0。
+- 查询：GitHub `padicValNat mod`、`padicValNat eq_of`、`valuation add_eq_min`、`map_add_eq_min`、`f3_pat1_pattern_of_mod729`；锁定源码与当时最新主线 `a79b0d211ae2978372e1408be7162e0710f589da` 对照。最终七值定理在已查范围未找到现成实现。
+
+| 缺口 | 已核验复用源 | 前提与决定 |
+|---|---|---|
+| 同余传递整除 | [`Nat.ModEq.dvd_iff`](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Nat/ModEq.lean)；blob `89b9538904c468cdd94f8cd1613fb1fea8c9700d` | `a≡b [MOD m]`、`d∣m` 给出 `d∣a ↔ d∣b`；直接复用 |
+| 幂整除与赋值 | [`padicValNat_dvd_iff_le`](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/NumberTheory/Padics/PadicVal/Basic.lean)；blob `09e4fe43670b683a56a386ff184228b0894fe2d3` | 素数实例及非零输入；直接复用，不能对总化零点遗漏前提 |
+| 项目赋值桥梁 | `valuation_eq_padicValNat` / `v3_eq_padic` | 保留项目 `v3` 定义，仅薄适配 |
+| 符号与有限运算 | 项目 `f3_of_mod_three_one/two`、mathlib `Nat.ModEq` 运算 | 补未覆盖局部组合；不引入新依赖 |
+
+本地未安装 Lean/Lake，构建、公理传递闭包及回归由现有 GitHub Actions 的精确提交验证。源码读取及有限检查不是内核验证；状态以 PR 的精确 SHA 与运行链接为准。
+
+## 2026-09-30：PAT 全局依赖边界
+
+查找最终等价目标优先：GitHub `Green Tao`；网络/社区 `Lean formalization linear equations in primes`、`Lean Green-Tao formalization`、`site:leanprover.zulipchat.com Green Tao primes`。已查范围未核验到可访问、可重用的 GT10 Corollary 1.7 复杂度至多 2 素数线性形式渐近的完整 Lean 源码。
+
+[`lean-eval-submissions/results/vilin97.json`](https://github.com/leanprover/lean-eval-submissions/blob/main/results/vilin97.json) 记录任意长素数等差数列的接受结果，包括 `Vilin97/lean-eval-green-tao@0c5d3337c3ebb59c318ab9030e31b835826141f8` 与 `AxiomMath/lean-eval-submissions-final@b092f7455ac0cf0c405e42fbb669ef8144de9fd9`，但标记 `public:false`；前者源码读取返回 404。源码、许可证、精确前提和传递信任未能核验。任意长等差数列也不自动给出本项目指定同余条件的二参数渐近。
+
+决定：保持 EXT-GT2 为外部未解决依赖；不添加文献公理或同名假设，不将 `PAPER-AUDITED` 降称猜想，也不将局部模式称为主结果 `LEAN-PROVED`。先形式化已核验复用范围内的 PAT-L1–3。
