@@ -6740,8 +6740,48 @@
       "formalization_complete": false,
       "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
       "remaining": [
-        "logarithmic expectation bound for actual maximum",
-        "moving random configurations",
+        "explicit confidence-parameter corollary",
+        "moving configurations",
+        "full signed difference law",
+        "prime transfer"
+      ]
+    },
+    "REC-L7-ACTUAL-JOINT-MEAN": {
+      "status": "LEAN-PROVED: exact logarithmic expectation of actual joint maximum, almost-sure finite waiting and actual matrix recovery",
+      "module": "OmegaBalance/F3JointWaitingMean.lean",
+      "declarations": [
+        "f3JointTailEnvelope_nonneg",
+        "f3JointTailEnvelope_antitone",
+        "f3JointTailEnvelope_integrable",
+        "f3JointTailEnvelope_integral_le",
+        "f3JointTailEnvelope_tsum_le",
+        "f3JointRootWait_tail_measurable",
+        "f3JointRootWait_toENNReal_eq_tsum",
+        "f3JointRootWait_measurable_toENNReal",
+        "f3JointRootWait_lintegral_eq_tsum",
+        "f3SharedRootConfig_unitHaar_jointWait_mean_le",
+        "f3SharedRootConfig_unitHaar_jointWait_finite_ae",
+        "f3SharedRootConfig_unitHaar_matrix_recover_ae"
+      ],
+      "verified_code_sha": "1b9a0d63b4c2be6d063dda68a60f1ceffa7cf130",
+      "verified_tree": "de59e407b238b301cafa9474a4babeb9cb553d58",
+      "successful_code_runs": [
+        36704236926,
+        36704245738
+      ],
+      "project_declarations": 737,
+      "required_external_producer": 1,
+      "source_files": 110,
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "explicit confidence-parameter corollary",
+        "moving configurations",
         "full signed difference law",
         "prime transfer"
       ]
