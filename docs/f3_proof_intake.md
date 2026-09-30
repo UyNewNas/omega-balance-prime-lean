@@ -79,3 +79,41 @@ PAT局部L1–3已通过代码5f94116a全门禁并合入59be8b23；ROOT4归一�
 恢复后的源码与覆盖检查本身不构成内核证明；其后的独立精确CI记录如下。
 
 本批代码564bb498已在精确push36671721342与PR36671762437通过全部门禁；641条声明仅标准公理，98源文件与覆盖通过。只更新确定性截断矩阵/阈值关系的Lean覆盖，原始来源水位与概率节点保持不变。
+
+
+## 2026-09-30 07:30 UTC bounded refresh and REC finite-batch implementation
+
+After the 07:28 full fetch, 165 actual remote branch heads were compared with
+the original intake watermark: among original sources only master changed
+to `0bd5333e92b429306ffb139728c04cd4a1ee796b`; original research heads are
+unchanged. The all-issues query updated since 06:38 returned only our PR47/51.
+No new external paper intake was found in this bounded refresh. Original
+mathematical source watermarks remain unchanged; this does not claim another
+full reading of every research file.
+
+The existing REC four-file package was reread for the next implementation
+slice: theorem 2.3 / equation (2.7), using theorem 2.1 / (2.3) and the existing
+Proposition 2.2 scan. `F3RootBatchHaar.lean` adds 10 candidate declarations for
+actual fixed-root finite-batch probability under the genuine finite product
+of unit Haar measures, including T=0 and the unchanged scan/model wrappers.
+This is a new implementation of an already accepted source, not a new paper
+or source-watermark advance. Local 694+1 coverage, source and finite checks
+are not kernel validation; new exact-head CI remains pending. Infinite
+waiting time, its mean, moving random configurations, union bounds and prime
+sampling remain open. [Exact scope](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l6-fixed-root-finite-batch-candidate).
+
+## 2026-09-30 08:17 UTC：固定根有限批次概率已通过精确 CI
+
+代码 `c863b99d1ba71c4a63e9b555e36bb457e0918bef` 的
+[push 36684973082](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36684973082) 与
+[PR 36685062948](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36685062948)
+全部通过。实际公理日志为695项（694条项目声明+1条必需上游产生器），仅标准三公理；
+106个项目源文件、650个依赖源码/固定版本检查、一对一覆盖、内核回归、
+144240有限检查均成功。独立专项源码/数学复核确认实际归一化 Haar、真实有限乘积、
+共享单次参数、T=0及既有扫描接口，没有循环概率假设。
+
+本节只升级 `F3RootBatchHaar.lean` 已列出的10条声明，得到固定实际单位根的
+有限批次失败/扫描未知概率 `(1-3^(-L))^T`。原始完整配置的固定模型包装保留全部
+前提和无限根点；未构造无限单边等待变量、未证明其均值、移动随机配置、
+多对联合恢复界或素数传递。此前 candidate/pending 文字是实现历史。
+最终文档提交仍单独执行完整CI，原始 proof 来源水位不因本次实现而改变。
