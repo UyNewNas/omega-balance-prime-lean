@@ -81,9 +81,8 @@ REC最终目标在已查GitHub精确名 `rootDepth_min_eq_distance_of_ne` / `tru
 与所查锁定版本相同；已查 mathlib PR 无等同目标候选。库源码为 Apache-2.0，
 当前只调用原依赖的接口，没有移植外部证明文件或增添新包。最终声明的定义域为真实
 `ℚ_[3]`；一般适配器允许任意 p-adic 点，纸面 wrapper 显式保留 `F3SharedRootConfig`、
-样本为单位、固定基础深度及逐对真实根距固定。没有假设扫描所得矩阵等于目标，
+样本为单位、每个配置的正基础深度及逐对真实根距固定。没有假设扫描所得矩阵等于目标，
 没有将单位域概率律写作前提。
 
-结果：`F3RootReconstruction.lean` 的 10 条新声明待精确 head CI；本地 source/coverage
-检查通过（97 文件、630 条一对一），本地无 Lean/Lake，未执行内核或实际公理输出。
-[完整映射与剩余项](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l5-有限矩阵与根簇候选尚未执行-lean)。
+结果：`F3RootReconstruction.lean` 的10条新声明已由精确代码 c2fe3c4 的 push36667493101 和 PR36667536541 完整CI核验：630条只含标准公理、97文件无逃逸、精确覆盖及全部构建/回归门禁通过。最终文档头另验CI，REC完整概率主结果仍未完成。
+[完整映射与剩余项](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l5-有限矩阵与根簇已通过精确-ci)。

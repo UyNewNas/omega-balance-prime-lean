@@ -482,10 +482,10 @@ run `36299729796` 均成功；565 declarations 仅标准 Lean axioms，86 Lean f
 完成候选内容：有限列表的首个不等证书、未知的精确刻画、允许根移动但真实距离固定的
 扫描正确性/完备性、完整 Option 距离矩阵（无限对角）、真实 p-adic 根的阈值等价关系及
 随阈值细化、恢复矩阵的根簇测试和纸面模型包装。精确声明与纸面节点见
-[REC 形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l5-有限矩阵与根簇候选尚未执行-lean)。
+[REC 形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l5-有限矩阵与根簇已通过精确-ci)。
 
 外部查重后直接复用 Lean 4.34 `List.findSome?` 的已读源 API、既有单对证书及
 锁定 mathlib 的 `Setoid`/`AddValuation` 接口；没有升级工具链或增加依赖。
-本地 source audit 97 文件、coverage 630/630 通过；容器没有 Lean/Lake，代码仍等待精确 CI。
+代码 c2fe3c4 的精确 push36667493101 与 PR36667536541 已全门禁成功：630条标准公理、97文件源码守卫、一对一覆盖及全部回归。REC-L5仅上述确定性矩阵/阈值分区范围已核验；最终文档头另验CI。
 没有闭合随机等待时间、联合概率、被动下界、截断矩阵/采样或素数模型传递；
 ROOT/PAT/RUN 及其它已接收证明任务的未完成部分保持开放。

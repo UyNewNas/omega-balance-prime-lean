@@ -45,7 +45,7 @@
 代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` 的 [push Lean run 36662676882](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36662676882) 和 [PR Lean run 36662680539](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36662680539) 均通过：620条声明仅标准公理、96源文件、一对一覆盖、三组内核回归与144240有限检查。独立专项复核确认p-adic零点∞、等值未饱和未知、两类有效证书及模型前提非真空。仅升级上述确定性局部节点；REC完整概率/采样主结论仍未完成。此后的文档head再次执行完整CI。
 
 
-## 2026-09-30 REC-L5 有限矩阵与根簇候选（尚未执行 Lean）
+## 2026-09-30 REC-L5 有限矩阵与根簇（已通过精确 CI）
 
 基线 master `5a622dc4e90db25dbc21f926de873be17372ed39`；数学来源为本包
 [命题 2.2](proof.md#命题-22无误判的证书算法) 与 REC-L5。
@@ -63,7 +63,7 @@
 | `rootClusterSetoid_refines` | REC-L5：更高阈值的分区细化更低阈值的分区 |
 | `depthCertificateMatrix_cluster_iff` | REC-L5：恢复矩阵的阈值测试等价于真实根簇关系 |
 | `depthCertificateMatrix_cluster_equivalence` | REC-L5：观测矩阵诱导的阈值关系确为等价关系 |
-| `f3SharedRootConfig_matrix_recover` | REC-L5 纸面定义域：正的固定基础深度、至少两根、互异同模 3 单位根、单位样本；非对角根距有限 |
+| `f3SharedRootConfig_matrix_recover` | REC-L5 纸面定义域：每个配置正的基础深度、至少两根、互异同模 3 单位根、单位样本；非对角根距有限 |
 
 算法仅接收有限观测编号列表及其带标签超额深度 `R`，不接收根或真实距离矩阵。
 扫描返回距离值；首个观测及其编号由 `depthCertificateScan_first` 的存在性前缀见证，
@@ -77,7 +77,9 @@
 也未形式化由距离矩阵计算全部精确联合深度概率。REC-L3、L6–L10、L12–L13、
 截断矩阵扫描、整数素数乘积的根构造及固定精度素数传递继续开放。
 全部 10 条 theorem 已一对一登记 Audit；本地源码守卫（97 文件）和覆盖检查（630/630）通过。
-当前容器无 Lean/Lake，完整内核/回归/公理检查尚未执行；不得用本段升级为 LEAN-PROVED。
+代码 `c2fe3c433d69d6d1ef3fd8fd371fca08c8db184d` 的 [push run 36667493101](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36667493101) 与 [PR run 36667536541](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36667536541) 均已完整成功：实际构建、内核回归、630条标准公理声明、97文件源码守卫、一对一覆盖、144240有限检查。仅本节10条确定性声明登记为已核验；完整REC主结果仍未完成。最终文档头另跑全门禁。
 
 [持续任务与范围](../../../f3_formalization_tasks.md#2026-09-30rec-l5-有限矩阵与阈值根簇候选)
 · [外部复用门](../../../f3_external_reuse.md#2026-09-30rec-l5-目标优先查重复用)
+
+矩阵算法的输入是超额深度R，未处理从原始D中估计未知b的问题；各配置的正b由结构保留，矩阵结论不要求它们相等。纸面固定b模型是其特例。
