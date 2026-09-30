@@ -1,5 +1,39 @@
 # F₃ 全量形式化任务清单
 
+## 2026-09-30 07:16 UTC：无条件 RUN 精确验证及最新主线组合
+
+无条件代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 的
+[push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与
+[PR 36679105586](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679105586)
+全部成功。实际日志中 `MaynardBFT.consecutive_primes`、
+`OmegaBalance.bftbPrimeIndexRuns_unconditional`、
+`OmegaBalance.f3PrimeIndexRunStarts_infinite_unconditional` 均仅依赖
+`propext`、`Classical.choice`、`Quot.sound`。完整产生器、项目构建、内核回归、
+650 个依赖模块源码/固定版本检查、99 个项目文件、646+1 精确审计和144240有限检查通过。
+
+最终接口是：每个 L≥1 存在仅依赖 L 的自然数 C，对每个非零整数 c，
+全体素数枚举 `Nat.nth Nat.Prime` 中有无限多个起始下标 r，使连续 L 个素数
+的 F₃ 全为 c，且末首素数之差≤`f3RunModulus c * C`。长度1保留零跨度情形。
+`F3PrimeIndexRunAt` 明确使用全体素数，不是某个筛选子列；原条件接口由实际
+上游定理产生，不再作为未经证明的前提。
+
+新增五条声明：`bftbPrimeIndexRuns_unconditional`、
+`f3PrimeIndexRunStarts_infinite_unconditional`（F3BFTBMaynardAdapter），以及
+`bftb_eventually_log_rpow_le_rpow`、`bftb_eventually_rpow_le_half_rpow_div_rpow_log`、
+`bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log`（F3BFTBCutoff）。
+原始固定 Lean/mathlib、真实参数边界和全部审计门禁保持不变。第三方来源说明
+继续如实标注作者代码许可范围尚未确认；不把署名或沉默解释为许可。
+
+随后真实三方合入已验 Haar 主线 `f45cd8a7586609555e8f307d25c38fee5c105249`，
+保留双方全部数学源码字节及文档。组合候选是684条项目声明+1必需上游产生器、
+105个项目文件；本地15项兼容测试、6项审计规则测试与源码/覆盖检查通过。
+这个新增组合树仍须自己的完整 CI，不能用69c48f9的旧run替代。
+
+原五项目标中的 INF/COR/DEN/LOG 已在主线；RUN 已有无条件内核证明，等待最新
+组合验证与合并。全部接收 proof 任务尚未完成：全局 PAT、REC 等剩余概率/等待律、
+其它登记节点继续开放。单次 Haar 范围已合入 PR51，不扩张为完整 REC 完成。
+
+
 此文件是持续推进的权威任务账本。只有精确提交实际通过 Lean 构建、回归、公理、源码与声明覆盖门禁的结果才标记为完成；纸面推导、Python 有限验算或外部文献本身不算 Lean 证明。
 
 ## 最新组合验证（2026-09-30，优先于历史状态行）
@@ -531,3 +565,52 @@ RUN 最新实际CI36671388031已通过 BFTExtraction，但 BFTParameters 两处�
 公开命题与信任门禁；先验两个有限模块，再验完整产生器。15项兼容测试及源码/覆盖
 检查通过，新候选仍等待精确 Actions 编译。Haar 概率另在 draft PR51 独立验证，
 不把其候选或运行中的CI登记为已证。其余接收清单继续开放。
+
+## 2026-09-30 REC-L3 actual Haar probability candidate
+
+- Source: accepted REC proof §1/theorem2.1 and original shared-product source
+  a1a724b6 §3; [exact map](proofs/f3/prime_depth_reconstruction/formalization.md)
+- Minimal licensed reuse: [decision and pins](f3_external_reuse.md#2026-09-30-rec-l3-actual-haar-law-target-first-reuse-gate)
+- Candidate files: PadicIntHaar / F3UnitHaar / F3RootDepthHaar; concrete normalized
+  Haar, actual units of mass2/3, normalized restriction, actual-depth residue
+  equivalence including∞, positive single-root tail
+- Pending: exact layers, unequal-depth mass, null roots and signed difference,
+  original model wrapper, independent waiting-law and prime transfer
+- Validation: no local Lean/Lake; source and coverage only until exact-head CI
+
+### REC-L3 extension checkpoint
+
+Candidate files additionally F3RootDepthLaw (8 declarations), F3SharedRootHaar
+(6), F3RootDepthNull (3): actual finite shells, unequal-depth mass, unchanged
+model wrappers and null root points. All 38 additions to baseline 641 are audited.
+Signed Δ, independent waiting/means, full joint law and prime transfer remain open.
+First actual CI 8453214e/36675740452 failed on pinned import/complement namespace/
+numeral casts; the minimal 5-declaration upstream port compiled. Exact errors fixed
+without pin changes; new 38-declaration tree awaits its own full CI.
+
+
+### 2026-09-30 06:38 UTC intake refresh and actual Haar CI
+
+[Machine-readable refresh](../reports/f3_intake_refresh_2026-09-30_0638.json):
+165 actual remote branches checked. All original research heads are unchanged;
+changes are confined to master and our ten implementation/correction branches.
+Issues updated since 05:02 UTC are PR47, PR50 and PR51. Original mathematical
+intake watermarks are preserved; a candidate CI run is not proof acceptance.
+
+The actual Haar candidate at remote f38acf309530f066b5f8340b92e19b48443b81cf
+passed compilation of PadicIntHaar and F3UnitHaar, but run36679603580 failed in
+F3RootDepthHaar on a cast-lemma name, the modulus-one subsingleton equality and
+an insufficiently typed monotonicity cast. The following source fix addresses
+these exact elaboration errors without changing statements, assumptions or pins.
+The whole 679-declaration candidate still awaits complete exact-head verification.
+
+## 2026-09-30 07:05 UTC：实际 Haar 单次概率内核验证
+
+PR51 代码 dc063232 的 push36681283200 与 PR36681288176 已全部通过：
+679 条标准公理声明、104 源文件、精确 Audit 覆盖及全部构建/回归。
+六个模块共38条新增声明证明实际单位域归一化、单根尾/层质量、有限根距下
+不等深度质量3^-L、原配置包装和无限根点零测。CC0 五声明移植及其全部适配器
+现在具有本项目固定 Lean/mathlib 的实际传递公理验证，不再仅为源码兼容猜测。
+[精确声明及范围](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30rec-l3-实际-haar-单次概率已通过精确-ci)。
+独立等待律/均值、完整有符号差分布、联合恢复概率及素数传递仍未完成；
+独立专项源码复核与最终文档头 CI 是合并前剩余门禁。

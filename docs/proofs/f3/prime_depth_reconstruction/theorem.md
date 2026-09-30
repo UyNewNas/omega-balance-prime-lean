@@ -5,7 +5,7 @@
 | 结果 ID | \`F3-REC-1\` 至 \`F3-REC-5\` |
 | 状态 | \`PAPER-AUDITED\` |
 | 来源 | [prime_depth_reconstruction.md](../../../f3_balance_research/prime_depth_reconstruction.md) |
-| Lean 状态 | 尚未形式化 |
+| Lean 状态 | 部分已通过精确 CI：确定性证书/矩阵及实际 Haar 单次概率；完整结果仍未完成，见 formalization.md |
 | 前置模型 | 固定共享根深度模型与固定精度全素数分布 |
 
 [PDF](paper.pdf) · [完整证明](proof.md) · [脚手架](scaffolding.md) · [形式化计划](formalization.md)

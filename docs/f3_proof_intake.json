@@ -6475,6 +6475,101 @@
         36667493101,
         36667536541
       ]
+    },
+    "F3-REC-1-HAAR": {
+      "paper_node": "REC-L3; proof theorem2.1 equation(2.3), single-root laws and null points only",
+      "paper_source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "verified_code_sha": "dc0632322c3de631a167f6cb7308d01e7b0069fc",
+      "successful_code_runs": [
+        36681283200,
+        36681288176
+      ],
+      "status": "LEAN-PROVED for these38 declarations only; full REC-1 incomplete",
+      "modules": {
+        "PadicIntHaar": [
+          "padicInt_fiber_translate",
+          "padicInt_measurable_zero_fiber",
+          "padicInt_measurable_fiber",
+          "padicInt_haar_fiber_eq_zero_fiber",
+          "padicInt_haar_fiber"
+        ],
+        "F3UnitHaar": [
+          "f3PadicHaar_univ",
+          "f3PadicInt_not_isUnit_iff",
+          "f3PadicUnitSet_compl",
+          "f3PadicUnitSet_measurable",
+          "f3PadicHaar_units",
+          "f3UnitHaar_univ",
+          "f3UnitHaar_units",
+          "f3UnitHaar_nonunits",
+          "f3PadicInt_unit_fiber_subset",
+          "f3UnitHaar_fiber"
+        ],
+        "F3RootDepthHaar": [
+          "rootDepth_ge_iff_toZModPow",
+          "f3RootDepthTail_eq_fiber",
+          "f3RootDepthTail_measurable",
+          "f3RootDepthTail_zero",
+          "f3RootDepthTail_antitone",
+          "f3UnitHaar_rootDepth_ge"
+        ],
+        "F3RootDepthLaw": [
+          "f3RootDepthLayer_eq_sdiff",
+          "f3RootDepthLayer_measurable",
+          "f3UnitHaar_rootDepth_eq",
+          "f3UnitHaar_rootDepth_zero",
+          "rootDepth_nat_lt_iff",
+          "rootDepth_ne_iff_mem_tail_union",
+          "f3RootDepthTail_disjoint",
+          "f3UnitHaar_rootDepth_ne"
+        ],
+        "F3SharedRootHaar": [
+          "f3SharedRootConfig_root_norm",
+          "f3SharedRootUnit_coe",
+          "f3SharedRootUnit_isUnit",
+          "f3SharedRootConfig_unitHaar_depth_ge",
+          "f3SharedRootConfig_unitHaar_depth_eq",
+          "f3SharedRootConfig_unitHaar_depth_ne"
+        ],
+        "F3RootDepthNull": [
+          "f3PadicHaar_singleton",
+          "f3UnitHaar_singleton",
+          "f3UnitHaar_rootDepth_top"
+        ]
+      },
+      "new_theorem_count": 38,
+      "source_audit_files": 104,
+      "audit_coverage_count": 679,
+      "formalization_complete": false,
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "signed integer difference law",
+        "independent whole-sample waiting law and expectation",
+        "joint recovery probabilities",
+        "prime-product construction and prime transfer"
+      ]
+    },
+    "RUN-1/2": {
+      "status": "Unconditional exact kernel verification at69c48f9; newest Haar combined tree pending its own CI and merge",
+      "verified_code_sha": "69c48f9e74426ef8004a761752c59d524f2d7fdb",
+      "successful_code_runs": [
+        36679099690,
+        36679105586
+      ],
+      "producer": "MaynardBFT.consecutive_primes",
+      "final_theorem": "OmegaBalance.f3PrimeIndexRunStarts_infinite_unconditional",
+      "quantifiers": "For every L>=1 exists C:Nat depending only on L; every c:Int nonzero has infinitely many full-prime start indices with constant F3 and span <= f3RunModulus(c)*C",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "source_closure_modules": 650,
+      "verified_project_count": 646,
+      "required_external_count": 1,
+      "new_combined_project_count": 684,
+      "new_base": "f45cd8a7586609555e8f307d25c38fee5c105249",
+      "whole_task_complete": false
     }
   }
 }

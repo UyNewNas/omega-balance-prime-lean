@@ -223,7 +223,7 @@ $$
 | 修正间距 | 输入层级不同时，修正间距的赋值恰为较小层级；在整数中计算，不截断负差 | [`f3_adjusted_gap_valuation`](OmegaBalance/F3Arithmetic.lean) |
 | 固定和反射 | $a,b>1,3\nmid a,3\mid a+b$ 且 $\lvert F_3(a)\rvert<v_3(a+b)$ 时，$F_3(b)=-F_3(a)$；总和可为奇数 | [`f3_reflection`](OmegaBalance/F3Arithmetic.lean) |
 
-本轮另有 [8 条内核回归证明](OmegaBalance/F3Examples.lean)，以及 [千万以内计算报告](reports/f3_corollaries_1e7.txt)：144,240 项有限检查与 11 组边界测试。有限检查不代替 Lean 证明；等差数列素数密度与连续素数同值段只在文档中引用外部定理，没有添加为 Lean 公理。
+本轮另有 [8 条内核回归证明](OmegaBalance/F3Examples.lean)，以及 [千万以内计算报告](reports/f3_corollaries_1e7.txt)：144,240 项有限检查与 11 组边界测试。有限检查不代替 Lean 证明；早期版本的等差数列素数密度与连续素数同值段只在文档中引用外部定理；此句为历史边界，当前已验证接口和仍待完成的主线组合检查见下方2026-09-30更新，没有添加为 Lean 公理。
 
 复现完整检查（先安装固定工具链并获取依赖）：
 
@@ -234,7 +234,7 @@ python3 scripts/verify.py
 ```
 
 RUN 兼容候选使用固定上游源码、原始补丁检查和精确哈希保护；依赖更新请使用上述包装入口。
-当前新增的无条件 RUN 适配器仍须精确 head CI 完成内核构建和 607 项公理审计，不能以源码检查代替通过。
+无条件 RUN 适配器已在精确代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 通过完整内核构建及647项标准公理审计（646条项目声明与1条上游产生器）。最新 Haar 主线组合为684+1条，仍须其自身精确 CI，不能用旧 run 代替。
 兼容范围与许可证边界见 [外部复用记录](docs/f3_external_reuse.md#2026-09-30-run-dependency-compatibility-repair-candidate-not-kernel-verified)。
 
 ## 已审计书面证明（尚未形式化）
@@ -320,6 +320,8 @@ F3D-DEG：[PDF 版](docs/proofs/f3d/degree_tensorization/paper.pdf) · [完整�
 
 `python3 scripts/verify.py` 现在也检查第三组 Lean 回归模块和 [公理审计覆盖](scripts/check_audit_coverage.py)：每条项目 theorem/lemma 必须登记一次。
 
-**2026-09-30 验证更新：** 组合提交 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 已通过完整 Lean 门禁：原始整数无限相关核、`r>0` 的均方近似周期（平移1单独处理）、真实三进对数的收敛/等距/乘法同态、精确素数层计数渐近以及17倍条件比例均已有证明。正负层与尾计数另由 `F3PrimeRelativeDensity.lean` 明确除以真实全体素数计数，比例接口也已在代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` 通过完整门禁。无条件连续素数同值长串仍未完成。
+**2026-09-30 验证更新：** 组合提交 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 已通过完整 Lean 门禁：原始整数无限相关核、`r>0` 的均方近似周期（平移1单独处理）、真实三进对数的收敛/等距/乘法同态、精确素数层计数渐近以及17倍条件比例均已有证明。正负层与尾计数另由 `F3PrimeRelativeDensity.lean` 明确除以真实全体素数计数，比例接口也已在代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` 通过完整门禁。无条件连续素数同值长串及有界跨度已在代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 通过内核和完整信任审计；最新 Haar 主线组合的验证与合并仍待完成。
 
 精确 [Lean run 36660504382](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36660504382) 与 push run 36660499386 均成功：601条公理/覆盖、94个源文件、144240项有限回归。当前新文档提交仍以自己的后续CI为准。完整 [来源接收账本](docs/f3_proof_intake.md) 区分已扫描、纸面与内核状态。
+
+**当前 RUN 精确证据：** [push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与 [PR 36679105586](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679105586) 均成功。`f3PrimeIndexRunStarts_infinite_unconditional` 覆盖每个非零整数值及每个正长度，使用全体素数序列，跨度常数对固定长度统一。全部新增书面证明的形式化仍有未完成节点，见[当前任务](docs/f3_formalization_tasks.md)。

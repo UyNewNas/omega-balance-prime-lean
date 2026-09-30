@@ -1,5 +1,39 @@
 # F₃ 深层推论：形式化覆盖与边界
 
+## 2026-09-30 07:16 UTC：无条件 RUN 精确验证及最新主线组合
+
+无条件代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 的
+[push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与
+[PR 36679105586](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679105586)
+全部成功。实际日志中 `MaynardBFT.consecutive_primes`、
+`OmegaBalance.bftbPrimeIndexRuns_unconditional`、
+`OmegaBalance.f3PrimeIndexRunStarts_infinite_unconditional` 均仅依赖
+`propext`、`Classical.choice`、`Quot.sound`。完整产生器、项目构建、内核回归、
+650 个依赖模块源码/固定版本检查、99 个项目文件、646+1 精确审计和144240有限检查通过。
+
+最终接口是：每个 L≥1 存在仅依赖 L 的自然数 C，对每个非零整数 c，
+全体素数枚举 `Nat.nth Nat.Prime` 中有无限多个起始下标 r，使连续 L 个素数
+的 F₃ 全为 c，且末首素数之差≤`f3RunModulus c * C`。长度1保留零跨度情形。
+`F3PrimeIndexRunAt` 明确使用全体素数，不是某个筛选子列；原条件接口由实际
+上游定理产生，不再作为未经证明的前提。
+
+新增五条声明：`bftbPrimeIndexRuns_unconditional`、
+`f3PrimeIndexRunStarts_infinite_unconditional`（F3BFTBMaynardAdapter），以及
+`bftb_eventually_log_rpow_le_rpow`、`bftb_eventually_rpow_le_half_rpow_div_rpow_log`、
+`bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log`（F3BFTBCutoff）。
+原始固定 Lean/mathlib、真实参数边界和全部审计门禁保持不变。第三方来源说明
+继续如实标注作者代码许可范围尚未确认；不把署名或沉默解释为许可。
+
+随后真实三方合入已验 Haar 主线 `f45cd8a7586609555e8f307d25c38fee5c105249`，
+保留双方全部数学源码字节及文档。组合候选是684条项目声明+1必需上游产生器、
+105个项目文件；本地15项兼容测试、6项审计规则测试与源码/覆盖检查通过。
+这个新增组合树仍须自己的完整 CI，不能用69c48f9的旧run替代。
+
+原五项目标中的 INF/COR/DEN/LOG 已在主线；RUN 已有无条件内核证明，等待最新
+组合验证与合并。全部接收 proof 任务尚未完成：全局 PAT、REC 等剩余概率/等待律、
+其它登记节点继续开放。单次 Haar 范围已合入 PR51，不扩张为完整 REC 完成。
+
+
 ## 2026-09-30 当前覆盖更新（优先于下方历史轮次）
 
 组合代码 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 的 [PR Lean run 36660504382](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36660504382) 与 [push run 36660499386](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36660499386) 全部通过。601条项目声明的实际公理输出仅标准Lean公理；94源文件与一对一覆盖通过，144240有限回归通过。锁定Lean4.34.0/mathlib5ed2965不变，实际解析的ANT099d3726依赖清单已提交。下方“尚未完成”描述是2026-09-24历史，不再用作当前状态。

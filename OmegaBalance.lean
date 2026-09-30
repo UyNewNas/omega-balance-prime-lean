@@ -96,3 +96,11 @@ import OmegaBalance.F3RootCertificates
 import OmegaBalance.F3RootReconstruction
 
 import OmegaBalance.F3RootTruncatedReconstruction
+
+import OmegaBalance.PadicIntHaar
+import OmegaBalance.F3UnitHaar
+import OmegaBalance.F3RootDepthHaar
+
+import OmegaBalance.F3RootDepthLaw
+import OmegaBalance.F3SharedRootHaar
+import OmegaBalance.F3RootDepthNull

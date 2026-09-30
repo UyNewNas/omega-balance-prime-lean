@@ -382,3 +382,105 @@ is reported early. All later producer, project, regression, axiom, source and
 coverage gates remain. The precise global definitional-reduction mechanism
 is not claimed to be fully localized. The source notice and unconfirmed
 authored-source license scope remain accurately recorded.
+
+## 2026-09-30 REC-L3 actual Haar law: target-first reuse gate
+
+Starting tree: master `8548f385e095bf399c27bc3388f8128e4c7fc93c` (641 verified
+project declarations). The accepted paper node is REC-L3, proof §1 and theorem
+2.1, not a new conjecture. Its actual source normalization was also read at
+[prime_product_correlations §3](https://github.com/UyNewNas/omega-balance-prime-lean/blob/a1a724b6083e223ee407046c17dc8c90b036150f/docs/f3_balance_research/prime_product_correlations.md),
+blob `0642a3a41c6ce854cb4038250d17d27edff3dfbf`.
+
+Target-first searches included PadicInt Haar measure, p-adic valuation geometric
+distribution Lean, padic measure ball, toZModPow addHaar, measure_toZModPow_fiber,
+PadicInt volume_closedBall, PadicInt measure IsUnit, firstSuccess geometric, and
+mathlib PR / Zulip p-adic Haar equivalents. Current mathlib master was resolved
+as `380f2aafb622cb2c1c93dac545b6389083c68c51`; no complete REC law was located in
+the inspected sources. This is a bounded negative finding, not universal absence.
+
+Selected minimal closure: Ralf Stephan, in collaboration with Claude Code,
+[PadicIntHaar.lean at 7cc2da3f9219e084ee656c096c2055922f4b267c](https://github.com/rwst/lean-code/blob/7cc2da3f9219e084ee656c096c2055922f4b267c/ForMathlib/NumberTheory/PadicIntHaar.lean),
+CC0 1.0 Universal. Its complete 100-line source and license were inspected.
+Four private helpers plus its public theorem are ported with original attribution
+and URL, all renamed to public `OmegaBalance` declarations and individually
+registered in Audit. All four imports are mathlib; the external repository's
+other potentially axiomatic files are not imported. The actual theorem partitions
+all p-adic integers into finite disjoint translated fibers and uses Haar
+translation invariance and total mass one; it does not assume ball masses.
+
+Upstream uses Lean4.34.0-rc2 / mathlib169f50d4; this project retains Lean4.34.0 /
+mathlib5ed2965256430c3649e86755f9576b54eca72435. Exact source comparisons found
+RingHoms, ProperSpace and Haar/Basic identical, and the used PadicIntegers and
+Group/Measure APIs unchanged. No dependency is added or upgraded. Exact upstream
+commit had zero GitHub Actions runs; this is source compatibility evidence only,
+not executed upstream or project kernel verification.
+
+Alternatives read: the same repository's larger ambient `PadicHaar.lean`, and
+ImperialCollegeLondon/FLT `eb6df2b018f81920cd48dd510417f0b7790c305e` Haar setup
+(Apache-2.0). Neither larger closure is needed. `Padics.Measure.Basic` is
+p-adic-valued measure theory and does not prove this real probability law.
+An algebraically defined geometric PMF is not an actual Haar pushforward proof.
+
+The local adapters instantiate concrete `addHaarMeasure ⊤`, prove genuine
+unit-domain mass 2/3 and normalize its restriction, and bridge actual WithTop ℤ
+rootDepth to residue fibers with the zero/infinite case explicitly separated.
+[Implementation map](proofs/f3/prime_depth_reconstruction/formalization.md) and
+[task ledger](f3_formalization_tasks.md) record exact coverage and open work.
+No Lean/Lake executable is present locally; this candidate awaits exact-head CI.
+
+Continuation: root-nullity additionally reuses locked mathlib
+`Mathlib/Basic/ENNReal/Inv.lean: ENNReal.exists_inv_two_pow_lt` (inverse powers
+of 2 approach 0) and `Mathlib/Algebra/Order/Monoid/Unbundled/Pow.lean:
+pow_le_pow_left'`, comparing proved 3^-n fiber masses to 2^-n. Both exact sources
+were read at 5ed2965256430c3649e86755f9576b54eca72435. Restriction preserves the
+proved singleton zero. Original model wrappers reuse PadicInt.mkUnits/mkUnits_eq;
+all assumptions and actual ℚ_[3] roots are retained. Exact layers and unequal
+events reuse the already verified rootDepth_min lemmas and actual Haar tails.
+The first project run 36675740452 compiled the upstream 5-declaration port, then
+failed on local import/complement namespace/numeral cast elaboration. This is
+recorded as failure, not a successful full trust audit. Fixed core Omega import
+was verified at leanprover/lean4 v4.34.0 src/Lean/Elab/Tactic/Omega.lean.
+
+## 2026-09-30 07:05 UTC：实际 Haar 单次概率内核验证
+
+PR51 代码 dc063232 的 push36681283200 与 PR36681288176 已全部通过：
+679 条标准公理声明、104 源文件、精确 Audit 覆盖及全部构建/回归。
+六个模块共38条新增声明证明实际单位域归一化、单根尾/层质量、有限根距下
+不等深度质量3^-L、原配置包装和无限根点零测。CC0 五声明移植及其全部适配器
+现在具有本项目固定 Lean/mathlib 的实际传递公理验证，不再仅为源码兼容猜测。
+[精确声明及范围](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30rec-l3-实际-haar-单次概率已通过精确-ci)。
+独立等待律/均值、完整有符号差分布、联合恢复概率及素数传递仍未完成；
+独立专项源码复核与最终文档头 CI 是合并前剩余门禁。
+
+## 2026-09-30 07:16 UTC：无条件 RUN 精确验证及最新主线组合
+
+无条件代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 的
+[push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与
+[PR 36679105586](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679105586)
+全部成功。实际日志中 `MaynardBFT.consecutive_primes`、
+`OmegaBalance.bftbPrimeIndexRuns_unconditional`、
+`OmegaBalance.f3PrimeIndexRunStarts_infinite_unconditional` 均仅依赖
+`propext`、`Classical.choice`、`Quot.sound`。完整产生器、项目构建、内核回归、
+650 个依赖模块源码/固定版本检查、99 个项目文件、646+1 精确审计和144240有限检查通过。
+
+最终接口是：每个 L≥1 存在仅依赖 L 的自然数 C，对每个非零整数 c，
+全体素数枚举 `Nat.nth Nat.Prime` 中有无限多个起始下标 r，使连续 L 个素数
+的 F₃ 全为 c，且末首素数之差≤`f3RunModulus c * C`。长度1保留零跨度情形。
+`F3PrimeIndexRunAt` 明确使用全体素数，不是某个筛选子列；原条件接口由实际
+上游定理产生，不再作为未经证明的前提。
+
+新增五条声明：`bftbPrimeIndexRuns_unconditional`、
+`f3PrimeIndexRunStarts_infinite_unconditional`（F3BFTBMaynardAdapter），以及
+`bftb_eventually_log_rpow_le_rpow`、`bftb_eventually_rpow_le_half_rpow_div_rpow_log`、
+`bftb_eventually_floor_rpow_le_floor_half_rpow_div_rpow_log`（F3BFTBCutoff）。
+原始固定 Lean/mathlib、真实参数边界和全部审计门禁保持不变。第三方来源说明
+继续如实标注作者代码许可范围尚未确认；不把署名或沉默解释为许可。
+
+随后真实三方合入已验 Haar 主线 `f45cd8a7586609555e8f307d25c38fee5c105249`，
+保留双方全部数学源码字节及文档。组合候选是684条项目声明+1必需上游产生器、
+105个项目文件；本地15项兼容测试、6项审计规则测试与源码/覆盖检查通过。
+这个新增组合树仍须自己的完整 CI，不能用69c48f9的旧run替代。
+
+原五项目标中的 INF/COR/DEN/LOG 已在主线；RUN 已有无条件内核证明，等待最新
+组合验证与合并。全部接收 proof 任务尚未完成：全局 PAT、REC 等剩余概率/等待律、
+其它登记节点继续开放。单次 Haar 范围已合入 PR51，不扩张为完整 REC 完成。

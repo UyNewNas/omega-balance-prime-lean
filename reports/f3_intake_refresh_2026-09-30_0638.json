@@ -1,0 +1,59 @@
+{
+  "observed_at": "2026-09-30T06:38:00Z",
+  "branches": 165,
+  "original_branch_changes": [
+    {
+      "name": "master",
+      "old": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "new": "8548f385e095bf399c27bc3388f8128e4c7fc93c"
+    }
+  ],
+  "own_new_branches": [
+    {
+      "name": "docs/f3d-proof-boundary-corrections",
+      "sha": "dcb30e39d41358451390b4d186b2eca0227beca0"
+    },
+    {
+      "name": "fix/f3-root4-normalization-cloud",
+      "sha": "2358ebf4dfce0c7a3900815b2f9dc2153dc972fe"
+    },
+    {
+      "name": "fix/proof-pdf-writeback-cloud",
+      "sha": "f011eeb58e803fa11629e839f944c37dacd56751"
+    },
+    {
+      "name": "formalize/f3-density-root-certificates",
+      "sha": "280a5701a341075ded0c800738a0b667fe12f5f0"
+    },
+    {
+      "name": "formalize/f3-pat1-local-cloud",
+      "sha": "6725e0f7c616d83d4a4e4f509ebebdb8ee7f0e65"
+    },
+    {
+      "name": "formalize/f3-root-matrix-recovery",
+      "sha": "973e7ef62d946d6e66bee0530c12c37366a265f6"
+    },
+    {
+      "name": "formalize/f3-truncated-root-matrix",
+      "sha": "3504ee967e0e1f4747e3107853a8922272e8bd47"
+    },
+    {
+      "name": "formalize/f3-unit-haar-depth",
+      "sha": "5cc57755099d80ba074b1abe8606df2e3ecee3bd"
+    },
+    {
+      "name": "integrate/f3-verified-analysis-cloud",
+      "sha": "3175ce968957dca07cbfe8007983cf312f924f46"
+    },
+    {
+      "name": "repair/f3-run-compat-cloud",
+      "sha": "69c48f9e74426ef8004a761752c59d524f2d7fdb"
+    }
+  ],
+  "issues_since_0502": [
+    47,
+    50,
+    51
+  ],
+  "interpretation": "Only our implementation branches and master changed. All original research heads unchanged. Updated issues are our PR47,50,51 only. No external proof intake update; original source watermarks preserved. Candidate CI is not proof acceptance."
+}
