@@ -6703,6 +6703,48 @@
         "full signed difference law",
         "prime transfer"
       ]
+    },
+    "REC-L7-ACTUAL-JOINT-TAIL": {
+      "status": "LEAN-PROVED: actual joint max wait, exact full certificate-matrix success iff, choose-two exponential tail only",
+      "module": "OmegaBalance/F3JointWaitingHaar.lean",
+      "declarations": [
+        "f3RootPairs_mem",
+        "f3RootPairs_card",
+        "f3RootDistanceExponent_eq",
+        "f3RootDistanceExponent_pos",
+        "f3RootDistanceExponent_le_max",
+        "f3SharedRootWait_gt_iff",
+        "f3SharedRootWait_le_iff",
+        "f3JointRootWait_gt_iff",
+        "f3JointRootWait_le_iff",
+        "f3JointRootWait_le_iff_matrix_recover",
+        "f3JointRootWait_tail_eq_union",
+        "f3SharedRootConfig_unitHaar_wait_gt_real",
+        "f3SharedRootConfig_unitHaar_wait_gt_le_exp",
+        "f3SharedRootConfig_unitHaar_jointWait_gt"
+      ],
+      "verified_code_sha": "0324861a6b94294421d692203e8847802b1044f4",
+      "verified_tree": "dbbe7e42a1c38aff722b05568ca5c9a957fe69dd",
+      "successful_code_runs": [
+        36700614557,
+        36700618251
+      ],
+      "project_declarations": 725,
+      "required_external_producer": 1,
+      "source_files": 109,
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "logarithmic expectation bound for actual maximum",
+        "moving random configurations",
+        "full signed difference law",
+        "prime transfer"
+      ]
     }
   }
 }
