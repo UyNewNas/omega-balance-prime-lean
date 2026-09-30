@@ -118,15 +118,31 @@ class GiantPowerPatchTests(unittest.TestCase):
         self.assertEqual(entry['kind'], 'proof')
         self.assertEqual(entry['original_sha256'], entry['before_sha256'])
         self.assertEqual(entry['after_sha256'], closure['prepared_sha256'])
-        self.assertEqual(entry['replacements'], [{
-            'old': '  have hzmax : z ≤ n + 2 ^ largeK := by omega\n',
-            'new': '  have hzmax : z ≤ n + 2 ^ largeK :=\n'
-                   '    Nat.le_trans (Nat.le_of_lt hzhi) (Nat.add_le_add_left hbmax n)\n',
-            'count': 1,
-        }])
+        self.assertEqual(len(entry['replacements']), 1)
         hunk = entry['replacements'][0]
-        self.assertEqual(hunk['old'].split(':=')[0], hunk['new'].split(':=')[0])
+        self.assertEqual(hunk['count'], 1)
+        name = 'private theorem no_prime_between_adjacent_filtered_shifts'
+        self.assertTrue(hunk['old'].startswith(name))
+        self.assertTrue(hunk['new'].startswith(name))
+        old_signature = hunk['old'].split(' := by\n', 1)[0]
+        new_signature = hunk['new'].split(' := by\n', 1)[0]
+        # The sole signature text change is the proof of the same Fin index bound.
+        self.assertEqual(old_signature.replace('by omega', 'Nat.lt_of_succ_lt hi'),
+                         new_signature)
+        self.assertEqual(hunk['old'].count('2 ^ largeK'), hunk['new'].count('2 ^ largeK'))
+        self.assertEqual(hunk['new'].count('private theorem '), 1)
+        for tactic in ['omega', 'norm_num', 'positivity', 'simp', 'decide']:
+            self.assertNotRegex(hunk['new'], r'\b' + tactic + r'\b')
+        for proof_term in [
+            'Nat.pow_le_pow_right Nat.zero_lt_two (Nat.succ_le_of_lt hj)',
+            'Nat.lt_of_le_of_lt (Nat.le_add_right n a) hzlo',
+            'Nat.le_trans (Nat.le_of_lt hzhi) (Nat.add_le_add_left hbmax n)',
+            'Nat.not_lt_of_ge (Nat.succ_le_of_lt hajv) hjbv',
+            '(P.orderIsoOfFin hcard).apply_symm_apply',
+        ]:
+            self.assertIn(proof_term, hunk['new'])
         self.assertIsNone(compat.FORBIDDEN.search(hunk['new']))
+
 
 
 class ActualManifestTests(unittest.TestCase):

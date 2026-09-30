@@ -206,3 +206,29 @@ engineering merge gates remain mandatory.
 锁定mathlib5ed2965实际源码：`Mathlib/Topology/Algebra/GroupWithZero.lean` blob `ad409ad08d53ad030bfd8f29cb2825a19b33872e` 的 `Filter.Tendsto.div` 要求分母极限非零；`Mathlib/Algebra/GroupWithZero/Units/Basic.lean` blob `b3148d9bd8bac8cbc1c64edf40b1c0bbb61f2916` 的商约消要求公共除数非零。已分别读完整声明及证明，最新默认源同API仍在（blob4ef88673与9fd9e942），不升级。通过PNT极限1证明分母最终非零，有限初段不强加全局假设。库为Apache2，当前代码独立CI待执行。
 
 REC最终目标在已查GitHub精确名 `rootDepth_min_eq_distance_of_ne` / `truncatedDepthCertificate_sound` 无匹配；直接复用锁定 `AddValuation.map_sub`、`map_add_of_distinct_val`、`map_neg`、`map_sub_swap`、`top_iff`/`ne_top_iff`（`Mathlib/RingTheory/Valuation/Basic.lean` blob73f71ae8fde499401b25db33fd2d826eecfb9c0b），以及真正 `Padic.addValuation : AddValuation ℚ_[3] (WithTop ℤ)` 和 `.apply`（PadicNumbers blob79040472922216be2c0d66793e3b2a3965347e9c）。有限精度只用 `Mathlib/Order/MinMax.lean` 的已读 `min_lt_min_left_iff`、`min_eq_right_iff`。保持∞零点、实际p-adic域和源模型b+R；不以有理数弱化或概率假设代替目标。
+
+### 2026-09-30: remove reflection throughout the private extraction proof
+
+The next exact build, head `939f8600`,
+[run 36665897371](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36665897371),
+job `109730369373`, passed the earlier `hzmax` location but still rejected the
+enclosing private declaration at line 24 with the same `Nat.pow` guard. The
+one-line repair was therefore insufficient. Other `omega` invocations in that
+declaration still had the closed giant bound in their local context; the log
+does not identify which generated subterm caused the remaining rejection.
+
+The guarded replacement now removes every arithmetic-reflection invocation in
+that one private declaration. Fin index bounds use `Nat.lt_of_succ_lt`; the
+power comparison uses `Nat.pow_le_pow_right` and `Nat.succ_le_of_lt`; lower and
+upper interval bounds use direct order composition; and the final index
+contradiction uses `Nat.not_lt_of_ge`. Equality transport and the locked
+[`OrderIso.apply_symm_apply`](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Order/Hom/Basic.lean#L842-L843)
+replace unnecessary simplification. The proposition, original hypotheses,
+`largeK`, and `2 ^ largeK` span are unchanged; only proof terms change. There
+is no new declaration or opaque substitute. Original source SHA guards and
+all kernel safeguards remain. Focused tests check the unchanged proposition
+(up to proof-irrelevant Fin bounds), absence of reflection tactics, exact
+symbolic terms, and all 41 patch round trips plus 650 prepared source hashes.
+These are offline checks; the new exact-head finite-extraction checkpoint,
+producer, library, and full audit still have to pass actual CI. The current
+source-attribution notice is preserved.
