@@ -1,0 +1,11 @@
+{
+  "validation": "YAML parsed with BaseLoader; every non-cache step unchanged byte-for-value; no proof conditional, pin, permission or timeout change",
+  "guard_cases": 432,
+  "save_true_cases": 4,
+  "cache_paths_unchanged": true,
+  "cache_key_restore_unchanged": true,
+  "save_key": "reuse restore cache-primary-key output",
+  "cache_miss_fallback": "all existing fetch/build/audit steps remain unconditional; restore fail-on-cache-miss defaultfalse",
+  "limitations": "semantic guard table is not GitHub execution; exact branch and postmerge main CI still required",
+  "guard_validation": "The exact YAML if expression was token-mapped to a restricted Python Boolean AST and evaluated over432 normal string-output cases; not an Actions-engine execution"
+}
