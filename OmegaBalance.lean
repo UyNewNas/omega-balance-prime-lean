@@ -106,3 +106,5 @@ import OmegaBalance.F3SharedRootHaar
 import OmegaBalance.F3RootDepthNull
 
 import OmegaBalance.F3RootBatchHaar
+
+import OmegaBalance.F3WaveletLocal

@@ -123,4 +123,31 @@ theorem f3_consecutive_crossing_not_twin_example :
   have hc : r = 8 ∨ r = 9 ∨ r = 10 := by omega
   rcases hc with h | h | h <;> subst r <;> norm_num at hrp
 
+/-- An interior shift refutes the old discriminant-size step: 96 is not below 27. -/
+theorem f3Wavelet_false_size_bound_example :
+    2 < (10 : ℤ) ∧ (10 : ℤ) < (3 : ℤ) ^ (2 * 2 - 1) - 2 ∧
+      ¬ (10 : ℤ) ^ 2 - 4 < (3 : ℤ) ^ (2 * 2 - 1) := by
+  norm_num
+
+/-- The corrected conclusion still holds at that counterexample to the old proof. -/
+theorem f3Wavelet_interior_nondivisibility_example :
+    ¬ (3 : ℤ) ^ (2 * 2 - 1) ∣ (10 : ℤ) ^ 2 - 4 := by
+  exact f3Wavelet_discriminant_not_dvd (r := 2) (h := 10)
+    (by norm_num) (by norm_num) (by norm_num)
+
+/-- The zero discriminant at h = 2 is excluded from the nondivisibility lemma. -/
+theorem f3Wavelet_zero_discriminant_example :
+    (2 : ℤ) ^ 2 - 4 = 0 ∧ (3 : ℤ) ^ (2 * 2 - 1) ∣ (2 : ℤ) ^ 2 - 4 := by
+  norm_num
+
+/-- At the first excluded shift 25 = 27 - 2, the discriminant has exactly
+three factors of 3 and the original divisibility-indicator weight is -1. -/
+theorem f3Wavelet_excluded_boundary_example :
+    (25 : ℤ) = (3 : ℤ) ^ (2 * 2 - 1) - 2 ∧
+      (3 : ℤ) ^ 3 ∣ (25 : ℤ) ^ 2 - 4 ∧
+      ¬ (3 : ℤ) ^ 4 ∣ (25 : ℤ) ^ 2 - 4 ∧
+      3 * (if (3 : ℤ) ^ 4 ∣ (25 : ℤ) ^ 2 - 4 then (1 : ℤ) else 0) -
+        (if (3 : ℤ) ^ 3 ∣ (25 : ℤ) ^ 2 - 4 then (1 : ℤ) else 0) = -1 := by
+  norm_num
+
 end OmegaBalance
