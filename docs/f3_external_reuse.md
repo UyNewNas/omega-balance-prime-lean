@@ -232,3 +232,39 @@ symbolic terms, and all 41 patch round trips plus 650 prepared source hashes.
 These are offline checks; the new exact-head finite-extraction checkpoint,
 producer, library, and full audit still have to pass actual CI. The current
 source-attribution notice is preserved.
+
+
+### 2026-09-30: generic finite-extraction helper and connector recovery
+
+Exact head `51478e43277c7b3072fb50d57d96655ffe473011`, push run
+[36667342374](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36667342374)
+(job `109734723911`), still failed the private theorem at line 24 after all
+arithmetic reflection in that declaration had been removed. Thus reflection
+alone does not explain the kernel rejection. The precise definitional-equality
+reduction causing the closed giant power to be evaluated remains unlocalized.
+
+The next narrow replacement proves a separate private helper over free
+`H : Finset ℕ` and `B : ℕ`, with a proved-use premise bounding all shifts by B.
+Its proof contains no powers or fixed tuple constants. The original theorem
+retains its exact proposition and original hypotheses (only proof-irrelevant
+Fin index terms differ), and instantiates the helper with the unchanged
+`largePowerTuple` and `2 ^ largeK`. The required shift bound is actually proved
+parametrically in K before specialization. No kernel option, axiom allowance,
+public target, or numerical constant changes; no dependency module is pruned.
+
+The local candidate was committed as `f60a1ee82bb9d66be6c018b606c6bcd99b109079`
+before the cloud execution environment went offline. This publication does
+not claim to upload that complete local tree. The complete previously read
+replacement and immutable upstream source were reconstructed through the
+GitHub connector and checked byte-for-byte by SHA256: original BFTExtraction
+`ca1327c93e785659208d3af958f62e05e89ca4930d6a77076d6f99e74c52ff00`,
+prepared `8ec558b9450f02553b35aa3d27fc7c850caf5de5923ad84b3a80193c9ee2a579`.
+The latter exactly matches the previously recorded local candidate hash.
+The manifest changes only this prepared source/guard and records the added
+private helper. The focused Python test was reconstructed from its last
+published version to check the generic helper and unchanged wrapper signature;
+it has not been executed locally in the offline environment. All existing
+round-trip, 650-file source-closure, manifest-pin, producer, project, regression,
+axiom and coverage gates remain for actual Actions validation. The two bot
+regenerated PDF blobs are restored to the already reviewed master versions.
+The full RUN target remains unverified until the exact candidate passes.

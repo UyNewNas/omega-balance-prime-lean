@@ -123,14 +123,22 @@ class GiantPowerPatchTests(unittest.TestCase):
         self.assertEqual(hunk['count'], 1)
         name = 'private theorem no_prime_between_adjacent_filtered_shifts'
         self.assertTrue(hunk['old'].startswith(name))
-        self.assertTrue(hunk['new'].startswith(name))
+        helper, wrapper = hunk['new'].split(name + '\n', 1)
+        wrapper = name + '\n' + wrapper
+        self.assertTrue(helper.startswith(name + '_of_bound\n'))
+        self.assertEqual(hunk['new'].count('private theorem '), 2)
         old_signature = hunk['old'].split(' := by\n', 1)[0]
-        new_signature = hunk['new'].split(' := by\n', 1)[0]
-        # The sole signature text change is the proof of the same Fin index bound.
+        wrapper_signature = wrapper.split(' := by\n', 1)[0]
         self.assertEqual(old_signature.replace('by omega', 'Nat.lt_of_succ_lt hi'),
-                         new_signature)
-        self.assertEqual(hunk['old'].count('2 ^ largeK'), hunk['new'].count('2 ^ largeK'))
-        self.assertEqual(hunk['new'].count('private theorem '), 1)
+                         wrapper_signature)
+        for closed_term in ['largeK', 'largePowerTuple', '^']:
+            self.assertNotIn(closed_term, helper)
+        self.assertIn('(H : Finset ℕ) (B : ℕ)', helper)
+        self.assertIn('(hbound : ∀ h ∈ H, h ≤ B)', helper)
+        self.assertIn('have hbmax : b ≤ B := hbound b hbH', helper)
+        self.assertIn('have hpowers : ∀ K h : ℕ', wrapper)
+        self.assertIn('largePowerTuple (2 ^ largeK)', wrapper)
+        self.assertIn('hisolated P hP hcard hi', wrapper)
         for tactic in ['omega', 'norm_num', 'positivity', 'simp', 'decide']:
             self.assertNotRegex(hunk['new'], r'\b' + tactic + r'\b')
         for proof_term in [
