@@ -1,5 +1,19 @@
 # F₃ 深层推论：形式化覆盖与边界
 
+## 2026-09-30 当前覆盖更新（优先于下方历史轮次）
+
+组合代码 `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 的 [PR Lean run 36660504382](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36660504382) 与 [push run 36660499386](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36660499386) 全部通过。601条项目声明的实际公理输出仅标准Lean公理；94源文件与一对一覆盖通过，144240有限回归通过。锁定Lean4.34.0/mathlib5ed2965不变，实际解析的ANT099d3726依赖清单已提交。下方“尚未完成”描述是2026-09-24历史，不再用作当前状态。
+
+- COR-1：`F3CorrelationLimitExchange.tendsto_f3CorrelationIccAverage` 对实际2≤n≤N的整数平均证明完整核；并非素数子集平均。
+- COR-2：`F3CorrelationShiftSquare.tendsto_f3MeanSquareShiftIccAverage_pow_three` 对r>0给出4/3^r；r=0平移1极限单独为16/3。
+- LOG-1：真正收敛级数 `f3PadicLog`，`f3PadicLog_valuation`、`f3_eq_neg_chi_mul_log_valuation` 与 `f3PadicLog_mul`，域n>1且3∤n；整数U没有冒充log。
+- DEN-1：`F3PrimeDensityExactPos/ExactNeg/Tail` 给出精确素数计数相对于x/log x的常数；显式全体素数计数分母的比例接口仍待薄适配。
+- DEN-2：`f3PrimeMul17EqTwoRelativeRatio_tendsto` 与 `f3PrimeMul17HighRelativeRatio_tendsto` 给出条件比例1/2与3^-j，j>0。
+- PAT-L1–3：`F3FourPrimePattern.lean` 已合入59be8b23；全局PAT外部依赖及无条件RUN仍未完成。
+
+[完整任务及验收边界](f3_formalization_tasks.md) · [来源接收与新增待办](f3_proof_intake.md) · [外部复用及信任记录](f3_external_reuse.md)。本记录后的文档提交另验精确CI；不将旧run当新head。
+
+
 日期：2026-09-24。本轮将此前 `deeper_corollaries.md` 的局部算术推论整理为 Lean 证明，并逐步补上相关计算的有限基础。**不是全部分析结论均已形式化。** 是否通过内核检查，以对应提交的 Lean CI、公理日志及覆盖检查为准。
 
 ## 1. 已有代码的覆盖地图
