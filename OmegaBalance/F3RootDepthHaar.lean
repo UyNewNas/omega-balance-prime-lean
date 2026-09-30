@@ -31,7 +31,7 @@ theorem rootDepth_ge_iff_toZModPow (d a : ℤ_[3]) (t : ℕ) :
   have hcoe : (d : ℚ_[3]) ≠ (a : ℚ_[3]) := fun e => h (PadicInt.ext e)
   rw [rootDepth_eq_valuation hcoe, ← PadicInt.coe_sub, PadicInt.valuation_coe]
   change ((t : ℤ) : WithTop ℤ) ≤ (((d - a).valuation : ℤ) : WithTop ℤ) ↔ _
-  rw [WithTop.coe_le_coe, Int.natCast_le,
+  rw [WithTop.coe_le_coe, Nat.cast_le,
     ← PadicInt.mem_span_pow_iff_le_valuation (d - a) (sub_ne_zero.mpr h),
     ← PadicInt.ker_toZModPow, RingHom.mem_ker, map_sub, sub_eq_zero]
 
@@ -55,12 +55,15 @@ theorem f3RootDepthTail_measurable (a : ℤ_[3]) (t : ℕ) :
 theorem f3RootDepthTail_zero (a : ℤ_[3]) : f3RootDepthTail a 0 = Set.univ := by
   rw [f3RootDepthTail_eq_fiber]
   ext d
-  simp
+  simp only [Set.mem_preimage, Set.mem_singleton_iff, Set.mem_univ, iff_true]
+  exact Subsingleton.elim _ _
 
 /-- Depth tails decrease as the threshold increases. -/
 theorem f3RootDepthTail_antitone (a : ℤ_[3]) : Antitone (f3RootDepthTail a) := by
   intro s t hst d hd
-  exact le_trans (by exact_mod_cast hst) hd
+  change (s : WithTop ℤ) ≤ rootDepth (d : ℚ_[3]) (a : ℚ_[3])
+  have hst' : (s : WithTop ℤ) ≤ (t : WithTop ℤ) := by exact_mod_cast hst
+  exact hst'.trans hd
 
 /-- The single-root probability is the normalized actual Haar fiber mass. -/
 theorem f3UnitHaar_rootDepth_ge {a : ℤ_[3]} (ha : IsUnit a) {t : ℕ} (ht : 1 ≤ t) :

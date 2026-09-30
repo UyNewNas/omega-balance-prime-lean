@@ -531,3 +531,19 @@ Signed Δ, independent waiting/means, full joint law and prime transfer remain o
 First actual CI 8453214e/36675740452 failed on pinned import/complement namespace/
 numeral casts; the minimal 5-declaration upstream port compiled. Exact errors fixed
 without pin changes; new 38-declaration tree awaits its own full CI.
+
+
+### 2026-09-30 06:38 UTC intake refresh and actual Haar CI
+
+[Machine-readable refresh](../reports/f3_intake_refresh_2026-09-30_0638.json):
+165 actual remote branches checked. All original research heads are unchanged;
+changes are confined to master and our ten implementation/correction branches.
+Issues updated since 05:02 UTC are PR47, PR50 and PR51. Original mathematical
+intake watermarks are preserved; a candidate CI run is not proof acceptance.
+
+The actual Haar candidate at remote f38acf309530f066b5f8340b92e19b48443b81cf
+passed compilation of PadicIntHaar and F3UnitHaar, but run36679603580 failed in
+F3RootDepthHaar on a cast-lemma name, the modulus-one subsingleton equality and
+an insufficiently typed monotonicity cast. The following source fix addresses
+these exact elaboration errors without changing statements, assumptions or pins.
+The whole 679-declaration candidate still awaits complete exact-head verification.
