@@ -1183,3 +1183,22 @@ Direct reuse at consumer pin mathlib5ed2965256430c3649e86755f9576b54eca72435:
 Pinned source and current mathlib master6bd5e549d902323693ddf9128120376848331c85 were independently fetched at12:45–12:48. The named valuation and AE APIs remain available with the inspected signatures. Apache-2.0 notices on mathlib files verified. Existing project provenance retained. Do not upgrade dependencies. Current-source search hits are not evidence for pinned elaboration. Precise source links: https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/RingTheory/Valuation/Basic.lean and https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/MeasureTheory/OuterMeasure/AE.lean .
 
 Decision: thin independent event adapter over existing kernel-verified local Haar layers, null roots, and generic valuation/measure APIs. Add all new declarations once to Audit; retain exact dependency pins and complete Actions gates. Source/API inspection and finite enumerations are not kernel acceptance.
+
+## 2026-09-30 13:06 UTC：真实有符号深度原子律通过精确 CI
+
+代码744ec233e8ff7d4b55455743848db377cc353b1e，树030bf991d04063ae1405fc083706c635decc7984，
+[push36718612456](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36718612456)与
+[PR36718619580](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36718619580)
+完整成功；实际测试合并ad9ed10c6a4485169ee1af58d4eefb6b84346044文件树相同。首轮仅有
+零事件证明的集合成员展开和自然数转WithTop有限性两处编译问题，已用显式change及
+锁定库WithTop.natCast_ne_top修正，十五条公开陈述和全部定义没有改变。
+
+十五条新声明均仅标准公理；793项总输出（792项目+1产生器）、115项目源文件、650依赖
+模块与版本锁、构建、内核回归、逐一覆盖及144240有限检查通过。独立数学源码复核
+通过；12个剩余类案例9360代表元仍只是补充回归。
+
+验收范围为REC-L3/式(2.2)的实际无条件有符号原子律：所有正h与负h的质量为
+3^(-(L+h))，零质量1−3^-L，并证明有限整数原子几乎处处覆盖。实际根命中仍为∞且
+不属于有限差原子，零测例外已单独证明；原共享根单位/同余/正基深前提保留。
+条件绝对值分布、符号独立性、移动配置、素数转移、被动下界和三等距根等仍开放，
+整个REC包formalization_complete=false。最终状态头只改文档，仍另行完整精确CI。

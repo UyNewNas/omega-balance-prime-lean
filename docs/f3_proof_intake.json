@@ -6947,6 +6947,53 @@
         "equidistant triple waiting law",
         "remaining REC nodes"
       ]
+    },
+    "REC-L3-ACTUAL-SIGNED-ATOMS": {
+      "status": "LEAN-PROVED: actual unconditional positive, negative and zero signed atoms with almost-everywhere finite coverage",
+      "module": "OmegaBalance/F3SignedDepthLaw.lean",
+      "declarations": [
+        "rootDepth_eq_distance_of_lt",
+        "f3SignedDepthEvent_neg_swap",
+        "f3SignedDepthEvent_pos_eq_layer",
+        "f3SignedDepthEvent_neg_eq_layer",
+        "f3SignedDepthEvent_zero_eq_equal",
+        "f3SignedDepthEvent_pos_measurable",
+        "f3SignedDepthEvent_neg_measurable",
+        "f3SignedDepthEvent_zero_measurable",
+        "f3UnitHaar_signedDepth_pos",
+        "f3UnitHaar_signedDepth_neg",
+        "f3UnitHaar_signedDepth_zero",
+        "f3UnitHaar_signedDepth_defined_ae",
+        "f3SharedRootConfig_unitHaar_signedDepth_pos",
+        "f3SharedRootConfig_unitHaar_signedDepth_neg",
+        "f3SharedRootConfig_unitHaar_signedDepth_zero"
+      ],
+      "verified_code_sha": "744ec233e8ff7d4b55455743848db377cc353b1e",
+      "verified_tree": "030bf991d04063ae1405fc083706c635decc7984",
+      "successful_code_runs": [
+        36718612456,
+        36718619580
+      ],
+      "project_declarations": 792,
+      "required_external_producer": 1,
+      "source_files": 115,
+      "axiom_bound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "paper_scope": "REC-L3 theorem2.1 equation2.2 unconditional signed atoms, explicit finite integer depths and null root exceptions, original fixed configuration wrappers",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "conditional absolute-value law",
+        "conditional sign independence",
+        "moving configurations",
+        "prime transfer",
+        "passive lower bounds",
+        "equidistant triple waiting law",
+        "remaining REC nodes"
+      ]
     }
   }
 }
