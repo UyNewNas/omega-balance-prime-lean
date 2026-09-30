@@ -799,3 +799,23 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3RootDepthTail_zero
 #print axioms OmegaBalance.f3RootDepthTail_antitone
 #print axioms OmegaBalance.f3UnitHaar_rootDepth_ge
+
+-- Actual depth layers, unequal events, original-model wrappers and null roots.
+
+#print axioms OmegaBalance.f3RootDepthLayer_eq_sdiff
+#print axioms OmegaBalance.f3RootDepthLayer_measurable
+#print axioms OmegaBalance.f3UnitHaar_rootDepth_eq
+#print axioms OmegaBalance.f3UnitHaar_rootDepth_zero
+#print axioms OmegaBalance.rootDepth_nat_lt_iff
+#print axioms OmegaBalance.rootDepth_ne_iff_mem_tail_union
+#print axioms OmegaBalance.f3RootDepthTail_disjoint
+#print axioms OmegaBalance.f3UnitHaar_rootDepth_ne
+#print axioms OmegaBalance.f3SharedRootConfig_root_norm
+#print axioms OmegaBalance.f3SharedRootUnit_coe
+#print axioms OmegaBalance.f3SharedRootUnit_isUnit
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_depth_ge
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_depth_eq
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_depth_ne
+#print axioms OmegaBalance.f3PadicHaar_singleton
+#print axioms OmegaBalance.f3UnitHaar_singleton
+#print axioms OmegaBalance.f3UnitHaar_rootDepth_top

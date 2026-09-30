@@ -521,3 +521,13 @@ ROOT/PAT/RUN 及其它已接收证明任务的未完成部分保持开放。
 - Pending: exact layers, unequal-depth mass, null roots and signed difference,
   original model wrapper, independent waiting-law and prime transfer
 - Validation: no local Lean/Lake; source and coverage only until exact-head CI
+
+### REC-L3 extension checkpoint
+
+Candidate files additionally F3RootDepthLaw (8 declarations), F3SharedRootHaar
+(6), F3RootDepthNull (3): actual finite shells, unequal-depth mass, unchanged
+model wrappers and null root points. All 38 additions to baseline 641 are audited.
+Signed Δ, independent waiting/means, full joint law and prime transfer remain open.
+First actual CI 8453214e/36675740452 failed on pinned import/complement namespace/
+numeral casts; the minimal 5-declaration upstream port compiled. Exact errors fixed
+without pin changes; new 38-declaration tree awaits its own full CI.

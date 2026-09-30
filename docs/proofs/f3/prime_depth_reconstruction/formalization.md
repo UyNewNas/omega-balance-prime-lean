@@ -153,3 +153,32 @@ assumption replaces a proof. Source/API reuse and licensing are recorded in
 [the reuse ledger](../../../f3_external_reuse.md#2026-09-30-rec-l3-actual-haar-law-target-first-reuse-gate).
 All declarations are registered once in Audit. Local source/coverage checks are
 not Lean execution; exact locked-pin CI remains required before status promotion.
+
+### Extension of the actual Haar candidate
+
+`F3RootDepthLaw.lean` adds eight declarations: finite-layer set difference and
+measurability, exact positive layer mass 3^-t, zero layer mass 1/2, the integer
+strict-threshold adapter, unequal-depth event as two next-level balls, their
+disjointness, and actual unequal-depth probability 3^-L for genuine unit roots
+with finite L≥1. This establishes candidate coverage of the single-observation
+probability (2.3), without taking the requested law as an assumption.
+
+`F3SharedRootHaar.lean` adds six declarations: original model roots have norm 1,
+mkUnits preserves the exact ℚ_[3] root and gives real units, and the original
+F3SharedRootConfig receives tail/layer/unequal-event wrappers. Positive base depth,
+cardinality ≥ 2, distinct unit roots and common first residue remain in the same
+configuration structure; observations are excess depths R, not raw D.
+
+`F3RootDepthNull.lean` adds three declarations: ambient Haar singletons have
+mass 0 by containment in all residue fibers, normalized unit Haar singletons also
+have mass 0, and the infinite-depth event is exactly a null root point. The proof
+uses locked ENNReal.exists_inv_two_pow_lt and pow_le_pow_left', not a new
+non-atomicity hypothesis. The full signed integer difference law still needs an
+explicit almost-everywhere finite-difference interface and is not claimed here.
+
+All17 extension declarations are in Audit. These are source candidates awaiting
+actual Lean CI; local source/coverage/finite checks do not promote them. Independent
+waiting time, expected stopping time, complete joint law and prime transfer remain
+open. The first checkpoint's actual CI36675740452 failed on import/namespace/cast
+elaboration; the 5 ported Haar declarations compiled. Those concrete errors are
+fixed in the subsequent candidate, without changing pinned dependencies.

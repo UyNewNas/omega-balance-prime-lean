@@ -27,7 +27,7 @@ This is the statement that the first `n` base-`p` digits of a Haar-random `p`-ad
 uniformly distributed over `ZMod (pⁿ)` — equivalently, that the digits are i.i.d. uniform.
 
 ## Main result
-* `PadicInt.padicInt_haar_fiber` — `μ ((toZModPow n) ⁻¹' {c}) = (pⁿ)⁻¹`.
+* `OmegaBalance.padicInt_haar_fiber` — `μ ((toZModPow n) ⁻¹' {c}) = (pⁿ)⁻¹`.
 -/
 
 namespace OmegaBalance

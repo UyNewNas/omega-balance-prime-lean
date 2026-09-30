@@ -1,6 +1,6 @@
 import OmegaBalance.F3UnitHaar
 import OmegaBalance.F3RootCertificates
-import Mathlib.Tactic.Omega
+import Lean.Elab.Tactic.Omega
 
 /-!
 # Actual three-adic depth tails under normalized unit Haar measure

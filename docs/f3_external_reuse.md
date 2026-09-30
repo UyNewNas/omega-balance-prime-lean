@@ -174,3 +174,16 @@ rootDepth to residue fibers with the zero/infinite case explicitly separated.
 [Implementation map](proofs/f3/prime_depth_reconstruction/formalization.md) and
 [task ledger](f3_formalization_tasks.md) record exact coverage and open work.
 No Lean/Lake executable is present locally; this candidate awaits exact-head CI.
+
+Continuation: root-nullity additionally reuses locked mathlib
+`Mathlib/Basic/ENNReal/Inv.lean: ENNReal.exists_inv_two_pow_lt` (inverse powers
+of 2 approach 0) and `Mathlib/Algebra/Order/Monoid/Unbundled/Pow.lean:
+pow_le_pow_left'`, comparing proved 3^-n fiber masses to 2^-n. Both exact sources
+were read at 5ed2965256430c3649e86755f9576b54eca72435. Restriction preserves the
+proved singleton zero. Original model wrappers reuse PadicInt.mkUnits/mkUnits_eq;
+all assumptions and actual ℚ_[3] roots are retained. Exact layers and unequal
+events reuse the already verified rootDepth_min lemmas and actual Haar tails.
+The first project run 36675740452 compiled the upstream 5-declaration port, then
+failed on local import/complement namespace/numeral cast elaboration. This is
+recorded as failure, not a successful full trust audit. Fixed core Omega import
+was verified at leanprover/lean4 v4.34.0 src/Lean/Elab/Tactic/Omega.lean.

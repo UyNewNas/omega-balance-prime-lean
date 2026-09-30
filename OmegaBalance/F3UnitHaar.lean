@@ -55,13 +55,13 @@ theorem f3PadicUnitSet_compl :
 /-- The unit domain is Borel measurable. -/
 theorem f3PadicUnitSet_measurable : MeasurableSet f3PadicUnitSet := by
   have h := (padicInt_measurable_fiber (p := 3) 1 0).compl
-  simpa only [← f3PadicUnitSet_compl, Set.compl_compl] using h
+  simpa only [← f3PadicUnitSet_compl, compl_compl] using h
 
 /-- The additive Haar mass of the actual unit domain is `2/3`. -/
 theorem f3PadicHaar_units : f3PadicHaar f3PadicUnitSet = 2 / 3 := by
   have h := prob_compl_eq_one_sub (μ := f3PadicHaar)
     (padicInt_measurable_fiber (p := 3) 1 0)
-  rw [padicInt_haar_fiber, ← f3PadicUnitSet_compl, Set.compl_compl] at h
+  rw [padicInt_haar_fiber, ← f3PadicUnitSet_compl, compl_compl] at h
   convert h using 1 <;> norm_num
 
 /-- The paper's normalized additive Haar probability on the units, represented
@@ -111,6 +111,7 @@ theorem f3UnitHaar_fiber {a : ℤ_[3]} (ha : IsUnit a) {t : ℕ} (ht : 1 ≤ t) 
     Measure.restrict_apply (padicInt_measurable_fiber t _),
     Set.inter_eq_left.mpr (f3PadicInt_unit_fiber_subset ha ht),
     f3PadicHaar_units, smul_eq_mul, padicInt_haar_fiber]
+  norm_num
 
 end
 
