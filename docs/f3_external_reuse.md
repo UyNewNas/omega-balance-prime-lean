@@ -1218,3 +1218,21 @@ Source URLs: https://github.com/leanprover-community/mathlib4/blob/5ed2965256430
 Intake continues the12:47 refresh (175remoteheads, original source branches unchanged apart from our master integration, updatedPR58–61 only). PR62 is our same bounded signed-atom implementation; no new external paper package observed or watermarks promoted without reading.
 
 Additional precise semantic bridge: Lean4 v4.34.0 src/Init/Data/Int/Order.lean `Int.natAbs_eq_iff {a:Int}{n:Nat}:a.natAbs=n ↔ a=n ∨ a= -↑n` body read at the locked tag. Direct reuse proves the union event is the actual absolute integer difference, including h=0; no renamed probability-only surrogate. Source https://github.com/leanprover/lean4/blob/v4.34.0/src/Init/Data/Int/Order.lean .
+
+## 2026-09-30 13:31 UTC：实际条件化正负与绝对差原子律通过精确 CI
+
+代码84c62787c4758fd30d0e714b10bda278d29f4030，树ccef9dd53635e8d39acdad579e4193511baa57be，
+[PR36721583571](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36721583571)
+首轮完整成功。实际测试合并f821720e9bab520ef4a5186fcdd84609aa0221ac文件树相同。
+十四条新声明均仅标准公理；807项总输出（806项目+1产生器）、116项目源码、650依赖
+模块及固定版本、实际产生器与项目构建、内核回归、逐一覆盖和144240有限检查通过。
+
+验收范围为真实不等深事件上的ProbabilityTheory.cond：正质量由已验3^-L推出，
+条件测度确为概率测度；绝对连续性传递根例外零测和有限差几乎处处有定义。条件
+正/负h≥1各为3^-h，零为0，绝对差h为2·3^-h；绝对事件已证明等价于真实有限整数
+深度差的natAbs，而不是仅改名的离散分布。原配置包装保留实际单位根和共同模3
+条件、正基深等原域。十二个有限条件化案例只是补充回归，独立数学源码复核通过。
+
+完整符号与绝对值独立性仍未登记为完成；移动配置、素数转移、被动下界、三等距根
+停止律及其他REC节点继续开放，formalization_complete=false。此最终文档头不改已验
+数学源码/Audit/依赖，发布后仍需精确头完整CI和当前主分支检查。
