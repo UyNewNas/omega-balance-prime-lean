@@ -37,3 +37,5 @@
 RUN 的有限 CRT、最大化、顺序块和条件组合接口一并保留，但无条件素数产生器仍未完成。PR #29 固定 `9033636693d0f713c9cb6e1bc5d13149052b812b` 的 [Lean run 36467303064](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36467303064) 构建失败：`lean-proofs-latest` 与 `analytic_number_theory` 重复模块所有者，以及锁定版本的 Sobolev/BoundedGaps API 不兼容；下游回归和公理检查未运行。该失败栈不导入本次组合候选，不以文献公理或新增假设填补无条件 RUN。
 
 源 CI 解析依赖已从成功 run `36309723481` 的 artifact `10929140097` 下载，ZIP SHA256 与 GitHub 报告一致：`31e70f907bde8c1e375f5acfd3384771d616249091a7f45c68fbb685e21cc0e1`。本次提交该实际 `lake-manifest.json`：mathlib `5ed2965256430c3649e86755f9576b54eca72435`、ANT `099d3726c2c74841024110ec1dd9902f7ef36e9e`、LeanArchitect `78dd66840d3efe8c824c699fc03381cec817c271`、Cli `e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204`；其余传递固定版本按完整清单保留。不是手工猜测 Lake 的解析结果。ANT 原源使用4.33rc1/mathlibe4c91783，但上述消费端4.34/5ed组合已有真实编译证据；当前组合仍待新CI。ANT许可证Apache2，依赖源码闭包审计继续独立记录。
+
+ANT源闭包复核完成：从`PrimeNumberTheoremAnd/Consequences.lean`递归到9个本包模块，379391字符；使用本仓库支持嵌套注释与字符串擦除的禁用项扫描，0命中。范围排除锁定Mathlib、Architect及Batteries的实现源码。WeakPNT_AP的前提仅q≥1、a.Coprime q、a<q，不含目标重述假设；最终COR/DEN/LOG声明在历史成功日志中逐条只依赖标准3公理。证据摘要见`reports/f3_ant_source_scan.json`；本组合CI仍会实际执行全601条公理审计。

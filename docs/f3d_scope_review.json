@@ -1,0 +1,1537 @@
+{
+  "review_id": "F3D-RELATION-REVIEW-2026-09-30",
+  "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+  "repo": "/workspace/scratch/ec89760698e5/omega-balance-prime-lean",
+  "review_mode": "READ_ONLY_IMMUTABLE_GIT_OBJECTS",
+  "read_complete": true,
+  "requested_package_file_count": 20,
+  "source_manifest": [
+    {
+      "path": "AGENTS.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "7408bf525a36e830a306140b3b57db302ff127b4",
+      "sha256": "81c3bd1a01345813b94f5dcb2b17f39d00cd2ecb529e8623a024567697d06a1f",
+      "bytes": 1148,
+      "lines": 13,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          13
+        ]
+      ]
+    },
+    {
+      "path": "README.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "7d4dd3bca9afa446f3d64b4593afaff9086584a7",
+      "sha256": "b7d4bf8917452d0b3d3712335ac563b77ae427b200cab38e19b84baeb7e679be",
+      "bytes": 28875,
+      "lines": 315,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          315
+        ]
+      ]
+    },
+    {
+      "path": "docs/f3_formalization_tasks.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "d8995db266094ed48f00fe285b729043d34edd2b",
+      "sha256": "eba02026e65d660e68ccc177d14f52d348f7229041fd9a4e70db71b8a87ffafb",
+      "bytes": 6372,
+      "lines": 77,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          77
+        ]
+      ]
+    },
+    {
+      "path": "OmegaBalance/F3Rational.lean",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "cca53260030d700b9b4514d3c8bd254ead2cc115",
+      "sha256": "3e52fd011fc8906bb9bf15df0ffb1b7f123ea64a93fbde53d5e540a4ce494e63",
+      "bytes": 4199,
+      "lines": 116,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          116
+        ]
+      ]
+    },
+    {
+      "path": "OmegaBalance/F3DeeperExamples.lean",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "9fe749a77936568db5fb7fc5f5ae718095af3a12",
+      "sha256": "1f4f2ed23018c6a8ccc2571e8069bda28dd536254e6684d6c76b2e540d7068ef",
+      "bytes": 5200,
+      "lines": 126,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          126
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/polynomial_realization/theorem.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "93cc5d668e1580c2789799eed0eea4131af80479",
+      "sha256": "1ae3d328eccf30de6f54b059acd46f349ac98094f331f85746af15e17732727a",
+      "bytes": 4619,
+      "lines": 208,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          208
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/polynomial_realization/proof.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "e8aec876ad6b5fe8d97a8656c05d203987a93823",
+      "sha256": "36fcc0266dd7c2264587eb4b2787261368603b1fe21e8ddad066a38662d249bf",
+      "bytes": 19743,
+      "lines": 1378,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          1378
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/polynomial_realization/scaffolding.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "6bdaea276bda7162c289109965f432ffc3f8bfee",
+      "sha256": "9f9a5469d9ecb45b350a09a55213cb750bc8d3dacfbbd8402dc254e3368645a1",
+      "bytes": 5136,
+      "lines": 117,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          117
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/polynomial_realization/formalization.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "7e923ab5af4802895a86f04d3d4916e074571d61",
+      "sha256": "b0d8911e9e64c7eceb6c5cdc8b2054ee30bd6095d076722fffe47011a3c73964",
+      "bytes": 2549,
+      "lines": 73,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          73
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/multivariate_tropical/theorem.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "cc482a89a282210f3f0a58dc3ae53b5992a45f6b",
+      "sha256": "3373ed4096c4d099fea66f44a4ea1109fc8f639ef996c855802084b713595297",
+      "bytes": 5673,
+      "lines": 288,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          288
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/multivariate_tropical/proof.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "7ae87e21e0d913c913aec1a767da2c258a6ac48f",
+      "sha256": "a47c7e14df64d5ecceb98b591a708c2975db974369f5c9650314210674c53ac6",
+      "bytes": 16600,
+      "lines": 1167,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          1167
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/multivariate_tropical/scaffolding.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "5ba0c894ee76b9b68f5e365f8a88d9d8a2578d9b",
+      "sha256": "64a0b74805a662800165f8471bd20aaa4fd4f1958b0f84f65db69db95cc63192",
+      "bytes": 4941,
+      "lines": 94,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          94
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/multivariate_tropical/formalization.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "d189a58a755e7ee665a628149ddb89c4872529ed",
+      "sha256": "40aa3bbdca17e70154a4e31c8dbeec0782958b6c3650f5f1c79628e88838cdd6",
+      "bytes": 2838,
+      "lines": 64,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          64
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/degree_tensorization/theorem.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "a97eada21d389a7a486d3dd0cbe15e24743d5cd9",
+      "sha256": "1c8bc961866483c730a84901d30f2d4919e898f9d65face83420fcf46b315e4f",
+      "bytes": 4259,
+      "lines": 261,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          261
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/degree_tensorization/proof.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "fbc1de99c738c48b3b92656aca5bd680356c06b2",
+      "sha256": "43b0cff367b7d8069244951c46ae4b4917bf7b2f1583650ceb14f468f1da5fe4",
+      "bytes": 18042,
+      "lines": 388,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          388
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/degree_tensorization/scaffolding.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "d7cc6e095d67ecdcd6fe5fb943af57e5c6ff8641",
+      "sha256": "4ee58c47bf205eb37f115b7e5506d36594fed03d774d52f78d7a5804227abfeb",
+      "bytes": 2360,
+      "lines": 40,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          40
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/degree_tensorization/formalization.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "8254cd6cf7a2d45d4a8cc7a6e34abeaad40a3222",
+      "sha256": "004944b319b56a24c42cef71c1e9810ac6f515d63a7abfb6e82bf59b4e119e18",
+      "bytes": 1268,
+      "lines": 31,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          31
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+      "sha256": "f1e033adf0c00c29cd56987409c6a6c0bde2848348e0a1c6521c67c60b5b1f4a",
+      "bytes": 3740,
+      "lines": 196,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          196
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/ternary_minima_norm_forms/proof.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "e25f8dfb6573235266e129002ed4769e0bd89310",
+      "sha256": "ef7be31c64e8851a895b79cfbbcf2fe60055ef037f73d0d16ae3dc1545595236",
+      "bytes": 18695,
+      "lines": 461,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          461
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/ternary_minima_norm_forms/scaffolding.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "b01d0bb8cfc5a4eb376ffd2f979e79da597ecf4e",
+      "sha256": "b3a8d520417e925779e5f03234719f5f46e8fe52879db143c52ccf09080bc6bc",
+      "bytes": 2321,
+      "lines": 48,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          48
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/ternary_minima_norm_forms/formalization.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "cecb11c13f7217bede467487007c9932b3c8f8ad",
+      "sha256": "f008bbc5bb739229c52f8c2371ae928cefad60926f4298eb72bc88dee3ab0c9c",
+      "bytes": 1084,
+      "lines": 27,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          27
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/interval_detectors_stable_degree/theorem.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "967e12fb9281725e36b1e47939347a1dd8c6327c",
+      "sha256": "acf4b459b58d85c548a27be5725a3685de04ec82586594d6c7c2c1d180ce969f",
+      "bytes": 5906,
+      "lines": 353,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          353
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/interval_detectors_stable_degree/proof.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "2fb12254a564e8c5d9c2c557eb7555fe76477e49",
+      "sha256": "fb9f2ef144ed1c449fc46ea9441d1d05168d798a460ab7f5eac09ab5aabd32ab",
+      "bytes": 21929,
+      "lines": 669,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          669
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/interval_detectors_stable_degree/scaffolding.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "3915a07cc7540548a7b593b3ce1eab9daf95daa1",
+      "sha256": "2ac7a5281a764e57b3347ff97466a5a2a59e1b279805356e7fafca7be19a458a",
+      "bytes": 3343,
+      "lines": 94,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          94
+        ]
+      ]
+    },
+    {
+      "path": "docs/proofs/f3d/interval_detectors_stable_degree/formalization.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "80e03f6bba1f89303a4d9d9fe12a66835f9f8a3e",
+      "sha256": "1a4eac6963776b2271d981461cbd114cc54ec97a6647a4771004a1fc62e894ca",
+      "bytes": 1224,
+      "lines": 42,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          42
+        ]
+      ]
+    },
+    {
+      "path": "docs/f3_balance_research/f3d_polynomial_realization.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "7a4309312a63317c43f234872abefd8f58cfda2c",
+      "sha256": "30693bff76a534bf7ca244b13c321ac4671ec8ed5a28af4d01050747634446db",
+      "bytes": 1727,
+      "lines": 58,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          58
+        ]
+      ]
+    },
+    {
+      "path": "docs/f3_balance_research/f3d_multivariate_tropical_realization.md",
+      "source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "git_blob": "0dcbe3f7e4d4eeb770fb6d52308c70a361db2c9d",
+      "sha256": "63875d4df8170266eea0ccf785a3dd83000f84ff99027b16943ff243281aa81f",
+      "bytes": 2088,
+      "lines": 70,
+      "read_coverage": "FULL_READ",
+      "read_ranges": [
+        [
+          1,
+          70
+        ]
+      ]
+    }
+  ],
+  "scope_basis": "Current parent task formalizes original F3 goals and newly located F3 proofs, without expanding Omega or F_Sigma. Folder name alone is not a scope test. Source formulas, quantifiers, output type and dependencies determine relation.",
+  "lifecycle": "README separates PAPER-PROVED, PAPER-AUDITED, FORMALIZATION-READY and LEAN-PROVED; this is a scope/source review with a paper-proof defect witness, never a kernel verification. All five source packages claim PAPER-AUDITED and NOT-STARTED in their formalization files.",
+  "global_hypotheses": {
+    "domain": "D={(n,d) in Z^2: n+d != 0 and n-d != 0}; d=0 is allowed. F_{3,D}(n,d)=v3(n+d)-v3(n-d), with each valuation taken only on nonzero signed integers.",
+    "generalized_realization": "Fixed integer-coefficient polynomial pair (P,Q) on D^m; for every legal integer input, P+Q and P-Q must both be nonzero, and F_{3,D}(P,Q)=g(F_{3,D}(X_1),...,F_{3,D}(X_m)). All unit parts and common input scalings are quantified. m is fixed and >=1 unless a stronger bound is stated.",
+    "degree": "max(totalDegree P,totalDegree Q), minimized over all globally admissible fixed pairs; candidates may be nonhomogeneous. Degree is not arithmetic-operation count, coefficient size, rational-expression total degree, or original scalar-output polynomial degree.",
+    "valuation_convention": "Paper excludes zero; repository totalizes padic valuations at zero. Domain guards cannot be dropped when translating.",
+    "original_f3": "For n in Nat and n>1, F_{3,D}((n:Z),1)=f3(n). For z in Z with z != +/-1, F_{3,D}(z,1)=f3Int(z)=f3Rat(z). For d !=0 and n != +/-d, F_{3,D}(n,d)=f3Rat(n/d).",
+    "prime_domain": "None of the five generalized packages assumes prime inputs or promises prime/integer scalar outputs. Restricting to primes is a separate weakening of the domain."
+  },
+  "core_f3_goal_relation": {
+    "goals_at_frozen_ledger": [
+      "INF-1",
+      "INF-2",
+      "COR-1",
+      "COR-2",
+      "DEN-1",
+      "DEN-2",
+      "LOG-1",
+      "RUN-1",
+      "RUN-2"
+    ],
+    "finding": "The five F3D packages contain no stated proof of the prime infinitude/transitions, full integer correlation, prime densities, 3-adic logarithm, or consecutive-prime-run goals. No dependency edge to those goals is established in their twenty files or the frozen task ledger. F3Rational is an already present useful interface, not evidence that full F3D theory is automatically accepted.",
+    "search_scope": "Additional git grep was performed over docs/proofs/f3/*/{theorem,proof,scaffolding,formalization}.md, docs/f3*formalization*.md and OmegaBalance; that search is not claimed as a full read of all those files."
+  },
+  "accepted_current_intake": [
+    "F3D-REL-INPUT interface/domain guard",
+    "F3D-CORR-MULTI-L12 proof blocker",
+    "F3D-CORR-TERN6-DOMAIN hypothesis correction",
+    "F3D-CORR-POLY-CLEAR-DENOM local integrality clarification"
+  ],
+  "eligible_specializations": [
+    {
+      "stable_id": "F3D-REL-INPUT",
+      "status": "ACCEPT_INTERFACE_DEPENDENCY_ONLY",
+      "source_ids": [
+        "POLY-L1",
+        "MULTI-L1"
+      ],
+      "statement": "n in Nat, n>1 => F_{3,D}((n:Z),1)=f3(n); z in Z, z!=+/-1 => F_{3,D}(z,1)=f3Int(z). If d!=0 and n!=+/-d, F_{3,D}(n,d)=f3Rat(n/d).",
+      "specialization_requirements": [
+        "Retain n>1 for the original Nat domain; use n!=+/-1 for nonsingular signed domain.",
+        "For an output (P,Q), f3Rat(P/Q)=F_{3,D}(P,Q) requires Q!=0 in addition to P+/-Q!=0.",
+        "To conclude original natural f3(M), separately prove M=P/Q is a natural integer >1. To conclude prime f3, separately prove primality."
+      ],
+      "existing_source_interfaces": [
+        "OmegaBalance/F3Rational.lean:f3Rat_int",
+        "OmegaBalance/F3Rational.lean:f3Rat_nat",
+        "OmegaBalance/F3Rational.lean:f3Rat_eq_cayley_valuation"
+      ],
+      "relation_to_goals": "Semantic bridge and safeguard only. Not a new required generalized framework; no core goal completion."
+    },
+    {
+      "stable_id": "F3D-SPEC-POLY-LAYER",
+      "status": "ELIGIBLE_DERIVED_COROLLARY_PENDING_SCOPE",
+      "source_ids": [
+        "F3D-POLY-1",
+        "POLY-L2",
+        "POLY-L3",
+        "POLY-L4",
+        "POLY-L5"
+      ],
+      "statement": "For every natural n>1 and fixed r in Z, put (N,D)=E_0(S_{-r}(n,1)). Then N>D>0 and f3Rat(N/D)=1_{f3(n)=r}. For r=0, N=5n^4+22n^2+5 and D=(n^2-1)^2. Thus f3Rat((5n^4+22n^2+5)/(n^2-1)^2)=1_{f3(n)=0}; existing original-F3 zero classification identifies the right side with 1_{3|n}.",
+      "specialization_requirements": [
+        "Instantiate only input d=1; output remains a rational number with explicitly positive denominator.",
+        "S_r(n,d)=(alpha(n+d)+beta(n-d),alpha(n+d)-beta(n-d)), alpha=3^max(r,0), beta=3^max(-r,0); this preserves domain and shifts F by r.",
+        "No degree-minimality conclusion on the restricted d=1 input model.",
+        "No prime/integer-output claim."
+      ],
+      "proof_dependencies": [
+        "Basic signed v3 multiplication and unequal-valuation sum",
+        "Units-square mod 3 and quartic mod 9 calculation",
+        "Existing f3/f3Int/f3Rat bridges"
+      ],
+      "generalized_parts_not_required": [
+        "POLY full classification",
+        "POLY homogeneous reduction",
+        "Hensel degree lower bound"
+      ]
+    },
+    {
+      "stable_id": "F3D-SPEC-POLY-ABS-POS",
+      "status": "ELIGIBLE_DERIVED_COROLLARY_PENDING_SCOPE",
+      "source_ids": [
+        "F3D-POLY-3",
+        "POLY-L8"
+      ],
+      "statement": "For natural n>1, f3Rat(-(3n^2+1)/(n^2+3))=abs(f3(n)). Also f3Rat((3n^3+3n^2+9n+1)/((n-1)^2(n+3)))=max(f3(n),0). These are direct substitutions into x/(x^2+1) and rho(x)=x(x^2+1)/(x^3-x+1), followed by inverse Cayley coordinates.",
+      "specialization_requirements": [
+        "n>1 ensures nonzero input neighbors and nonzero displayed rational denominators.",
+        "The positive-part denominator formula is Q=A-B=(n-1)^2(n+3); for arbitrary signed n this vanishes at n=-3, so do not drop n>1 without a new guard.",
+        "These are rational-extension identities, not degree 2/3 lower bounds or scalar integer polynomial maps."
+      ],
+      "proof_dependencies": [
+        "POLY explicit no-zero rational functions and valuation cases",
+        "F3Rational bridge"
+      ],
+      "generalized_parts_not_required": [
+        "POLY classification necessity",
+        "All degree lower bounds"
+      ]
+    },
+    {
+      "stable_id": "F3D-SPEC-MULTI-SIGN",
+      "status": "ELIGIBLE_DERIVED_COROLLARY_PENDING_SCOPE",
+      "source_ids": [
+        "F3D-MULTI-1",
+        "MULTI-L2"
+      ],
+      "statement": "For every natural n>1, f3Rat((3n^2-2n+3)/(n-1)^2)=1_{f3(n)>0}. Numerator exceeds denominator>0. The right side can be identified with 1_{n mod 3=2} on n>1 using the original F3 sign/residue lemmas.",
+      "specialization_requirements": [
+        "Retain n>1.",
+        "No minimum-degree statement follows merely by restriction."
+      ],
+      "proof_dependencies": [
+        "Valuation parity makes v3(u^2+3v^2)=min(2v3 u,1+2v3 v)",
+        "Unit-square sum v3(u^2+v^2)=2min(v3u,v3v)",
+        "F3Rational bridge"
+      ],
+      "generalized_parts_not_required": [
+        "MULTI classification necessity (which currently has a proof gap)"
+      ]
+    },
+    {
+      "stable_id": "F3D-SPEC-MULTI-MINMAX",
+      "status": "ELIGIBLE_DERIVED_COROLLARY_PENDING_SCOPE",
+      "source_ids": [
+        "F3D-MULTI-2",
+        "MULTI-L3",
+        "MULTI-L4",
+        "F3D-DEG-4"
+      ],
+      "statement": "Let n,m be natural integers >1, x=(n+1)/(n-1), y=(m+1)/(m-1), mu=(x^3+3y^3)/(x^2+3y^2), nu=xy/mu. Then mu>1 and nu>1, and f3Rat((mu+1)/(mu-1))=min(f3(n),f3(m)), f3Rat((nu+1)/(nu-1))=max(f3(n),f3(m)).",
+      "specialization_requirements": [
+        "x,y>1 makes mu a positive weighted average of x,y, hence mu>1; nu lies between x,y and is >1; both inverse Cayley denominators nonzero.",
+        "Integer pair output forms use U=(n+1)(m-1), W=(m+1)(n-1), C=(n-1)(m-1), A=(n+1)(m+1), K2=U^2+3W^2,K3=U^3+3W^3; minimum pair=(K3+C K2,K3-C K2), maximum pair=(A K2+K3,A K2-K3).",
+        "The degree-six upper construction restricts; its full-model minimum-degree lower bound does not automatically restrict."
+      ],
+      "proof_dependencies": [
+        "Unequal-valuation cubic/quadratic sums",
+        "F3Rational Cayley identities"
+      ],
+      "generalized_parts_not_required": [
+        "Tropical classification",
+        "Degree tensorization lower bound"
+      ]
+    },
+    {
+      "stable_id": "F3D-SPEC-DEG-AMPLIFIED",
+      "status": "ELIGIBLE_DERIVED_COROLLARY_PENDING_SCOPE",
+      "source_ids": [
+        "F3D-DEG-1",
+        "DEG-L3",
+        "DEG-L4",
+        "DEG-L5"
+      ],
+      "statement": "For n in Nat, n>1, k>=2 fixed, choose k=2a+3b with b in {0,1}; u=n+1,v=n-1,H_k=(u^2+v^2)^a(u^3-u v^2+v^3)^b. Then F_{3,D}(u^k+H_k,u^k-H_k)=k max(f3(n),0). In particular f3Rat(-(3n^2+2n+3)/(n-1)^2)=2 max(f3(n),0).",
+      "specialization_requirements": [
+        "For general k output is a pair; passing to f3Rat needs u^k-H_k!=0, not assumed here.",
+        "For k=2, Q=-(n-1)^2!=0, so the displayed rational corollary is unconditional on n>1.",
+        "Do not accept exact minimum degree k under a d=1-only restriction without a separate proof."
+      ],
+      "proof_dependencies": [
+        "Explicit mod 3 noncancellation of Q2,Q3",
+        "F3Rational bridge for the k=2 corollary"
+      ],
+      "generalized_parts_not_required": [
+        "Independent-scaling degree framework",
+        "p=2 results"
+      ]
+    },
+    {
+      "stable_id": "F3D-SPEC-TERN-CONSTRUCTIONS",
+      "status": "ELIGIBLE_DERIVED_COROLLARY_PENDING_SCOPE",
+      "source_ids": [
+        "F3D-TERN-1",
+        "F3D-TERN-2",
+        "F3D-TERN-3",
+        "F3D-TERN-4"
+      ],
+      "statement": "For natural n_i>1, set x_i=(n_i+1)/(n_i-1). The explicit rational coordinate formulas R31=(x^3-x y^2+y^3+3z^3)/(x^2+y^2+3z^2), R32=((x^2+y^2)^2+x^2 y z+(x^2+y^2)z^2)/(x^2+y^2), and N3=x^3+2x^2z-x y^2+3xyz+xz^2-y^3+yz^2+z^3 have v3 equal respectively to min_i f3(n_i), 2min_i f3(n_i), 3min_i f3(n_i). Clearing each input denominator gives globally admissible integer-pair constructions of total degree at most 9,10,9 before restriction. If a displayed coordinate R!=1, then f3Rat((R+1)/(R-1)) equals that value.",
+      "specialization_requirements": [
+        "All n_i>1; rational-coordinate formulas are nonzero.",
+        "Do not infer R!=1 merely from R!=0; retain inverse-Cayley denominator guard.",
+        "Original pair degrees are calculated by separate homogenization, with the ten-degree construction multidegree (4,4,2).",
+        "Only explicit upper constructions specialize; 9-10-9 minimality is pending generalized scope."
+      ],
+      "proof_dependencies": [
+        "Explicit mod 3 proofs for Q,H,R32",
+        "Finite F3 norm identity for N3",
+        "F3Rational coordinate bridge"
+      ],
+      "generalized_parts_not_required": [
+        "Two-stage multivariate homogeneous reduction",
+        "Denominator lower bound",
+        "General finite-field norm theory",
+        "Grouped asymptotic degree upper bounds"
+      ]
+    },
+    {
+      "stable_id": "F3D-SPEC-STABLE-INTERVAL",
+      "status": "ELIGIBLE_DERIVED_COROLLARY_PENDING_SCOPE",
+      "source_ids": [
+        "F3D-STABLE-1",
+        "STABLE-L1",
+        "STABLE-L2"
+      ],
+      "statement": "For n in Nat,n>1,L>=1,q in {1,2}, u=n+1,v=n-1, set A=(9u^2+3^q v^2)(u^2+3^(2L-2)v^2), B=(9u^2+v^2)(u^2+3^(2L-2+q)v^2). Then f3Rat((A+B)/(A-B))=q 1_{0<=f3(n)<L}. Since A-B=(3^q-1)(1-3^(2L))u^2v^2<0, the rational denominator is nonzero; A,B>0 also give output !=+/-1. For I=[a,a+L-1], precompose (n,1) with S_{-a}; the same nonvanishing remains true.",
+      "specialization_requirements": [
+        "Fixed integer L>=1,q in {1,2},a in Z; shifted neighbors remain nonzero.",
+        "Retain all domain guards and distinguish q gain from prime p=3.",
+        "This accepts only a possible rational-extension detector identity; neither optimality nor stable degree formula follows for original scalar F3."
+      ],
+      "proof_dependencies": [
+        "Quadratic threshold identity",
+        "Linear layer shift",
+        "Basic valuation quotient",
+        "F3Rational bridge"
+      ],
+      "generalized_parts_not_required": [
+        "Hensel quartic lower bound",
+        "Projective kernel matrices",
+        "Algebraic root profiles",
+        "Stable degree limits"
+      ]
+    }
+  ],
+  "generalized_theory": [
+    {
+      "stable_id": "F3D-POLY-1",
+      "package": "polynomial_realization",
+      "source": {
+        "path": "docs/proofs/f3d/polynomial_realization/theorem.md",
+        "git_blob": "93cc5d668e1580c2789799eed0eea4131af80479",
+        "lines": [
+          53,
+          97
+        ],
+        "text": "## 2. 定理 F3D-POLY-1：四次精确层检测\n\n定义\n\\[\n\\boxed{\nE_0(n,d)=\n\\left(\n5n^4+22n^2d^2+5d^4,\\,\n(n^2-d^2)^2\n\\right).\n}\n\\]\n则对所有 \\((n,d)\\in\\mathcal D\\)，\n\\[\n\\boxed{\nF(E_0(n,d))\n=\n\\mathbf 1_{\\{F(n,d)=0\\}}.\n}\n\\]\n\n而且输出总满足\n\\[\nN>D>0,\n\\]\n其中 \\(E_0(n,d)=(N,D)\\)。\n\n进一步，对任意固定整数 \\(r\\)，存在显式线性整数多项式对 \\(S_r\\) 满足\n\\[\nF(S_r(n,d))=F(n,d)+r.\n\\]\n于是\n\\[\nE_r:=E_0\\circ S_{-r}\n\\]\n满足\n\\[\n\\boxed{\nF(E_r(n,d))\n=\n\\mathbf 1_{\\{F(n,d)=r\\}}.\n}\n\\]\n所有 \\(E_r\\) 仍为四次多项式对。\n"
+      },
+      "all_hypotheses": [
+        "Every X in D; fixed r in Z for E_r; E_r=E_0 composed with S_{-r}."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-POLY-2",
+      "package": "polynomial_realization",
+      "source": {
+        "path": "docs/proofs/f3d/polynomial_realization/theorem.md",
+        "git_blob": "93cc5d668e1580c2789799eed0eea4131af80479",
+        "lines": [
+          98,
+          170
+        ],
+        "text": "## 3. 定理 F3D-POLY-2：固定多项式实现函数的完全分类\n\n设 \\(g:\\mathbb Z\\to\\mathbb Z\\)。\n\n存在一个全域有效的固定整数多项式对 \\((P,Q)\\) 实现 \\(g\\)，当且仅当存在整数\n\\[\na_+,b_+,a_-,b_-\\in\\mathbb Z\n\\]\n和阈值 \\(T_+,T_-\\)，使\n\\[\ng(t)=a_+t+b_+\n\\qquad(t\\ge T_+),\n\\]\n以及\n\\[\ng(t)=a_-t+b_-\n\\qquad(t\\le T_-).\n\\]\n\n也就是说：\n\n> **可由固定整数多项式对全域实现的 \\(g\\)，恰好是正负两端分别最终成为整数仿射函数的整数值函数。**\n\n中间有限多个整数上的值可以任意指定。\n\n### 显式构造\n\n令\n\\[\n(t-r)_+=\\max(t-r,0)\n\\]\n以及\n\\[\nc_r=g(r+1)-2g(r)+g(r-1).\n\\]\n因为 \\(g\\) 两端最终仿射，仅有限多个 \\(c_r\\ne0\\)，并且\n\\[\ng(t)=a_-t+b_-+\\sum_r c_r(t-r)_+.\n\\]\n\n定义\n\\[\n\\boxed{\n\\rho(x)=\\frac{x(x^2+1)}{x^3-x+1}.\n}\n\\]\n则\n\\[\nv_3(\\rho(x))=\\max(v_3(x),0)\n\\qquad(x\\in\\mathbb Q^\\times).\n\\]\n\n于是\n\\[\n\\boxed{\n\\mathcal R_g(x)\n=\n3^{b_-}x^{a_-}\n\\prod_{r:c_r\\ne0}\n\\rho(3^{-r}x)^{c_r}\n}\n\\]\n满足\n\\[\nv_3(\\mathcal R_g(x))=g(v_3(x)).\n\\]\n\n将 \\(\\mathcal R_g=A/B\\) 清去有理系数分母、齐次化并换回\n\\[\nu=n+d,\\qquad v=n-d\n\\]\n即可得到所需整数多项式对 \\((P,Q)\\)。\n"
+      },
+      "all_hypotheses": [
+        "g:Z->Z; global fixed-pair realization as defined above; eventual tail slopes and intercepts are integers; two thresholds may differ."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-POLY-3",
+      "package": "polynomial_realization",
+      "source": {
+        "path": "docs/proofs/f3d/polynomial_realization/theorem.md",
+        "git_blob": "93cc5d668e1580c2789799eed0eea4131af80479",
+        "lines": [
+          171,
+          183
+        ],
+        "text": "## 4. 定理 F3D-POLY-3：四个基础操作的最低次数\n\n以下最低次数均按 \\(\\deg(P,Q)\\) 计算。\n\n| 目标函数 \\(g(t)\\) | 最低次数 | 一个实现 |\n|---|---:|---|\n| \\(t+r\\) | \\(\\boxed{1}\\) | 线性伸缩 \\(S_r\\) |\n| \\(|t|\\) | \\(\\boxed{2}\\) | \\(R(x)=x/(x^2+1)\\) |\n| \\(\\max(t,0)\\) | \\(\\boxed{3}\\) | \\(R(x)=\\rho(x)\\) |\n| \\(\\mathbf 1_{\\{t=0\\}}\\) | \\(\\boxed{4}\\) | \\(R(x)=(x^4+x^2+1)/(x^4+1)\\)，等价于 \\(E_0\\) |\n\n其中后三项均指经过齐次化回到整数多项式对后的次数。\n"
+      },
+      "all_hypotheses": [
+        "Minimum over the full D realization model, including nonhomogeneous candidates; r fixed in Z."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-POLY-4",
+      "package": "polynomial_realization",
+      "source": {
+        "path": "docs/proofs/f3d/polynomial_realization/theorem.md",
+        "git_blob": "93cc5d668e1580c2789799eed0eea4131af80479",
+        "lines": [
+          184,
+          202
+        ],
+        "text": "## 5. 推论 F3D-POLY-4：不可实现函数\n\n以下函数不能由一个全域有效的固定整数多项式对实现：\n\\[\nt\\mapsto t^2,\n\\qquad\nt\\mapsto(-1)^t,\n\\qquad\nt\\mapsto\\left\\lfloor\\frac t2\\right\\rfloor.\n\\]\n\n更一般地，任何在正端或负端不最终成为整数仿射函数的 \\(g\\) 都不可实现。\n\n此外，不存在一个全域有效的固定双输入整数多项式构造，能够对两个独立输入对 \\(X,Y\\) 恒满足\n\\[\nF(\\Phi(X,Y))=F(X)F(Y).\n\\]\n否则令 \\(Y=X\\)，就会得到单输入函数 \\(t\\mapsto t^2\\)，与分类定理矛盾。\n"
+      },
+      "all_hypotheses": [
+        "Full D or D^2, fixed polynomial pairs, output globally admissible; multiplication inputs independent."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-MULTI-1",
+      "package": "multivariate_tropical",
+      "source": {
+        "path": "docs/proofs/f3d/multivariate_tropical/theorem.md",
+        "git_blob": "cc482a89a282210f3f0a58dc3ae53b5992a45f6b",
+        "lines": [
+          77,
+          102
+        ],
+        "text": "## 2. 定理 F3D-MULTI-1：二次正性检测\n\n定义\n\\[\n\\boxed{\n\\Theta(n,d)\n=\n\\left(\n3n^2-2nd+3d^2,\\,\n(n-d)^2\n\\right).\n}\n\\]\n则对所有 \\((n,d)\\in\\mathcal D\\)，\n\\[\n\\boxed{\nF(\\Theta(n,d))\n=\n\\mathbf1_{\\{F(n,d)>0\\}}.\n}\n\\]\n并且输出始终满足\n\\[\nN>D>0.\n\\]\n"
+      },
+      "all_hypotheses": [
+        "Every X in D."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-MULTI-2",
+      "package": "multivariate_tropical",
+      "source": {
+        "path": "docs/proofs/f3d/multivariate_tropical/theorem.md",
+        "git_blob": "cc482a89a282210f3f0a58dc3ae53b5992a45f6b",
+        "lines": [
+          103,
+          176
+        ],
+        "text": "## 3. 定理 F3D-MULTI-2：最小值、最大值与第一极小位置\n\n对非零有理数 \\(x,y\\)，定义\n\\[\n\\boxed{\n\\mu(x,y)=\n\\frac{x^3+3y^3}{x^2+3y^2}.\n}\n\\]\n则\n\\[\n\\boxed{\nv_3(\\mu(x,y))\n=\n\\min(v_3(x),v_3(y)).\n}\n\\]\n因此\n\\[\n\\boxed{\nv_3\\!\\left(\\frac{xy}{\\mu(x,y)}\\right)\n=\n\\max(v_3(x),v_3(y)).\n}\n\\]\n\n这些有理函数经清分母、齐次化和和差回代后，给出固定整数多项式对，实现两个输入的\n\\[\n\\min(F(X),F(Y)),\n\\qquad\n\\max(F(X),F(Y)).\n\\]\n\n更一般地，对固定 \\(m\\ge1\\) 和非零有理数\n\\[\nx_0,\\ldots,x_{m-1},\n\\]\n定义\n\\[\nH_k=\\sum_{i=0}^{m-1}3^i x_i^k,\n\\qquad k\\ge m.\n\\]\n若\n\\[\na=\\min_i v_3(x_i),\n\\qquad\ni_0=\\min\\{i:v_3(x_i)=a\\},\n\\]\n则\n\\[\n\\boxed{\nv_3(H_k)=ka+i_0.\n}\n\\]\n从而\n\\[\n\\boxed{\nv_3\\!\\left(\\frac{H_{m+1}}{H_m}\\right)=a,\n}\n\\]\n以及\n\\[\n\\boxed{\nv_3\\!\\left(\n\\frac{H_m^{m+1}}{H_{m+1}^{m}}\n\\right)=i_0.\n}\n\\]\n\n所以对于固定输入数 \\(m\\)，可以同时以固定多项式构造提取：\n\n- 所有输入 \\(F\\) 值的最小值；\n- 第一个达到最小值的输入编号。\n"
+      },
+      "all_hypotheses": [
+        "x,y in Q nonzero; for batching m>=1 fixed, x_i in Q nonzero, 0<=i<m, k>=m; first minimizing index uses this ordering."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-MULTI-3",
+      "package": "multivariate_tropical",
+      "source": {
+        "path": "docs/proofs/f3d/multivariate_tropical/theorem.md",
+        "git_blob": "cc482a89a282210f3f0a58dc3ae53b5992a45f6b",
+        "lines": [
+          177,
+          208
+        ],
+        "text": "## 4. 定理 F3D-MULTI-3：多输入完全分类\n\n对固定 \\(m\\ge1\\)，函数\n\\[\ng:\\mathbb Z^m\\to\\mathbb Z\n\\]\n可由一个全域有效的固定整数多项式对实现，当且仅当 \\(g\\) 是有限整数热带表达式。\n\n等价地，恰好是所有可以写成 (T) 的函数。\n\n### 构造方向\n\n在坐标\n\\[\nx_i=\\frac{n_i+d_i}{n_i-d_i}\n\\]\n中，\n\\[\nF(X_i)=v_3(x_i).\n\\]\n以下赋值操作均有全域无零极点的固定有理函数实现：\n\\[\na+b,\\quad a-b,\\quad \\min(a,b),\\quad \\max(a,b),\\quad r\\in\\mathbb Z.\n\\]\n有限复合后清分母、齐次化，即得到整数多项式对。\n\n### 必要性\n\n对任意固定全域多项式对，输出函数 \\(g\\) 在整数格点上具有有限整数仿射分区，且全部局部斜率来自有限集合。因此 \\(g\\) 可写成有限整数热带表达式。\n\n证明中不忽略最低项抵消：使用一个固定有限单位网格和 Lagrange 插值，得到统一抵消深度上界，然后把剩余有限修正编码成有限个整数线性条件。\n"
+      },
+      "all_hypotheses": [
+        "m>=1 fixed; g:Z^m->Z; global fixed-pair realization; integer constants/slopes and finite tropical expressions."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals.",
+      "paper_reliance_status": "CURRENT_NECESSITY_ROUTE_BLOCKED_BY_F3D-CORR-MULTI-L12; no claim that main theorem is false"
+    },
+    {
+      "stable_id": "F3D-MULTI-4",
+      "package": "multivariate_tropical",
+      "source": {
+        "path": "docs/proofs/f3d/multivariate_tropical/theorem.md",
+        "git_blob": "cc482a89a282210f3f0a58dc3ae53b5992a45f6b",
+        "lines": [
+          209,
+          265
+        ],
+        "text": "## 5. 定理 F3D-MULTI-4：统一 Lipschitz 边界与无界开关不可实现\n\n任何可实现的\n\\[\ng:\\mathbb Z^m\\to\\mathbb Z\n\\]\n都存在常数 \\(L<\\infty\\)，使\n\\[\n\\boxed{\n|g(\\mathbf t)-g(\\mathbf s)|\n\\le\nL\\|\\mathbf t-\\mathbf s\\|_\\infty\n}\n\\]\n对全部整数格点成立。\n\n因此双输入函数\n\\[\n\\boxed{\nG(t,s)=\n\\begin{cases}\ns,&t\\ge0,\\\\\n0,&t<0\n\\end{cases}\n}\n\\]\n不可由一个全域固定整数多项式对实现，因为\n\\[\nG(0,M)-G(-1,M)=M\n\\]\n可以任意大，而输入距离恒为 \\(1\\)。\n\n但对每个固定 \\(B\\ge0\\)，截断开关\n\\[\nG_B(t,s)\n=\n\\begin{cases}\n\\max(-B,\\min(s,B)),&t\\ge0,\\\\\n0,&t<0\n\\end{cases}\n\\]\n可以实现。\n\n一个显式热带表达式是\n\\[\nH(t)=\\mathbf1_{\\{t\\ge0\\}}\n=\n\\min(1,\\max(0,t+1)),\n\\]\n\\[\nG_B(t,s)\n=\n\\min(s_+,BH(t))\n-\n\\min((-s)_+,BH(t)).\n\\]\n"
+      },
+      "all_hypotheses": [
+        "m fixed and g globally realizable for universal Lipschitz conclusion; unbounded switch on all Z^2; bounded-switch B is a fixed nonnegative integer."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals.",
+      "paper_reliance_status": "CURRENT_NECESSITY_ROUTE_BLOCKED_BY_F3D-CORR-MULTI-L12; no claim that main theorem is false"
+    },
+    {
+      "stable_id": "F3D-DEG-1",
+      "package": "degree_tensorization",
+      "source": {
+        "path": "docs/proofs/f3d/degree_tensorization/theorem.md",
+        "git_blob": "a97eada21d389a7a486d3dd0cbe15e24743d5cd9",
+        "lines": [
+          27,
+          58
+        ],
+        "text": "## 2. 定理 F3D-DEG-1：放大取正部的精确最低次数\n\n对每个\n\\[\nk\\ge2\n\\]\n存在 \\(k\\) 次整数齐次多项式 \\(H_k(u,v)\\) 满足\n\\[\nv_3(H_k(u,v))\n=\nk\\min(v_3(u),v_3(v)).\n\\]\n\n因此存在 \\(k\\) 次整数多项式对实现\n\\[\nk\\,t_+.\n\\]\n\n结合正端斜率下界，\n\\[\n\\boxed{\n\\deg_F(k\\,t_+)\n=\n\\begin{cases}\n3,&k=1,\\\\\nk,&k\\ge2.\n\\end{cases}\n}\n\\]\n\n所以数值放大并不使“单位输出复杂度”单调增加：单倍取正部需要 3 次，而二倍取正部只需 2 次。\n"
+      },
+      "all_hypotheses": [
+        "k integer >=2 for H_k construction, u,v nonzero; k>=1 for piecewise minimum-degree formula."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-DEG-2",
+      "package": "degree_tensorization",
+      "source": {
+        "path": "docs/proofs/f3d/degree_tensorization/theorem.md",
+        "git_blob": "a97eada21d389a7a486d3dd0cbe15e24743d5cd9",
+        "lines": [
+          59,
+          86
+        ],
+        "text": "## 3. 定理 F3D-DEG-2：独立输入次数下界可相加\n\n对第 \\(i\\) 个坐标及其余坐标固定值 \\(c\\)，令单输入截面为\n\\[\ng_{i,c}(t).\n\\]\n定义\n\\[\n\\delta_i(g)\n=\n\\sup_c\\deg_F(g_{i,c}).\n\\]\n\n若 \\(g\\) 全域可实现，则\n\\[\n\\boxed{\n\\deg_F(g)\n\\ge\n\\sum_{i=1}^m\\delta_i(g).\n}\n\\]\n\n证明使用对每组输入变量的多齐次分解以及独立共同缩放\n\\[\nX_i\\mapsto3^{sw_i}X_i.\n\\]\n这不是一般等号定理，而是统一下界。\n"
+      },
+      "all_hypotheses": [
+        "m>=1; g globally realizable; delta_i is supremum over ALL integer values of the other coordinates, with full-domain one-input realization degree."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-DEG-3",
+      "package": "degree_tensorization",
+      "source": {
+        "path": "docs/proofs/f3d/degree_tensorization/theorem.md",
+        "git_blob": "a97eada21d389a7a486d3dd0cbe15e24743d5cd9",
+        "lines": [
+          87,
+          109
+        ],
+        "text": "## 4. 定理 F3D-DEG-3：有符号和的精确张量化\n\n设一元 \\(h\\) 可实现，\n\\[\n\\epsilon_i\\in\\{\\pm1\\},\n\\qquad r\\in\\mathbb Z.\n\\]\n则\n\\[\n\\boxed{\n\\deg_F\n\\left(\nh\\left(\n\\sum_{i=1}^m\\epsilon_it_i+r\n\\right)\n\\right)\n=\nm\\,\\deg_F(h).\n}\n\\]\n\n下界来自 F3D-DEG-2；上界通过先用一个 \\(m\\) 次多齐次数对聚合全部带符号输入，再只应用一次最优齐次 \\(h\\) 实现。\n"
+      },
+      "all_hypotheses": [
+        "m>=1 fixed; h globally realizable in one input; epsilon_i in {+1,-1}; r in Z fixed."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-DEG-4",
+      "package": "degree_tensorization",
+      "source": {
+        "path": "docs/proofs/f3d/degree_tensorization/theorem.md",
+        "git_blob": "a97eada21d389a7a486d3dd0cbe15e24743d5cd9",
+        "lines": [
+          110,
+          160
+        ],
+        "text": "## 5. 定理 F3D-DEG-4：双输入 min/max 的精确最低次数\n\n对 \\(p=3\\)，\n\\[\n\\boxed{\n\\deg_F(\\min(t,s))\n=\n\\deg_F(\\max(t,s))\n=\n6.\n}\n\\]\n\n更一般地，对\n\\[\nk\\ge2,\n\\]\n\\[\n\\boxed{\n\\deg_F(k\\min(t,s))\n=\n\\deg_F(k\\max(t,s))\n=\n2k.\n}\n\\]\n\n合并为\n\\[\n\\boxed{\n\\deg_F(k\\min(t,s))\n=\n\\deg_F(k\\max(t,s))\n=\n\\begin{cases}\n6,&k=1,\\\\\n2k,&k\\ge2.\n\\end{cases}\n}\n\\]\n\n特别地，\n\\[\n2\\min(t,s)\n\\]\n和\n\\[\n2\\max(t,s)\n\\]\n都有四次最优构造。\n"
+      },
+      "all_hypotheses": [
+        "p=3; independent legal inputs; k>=1 integer, with separate k=1 and k>=2 cases."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-DEG-5",
+      "package": "degree_tensorization",
+      "source": {
+        "path": "docs/proofs/f3d/degree_tensorization/theorem.md",
+        "git_blob": "a97eada21d389a7a486d3dd0cbe15e24743d5cd9",
+        "lines": [
+          161,
+          233
+        ],
+        "text": "## 6. 定理 F3D-DEG-5：精确次数表与不可除法\n\n研究稿中的精确最低次数包括：\n\\[\n\\deg_F(t\\pm s)=2,\n\\]\n\\[\n\\deg_F(|t-s|)=4,\n\\]\n\\[\n\\deg_F(\\mathbf1_{t>s})\n=\n\\deg_F(\\mathbf1_{t\\ge s})\n=\n4,\n\\]\n\\[\n\\deg_F(\\mathbf1_{t=s})=8.\n\\]\n\n对任意固定符号 \\(\\epsilon_i\\)：\n\\[\n\\deg_F\n\\left(\n\\left|\n\\sum_i\\epsilon_it_i+r\n\\right|\n\\right)\n=\n2m,\n\\]\n\\[\n\\deg_F\n\\left(\n\\mathbf1_{\\{\\sum_i\\epsilon_it_i>r\\}}\n\\right)\n=\n2m,\n\\]\n\\[\n\\deg_F\n\\left(\n\\max\\left(\n\\sum_i\\epsilon_it_i+r,0\n\\right)\n\\right)\n=\n3m,\n\\]\n\\[\n\\deg_F\n\\left(\n\\mathbf1_{\\{\\sum_i\\epsilon_it_i=r\\}}\n\\right)\n=\n4m.\n\\]\n\n此外，对任何\n\\[\nk\\ge2,\n\\]\n不存在固定整数多项式对 \\(T\\)，即使只要求在\n\\[\nF(X)\\in k\\mathbb Z\n\\]\n的输入上，也不能全域满足\n\\[\nF(T(X))=F(X)/k.\n\\]\n\n所以“最后在 \\(F\\) 值外部除以 \\(k\\)”与“内部存在固定多项式除法器”是不同问题。\n"
+      },
+      "all_hypotheses": [
+        "p=3; fixed m>=1, epsilon_i in {+1,-1}, r in Z; divider impossibility uses fixed k>=2 and only legal inputs with F(X) in kZ, and still requires admissible output on that subdomain."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-DEG-6",
+      "package": "degree_tensorization",
+      "source": {
+        "path": "docs/proofs/f3d/degree_tensorization/theorem.md",
+        "git_blob": "a97eada21d389a7a486d3dd0cbe15e24743d5cd9",
+        "lines": [
+          234,
+          255
+        ],
+        "text": "## 7. 定理 F3D-DEG-6：\\(p=2\\) 的精确层检测更低次\n\n对 \\(F_{2,D}\\)，\n\\[\nR_2(x)=\n\\frac{x^2+1}{x^2+x+1}\n\\]\n满足\n\\[\n\\boxed{\nv_2(R_2(x))\n=\n\\mathbf1_{\\{v_2(x)=0\\}}.\n}\n\\]\n\n因此 \\(p=2\\) 的精确单位层检测最低次数为 2；相应双输入等值检测最低次数为 4。\n\n对 \\(p=3\\)，这两个次数分别为 4 和 8。\n\n这说明不同素数的**可实现函数类**相同，但某些函数的最优实现次数可以不同。\n"
+      },
+      "all_hypotheses": [
+        "Prime p=2 for detector formula and its degree; all x in Q nonzero; full-domain degree model remains required."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-TERN-1",
+      "package": "ternary_minima_norm_forms",
+      "source": {
+        "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+        "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+        "lines": [
+          21,
+          45
+        ],
+        "text": "## F3D-TERN-1：三输入 9–10–9 次数谱\n\n对三个输入：\n\\[\n\\boxed{\n\\mathfrak d_3(k)=\n\\begin{cases}\n9,&k=1,\\\\\n10,&k=2,\\\\\n3k,&k\\ge3.\n\\end{cases}\n}\n\\]\n\n因此\n\\[\n\\boxed{\n\\mathfrak d_3(1)=9,\\quad\n\\mathfrak d_3(2)=10,\\quad\n\\mathfrak d_3(3)=9.\n}\n\\]\n\n两倍放大反而比三倍更贵。\n"
+      },
+      "all_hypotheses": [
+        "m=3; integer gain k>=1; full D^3 realization model."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-TERN-2",
+      "package": "ternary_minima_norm_forms",
+      "source": {
+        "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+        "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+        "lines": [
+          46,
+          64
+        ],
+        "text": "## F3D-TERN-2：一倍最小值的小输入精确值\n\n三输入一倍最小值由\n\\[\nR_{3,1}(x,y,z)\n=\n\\frac{H(x,y)+3z^3}{Q(x,y)+3z^2}\n\\]\n九次实现，其中\n\\[\nQ=x^2+y^2,\\qquad\nH=x^3-xy^2+y^3.\n\\]\n\n四输入一倍最小值由两个二元无抵消块组合，得到\n\\[\n\\boxed{\\mathfrak d_4(1)=12.}\n\\]\n"
+      },
+      "all_hypotheses": [
+        "x,y,z or x_1,...,x_4 nonzero rational; full D^3 or D^4 model for minimum degrees."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-TERN-3",
+      "package": "ternary_minima_norm_forms",
+      "source": {
+        "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+        "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+        "lines": [
+          65,
+          107
+        ],
+        "text": "## F3D-TERN-3：两倍最小值的分母代价\n\n三输入存在显式十次构造\n\\[\nR_{3,2}(x,y,z)\n=\n\\frac{A(x,y,z)}{x^2+y^2},\n\\]\n其中\n\\[\nA=(x^2+y^2)^2+x^2yz+(x^2+y^2)z^2.\n\\]\n\n对全部非零有理 \\(x,y,z\\)：\n\\[\n\\boxed{\nv_3(R_{3,2})\n=\n2\\min(v_3(x),v_3(y),v_3(z)).\n}\n\\]\n\n更一般地，对 \\(m\\ge3\\)：\n\\[\n\\boxed{\n\\mathfrak d_m(2)\\ge2m+4.\n}\n\\]\n\n证明核心：\n\n1. 任意实现可正规化成互素齐次 \\(A/B\\)，其中\n   \\[\n   \\deg_iA=\\deg_iB+2.\n   \\]\n2. 若 \\(B\\) 非常数，则每个依赖变量次数不是 1，而至少是 2；齐次性迫使它依赖至少两个变量，因此\n   \\[\n   \\sum_i\\deg_iB\\ge4.\n   \\]\n3. 若 \\(B\\) 为常数，则得到一个三元以上齐次二次型，其模 \\(3\\) 必须在所有非零向量上非零；这不可能。正文给出三元二次型的初等对角化证明。\n\n对 \\(m=3\\) 得下界 \\(10\\)，与显式构造吻合。\n"
+      },
+      "all_hypotheses": [
+        "All x,y,z in Q nonzero for explicit identity; general lower bound requires m>=3; k=2 fixed."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-TERN-4",
+      "package": "ternary_minima_norm_forms",
+      "source": {
+        "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+        "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+        "lines": [
+          108,
+          133
+        ],
+        "text": "## F3D-TERN-4：三元三次范数形式\n\n定义\n\\[\n\\mathcal N_3(x,y,z)\n=\nx^3+2x^2z-xy^2+3xyz+xz^2-y^3+yz^2+z^3.\n\\]\n它是有限域扩张\n\\[\n\\mathbf F_{27}/\\mathbf F_3\n\\]\n的范数形式的整数提升，满足\n\\[\n\\boxed{\nv_3(\\mathcal N_3(x,y,z))\n=\n3\\min(v_3(x),v_3(y),v_3(z)).\n}\n\\]\n\n从而三倍三输入最小值九次实现；截面下界也是九次，所以\n\\[\n\\boxed{\\mathfrak d_3(3)=9.}\n\\]\n"
+      },
+      "all_hypotheses": [
+        "All three rational inputs nonzero in realization; norm auxiliary formula extends to nonzero vectors only with explicit convention for zero coordinates; finite-field norm is from F27/F3."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-TERN-5",
+      "package": "ternary_minima_norm_forms",
+      "source": {
+        "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+        "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+        "lines": [
+          134,
+          157
+        ],
+        "text": "## F3D-TERN-5：一般高增益范数公式\n\n对每个 \\(k\\ge1\\)，有限域范数给出 \\(k\\) 元 \\(k\\) 次无抵消形式。若 \\(m\\le k\\)，把多余坐标设零可得\n\\[\nN_{k,m}\n\\]\n满足\n\\[\nv_3(N_{k,m}(\\mathbf x))\n=\nk\\min_i v_3(x_i).\n\\]\n\n因此对\n\\[\nm\\ge2,\\qquad k\\ge m\n\\]\n有\n\\[\n\\boxed{\n\\mathfrak d_m(k)=mk.\n}\n\\]\n"
+      },
+      "all_hypotheses": [
+        "m>=2 and k>=m for d_m(k)=mk; finite-field norm construction permits 1<=m<=k with k>=1; inputs nonzero rational."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-TERN-6",
+      "package": "ternary_minima_norm_forms",
+      "source": {
+        "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+        "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+        "lines": [
+          158,
+          190
+        ],
+        "text": "## F3D-TERN-6：任意输入数的一倍最小值上界\n\n令\n\\[\nr=\\lceil\\sqrt m\\rceil,\n\\qquad\ns=\\lceil m/r\\rceil\\le r.\n\\]\n把 \\(m\\) 个输入分成 \\(s\\) 组，每组至多 \\(r\\) 个。\n\n每组分别用 \\(r\\) 次、\\(r+1\\) 次范数形式编码该组最小赋值，再用权重\n\\[\n1,3,\\ldots,3^{s-1}\n\\]\n消除组间并列抵消。\n\n得到\n\\[\n\\boxed{\n3m\n\\le\n\\mathfrak d_m(1)\n\\le\nm(\\lceil\\sqrt m\\rceil+1).\n}\n\\]\n\n上界为\n\\[\nO(m^{3/2}).\n\\]\n对 \\(m=2,3,4\\) 与下界吻合；更大 \\(m\\) 不声明最优。\n"
+      },
+      "all_hypotheses": [
+        "m>=2, as explicitly stated in proof.md; r=ceil(sqrt(m)), s=ceil(m/r); groups nonempty and size <=r. theorem.md omits m>=2 and needs that guard."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals.",
+      "paper_reliance_status": "Add m>=2 from proof.md before quoting theorem statement"
+    },
+    {
+      "stable_id": "F3D-STABLE-1",
+      "package": "interval_detectors_stable_degree",
+      "source": {
+        "path": "docs/proofs/f3d/interval_detectors_stable_degree/theorem.md",
+        "git_blob": "967e12fb9281725e36b1e47939347a1dd8c6327c",
+        "lines": [
+          41,
+          93
+        ],
+        "text": "## 2. F3D-STABLE-1：任意有限区间的四次检测\n\n以下取 \\(p=3\\)。令\n\\[\nu=n+d,\\qquad v=n-d.\n\\]\n固定\n\\[\nL\\ge1,\\qquad q\\in\\{1,2\\},\n\\]\n定义\n\\[\nA_{L,q}\n=\n(9u^2+3^qv^2)\n(u^2+3^{2L-2}v^2),\n\\]\n\\[\nB_{L,q}\n=\n(9u^2+v^2)\n(u^2+3^{2L-2+q}v^2),\n\\]\n\\[\n\\mathcal I_{L,q}\n=\n(A_{L,q}+B_{L,q},A_{L,q}-B_{L,q}).\n\\]\n\n则\n\\[\n\\boxed{\nF_{3,D}(\\mathcal I_{L,q}(n,d))\n=\nq\\,\\mathbf1_{\\{0\\le F_{3,D}(n,d)<L\\}}.\n}\n\\]\n\n配合线性层平移，任意非空有限整数区间\n\\[\nI=[a,a+L-1]\n\\]\n都可四次检测。\n\n而且四次最优：\n\\[\n\\boxed{\na_{3,I}(1)=a_{3,I}(2)=4.\n}\n\\]\n\n次数至多 \\(3\\) 的既约有理函数若两端输出为 \\(0\\)，其分子分母根只能集中在一个三进赋值层；因此不能支持长度 \\(\\ge2\\) 的区间。单层情形再用模 \\(3\\) 的两个单位类和 Hensel 简单根提升排除。\n"
+      },
+      "all_hypotheses": [
+        "p=3; X in D; L>=1 integer; q in {1,2}; interval I=[a,a+L-1], a in Z; exact degree statement uses full D model."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-STABLE-2",
+      "package": "interval_detectors_stable_degree",
+      "source": {
+        "path": "docs/proofs/f3d/interval_detectors_stable_degree/theorem.md",
+        "git_blob": "967e12fb9281725e36b1e47939347a1dd8c6327c",
+        "lines": [
+          161,
+          229
+        ],
+        "text": "## 4. F3D-STABLE-2：两端最终常值函数的稳定次数\n\n设\n\\[\ng:\\mathbb Z\\to\\mathbb Z\n\\]\n在两端最终常值。取足够大的 \\(r\\)，使\n\\[\ng(v_p(x))\n\\]\n在每个深度 \\(r\\) 射影剩余类上恒定，得到向量\n\\[\n\\mathbf g\\in\\mathbb Z^{N_r}.\n\\]\n令\n\\[\n\\bar g\n=\n\\frac1{N_r}\\sum_i g_i.\n\\]\n\n则极限\n\\[\n\\boxed{\n\\sigma_p(g)\n:=\n\\lim_{k\\to\\infty}\n\\frac{\\deg_p(kg)}k\n}\n\\]\n存在，并且\n\\[\n\\boxed{\n\\sigma_p(g)\n=\n\\frac12\n\\left\\|\n\\left(K_r+\\frac1{p-1}I\\right)^{-1}\n(\\mathbf g-\\bar g\\mathbf1)\n\\right\\|_1.\n}\n\\]\n\n右侧与足够大的 \\(r\\) 的选择无关。\n\n### 下界机制\n\n把任意候选既约有理实现分解为代数根贡献。每个代数根的射影弦距平均剖面都可写成\n\\[\nM_r\\mu_\\alpha\n\\]\n其中\n\\[\n\\mu_\\alpha\\ge0,\n\\qquad\n\\|\\mu_\\alpha\\|_1\\le1.\n\\]\n因此次数 \\(d\\) 只能提供至多 \\(d\\) 单位的正权和 \\(d\\) 单位的负权，给出 \\(\\ell^1\\) 下界。\n\n### 上界机制\n\n在有限剩余树上用二次无抵消形式实现核矩阵列；解有限有理线性方程并清分母，得到真正的齐次整数多项式乘积。继续细分剩余类后，构造代价收敛到上式下界。最后由\n\\[\na_{p,g}(k+\\ell)\n\\le\na_{p,g}(k)+a_{p,g}(\\ell)\n\\]\n和 Fekete 型次可加论证，把子序列上界提升为全部 \\(k\\) 的极限。\n"
+      },
+      "all_hypotheses": [
+        "p prime; g:Z->Z is eventually constant at each tail (constants may differ); r>=1 sufficiently large that the resulting function on P1(Qp), extended by tail constants at 0,infinity, is constant on every depth-r residue class; gain k>=1."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-STABLE-3",
+      "package": "interval_detectors_stable_degree",
+      "source": {
+        "path": "docs/proofs/f3d/interval_detectors_stable_degree/theorem.md",
+        "git_blob": "967e12fb9281725e36b1e47939347a1dd8c6327c",
+        "lines": [
+          230,
+          275
+        ],
+        "text": "## 5. F3D-STABLE-3：有限层集合的显式稳定代价\n\n对有限\n\\[\nS\\subset\\mathbb Z\n\\]\n令\n\\[\ng=\\mathbf1_S.\n\\]\n则\n\\[\n\\boxed{\n\\sigma_p(S)\n=\n\\frac{2(p-1)^2}{p(p+1)}|S|\n-\n\\frac{2(p-1)^3}{p(p+1)}\n\\sum_{\\substack{i<j\\\\i,j\\in S}}\np^{-(j-i)}.\n}\n\\]\n\n而且所有有限 \\(k\\) 都有统一下界\n\\[\n\\boxed{\na_{p,S}(k)\n\\ge\n\\lceil k\\sigma_p(S)\\rceil.\n}\n\\]\n\n对 \\(p=3\\)：\n\\[\n\\boxed{\n\\sigma_3(S)\n=\n\\frac23|S|\n-\n\\frac43\n\\sum_{i<j\\in S}3^{-(j-i)}.\n}\n\\]\n\n所以两个检测层之间有指数衰减的“共享成本节省”。\n"
+      },
+      "all_hypotheses": [
+        "p prime; S finite subset of Z, including empty; gain k>=1 integer; degree lower bound uses full D model."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-STABLE-4",
+      "package": "interval_detectors_stable_degree",
+      "source": {
+        "path": "docs/proofs/f3d/interval_detectors_stable_degree/theorem.md",
+        "git_blob": "967e12fb9281725e36b1e47939347a1dd8c6327c",
+        "lines": [
+          276,
+          315
+        ],
+        "text": "## 6. F3D-STABLE-4：连续区间恰好最省\n\n若\n\\[\nS=[a,a+L-1],\n\\]\n则\n\\[\n\\boxed{\n\\sigma_p(S)\n=\n\\frac{2(p-1)}{p+1}(1-p^{-L}).\n}\n\\]\n\n特别地\n\\[\n\\boxed{\n\\sigma_3([a,a+L-1])\n=\n1-3^{-L}.\n}\n\\]\n\n对固定层数\n\\[\n|S|=L,\n\\]\n稳定代价满足\n\\[\n\\boxed{\n\\sigma_p(S)\n\\ge\n\\frac{2(p-1)}{p+1}(1-p^{-L}),\n}\n\\]\n当 \\(L\\ge2\\) 时等号当且仅当 \\(S\\) 是连续整数区间。\n\n也就是说，在检测同样数量的离散层时，**把这些层排成连续区间在高增益极限下最省次数**。\n"
+      },
+      "all_hypotheses": [
+        "p prime; nonempty interval length L>=1; compare finite sets of exactly L levels; uniqueness of equality requires L>=2; fix L before taking gain to infinity."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    },
+    {
+      "stable_id": "F3D-STABLE-5",
+      "package": "interval_detectors_stable_degree",
+      "source": {
+        "path": "docs/proofs/f3d/interval_detectors_stable_degree/theorem.md",
+        "git_blob": "967e12fb9281725e36b1e47939347a1dd8c6327c",
+        "lines": [
+          316,
+          342
+        ],
+        "text": "## 7. F3D-STABLE-5：阈值与有限构造器\n\n阈值\n\\[\n\\mathbf1_{\\{t\\ge1\\}}\n\\]\n的稳定次数为\n\\[\n\\boxed{\n\\lim_{k\\to\\infty}\n\\frac{\\deg_p(k\\mathbf1_{\\{t\\ge1\\}})}k\n=\n\\frac{p-1}{p+1}.\n}\n\\]\n\n所以长有限区间的稳定代价\n\\[\n\\frac{2(p-1)}{p+1}(1-p^{-L})\n\\]\n随 \\(L\\to\\infty\\) 趋向两个阈值边界代价之和。\n\n此外，有限剩余树线性方程给出可复现的整数多项式构造器；其次数/增益比沿精度细分收敛到稳定值。这个构造给上界，不声称每个有限增益都恰好达到\n\\[\n\\lceil k\\sigma_p(S)\\rceil.\n\\]\n"
+      },
+      "all_hypotheses": [
+        "p prime; fixed threshold indicator 1_{t>=1}; k->infinity; tree constructions give upper bounds, not exact degree at every finite gain."
+      ],
+      "inherited_hypotheses": [
+        "domain",
+        "generalized_realization",
+        "degree",
+        "valuation_convention",
+        "original_f3",
+        "prime_domain"
+      ],
+      "source_claimed_status": "PAPER-AUDITED; Lean NOT-STARTED",
+      "intake_status": "GENERALIZED_THEORY_PENDING_SCOPE",
+      "kernel_verified_by_this_review": false,
+      "reason": "A statement in the full pair realization/degree model, not an automatic theorem about scalar f3 polynomial outputs or the current INF/COR/DEN/LOG/RUN goals."
+    }
+  ],
+  "corrections": [
+    {
+      "stable_id": "F3D-CORR-MULTI-L12",
+      "status": "ACCEPT_PROOF_BLOCKER_RECORD; independent audit requested by parent",
+      "severity": "substantive intermediate lemma counterexample; main theorem not refuted",
+      "affected_ids": [
+        "MULTI-L12",
+        "MULTI-L14",
+        "F3D-MULTI-3 necessity",
+        "F3D-MULTI-4 universal-realizability Lipschitz/unbounded-switch proof route"
+      ],
+      "source_excerpts": [
+        {
+          "path": "docs/proofs/f3d/multivariate_tropical/proof.md",
+          "git_blob": "7ae87e21e0d913c913aec1a767da2c258a6ac48f",
+          "lines": [
+            557,
+            644
+          ],
+          "text": "## 7. 分类定理：必要性的输入网格\n\n现在设一个固定整数多项式对\n\\[\n(P,Q)\n\\]\n全域实现\n\\[\ng:\\mathbb Z^m\\to\\mathbb Z.\n\\]\n令\n\\[\nA=P+Q,\\qquad B=P-Q.\n\\]\n由于输出始终在 \\(\\mathcal D\\)，\n\\[\nA\\ne0,\\qquad B\\ne0\n\\]\n对所有合法整数输入成立。\n\n把每个输入换成和差变量：\n\\[\nu_i=n_i+d_i,\\qquad\nv_i=n_i-d_i.\n\\]\n因为\n\\[\nn_i=(u_i+v_i)/2,\\qquad\nd_i=(u_i-v_i)/2,\n\\]\n乘上固定的 \\(2^D\\) 后，可把 \\(A,B\\) 视为\n\\[\n2m\n\\]\n个整数变量\n\\[\nu_1,v_1,\\ldots,u_m,v_m\n\\]\n上的整数多项式；乘以 \\(2^D\\) 不改变三进赋值。\n\n设总次数均不超过 \\(D\\)。\n\n固定\n\\[\n\\mathbf t=(t_1,\\ldots,t_m)\\in\\mathbb Z^m.\n\\]\n写\n\\[\nt_i^+=\\max(t_i,0),\n\\qquad\nt_i^-=\\max(-t_i,0).\n\\]\n对单位参数\n\\[\ns_i,r_i\\in\\mathbb Z,\\qquad3\\nmid s_ir_i\n\\]\n取\n\\[\nu_i=2\\cdot3^{t_i^+}s_i,\n\\qquad\nv_i=2\\cdot3^{t_i^-}r_i.\n\\tag{7.1}\n\\]\n则\n\\[\nv_3(u_i)-v_3(v_i)=t_i,\n\\]\n而\n\\[\nn_i=(u_i+v_i)/2,\\qquad\nd_i=(u_i-v_i)/2\n\\]\n是整数且\n\\[\n(n_i,d_i)\\in\\mathcal D.\n\\]\n\n因此，对所有单位选择 \\(\\mathbf s,\\mathbf r\\)，\n\\[\nv_3(A(\\mathbf t;\\mathbf s,\\mathbf r))\n-\nv_3(B(\\mathbf t;\\mathbf s,\\mathbf r))\n=\ng(\\mathbf t).\n\\tag{7.2}\n\\]\n\n---"
+        },
+        {
+          "path": "docs/proofs/f3d/multivariate_tropical/proof.md",
+          "git_blob": "7ae87e21e0d913c913aec1a767da2c258a6ac48f",
+          "lines": [
+            735,
+            809
+          ],
+          "text": "## 9. 固定网格值的赋值是有限分段整数仿射函数\n\n固定一个单位网格点\n\\[\n\\omega=(\\mathbf s,\\mathbf r)\\in S_D^{2m}.\n\\]\n代入 (7.1) 后，任意单项\n\\[\nc_\\alpha\n\\prod_i u_i^{a_i}v_i^{b_i}\n\\]\n的三进赋值为\n\\[\nv_3(c_\\alpha)\n+\n\\sum_i a_i t_i^+\n+\n\\sum_i b_i t_i^-.\n\\tag{9.1}\n\\]\n因为\n\\[\nt_i^+=\\max(t_i,0),\n\\qquad\nt_i^-=\\max(-t_i,0),\n\\]\n(9.1) 本身是有限整数热带表达式。\n\n### 引理 9.1\n\n对固定网格点 \\(\\omega\\)，函数\n\\[\n\\mathbf t\n\\longmapsto\nv_3(A(\\mathbf t;\\omega))\n\\]\n是有限整数仿射分区上的整数仿射函数；等价地，它是有限整数热带表达式。\n\n### 证明\n\n\\(A(\\mathbf t;\\omega)\\) 是有限项之和。每项的赋值由 (9.1) 给出。\n\n先按这些有限整数分段仿射函数的全序关系划分 \\(\\mathbb Z^m\\)。在每个格点胞腔上，哪些项取得最小赋值是固定的。\n\n若最低项唯一，和的赋值就是该最低值。\n\n若最低项并列，提取共同的\n\\[\n3^{L(\\mathbf t)}.\n\\]\n并列最低项除去该幂后的单位系数只由固定网格点 \\(\\omega\\) 和原多项式系数决定，不再依赖 \\(\\mathbf t\\)。\n\n- 若这些单位项之和非零，记其固定赋值为 \\(c\\)。那么它们整体贡献候选\n  \\[\n  L(\\mathbf t)+c.\n  \\]\n- 若完全抵消，则把该组删去。\n\n剩余非最低项相对 \\(L(\\mathbf t)\\) 的赋值差仍来自有限整数仿射函数。比较\n\\[\nL(\\mathbf t)+c\n\\]\n与下一批候选，再细分胞腔。\n\n每次若发生完全抵消，项数严格减少；若不完全抵消，则产生一个固定整数修正。原项数有限，所以递归有限终止。\n\n由于全域输出要求 \\(A\\) 在所有这些合法网格输入上非零，不会出现最终值 \\(+\\infty\\)。\n\n因此得到有限整数仿射分区。 \\(\\square\\)\n\n同理适用于 \\(B\\)。\n\n> 引理 8.1 不是为了证明“有限递归会终止”，而是提供一个显式、只依赖次数和变量数的统一抵消深度上界，作为必要性审计门禁。\n\n---"
+        },
+        {
+          "path": "docs/proofs/f3d/multivariate_tropical/proof.md",
+          "git_blob": "7ae87e21e0d913c913aec1a767da2c258a6ac48f",
+          "lines": [
+            831,
+            868
+          ],
+          "text": "由 (7.2)，对每个固定 \\(\\omega\\)\n\\[\nv_3(A(\\mathbf t;\\omega))\n=\nv_3(B(\\mathbf t;\\omega))\n+\ng(\\mathbf t).\n\\]\n因为 \\(g(\\mathbf t)\\) 与 \\(\\omega\\) 无关，对有限网格取最小值得\n\\[\n\\boxed{\n\\eta_A(\\mathbf t)\n=\n\\eta_B(\\mathbf t)+g(\\mathbf t).\n}\n\\tag{10.1}\n\\]\n所以\n\\[\n\\boxed{\ng(\\mathbf t)\n=\n\\eta_A(\\mathbf t)-\\eta_B(\\mathbf t).\n}\n\\tag{10.2}\n\\]\n\n由引理 9.1，每个固定网格值都是有限整数热带表达式。有限个函数的最小值仍是有限整数热带表达式。\n\n因此\n\\[\n\\eta_A,\\eta_B\n\\]\n都是有限整数热带表达式。\n\n由 (10.2)，\\(g\\) 也是有限整数热带表达式。\n\n必要性得证。"
+        },
+        {
+          "path": "docs/proofs/f3d/multivariate_tropical/proof.md",
+          "git_blob": "7ae87e21e0d913c913aec1a767da2c258a6ac48f",
+          "lines": [
+            921,
+            964
+          ],
+          "text": "## 12. 统一 Lipschitz 边界\n\n任意整数仿射函数\n\\[\nL(\\mathbf t)=c+\\mathbf a\\cdot\\mathbf t\n\\]\n满足\n\\[\n|L(\\mathbf t)-L(\\mathbf s)|\n\\le\n\\|\\mathbf a\\|_1\n\\|\\mathbf t-\\mathbf s\\|_\\infty.\n\\]\n有限个 \\(L_i\\) 的\n\\[\n\\min_i L_i\n\\]\n与\n\\[\n\\max_i L_i\n\\]\n具有 Lipschitz 常数\n\\[\n\\max_i\\|\\mathbf a_i\\|_1.\n\\]\n\n有限次加、减只会把常数相加。\n\n因此每个有限整数热带表达式 \\(g\\) 都存在\n\\[\nL<\\infty\n\\]\n使\n\\[\n\\boxed{\n|g(\\mathbf t)-g(\\mathbf s)|\n\\le\nL\\|\\mathbf t-\\mathbf s\\|_\\infty.\n}\n\\tag{12.1}\n\\]\n\n由分类定理，每个固定多项式可实现函数都满足该统一幅度界。\n"
+        }
+      ],
+      "exact_integer_witness": {
+        "m": 3,
+        "D": 2,
+        "variables": "(n_i,d_i) for i=1,2,3; u_i=n_i+d_i, v_i=n_i-d_i",
+        "P": "((n_1+d_1)-(n_2+d_2))^2+3(n_3+d_3)^2",
+        "Q": "0",
+        "admissibility": "For all X_i in D, u_3!=0. Hence C=P=(u_1-u_2)^2+3u_3^2>0 over integers. P+Q=P-Q=C!=0, so the pair is globally admissible and realizes g identically 0. Output second coordinate Q=0 is allowed by the stated D.",
+        "optional_Q3_nonzero": "If u_1-u_2!=0, its square has even v3 and 3u_3^2 has odd v3, so the two terms cannot cancel; if u_1-u_2=0, the second term is nonzero. Thus this witness does not rely on a hidden Q3 zero.",
+        "grid": "Take s_i=r_i=1, which belongs to S_D={1,4,7}. For all t_i>=0, n_i=3^t_i+1, d_i=3^t_i-1, u_i=2*3^t_i,v_i=2. Each X_i lies in D and F(X_i)=t_i; d_i=0 when t_i=0 is explicitly permitted.",
+        "valuation_function": "h(t_1,t_2,t_3)=v3(4[(3^t_1-3^t_2)^2+3^(2t_3+1)]).",
+        "all_M_formula": "For every integer M>=0, h(0,0,M)=2M+1 and h(1,0,M)=0, since 4+3^(2M+1) is a 3-adic unit. The input sup-distance is 1.",
+        "contradiction": "Every finite integer tropical expression has a finite global Lipschitz constant (source proof §12). The unbounded difference 2M+1 rules that out. Thus the tropical-equivalence part of Lemma 9.1 and its use in §10 are false under the stated hypotheses. The finite affine-partition property alone is not refuted.",
+        "finite_sanity_checks": [
+          {
+            "M": 0,
+            "values": [
+              1,
+              0
+            ]
+          },
+          {
+            "M": 1,
+            "values": [
+              3,
+              0
+            ]
+          },
+          {
+            "M": 2,
+            "values": [
+              5,
+              0
+            ]
+          },
+          {
+            "M": 8,
+            "values": [
+              17,
+              0
+            ]
+          }
+        ]
+      },
+      "not_claimed": [
+        "No counterexample to F3D-MULTI-3 itself: this construction realizes g=0, which is tropical.",
+        "No refutation of explicit MULTI-1/2 constructions or the sufficient direction of MULTI-3.",
+        "No Lean/kernel verification."
+      ],
+      "repair_direction": "A corrected proof might establish tropicality directly for the grid minimum eta using its uniform interpolation bound and a bounded-jump encoding; do not replace the false statement by that suggestion without proof. Remove current dependence on each individual grid value being tropical."
+    },
+    {
+      "stable_id": "F3D-CORR-TERN6-DOMAIN",
+      "status": "ACCEPT_HYPOTHESIS_CORRECTION_RECORD",
+      "severity": "omitted guard in theorem statement",
+      "affected_ids": [
+        "F3D-TERN-6"
+      ],
+      "source_excerpts": [
+        {
+          "path": "docs/proofs/f3d/ternary_minima_norm_forms/theorem.md",
+          "git_blob": "4508712cb833e7e6c803ec7d0efe2f7dc7ec7c72",
+          "lines": [
+            158,
+            190
+          ],
+          "text": "## F3D-TERN-6：任意输入数的一倍最小值上界\n\n令\n\\[\nr=\\lceil\\sqrt m\\rceil,\n\\qquad\ns=\\lceil m/r\\rceil\\le r.\n\\]\n把 \\(m\\) 个输入分成 \\(s\\) 组，每组至多 \\(r\\) 个。\n\n每组分别用 \\(r\\) 次、\\(r+1\\) 次范数形式编码该组最小赋值，再用权重\n\\[\n1,3,\\ldots,3^{s-1}\n\\]\n消除组间并列抵消。\n\n得到\n\\[\n\\boxed{\n3m\n\\le\n\\mathfrak d_m(1)\n\\le\nm(\\lceil\\sqrt m\\rceil+1).\n}\n\\]\n\n上界为\n\\[\nO(m^{3/2}).\n\\]\n对 \\(m=2,3,4\\) 与下界吻合；更大 \\(m\\) 不声明最优。\n"
+        },
+        {
+          "path": "docs/proofs/f3d/ternary_minima_norm_forms/proof.md",
+          "git_blob": "e25f8dfb6573235266e129002ed4769e0bd89310",
+          "lines": [
+            33,
+            55
+          ],
+          "text": "3k,&k\\ge3.\n\\end{cases}}\n\\]\n特别地，一倍、两倍、三倍的精确最低次数依次为 **9、10、9**。\n\n另有\n\\[\n\\boxed{\\mathfrak d_4(1)=12,}\n\\]\n以及所有 \\(m\\ge2\\) 的界\n\\[\n\\boxed{3m\\le\\mathfrak d_m(1)\\le m(\\lceil\\sqrt m\\rceil+1).}\n\\]\n\n对 \\(m\\ge2,k\\ge m\\)，有\n\\[\n\\boxed{\\mathfrak d_m(k)=mk.}\n\\]\n\n最后，一个独立于上述上界的强化下界为\n\\[\n\\boxed{\\mathfrak d_m(2)\\ge2m+4\\quad(m\\ge3).}\n\\]"
+        }
+      ],
+      "correction": "Add m>=2 to 3m <= d_m(1) <= m(ceil(sqrt m)+1). proof.md explicitly restricts this result to m>=2. For m=1, min(t_1)=t_1 has degree 1, so the stated lower bound 3 is false. m=0 is not a valid minimum problem either.",
+      "scope_effect": "Repair theorem metadata if this statement is quoted; do not add generalized degree tasks to the F3 queue."
+    },
+    {
+      "stable_id": "F3D-CORR-POLY-CLEAR-DENOM",
+      "status": "ACCEPT_LOCAL_PROOF_CLARIFICATION_RECORD",
+      "severity": "fixable integrality implication gap",
+      "affected_ids": [
+        "POLY-L11",
+        "F3D-POLY-2 sufficiency presentation"
+      ],
+      "source_excerpts": [
+        {
+          "path": "docs/proofs/f3d/polynomial_realization/proof.md",
+          "git_blob": "e8aec876ad6b5fe8d97a8656c05d203987a93823",
+          "lines": [
+            697,
+            726
+          ],
+          "text": "\\widetilde B(u,v)=v^N B(u/v).\n\\]\n因为 \\(u,v\\ne0\\)，并且 \\(A(u/v),B(u/v)\\ne0\\)，所以\n\\[\n\\widetilde A(u,v)\\widetilde B(u,v)\\ne0\n\\]\n在定义域上成立。\n\n取正整数 \\(L\\)，使\n\\[\n2L\\widetilde A,\\qquad2L\\widetilde B\n\\]\n都有整数系数。\n\n定义\n\\[\nP(n,d)\n=\nL\\bigl(\\widetilde A(n+d,n-d)+\\widetilde B(n+d,n-d)\\bigr),\n\\]\n\\[\nQ(n,d)\n=\nL\\bigl(\\widetilde A(n+d,n-d)-\\widetilde B(n+d,n-d)\\bigr).\n\\]\n则 \\(P,Q\\in\\mathbb Z[n,d]\\)，并且\n\\[\nP+Q=2L\\widetilde A,\n\\qquad\nP-Q=2L\\widetilde B."
+        }
+      ],
+      "correction": "Choose L clearing the coefficients of both homogenized A and B, not merely 2L*A and 2L*B integral. The stated weaker condition alone does not ensure P=L(A+B),Q=L(A-B) have integer coefficients. The intended construction is repaired by strengthening the choice of L or multiplying the proposed output pair by 2.",
+      "witness": "For constant rational polynomials A=1/2,B=1/4,L=2, both 2L*A and 2L*B are integral, but L(A+B)=3/2. This is a logical step issue; a sufficiently divisible L always exists.",
+      "scope_effect": "Use the corrected clearing choice only if an eligible rational construction is formalized."
+    }
+  ],
+  "scope_decision": "Do not schedule the full generalized F3D theory. The explicitly written d=1 corollaries here are eligible derived corollaries pending scope; no source file explicitly states them as original-F3 main goals. Only the semantic bridge and correction/dependency records are accepted unconditionally for current intake. A bounded selected identity can be added without importing generalized classifications or optimal-degree theory.",
+  "nonclaims": [
+    "No repository edits",
+    "No Lean build or kernel checks",
+    "No claim of paper audit of external references",
+    "No claim of reading PDFs or TeX sources; only the two short POLY/MULTI research archive summaries were separately read",
+    "No prime preservation, integrality of rational outputs, or fixed-gap prime infinitude",
+    "No transfer of lower bounds to restricted d=1 or prime-only domains",
+    "No expansion to Omega/F_Sigma",
+    "No main-classification counterexample"
+  ],
+  "recommended_next_actions": [
+    "Independent audit of exact MULTI-L12 counterexample before any status edit",
+    "Keep MULTI-3 necessity and dependent MULTI-4 universal proof route blocked until repaired",
+    "Add explicit m>=2 guard when TERN-6 is quoted",
+    "If a specialized identity is accepted, formalize just its original-F3 input/rational-output theorem with explicit domains and existing F3Rational APIs",
+    "Do not register any new Lean-proved status without exact-head repository verification"
+  ],
+  "research_archive_check": {
+    "polynomial_realization": "Read all 58 lines of frozen research archive; summary/forward link only, no omitted original-F3 specialization or independent proof.",
+    "multivariate_tropical": "Read all 70 lines of frozen research archive; summary/forward link only; same fixed-grid affine necessity route summarized at line 66, no repair of MULTI-L12 and no omitted original-F3 specialization.",
+    "other_three": "Parent independently reports exact substring equivalence of research originals to the fully read packaged proofs; local reference f3d_research_duplicate_check.json. This reviewer does not claim separate full reads of those three research files.",
+    "branches": "Parent independently reports that all 20 extant F3D package blobs across original155 branch heads equal the reviewed source blobs, with zero mismatches; local reference f3d_branch_blob_equivalence.json. This reviewer does not claim independently inspecting all branch heads."
+  },
+  "finite_formula_sanity": {
+    "description": "Finite exact arithmetic sanity check of newly written restricted formulas only; not a Lean or universal proof.",
+    "counts": {
+      "zero_detector": 149,
+      "abs": 149,
+      "pos": 149,
+      "sign": 149,
+      "twice_pos": 149,
+      "interval": 1490,
+      "min_max": 4802
+    },
+    "all_passed": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "repository": "UyNewNas/analytic-number-theory-lean",
+  "ref": "099d3726c2c74841024110ec1dd9902f7ef36e9e",
+  "files": [
+    "PrimeNumberTheoremAnd/Wiener.lean",
+    "PrimeNumberTheoremAnd/Consequences.lean",
+    "PrimeNumberTheoremAnd/Defs.lean",
+    "PrimeNumberTheoremAnd/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean",
+    "PrimeNumberTheoremAnd/Fourier.lean",
+    "PrimeNumberTheoremAnd/Mathlib/Analysis/Asymptotics/Asymptotics.lean",
+    "PrimeNumberTheoremAnd/SmoothExistence.lean",
+    "PrimeNumberTheoremAnd/Sobolev.lean",
+    "PrimeNumberTheoremAnd/Mathlib/Algebra/Notation/Support.lean"
+  ],
+  "hits": [],
+  "scope": "All recursively reachable PrimeNumberTheoremAnd modules from Consequences. Excludes locked Mathlib, Architect and Batteries implementation source.",
+  "forbiddenTokens": [
+    "sorry",
+    "admit",
+    "axiom",
+    "unsafe",
+    "native_decide",
+    "ofReduceBool",
+    "ofReduceNat",
+    "implemented_by"
+  ],
+  "method": "Recursive import discovery, exact GitHub connector file reads, nested-comment/string-aware token scan."
+}

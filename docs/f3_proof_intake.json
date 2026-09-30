@@ -31,11 +31,12 @@
     "thematic_work_branch_sources": true,
     "branch_graph_and_code_intake": true,
     "master_research_sweep": true,
-    "f3d_generalizations": "Relation review pending, no unread package is marked fully scanned",
+    "f3d_generalizations": "25 source IDs recorded in f3d_relation_review.json; no blanket automatic formalization expansion",
     "formalization_completion": false,
-    "overall_watermark_advanced": false,
+    "overall_watermark_advanced": true,
     "bounded_original_F3_source_intake_complete": true,
-    "broader_F3D_relation_intake": "IN-PROGRESS: five packages being fully read for explicit F3(n)=F3,D(n,1) specializations/dependencies; not silently excluded"
+    "broader_F3D_relation_intake": "SOURCE-READ-COMPLETE: all20 package files and two summary archives read; other3 research sources exact duplicates. Generalized theory scope and independent correction audit remain pending.",
+    "overall_watermark_scope": "Locked original155-head source/proof intake; Ω/FΣ excluded. No formalization, independent correctness, external theorem validation or future-commit completion claim."
   },
   "branch_watermarks": [
     {
@@ -49,7 +50,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "a1a724b6083e223ee407046c17dc8c90b036150f",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "codex/f3-higher-interactions-proof",
@@ -62,7 +63,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b5b1cc36a0045015cd598ecb50dad283bb00ea49",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "docs/add-proof-pdfs",
@@ -75,7 +76,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "4e86b6fa9dab9fb6065b26e52ca63188357a464e",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "docs/f3-progress-round-17",
@@ -88,7 +89,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0a18d82354fdba78f06e428b5dcefdc86d3f78bd",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "docs/f3-run-ledger-round18",
@@ -101,7 +102,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "fa7f768847435aaa2cc280d69c56355587713e72",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "docs/omega-goldbach-conjecture-map",
@@ -126,7 +127,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "c7016bd55583bb52f7a97c8c43db5e8224e4307b",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-approx-period-shift-square-v1",
@@ -139,7 +140,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "d1d3301fdd14df9a41558319ee039546cb684ea6",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-admissibility-v1",
@@ -152,7 +153,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9918203033b3f6494f76fd724b171c24b0421328",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-bv-normalization-v1",
@@ -165,7 +166,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "66b8e8380d240868c5fdd784eeb6aedb966cae3a",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-bv-residue-max-v1",
@@ -178,7 +179,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "58bd5ee8824e171eda231c5185a92b88b629eeff",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-consecutive-assembly-v1",
@@ -191,7 +192,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "23976c0e7ba2d9067d886d44ab13d76b533b136d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-consecutive-assembly-v2",
@@ -204,7 +205,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "e6200038f2c864335decd7b635818c1e45116ac6",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-crt-package-v1",
@@ -217,7 +218,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "172de5de51fa0967eb9e628fe15159403c182926",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-crt-shift-v1",
@@ -230,7 +231,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "ba10c88e2da330f4aafa169de0b3520a5872e17b",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-crt-v1",
@@ -243,7 +244,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "73cdffa5447f0412a9d08eacde443bd28d5a1900",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-loss-absorb-fix-v2",
@@ -256,7 +257,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "d9c6438c6a8fa2156807871155b3a4861f080255",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-loss-absorb-green-v2",
@@ -269,7 +270,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0150dd9d1072c50531878d2c4c5c8921d28f59e5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-loss-absorb-v1",
@@ -282,7 +283,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "f725f045a9bf68fbcf5daafde59843d75c600003",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-maximal-exists-v1",
@@ -295,7 +296,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "a08dcce4f3f9021ab64e746510979c49f06d2d23",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-maximal-exists-v2",
@@ -308,7 +309,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "42e1bb340b573937cbe9d0a74b92525aa8097dd7",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-maximal-uniform-v1",
@@ -321,7 +322,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9084084ca56e01c0a9dbc284b23176ec5118068f",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-maximal-v1",
@@ -334,7 +335,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9875abad2d0b6f96e5131441bcd4114b423ddf2d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-ordered-block-v1",
@@ -347,7 +348,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "172de5de51fa0967eb9e628fe15159403c182926",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-pigeonhole-v1",
@@ -360,7 +361,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "f4be778cfebcd6f0dad497fa20f2e478fc161093",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-pigeonhole-v2",
@@ -373,7 +374,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "23976c0e7ba2d9067d886d44ab13d76b533b136d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-prefix-horizon-v1",
@@ -386,7 +387,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "d9c6438c6a8fa2156807871155b3a4861f080255",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-real-cutoff-green-v1",
@@ -399,7 +400,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0150dd9d1072c50531878d2c4c5c8921d28f59e5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-real-cutoff-v1",
@@ -412,7 +413,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "d9c6438c6a8fa2156807871155b3a4861f080255",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-real-endpoint-cutoff-v1",
@@ -425,7 +426,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0150dd9d1072c50531878d2c4c5c8921d28f59e5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-residue-assembly-v1",
@@ -438,7 +439,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0d5e9c3a9433eb43d0b773bf16da363ef528a0c8",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-residue-block-v1",
@@ -451,7 +452,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b97bb160be581ff540bee3914cfd92d5c3c99bd1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-residue-infinite-v1",
@@ -464,7 +465,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "241810e795de1296ade4a4d33603e9599a4e2359",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-unit-residue-bridge-v1",
@@ -477,7 +478,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "dfbd0bbe1ff427c778f1ea3eb84fc1d0283a4d3a",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-unit-residue-equiv-v1",
@@ -490,7 +491,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0d3acc335845344d0c1766c18bdcc40ad4b45d1d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-upstream-maynard-v1",
@@ -503,7 +504,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "d58666883af4cd1a56227d6d33c9edd35e0b4ac6",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-upstream-maynard-v2",
@@ -516,7 +517,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0150dd9d1072c50531878d2c4c5c8921d28f59e5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-bftb-upstream-maynard-v3",
@@ -529,7 +530,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9033636693d0f713c9cb6e1bc5d13149052b812b",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-consecutive-run-bftb-interface-v1",
@@ -542,7 +543,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7380ddcb10f0e51cf9fb5a71b3e6257351295481",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-consecutive-run-bounded-v1",
@@ -555,7 +556,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "a41fa1697e8a45b1c52f367c6ed5c4de1dc49dae",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-consecutive-run-residue-bridge-v1",
@@ -568,7 +569,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "3c47582fbc4f9f5229d0a05bf83f50c20a3af1e0",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-consecutive-run-residue-v1",
@@ -581,7 +582,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "feada6b9b140a1badf9a57a80feff081fdcdb791",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-cesaro-blocks",
@@ -594,7 +595,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "240ca87401c378cbabe6fe7195e5c372e4814c05",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-cesaro-limit",
@@ -607,7 +608,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "3d27d52af8f1418036780514c9a6d9d66b2808a5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-closed-period",
@@ -620,7 +621,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "5699e4b8753f369d1098387575c816ce338983e0",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-double-limit-base-v1",
@@ -633,7 +634,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "332b0797e759f5385ff0b1c340cde766f3766ccb",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-error-majorant-decay-v1",
@@ -646,7 +647,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "4c58842ef939929964c57717edc1c5406bf8d3c7",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-error-uniform-majorant",
@@ -659,7 +660,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9156ebcf814def939c62faebbdfc9a25cae2ebf1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-error-uniform-majorant-v2",
@@ -672,7 +673,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "e4c9f8f61645ff90186ec9db0b935ccc9fa11810",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-finite-overlap",
@@ -685,7 +686,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "190eac24958c37ddf36f73ca48bb7d32f59913ef",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-full-limit-v1a",
@@ -698,7 +699,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7398ad8edbe4f9d569d926d1c226529bc14755cd",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-full-limit-v1",
@@ -711,7 +712,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "332b0797e759f5385ff0b1c340cde766f3766ccb",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-geometric-weight",
@@ -724,7 +725,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "2395ad23dab91e0fadfe2e9ec71ff84faa5e906a",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-mean-square-period-v1",
@@ -737,7 +738,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7824f25eb31506eac747590ddfe99defc9913a4f",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-period-expansion",
@@ -750,7 +751,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "2669ff93ad750b81ce21d87e8f4997eb5c79fb04",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-period-limit",
@@ -763,7 +764,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "f21ce1871521887beffbcb6c29d574d1ccc997c6",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-shift-overlap",
@@ -776,7 +777,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "661f160b788bdfd8ab189ab4953b8592362f8db8",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-shift-square-v1",
@@ -789,7 +790,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "657d6d749eb364b1086ab87fe1b132ed9c4f3bea",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-bound",
@@ -802,7 +803,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7398ad8edbe4f9d569d926d1c226529bc14755cd",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-bound-audit",
@@ -815,7 +816,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "1119e4630d8a003fae6b3d1936a36bd8f35fb57f",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-bound-fix1",
@@ -828,7 +829,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "2d398416c114312d3ac5608960de83950581fd9c",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-bound-fix2",
@@ -841,7 +842,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "8e09ddd8601de95f0f5df66bae4d7d770e4d8fb2",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-bound-fix3",
@@ -854,7 +855,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "8f5592eb6c2f0fbe1cb01ff5d6b096aadf9409de",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-bound-fix4",
@@ -867,7 +868,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "e3e117c0de02265475492f8de13291194947c8e5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-cauchy",
@@ -880,7 +881,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7bc03a82a05ab10040f7228243e9e485766edaa1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-cesaro-bound",
@@ -893,7 +894,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "e37f13baeac523e099cb9baeced98abb6823468c",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-cesaro-error-sq",
@@ -906,7 +907,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9156ebcf814def939c62faebbdfc9a25cae2ebf1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-decay",
@@ -919,7 +920,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "6afb4d99fa3b61621b6c2a1929af6963843b27e1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-error",
@@ -932,7 +933,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "d9b091904f830b4429175a29ae27d0f3359e7949",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-error-bound",
@@ -945,7 +946,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0600d072877c350f48763e8cd060fb98131632b8",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-error-combined",
@@ -958,7 +959,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "8e52a2f558b0b251e5c180ffa877add19fbed837",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-error-sum",
@@ -971,7 +972,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "939073351229d2d1652bd18ae7bca1a9b8bd6d6a",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-mean",
@@ -984,7 +985,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "cb713ac1788d16d4199af3e0930bc7f33d2402d1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-noncomputable-fix",
@@ -997,7 +998,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0b9745132492fc902bc0041bebaf5c4804454c6f",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-noncomputable-fix-ledger",
@@ -1010,7 +1011,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9156ebcf814def939c62faebbdfc9a25cae2ebf1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-pointwise",
@@ -1023,7 +1024,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "d65841f691edff2f14ff8ad31795ee92f80f2661",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-tail-shift",
@@ -1036,7 +1037,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "ad68901e9c9239d93948e4bdeb7ef5e5df6ce8e2",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-correlation-trunc-icc-cesaro-v1",
@@ -1049,7 +1050,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "26ee1d6902fdb6927e1a1d06caa269c434b9e5ab",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-deeper-corollaries",
@@ -1062,7 +1063,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "3bdee96f1e099745bce0d830f9c8849da104fe21",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-den-ant-compat-v1",
@@ -1075,7 +1076,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "ebbb9b5a301476ce463707f3b6684a9361b34025",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-density-residue-two-v1",
@@ -1088,7 +1089,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "6881a30afad47510f35f377f9b5cb006b428f262",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-infinitude-sign-changes",
@@ -1101,7 +1102,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "01a83e1787dea405514e660059a4d066f9861ce8",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-integer-extension",
@@ -1114,7 +1115,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "aeafe4c6653940ecaa818fc40d2d13995ea420f0",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-analytic-rescale-v1",
@@ -1127,7 +1128,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b3a4065a9e157db767ce62bc1ba42d8bf2fb9fca",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-analytic-rescale-v2",
@@ -1140,7 +1141,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b3a4065a9e157db767ce62bc1ba42d8bf2fb9fca",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-coeff-v1",
@@ -1153,7 +1154,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "a88997f712d863f32a0448ff9980fac47122bd35",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-fiber-ledger",
@@ -1166,7 +1167,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "4d9424e9980ecdf4c4107cd2a964c81eca023fca",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-fiber-v1",
@@ -1179,7 +1180,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "2e162bee2ab0937283b5e9571ca9b31b79da97e3",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-finite-v1",
@@ -1192,7 +1193,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "c5b65a76d7da217cadde2fd273c99c8e56defaaf",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-finite-v2",
@@ -1205,7 +1206,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "a8b7d0334c6d4d54a8aa74e3ab9ff7ddf59bfec1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-gauss-v1",
@@ -1218,7 +1219,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "ac713f812a61da07aeef4832776bab7711fd5dcd",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-identity-v1",
@@ -1231,7 +1232,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "ca7f76d5bece268cd9114f4b57b1504170bef447",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-output-coeff-v1",
@@ -1244,7 +1245,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7b8c57d268fbb81b699661b61e87c4906963984c",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-output-fiber-v1",
@@ -1257,7 +1258,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "c1d59bb60838c5da2289be64ee720006cd5334a9",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-composition-trunc-v1",
@@ -1270,7 +1271,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b9f7947cbe61b492b10a9b81b674da9b1cc60542",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-defect-contraction-v1",
@@ -1283,7 +1284,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7e6380e9ce63994557e12ab5928c87073d3e52db",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-domain-v1",
@@ -1296,7 +1297,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "604e1d43f33de2022c2eab54ad55f8777d1c9d83",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-dominant-term-v1",
@@ -1309,7 +1310,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "218e173ce812135a06b8fe2f1707a9c5931ee36d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-formal-bridge-integrated-v1",
@@ -1322,7 +1323,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "9d05202fdc3f8ae4862bfe0a906c5bb9fae32abd",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-formal-bridge-v1a",
@@ -1335,7 +1336,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "8844e98a2a0d6de1fcbf63a24fe8f8e675ac3d80",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-formal-bridge-v1",
@@ -1348,7 +1349,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "4048260c93c41b5f8ba96832b6c0f6888cd30d44",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-formal-eval-v1",
@@ -1361,7 +1362,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7a11b826f80412a7e36c2870b0834cc80384291c",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-formal-eval-v2",
@@ -1374,7 +1375,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "801fa2e562e56ceebc089cd18b33491211a13e85",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-formal-sum-bridge-v1",
@@ -1387,7 +1388,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "77d25f892e8204a2b363036006b3d3efdbee798c",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-identity-fix-v2",
@@ -1400,7 +1401,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "feada6b9b140a1badf9a57a80feff081fdcdb791",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-isometry-v1",
@@ -1413,7 +1414,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "218e173ce812135a06b8fe2f1707a9c5931ee36d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-isometry-v2",
@@ -1426,7 +1427,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "3c6f0212e96f519cca8142ded5fe56f310aeb2ad",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-isometry-v3",
@@ -1439,7 +1440,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b09e06d67329c309290c3252e81249fd518fb0d8",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-isometry-verified",
@@ -1452,7 +1453,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "4048260c93c41b5f8ba96832b6c0f6888cd30d44",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-mul-domain-v1",
@@ -1465,7 +1466,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "240d4237b7c62d88336e7fe875e7cc1e4f6e2334",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-output-fiber-fix-v2",
@@ -1478,7 +1479,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "1c1adae9cd4566938939a06ec0b97b1b982b4774",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-output-fiber-fix-v3",
@@ -1491,7 +1492,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "847891f9c14a0965946de9a9c6e181f28c12e7cf",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-padic-log-series-v1",
@@ -1504,7 +1505,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "8df1881152beaf3bf3e6e0bf5c60de64bd909493",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-count-v1",
@@ -1517,7 +1518,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "75ef096717eee5a0381e3a4c1382d572e7753868",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-event-counts-v1",
@@ -1530,7 +1531,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "8618fccc4efaf719c4d9ee91ae89670a4c752a34",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-exact-neg-limit-v1",
@@ -1543,7 +1544,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7af6c70984580529cd1d583399d11b05130a0503",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-exact-v1",
@@ -1556,7 +1557,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "576cc521e134c182e0671319f4b9320cff747f75",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-counts-v1",
@@ -1569,7 +1570,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "6e4e54496223f0d6c58ea262fcb76a8dd5a050e5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v1",
@@ -1582,7 +1583,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "dd7560927cdf95e6a819ad3fe4b8231f4f6497ea",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v2",
@@ -1595,7 +1596,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "3383ac75e703142d591acafef37e5eb4812a0e88",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v3",
@@ -1608,7 +1609,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "17da86305d86b7995f9dc1d08563435bf3928f99",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v4",
@@ -1621,7 +1622,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "6922dad91bf4301d3bbbf6b78f4233b5f6677635",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v5",
@@ -1634,7 +1635,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "5eb3499eebe49a1af4644e534cee66f911f9a38c",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v6",
@@ -1647,7 +1648,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "2ca51de3996c5153c47329939120f5aa93bf0a90",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v7",
@@ -1660,7 +1661,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "cf6d5b9768ef778959c6574260a05d8f698bbf13",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v8",
@@ -1673,7 +1674,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "f198b8e87d908eaea8006b4a7087042e2e24bcb1",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-level-v9",
@@ -1686,7 +1687,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "878de56415b7392f03517f8d0bd7d043df9d8d46",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-mul17-count-v1",
@@ -1699,7 +1700,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "94401d9ca2ccebebbba093831e4e4abffea68e73",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-mul17-high-count-v1",
@@ -1712,7 +1713,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "7edccc608b5319682607ba778db45447b0cf3f36",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-mul17-high-level-v1",
@@ -1725,7 +1726,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "1d54503ac44b46ed486e1e63d4250129a9e9bd25",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-mul17-v1",
@@ -1738,7 +1739,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "e7e014385683db78564c28500b4e18359bc7b05f",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-mul17-v2",
@@ -1751,7 +1752,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "001d72a51588162de1f147f5dcbc0af1b90638be",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-neg-count-v1",
@@ -1764,7 +1765,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b4f5a27ce6fb4f52fa862f5331279fba1ffb04f5",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-residue-limits-v1",
@@ -1777,7 +1778,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "635249a84a01a6e9f5e23de272d545f09aa2d533",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-residues-v1",
@@ -1790,7 +1791,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "ebbb9b5a301476ce463707f3b6684a9361b34025",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-prime-density-tail-v1",
@@ -1803,7 +1804,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "cd0d1da4bf12ddead3165f555c38415ff8249c2a",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-run-bftb-corollary-arith-v1",
@@ -1816,7 +1817,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "75ef096717eee5a0381e3a4c1382d572e7753868",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-run-infinite-starts-v1",
@@ -1829,7 +1830,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0581d1c11dd15ad34327daa93ee7e92bdb62ff4d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-run-nth-prime-interface-v1",
@@ -1842,7 +1843,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "64a84188915d0cb52f4dc78927d1703cfa5d2540",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-run-nth-prime-singleton-v1",
@@ -1855,7 +1856,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0581d1c11dd15ad34327daa93ee7e92bdb62ff4d",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-run-uniform-bound-v1",
@@ -1868,7 +1869,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "386c1f33bed1a30886939de0433d2f1f8bdfde02",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/f3-twin-prime-interface",
@@ -1881,7 +1882,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "f72a9db293b36bb3b15091967de2a8ff5689666b",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/omega-f3-foundations",
@@ -1894,7 +1895,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "dac86762bc760b33b4cf1bb80743328ffae2c74a",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "feat/prime-factor-sum-formalization",
@@ -1919,7 +1920,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "probe/ant-pnt-ap-v434-compat",
@@ -1932,7 +1933,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "ebbb9b5a301476ce463707f3b6684a9361b34025",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "proof/f3-exploration-123-latest",
@@ -1945,7 +1946,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "311b0a226c0a64854f495dd3d1561fefaf6cb6e6",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "proof/f3-hierarchy-two-root",
@@ -1958,7 +1959,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "0e1f56d7cab58262945593c176c08900d6f5a5dc",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "proof/f3-moments-peaks-degree",
@@ -1971,7 +1972,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "6b4e2eff41b96f266e1ced7470288009a9b33942",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "proof/f3-moments-windows-ternary",
@@ -1984,7 +1985,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "61018695383ce207f2248af96576901771b04836",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "proof/f3-pat-1-four-prime-paper",
@@ -1997,7 +1998,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "88fa7ef112b88b759c43e7a9c25d09293811ecc2",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "proof/f3-reconstruction-interval-degree",
@@ -2010,7 +2011,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "55980e7c800e399c462dd7d2c8e738b996194d6a",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     },
     {
       "name": "proof/f3d-multivariate-tropical",
@@ -2019,10 +2020,11 @@
       "outside_master_count": 10,
       "coverage_group": "paper_parent",
       "graph_complete": true,
-      "content_scan": "Tree and graph read; four-file relation audit not yet complete",
-      "watermark_eligible": false,
-      "last_scanned_commit": null,
-      "scope_status": "GRAPH-READ; F3D-RELATION-CONTENT-REVIEW-PENDING"
+      "content_scan": "Full master package bodies read; all extant branch four-file blobs equal master, checked across original155 heads",
+      "watermark_eligible": true,
+      "last_scanned_commit": "0cc6e263d7dd801ac520cd23bf93e6a44c78772b",
+      "scope_status": "COMPLETE-SOURCE-RELATION-INTAKE; GENERALIZED-FORMALIZATION-SCOPE-PENDING",
+      "watermark_scope": "Source-reading and relation/correction intake only; not automatic acceptance of the full generalized theory"
     },
     {
       "name": "proof/f3d-polynomial-realization",
@@ -2031,10 +2033,11 @@
       "outside_master_count": 15,
       "coverage_group": "paper_parent",
       "graph_complete": true,
-      "content_scan": "Tree and graph read; four-file relation audit not yet complete",
-      "watermark_eligible": false,
-      "last_scanned_commit": null,
-      "scope_status": "GRAPH-READ; F3D-RELATION-CONTENT-REVIEW-PENDING"
+      "content_scan": "Full master package bodies read; all extant branch four-file blobs equal master, checked across original155 heads",
+      "watermark_eligible": true,
+      "last_scanned_commit": "97403a263eda41d12000aac842d7801b76becfae",
+      "scope_status": "COMPLETE-SOURCE-RELATION-INTAKE; GENERALIZED-FORMALIZATION-SCOPE-PENDING",
+      "watermark_scope": "Source-reading and relation/correction intake only; not automatic acceptance of the full generalized theory"
     },
     {
       "name": "research/f3-balance-20260928",
@@ -2047,7 +2050,7 @@
       "watermark_eligible": true,
       "last_scanned_commit": "cf03ad50a1155e21ead0f745411b4f122f777409",
       "scope_status": "COMPLETE-FOR-BOUNDED-F3-SOURCE-SCOPE",
-      "watermark_scope": "Original F3 claims, four-file F3 packages, F3 code and task-ledger changes. Does not certify unread generalized F3D content on mixed commits."
+      "watermark_scope": "Original F3 claims, F3/F3D four-file source relations, associated research, F3 code and task-ledger changes at locked original heads; excludes mathematical/kernel completion."
     }
   ],
   "results": [
@@ -3793,7 +3796,7 @@
     ],
     "watermark_semantics": "Per-branch source-intake watermark covers included paths/claims only, not excluded files, future commits, mathematical correctness or kernel verification.",
     "pending_relation_scope": [
-      "Five F3D packages: accept only explicit nontrivial original-F3 specializations/corrections/dependencies; generalized theory scope remains separately pending"
+      "Generalized F3D formalization scope pending; source relation review completed. Only explicit original-F3 bridge/corrections/dependencies accepted, derived corollaries remain eligible pending scope."
     ]
   },
   "original_goal_coverage": [
@@ -6414,6 +6417,18 @@
     "source_intake_complete_does_not_mean_formalization_complete": true,
     "global_formalization_complete": false,
     "no_new_Lean_verification_claim": "Kernel/build/axiom results must be fetched or run for the exact integration tree; historical source-ledger green claims remain distinct."
+  },
+  "supplementary_relation_review": {
+    "artifact": "f3d_relation_review.json",
+    "source_sha": "b4c14823d9a97a45770ed42379673d39b5295be6",
+    "package_files_full_read": 20,
+    "generalized_ids": 25,
+    "correction_ids": [
+      null,
+      null,
+      null
+    ],
+    "status": "source read complete; formalization scope and independent audit distinct"
   },
   "implementation_updates": {
     "F3-PAT-1": {

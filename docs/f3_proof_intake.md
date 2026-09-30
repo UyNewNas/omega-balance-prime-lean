@@ -8,7 +8,7 @@ Locked source snapshot: `b4c14823d9a97a45770ed42379673d39b5295be6` on `master`;1
 - All32 current `docs/proofs/f3/*/{theorem,proof,scaffolding,formalization}.md` files are fully read. Unmerged WAV adds4 files at311b0a22.
 - Stable package IDs:36. Additional source-group keys are provisional; HIER/MOM/REC transports are deduplicated.
 - Exact assumptions, source commit/blob, DAG, proposed interfaces and dependency boundaries are in `f3_proof_intake.json`.
-- Existing Ω/FΣ/PR5 work is excluded. Five F3D packages are under a separate relation audit for original-F3 specializations; their unread portions have no scan watermark.
+- Existing Ω/FΣ/PR5 work is excluded. Five F3D packages have a separate completed relation audit for original-F3 specializations; their full source bodies are now read; formalization scope is not automatically expanded.
 
 ## Corrections and changed boundaries
 
@@ -45,7 +45,7 @@ Locked source snapshot: `b4c14823d9a97a45770ed42379673d39b5295be6` on `master`;1
 
 ## Current scan limits
 
-Branch graph/code intake complete: True. Master historical research sweep complete: True. Overall watermark remains false until the remaining exact source interval is read.
+The locked original-F3 source intake is complete: 155 branch graphs, 41 PRs, 36 stable proof IDs, all 32 master four-file F3 sources, 4 unmerged WAV files, 13 thematic sources, and the 15-file historical research sweep plus 4 exact package-source duplicates. Per-branch F3-scoped watermarks are recorded in JSON. The separate F3D relation review now completes source reading, with all 25 IDs recorded. Generalized theory scope and independent correction audits remain pending.
 No new proof is marked Lean-proved by this intake. Use the exact-head complete gates for any subsequent implementation.
 
 
@@ -58,6 +58,11 @@ No new proof is marked Lean-proved by this intake. Use the exact-head complete g
 
 All exact statements, assumptions, proof sections, source blobs, external inputs, open exclusions and deduplication routes are preserved under master_research_inventory. These archives have located written proofs, not automatic PAPER-AUDITED or Lean-proved status.
 
-## 后续已落地结果（不改写来源快照）
 
-PAT-L1–3 已由代码5f94116a通过内核门禁，并经PR42合入59be8b23；完整PAT全局结论仍未完成。ROOT4归一化修正4/729经PR43合入ad603cf4；专项复核/回归/PDF检查完成，完整修订纸面审计待完成，仍无ROOT Lean证明。JSON implementation_updates保存精确SHA与验证记录。
+## F3D source-review supplement
+
+`f3d_relation_review.json` and `.md` record all 20 full-read package files, 25 generalized IDs, the accepted input/domain bridge, seven eligible narrow derived corollaries, and three precise correction records. Source reading is complete; generalized theory scope is pending. The MULTI-L12 fixed-grid tropical assertion has a substantive proof gap, TERN6 needs m≥2, and POLY denominator clearing needs a stronger integer multiplier. These findings do not certify or refute the full generalized main classifications.
+
+## 已接入实现与广义范围
+
+PAT局部L1–3已通过代码5f94116a全门禁并合入59be8b23；ROOT4归一化修正已合入ad603cf4。精确后续状态见JSON implementation_updates，不改写来源快照。五个F3D包20文件已完整读完，25个广义结果未自动扩入本工程；输入F3(n)=F3,D(n,1)桥、输出域守卫及三个纠错线索已接收。七个有理输出特化是候选而非已承诺任务。详见 [范围与纠错报告](f3d_scope_review.md)。未把广义主分类的中间引理缺口说成原主分类反例。
