@@ -112,3 +112,5 @@ import OmegaBalance.F3RootWaitingHaar
 import OmegaBalance.F3WaveletLocal
 
 import OmegaBalance.F3JointWaitingHaar
+
+import OmegaBalance.F3JointWaitingMean

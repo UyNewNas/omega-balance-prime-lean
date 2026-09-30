@@ -838,3 +838,112 @@ m≥2、互异同模3单位根；截断/联合矩阵停止界、移动配置、�
 首轮编译失败已作四处语法/推断/存在量词归一化修复，14条公开命题及模型前提不变。
 185653个有限批次（含27607个命中根批次）只是补充语义回归。对数期望界、移动配置、
 完整有符号差律及素数传递仍开放，不把尾界当作这些结论。本次状态文档头还需独立完整CI。
+
+# REC-L7 actual joint waiting mean: reuse gate
+
+Observed 2026-09-30 10:32 UTC. Consumer master ee2888060c59be83720f77cc870868e9709ba170; Lean4.34.0, mathlib5ed2965256430c3649e86755f9576b54eca72435. The joint maximum, exact matrix stopping event and exponential tail are already kernel-verified. This report prepares the remaining actual expected-maximum bound, not a new probability model.
+
+## Target and minimal route
+For the fixed original F3SharedRootConfig, prove the nonnegative expectation of actual f3JointRootWait is at most ENNReal.ofReal(1+3^K*(1+Real.log(m.choose2))), with K the existing actual maximum root distance. Preserve infinite never-hit streams in ENat. C.two_le_card gives B=m.choose2>=1; p=(3^K)^(-1)>0. No independence across root pairs.
+
+Use f(x)=min(1,B*exp(-p*x)). It is nonnegative, continuous and antitone. Dominate it by the integrable exponential on Ioi0. Split the integral at c=log(B)/p>=0; bound by 1 on Ioc0c and Bexp(-px) on Ioic. This only uses inequalities, avoiding a needless piecewise equality. Existing exponential integration gives c+1/p. The existing integral test bounds the real series by 1+(logB+1)/p. Use the existing actual joint tail bound, an actual ENat pointwise tail-count identity including infinity, lintegral_tsum, and ofReal_tsum_of_nonneg to transfer to the genuine waiting expectation. Do not use toNat on infinite waits or postulate a geometric PMF. Almost-sure finiteness may follow from the finite bound, but is not a substitute for the exact mean inequality.
+
+## Bounded target-first search
+Existing joint-tail report searched maximum geometric expectation tail bound, max geometric, coupon collector, union bound exponential and tsum min exp. This continuation queried GitHub mathlib4 code for geometric maximum, tsum_le_integral, integral_exp_mul_Ioi, integral_Ioi integral_Ioc, Integrable.mono AEMeasurable, ofReal_tsum, integral_const Ioc, volume_real_Ioc, integrableOn_const and choose_pos. No equivalent final actual matrix-wait mean theorem was found among the inspected results; this is bounded negative evidence, not a universal absence claim.
+
+## Exact pinned API signatures
+All paths below are relative to https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/ . Read surrounding typeclass contexts; in particular setIntegral_mono_on has explicit preceding hf:IntegrableOn f s mu and hg:IntegrableOn g s mu arguments.
+
+Mathlib/Analysis/SumIntegralComparisons.lean
+theorem AntitoneOn.tsum_le_integral (anti : AntitoneOn f (Ici 0))
+    (integrable : IntegrableOn f (Ioi 0)) (nonneg : ∀ t ∈ Ioi 0, 0 ≤ f t) :
+    ∑' (n : ℕ),  f n ≤ f 0 + ∫ x in Ioi 0, f x
+
+Mathlib/Analysis/SumIntegralComparisons.lean
+theorem AntitoneOn.summable_of_integrableOn_Ioi_zero (anti : AntitoneOn f (Ici 0))
+    (integrable : IntegrableOn f (Ioi 0)) (nonneg : ∀ t ∈ Ioi 0, 0 ≤ f t) :
+    Summable (fun (n : ℕ) ↦ f n)
+
+Mathlib/Analysis/SpecialFunctions/ImproperIntegrals.lean
+theorem integrableOn_exp_mul_Ioi {a : ℝ} (ha : a < 0) (c : ℝ) :
+    IntegrableOn (fun x : ℝ => Real.exp (a * x)) (Ioi c)
+
+Mathlib/Analysis/SpecialFunctions/ImproperIntegrals.lean
+theorem integral_exp_mul_Ioi {a : ℝ} (ha : a < 0) (c : ℝ) :
+    ∫ x : ℝ in Set.Ioi c, Real.exp (a * x) = - Real.exp (a * c) / a
+
+Mathlib/MeasureTheory/Integral/Bochner/Set.lean
+theorem setIntegral_union (hst : Disjoint s t) (ht : MeasurableSet t) (hfs : IntegrableOn f s μ)
+    (hft : IntegrableOn f t μ) : ∫ x in s ∪ t, f x ∂μ = ∫ x in s, f x ∂μ + ∫ x in t, f x ∂μ
+
+Mathlib/MeasureTheory/Integral/Bochner/Set.lean
+theorem setIntegral_mono_on (hs : MeasurableSet s) (h : ∀ x ∈ s, f x ≤ g x) :
+    ∫ x in s, f x ∂μ ≤ ∫ x in s, g x ∂μ
+
+Mathlib/MeasureTheory/Integral/Bochner/Set.lean
+theorem setIntegral_const [CompleteSpace E] (c : E) : ∫ _ in s, c ∂μ = μ.real s • c
+
+Mathlib/MeasureTheory/Function/L1Space/Integrable.lean
+theorem Integrable.mono' {f : α → β} {g : α → ℝ} (hg : Integrable g μ)
+    (hf : AEStronglyMeasurable f μ) (h : ∀ᵐ a ∂μ, ‖f a‖ ≤ g a) : Integrable f μ
+
+Mathlib/MeasureTheory/Function/L1Space/Integrable.lean
+theorem Integrable.mono_nonneg [Lattice β] [HasSolidNorm β] [AddLeftMono β] {f g : α → β}
+    (hg : Integrable g μ) (hf : AEStronglyMeasurable f μ) (hnonneg : ∀ᵐ a ∂μ, 0 ≤ f a)
+    (h : ∀ᵐ a ∂μ, f a ≤ g a) :
+    Integrable f μ
+
+Mathlib/Topology/Algebra/InfiniteSum/ENNReal.lean
+theorem ENNReal.ofReal_tsum_of_nonneg {f : α → ℝ} (hf_nonneg : ∀ n, 0 ≤ f n) (hf : Summable f) :
+    ENNReal.ofReal (∑' n, f n) = ∑' n, ENNReal.ofReal (f n)
+
+Mathlib/MeasureTheory/Measure/Lebesgue/Basic.lean
+theorem volume_real_Ioc_of_le {a b : ℝ} (hab : a ≤ b) : volume.real (Ioc a b) = b - a
+
+Mathlib/Data/Nat/Choose/Basic.lean: Nat.choose_pos {n k} (h:k<=n):0<n.choose k.
+
+Mathlib/MeasureTheory/Integral/IntegrableOn.lean:119: integrableOn_const {C} (hs:mu s != infinity := by finiteness) (hC:enorm C != infinity := by finiteness):IntegrableOn (fun _=>C) s mu. For real constants on finite Ioc, both side conditions hold.
+
+Existing verified F3RootWaitingHaar already uses lintegral_tsum, lintegral_indicator_fun_one, ENat.toENNReal coercions and ae_lt_top. Reuse the same actual tail-count pattern or a small generalized helper, with every project theorem registered exactly once in Audit. The one-step pair law and actual joint exponential tail remain existing conclusions, not hypotheses named after the final target.
+
+## Version, source identity and license
+The current search index resolved to 7b4f42a6b9014145e9b791f85d298656c3ef294d; that Git commit was independently fetched. Each relevant current source was fetched separately and its selected declaration signature compared with the consumer pin; all listed signatures are unchanged. Files can differ elsewhere. No upgrade recommended. All inspected source headers are Apache2 and the pinned LICENSE was fetched separately. No upstream corpus is copied; only existing pinned APIs are called.
+
+Pinned/current Git blob SHA1 values computed from the fetched UTF8 Git blob bytes:
+
+- Mathlib/Analysis/SumIntegralComparisons.lean: pin 2d4cb29ea8a78cbb61f9f1272d0afc24a9722a21; current 90456b6561257a9f25947cc1fa8b9cb5cd58d8c4
+
+- Mathlib/Analysis/SpecialFunctions/ImproperIntegrals.lean: pin e5944768a5833e19d8da7f7c5b7ad77e65fcfe0c; current 8571a78c8e7ce0079dc1f0ac5c06bd4888fd87f1
+
+- Mathlib/MeasureTheory/Integral/Bochner/Set.lean: pin c2f23b4ffdeaafa6c1e4faf7407788f785400da8; current ec3b1499ef4042a604ef01ac4d1c180038984d3e
+
+- Mathlib/MeasureTheory/Function/L1Space/Integrable.lean: pin 2ad180afca8fb23408d5408050a8965089375ae5; current 7c51bb765bfec75158a4ec4c859bd27bf1da996e
+
+- Mathlib/Topology/Algebra/InfiniteSum/ENNReal.lean: pin dd73efd48dd32e4ef53e40ec6aa70f40ebde9830; current 0c568369df1f74282f0ec4cc40d38c33bc12012b
+
+- Mathlib/MeasureTheory/Measure/Lebesgue/Basic.lean: pin 84794cf74fa34664073bbf336adccdefb5bada62; current a9e421ce29372e8cae9337a62fc4a02b583cda89
+
+- Mathlib/MeasureTheory/Integral/IntegrableOn.lean: pin a61d29fe081da762dd3cd6a4a8b34f95740378c1; current 320145ba4c47542e99f835ca2998d69946420359
+
+- Mathlib/Data/Nat/Choose/Basic.lean: pin 1cd090d71c8175e5f2071d939d30394b4c56d9de; current 1cd090d71c8175e5f2071d939d30394b4c56d9de
+
+## Acceptance boundary
+This source review is not Lean compilation. The analytic envelope calculation, actual maximum tail-count/integral bridge, exact paper wrapper and every new declaration still require implementation, full exact-tree Actions kernel/axiom/source/coverage/regression verification and independent review. Moving configurations, signed difference laws, prime transfer and other accepted packages remain separate.
+
+## 2026-09-30 10:47 UTC：REC-L7 实际联合等待对数期望已通过精确 CI
+
+代码1b9a0d63b4c2be6d063dda68a60f1ceffa7cf130，树de59e407b238b301cafa9474a4babeb9cb553d58，
+[push36704236926](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36704236926)与
+[PR36704245738](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36704245738)
+完整成功。12条新声明仅标准公理；全738项公理输出（737项目+1产生器）、110项目源文件、
+650依赖模块及版本锁、构建、内核回归、一对一覆盖和144240有限检查全部通过。
+
+REC-L7/定理2.3式(2.8)的实际最大等待时间满足原精确上界
+Eτ≤1+3^K(1+log choose(m,2))，这里期望是保留∞的真实非负积分，K为实际根距最大值。
+已证明真实最大等待几乎处处有限，原有证书矩阵几乎处处在某个有限T恢复全部真实距离。
+证明调用锁定库的指数积分/积分判别和已验真实联合尾界；没有预设分布或根对独立性。
+
+首轮编译的默认有限区间质量、反单调限制集参数、Nat索引/局部常量展开及符号归一化
+已显式修复，12个公开命题及全部前提保持不变。294个浮点解析前缀与28个有限样本尾和
+仅为补充回归。显式置信参数δ推论、移动配置、完整有符号差律和素数传递仍开放。
+本次状态文档头保留全部已验代码和审计，仍独立执行完整CI。原纸面来源水位不变。
