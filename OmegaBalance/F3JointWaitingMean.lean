@@ -79,7 +79,7 @@ theorem f3JointTailEnvelope_integral_le {B p : ℝ} (hB : 1 ≤ B) (hp : 0 < p) 
     intro x hx hy
     exact (not_lt_of_ge hx.2) hy
   have hconst : IntegrableOn (fun _ : ℝ => (1 : ℝ)) (Ioc (0 : ℝ) c) :=
-    integrableOn_const
+    integrableOn_const (by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
   have hexp : IntegrableOn (fun x : ℝ => B * Real.exp (-p * x)) (Ioi c) :=
     (integrableOn_exp_mul_Ioi (neg_neg_of_pos hp) c).const_mul B
   have hexpValue : (∫ x in Ioi c, B * Real.exp (-p * x)) = 1 / p := by
@@ -114,7 +114,7 @@ theorem f3JointTailEnvelope_tsum_le {B p : ℝ} (hB : 1 ≤ B) (hp : 0 < p) :
     (∑' n : ℕ, f3JointTailEnvelope B p n) ≤ 1 + (Real.log B + 1) / p := by
   have hB0 := le_trans zero_le_one hB
   have ha : AntitoneOn (f3JointTailEnvelope B p) (Ici 0) :=
-    (f3JointTailEnvelope_antitone hB0 hp.le).antitoneOn
+    (f3JointTailEnvelope_antitone hB0 hp.le).antitoneOn _
   have hi := f3JointTailEnvelope_integrable hB0 hp
   have hn : ∀ x ∈ Ioi (0 : ℝ), 0 ≤ f3JointTailEnvelope B p x :=
     fun x _ => f3JointTailEnvelope_nonneg hB0 p x
@@ -195,11 +195,13 @@ theorem f3SharedRootConfig_unitHaar_jointWait_mean_le {m : ℕ} (C : F3SharedRoo
   let B : ℝ := m.choose 2
   let p : ℝ := ((3 : ℝ) ^ f3RootMaxDistance C)⁻¹
   have hB : 1 ≤ B := by
-    exact_mod_cast (Nat.succ_le_of_lt (Nat.choose_pos C.two_le_card))
+    dsimp [B]
+    have hnat : 1 ≤ m.choose 2 := Nat.succ_le_of_lt (Nat.choose_pos C.two_le_card)
+    exact_mod_cast hnat
   have hp : 0 < p := by dsimp [p]; positivity
   have hB0 := le_trans zero_le_one hB
   have ha : AntitoneOn (f3JointTailEnvelope B p) (Ici 0) :=
-    (f3JointTailEnvelope_antitone hB0 hp.le).antitoneOn
+    (f3JointTailEnvelope_antitone hB0 hp.le).antitoneOn _
   have hi := f3JointTailEnvelope_integrable hB0 hp
   have hs := ha.summable_of_integrableOn_Ioi_zero hi
     (fun x _ => f3JointTailEnvelope_nonneg hB0 p x)
@@ -211,9 +213,9 @@ theorem f3SharedRootConfig_unitHaar_jointWait_mean_le {m : ℕ} (C : F3SharedRoo
       intro T
       have h := ENNReal.ofReal_le_ofReal (f3SharedRootConfig_unitHaar_jointWait_gt C T)
       simpa only [Measure.real, ENNReal.ofReal_toReal (measure_ne_top _ _),
-        f3JointTailEnvelope, B, p, neg_mul, mul_comm] using h
+        f3JointTailEnvelope, B, p, neg_mul, mul_neg, mul_comm] using h
     _ = ENNReal.ofReal (∑' T : ℕ, f3JointTailEnvelope B p T) :=
-      (ENNReal.ofReal_tsum_of_nonneg (fun T => f3JointTailEnvelope_nonneg hB0 p T) hs).symm
+      (ENNReal.ofReal_tsum_of_nonneg (fun T : ℕ => f3JointTailEnvelope_nonneg hB0 p T) hs).symm
     _ ≤ ENNReal.ofReal (1 + (Real.log B + 1) / p) :=
       ENNReal.ofReal_le_ofReal (f3JointTailEnvelope_tsum_le hB hp)
     _ = ENNReal.ofReal (1 + (3 : ℝ) ^ f3RootMaxDistance C * (1 + Real.log (m.choose 2))) := by
