@@ -7,7 +7,7 @@
 - COR-1：`F3CorrelationLimitExchange.tendsto_f3CorrelationIccAverage` 对实际2≤n≤N的整数平均证明完整核；并非素数子集平均。
 - COR-2：`F3CorrelationShiftSquare.tendsto_f3MeanSquareShiftIccAverage_pow_three` 对r>0给出4/3^r；r=0平移1极限单独为16/3。
 - LOG-1：真正收敛级数 `f3PadicLog`，`f3PadicLog_valuation`、`f3_eq_neg_chi_mul_log_valuation` 与 `f3PadicLog_mul`，域n>1且3∤n；整数U没有冒充log。
-- DEN-1：`F3PrimeDensityExactPos/ExactNeg/Tail` 给出精确素数计数相对于x/log x的常数；显式全体素数计数分母的比例接口仍待薄适配。
+- DEN-1：`F3PrimeDensityExactPos/ExactNeg/Tail` 给出精确素数计数相对于x/log x的常数；显式全体素数计数分母的比例接口随后在 `F3PrimeRelativeDensity.lean` 的代码70becdbf完整验证。
 - DEN-2：`f3PrimeMul17EqTwoRelativeRatio_tendsto` 与 `f3PrimeMul17HighRelativeRatio_tendsto` 给出条件比例1/2与3^-j，j>0。
 - PAT-L1–3：`F3FourPrimePattern.lean` 已合入59be8b23；全局PAT外部依赖及无条件RUN仍未完成。
 
