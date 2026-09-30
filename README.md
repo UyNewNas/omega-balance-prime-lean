@@ -335,3 +335,5 @@ F3D-DEG：[PDF 版](docs/proofs/f3d/degree_tensorization/paper.pdf) · [完整�
 源码/覆盖与有限sanity通过，尚无本地Lean/Lake，全部新结果待精确CI。
 这只是REC-L6的有限批次切片，不标记无限一基等待时间、均值、多对恢复界或素数采样完成。
 [精确范围与后续任务](docs/proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l6-fixed-root-finite-batch-candidate)。
+
+**固定根有限批次：** `F3RootBatchHaar.lean` 的10条声明在代码c863b99d通过完整CI（runs36684973082/36685062948）：实际有限 Haar 乘积下，已有扫描器在T次后仍未知的概率为 `(1-3^(-L))^T`，包括T=0。只覆盖固定根的有限批次，完整等待变量/均值和素数传递仍开放。

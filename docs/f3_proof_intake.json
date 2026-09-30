@@ -6570,6 +6570,38 @@
       "new_combined_project_count": 684,
       "new_base": "f45cd8a7586609555e8f307d25c38fee5c105249",
       "whole_task_complete": false
+    },
+    "REC-L6-FINITE-BATCH": {
+      "status": "LEAN-PROVED for10 fixed-root finite-batch declarations only; full waiting/moving/prime tasks open",
+      "module": "OmegaBalance/F3RootBatchHaar.lean",
+      "declarations": [
+        "f3RootDepth_ne_measurable",
+        "f3RootDepth_equal_measurable",
+        "f3UnitHaar_rootDepth_equal",
+        "f3RootDepthBatchFailure_eq_pi",
+        "f3RootDepthBatchFailure_zero",
+        "f3RootDepthBatchFailure_measurable",
+        "f3UnitHaar_batch_failure",
+        "depthCertificateScan_finRange_eq_none_iff",
+        "f3UnitHaar_depthCertificateScan_none",
+        "f3SharedRootConfig_unitHaar_scan_none"
+      ],
+      "verified_code_sha": "c863b99d1ba71c4a63e9b555e36bb457e0918bef",
+      "successful_code_runs": [
+        36684973082,
+        36685062948
+      ],
+      "project_declarations": 694,
+      "required_external_producer": 1,
+      "source_files": 106,
+      "formalization_complete": false,
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "actual infinite one-based waiting variable and expectation",
+        "moving random configurations",
+        "joint recovery bounds",
+        "prime sampling transfer"
+      ]
     }
   }
 }

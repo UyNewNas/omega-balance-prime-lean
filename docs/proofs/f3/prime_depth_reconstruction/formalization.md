@@ -267,3 +267,19 @@ sampling generalization, unordered-pair union bound, exponential recovery
 bound, or prime-sampling transfer. Those accepted tasks remain open. The
 finite batch includes T=0; it is not a definition of a zero-based geometric
 waiting variable. [Reuse and pin evidence](../../../f3_external_reuse.md#2026-09-30-rec-l6-finite-batch-target-first-reuse-gate).
+
+## 2026-09-30 08:17 UTC：固定根有限批次概率已通过精确 CI
+
+代码 `c863b99d1ba71c4a63e9b555e36bb457e0918bef` 的
+[push 36684973082](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36684973082) 与
+[PR 36685062948](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36685062948)
+全部通过。实际公理日志为695项（694条项目声明+1条必需上游产生器），仅标准三公理；
+106个项目源文件、650个依赖源码/固定版本检查、一对一覆盖、内核回归、
+144240有限检查均成功。独立专项源码/数学复核确认实际归一化 Haar、真实有限乘积、
+共享单次参数、T=0及既有扫描接口，没有循环概率假设。
+
+本节只升级 `F3RootBatchHaar.lean` 已列出的10条声明，得到固定实际单位根的
+有限批次失败/扫描未知概率 `(1-3^(-L))^T`。原始完整配置的固定模型包装保留全部
+前提和无限根点；未构造无限单边等待变量、未证明其均值、移动随机配置、
+多对联合恢复界或素数传递。此前 candidate/pending 文字是实现历史。
+最终文档提交仍单独执行完整CI，原始 proof 来源水位不因本次实现而改变。
