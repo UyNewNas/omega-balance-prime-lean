@@ -939,3 +939,20 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3UnitHaar_truncatedPair_batch_map_eq
 #print axioms OmegaBalance.f3SharedRootConfig_truncatedPair_batch_law_eq
 #print axioms OmegaBalance.f3SharedRootConfig_truncatedPair_H_vs_higher
+
+-- Actual signed-depth atoms and null exceptional roots
+#print axioms OmegaBalance.rootDepth_eq_distance_of_lt
+#print axioms OmegaBalance.f3SignedDepthEvent_neg_swap
+#print axioms OmegaBalance.f3SignedDepthEvent_pos_eq_layer
+#print axioms OmegaBalance.f3SignedDepthEvent_neg_eq_layer
+#print axioms OmegaBalance.f3SignedDepthEvent_zero_eq_equal
+#print axioms OmegaBalance.f3SignedDepthEvent_pos_measurable
+#print axioms OmegaBalance.f3SignedDepthEvent_neg_measurable
+#print axioms OmegaBalance.f3SignedDepthEvent_zero_measurable
+#print axioms OmegaBalance.f3UnitHaar_signedDepth_pos
+#print axioms OmegaBalance.f3UnitHaar_signedDepth_neg
+#print axioms OmegaBalance.f3UnitHaar_signedDepth_zero
+#print axioms OmegaBalance.f3UnitHaar_signedDepth_defined_ae
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_signedDepth_pos
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_signedDepth_neg
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_signedDepth_zero

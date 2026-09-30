@@ -1,0 +1,164 @@
+{
+  "status": "finite regression only, not kernel proof or null-singleton proof",
+  "precision_boundary": "atoms checked only for L+abs(h)<N; root residue representatives remain undefined",
+  "cases": 12,
+  "sample_representatives": 9360,
+  "rows": [
+    {
+      "L": 1,
+      "precision": 3,
+      "unit_representatives": 18,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-1": 2,
+        "0": 12,
+        "1": 2
+      }
+    },
+    {
+      "L": 1,
+      "precision": 4,
+      "unit_representatives": 54,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-2": 2,
+        "-1": 6,
+        "0": 36,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 1,
+      "precision": 5,
+      "unit_representatives": 162,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "0": 108,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    },
+    {
+      "L": 2,
+      "precision": 4,
+      "unit_representatives": 54,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-1": 2,
+        "0": 48,
+        "1": 2
+      }
+    },
+    {
+      "L": 2,
+      "precision": 5,
+      "unit_representatives": 162,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-2": 2,
+        "-1": 6,
+        "0": 144,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 2,
+      "precision": 6,
+      "unit_representatives": 486,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "0": 432,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 5,
+      "unit_representatives": 162,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-1": 2,
+        "0": 156,
+        "1": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 6,
+      "unit_representatives": 486,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-2": 2,
+        "-1": 6,
+        "0": 468,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 3,
+      "precision": 7,
+      "unit_representatives": 1458,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "0": 1404,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 6,
+      "unit_representatives": 486,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-1": 2,
+        "0": 480,
+        "1": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 7,
+      "unit_representatives": 1458,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-2": 2,
+        "-1": 6,
+        "0": 1440,
+        "1": 6,
+        "2": 2
+      }
+    },
+    {
+      "L": 4,
+      "precision": 8,
+      "unit_representatives": 4374,
+      "root_hit_representatives_excluded": 2,
+      "signed_atom_counts": {
+        "-3": 2,
+        "-2": 6,
+        "-1": 18,
+        "0": 4320,
+        "1": 18,
+        "2": 6,
+        "3": 2
+      }
+    }
+  ]
+}

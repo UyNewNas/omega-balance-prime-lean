@@ -122,3 +122,5 @@ import OmegaBalance.F3TruncatedCertificateHaar
 import OmegaBalance.F3TruncatedBatchHaar
 
 import OmegaBalance.F3TruncatedNonidentifiability
+
+import OmegaBalance.F3SignedDepthLaw
