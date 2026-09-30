@@ -1,6 +1,6 @@
 # F3D-TERN：形式化映射
 
-数学状态：PAPER-AUDITED。Lean 状态：NOT-STARTED。
+数学状态：PAPER-AUDITED（保留原分项状态；2026-09-30 仅补齐 TERN-6 的 m≥2 边界，不是整体重新审计）。Lean 状态：NOT-STARTED。
 
 ## 推荐模块
 
@@ -20,7 +20,9 @@
 | 三元范数形式 | \`f3D_ternary_cubic_normForm\` |
 | 一般有限域范数提升 | \`f3D_normForm_minVal\` |
 | 9–10–9 谱 | \`f3D_ternary_min_degree_spectrum\` |
-| 分组范数上界 | \`f3D_min_degree_grouped_norm_bound\` |
+| 分组范数界（m≥2） | \`f3D_min_degree_grouped_norm_bound\`，必须显式接收 `2 ≤ m` |
+
+TERN-6 的目标是 \(3m\le\mathfrak d_m(1)\le m(\lceil\sqrt m\rceil+1)\)，前提为 \(m\ge2\)。\(m=1\) 用恒等对得到次数上界 1，不能复用下界 3m。齐次正规化（TERN-L5）同样显式保留 m≥2。见 [修正报告](../../../../reports/f3d_proof_boundary_corrections.md)。
 
 ## 工程建议
 

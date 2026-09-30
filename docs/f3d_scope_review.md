@@ -37,11 +37,11 @@ For source unit grid `s_i=r_i=1`, allowed because `1∈S_D`, take `n_i=3^t_i+1`,
 
 Input sup-distance is one. Every finite tropical expression has a finite global Lipschitz constant, so h is not one. The assertion that a finite integer-affine partition is equivalent to a tropical expression lacks a bounded-jump/continuity argument and is false here. The finite-affine-partition half itself is not refuted.
 
-This refutes the intermediate tropical claim, not the main classification: g=0 is itself tropical. It blocks the present MULTI-3 necessity route and thus the universal-realizability part of MULTI-4 as currently justified. MULTI-1/2, tropical sufficiency, and explicit bounded-switch constructions do not depend on this bad step. A possible repair must work directly with grid minima and the uniform interpolation bound; it has not been supplied here. Independent audit is pending.
+This refutes the intermediate tropical claim, not the main classification: g=0 is itself tropical. It blocks the present MULTI-3 necessity route and thus the universal-realizability part of MULTI-4 as currently justified. MULTI-1/2, tropical sufficiency, and explicit bounded-switch constructions do not depend on this bad step. A possible repair may work directly with grid minima and the uniform interpolation bound; none is supplied here. The narrow boundary review was independently confirmed on 2026-09-30: source metadata and TeX now withdraw the blanket audit label for the affected necessity route. See [the dedicated correction report](../reports/f3d_proof_boundary_corrections.md). This confirms the counterexample and its scope, not a repair or a full theory recertification.
 
 ## Other precise corrections
 
-- `F3D-CORR-TERN6-DOMAIN`: theorem.md §F3D-TERN-6 omits `m>=2`, which proof.md explicitly supplies. For m=1 the identity function has minimum degree one, so the stated `3m` lower bound is false. Add the guard before quoting.
+- `F3D-CORR-TERN6-DOMAIN`: the original theorem.md §F3D-TERN-6 omitted `m>=2`, which proof.md explicitly supplied. For m=1 the identity pair has degree one, hence minimum degree at most one, already contradicting the unguarded `3m` lower bound. The guard and boundary witness were added consistently on 2026-09-30; the narrow correction does not recertify the whole degree theory.
 - `F3D-CORR-POLY-CLEAR-DENOM`: proof.md §8.1 must choose L clearing the coefficients of both homogenized A and B; integrality of just `2L A,2L B` does not imply integrality of `L(A±B)`. For A=1/2,B=1/4,L=2 the former holds and the latter fails. Taking L more divisible, or doubling the output, repairs this local step. It does not refute the classification.
 
 ## Boundary for lower bounds and impossible operations
