@@ -1034,3 +1034,20 @@ Used with the linear order WithTop Int. The currently indexed commit0e51f706a3f1
 
 ## Intake refresh and acceptance
 At11:09 UTC, git fetch listed172 actual remote heads (excluding origin/HEAD). Compared155 original watermark entries: only master moved; original research heads are unchanged. Repository issues updated since09:11 were only this integration's PR53/54/56/57/58. No additional external mathematical package found; do not alter original source watermarks. Every new lemma needs Audit exactly once and full exact-tree Actions plus independent review. This report is not kernel verification.
+
+## 2026-09-30 11:23 UTC：单次截断证书 Haar 分段律已通过精确 CI
+
+代码94bc0693b5c1bfca7d054d20daf9efea00a0b67a，树9ba2bea3889e77d85a63fcf3c86d3f27b51d0250，
+[push36707863669](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36707863669)与
+[PR36707908267](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36707908267)
+首轮完整成功。12条新声明仅标准公理；全753项公理输出（752项目+1产生器）、112项目
+源文件、650依赖模块及版本锁、构建、内核回归、精确覆盖和144240有限检查通过。
+
+已覆盖REC-L12/定理2.6式(2.13)的实际单次概率：L<H时证书事件等于原不等深度事件，
+质量3^(−L)；L≥H时等于真实共同H球，质量1/(2·3^(H−1))，包括L=H。另有可测性、
+实际事件包含给出的统一下界、原固定配置包装。H截断标准化R，命中根∞保留至截断，
+恢复目标仍为min(L,H)。高距离一般引理允许更广根域，但最终包装保持原C全部前提。
+
+30个精确有限剩余类案例6564次观测含60次根命中只是补充回归；H=0反例说明为何质量
+公式要求H≥1。独立源码/数学复核通过。式(2.14)的有限批次截断矩阵尾界、移动配置、
+全素数传递与整个REC包仍开放。此状态文档头不变更已验代码或审计，仍单独执行完整CI。

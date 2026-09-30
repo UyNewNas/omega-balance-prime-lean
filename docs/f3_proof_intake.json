@@ -6818,6 +6818,47 @@
         "passive lower bound",
         "equidistant triple exact stopping law"
       ]
+    },
+    "REC-L12-TRUNCATED-SINGLE-HAAR": {
+      "status": "LEAN-PROVED: actual single truncated-certificate event equivalences, exact piecewise Haar probability, measurability and uniform lower bound",
+      "module": "OmegaBalance/F3TruncatedCertificateHaar.lean",
+      "declarations": [
+        "truncatedDepthWitness_iff_raw_ne_of_distance_lt",
+        "truncatedDepthWitness_iff_ge_of_le_distance",
+        "f3TruncatedCertificateEvent_eq_ne",
+        "f3TruncatedCertificateEvent_eq_tail",
+        "f3RootDepthTail_subset_truncatedCertificate",
+        "f3TruncatedCertificateEvent_measurable",
+        "f3UnitHaar_truncatedCertificate_of_lt",
+        "f3UnitHaar_truncatedCertificate_of_ge",
+        "f3UnitHaar_truncatedCertificate_probability",
+        "f3UnitHaar_truncatedCertificate_lower_bound",
+        "f3SharedRootConfig_unitHaar_truncatedCertificate_probability",
+        "f3SharedRootConfig_unitHaar_truncatedCertificate_lower_bound"
+      ],
+      "verified_code_sha": "94bc0693b5c1bfca7d054d20daf9efea00a0b67a",
+      "verified_tree": "9ba2bea3889e77d85a63fcf3c86d3f27b51d0250",
+      "successful_code_runs": [
+        36707863669,
+        36707908267
+      ],
+      "project_declarations": 752,
+      "required_external_producer": 1,
+      "source_files": 112,
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "paper_scope": "theorem2.6 equation2.13 single observation, not equation2.14 batch bound",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "finite-batch truncated matrix probability bound",
+        "moving configurations",
+        "prime transfer",
+        "remaining REC nodes"
+      ]
     }
   }
 }
