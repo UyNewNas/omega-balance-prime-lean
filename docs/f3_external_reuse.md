@@ -268,3 +268,117 @@ round-trip, 650-file source-closure, manifest-pin, producer, project, regression
 axiom and coverage gates remain for actual Actions validation. The two bot
 regenerated PDF blobs are restored to the already reviewed master versions.
 The full RUN target remains unverified until the exact candidate passes.
+
+## 2026-09-30：REC-L5 目标优先查重复用
+
+目标先固定为命题 2.2 的**确定性有限观测矩阵恢复和阈值根簇**，不是采样律、
+信息论下界、全素数传递或重新开发 p-adic 赋值。源码基线 master
+`5a622dc4e90db25dbc21f926de873be17372ed39`；paper proof 最后数学来源提交
+`b4c14823d9a97a45770ed42379673d39b5295be6`（PR #41），proof blob
+`ef55306b0c00adc68cfd8407440a4bdd46e6de10`。本轮完整重读 theorem/proof/scaffolding/formalization。
+
+实际查询（2026-09-30）：GitHub code `rootDistanceMatrix depthCertificate`、
+`rootClusterSetoid depthCertificateMatrix`、`ultrametric equivalence Setoid`、
+`findSome? eq_some`、`ultrametric root recovery`；mathlib PR `ultrametric reconstruction`；
+全局 PR `p-adic root cluster matrix reconstruction`；公开网页
+`Lean ultrametric reconstruction root distance matrix valuation certificate`、
+`Lean mathlib ultrametric Setoid balls equivalence relation`、
+`"Corregidor" "Martínez-Pérez" "Lean"`。已查范围未找到等同最终 F3 目标的 Lean 定理；
+无关数值根隔离代码与非 Lean 材料不是可复用证明，不作全网不存在声明。
+书面引用 [Corregidor–Martínez-Pérez, arXiv:2003.10239](https://arxiv.org/abs/2003.10239)
+已核对论文入口；一般 metric-basis 背景不替代本目标源码证据。
+
+直接复用/薄适配清单：
+
+| 来源、固定版本、源码证据 | 精确 API 与适配决定 |
+|---|---|
+| 本项目 `OmegaBalance/F3RootCertificates.lean`，PR #46 已验代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b` | 复用 `depthCertificate_sound`、`rootDepth_min_le_distance`、`rootDistance_ne_top`；既有 12 个证书定理保持不变，不复制不重证 |
+| [Lean v4.34.0 `Init/Data/List/Find.lean`](https://github.com/leanprover/lean4/blob/v4.34.0/src/Init/Data/List/Find.lean)，blob `d8c0b839d8f24f52d21d7a0f34a5be621894dff8` | `List.findSome?`；`List.findSome?_eq_some_iff` 给出首个成功观测和之前全为 none 的前缀；`List.exists_of_findSome?_eq_some` 提取真实成员；`List.findSome?_eq_none_iff` 刻画未知。实际读取精确声明及证明；直接应用，不新增递归扫描基础 |
+| [mathlib 5ed2965 `Data/Setoid/Basic.lean`](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Data/Setoid/Basic.lean)，blob `90500f54e13f5572f222575d910bdccbbd4dd3ed` | 用原生 `Setoid` 表示根簇分区，用其关系包含顺序表达高阈值细化；不新建通用分区/树框架 |
+| [mathlib 5ed2965 `RingTheory/Valuation/Basic.lean`](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/RingTheory/Valuation/Basic.lean)，blob `73f71ae8fde499401b25db33fd2d826eecfb9c0b` | 直接用已读 `AddValuation.map_zero` 和 `map_sub_swap`，传递性复用项目中实际 `Padic.addValuation` 的最小值界。保留 `WithTop ℤ` 及命中根时的 ∞ |
+| [mathlib 5ed2965 `Topology/UniformSpace/Ultra/Basic.lean`](https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/Mathlib/Topology/UniformSpace/Ultra/Basic.lean)，blob `9a201e0bc4fc8412b18b6f3f6ca5fce0131d6d26` | 阅读完整文件：通用超度量一致空间 API，仍注明 valued-ring 超一致性桥接 TODO；不导入该较大拓扑接口来包装三个初等关系律 |
+
+实时核对上述 Lean `Find.lean` 与 mathlib `Ultra/Basic.lean` 的最新默认分支，返回 blob
+与所查锁定版本相同；已查 mathlib PR 无等同目标候选。库源码为 Apache-2.0，
+当前只调用原依赖的接口，没有移植外部证明文件或增添新包。最终声明的定义域为真实
+`ℚ_[3]`；一般适配器允许任意 p-adic 点，纸面 wrapper 显式保留 `F3SharedRootConfig`、
+样本为单位、公共正基础深度及逐对真实根距固定。没有假设扫描所得矩阵等于目标，
+没有将单位域概率律写作前提。
+
+结果：`F3RootReconstruction.lean` 的10条新声明已由精确代码 c2fe3c4 的 push36667493101 和 PR36667536541 完整CI核验：630条只含标准公理、97文件无逃逸、精确覆盖及全部构建/回归门禁通过。最终文档头另验CI，REC完整概率主结果仍未完成。
+[完整映射与剩余项](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l5-有限矩阵与根簇已通过精确-ci)。
+
+## 2026-09-30：REC-L11 / 截断 REC-L5 增量复用门
+
+目标优先固定为定理 2.6 的**确定性有限截断矩阵扫描、恢复 iff 与 t≤H 根簇**。
+初次实现前完整重读 theorem/proof/scaffolding/formalization 四件套；本包不存在
+`lean_scaffolding.md`，实际 DAG 文件为 `scaffolding.md`。数学来源为
+PR #41 `b4c14823d9a97a45770ed42379673d39b5295be6`，proof blob
+`ef55306b0c00adc68cfd8407440a4bdd46e6de10`。原源码基线 cc4eadf 与 PR #49 代码
+c2fe3c4 同树；工作区更换后恢复基线为已合入 PR #49 的 master
+`f50d23667628c868610c34d5157fe9bbd21357d3`，不修改既有完整精度模块。
+
+初次实现时已执行的目标查询：GitHub code `truncatedDepthCertificateMatrix`（无结果）、
+`truncated ultrametric reconstruction`（返回非目标论文/文本，无已核验等价 Lean 实现）；
+mathlib 全状态 PR `ultrametric reconstruction`（无结果）；公开网页
+`"Lean" "truncated" "root" "certificate" ultrametric` 与
+`site:leanprover.zulipchat.com ultrametric truncation reconstruction`。
+这些有界检索未发现等同最终目标的可复用定理，不代表全网不存在，也不把无关
+“Lean-checked”描述当作目标的已验证实现。恢复时沿用这些保留记录和固定源码证据，
+不声称重复执行了外部查询。
+
+直接复用顺序与来源：
+
+1. `F3RootCertificates.lean` 的 `truncatedDepthCertificate`、
+   `truncatedDepthCertificate_sound`、`truncatedRootDepth`、`truncatedRootDistance`，
+   已验代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b`。既有实际 ℚ_[3] / WithTop ℤ
+   的单对证明直接调用，不重新建立赋值或截断理论。
+2. `F3RootReconstruction.lean`（PR #49 已验代码 c2fe3c4，现已合入 master f50d2366）的
+   `rootClusterSetoid`、`rootDistance_threshold_equivalence` 与既有细化接口。
+   仅加入 t≤H 的薄 min 比較桥，不能把任意阈值恢复带到截断矩阵上。
+3. 初次实现时再次实际读取 [Lean v4.34.0 的 `Init/Data/List/Find.lean`](https://github.com/leanprover/lean4/blob/v4.34.0/src/Init/Data/List/Find.lean)，
+   blob `d8c0b839d8f24f52d21d7a0f34a5be621894dff8`，直接用
+   `List.findSome?_eq_some_iff`、`List.exists_of_findSome?_eq_some`、
+   `List.findSome?_eq_none_iff`；声明及证明与上一轮固定源码一致。
+   不重做泛型列表扫描基础。上一节已核验的最新主线对照、锁定 mathlib
+   `Setoid` / `AddValuation` / min API 证据继续复用。
+
+Lean 与 mathlib 许可证为 Apache-2.0；本次仅调用已有依赖，无外部证明文件移植、
+无新依赖或版本变更。`hfixed` 是真实距离固定前提，`hcomplete` 是有限观测的
+“不同或联合饱和”存在见证；不存在以同名目标假设证明自身的接口。
+恢复后的 244 行 Lean 源码 blob 为 `4a24db55453664e08976cd883757912c874f1adb`，
+与工作区更换前记录相同；源码守卫与覆盖检查重新通过（98 文件、641 条 exactly once）。
+代码564bb498的push36671721342与PR36671762437均已实际全门禁通过，641条标准公理、98源文件及完整覆盖/回归；最终文档头仍另验CI。仅确定性范围已核验，详细声明和边界见
+[形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵已通过精确-ci)。
+
+## 2026-09-30: BFTParameters symbolic checkpoint
+
+Exact RUN head `65e0f5e21bba434aca8624eb04338b0ddb87329b`,
+[run 36671388031](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36671388031),
+job `109746931058`, successfully compiled the full BFTExtraction checkpoint.
+The subsequent producer build failed in BFTParameters at lines 14 and 170
+with the same closed huge-power kernel reduction guard. Project build,
+regressions and actual axiom checks did not run; RUN remains unverified.
+
+The immutable upstream BFTParameters source at plby/lean-proofs
+`8822f7ddef30fadbd92e1c6ab4ed897af356af5e` has SHA256
+`bda78b68b8a4ac94189c36ad8dd131b9013dc28cccbd37d69b23563b7435d10a`.
+A bounded upstream check found the current file byte-identical; no newer fix
+was found. The existing fixed-version Nat order and power APIs suffice.
+Two private helpers prove the power bound parametrically in K and interval
+subtraction bounds parametrically in B. Original public statements, largeK,
+all hypotheses and numerical constants remain unchanged. Four exact guarded
+hunks replace only those proof terms; the final contradiction explicitly
+eliminates False into the original existential isolation target. Independent
+source review caught and corrected that elimination before publication.
+Prepared source SHA256 is
+`762a6b5e9d74bfd6e5de8d582909a939d22873552e2116c9ff3519733cb740f9`.
+
+The manifest records the 42nd managed file and both private helpers. Exact
+forward/reverse hashes, the source guard and 15 focused compatibility tests
+pass locally; these are not kernel checks. Actions now builds BFTExtraction
+and BFTParameters together before the full producer so another failure here
+is reported early. All later producer, project, regression, axiom, source and
+coverage gates remain. The precise global definitional-reduction mechanism
+is not claimed to be fully localized. The source notice and unconfirmed
+authored-source license scope remain accurately recorded.

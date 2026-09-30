@@ -33,11 +33,11 @@ jobs:
         run: |
           python3 scripts/prepare_run_dependencies.py update
           lake exe cache get
-      - name: Build RUN finite extraction
+      - name: Build RUN symbolic checkpoints
         shell: bash
         run: |
           set -o pipefail
-          lake build ErdosProblems.Erdos6.BFTExtraction 2>&1 | tee run-extraction.log
+          lake build ErdosProblems.Erdos6.BFTExtraction ErdosProblems.Erdos6.BFTParameters 2>&1 | tee run-extraction.log
       - name: Build exact RUN producer
         shell: bash
         run: |

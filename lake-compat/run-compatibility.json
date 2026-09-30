@@ -717,6 +717,40 @@
       "added_private_declarations": [
         "Erdos6.Maynard.no_prime_between_adjacent_filtered_shifts_of_bound"
       ]
+    },
+    {
+      "package": "lean-proofs-latest",
+      "path": "src/latest/ErdosProblems/Erdos6/BFTParameters.lean",
+      "kind": "proof",
+      "original_sha256": "bda78b68b8a4ac94189c36ad8dd131b9013dc28cccbd37d69b23563b7435d10a",
+      "before_sha256": "bda78b68b8a4ac94189c36ad8dd131b9013dc28cccbd37d69b23563b7435d10a",
+      "after_sha256": "762a6b5e9d74bfd6e5de8d582909a939d22873552e2116c9ff3519733cb740f9",
+      "replacements": [
+        {
+          "old": "theorem largePowerTuple_le_max {h : ℕ} (hh : h ∈ largePowerTuple) :\n    h ≤ 2 ^ largeK := by\n  obtain ⟨j, hj, rfl⟩ := mem_largePowerTuple.mp hh\n  exact Nat.pow_le_pow_right (by omega) (by omega)\n",
+          "new": "private theorem bft_power_shift_bound {K h : ℕ}\n    (hh : ∃ j < K, h = 2 ^ (j + 1)) : h ≤ 2 ^ K := by\n  obtain ⟨j, hj, hpow⟩ := hh\n  exact hpow.trans_le\n    (Nat.pow_le_pow_right Nat.zero_lt_two (Nat.succ_le_of_lt hj))\n\nprivate theorem bft_interval_offset_bounds {B n z : ℕ}\n    (hnz : n < z) (hzB : z ≤ n + B) :\n    1 ≤ z - n ∧ z - n ≤ B := by\n  have hna : n + (z - n) = z := Nat.add_sub_of_le hnz.le\n  exact ⟨Nat.succ_le_of_lt (Nat.sub_pos_of_lt hnz),\n    Nat.le_of_add_le_add_left (show n + (z - n) ≤ n + B from hna.symm ▸ hzB)⟩\n\ntheorem largePowerTuple_le_max {h : ℕ} (hh : h ∈ largePowerTuple) :\n    h ≤ 2 ^ largeK :=\n  bft_power_shift_bound (K := largeK) (mem_largePowerTuple.mp hh)\n",
+          "count": 1
+        },
+        {
+          "old": "    have hTN : T + 1 ≤ N := le_max_right _ _\n    omega\n",
+          "new": "    have hTN : T + 1 ≤ N := le_max_right _ _\n    exact (Nat.lt_of_succ_le hTN).trans_le hNn\n",
+          "count": 1
+        },
+        {
+          "old": "    have ha1 : 1 ≤ a := by dsimp [a]; omega\n    have haM : a ≤ 2 ^ largeK := by dsimp [a]; omega\n",
+          "new": "    have hbounds := bft_interval_offset_bounds (B := 2 ^ largeK) hnz hzmax\n    have ha1 : 1 ≤ a := hbounds.1\n    have haM : a ≤ 2 ^ largeK := hbounds.2\n",
+          "count": 1
+        },
+        {
+          "old": "      have hNn := (Finset.mem_Ico.mp hnIco).1\n      omega\n",
+          "new": "      have hNn := (Finset.mem_Ico.mp hnIco).1\n      exact False.elim ((Nat.ne_of_lt ((hpN.trans_le hNn).trans hnz)) hpEq)\n",
+          "count": 1
+        }
+      ],
+      "added_private_declarations": [
+        "Erdos6.Maynard.bft_power_shift_bound",
+        "Erdos6.Maynard.bft_interval_offset_bounds"
+      ]
     }
   ],
   "closure": {
@@ -4168,7 +4202,7 @@
       "package": "lean-proofs-latest",
       "path": "src/latest/ErdosProblems/Erdos6/BFTParameters.lean",
       "original_sha256": "bda78b68b8a4ac94189c36ad8dd131b9013dc28cccbd37d69b23563b7435d10a",
-      "prepared_sha256": "bda78b68b8a4ac94189c36ad8dd131b9013dc28cccbd37d69b23563b7435d10a"
+      "prepared_sha256": "762a6b5e9d74bfd6e5de8d582909a939d22873552e2116c9ff3519733cb740f9"
     },
     "ErdosProblems.Erdos6.BFTResidue": {
       "package": "lean-proofs-latest",

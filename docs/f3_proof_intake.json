@@ -6449,6 +6449,32 @@
       "paper_status": "PAPER-PROVED (revised); full revised audit pending",
       "normalization_specific_review": "independently checked; finite regression and PDF inspection passed",
       "lean_status": "NOT-STARTED"
+    },
+    "F3-REC-2": {
+      "paper_node": "REC-L5; proof Proposition 2.2 deterministic matrix/threshold-cluster slice",
+      "paper_source_commit": "b4c14823d9a97a45770ed42379673d39b5295be6",
+      "paper_proof_blob": "ef55306b0c00adc68cfd8407440a4bdd46e6de10",
+      "implementation_base": "5a622dc4e90db25dbc21f926de873be17372ed39",
+      "module": "OmegaBalance/F3RootReconstruction.lean",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "reuse_evidence": "docs/f3_external_reuse.md",
+      "status": "LEAN-PROVED for the 10 deterministic matrix/threshold declarations only; full REC-2 incomplete",
+      "new_theorem_count": 10,
+      "source_audit_files": 97,
+      "audit_coverage_count": 630,
+      "remaining": [
+        "Joint-depth probability recovery",
+        "Random waiting laws and bounds",
+        "Passive lower bound",
+        "Truncated matrix scan/recovery",
+        "Integer prime-product root construction and fixed-precision prime transfer"
+      ],
+      "formalization_complete": false,
+      "verified_code_sha": "c2fe3c433d69d6d1ef3fd8fd371fca08c8db184d",
+      "successful_code_runs": [
+        36667493101,
+        36667536541
+      ]
     }
   }
 }

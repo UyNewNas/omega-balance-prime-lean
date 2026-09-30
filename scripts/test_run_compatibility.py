@@ -106,6 +106,34 @@ class PatchTests(unittest.TestCase):
 
 
 class GiantPowerPatchTests(unittest.TestCase):
+    def test_symbolic_parameter_bounds_preserve_public_target(self):
+        spec = json.loads(compat.SPEC_PATH.read_text())
+        closure = spec['closure']['ErdosProblems.Erdos6.BFTParameters']
+        entries = [e for e in spec['edits'] if e['path'] == closure['path']]
+        self.assertEqual(len(entries), 1)
+        entry = entries[0]
+        self.assertEqual(entry['original_sha256'], entry['before_sha256'])
+        self.assertEqual(entry['after_sha256'], closure['prepared_sha256'])
+        self.assertEqual(len(entry['replacements']), 4)
+        first = entry['replacements'][0]
+        name = 'theorem largePowerTuple_le_max'
+        helpers, wrapper = first['new'].split(name, 1)
+        self.assertEqual(first['old'].split(' := by', 1)[0],
+                         (name + wrapper).split(' :=', 1)[0])
+        self.assertNotIn('largeK', helpers)
+        self.assertNotIn('largePowerTuple', helpers)
+        self.assertIn('{K h : ℕ}', helpers)
+        self.assertIn('{B n z : ℕ}', helpers)
+        self.assertEqual(helpers.count('private theorem'), 2)
+        self.assertIn('False.elim', entry['replacements'][-1]['new'])
+        for hunk in entry['replacements']:
+            self.assertEqual(hunk['count'], 1)
+            self.assertIsNone(compat.FORBIDDEN.search(hunk['new']))
+            self.assertNotRegex(hunk['new'], r'\b(omega|native_decide|decide)\b')
+        workflow = (compat.ROOT / '.github/workflows/lean.yml').read_text()
+        self.assertIn('lake build ErdosProblems.Erdos6.BFTExtraction '
+                      'ErdosProblems.Erdos6.BFTParameters', workflow)
+
     def test_symbolic_extraction_bound_keeps_exact_statement(self):
         spec = json.loads(compat.SPEC_PATH.read_text())
         module = 'ErdosProblems.Erdos6.BFTExtraction'
