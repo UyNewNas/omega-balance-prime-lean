@@ -40,7 +40,7 @@ theorem f3RootPairs_mem {m : ℕ} (ij : Fin m × Fin m) :
 /-- The union coefficient is choose-two, without counting both orientations. -/
 theorem f3RootPairs_card (m : ℕ) : (f3RootPairs m).card = m.choose 2 := by
   simpa only [f3RootPairs, Finset.card_univ, Fintype.card_fin] using
-    (Finset.card_product_filter_lt (s := Finset.univ : Finset (Fin m)))
+    (Finset.card_product_filter_lt (s := (Finset.univ : Finset (Fin m))))
 
 /-- Natural exponent of the actual finite off-diagonal root distance.
 Only off-diagonal uses are identified with extended rootDistance below. -/
@@ -77,7 +77,8 @@ def f3RootMaxDistance {m : ℕ} (C : F3SharedRootConfig m) : ℕ :=
 theorem f3RootDistanceExponent_le_max {m : ℕ} (C : F3SharedRootConfig m)
     {i j : Fin m} (hij : i < j) :
     f3RootDistanceExponent C i j ≤ f3RootMaxDistance C :=
-  Finset.le_sup ((f3RootPairs_mem (i, j)).mpr hij)
+  Finset.le_sup (f := fun ij => f3RootDistanceExponent C ij.1 ij.2)
+    ((f3RootPairs_mem (i, j)).mpr hij)
 
 /-- Actual first observation count at which every unordered pair has a certificate. -/
 def f3JointRootWait {m : ℕ} (C : F3SharedRootConfig m) (ω : ℕ → ℤ_[3]) : ℕ∞ :=
@@ -97,7 +98,7 @@ theorem f3SharedRootWait_le_iff {m : ℕ} (C : F3SharedRootConfig m)
     f3SharedRootWait C i j ω ≤ (T : ℕ∞) ↔ ∃ n < T,
       rootDepth (ω n : ℚ_[3]) (C.root i) ≠ rootDepth (ω n : ℚ_[3]) (C.root j) := by
   have h := not_congr (f3SharedRootWait_gt_iff C i j ω T)
-  simpa only [not_lt, not_forall, not_implies, not_not] using h
+  simpa only [not_lt, not_forall, exists_prop] using h
 
 /-- Joint failure means that some canonical pair failed at every prior time. -/
 theorem f3JointRootWait_gt_iff {m : ℕ} (C : F3SharedRootConfig m)
@@ -161,7 +162,7 @@ theorem f3JointRootWait_tail_eq_union {m : ℕ} (C : F3SharedRootConfig m) (T : 
       ⋃ ij ∈ f3RootPairs m,
         {ω : ℕ → ℤ_[3] | (T : ℕ∞) < f3SharedRootWait C ij.1 ij.2 ω} := by
   ext ω
-  simp only [Set.mem_setOf_eq, Set.mem_iUnion, f3JointRootWait, Finset.lt_sup_iff]
+  simp only [Set.mem_setOf_eq, Set.mem_iUnion, f3JointRootWait, Finset.lt_sup_iff, exists_prop]
 
 /-- The real-valued pair tail follows from the already proved actual ENNReal law. -/
 theorem f3SharedRootConfig_unitHaar_wait_gt_real {m : ℕ} (C : F3SharedRootConfig m)
