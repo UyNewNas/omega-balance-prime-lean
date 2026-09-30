@@ -73,6 +73,10 @@ jobs:
           done < /tmp/proof-tex-files
 
       - name: Commit generated PDFs
+        # The protected default branch requires a PR. Build/render there, but
+        # write regenerated binaries back only to non-default work branches.
+        # An absent default_branch or a tag fails closed for writeback.
+        if: ${{ github.ref_type == 'branch' && github.event.repository.default_branch != '' && github.ref_name != github.event.repository.default_branch }}
         shell: bash
         run: |
           set -euo pipefail
