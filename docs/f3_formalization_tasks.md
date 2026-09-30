@@ -75,3 +75,15 @@ DEN、LOG、RUN 不由有限周期计算替代，保持未完成状态。
 ## 停止规则
 
 只有 INF、COR、DEN、LOG、RUN 全部目标得到非空洞 Lean 证明并集成主分支，上游依赖经过信任审计，且精确版本的构建、回归、公理、源码、覆盖全部通过后，才结束全量任务。当前尚未满足停止条件。
+
+## 2026-09-30：独立接收 F3-PAT-1 局部证明
+
+来源 `4c532a866ad60bbe0492a928b41fe1fa1c1766e6`，接收基线 master `b4c14823d9a97a45770ed42379673d39b5295be6`。全分支接收扫描正在独立完成；本条不宣称已扫描完全部来源。
+
+- PAT-L1：`v3_eq_of_modEq_pow_of_lt`，A、B均非零，A≡B mod3^R 且v3(B)<R ⇒v3(A)=v3(B)。
+- PAT-L2：四点模729代表与三个乘积加一代表，两条精确模类定理。
+- PAT-L3：`f3_pat1_pattern_of_mod729`，n>1、d>0及n≡5,d≡1 mod729 ⇒七个指定有符号值；不要求素性。
+- 实现：`OmegaBalance/F3FourPrimePattern.lean`，4条定理均进入审计，3个定义区分七值模式和素数配置。
+- 局部已验证代码提交 `5f94116a7bddd73b37ebf4634a8d71f16ff54fe9`，[Lean CI](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36658263293) 全门禁成功。
+- [形式化映射](proofs/f3/four_prime_construction/formalization.md) / [外部查重记录](f3_external_reuse.md)。
+- 剩余：PAT-L4复杂度、PAT-L5局部因子与奇异乘积、EXT-GT2、PAT-L6渐近、PAT-L7无穷性；这些未完成项不妨碍局部已验证结果但禁止把全局PAT标LEAN-PROVED。五大原始目标继续保留。
