@@ -923,3 +923,19 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3TruncatedMatrixFailure_measurable
 #print axioms OmegaBalance.f3SharedRootConfig_truncated_pair_failure_le_exp
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_truncated_matrix_failure
+
+-- Actual finite-precision two-output observation laws
+#print axioms OmegaBalance.f3RootDepthObservation_nonneg
+#print axioms OmegaBalance.f3RootDepthObservation_preimage_top
+#print axioms OmegaBalance.f3RootDepthObservation_preimage_nonpos
+#print axioms OmegaBalance.f3RootDepthObservation_preimage_nat
+#print axioms OmegaBalance.f3RootDepthObservation_measurable
+#print axioms OmegaBalance.f3UnitHaar_rootDepth_map_eq
+#print axioms OmegaBalance.f3TruncatedDepthObservation_measurable
+#print axioms OmegaBalance.f3UnitHaar_truncatedDepth_map_eq
+#print axioms OmegaBalance.truncatedRootDepth_eq_of_le_distance
+#print axioms OmegaBalance.f3TruncatedPairObservation_measurable
+#print axioms OmegaBalance.f3UnitHaar_truncatedPair_map_eq
+#print axioms OmegaBalance.f3UnitHaar_truncatedPair_batch_map_eq
+#print axioms OmegaBalance.f3SharedRootConfig_truncatedPair_batch_law_eq
+#print axioms OmegaBalance.f3SharedRootConfig_truncatedPair_H_vs_higher
