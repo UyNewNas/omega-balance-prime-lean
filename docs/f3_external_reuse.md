@@ -86,3 +86,46 @@ REC最终目标在已查GitHub精确名 `rootDepth_min_eq_distance_of_ne` / `tru
 
 结果：`F3RootReconstruction.lean` 的10条新声明已由精确代码 c2fe3c4 的 push36667493101 和 PR36667536541 完整CI核验：630条只含标准公理、97文件无逃逸、精确覆盖及全部构建/回归门禁通过。最终文档头另验CI，REC完整概率主结果仍未完成。
 [完整映射与剩余项](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l5-有限矩阵与根簇已通过精确-ci)。
+
+## 2026-09-30：REC-L11 / 截断 REC-L5 增量复用门
+
+目标优先固定为定理 2.6 的**确定性有限截断矩阵扫描、恢复 iff 与 t≤H 根簇**。
+初次实现前完整重读 theorem/proof/scaffolding/formalization 四件套；本包不存在
+`lean_scaffolding.md`，实际 DAG 文件为 `scaffolding.md`。数学来源为
+PR #41 `b4c14823d9a97a45770ed42379673d39b5295be6`，proof blob
+`ef55306b0c00adc68cfd8407440a4bdd46e6de10`。原源码基线 cc4eadf 与 PR #49 代码
+c2fe3c4 同树；工作区更换后恢复基线为已合入 PR #49 的 master
+`f50d23667628c868610c34d5157fe9bbd21357d3`，不修改既有完整精度模块。
+
+初次实现时已执行的目标查询：GitHub code `truncatedDepthCertificateMatrix`（无结果）、
+`truncated ultrametric reconstruction`（返回非目标论文/文本，无已核验等价 Lean 实现）；
+mathlib 全状态 PR `ultrametric reconstruction`（无结果）；公开网页
+`"Lean" "truncated" "root" "certificate" ultrametric` 与
+`site:leanprover.zulipchat.com ultrametric truncation reconstruction`。
+这些有界检索未发现等同最终目标的可复用定理，不代表全网不存在，也不把无关
+“Lean-checked”描述当作目标的已验证实现。恢复时沿用这些保留记录和固定源码证据，
+不声称重复执行了外部查询。
+
+直接复用顺序与来源：
+
+1. `F3RootCertificates.lean` 的 `truncatedDepthCertificate`、
+   `truncatedDepthCertificate_sound`、`truncatedRootDepth`、`truncatedRootDistance`，
+   已验代码 `70becdbf3d7b5ad8169dbcaeebfe08dc3a68f65b`。既有实际 ℚ_[3] / WithTop ℤ
+   的单对证明直接调用，不重新建立赋值或截断理论。
+2. `F3RootReconstruction.lean`（PR #49 已验代码 c2fe3c4，现已合入 master f50d2366）的
+   `rootClusterSetoid`、`rootDistance_threshold_equivalence` 与既有细化接口。
+   仅加入 t≤H 的薄 min 比較桥，不能把任意阈值恢复带到截断矩阵上。
+3. 初次实现时再次实际读取 [Lean v4.34.0 的 `Init/Data/List/Find.lean`](https://github.com/leanprover/lean4/blob/v4.34.0/src/Init/Data/List/Find.lean)，
+   blob `d8c0b839d8f24f52d21d7a0f34a5be621894dff8`，直接用
+   `List.findSome?_eq_some_iff`、`List.exists_of_findSome?_eq_some`、
+   `List.findSome?_eq_none_iff`；声明及证明与上一轮固定源码一致。
+   不重做泛型列表扫描基础。上一节已核验的最新主线对照、锁定 mathlib
+   `Setoid` / `AddValuation` / min API 证据继续复用。
+
+Lean 与 mathlib 许可证为 Apache-2.0；本次仅调用已有依赖，无外部证明文件移植、
+无新依赖或版本变更。`hfixed` 是真实距离固定前提，`hcomplete` 是有限观测的
+“不同或联合饱和”存在见证；不存在以同名目标假设证明自身的接口。
+恢复后的 244 行 Lean 源码 blob 为 `4a24db55453664e08976cd883757912c874f1adb`，
+与工作区更换前记录相同；源码守卫与覆盖检查重新通过（98 文件、641 条 exactly once）。
+完整内核/公理结果待新精确 head CI。详细声明和边界见
+[形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵候选尚未执行-lean)。

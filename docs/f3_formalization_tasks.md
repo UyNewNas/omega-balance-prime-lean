@@ -489,3 +489,23 @@ run `36299729796` 均成功；565 declarations 仅标准 Lean axioms，86 Lean f
 代码 c2fe3c4 的精确 push36667493101 与 PR36667536541 已全门禁成功：630条标准公理、97文件源码守卫、一对一覆盖及全部回归。REC-L5仅上述确定性矩阵/阈值分区范围已核验；最终文档头另验CI。
 没有闭合随机等待时间、联合概率、被动下界、截断矩阵/采样或素数模型传递；
 ROOT/PAT/RUN 及其它已接收证明任务的未完成部分保持开放。
+
+## 2026-09-30：REC-L11 / 截断 REC-L5 有限矩阵候选
+
+- 稳定来源：F3-REC-4，proof 定理 2.6（PR #41、b4c14823，proof blob ef55306b）；
+  截断矩阵扫描和根簇为 REC-L11 与 REC-L5 确定性方法的组合，不冒称 REC-L12 概率已证
+- 恢复基线：master f50d23667628c868610c34d5157fe9bbd21357d3，已含 PR #49 完整精度模块
+- 实现：`OmegaBalance/F3RootTruncatedReconstruction.lean`，11 条新定理，
+  扫描首个“不等或联合饱和”观测、精确未知条件、移动真实根固定距离下的正确性、
+  单对/全矩阵恢复 iff、已知截断对角 H、t≤H 阈值根簇及公共正基础深度的纸面模型包装
+- 恢复证据：原本地 e0d7f9c 提交已丢失；244 行源文件按原始写入记录重建，
+  blob 4a24db55453664e08976cd883757912c874f1adb 与旧记录相同，文档在最新主线增量接回
+- 精确公开声明、前提和节点：[REC 形式化映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵候选尚未执行-lean)
+- 查重决定：[外部复用门](f3_external_reuse.md#2026-09-30rec-l11--截断-rec-l5-增量复用门)，
+  直接调用已验单对截断证书、锁定 List.findSome? 与现有 Setoid，没有新分析基础
+- 恢复后重新执行 source 98 / Audit 641 exactly once / diff 空白检查及有限数学 sanity，
+  均通过；没有运行 Lean/Lake，必须等待新精确 CI。此候选仍为 LEAN-IN-PROGRESS
+- 剩余：REC-L3、L6–L10、L12–L13、概率联合深度公式、整数素数乘积根构造、
+  固定精度全素数传递；不把有限可观测见证的 iff 解释成随机采样必然完备
+
+原五项目标、其它已接收 proofs、RUN 的无条件产生器和外部证明信任审计继续开放。

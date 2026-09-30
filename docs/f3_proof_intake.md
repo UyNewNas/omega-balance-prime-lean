@@ -66,3 +66,14 @@ All exact statements, assumptions, proof sections, source blobs, external inputs
 ## 已接入实现与广义范围
 
 PAT局部L1–3已通过代码5f94116a全门禁并合入59be8b23；ROOT4归一化修正已合入ad603cf4。精确后续状态见JSON implementation_updates，不改写来源快照。五个F3D包20文件已完整读完，25个广义结果未自动扩入本工程；输入F3(n)=F3,D(n,1)桥、输出域守卫及三个纠错线索已接收。七个有理输出特化是候选而非已承诺任务。详见 [范围与纠错报告](f3d_scope_review.md)。未把广义主分类的中间引理缺口说成原主分类反例。
+
+## 2026-09-30：REC 有限精度实现增量
+
+已接收 F3-REC-4 的同一纸面来源（PR #41，b4c14823，proof blob ef55306b）进入
+确定性截断矩阵实现候选 `F3RootTruncatedReconstruction.lean`。初次实现完整重读四件套；
+工作区更换后从原始写入记录恢复同一 Lean blob 4a24db55453664e08976cd883757912c874f1adb，
+文档在 master f50d2366 增量接回。没有新增数学来源、改动原有扫描水位或把扫描完成
+混同形式化完成。当前 11 条候选精确声明、完整定义域、REC-L11 / 截断 REC-L5 节点
+和未闭合概率层见 [REC 映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l11--截断-rec-l5-有限矩阵候选尚未执行-lean)
+与 [持续任务](f3_formalization_tasks.md#2026-09-30rec-l11--截断-rec-l5-有限矩阵候选)。
+恢复后源码与一对一审计重新通过；这不升级为 LEAN-PROVED，新精确 head 完整 CI 仍待执行。
