@@ -3,7 +3,7 @@
 | 字段 | 内容 |
 |---|---|
 | 结果 ID | \`F3-ROOT-1\`、\`F3-ROOT-2\`、\`F3-ROOT-3\`、\`F3-ROOT-4\` |
-| 状态 | \`PAPER-AUDITED\` |
+| 状态 | ROOT-1/2/3 保留 `PAPER-AUDITED`；ROOT-4 R9 于 2026-09-30 修正，`PAPER-PROVED`，修订稿复核待完成 |
 | 内容类型 | 二次平移乘积序列、双 Hensel 根、完整联合尾分布、有限精度反演、全素数实现与局部障碍 |
 | 整理日期 | 2026-09-29 |
 | Lean 状态 | 尚未形式化；不属于 \`LEAN-PROVED\` |
@@ -237,12 +237,14 @@ n,\quad n+10r,\quad n+30r,\quad n+40r,\quad n+60r,\quad n+70r.
 \]
 其中 \(\mathfrak S>0\)，\(\mathcal P(X)\) 表示 \(X<n,r\le2X\) 且上述七个数全为素数的参数集合。
 
+该集合没有附加 $d\equiv1\pmod3$ 的限制。以下比例包含两个模 3 符号分支；旧版只计算一个分支，遗漏另一半事件。
+
 在该全素数族中，
 \[
 \boxed{
 \Pr\bigl((D_0,D_1,D_2)=(3,4,2)\bigr)
 \longrightarrow
-\frac2{729}.
+\frac4{729}.
 }
 \tag{R9}
 \]

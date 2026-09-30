@@ -1,6 +1,6 @@
 # F3-ROOT：形式化映射
 
-数学状态：\`PAPER-AUDITED\`。Lean 状态：\`NOT-STARTED\`。
+数学状态：ROOT-1/2/3 保留 `PAPER-AUDITED`；ROOT-4 R9 已修正，`PAPER-PROVED`，修订稿复核待完成。Lean 状态：\`NOT-STARTED\`。
 
 ## 1. 推荐模块
 
@@ -66,3 +66,7 @@ PDF 构建成功不改变 Lean 状态。
 | PDF | workflow 生成 |
 | 新增 Lean 声明 | 0 |
 | Prime 主结论 kernel 验证 | 无 |
+
+## 2026-09-30 正确性修正
+
+R9 的全七素数族渐近比例由旧版 `2/729` 修正为 `4/729`；旧值遗漏 `d≡2 (mod 3)` 的等测度分支。修正采用局部参数同时取负的保测度双射，详见 proof §16 与 [修正报告](../../../../reports/f3_root4_normalization_correction.md)。形式化目标不得沿用错误的旧常数。ROOT-4 仍依赖完整素数线性形式渐近，当前没有 Lean 声明或内核验证。
