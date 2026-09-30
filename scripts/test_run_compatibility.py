@@ -105,6 +105,30 @@ class PatchTests(unittest.TestCase):
                     compat.validate_pins(spec, resolved=True)
 
 
+class GiantPowerPatchTests(unittest.TestCase):
+    def test_symbolic_extraction_bound_keeps_exact_statement(self):
+        spec = json.loads(compat.SPEC_PATH.read_text())
+        module = 'ErdosProblems.Erdos6.BFTExtraction'
+        closure = spec['closure'][module]
+        entries = [entry for entry in spec['edits']
+                   if entry['package'] == closure['package']
+                   and entry['path'] == closure['path']]
+        self.assertEqual(len(entries), 1)
+        entry = entries[0]
+        self.assertEqual(entry['kind'], 'proof')
+        self.assertEqual(entry['original_sha256'], entry['before_sha256'])
+        self.assertEqual(entry['after_sha256'], closure['prepared_sha256'])
+        self.assertEqual(entry['replacements'], [{
+            'old': '  have hzmax : z ≤ n + 2 ^ largeK := by omega\n',
+            'new': '  have hzmax : z ≤ n + 2 ^ largeK :=\n'
+                   '    Nat.le_trans (Nat.le_of_lt hzhi) (Nat.add_le_add_left hbmax n)\n',
+            'count': 1,
+        }])
+        hunk = entry['replacements'][0]
+        self.assertEqual(hunk['old'].split(':=')[0], hunk['new'].split(':=')[0])
+        self.assertIsNone(compat.FORBIDDEN.search(hunk['new']))
+
+
 class ActualManifestTests(unittest.TestCase):
     def setUp(self):
         self.spec = json.loads(compat.SPEC_PATH.read_text())

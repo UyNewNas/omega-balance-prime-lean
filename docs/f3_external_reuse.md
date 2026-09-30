@@ -155,3 +155,45 @@ cover the actual manifest, every pin field, missing/duplicate package entries,
 and incorrect quoted/unquoted aliases. RUN remains unverified until exact-head
 CI passes; additional downstream API failures must be repaired without changing
 pins.
+
+### 2026-09-30: symbolic bound repair after the first RUN producer build
+
+The actual first candidate build at head
+`0b13f311284e16d97f2dbdb0b93eded09a5c5552`,
+[run 36663110201](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36663110201),
+job `109721941998`, passed dependency preparation and reached the producer's
+source closure. Its sole reported failed target was
+`ErdosProblems.Erdos6.BFTExtraction`: line 55's `hzmax` proof and the enclosing
+private declaration at line 24 failed the kernel's `Nat.pow` evaluation guard.
+The full producer, project build, and executed axiom audit therefore did not
+pass; the previously failing build is not reused as proof verification.
+
+At the immutable producer SHA, `Erdos6.Maynard.largeK = 2 ^ 512`. The bound
+`2 ^ largeK` must stay symbolic. Lean 4.34's actual
+[`get_count_arg` kernel implementation](https://github.com/leanprover/lean4/blob/v4.34.0/src/kernel/type_checker.cpp#L305-L313)
+rejects numeric power evaluation when the exponent exceeds `UINT_MAX`.
+The failing `omega` proof was unnecessarily requesting arithmetic reflection
+for a bound already implied by two local inequalities.
+
+The additional guarded hunk replaces only that proof body:
+
+```lean
+  have hzmax : z ≤ n + 2 ^ largeK :=
+    Nat.le_trans (Nat.le_of_lt hzhi) (Nat.add_le_add_left hbmax n)
+```
+
+It composes `z < n + b` with `b ≤ 2 ^ largeK`, without evaluating the power.
+The exact [locked Nat API](https://github.com/leanprover/lean4/blob/v4.34.0/src/Init/Data/Nat/Basic.lean)
+provides `Nat.le_of_lt` and `Nat.add_le_add_left`; `Nat.le_trans` is also used
+there. No theorem signature, constant, assumption, kernel setting, or axiom
+allowlist changes. The file's original, pre-patch, and prepared SHA256 guards
+are updated; there are now 41 managed files. A focused regression asserts the
+single symbolic-proof hunk and unchanged bound statement. Offline application,
+reverse application, repeated application, and all 650 prepared source hashes
+pass. This is still only source/tooling evidence: the repaired exact head must
+be rebuilt and audited by CI. The separate upstream license-scope blocker is
+unchanged.
+
+### 诊断顺序与冷构建时间
+
+已对实际来源导入图计算：BFTExtraction只闭包到48个非mathlib模块，全producer闭包为650个。因此CI和verify先单独构建该已知失败的有限提取模块，再构建完整producer与全部项目，任何阶段失败仍阻止后续成功声明。第一轮冷构建耗时约26分钟后在唯一已知节点失败；为完整producer及后续项目/审计留下时间，将同一job超时从30改为60分钟，不删除、跳过或削弱任何证明/源码/公理门禁。日志分别保留run-extraction.log和run-producer.log。

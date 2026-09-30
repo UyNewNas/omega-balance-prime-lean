@@ -36,6 +36,7 @@ def main() -> int:
         run([sys.executable, 'scripts/test_audit_coverage.py'])
         run([sys.executable, 'scripts/check_sources.py'])
         run([sys.executable, 'scripts/check_audit_coverage.py'])
+        run(['lake', 'build', 'ErdosProblems.Erdos6.BFTExtraction'], 'run-extraction.log')
         run(['lake', 'build', 'Util.MaynardTao.BFT.Result'], 'run-producer.log')
         run(['lake', 'build'], 'build.log')
         run(['lake', 'build', 'OmegaBalance.Examples', 'OmegaBalance.F3Examples',

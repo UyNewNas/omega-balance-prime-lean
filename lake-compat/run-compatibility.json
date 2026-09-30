@@ -699,6 +699,21 @@
           "count": 1
         }
       ]
+    },
+    {
+      "package": "lean-proofs-latest",
+      "path": "src/latest/ErdosProblems/Erdos6/BFTExtraction.lean",
+      "kind": "proof",
+      "original_sha256": "ca1327c93e785659208d3af958f62e05e89ca4930d6a77076d6f99e74c52ff00",
+      "before_sha256": "ca1327c93e785659208d3af958f62e05e89ca4930d6a77076d6f99e74c52ff00",
+      "after_sha256": "68cc668a25d35b13aef878fcda22321009b57221acfb2ae71c88c682b8a78633",
+      "replacements": [
+        {
+          "old": "  have hzmax : z ≤ n + 2 ^ largeK := by omega\n",
+          "new": "  have hzmax : z ≤ n + 2 ^ largeK :=\n    Nat.le_trans (Nat.le_of_lt hzhi) (Nat.add_le_add_left hbmax n)\n",
+          "count": 1
+        }
+      ]
     }
   ],
   "closure": {
@@ -4144,7 +4159,7 @@
       "package": "lean-proofs-latest",
       "path": "src/latest/ErdosProblems/Erdos6/BFTExtraction.lean",
       "original_sha256": "ca1327c93e785659208d3af958f62e05e89ca4930d6a77076d6f99e74c52ff00",
-      "prepared_sha256": "ca1327c93e785659208d3af958f62e05e89ca4930d6a77076d6f99e74c52ff00"
+      "prepared_sha256": "68cc668a25d35b13aef878fcda22321009b57221acfb2ae71c88c682b8a78633"
     },
     "ErdosProblems.Erdos6.BFTParameters": {
       "package": "lean-proofs-latest",

@@ -14,7 +14,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - name: Install elan
@@ -33,6 +33,11 @@ jobs:
         run: |
           python3 scripts/prepare_run_dependencies.py update
           lake exe cache get
+      - name: Build RUN finite extraction
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build ErdosProblems.Erdos6.BFTExtraction 2>&1 | tee run-extraction.log
       - name: Build exact RUN producer
         shell: bash
         run: |
@@ -73,6 +78,7 @@ jobs:
         with:
           name: lean-verification
           path: |
+            run-extraction.log
             run-producer.log
             reports/f3_run_dependency_resolution.json
             build.log
