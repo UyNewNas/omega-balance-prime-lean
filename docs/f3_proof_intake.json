@@ -6854,7 +6854,50 @@
       "paper_scope": "theorem2.6 equation2.13 single observation, not equation2.14 batch bound",
       "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
       "remaining": [
-        "finite-batch truncated matrix probability bound",
+        "full finite-precision nonidentifiability distribution",
+        "moving configurations",
+        "prime transfer",
+        "remaining REC nodes"
+      ]
+    },
+    "REC-L12-TRUNCATED-BATCH-HAAR": {
+      "status": "LEAN-PROVED: actual finite-product pair failure and canonical-union full truncated matrix tail bound",
+      "module": "OmegaBalance/F3TruncatedBatchHaar.lean",
+      "declarations": [
+        "f3TruncatedCertificateBatchFailure_eq_pi",
+        "f3TruncatedCertificateBatchFailure_zero",
+        "f3TruncatedCertificateBatchFailure_measurable",
+        "f3UnitHaar_truncated_batch_failure",
+        "f3UnitHaar_truncated_batch_failure_real",
+        "f3UnitHaar_truncated_batch_failure_le_exp",
+        "truncatedDepthWitness_comm",
+        "f3TruncatedMatrixFailure_eq_union",
+        "f3TruncatedMatrixFailure_measurable",
+        "f3SharedRootConfig_truncated_pair_failure_le_exp",
+        "f3SharedRootConfig_unitHaar_truncated_matrix_failure"
+      ],
+      "verified_code_sha": "95c32fe0de79502fba19972d86d327c32103eaf6",
+      "verified_tree": "647521f257918a7625542896e07ef320a7dae25f",
+      "successful_code_runs": [
+        36710285308,
+        36710327735
+      ],
+      "project_declarations": 763,
+      "required_external_producer": 1,
+      "source_files": 113,
+      "axiom_bound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_free_declarations": [
+        "truncatedDepthWitness_comm"
+      ],
+      "formalization_complete": false,
+      "paper_scope": "fixed original model equation2.14; with prior single law covers equations2.13/2.14 and actual matrix event, not all theorem2.6 claims",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "full finite-precision nonidentifiability distribution",
         "moving configurations",
         "prime transfer",
         "remaining REC nodes"

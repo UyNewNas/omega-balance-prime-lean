@@ -1051,3 +1051,56 @@ At11:09 UTC, git fetch listed172 actual remote heads (excluding origin/HEAD). Co
 30个精确有限剩余类案例6564次观测含60次根命中只是补充回归；H=0反例说明为何质量
 公式要求H≥1。独立源码/数学复核通过。式(2.14)的有限批次截断矩阵尾界、移动配置、
 全素数传递与整个REC包仍开放。此状态文档头不变更已验代码或审计，仍单独执行完整CI。
+
+# REC-L12 finite-batch truncated matrix tail: reuse gate
+
+Observed2026-09-30 11:35 UTC. Consumer master07338ca65c689d8c9b8882744891a777b542efca; Lean4.34.0/mathlib5ed2965256430c3649e86755f9576b54eca72435. Actual single-observation truncated certificate law and uniform lower bound are integrated after complete kernel/audit CI. Target accepted proof theorem2.6 equation(2.14).
+
+## Exact target/domain
+For fixed original F3SharedRootConfig C, H>=1 and natural T, sample T complete parameters under the actual finite product Measure.pi(fun _ : Fin T=>f3UnitHaar). Each parameter is shared by all root labels. Bound the real probability that the existing truncatedDepthCertificateMatrix on List.finRange T is not the true matrix min(L_ij,H) by min(1,choose(m,2)*exp(-T/(2*3^(H-1)))). Include T=0, root hits/infinite raw depths, diagonal H and joint saturation. Never replace unknown by a numerical distance or recover true distances aboveH. No independence across root pairs.
+
+## Final-target search and minimal reuse
+Bounded GitHub mathlib4 searches: truncated certificate returned0; pi_pi compl found the existing finite-product construction among unrelated files; measureReal_biUnion_finset_le identified the exact union bound. No equivalent final truncated matrix-recovery theorem found in inspected results. This is not a global absence claim.
+Reuse the actual project certificate event and its measured positive lower bound, the existing deterministic truncated matrix recover iff, and canonical f3RootPairs/card from the full-matrix module. Do not rebuild independence or valuation theory.
+
+The pair-failure event is the finite product rectangle of the complement of the actual single-success event. Thus its exact mass is mu(single-failure)^T. Convert once to real probability, use measured success>=q=1/(2*3^(H-1)), then the existing Real.one_sub_le_exp_neg/power identity to bound by exp(-Tq). Full matrix failure is exactly a finite union over i<j of these pair failures, using witness symmetry, fixed actual roots and the existing matrix recover iff. The finite-union bound requires no pair independence and cardinality is exactly m.choose2.
+
+## Locked library source interfaces
+Paths relative to https://github.com/leanprover-community/mathlib4/blob/5ed2965256430c3649e86755f9576b54eca72435/ .
+- Mathlib/MeasureTheory/Constructions/Pi.lean:290, blob2a62c773222f631197270b3ac84ea3efaf728458:
+  Measure.pi_pi [Fintype iota] [forall i,SigmaFinite(mu i)] (s:forall i,Set(alpha i)):
+  Measure.pi mu (Set.pi Set.univ s)=product_i mu_i(s_i).
+  Same file:307/311 supplies finite/probability instances for the finite product. Existing unit Haar is already a genuine probability measure. Empty Fin0 product gives mass1.
+- Mathlib/MeasureTheory/Measure/Real.lean:146, blob2be899626f4e667ab2434919350e73a0074fc0e8:
+  measureReal_biUnion_finset_le (s:Finset beta)(f:beta->Set alpha):
+  mu.real (union b in s,f b)<=sum b in s,mu.real(f b).
+  No disjointness or independence premise.
+- Same file:409 measureReal_compl [IsFiniteMeasure mu] (hs:MeasurableSet s):
+  mu.real(s.compl)=mu.real univ-mu.real s.
+- Already inspected and kernel-used at this consumer pin: ENNReal.toReal_pow, toReal_mono, toReal_inv/toReal_mul; Real.one_sub_le_exp_neg; Real.exp_nat_mul; measureReal_le_one; MeasureTheory.MeasurableSet.univ_pi; Finset.card_product_filter_lt.
+- Existing deterministic truncatedDepthCertificateMatrix_recover_iff uses actual root distances fixed across samples. Instantiate roots as C.root, hfixed by reflexivity; do not assume the desired output.
+- Existing F3TruncatedCertificateHaar gives measurable success for actual finite distance and the uniform event-inclusion lower bound. The original C wrapper supplies true finite distances for distinct canonical pairs.
+
+## Current compatibility and license
+Current search index resolved to b9579600c1115f822b7bfc0afee4f454a82116ca, independently fetched as a Git commit. Current Pi blobfd0e501cf14e19104cfa989adf4625e84ce8c974 and Real blob91ebdd41fdbc3f448c4f4120e19a9b774696c567 were fetched separately. The selected pi_pi, finite-union and complement signatures/hypotheses were directly compared and unchanged. Source headers and pinned root license are Apache2. Only existing pinned APIs/project proofs are reused; no new dependency or copied proof corpus.
+
+## Acceptance boundary
+This is a pre-implementation reuse decision. New declarations must enter Audit exactly once and pass full exact-tree Actions plus independent review. No first-hit waiting variable or expectation is needed for the paper's finite-batch bound. Moving configurations, all-prime sampling/transfer, signed difference laws, passive bounds and triple stopping laws remain open.
+
+## 2026-09-30 11:47 UTC：实际有限批次截断矩阵尾界已通过精确 CI
+
+代码95c32fe0de79502fba19972d86d327c32103eaf6，树647521f257918a7625542896e07ef320a7dae25f，
+[push36710285308](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36710285308)与
+[PR36710327735](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36710327735)
+首轮完整成功。11条新声明仅标准公理（证书对称引理不依赖任何公理）；764项总输出
+（763项目+1产生器）、113项目源文件、650依赖模块及版本锁、构建、内核回归、一对一
+覆盖和144240有限检查通过。测试PR合并树与上述源码头的文件树相同。
+
+已覆盖REC-L12/定理2.6式(2.14)：真实有限单位Haar乘积采样下，既有截断矩阵算法
+未恢复min(L,H)的概率≤min(1,choose(m,2)·exp(−T/(2·3^(H−1))))。对角线H、联合饱和、
+命中根原深度∞和T=0保留；时间乘积与根对并集分别证明，没有根对独立性假设。
+连同已验单次式(2.13)，当前覆盖原固定模型的两条截断概率公式及实际算法事件。
+
+84个有限案例45143批次（含16636根命中批次）只是补充回归。独立数学/源码复核
+通过；有限精度不可辨识的完整分布声明、移动配置和全素数传递仍开放，不能把整个
+定理2.6或REC包全部标成完成。此状态文档头不变更已验代码/审计，仍另行完整CI。

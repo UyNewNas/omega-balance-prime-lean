@@ -118,3 +118,5 @@ import OmegaBalance.F3JointWaitingMean
 import OmegaBalance.F3RecoveryConfidence
 
 import OmegaBalance.F3TruncatedCertificateHaar
+
+import OmegaBalance.F3TruncatedBatchHaar

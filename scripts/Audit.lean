@@ -910,3 +910,16 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3UnitHaar_truncatedCertificate_lower_bound
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_truncatedCertificate_probability
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_truncatedCertificate_lower_bound
+
+-- REC-L12 actual finite-batch truncated matrix probability
+#print axioms OmegaBalance.f3TruncatedCertificateBatchFailure_eq_pi
+#print axioms OmegaBalance.f3TruncatedCertificateBatchFailure_zero
+#print axioms OmegaBalance.f3TruncatedCertificateBatchFailure_measurable
+#print axioms OmegaBalance.f3UnitHaar_truncated_batch_failure
+#print axioms OmegaBalance.f3UnitHaar_truncated_batch_failure_real
+#print axioms OmegaBalance.f3UnitHaar_truncated_batch_failure_le_exp
+#print axioms OmegaBalance.truncatedDepthWitness_comm
+#print axioms OmegaBalance.f3TruncatedMatrixFailure_eq_union
+#print axioms OmegaBalance.f3TruncatedMatrixFailure_measurable
+#print axioms OmegaBalance.f3SharedRootConfig_truncated_pair_failure_le_exp
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_truncated_matrix_failure
