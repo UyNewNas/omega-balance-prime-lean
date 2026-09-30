@@ -763,3 +763,16 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.depthCertificateMatrix_cluster_iff
 #print axioms OmegaBalance.depthCertificateMatrix_cluster_equivalence
 #print axioms OmegaBalance.f3SharedRootConfig_matrix_recover
+
+-- REC-L11 and deterministic truncated REC-L5 finite-data recovery.
+#print axioms OmegaBalance.truncatedDepthCertificate_eq_some_iff
+#print axioms OmegaBalance.truncatedDepthCertificate_eq_none_iff
+#print axioms OmegaBalance.truncatedDepthCertificateScan_first
+#print axioms OmegaBalance.truncatedDepthCertificateScan_eq_none_iff
+#print axioms OmegaBalance.truncatedDepthCertificateScan_sound
+#print axioms OmegaBalance.truncatedDepthCertificateScan_recover_iff
+#print axioms OmegaBalance.truncatedDepthCertificateMatrix_recover_iff
+#print axioms OmegaBalance.truncatedRootDistance_threshold_iff
+#print axioms OmegaBalance.truncatedDepthCertificateMatrix_cluster_iff
+#print axioms OmegaBalance.truncatedDepthCertificateMatrix_cluster_equivalence
+#print axioms OmegaBalance.f3SharedRootConfig_truncatedMatrix_recover_iff
