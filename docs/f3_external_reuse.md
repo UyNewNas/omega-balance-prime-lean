@@ -191,9 +191,18 @@ are updated; there are now 41 managed files. A focused regression asserts the
 single symbolic-proof hunk and unchanged bound statement. Offline application,
 reverse application, repeated application, and all 650 prepared source hashes
 pass. This is still only source/tooling evidence: the repaired exact head must
-be rebuilt and audited by CI. The separate upstream license-scope blocker is
-unchanged.
+be rebuilt and audited by CI. The upstream authored-source license scope remains unconfirmed; see the
+[attribution and contact notice](f3_third_party_sources.md). Technical work
+continues with that uncertainty explicitly recorded; all mathematical and
+engineering merge gates remain mandatory.
 
 ### 诊断顺序与冷构建时间
 
 已对实际来源导入图计算：BFTExtraction只闭包到48个非mathlib模块，全producer闭包为650个。因此CI和verify先单独构建该已知失败的有限提取模块，再构建完整producer与全部项目，任何阶段失败仍阻止后续成功声明。第一轮冷构建耗时约26分钟后在唯一已知节点失败；为完整producer及后续项目/审计留下时间，将同一job超时从30改为60分钟，不删除、跳过或削弱任何证明/源码/公理门禁。日志分别保留run-extraction.log和run-producer.log。
+## 2026-09-30：相对全部素数计数与 REC 确定性证书
+
+密度最终目标先查：GitHub `f3PrimePosLevel relative density` 在已查范围无匹配；本仓库所有分支标题/现有API核对后，仅17倍接口已用实际计数比。薄复用既有 `f3PrimeAPCountingReal_normalized_tendsto` 的模1特化（0与1互素）得到真实全素数计数PNT，复用 `Filter.Tendsto.div` 及 `div_div_div_cancel_right₀` 将三个x/log x极限转换为实际素数计数比例，无新分析栈。
+
+锁定mathlib5ed2965实际源码：`Mathlib/Topology/Algebra/GroupWithZero.lean` blob `ad409ad08d53ad030bfd8f29cb2825a19b33872e` 的 `Filter.Tendsto.div` 要求分母极限非零；`Mathlib/Algebra/GroupWithZero/Units/Basic.lean` blob `b3148d9bd8bac8cbc1c64edf40b1c0bbb61f2916` 的商约消要求公共除数非零。已分别读完整声明及证明，最新默认源同API仍在（blob4ef88673与9fd9e942），不升级。通过PNT极限1证明分母最终非零，有限初段不强加全局假设。库为Apache2，当前代码独立CI待执行。
+
+REC最终目标在已查GitHub精确名 `rootDepth_min_eq_distance_of_ne` / `truncatedDepthCertificate_sound` 无匹配；直接复用锁定 `AddValuation.map_sub`、`map_add_of_distinct_val`、`map_neg`、`map_sub_swap`、`top_iff`/`ne_top_iff`（`Mathlib/RingTheory/Valuation/Basic.lean` blob73f71ae8fde499401b25db33fd2d826eecfb9c0b），以及真正 `Padic.addValuation : AddValuation ℚ_[3] (WithTop ℤ)` 和 `.apply`（PadicNumbers blob79040472922216be2c0d66793e3b2a3965347e9c）。有限精度只用 `Mathlib/Order/MinMax.lean` 的已读 `min_lt_min_left_iff`、`min_eq_right_iff`。保持∞零点、实际p-adic域和源模型b+R；不以有理数弱化或概率假设代替目标。

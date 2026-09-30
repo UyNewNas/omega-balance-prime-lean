@@ -1,0 +1,586 @@
+{
+  "review_id": "F3D-PROOF-BOUNDARY-CORRECTIONS-2026-09-30",
+  "source_base_commit": "e59f4e4dc729a12e693594ff4dd996f1bb57f6b9",
+  "evidence_kind": "FINITE_EXACT_ARITHMETIC_REGRESSION_ONLY",
+  "lean_kernel_verified": false,
+  "general_classification_or_degree_theory_certified": false,
+  "asymptotic_or_all_parameter_claim_verified_by_script": false,
+  "multi_l12": {
+    "polynomial_pair": [
+      "(u1-u2)^2 + 3*u3^2",
+      "0"
+    ],
+    "D": 2,
+    "S_D": [
+      1,
+      4,
+      7
+    ],
+    "fixed_units": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "adjacent_pairs_checked": 65,
+    "adjacent_pair_checks": [
+      {
+        "M": 0,
+        "valuations": [
+          1,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 1,
+        "valuations": [
+          3,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 2,
+        "valuations": [
+          5,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 3,
+        "valuations": [
+          7,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 4,
+        "valuations": [
+          9,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 5,
+        "valuations": [
+          11,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 6,
+        "valuations": [
+          13,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 7,
+        "valuations": [
+          15,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 8,
+        "valuations": [
+          17,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 9,
+        "valuations": [
+          19,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 10,
+        "valuations": [
+          21,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 11,
+        "valuations": [
+          23,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 12,
+        "valuations": [
+          25,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 13,
+        "valuations": [
+          27,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 14,
+        "valuations": [
+          29,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 15,
+        "valuations": [
+          31,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 16,
+        "valuations": [
+          33,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 17,
+        "valuations": [
+          35,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 18,
+        "valuations": [
+          37,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 19,
+        "valuations": [
+          39,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 20,
+        "valuations": [
+          41,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 21,
+        "valuations": [
+          43,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 22,
+        "valuations": [
+          45,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 23,
+        "valuations": [
+          47,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 24,
+        "valuations": [
+          49,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 25,
+        "valuations": [
+          51,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 26,
+        "valuations": [
+          53,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 27,
+        "valuations": [
+          55,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 28,
+        "valuations": [
+          57,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 29,
+        "valuations": [
+          59,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 30,
+        "valuations": [
+          61,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 31,
+        "valuations": [
+          63,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 32,
+        "valuations": [
+          65,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 33,
+        "valuations": [
+          67,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 34,
+        "valuations": [
+          69,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 35,
+        "valuations": [
+          71,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 36,
+        "valuations": [
+          73,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 37,
+        "valuations": [
+          75,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 38,
+        "valuations": [
+          77,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 39,
+        "valuations": [
+          79,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 40,
+        "valuations": [
+          81,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 41,
+        "valuations": [
+          83,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 42,
+        "valuations": [
+          85,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 43,
+        "valuations": [
+          87,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 44,
+        "valuations": [
+          89,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 45,
+        "valuations": [
+          91,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 46,
+        "valuations": [
+          93,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 47,
+        "valuations": [
+          95,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 48,
+        "valuations": [
+          97,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 49,
+        "valuations": [
+          99,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 50,
+        "valuations": [
+          101,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 51,
+        "valuations": [
+          103,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 52,
+        "valuations": [
+          105,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 53,
+        "valuations": [
+          107,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 54,
+        "valuations": [
+          109,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 55,
+        "valuations": [
+          111,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 56,
+        "valuations": [
+          113,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 57,
+        "valuations": [
+          115,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 58,
+        "valuations": [
+          117,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 59,
+        "valuations": [
+          119,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 60,
+        "valuations": [
+          121,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 61,
+        "valuations": [
+          123,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 62,
+        "valuations": [
+          125,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 63,
+        "valuations": [
+          127,
+          0
+        ],
+        "sup_distance": 1
+      },
+      {
+        "M": 64,
+        "valuations": [
+          129,
+          0
+        ],
+        "sup_distance": 1
+      }
+    ],
+    "all_unit_grid_checks_at_depths_0_through_2": 19683,
+    "output_f_is_zero_in_all_checked_instances": true,
+    "claim_refuted_by_written_all_M_argument": "fixed-grid tropical equivalence",
+    "not_refuted": [
+      "discontinuous finite affine partition property",
+      "main classification",
+      "constructive sufficiency"
+    ]
+  },
+  "tern6": {
+    "required_hypothesis": "m >= 2",
+    "excluded_boundary": "m = 1",
+    "identity_pair": [
+      "n1",
+      "d1"
+    ],
+    "identity_monomial_exponents": {
+      "P": [
+        [
+          1,
+          0
+        ]
+      ],
+      "Q": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "identity_pair_degree": 1,
+    "implied_minimum_degree_upper_bound": 1,
+    "unguarded_lower_bound_at_m1": 3,
+    "signed_legal_input_checks": 1600
+  },
+  "all_finite_checks_passed": true
+}
