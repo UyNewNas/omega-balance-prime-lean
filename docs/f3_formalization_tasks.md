@@ -21,7 +21,61 @@ The source package has no PDF/TeX and this repair makes no render claim.
 [reuse gate](f3_external_reuse.md#2026-09-30-f3-wav-1-proof-bound-target-first-reuse-gate).
 
 
-## 2026-09-30 07:16 UTC：无条件 RUN 精确验证及最新主线组合
+## 2026-09-30 08:17 UTC：固定根有限批次概率已通过精确 CI
+
+代码 `c863b99d1ba71c4a63e9b555e36bb457e0918bef` 的
+[push 36684973082](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36684973082) 与
+[PR 36685062948](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36685062948)
+全部通过。实际公理日志为695项（694条项目声明+1条必需上游产生器），仅标准三公理；
+106个项目源文件、650个依赖源码/固定版本检查、一对一覆盖、内核回归、
+144240有限检查均成功。独立专项源码/数学复核确认实际归一化 Haar、真实有限乘积、
+共享单次参数、T=0及既有扫描接口，没有循环概率假设。
+
+本节只升级 `F3RootBatchHaar.lean` 已列出的10条声明，得到固定实际单位根的
+有限批次失败/扫描未知概率 `(1-3^(-L))^T`。原始完整配置的固定模型包装保留全部
+前提和无限根点；未构造无限单边等待变量、未证明其均值、移动随机配置、
+多对联合恢复界或素数传递。此前 candidate/pending 文字是实现历史。
+最终文档提交仍单独执行完整CI，原始 proof 来源水位不因本次实现而改变。
+
+
+## 2026-09-30 07:30 UTC：当前状态（优先于下方历史检查点）
+
+PR #47 已合入 master `0bd5333e92b429306ffb139728c04cd4a1ee796b`，其树
+`a0109985e1258d4f5a4ade5286865166f8550f28` 与组合验证
+[push 36683223631](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36683223631) /
+[PR 36683404748](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36683404748)
+完全相同，两次全门禁均成功：684 条项目声明与1条必需上游产生器。
+原五项目标 INF/COR/DEN/LOG/RUN 已集成主线；全部接收 proof 的其它任务继续开放。
+合并后 master 的 Factor-sum 36683869677 已成功，Lean 36683869679 在本检查点仍运行，
+不把运行中状态记为成功。下方“待组合/待合并/仍阻塞”等段落均为各日期的历史记录，
+不能覆盖本节当前状态，也不能把原五项目标完成误读为全部新 proof 已完成。
+
+07:28 UTC 全量 fetch 后的有界接收刷新检查了165个远程分支头：原始来源中仅 master
+变为0bd5333，原始 research 分支头全部未变；06:38后更新的 issue/PR 仅本任务PR47/51。
+这次07:30刷新未发现新的外部纸面来源，不推进原数学来源水位，不声称重新全文审读
+所有 research。REC 当前批次另完整重读了其既有四文件包。
+
+### 当前新候选：REC-L6 固定根有限批次（待精确 CI）
+
+`OmegaBalance/F3RootBatchHaar.lean` 新增10条定理：在实际
+`Measure.pi (fun _ : Fin T => f3UnitHaar)` 下，固定实际单位根的全部T次相等事件
+概率为 `(1 - ((3 : ℝ≥0∞)^L)⁻¹)^T`；真实根距有限且L≥1，T允许0。
+同时证明事件可测、空批次边界、现有 `depthCertificateScan (List.finRange T)`
+返回未知的精确事件等价及概率，并保留固定 `F3SharedRootConfig` 包装。
+每个观测只抽取一个d供所有根标签共享；没有假设同次观测内部标签独立。
+
+本地源码守卫106文件、694+1一对一覆盖、15项兼容测试、6项审计规则测试、
+11项既有边界测试和333738个有限批次/24组精确分数sanity均通过。
+`python3 scripts/verify.py` 因没有Lake以退出码2停止，Lean构建/内核回归/实际公理
+检查未运行；这些新声明全部为LEAN-IN-PROGRESS，须新精确head完整CI后再提升。
+[精确声明和纸面映射](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30-rec-l6-fixed-root-finite-batch-candidate)
+· [目标优先复用证据](f3_external_reuse.md#2026-09-30-rec-l6-finite-batch-target-first-reuse-gate)。
+
+边界：本轮仅证明式(2.7)的固定根有限批次失败律，没有定义无限流中的一基等待时间
+或求其期望；移动随机配置、无序多对并集界、完整联合分布、被动下界、截断概率、
+素数乘积根构造与素数采样传递仍开放。没有新增概率框架或改变固定依赖。
+
+## 历史检查点：2026-09-30 07:16 UTC 无条件 RUN 与主线组合
 
 无条件代码 `69c48f9e74426ef8004a761752c59d524f2d7fdb` 的
 [push 36679099690](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36679099690) 与
@@ -57,7 +111,7 @@ The source package has no PDF/TeX and this repair makes no render claim.
 
 此文件是持续推进的权威任务账本。只有精确提交实际通过 Lean 构建、回归、公理、源码与声明覆盖门禁的结果才标记为完成；纸面推导、Python 有限验算或外部文献本身不算 Lean 证明。
 
-## 最新组合验证（2026-09-30，优先于历史状态行）
+## 历史组合验证（2026-09-30，当前状态见本页顶部）
 
 代码head `febe6175d83d8f2fa92b6f8a3d2b610016119a22` 完整601条门禁通过（PR run36660504382、push run36660499386）。COR-1/2与LOG-1已经非条件证明；DEN实际层计数的x/log x归一化渐近及17倍条件比例已证明，显式相对全部素数计数的3个比例接口仍待补。无条件RUN-1/2仍受产生器兼容阻塞；原有条件RUN接口不冒称完成。PAT-L1–3已合入，所有已接收新proof的未完成局部/全局节点保留在接收账本，不因前三项目进展而关闭总任务。
 
@@ -72,7 +126,7 @@ The source package has no PDF/TeX and this repair makes no render claim.
 - PR #5 是独立的质因数求和研究线；F₃ 推进不覆盖其分支。
 - 最终状态以精确 GitHub Actions head 或相同 Git tree 的成功门禁为准；运行中的 CI 不登记为通过。
 
-## 总目标
+## 历史总目标快照（当前集成状态见顶部）
 
 | ID | 目标 | 状态 |
 |---|---|---|
@@ -635,3 +689,13 @@ PR51 代码 dc063232 的 push36681283200 与 PR36681288176 已全部通过：
 [精确声明及范围](proofs/f3/prime_depth_reconstruction/formalization.md#2026-09-30rec-l3-实际-haar-单次概率已通过精确-ci)。
 独立等待律/均值、完整有符号差分布、联合恢复概率及素数传递仍未完成；
 独立专项源码复核与最终文档头 CI 是合并前剩余门禁。
+
+## 2026-09-30 08:30 UTC：WAV 精确 API 修复与当前主线组合
+
+首个实际 PR run36686787116 在 F3WaveletLocal 第30行报告未找到未限定的
+`dvd_sub`；并未通过内核门禁。源码已仅改为固定 Lean4.34 的 `Int.dvd_sub`，
+其精确声明位于 src/Init/Data/Int/DivMod/Lemmas.lean:54–55，
+blob99da2d83e13e782fb6ab3304b39321ded95e3737。公开命题、窗口及其余证明保持原样。
+同时真实三方接入已验批次主线33ccdfe，保留全部10条新 Haar 批次声明和现有文档；
+组合候选为699条项目声明+1条必需上游产生器，107个源文件。
+新组合仍需精确CI，不能把源码/覆盖通过或旧基础CI当作WAV内核证明。

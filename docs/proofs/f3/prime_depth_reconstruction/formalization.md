@@ -26,7 +26,7 @@
 3. 截断证书；
 4. 根簇树恢复。
 
-概率等待时间可先在有限几何分布模型中证明；真实全素数采样部分依赖外部固定精度分布，不应添加自定义 axiom。
+概率层先在实际单位 Haar 的有限乘积中证明批次失败律，再另行定义无限流等待时间；不能用直接规定所需质量的几何分布模型替代真实采样证明。真实全素数采样部分依赖外部固定精度分布，不应添加自定义 axiom。
 
 ## 边界
 
@@ -211,3 +211,75 @@ Pr(R_i≠R_j)=3^(-L)。共享根包装保留公共正 b、m≥2、互异单位�
 多对联合概率/恢复界、被动下界、整数素数乘积根构造、固定精度全素数传递。
 本批不把随机变量定义成几何 PMF 后宣告等待律，也不假设各根坐标相互独立。
 [任务账本](../../../f3_formalization_tasks.md) · [复用与许可](../../../f3_external_reuse.md)
+
+
+## 2026-09-30 REC-L6 fixed-root finite-batch candidate
+
+Baseline master `0bd5333e92b429306ffb139728c04cd4a1ee796b` (684 project
+declarations plus the required external RUN producer). The accepted source is
+proof theorem 2.3, equation (2.7), with its input theorem 2.1 / equation (2.3)
+and deterministic Proposition 2.2. The existing four-file REC package was read
+in full. No new mathematical source or new source watermark is introduced.
+
+New module [F3RootBatchHaar.lean](../../../../OmegaBalance/F3RootBatchHaar.lean)
+uses the genuine finite product `Measure.pi (fun _ : Fin T => f3UnitHaar)`.
+The coordinate `d t` is shared by all root labels in observation t. The roots
+are fixed across this batch. Their distance is the actual `rootDistance`,
+equal to a finite natural L≥1; root-hit depth remains `⊤` in `WithTop ℤ`.
+The equal-event mass is derived from the proved single-observation unequal
+mass. Product factorization uses the locked `Measure.pi_pi`; no probability
+formula or independence among labels is assumed.
+
+| Exact declaration in namespace OmegaBalance | Scope |
+|---|---|
+| `f3RootDepth_ne_measurable` | Unequal event is the measurable union of the actual next-level root balls |
+| `f3RootDepth_equal_measurable` | Equal event is the measurable complement |
+| `f3UnitHaar_rootDepth_equal` | Actual unit Haar equal-event probability `1 - 3^(-L)` |
+| `f3RootDepthBatchFailure_eq_pi` | Transparent all-equal batch event is the product rectangle |
+| `f3RootDepthBatchFailure_zero` | Empty batch failure event is all of the empty sample space |
+| `f3RootDepthBatchFailure_measurable` | Finite product failure event is measurable |
+| `f3UnitHaar_batch_failure` | Actual all-T failure probability `(1 - 3^(-L))^T`, including T=0 |
+| `depthCertificateScan_finRange_eq_none_iff` | Existing ordered scan is unknown exactly on that failure event |
+| `f3UnitHaar_depthCertificateScan_none` | Actual product probability of the existing scan remaining unknown |
+| `f3SharedRootConfig_unitHaar_scan_none` | Same statement for one fixed original configuration, preserving its model hypotheses |
+
+The algorithm continues to receive only the time list and labelled excess
+depths R. It does not receive roots or target L. The wrapper retains positive
+base depth b, m≥2, distinct congruent unit roots through `F3SharedRootConfig`;
+it does not confuse R with raw D=b+R. Samples are distributed by the existing
+actual unit-supported measure rather than restricted by a fabricated finite
+sample-space law. ENNReal subtraction is the usual probability complement,
+so the subtraction is justified by a probability measure.
+
+Validation: all 10 declarations have exactly one Audit entry; local source
+guard (106 files), coverage (694 project declarations plus 1 external producer),
+15 compatibility tests, 6 audit-rule tests and 11 existing boundary tests pass.
+A separate exhaustive finite-residue sanity check examined 333738 batches in
+24 cases: L=1,2,3; roots 1 or 2 and their translate by 3^L; T=0,1,2,3. It keeps
+root hits infinite, verifies the scan returns either unknown or actual L, and
+counts the failure fraction exactly. None of these is a kernel check.
+`python3 scripts/verify.py` exits 2 because Lake is absent; actual Lean build,
+kernel regression and axiom execution remain pending exact-head CI.
+
+This is only the fixed-root finite-batch slice of REC-L6 / (2.7). There is no
+infinite one-based waiting random variable, expectation, moving-configuration
+sampling generalization, unordered-pair union bound, exponential recovery
+bound, or prime-sampling transfer. Those accepted tasks remain open. The
+finite batch includes T=0; it is not a definition of a zero-based geometric
+waiting variable. [Reuse and pin evidence](../../../f3_external_reuse.md#2026-09-30-rec-l6-finite-batch-target-first-reuse-gate).
+
+## 2026-09-30 08:17 UTC：固定根有限批次概率已通过精确 CI
+
+代码 `c863b99d1ba71c4a63e9b555e36bb457e0918bef` 的
+[push 36684973082](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36684973082) 与
+[PR 36685062948](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36685062948)
+全部通过。实际公理日志为695项（694条项目声明+1条必需上游产生器），仅标准三公理；
+106个项目源文件、650个依赖源码/固定版本检查、一对一覆盖、内核回归、
+144240有限检查均成功。独立专项源码/数学复核确认实际归一化 Haar、真实有限乘积、
+共享单次参数、T=0及既有扫描接口，没有循环概率假设。
+
+本节只升级 `F3RootBatchHaar.lean` 已列出的10条声明，得到固定实际单位根的
+有限批次失败/扫描未知概率 `(1-3^(-L))^T`。原始完整配置的固定模型包装保留全部
+前提和无限根点；未构造无限单边等待变量、未证明其均值、移动随机配置、
+多对联合恢复界或素数传递。此前 candidate/pending 文字是实现历史。
+最终文档提交仍单独执行完整CI，原始 proof 来源水位不因本次实现而改变。

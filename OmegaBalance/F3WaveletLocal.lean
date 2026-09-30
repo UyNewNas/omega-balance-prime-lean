@@ -27,7 +27,7 @@ theorem f3Wavelet_discriminant_not_dvd {r : ℕ} {h : ℤ} (_hr : 2 ≤ r)
   · have hhi : ¬ (3 : ℤ) ∣ h + 2 := by
       intro hhi
       have hfour : (3 : ℤ) ∣ 4 := by
-        convert dvd_sub hhi hlo using 1 <;> ring
+        convert Int.dvd_sub hhi hlo using 1 <;> ring
       norm_num at hfour
     have hpow := Int.prime_three.pow_dvd_of_dvd_mul_right (2 * r - 1) hhi hprod
     have hle := Int.le_of_dvd (show 0 < h - 2 by omega) hpow
