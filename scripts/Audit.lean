@@ -891,3 +891,8 @@ import OmegaBalance.F3DeeperExamples
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_jointWait_mean_le
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_jointWait_finite_ae
 #print axioms OmegaBalance.f3SharedRootConfig_unitHaar_matrix_recover_ae
+
+-- REC explicit confidence for actual full matrix recovery
+#print axioms OmegaBalance.f3Recovery_exponential_confidence
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_jointWait_confidence
+#print axioms OmegaBalance.f3SharedRootConfig_unitHaar_matrix_recovery_confidence
