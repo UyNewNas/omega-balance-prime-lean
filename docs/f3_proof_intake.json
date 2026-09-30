@@ -6569,7 +6569,7 @@
       ]
     },
     "RUN-1/2": {
-      "status": "Unconditional exact kernel verification at69c48f9; newest Haar combined tree pending its own CI and merge",
+      "status": "LEAN-PROVED and integrated with Haar mainline; exact combined and postmerge CI passed",
       "verified_code_sha": "69c48f9e74426ef8004a761752c59d524f2d7fdb",
       "successful_code_runs": [
         36679099690,
@@ -6588,7 +6588,13 @@
       "required_external_count": 1,
       "new_combined_project_count": 684,
       "new_base": "f45cd8a7586609555e8f307d25c38fee5c105249",
-      "whole_task_complete": false
+      "whole_task_complete": false,
+      "merged_commit": "0bd5333e92b429306ffb139728c04cd4a1ee796b",
+      "successful_combined_runs": [
+        36683223631,
+        36683404748
+      ],
+      "postmerge_run": 36683869679
     },
     "F3-WAV-1-PROOF-BOUND": {
       "status": "LEAN-PROVED for one general lemma and four kernel regressions only",
@@ -6612,22 +6618,23 @@
       "mapping": "docs/proofs/f3/wavelet_transfer/formalization.md",
       "evidence": "reports/f3_wavelet_bound_correction.json",
       "reuse_evidence": "docs/f3_external_reuse.md",
-      "source_audit_files": 106,
-      "audit_coverage_count": 689,
+      "source_audit_files": 107,
+      "audit_coverage_count": 699,
       "formalization_complete": false,
-      "kernel_verified": false,
+      "kernel_verified": true,
       "successful_code_runs": [
         36690453078,
         36690460110
       ],
       "remaining": [
-        "Exact-head CI for local lemma and regressions",
-        "WAV-L1–L13 and all complete F3-WAV-1–6 statements"
+        "WAV-L1–L13 and complete F3-WAV-1–6 statements"
       ],
-      "verified_code_sha": "c7e5d7d55209e575cc1449cf4595762f63469cf2"
+      "verified_code_sha": "c7e5d7d55209e575cc1449cf4595762f63469cf2",
+      "merged_commit": "7d94cf69c19b793298663c00419dd9e85e556f91",
+      "postmerge_run": 36694754437
     },
     "REC-L6-FINITE-BATCH": {
-      "status": "LEAN-PROVED for10 fixed-root finite-batch declarations only; full waiting/moving/prime tasks open",
+      "status": "LEAN-PROVED for10 fixed-root finite-batch declarations; actual fixed-root waiting is separately verified under REC-L6-ACTUAL-WAITING",
       "module": "OmegaBalance/F3RootBatchHaar.lean",
       "declarations": [
         "f3RootDepth_ne_measurable",
@@ -6652,10 +6659,49 @@
       "formalization_complete": false,
       "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
       "remaining": [
-        "actual infinite one-based waiting variable and expectation",
         "moving random configurations",
         "joint recovery bounds",
         "prime sampling transfer"
+      ]
+    },
+    "REC-L6-ACTUAL-WAITING": {
+      "status": "LEAN-PROVED for actual one-based fixed-root and fixed-configuration waiting tail, expectation and almost-sure finiteness",
+      "module": "OmegaBalance/F3RootWaitingHaar.lean",
+      "declarations": [
+        "f3RootWait_gt_iff",
+        "f3RootWait_eq_top_iff",
+        "f3RootWait_pos",
+        "f3RootWait_tail_eq_pi",
+        "f3RootWait_tail_measurable",
+        "f3UnitHaarStream_rootWait_gt",
+        "f3RootWait_toENNReal_eq_tsum",
+        "f3RootWait_measurable_toENNReal",
+        "f3UnitHaarStream_rootWait_mean",
+        "f3UnitHaarStream_rootWait_finite_ae",
+        "f3SharedRootConfig_unitHaar_wait_gt",
+        "f3SharedRootConfig_unitHaar_wait_mean"
+      ],
+      "verified_code_sha": "0255c6b55f44ecb2fc7ee69a376969f655ac4e83",
+      "verified_tree": "3430edd9b9f09b4663e6018c8ec07a72b8c1d07e",
+      "successful_code_runs": [
+        36697262997,
+        36697267202
+      ],
+      "project_declarations": 711,
+      "required_external_producer": 1,
+      "source_files": 108,
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "joint matrix stopping bounds",
+        "moving random configurations",
+        "full signed difference law",
+        "prime transfer"
       ]
     }
   }

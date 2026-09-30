@@ -1,0 +1,169 @@
+{
+  "status": "finite regression only; not a proof of actual infinite Haar waiting law",
+  "definition": "one-based first true observation; no hit is infinity; comparison only to observed prefix; expectation checked for min(tau,T)",
+  "cases": 1533,
+  "rows": [
+    {
+      "L": 1,
+      "T": 0,
+      "tail": "1",
+      "clipped_mean": "0"
+    },
+    {
+      "L": 1,
+      "T": 1,
+      "tail": "2/3",
+      "clipped_mean": "1"
+    },
+    {
+      "L": 1,
+      "T": 2,
+      "tail": "4/9",
+      "clipped_mean": "5/3"
+    },
+    {
+      "L": 1,
+      "T": 3,
+      "tail": "8/27",
+      "clipped_mean": "19/9"
+    },
+    {
+      "L": 1,
+      "T": 4,
+      "tail": "16/81",
+      "clipped_mean": "65/27"
+    },
+    {
+      "L": 1,
+      "T": 5,
+      "tail": "32/243",
+      "clipped_mean": "211/81"
+    },
+    {
+      "L": 1,
+      "T": 6,
+      "tail": "64/729",
+      "clipped_mean": "665/243"
+    },
+    {
+      "L": 1,
+      "T": 7,
+      "tail": "128/2187",
+      "clipped_mean": "2059/729"
+    },
+    {
+      "L": 1,
+      "T": 8,
+      "tail": "256/6561",
+      "clipped_mean": "6305/2187"
+    },
+    {
+      "L": 2,
+      "T": 0,
+      "tail": "1",
+      "clipped_mean": "0"
+    },
+    {
+      "L": 2,
+      "T": 1,
+      "tail": "8/9",
+      "clipped_mean": "1"
+    },
+    {
+      "L": 2,
+      "T": 2,
+      "tail": "64/81",
+      "clipped_mean": "17/9"
+    },
+    {
+      "L": 2,
+      "T": 3,
+      "tail": "512/729",
+      "clipped_mean": "217/81"
+    },
+    {
+      "L": 2,
+      "T": 4,
+      "tail": "4096/6561",
+      "clipped_mean": "2465/729"
+    },
+    {
+      "L": 2,
+      "T": 5,
+      "tail": "32768/59049",
+      "clipped_mean": "26281/6561"
+    },
+    {
+      "L": 2,
+      "T": 6,
+      "tail": "262144/531441",
+      "clipped_mean": "269297/59049"
+    },
+    {
+      "L": 2,
+      "T": 7,
+      "tail": "2097152/4782969",
+      "clipped_mean": "2685817/531441"
+    },
+    {
+      "L": 2,
+      "T": 8,
+      "tail": "16777216/43046721",
+      "clipped_mean": "26269505/4782969"
+    },
+    {
+      "L": 3,
+      "T": 0,
+      "tail": "1",
+      "clipped_mean": "0"
+    },
+    {
+      "L": 3,
+      "T": 1,
+      "tail": "26/27",
+      "clipped_mean": "1"
+    },
+    {
+      "L": 3,
+      "T": 2,
+      "tail": "676/729",
+      "clipped_mean": "53/27"
+    },
+    {
+      "L": 3,
+      "T": 3,
+      "tail": "17576/19683",
+      "clipped_mean": "2107/729"
+    },
+    {
+      "L": 3,
+      "T": 4,
+      "tail": "456976/531441",
+      "clipped_mean": "74465/19683"
+    },
+    {
+      "L": 3,
+      "T": 5,
+      "tail": "11881376/14348907",
+      "clipped_mean": "2467531/531441"
+    },
+    {
+      "L": 3,
+      "T": 6,
+      "tail": "308915776/387420489",
+      "clipped_mean": "78504713/14348907"
+    },
+    {
+      "L": 3,
+      "T": 7,
+      "tail": "8031810176/10460353203",
+      "clipped_mean": "2428543027/387420489"
+    },
+    {
+      "L": 3,
+      "T": 8,
+      "tail": "208827064576/282429536481",
+      "clipped_mean": "73602471905/10460353203"
+    }
+  ]
+}
