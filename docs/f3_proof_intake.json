@@ -6740,7 +6740,6 @@
       "formalization_complete": false,
       "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
       "remaining": [
-        "explicit confidence-parameter corollary",
         "moving configurations",
         "full signed difference law",
         "prime transfer"
@@ -6780,10 +6779,44 @@
       "formalization_complete": false,
       "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
       "remaining": [
-        "explicit confidence-parameter corollary",
         "moving configurations",
         "full signed difference law",
         "prime transfer"
+      ]
+    },
+    "REC-L7-ACTUAL-CONFIDENCE": {
+      "status": "LEAN-PROVED: actual complete certificate-matrix recovery confidence at the exact sample threshold",
+      "module": "OmegaBalance/F3RecoveryConfidence.lean",
+      "declarations": [
+        "f3Recovery_exponential_confidence",
+        "f3SharedRootConfig_unitHaar_jointWait_confidence",
+        "f3SharedRootConfig_unitHaar_matrix_recovery_confidence"
+      ],
+      "verified_code_sha": "361cdd3c958897b342297dfbc7abb55a66e3a4cb",
+      "verified_tree": "6979590446d56975243dd667081e37c40542456f",
+      "successful_code_runs": [
+        36705872257,
+        36705919682
+      ],
+      "project_declarations": 740,
+      "required_external_producer": 1,
+      "source_files": 111,
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "local_theorem_2_3_complete": true,
+      "local_scope": "fixed original shared-root model: pair tail/mean, joint tail/logarithmic mean, explicit actual matrix confidence",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "truncated sampling probabilities",
+        "moving configurations",
+        "full signed difference law",
+        "prime transfer",
+        "passive lower bound",
+        "equidistant triple exact stopping law"
       ]
     }
   }

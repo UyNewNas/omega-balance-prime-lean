@@ -974,3 +974,21 @@ Use positive B/delta, not log at zero. Real.exp_neg and Real.exp_le_exp are alre
 Current search index resolved to dca97ab984e97c9d1edcdbea3dc9e0c0c1d673ee, independently fetched as a commit. Current Measure/Real blob91ebdd41fdbc3f448c4f4120e19a9b774696c567 and Log/Basic blob9a7df2d42999a58e7619e89227ba5e75d6ba60a6 were separately read. Selected signatures/hypotheses unchanged. No upgrade proposed. Both source headers declare Apache2; pinned root LICENSE directly checked in this integration round. Only library calls/project adapters planned, no external proof corpus copied.
 
 The corollary still requires implementation and full exact CI. Moving configurations, prime transfer, signed differences and other accepted results remain open.
+
+## 2026-09-30 11:04 UTC：实际完整矩阵置信保证已通过精确 CI
+
+代码361cdd3c958897b342297dfbc7abb55a66e3a4cb，树6979590446d56975243dd667081e37c40542456f，
+[push36705872257](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36705872257)和
+[PR36705919682](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36705919682)
+首轮完整成功。三条新声明仅标准公理；全741项公理输出（740项目+1产生器）、111项目
+源文件、650依赖模块及版本锁、构建、内核回归、覆盖和144240有限检查全部通过。
+
+对原固定配置、0<δ<1和自然T≥3^K log(choose(m,2)/δ)，真实单位Haar流前T次观测使
+原证书矩阵恢复全部真实距离的概率至少1−δ。成功事件通过已有逐点矩阵等价和可测尾
+补事件证明，不预设目标概率；K为实际根距最大值，根命中∞及真实∞对角线保留。
+
+与先前已验标量尾律/期望、联合尾界/对数期望一起，覆盖纸面定理2.3在固定原局部模型
+中的式(2.7)、式(2.8)及其显式置信推论。整个REC包仍未完成：截断概率、移动配置、
+全素数传递、有符号差律、被动下界和三等距根精确停止律等继续开放。36个数值阈值与
+8个有限根模型有理成功概率仅为回归。独立数学/源码复核通过；此状态文档头仍另行
+执行完整CI。原始proof来源水位保持不变。
