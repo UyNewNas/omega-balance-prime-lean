@@ -1255,3 +1255,22 @@ Precise URLs use https://github.com/leanprover-community/mathlib4/blob/5ed296525
 Domain and infinity policy: the new integer random-variable representative explicitly uses untopD0 solely to make a total measurable function. Its value at either actual root is not claimed to be the mathematical infinite-depth difference. First prove equality with the genuine finite signed event outside the already proved null root set, including under the actual conditional measure by absolute continuity. Every distribution calculation transfers through this a.e. identity. RootDepth itself is unchanged and still infinity at roots. All original finite root distance L≥1, units, common residue and known positive base conditions remain on public wrappers.
 
 Decision: thin measurable-observable and pushforward adapters, actual fair-sign marginal, actual geometric absolute marginal, full joint product law by countable singleton uniqueness, then direct standard IndepFun criterion. No assumed PMF, assumed target factorization, root-pair independence, or prime-sampling claim. Intake source watermarks remain the12:47 bounded175-head scan; only own already reviewed engineering integration since then. Exact CI, independent review and one-to-one Audit remain hard gates.
+
+## 2026-09-30 13:58 UTC：完整条件符号/绝对大小独立性通过精确 CI
+
+代码65edd840f02e29013687cd47ed471f9eaf6e3b03，树2f822b1978e6f32d96b3ee8668140507f902d035，
+[push36724933474](https://github.com/UyNewNas/omega-balance-prime-lean/actions/runs/36724933474)
+首轮完整成功。十五条新声明均仅标准公理，包括真正IndepFun结论及原共享根包装；
+822项总输出（821项目+1产生器）、117项目源码、650依赖模块/版本锁、真实产生器与
+项目构建、内核回归、逐一覆盖及144240有限检查通过。只有非阻塞风格/弃用提示，
+未禁用任何检查。独立数学源码复核通过；12个有限乘积和3660代数案例只是回归。
+
+验收得到真实条件测度下公平符号、完整绝对大小边缘（0质量0，n≥1质量2·3^-n）、
+完整联合原子律，以及整份实际联合推前等于实际边缘乘积，从而证明完整函数独立性。
+untopD整数代表只在两个已证零测根点任意赋值；分布证明先通过几乎处处有限事件
+等价传递，rootDepth仍保留∞。原共享根模型的单位/同余/正基深与有限L≥1前提不变。
+
+连同已验无条件有符号原子及实际条件原子律，固定原模型的REC-L3局部分歧律及
+条件符号/绝对大小独立性已覆盖。整个REC包仍formalization_complete=false：移动
+配置、有限素数盒传递、被动样本下界、三等距根停止律及其他节点保持开放。此最终
+状态头仅改文档，发布后仍需精确头完整CI与当前主分支检查。
