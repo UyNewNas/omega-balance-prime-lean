@@ -7039,6 +7039,50 @@
         "equidistant triple waiting law",
         "remaining REC nodes"
       ]
+    },
+    "REC-L3-ACTUAL-SIGN-SIZE-INDEPENDENCE": {
+      "status": "LEAN-PROVED: actual fair sign, full absolute-size and joint laws, genuine IndepFun and original-model wrapper",
+      "module": "OmegaBalance/F3SignSizeIndependence.lean",
+      "declarations": [
+        "f3SignedDepthValue_eq_of_depths",
+        "f3SignedDepthValue_measurable",
+        "f3SignedDepthValue_event_ae",
+        "f3DepthSign_measurable",
+        "f3DepthSize_measurable",
+        "rootDepth_lt_iff_mem_first_tail",
+        "f3DepthSign_true_event_ae",
+        "f3UnequalDepthHaar_sign_true",
+        "f3UnequalDepthHaar_sign_eq",
+        "f3DepthSize_event_ae",
+        "f3UnequalDepthHaar_size_eq",
+        "f3DepthSign_size_atom",
+        "f3UnequalDepthHaar_sign_size_eq",
+        "f3UnequalDepthHaar_sign_size_indep",
+        "f3SharedRootConfig_conditional_sign_size_indep"
+      ],
+      "verified_code_sha": "65edd840f02e29013687cd47ed471f9eaf6e3b03",
+      "verified_tree": "2f822b1978e6f32d96b3ee8668140507f902d035",
+      "successful_code_runs": [
+        36724933474
+      ],
+      "project_declarations": 821,
+      "required_external_producer": 1,
+      "source_files": 117,
+      "axiom_bound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "formalization_complete": false,
+      "paper_scope": "fixed original model REC-L3 full conditional sign and absolute-size independence; measurable representative proved a.e. equivalent to genuine finite-depth observations before transferring laws",
+      "mapping": "docs/proofs/f3/prime_depth_reconstruction/formalization.md",
+      "remaining": [
+        "moving configurations",
+        "finite prime-box transfer",
+        "passive lower bounds",
+        "equidistant triple waiting law",
+        "remaining REC nodes"
+      ]
     }
   }
 }
